@@ -103,6 +103,74 @@ def dir_hash(d):
     return h.hexdigest()
 
 
+_TOKEN_CACHE = {}
+
+
+def _rclone_token(rclone_exe, remote):
+    """Достать свежий OAuth access_token из rclone (для вызовов Drive API)."""
+    if remote in _TOKEN_CACHE:
+        return _TOKEN_CACHE[remote]
+    subprocess.run([rclone_exe, 'about', f'{remote}:'], capture_output=True)  # refresh
+    dump = subprocess.run([rclone_exe, 'config', 'dump'], capture_output=True,
+                          text=True, encoding='utf-8', errors='replace')
+    try:
+        tok = json.loads(json.loads(dump.stdout)[remote]['token'])['access_token']
+    except Exception:
+        return None
+    _TOKEN_CACHE[remote] = tok
+    return tok
+
+
+def _drive_file_meta(fid, rclone_exe, remote):
+    import requests
+    tok = _rclone_token(rclone_exe, remote)
+    if not tok:
+        return None
+    try:
+        r = requests.get('https://www.googleapis.com/drive/v3/files/' + fid,
+                         params={'fields': 'size,modifiedTime,md5Checksum,sha256Checksum'},
+                         headers={'Authorization': 'Bearer ' + tok}, timeout=30)
+        return r.json() if r.status_code == 200 else None
+    except Exception:
+        return None
+
+
+def remote_signature(unit, rclone_exe, remote):
+    """Отпечаток источника GDrive БЕЗ скачивания — для skip-if-unchanged.
+      * файл  -> sha256Checksum (Drive API);
+      * папка -> sha256 от строк '<path>|<size>|<sha256>' всех файлов (rclone lsjson).
+    Возвращает строку или None (метаданные недоступны -> откат к download-then-compare)."""
+    if not rclone_exe:
+        return None
+    gid = gdrive_id(unit['gdrive'])
+    if not gid:
+        return None
+    if unit.get('kind') == 'folder':
+        res = subprocess.run([rclone_exe, 'lsjson', '-R', '--hash', f'{remote}:',
+                              '--drive-root-folder-id', gid],
+                             capture_output=True, text=True, encoding='utf-8',
+                             errors='replace')
+        if res.returncode != 0:
+            return None
+        try:
+            items = json.loads(res.stdout)
+        except Exception:
+            return None
+        parts = []
+        for it in sorted((x for x in items if not x.get('IsDir')),
+                         key=lambda x: x['Path']):
+            hh = it.get('Hashes') or {}
+            h = hh.get('sha256') or hh.get('md5') or ''
+            parts.append(f"{it['Path']}|{it.get('Size')}|{h}")
+        if not parts:
+            return None
+        return hashlib.sha256('\n'.join(parts).encode('utf-8', 'replace')).hexdigest()
+    meta = _drive_file_meta(gid, rclone_exe, remote)
+    if not meta:
+        return None
+    return meta.get('sha256Checksum') or meta.get('md5Checksum') or None
+
+
 def _find_rclone():
     rc = shutil.which('rclone')
     if rc:
@@ -504,6 +572,8 @@ def main():
     lock_before = load_json(LOCK, {})
     lock = dict(lock_before)
     changed_by_camp = {}
+    remote = cfg.get('rclone', {}).get('remote', 'gdrive')
+    rclone_exe = _find_rclone()
 
     if a.only:
         # явно названный юнит запускаем независимо от enabled
@@ -520,15 +590,24 @@ def main():
         name, camp = unit['name'], unit['camp']
         print(f'\n=== [{camp}] {name} — {unit.get("display_name", name)} ===')
 
+        prev = lock_before.get(name, {})
+
+        # Предзагрузочная проверка: спрашиваем у GDrive контрольную сумму/отпечаток
+        # БЕЗ скачивания. Если совпал с локом — не качаем вообще.
+        sig = None if a.no_download else remote_signature(unit, rclone_exe, remote)
+        if not a.force and not a.check and sig and prev.get('remote_sig') == sig:
+            print('  без изменений (метаданные GDrive) — не качаем')
+            continue
+
         try:
-            archive, digest = download(unit, a.no_download,
-                                       cfg.get('rclone', {}).get('remote', 'gdrive'))
+            archive, digest = download(unit, a.no_download, remote)
         except Exception as e:
             print(f'  FAIL download: {e}')
             continue
 
-        prev = lock_before.get(name, {})
-        if not a.force and prev.get('sha256') == digest and not a.check:
+        # Откат для случая, когда метаданные недоступны (sig is None): сравниваем
+        # по хэшу уже скачанного файла.
+        if not a.force and sig is None and prev.get('sha256') == digest and not a.check:
             print('  без изменений — пропуск')
             continue
 
@@ -555,7 +634,8 @@ def main():
             'updated_at': now_iso(),
         })
 
-        lock[name] = {'sha256': digest, 'camp': camp, 'rson_count': n_rson,
+        lock[name] = {'sha256': digest, 'remote_sig': sig or digest,
+                      'camp': camp, 'rson_count': n_rson,
                       'code_files': cn, 'asset_files': an, 'updated_at': now_iso()}
         changed_by_camp.setdefault(camp, []).append(name)
         print(f'  код: {cn} файлов / {human(cb)} (+{n_rson} .rson)  |  '
