@@ -536,27 +536,50 @@ def _cached_archive(name, kind):
     return hits[0] if hits else None
 
 
-def build_asset_track(cfg, units, do_upload, repo_slug):
-    """Собрать недостающие блобы ассетов в чанки <2ГБ и (опц.) залить в Release.
+def _scan_blob_usage():
+    """Сколько РАЗНЫХ юнитов использует каждый блоб (по всем манифестам в mods/).
+    Возвращает (usage: sha->count, blob_unit: sha->первый_юнит)."""
+    usage, blob_unit = {}, {}
+    for man_path in sorted(MODS.glob('*/*/assets.manifest.json')):
+        uname = man_path.parent.name
+        shas = {m['sha256'] for m in load_json(man_path, {}).get('files', {}).values()}
+        for sh in shas:
+            usage[sh] = usage.get(sh, 0) + 1
+            blob_unit.setdefault(sh, uname)
+    return usage, blob_unit
 
-    Источник байтов — архивы из cache/ (переразворачиваются). Дедуп — глобальный
-    по sha256 через state/asset_index.json. Возвращает (n_new_blobs, chunks)."""
+
+def build_asset_track(cfg, units, do_upload, repo_slug):
+    """Собрать недостающие блобы ассетов в чанки и (опц.) залить в Release.
+
+    Чанки группируются для ЛОКАЛЬНОСТИ скачивания:
+      * блоб, используемый >=2 юнитами  -> группа 'shared';
+      * блоб уникальный для юнита        -> группа = имя юнита.
+    Установка одного юнита тянет только его чанк(и) + shared-чанк(и), а не
+    уникальные ассеты чужих юнитов. Дедуп сохраняется (sha256, индекс).
+    Размер чанка — asset_policy.chunk_max_mb (по умолчанию 512 МБ)."""
+    chunk_max = cfg.get('asset_policy', {}).get('chunk_max_mb', 512) * 1024 * 1024
     index = load_json(ASSET_INDEX, {'blobs': {}, 'chunks': {}})
     seen = set(index['blobs'])
+    usage, _ = _scan_blob_usage()
+    shared = {sh for sh, c in usage.items() if c >= 2}
+
     store = REPO / '_blobstore'
     ex_tmp = REPO / '_extract_assets'
     if store.exists():
         shutil.rmtree(store)
     store.mkdir(parents=True)
 
-    collected = {}                 # sha256 -> size (новые уникальные блобы)
+    sizes = {}                       # sha256 -> size
+    group_blobs = {}                 # group -> [sha256, ...]  (group: 'shared' | имя юнита)
+    collected = set()
     for unit in units:
         name, camp = unit['name'], unit['camp']
         man_path = MODS / camp / name / 'assets.manifest.json'
         if not man_path.exists():
             continue
         files = load_json(man_path, {}).get('files', {})
-        need = {m['sha256'] for m in files.values()} - seen - set(collected)
+        need = {m['sha256'] for m in files.values()} - seen - collected
         if not need:
             print(f'  {name}: новых ассетов нет')
             continue
@@ -571,55 +594,56 @@ def build_asset_track(cfg, units, do_upload, repo_slug):
             if sh in seen or sh in collected:
                 continue
             src = ext / rel
-            if src.exists():
-                shutil.copy2(src, store / sh)
-                collected[sh] = m['size']
-                added += 1
+            if not src.exists():
+                continue
+            shutil.copy2(src, store / sh)
+            collected.add(sh)
+            sizes[sh] = m['size']
+            grp = 'shared' if sh in shared else name
+            group_blobs.setdefault(grp, []).append(sh)
+            added += 1
         shutil.rmtree(ext, ignore_errors=True)
-        print(f'  {name}: +{added} новых блобов ({human(sum(collected[s] for s in collected))} всего)')
+        print(f'  {name}: +{added} новых блобов')
 
     if not collected:
         print('Новых ассетов нет — индекс не меняется.')
         shutil.rmtree(store, ignore_errors=True)
         return 0, []
 
-    # Пакуем в чанки <CHUNK_MAX (zip STORED — ассеты уже сжаты).
+    # Пакуем каждую группу в свои чанки <chunk_max (zip STORED — ассеты уже сжаты).
     DIST.mkdir(parents=True, exist_ok=True)
     base = stamp()
     chunks = []          # [(chunk_path, [sha256, ...])]
-    cur, cur_sz, idx = [], 0, 0
-    oversized = []
 
-    def flush():
-        nonlocal cur, cur_sz, idx
-        if not cur:
-            return
-        cp = DIST / f'assets-{base}-{idx:03d}.zip'
+    def write_chunk(group, seq, shas):
+        cp = DIST / f'assets-{group}-{base}-{seq:03d}.zip'
         with zipfile.ZipFile(cp, 'w', zipfile.ZIP_STORED, allowZip64=True) as z:
-            for sh in cur:
+            for sh in shas:
                 z.write(store / sh, sh)
-        chunks.append((cp, list(cur)))
-        idx += 1
-        cur, cur_sz = [], 0
+        chunks.append((cp, list(shas)))
 
-    for sh, size in collected.items():
-        if size > CHUNK_MAX:
-            oversized.append((sh, size))      # один файл крупнее чанка — отдельно
-            continue
-        if cur_sz + size > CHUNK_MAX and cur:
-            flush()
-        cur.append(sh)
-        cur_sz += size
-    flush()
-    for sh, size in oversized:                 # каждый «гигант» — свой чанк
-        cp = DIST / f'assets-{base}-big-{sh[:12]}.zip'
-        with zipfile.ZipFile(cp, 'w', zipfile.ZIP_STORED, allowZip64=True) as z:
-            z.write(store / sh, sh)
-        chunks.append((cp, [sh]))
-        if size > 2 * 1024 * 1024 * 1024:
-            print(f'  [warn] блоб {sh[:12]} = {human(size)} > 2ГБ — GitHub его не примет')
+    for group in sorted(group_blobs):
+        cur, cur_sz, seq = [], 0, 0
+        for sh in sorted(group_blobs[group]):
+            size = sizes[sh]
+            if size > chunk_max:                 # «гигант» — отдельный чанк
+                write_chunk(group, seq, [sh]); seq += 1
+                if size > 2 * 1024 * 1024 * 1024:
+                    print(f'  [warn] блоб {sh[:12]} = {human(size)} > 2ГБ — GitHub не примет')
+                continue
+            if cur_sz + size > chunk_max and cur:
+                write_chunk(group, seq, cur); seq += 1
+                cur, cur_sz = [], 0
+            cur.append(sh); cur_sz += size
+        if cur:
+            write_chunk(group, seq, cur)
 
-    print(f'Собрано чанков: {len(chunks)} (новых блобов: {len(collected)})')
+    by_group = {}
+    for cp, shas in chunks:
+        g = cp.name.split('-')[1]
+        by_group[g] = by_group.get(g, 0) + 1
+    print(f'Собрано чанков: {len(chunks)} (новых блобов: {len(collected)}); '
+          f'по группам: {by_group}')
 
     release_tag = f'assets-{base}'
     if not do_upload:
@@ -638,9 +662,11 @@ def build_asset_track(cfg, units, do_upload, repo_slug):
     publish_release(repo_slug, release_tag, notes, [c for c, _ in chunks])
 
     for cp, shas in chunks:
-        index['chunks'][cp.name] = {'release_tag': release_tag, 'blob_count': len(shas)}
+        g = cp.name.split('-')[1]
+        index['chunks'][cp.name] = {'release_tag': release_tag, 'group': g,
+                                    'blob_count': len(shas)}
         for sh in shas:
-            index['blobs'][sh] = {'chunk': cp.name, 'size': collected[sh]}
+            index['blobs'][sh] = {'chunk': cp.name, 'size': sizes[sh]}
     save_json(ASSET_INDEX, index)
     shutil.rmtree(store, ignore_errors=True)
     print(f'Индекс обновлён: всего блобов {len(index["blobs"])}, чанков {len(index["chunks"])}')
