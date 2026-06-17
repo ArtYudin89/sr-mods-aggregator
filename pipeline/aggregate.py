@@ -523,6 +523,130 @@ def build_code_bundle(camp, units_done):
     return zip_path
 
 
+CHUNK_MAX = 1900 * 1024 * 1024     # 1.9 ГБ — запас под лимит ассета GitHub (2 ГБ)
+ASSET_INDEX = REPO / 'state' / 'asset_index.json'
+
+
+def _cached_archive(name, kind):
+    if kind == 'folder':
+        d = CACHE / f'{name}.folder'
+        return d if d.exists() else None
+    hits = [p for p in CACHE.glob(f'{name}.*')
+            if p.suffix not in ('.part', '.folder')]
+    return hits[0] if hits else None
+
+
+def build_asset_track(cfg, units, do_upload, repo_slug):
+    """Собрать недостающие блобы ассетов в чанки <2ГБ и (опц.) залить в Release.
+
+    Источник байтов — архивы из cache/ (переразворачиваются). Дедуп — глобальный
+    по sha256 через state/asset_index.json. Возвращает (n_new_blobs, chunks)."""
+    index = load_json(ASSET_INDEX, {'blobs': {}, 'chunks': {}})
+    seen = set(index['blobs'])
+    store = REPO / '_blobstore'
+    ex_tmp = REPO / '_extract_assets'
+    if store.exists():
+        shutil.rmtree(store)
+    store.mkdir(parents=True)
+
+    collected = {}                 # sha256 -> size (новые уникальные блобы)
+    for unit in units:
+        name, camp = unit['name'], unit['camp']
+        man_path = MODS / camp / name / 'assets.manifest.json'
+        if not man_path.exists():
+            continue
+        files = load_json(man_path, {}).get('files', {})
+        need = {m['sha256'] for m in files.values()} - seen - set(collected)
+        if not need:
+            print(f'  {name}: новых ассетов нет')
+            continue
+        arc = _cached_archive(name, unit.get('kind'))
+        if not arc:
+            print(f'  {name}: нет архива в cache/ — пропуск (нужно скачать)')
+            continue
+        ext = extract(arc, ex_tmp)
+        added = 0
+        for rel, m in files.items():
+            sh = m['sha256']
+            if sh in seen or sh in collected:
+                continue
+            src = ext / rel
+            if src.exists():
+                shutil.copy2(src, store / sh)
+                collected[sh] = m['size']
+                added += 1
+        shutil.rmtree(ext, ignore_errors=True)
+        print(f'  {name}: +{added} новых блобов ({human(sum(collected[s] for s in collected))} всего)')
+
+    if not collected:
+        print('Новых ассетов нет — индекс не меняется.')
+        shutil.rmtree(store, ignore_errors=True)
+        return 0, []
+
+    # Пакуем в чанки <CHUNK_MAX (zip STORED — ассеты уже сжаты).
+    DIST.mkdir(parents=True, exist_ok=True)
+    base = stamp()
+    chunks = []          # [(chunk_path, [sha256, ...])]
+    cur, cur_sz, idx = [], 0, 0
+    oversized = []
+
+    def flush():
+        nonlocal cur, cur_sz, idx
+        if not cur:
+            return
+        cp = DIST / f'assets-{base}-{idx:03d}.zip'
+        with zipfile.ZipFile(cp, 'w', zipfile.ZIP_STORED, allowZip64=True) as z:
+            for sh in cur:
+                z.write(store / sh, sh)
+        chunks.append((cp, list(cur)))
+        idx += 1
+        cur, cur_sz = [], 0
+
+    for sh, size in collected.items():
+        if size > CHUNK_MAX:
+            oversized.append((sh, size))      # один файл крупнее чанка — отдельно
+            continue
+        if cur_sz + size > CHUNK_MAX and cur:
+            flush()
+        cur.append(sh)
+        cur_sz += size
+    flush()
+    for sh, size in oversized:                 # каждый «гигант» — свой чанк
+        cp = DIST / f'assets-{base}-big-{sh[:12]}.zip'
+        with zipfile.ZipFile(cp, 'w', zipfile.ZIP_STORED, allowZip64=True) as z:
+            z.write(store / sh, sh)
+        chunks.append((cp, [sh]))
+        if size > 2 * 1024 * 1024 * 1024:
+            print(f'  [warn] блоб {sh[:12]} = {human(size)} > 2ГБ — GitHub его не примет')
+
+    print(f'Собрано чанков: {len(chunks)} (новых блобов: {len(collected)})')
+
+    release_tag = f'assets-{base}'
+    if not do_upload:
+        # Dry-run: чанки собраны для предпросмотра, индекс НЕ трогаем
+        # (блобы ещё не залиты — записывать их как доступные нельзя).
+        shutil.rmtree(store, ignore_errors=True)
+        print(f'[dry-run] чанки в dist/ ({len(chunks)} шт.), индекс не изменён')
+        return len(collected), chunks
+
+    if not repo_slug:
+        print('  upload: не задан github.repo — индекс не обновлён')
+        shutil.rmtree(store, ignore_errors=True)
+        return len(collected), chunks
+
+    notes = f'# Ассет-блобы {now_iso()}\n\nЧанков: {len(chunks)}, блобов: {len(collected)}'
+    publish_release(repo_slug, release_tag, notes, [c for c, _ in chunks])
+
+    for cp, shas in chunks:
+        index['chunks'][cp.name] = {'release_tag': release_tag, 'blob_count': len(shas)}
+        for sh in shas:
+            index['blobs'][sh] = {'chunk': cp.name, 'size': collected[sh]}
+    save_json(ASSET_INDEX, index)
+    shutil.rmtree(store, ignore_errors=True)
+    print(f'Индекс обновлён: всего блобов {len(index["blobs"])}, чанков {len(index["chunks"])}')
+    return len(collected), chunks
+
+
 def publish_release(repo_slug, tag, notes_text, assets):
     gh = _find_gh()
     if not gh:
@@ -556,6 +680,10 @@ def main():
     ap.add_argument('--only', default=None, help='только юнит с этим name')
     ap.add_argument('--camp', default=None, help='только лагерь (redux/universe/shared)')
     ap.add_argument('--force', action='store_true', help='игнорировать lock')
+    ap.add_argument('--assets', action='store_true',
+                    help='режим ассет-трека: упаковать новые блобы в чанки <2ГБ и залить')
+    ap.add_argument('--no-upload', action='store_true',
+                    help='с --assets: только собрать чанки локально, без Release')
     a = ap.parse_args()
 
     cfg = load_json(a.config, None)
@@ -584,6 +712,12 @@ def main():
             units = [u for u in units if u['camp'] == a.camp]
     if not units:
         print('Нет включённых юнитов под выбранные фильтры.')
+        return
+
+    if a.assets:
+        print(f'=== Ассет-трек: {len(units)} юнитов ===')
+        build_asset_track(cfg, units, do_upload=not a.no_upload,
+                          repo_slug=cfg.get('github', {}).get('repo', ''))
         return
 
     for unit in units:
