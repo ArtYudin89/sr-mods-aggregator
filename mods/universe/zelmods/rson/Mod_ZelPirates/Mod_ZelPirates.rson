@@ -1,0 +1,300 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_ZelPirates",
+    "ScriptFileOut": "D:\\Mod_ZelPirates.scr",
+    "ScriptTextOut": "D:\\Mod_ZelPirates.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [],
+            "DialogMessages": [],
+            "Dialogs": [],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 100,
+                    "StatusTraderMax": 10000,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 0,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 0,
+                    "DistSearch": 2097184,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 10
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 11,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 510
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "level=GalaxyDiffLevels(0)/50;"
+                    ],
+                    "#": 12,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 510
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(PirateWin()!=4&&PirateWin()!=3) {",
+                        "  days=days+1;",
+                        "  reload=exp((0.5-0.03*level)*ControlledSystems(2))/level;",
+                        "  while(days>=reload){",
+                        "    pirate=BuyWarrior(PlanetPirateClan(),100+40*level);",
+                        "    random = Rnd(Maloc, Gaal);",
+                        "    ShipPilotRace(pirate, random);",
+                        "    ShipOwner(pirate, 7);",
+                        "    ItemOwner(ShipItems(pirate, 0), random);",
+                        "    hullSize=300+(20+3*level)*GalaxyTechLevel();",
+                        "    hullSize=Rnd(0.9*hullSize,1.1*hullSize);",
+                        "    for(i=0;i<10;i=i+1)",
+                        "      ShipRefit(pirate,hullSize);",
+                        "    Chameleon(pirate);",
+                        "    ShipImproveItems(pirate,level);",
+                        "    days=days-reload;",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 13,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 510
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 9
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 8
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 7,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 14
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "level",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "days",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Float",
+                    "Init": "0.000",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "reload",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Float",
+                    "Init": "0.000",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "pirate",
+                    "Pos.x": 270,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "random",
+                    "Pos.x": 360,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 450,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "hullSize",
+                    "Pos.x": 540,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 8,
+            "End": 7,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 9,
+            "End": 7,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 10,
+            "End": 9,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 10,
+            "End": 14,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

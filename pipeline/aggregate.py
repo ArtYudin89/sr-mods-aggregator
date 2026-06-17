@@ -103,6 +103,15 @@ def dir_hash(d):
     return h.hexdigest()
 
 
+def _find_rclone():
+    rc = shutil.which('rclone')
+    if rc:
+        return rc
+    base = Path(os.path.expandvars(r'%LOCALAPPDATA%\Microsoft\WinGet\Packages'))
+    hits = sorted(base.glob('Rclone.Rclone*/**/rclone.exe'))
+    return str(hits[0]) if hits else None
+
+
 def _sniff_ext(path):
     with open(path, 'rb') as f:
         magic = f.read(8)
@@ -119,10 +128,73 @@ def _sniff_ext(path):
 # Шаг 1: Скачивание (file / folder)
 # ---------------------------------------------------------------------------
 
-def download(unit, no_download):
+def download_rclone(unit, remote, no_download):
+    """Скачать 'расшаренный мне' юнит через rclone (OAuth). path = файл/каталог."""
+    name = unit['name']
+    is_folder = unit.get('kind') == 'folder'
+    gid = gdrive_id(unit['gdrive'])
+    if not gid:
+        raise ValueError(f'не распознан id: {unit["gdrive"]}')
+
+    if is_folder:
+        out = CACHE / f'{name}.folder'
+        if no_download:
+            if not out.exists():
+                raise FileNotFoundError(f'--no-download, нет cache/{name}.folder')
+            return out, dir_hash(out)
+        if out.exists():
+            shutil.rmtree(out)
+        out.mkdir(parents=True)
+        exe = _find_rclone()
+        if not exe:
+            raise RuntimeError('rclone не найден (winget install Rclone.Rclone)')
+        res = subprocess.run([exe, 'copy', f'{remote}:', str(out),
+                              '--drive-root-folder-id', gid],
+                             capture_output=True, text=True, encoding='utf-8',
+                             errors='replace')
+        if res.returncode != 0 or not any(out.rglob('*')):
+            raise RuntimeError(f'rclone copy папки не удался: {(res.stderr or "")[:200]}')
+        return out, dir_hash(out)
+
+    # одиночный файл
+    cached = [p for p in CACHE.glob(f'{name}.*')
+              if p.suffix not in ('.part', '.folder')]
+    if no_download:
+        if not cached:
+            raise FileNotFoundError(f'--no-download, нет cache/{name}.*')
+        return cached[0], sha256_file(cached[0])
+    exe = _find_rclone()
+    if not exe:
+        raise RuntimeError('rclone не найден (winget install Rclone.Rclone)')
+    tmp = CACHE / f'{name}.rclone_tmp'
+    if tmp.exists():
+        shutil.rmtree(tmp)
+    tmp.mkdir(parents=True)
+    res = subprocess.run([exe, 'backend', 'copyid', f'{remote}:', gid, str(tmp)],
+                         capture_output=True, text=True, encoding='utf-8',
+                         errors='replace')
+    got = [p for p in tmp.iterdir() if p.is_file()]
+    if res.returncode != 0 or not got:
+        shutil.rmtree(tmp, ignore_errors=True)
+        raise RuntimeError(f'rclone copyid не удался: {(res.stderr or "")[:200]}')
+    src = got[0]
+    ext = _sniff_ext(src)
+    final = CACHE / f'{name}{ext}'
+    digest = sha256_file(src)
+    if final.exists():
+        final.unlink()
+    shutil.move(str(src), str(final))
+    shutil.rmtree(tmp, ignore_errors=True)
+    print(f'    rclone: {final.name} ({human(final.stat().st_size)})')
+    return final, digest
+
+
+def download(unit, no_download, rclone_remote='gdrive'):
     """Скачать юнит в cache/. Возвращает (path, digest). path = файл или каталог."""
     name = unit['name']
     is_folder = unit.get('kind') == 'folder'
+    if unit.get('access') == 'shared':
+        return download_rclone(unit, rclone_remote, no_download)
 
     if no_download:
         if is_folder:
@@ -141,12 +213,32 @@ def download(unit, no_download):
 
     if is_folder:
         out = CACHE / f'{name}.folder'
-        if out.exists():
-            shutil.rmtree(out)
-        gdown.download_folder(url=unit['gdrive'], output=str(out), quiet=True,
-                              use_cookies=False)
-        if not out.exists() or not any(out.rglob('*')):
-            raise RuntimeError(f'gdown не скачал папку {name} (доступ/лимит?)')
+        out.mkdir(parents=True, exist_ok=True)
+        # Пофайлово: один приватный файл не должен ронять всю папку.
+        files = gdown.download_folder(url=unit['gdrive'], skip_download=True,
+                                      quiet=True, use_cookies=False, remaining_ok=True)
+        if not files:
+            raise RuntimeError(f'папка {name} пуста или недоступна')
+        got, skipped = 0, []
+        for f in files:
+            target = out / f.path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            if target.exists() and target.stat().st_size > 0:
+                got += 1
+                continue                      # уже скачан (грубая идемпотентность)
+            try:
+                gdown.download(id=f.id, output=str(target), quiet=True)
+                got += 1
+            except Exception as e:
+                skipped.append(f.path)
+        if skipped:
+            print(f'    ПРОПУЩЕНО {len(skipped)} приватных/недоступных файлов:')
+            for s in skipped[:10]:
+                print(f'      - {s}')
+            save_json(out.parent / f'{name}.skipped.json', skipped)
+        if got == 0:
+            raise RuntimeError(f'из папки {name} не скачан ни один файл')
+        print(f'    папка: {got} файлов скачано/в кэше')
         return out, dir_hash(out)
 
     gid = gdrive_id(unit['gdrive'])
@@ -173,23 +265,45 @@ def download(unit, no_download):
 # Шаг 2: Распаковка (zip с CP866-именами, rar/7z через 7-Zip)
 # ---------------------------------------------------------------------------
 
+ARCHIVE_EXT = ('.zip', '.rar', '.7z')
+
+
+def _unpack_one(arc, into):
+    suf = arc.suffix.lower()
+    if suf == '.zip':
+        _extract_zip_cp866(arc, into)
+    elif suf in ('.rar', '.7z'):
+        if not Path(SEVENZIP).exists():
+            raise RuntimeError(f'нужен 7-Zip для {suf}: {SEVENZIP}')
+        subprocess.run([SEVENZIP, 'x', '-y', f'-o{into}', str(arc)],
+                       check=True, stdout=subprocess.DEVNULL)
+    else:
+        raise RuntimeError(f'неизвестный формат: {arc}')
+
+
 def extract(archive, dest):
     if dest.exists():
         shutil.rmtree(dest)
     dest.mkdir(parents=True)
     if Path(archive).is_dir():
         shutil.copytree(archive, dest, dirs_exist_ok=True)
-        return dest
-    suf = Path(archive).suffix.lower()
-    if suf == '.zip':
-        _extract_zip_cp866(archive, dest)
-    elif suf in ('.rar', '.7z'):
-        if not Path(SEVENZIP).exists():
-            raise RuntimeError(f'нужен 7-Zip для {suf}: {SEVENZIP}')
-        subprocess.run([SEVENZIP, 'x', '-y', f'-o{dest}', str(archive)],
-                       check=True, stdout=subprocess.DEVNULL)
     else:
-        raise RuntimeError(f'неизвестный формат: {archive}')
+        _unpack_one(Path(archive), dest)
+    # Папки часто содержат вложенные архивы (folder-of-zips) — распаковываем
+    # их на месте, повторяя пока появляются новые. arc -> arc_unpacked/, arc удаляем.
+    for _ in range(6):
+        nested = [p for p in dest.rglob('*')
+                  if p.is_file() and p.suffix.lower() in ARCHIVE_EXT]
+        if not nested:
+            break
+        for arc in nested:
+            sub = arc.parent / (arc.stem + '_unpacked')
+            try:
+                _unpack_one(arc, sub)
+                arc.unlink()
+            except Exception as e:
+                print(f'    [warn] вложенный архив не распакован: {arc.name} ({e})')
+                arc.unlink(missing_ok=True)
     return dest
 
 
@@ -391,11 +505,13 @@ def main():
     lock = dict(lock_before)
     changed_by_camp = {}
 
-    units = [u for u in cfg['units'] if u.get('enabled', True)]
     if a.only:
-        units = [u for u in units if u['name'] == a.only]
-    if a.camp:
-        units = [u for u in units if u['camp'] == a.camp]
+        # явно названный юнит запускаем независимо от enabled
+        units = [u for u in cfg['units'] if u['name'] == a.only]
+    else:
+        units = [u for u in cfg['units'] if u.get('enabled', True)]
+        if a.camp:
+            units = [u for u in units if u['camp'] == a.camp]
     if not units:
         print('Нет включённых юнитов под выбранные фильтры.')
         return
@@ -405,7 +521,8 @@ def main():
         print(f'\n=== [{camp}] {name} — {unit.get("display_name", name)} ===')
 
         try:
-            archive, digest = download(unit, a.no_download)
+            archive, digest = download(unit, a.no_download,
+                                       cfg.get('rclone', {}).get('remote', 'gdrive'))
         except Exception as e:
             print(f'  FAIL download: {e}')
             continue

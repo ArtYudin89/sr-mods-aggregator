@@ -4,6 +4,10 @@
     "repo": "ArtYudin89/sr-hd-mods",
     "release_tag_prefix": ""
   },
+  "rclone": {
+    "remote": "gdrive",
+    "_comment": "rclone-remote (OAuth Google Drive) для юнитов access:shared"
+  },
   "asset_policy": {
     "code_ext": [
       ".scr",
@@ -270,7 +274,9 @@
       "known_version": "",
       "gdrive": "https://drive.google.com/drive/folders/119HyaopLgkaqJX44h-dRiSJtn8IXUSPU",
       "kind": "folder",
-      "enabled": false
+      "enabled": false,
+      "access": "shared",
+      "note": "Доступ \"расшарено мне\" (не публично) — нужна авторизация Google; gdown анонимно не качает."
     },
     {
       "name": "universe_prochee",
@@ -282,7 +288,8 @@
       "gdrive": "https://drive.google.com/drive/folders/13_FTWuEPr1gercIhiQ6sLbvSHI4Heliq",
       "kind": "folder",
       "enabled": false,
-      "note": "Бандл из многих модов: ACursor, Advanced mods (Klisan-57), AIM Music Pack, Color Name, CoffinDance, DrKlesMod, FlexTheUniverse, и т.д."
+      "note": "Доступ \"расшарено мне\" (не публично) — нужна авторизация Google; gdown анонимно не качает.",
+      "access": "shared"
     },
     {
       "name": "solyanka_universe",

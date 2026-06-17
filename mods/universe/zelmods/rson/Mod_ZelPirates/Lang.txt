@@ -1,0 +1,42 @@
+Script ^{
+    Mod_ZelDomiks ^{
+        0=Каждый день мы вынуждены тратить определенное количество денег на содержание старых и постройку новых доминаторов. Каждая система коалиции отдает нам небольшую часть из собственного бюджета, но денег все равно не хватает. Из-за этого темпы производства сильно страдают, а значит мы не можем полноценно реализовать весь потенциал четвертой серии доминаторов.<br>Однако, к счастью, нам не запрещено брать деньги у сторонних заинтересованных лиц, а значит вы можете вложить часть собственного капитала в этот перспективный проект.<br>На данный момент в нашем банке <0> cr. Желаете пополнить счет?
+1=Деньги переведены. Благодарим за поддержку!
+4=Операция отменена
+2=Пока
+3=Согласен
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            ZelDomiks_AddBonusB ^{
+                Description=Дополнительный бонус блазера. 
+                Icon=1
+                Name=Стандартное поведение
+				OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnStep,t_OnTakingDamageMi
+				OnActStepTypes=0
+                OnActCode ^{
+				    01=dword domik=ScriptItemActShip();
+					02=int damage=0;
+					03=dword thisInfo=CurInfo();
+					04=int power=ShipCustomShipInfoData(0,thisInfo,1);
+					05=if(ShipInNormalSpace(domik))
+					06 ^{
+					    01=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
+						02 ^{
+						    01=if(Rnd(1,100)<=power&&ScriptItemActShip()!=0)
+							02 ^{
+							    01=damage=ScriptItemActParam();
+								02=ScriptItemActParam(0);
+								03=ShowEffect('Weapon.NoGraph',1,domik,0,-1*damage);
+								04=if(damage+HullHP(domik)>=ItemSize(ShipItems(domik, 0))) HullHP(domik,ItemSize(ShipItems(domik, 0)));
+								05=else HullHP(domik,HullHP(domik)+damage);
+							    }
+							}
+					    }
+                }
+            }
+        }
+    }
+}

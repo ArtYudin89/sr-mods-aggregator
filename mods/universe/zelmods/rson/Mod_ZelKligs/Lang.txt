@@ -1,0 +1,25 @@
+Script ^{
+    Mod_ZelKligs ^{
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            ZelKligs_AdditionalKamikazeDamage ^{
+                Description=
+                Icon=
+                Name=
+                OnActCode ^{
+                    01=dword klig=ScriptItemActShip();
+                    02=dword enemy=ScriptItemActObject1();
+                    03=int damage=ScriptItemActParam();
+                    04=int damageProcent=ShipCustomShipInfoData(0,CurInfo(),1);
+                    05=damage=damage*damageProcent/100;
+                    06=ScriptItemActParam(damage);
+                }
+                OnActCodeTypes=t_OnDealingKamikazeDamage
+                OnActStepTypes=
+            }
+        }
+    }
+}
