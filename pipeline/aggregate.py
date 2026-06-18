@@ -740,24 +740,58 @@ def build_asset_track(cfg, units, do_upload, repo_slug):
         print(f'[dry-run] чанки в dist/ ({len(chunks)} шт.), индекс не изменён')
         return len(collected), chunks
 
-    if not repo_slug:
-        print('  upload: не задан github.repo — индекс не обновлён')
-        shutil.rmtree(store, ignore_errors=True)
-        return len(collected), chunks
+    # Заливка в выбранное хранилище (asset_store): hf | github.
+    store_cfg = cfg.get('asset_store', {'type': 'github'})
+    stype = store_cfg.get('type', 'github')
+    chunk_url = {}                      # имя чанка -> URL для скачивания
 
-    notes = f'# Ассет-блобы {now_iso()}\n\nЧанков: {len(chunks)}, блобов: {len(collected)}'
-    publish_release(repo_slug, release_tag, notes, [c for c, _ in chunks])
+    if stype == 'hf':
+        repo_id = store_cfg.get('hf_repo')
+        token = os.environ.get('HF_TOKEN') or store_cfg.get('token')
+        if not repo_id or not token:
+            print('  upload[hf]: нет hf_repo или HF_TOKEN — индекс не обновлён')
+            shutil.rmtree(store, ignore_errors=True)
+            return len(collected), chunks
+        chunk_url = _hf_upload(repo_id, [c for c, _ in chunks], token,
+                               store_cfg.get('public', True))
+    else:                               # github releases
+        if not repo_slug:
+            print('  upload: не задан github.repo — индекс не обновлён')
+            shutil.rmtree(store, ignore_errors=True)
+            return len(collected), chunks
+        notes = f'# Ассет-блобы {now_iso()}\n\nЧанков: {len(chunks)}, блобов: {len(collected)}'
+        publish_release(repo_slug, release_tag, notes, [c for c, _ in chunks])
+        for cp, _ in chunks:
+            chunk_url[cp.name] = (f'https://github.com/{repo_slug}/releases/'
+                                  f'download/{release_tag}/{cp.name}')
 
     for cp, shas in chunks:
         g = cp.name.split('-')[1]
-        index['chunks'][cp.name] = {'release_tag': release_tag, 'group': g,
-                                    'blob_count': len(shas)}
+        index['chunks'][cp.name] = {'url': chunk_url.get(cp.name), 'store': stype,
+                                    'group': g, 'blob_count': len(shas)}
         for sh in shas:
             index['blobs'][sh] = {'chunk': cp.name, 'size': sizes[sh]}
     save_json(ASSET_INDEX, index)
     shutil.rmtree(store, ignore_errors=True)
-    print(f'Индекс обновлён: всего блобов {len(index["blobs"])}, чанков {len(index["chunks"])}')
+    print(f'Индекс обновлён ({stype}): всего блобов {len(index["blobs"])}, '
+          f'чанков {len(index["chunks"])}')
     return len(collected), chunks
+
+
+def _hf_upload(repo_id, paths, token, public):
+    """Залить чанки в HF dataset-репозиторий. Возвращает {имя_чанка: resolve-URL}."""
+    from huggingface_hub import HfApi
+    api = HfApi(token=token)
+    api.create_repo(repo_id, repo_type='dataset', private=not public, exist_ok=True)
+    urls = {}
+    for p in paths:
+        print(f'  hf upload: {p.name} ({human(p.stat().st_size)}) ...')
+        api.upload_file(path_or_fileobj=str(p), path_in_repo=p.name,
+                        repo_id=repo_id, repo_type='dataset',
+                        commit_message=f'add {p.name}')
+        urls[p.name] = (f'https://huggingface.co/datasets/{repo_id}/'
+                        f'resolve/main/{p.name}')
+    return urls
 
 
 def publish_release(repo_slug, tag, notes_text, assets):
