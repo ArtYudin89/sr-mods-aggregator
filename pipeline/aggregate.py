@@ -636,146 +636,135 @@ def _scan_blob_usage():
     return usage, blob_unit
 
 
-def build_asset_track(cfg, units, do_upload, repo_slug):
-    """Собрать недостающие блобы ассетов в чанки и (опц.) залить в Release.
+def _drop_cache(name):
+    """Удалить скачанное из cache/ (для --lean)."""
+    for p in CACHE.glob(f'{name}.*'):
+        if p.is_dir():
+            shutil.rmtree(p, ignore_errors=True)
+        else:
+            p.unlink(missing_ok=True)
 
-    Чанки группируются для ЛОКАЛЬНОСТИ скачивания:
-      * блоб, используемый >=2 юнитами  -> группа 'shared';
-      * блоб уникальный для юнита        -> группа = имя юнита.
-    Установка одного юнита тянет только его чанк(и) + shared-чанк(и), а не
-    уникальные ассеты чужих юнитов. Дедуп сохраняется (sha256, индекс).
-    Размер чанка — asset_policy.chunk_max_mb (по умолчанию 512 МБ)."""
+
+def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
+                      remote='gdrive'):
+    """ПОТОКОВАЯ заливка ассетов по юниту (пик диска ~ один юнит, не весь набор).
+
+    Для каждого юнита: (опц. --fetch) скачать -> распаковать -> упаковать НОВЫЕ
+    блобы (которых ещё нет в индексе) в чанки <chunk_max ПРЯМО из распаковки ->
+    залить в asset_store (hf|github) -> инкрементально обновить индекс -> удалить
+    распаковку (и cache при --lean). Дедуп — по индексу (блоб грузится один раз;
+    общий блоб «принадлежит» первому залившему юниту). Без --upload — только отчёт."""
     chunk_max = cfg.get('asset_policy', {}).get('chunk_max_mb', 512) * 1024 * 1024
     index = load_json(ASSET_INDEX, {'blobs': {}, 'chunks': {}})
     seen = set(index['blobs'])
-    usage, _ = _scan_blob_usage()
-    shared = {sh for sh, c in usage.items() if c >= 2}
+    store_cfg = cfg.get('asset_store', {'type': 'github'})
+    stype = store_cfg.get('type', 'github')
+    hf_repo = hf_token = None
+    if do_upload and stype == 'hf':
+        hf_repo = store_cfg.get('hf_repo')
+        hf_token = os.environ.get('HF_TOKEN') or store_cfg.get('token')
+        if not hf_repo or not hf_token:
+            print('  upload[hf]: нет hf_repo или HF_TOKEN — выход')
+            return 0
 
-    store = REPO / '_blobstore'
     ex_tmp = REPO / '_extract_assets'
-    if store.exists():
-        shutil.rmtree(store)
-    store.mkdir(parents=True)
+    DIST.mkdir(parents=True, exist_ok=True)
+    total_new = total_bytes = 0
 
-    sizes = {}                       # sha256 -> size
-    group_blobs = {}                 # group -> [sha256, ...]  (group: 'shared' | имя юнита)
-    collected = set()
     for unit in units:
         name, camp = unit['name'], unit['camp']
         man_path = MODS / camp / name / 'assets.manifest.json'
         if not man_path.exists():
             continue
         files = load_json(man_path, {}).get('files', {})
-        need = {m['sha256'] for m in files.values()} - seen - collected
+        need = {}                       # sha256 -> (relpath, size), первая встреча
+        for rel, m in files.items():
+            sh = m['sha256']
+            if sh in seen or sh in need:
+                continue
+            need[sh] = (rel, m['size'])
         if not need:
             print(f'  {name}: новых ассетов нет')
             continue
+        nbytes = sum(s for _, s in need.values())
+
+        if not do_upload:               # dry-run: только отчёт, без скачивания
+            print(f'  {name}: НОВЫХ {len(need)} блобов / {human(nbytes)} (dry-run)')
+            total_new += len(need); total_bytes += nbytes
+            continue
+
         arc = _cached_archive(name, unit.get('kind'))
         if not arc:
-            print(f'  {name}: нет архива в cache/ — пропуск (нужно скачать)')
+            if not fetch:
+                print(f'  {name}: нет в cache/ (нужен --fetch) — пропуск')
+                continue
+            try:
+                print(f'  {name}: скачивание ...')
+                arc, _ = download(unit, False, remote)
+            except Exception as e:
+                print(f'  {name}: FAIL download: {e}')
+                continue
+        try:
+            ext = extract(arc, ex_tmp)
+        except Exception as e:
+            print(f'  {name}: FAIL extract: {e}')
+            if lean:
+                _drop_cache(name)
             continue
-        ext = extract(arc, ex_tmp)
-        added = 0
-        for rel, m in files.items():
-            sh = m['sha256']
-            if sh in seen or sh in collected:
-                continue
-            src = ext / rel
-            if not src.exists():
-                continue
-            shutil.copy2(src, store / sh)
-            collected.add(sh)
-            sizes[sh] = m['size']
-            grp = 'shared' if sh in shared else name
-            group_blobs.setdefault(grp, []).append(sh)
-            added += 1
-        shutil.rmtree(ext, ignore_errors=True)
-        print(f'  {name}: +{added} новых блобов')
 
-    if not collected:
-        print('Новых ассетов нет — индекс не меняется.')
-        shutil.rmtree(store, ignore_errors=True)
-        return 0, []
+        base = stamp()
+        cur, cur_sz, seq, uploaded = [], 0, 0, 0
 
-    # Пакуем каждую группу в свои чанки <chunk_max (zip STORED — ассеты уже сжаты).
-    DIST.mkdir(parents=True, exist_ok=True)
-    base = stamp()
-    chunks = []          # [(chunk_path, [sha256, ...])]
+        def flush():
+            nonlocal cur, cur_sz, seq, uploaded
+            if not cur:
+                return
+            cp = DIST / f'assets-{name}-{base}-{seq:03d}.zip'
+            with zipfile.ZipFile(cp, 'w', zipfile.ZIP_STORED, allowZip64=True) as z:
+                for sh in cur:
+                    z.write(ext / need[sh][0], sh)
+            if stype == 'hf':
+                url = _hf_upload(hf_repo, [cp], hf_token,
+                                 store_cfg.get('public', True))[cp.name]
+            else:
+                tag = f'assets-{name}-{base}'
+                publish_release(repo_slug, tag, f'assets {name}', [cp])
+                url = (f'https://github.com/{repo_slug}/releases/'
+                       f'download/{tag}/{cp.name}')
+            index['chunks'][cp.name] = {'url': url, 'store': stype, 'group': name,
+                                        'blob_count': len(cur)}
+            for sh in cur:
+                index['blobs'][sh] = {'chunk': cp.name, 'size': need[sh][1]}
+                seen.add(sh)
+            save_json(ASSET_INDEX, index)        # инкрементально (crash-safe)
+            cp.unlink(missing_ok=True)
+            uploaded += len(cur)
+            seq += 1
+            cur, cur_sz = [], 0
 
-    def write_chunk(group, seq, shas):
-        cp = DIST / f'assets-{group}-{base}-{seq:03d}.zip'
-        with zipfile.ZipFile(cp, 'w', zipfile.ZIP_STORED, allowZip64=True) as z:
-            for sh in shas:
-                z.write(store / sh, sh)
-        chunks.append((cp, list(shas)))
+        try:
+            for sh in sorted(need):
+                rel, size = need[sh]
+                if not (ext / rel).exists():
+                    continue
+                if size > chunk_max:             # «гигант» — отдельный чанк
+                    cur.append(sh); flush(); continue
+                if cur_sz + size > chunk_max and cur:
+                    flush()
+                cur.append(sh); cur_sz += size
+            flush()
+            print(f'  {name}: залито {uploaded} блобов / {human(nbytes)}')
+            total_new += uploaded; total_bytes += nbytes
+        except Exception as e:
+            print(f'  {name}: FAIL upload: {e}')
+        finally:
+            shutil.rmtree(ext, ignore_errors=True)
+            if lean:
+                _drop_cache(name)
 
-    for group in sorted(group_blobs):
-        cur, cur_sz, seq = [], 0, 0
-        for sh in sorted(group_blobs[group]):
-            size = sizes[sh]
-            if size > chunk_max:                 # «гигант» — отдельный чанк
-                write_chunk(group, seq, [sh]); seq += 1
-                if size > 2 * 1024 * 1024 * 1024:
-                    print(f'  [warn] блоб {sh[:12]} = {human(size)} > 2ГБ — GitHub не примет')
-                continue
-            if cur_sz + size > chunk_max and cur:
-                write_chunk(group, seq, cur); seq += 1
-                cur, cur_sz = [], 0
-            cur.append(sh); cur_sz += size
-        if cur:
-            write_chunk(group, seq, cur)
-
-    by_group = {}
-    for cp, shas in chunks:
-        g = cp.name.split('-')[1]
-        by_group[g] = by_group.get(g, 0) + 1
-    print(f'Собрано чанков: {len(chunks)} (новых блобов: {len(collected)}); '
-          f'по группам: {by_group}')
-
-    release_tag = f'assets-{base}'
-    if not do_upload:
-        # Dry-run: чанки собраны для предпросмотра, индекс НЕ трогаем
-        # (блобы ещё не залиты — записывать их как доступные нельзя).
-        shutil.rmtree(store, ignore_errors=True)
-        print(f'[dry-run] чанки в dist/ ({len(chunks)} шт.), индекс не изменён')
-        return len(collected), chunks
-
-    # Заливка в выбранное хранилище (asset_store): hf | github.
-    store_cfg = cfg.get('asset_store', {'type': 'github'})
-    stype = store_cfg.get('type', 'github')
-    chunk_url = {}                      # имя чанка -> URL для скачивания
-
-    if stype == 'hf':
-        repo_id = store_cfg.get('hf_repo')
-        token = os.environ.get('HF_TOKEN') or store_cfg.get('token')
-        if not repo_id or not token:
-            print('  upload[hf]: нет hf_repo или HF_TOKEN — индекс не обновлён')
-            shutil.rmtree(store, ignore_errors=True)
-            return len(collected), chunks
-        chunk_url = _hf_upload(repo_id, [c for c, _ in chunks], token,
-                               store_cfg.get('public', True))
-    else:                               # github releases
-        if not repo_slug:
-            print('  upload: не задан github.repo — индекс не обновлён')
-            shutil.rmtree(store, ignore_errors=True)
-            return len(collected), chunks
-        notes = f'# Ассет-блобы {now_iso()}\n\nЧанков: {len(chunks)}, блобов: {len(collected)}'
-        publish_release(repo_slug, release_tag, notes, [c for c, _ in chunks])
-        for cp, _ in chunks:
-            chunk_url[cp.name] = (f'https://github.com/{repo_slug}/releases/'
-                                  f'download/{release_tag}/{cp.name}')
-
-    for cp, shas in chunks:
-        g = cp.name.split('-')[1]
-        index['chunks'][cp.name] = {'url': chunk_url.get(cp.name), 'store': stype,
-                                    'group': g, 'blob_count': len(shas)}
-        for sh in shas:
-            index['blobs'][sh] = {'chunk': cp.name, 'size': sizes[sh]}
-    save_json(ASSET_INDEX, index)
-    shutil.rmtree(store, ignore_errors=True)
-    print(f'Индекс обновлён ({stype}): всего блобов {len(index["blobs"])}, '
-          f'чанков {len(index["chunks"])}')
-    return len(collected), chunks
+    print(f'Ассет-трек: новых блобов {total_new} / {human(total_bytes)}; '
+          f'в индексе {len(index["blobs"])} блобов, {len(index["chunks"])} чанков')
+    return total_new
 
 
 def _hf_upload(repo_id, paths, token, public):
@@ -837,6 +826,11 @@ def main():
     ap.add_argument('--lean', action='store_true',
                     help='удалять скачанный архив из cache/ после обработки юнита '
                          '(экономит диск; --assets потом потребует пере-скачивания)')
+    ap.add_argument('--code-release', action='store_true',
+                    help='перегенерировать код-трек релизы по ВСЕМ юнитам в mods/ '
+                         '(не только изменившимся) и опубликовать')
+    ap.add_argument('--fetch', action='store_true',
+                    help='с --assets: докачивать юнит, если его нет в cache/')
     a = ap.parse_args()
 
     cfg = load_json(a.config, None)
@@ -867,10 +861,27 @@ def main():
         print('Нет включённых юнитов под выбранные фильтры.')
         return
 
+    if a.code_release:
+        repo_slug = cfg.get('github', {}).get('repo', '')
+        camps = {}
+        for ud in sorted(MODS.glob('*/*')):
+            if (ud / 'meta.json').exists():
+                camps.setdefault(ud.parent.name, []).append(ud.name)
+        print(f'=== Код-трек релизы по всем юнитам: {sum(len(v) for v in camps.values())} в {len(camps)} лагерях ===')
+        for camp, names in camps.items():
+            bundle = build_code_bundle(camp, names)
+            tag = f'{cfg["github"].get("release_tag_prefix","")}{camp}-code-{stamp()}'
+            notes = f'# Код-трек {camp} (все {len(names)} юнитов) {now_iso()}\n\n' + \
+                    '\n'.join(f'- {n}' for n in names)
+            print(f'  {camp}: {len(names)} юнитов -> {bundle.name} ({human(bundle.stat().st_size)})')
+            publish_release(repo_slug, tag, notes, [bundle])
+        return
+
     if a.assets:
         print(f'=== Ассет-трек: {len(units)} юнитов ===')
         build_asset_track(cfg, units, do_upload=not a.no_upload,
-                          repo_slug=cfg.get('github', {}).get('repo', ''))
+                          repo_slug=cfg.get('github', {}).get('repo', ''),
+                          fetch=a.fetch, lean=a.lean, remote=remote)
         return
 
     for unit in units:
