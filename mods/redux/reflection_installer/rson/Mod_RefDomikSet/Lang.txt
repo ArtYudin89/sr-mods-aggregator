@@ -1,0 +1,1204 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            DomikSetInfoMain ^{
+                Description=Установленное на борту доминаторское оборудование может получать бонусы от совместимости.<br>Текущие бонусы:<bonuses>
+                Icon=821
+                Name=Совместимость оборудования
+                OnActCode ^{
+                    01=if(1)
+                    02 ^{
+                        01=int equipka = 0;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) == 5) equipka = equipka + 1;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_FuelTanks)) == 5) equipka = equipka + 1;
+                        04=if(ItemOwner(ShipEqInSlot(Player(),t_Engine)) == 5) equipka = equipka + 1;
+                        05=if(ItemOwner(ShipEqInSlot(Player(),t_Scaner)) == 5) equipka = equipka + 1;
+                        06=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) == 5) equipka = equipka + 1;
+                        07=if(ItemOwner(ShipEqInSlot(Player(),t_CargoHook)) == 5) equipka = equipka + 1;
+                        08=if(ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) == 5) equipka = equipka + 1;
+                        09=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,1)) == 5) equipka = equipka + 1;
+                        10=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,2)) == 5) equipka = equipka + 1;
+                        11=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,3)) == 5) equipka = equipka + 1;
+                        12=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,4)) == 5) equipka = equipka + 1;
+                        13=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,5)) == 5) equipka = equipka + 1;
+                        14=if(equipka > 1) str tstr = 'На борту имеется доминаторское оборудование, способное лучше работать в связке друг с другом.<br>Текущие бонусы совместимости:';
+                        15=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) == 5 && ItemOwner(ShipEqInSlot(Player(),t_Scaner)) == 5  && ShipEqInSlot(Player(),t_Radar) && ShipEqInSlot(Player(),t_Scaner))
+                        16 ^{
+                            01=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_ScanRadar') == -1)
+                            02 ^{
+                                01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_ScanRadar','NoShow');
+                                02=if(ItemSubrace(ShipEqInSlot(Player(),t_Radar)) == ItemSubrace(ShipEqInSlot(Player(),t_Scaner)))
+                                03 ^{
+                                    01=ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar) + 500);
+                                    02=ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan) + 3);
+                                    03=ShipCustomShipInfoData(Player(),'DomikSetInfo_ScanRadar',1,2);
+                                }
+                                04=else
+                                05 ^{
+                                    01=ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar) + 350);
+                                    02=ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan) + 2);
+                                    03=ShipCustomShipInfoData(Player(),'DomikSetInfo_ScanRadar',1,1);
+                                }
+                            }
+                        }
+                        17=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) == 5 && ItemOwner(ShipEqInSlot(Player(),t_Scaner)) == 5  && ShipEqInSlot(Player(),t_Scaner) && ShipEqInSlot(Player(),t_RepairRobot))
+                        18 ^{
+                            01=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_ScanDroid') == -1)
+                            02 ^{
+                                01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_ScanDroid','NoShow');
+                                02=if(ItemSubrace(ShipEqInSlot(Player(),t_RepairRobot)) == ItemSubrace(ShipEqInSlot(Player(),t_Scaner)))
+                                03 ^{
+                                    01=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid) + 5);
+                                    02=ShipCustomShipInfoData(Player(),'DomikSetInfo_ScanDroid',1,2);
+                                }
+                                04=else
+                                05 ^{
+                                    01=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid) + 3);
+                                    02=ShipCustomShipInfoData(Player(),'DomikSetInfo_ScanDroid',1,1);
+                                }
+                            }
+                        }
+                        19=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) == 5 && ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) == 5 && ShipEqInSlot(Player(),t_Radar) && ShipEqInSlot(Player(),t_DefGenerator))
+                        20 ^{
+                            01=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_RadarShield') == -1)
+                            02 ^{
+                                01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_RadarShield','NoShow');
+                                02=if(ItemSubrace(ShipEqInSlot(Player(),t_Radar)) == ItemSubrace(ShipEqInSlot(Player(),t_DefGenerator)))
+                                03 ^{
+                                    01=ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef) + 3);
+                                    02=ShipCustomShipInfoData(Player(),'DomikSetInfo_RadarShield',1,2);
+                                }
+                                04=else
+                                05 ^{
+                                    01=ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef) + 2);
+                                    02=ShipCustomShipInfoData(Player(),'DomikSetInfo_RadarShield',1,1);
+                                }
+                            }
+                        }
+                        21=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) == 5 && ItemOwner(ShipEqInSlot(Player(),t_CargoHook)) == 5  && ShipEqInSlot(Player(),t_Radar) && ShipEqInSlot(Player(),t_CargoHook))
+                        22 ^{
+                            01=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_RadarZahvat') == -1)
+                            02 ^{
+                                01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_RadarZahvat','NoShow');
+                                02=if(ItemSubrace(ShipEqInSlot(Player(),t_Radar)) == ItemSubrace(ShipEqInSlot(Player(),t_CargoHook)))
+                                03 ^{
+                                    01=ShipSpecialBonuses(Player(),bonHookRadius,ShipSpecialBonuses(Player(),bonHookRadius) + 60);
+                                    02=ShipSpecialBonuses(Player(),bonHookMaxSpeed,ShipSpecialBonuses(Player(),bonHookMaxSpeed) + 1);
+                                    03=ShipCustomShipInfoData(Player(),'DomikSetInfo_RadarZahvat',1,2);
+                                }
+                                04=else
+                                05 ^{
+                                    01=ShipSpecialBonuses(Player(),bonHookRadius,ShipSpecialBonuses(Player(),bonHookRadius) + 45);
+                                    02=ShipCustomShipInfoData(Player(),'DomikSetInfo_RadarZahvat',1,1);
+                                }
+                            }
+                        }
+                        23=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) == 5  && ShipEqInSlot(Player(),t_Radar))
+                        24 ^{
+                            01=int read=0,i,buff=0;
+                            02=for(i=0;ShipSlots(Player(),1)>i;i=i+1)
+                            03 ^{
+                                01=if(ShipEqInSlot(Player(),t_Weapon1,i)!=0)
+                                02 ^{
+                                    01=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,i)) == 5 && GetEquipmentStats(ShipEqInSlot(Player(),t_Weapon1,i),3) == 2)
+                                    02 ^{
+                                        01=if(ItemSubrace(ShipEqInSlot(Player(),t_Radar)) == ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,i))) buff=1;
+                                        02=read = 1;
+                                    }
+                                }
+                            }
+                            04=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_RadarMissile') == -1)
+                            05 ^{
+                                01=if(read == 1 && buff == 1)
+                                02 ^{
+                                    01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_RadarMissile','NoShow');
+                                    02=ShipSpecialBonuses(Player(),bonMissileSpeed,ShipSpecialBonuses(Player(),bonMissileSpeed) + 350);
+                                    03=ShipCustomShipInfoData(Player(),'DomikSetInfo_RadarMissile',1,2);
+                                }
+                                03=else if(read == 1)
+                                04 ^{
+                                    01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_RadarMissile','NoShow');
+                                    02=ShipSpecialBonuses(Player(),bonMissileSpeed,ShipSpecialBonuses(Player(),bonMissileSpeed) + 250);
+                                    03=ShipCustomShipInfoData(Player(),'DomikSetInfo_RadarMissile',1,1);
+                                }
+                            }
+                        }
+                        25=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) == 5  && ShipEqInSlot(Player(),t_Radar))
+                        26 ^{
+                            01=int read2=0,buff2=0;
+                            02=for(i=0;ShipSlots(Player(),1)>i;i=i+1)
+                            03 ^{
+                                01=if(ShipEqInSlot(Player(),t_Weapon1,i))
+                                02 ^{
+                                    01=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,i)) == 5)
+                                    02 ^{
+                                        01=if(ItemSubrace(ShipEqInSlot(Player(),t_Radar)) == ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,i))) buff2=1;
+                                        02=read2 = 1;
+                                    }
+                                }
+                            }
+                            07=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_RadarSplinEnergy') == -1)
+                            08 ^{
+                                01=if(read2 == 1 && buff2 == 1)
+                                02 ^{
+                                    01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_RadarSplinEnergy','NoShow');
+                                    02=ShipSpecialBonuses(Player(),bonWRadius,ShipSpecialBonuses(Player(),bonWRadius) + 50);
+                                    03=ShipCustomShipInfoData(Player(),'DomikSetInfo_RadarSplinEnergy',1,2);
+                                }
+                                03=else if(read2 == 1)
+                                04 ^{
+                                    01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_RadarSplinEnergy','NoShow');
+                                    02=ShipSpecialBonuses(Player(),bonWRadius,ShipSpecialBonuses(Player(),bonWRadius) + 30);
+                                    03=ShipCustomShipInfoData(Player(),'DomikSetInfo_RadarSplinEnergy',1,1);
+                                }
+                            }
+                        }
+                        27=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) == 5 && ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) == 5 && ShipEqInSlot(Player(),t_RepairRobot) && ShipEqInSlot(Player(),t_DefGenerator))
+                        28 ^{
+                            01=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_DroidShield') == -1)
+                            02 ^{
+                                01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_DroidShield','NoShow');
+                                02=if(ItemSubrace(ShipEqInSlot(Player(),t_RepairRobot)) == ItemSubrace(ShipEqInSlot(Player(),t_DefGenerator)))
+                                03 ^{
+                                    01=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid) + 5);
+                                    02=ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef) + 4);
+                                    03=ShipCustomShipInfoData(Player(),'DomikSetInfo_DroidShield',1,2);
+                                }
+                                04=else
+                                05 ^{
+                                    01=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid) + 3);
+                                    02=ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef) + 2);
+                                    03=ShipCustomShipInfoData(Player(),'DomikSetInfo_DroidShield',1,1);
+                                }
+                            }
+                        }
+                        29=if(ItemOwner(ShipEqInSlot(Player(),t_CargoHook)) == 5 && ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) == 5  && ShipEqInSlot(Player(),t_CargoHook) && ShipEqInSlot(Player(),t_RepairRobot))
+                        30 ^{
+                            01=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_ZahvatDroid') == -1)
+                            02 ^{
+                                01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_ZahvatDroid','NoShow');
+                                02=if(ItemSubrace(ShipEqInSlot(Player(),t_CargoHook)) == ItemSubrace(ShipEqInSlot(Player(),t_RepairRobot)))
+                                03 ^{
+                                    01=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid) + 13);
+                                    02=ShipCustomShipInfoData(Player(),'DomikSetInfo_ZahvatDroid',1,2);
+                                }
+                                04=else
+                                05 ^{
+                                    01=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid) + 7);
+                                    02=ShipCustomShipInfoData(Player(),'DomikSetInfo_ZahvatDroid',1,1);
+                                }
+                            }
+                        }
+                        31=if(ItemOwner(ShipEqInSlot(Player(),t_FuelTanks)) == 5 && ItemOwner(ShipEqInSlot(Player(),t_Engine)) == 5 && ShipEqInSlot(Player(),t_FuelTanks) && ShipEqInSlot(Player(),t_Engine))
+                        32 ^{
+                            01=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_FuelEngine') == -1)
+                            02 ^{
+                                01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_FuelEngine','NoShow');
+                                02=if(ItemSubrace(ShipEqInSlot(Player(),t_FuelTanks)) == ItemSubrace(ShipEqInSlot(Player(),t_Engine)))
+                                03 ^{
+                                    01=ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed) + 130);
+                                    02=ShipCustomShipInfoData(Player(),'DomikSetInfo_FuelEngine',1,2);
+                                }
+                                04=else
+                                05 ^{
+                                    01=ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed) + 75);
+                                    02=ShipCustomShipInfoData(Player(),'DomikSetInfo_FuelEngine',1,1);
+                                }
+                                06=if(!ShipCustomShipInfoData(Player(),'DomikSetInfo_FuelEngine',1)) ShipDeleteCustomShipInfo(Player(),'DomikSetInfo_FuelEngine');
+                            }
+                        }
+                        33=if(ItemOwner(ShipEqInSlot(Player(),t_Scaner)) == 5  && ShipEqInSlot(Player(),t_Scaner))
+                        34 ^{
+                            01=int read3=0,buff3=0;
+                            02=for(i=0;ShipSlots(Player(),1)>i;i=i+1)
+                            03 ^{
+                                01=if(ShipEqInSlot(Player(),t_Weapon1,i))
+                                02 ^{
+                                    01=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,i)) == 5)
+                                    02 ^{
+                                        01=if(ItemSubrace(ShipEqInSlot(Player(),t_Scaner)) == ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,i))) buff3=1;
+                                        02=read3 = 1;
+                                    }
+                                }
+                            }
+                            07=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_ScanWeapon') == -1)
+                            08 ^{
+                                01=if(read3 == 1 && buff3 == 1)
+                                02 ^{
+                                    01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_ScanWeapon','NoShow');
+                                    02=ShipSpecialBonuses(Player(),bonWEnergy,ShipSpecialBonuses(Player(),bonWEnergy) + 5);
+                                    03=ShipSpecialBonuses(Player(),bonWSplinter,ShipSpecialBonuses(Player(),bonWSplinter) + 5);
+                                    04=ShipSpecialBonuses(Player(),bonWMissile,ShipSpecialBonuses(Player(),bonWMissile) + 5);
+                                    05=ShipCustomShipInfoData(Player(),'DomikSetInfo_ScanWeapon',1,2);
+                                }
+                                03=else if(read3 == 1)
+                                04 ^{
+                                    01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_ScanWeapon','NoShow');
+                                    02=ShipSpecialBonuses(Player(),bonWEnergy,ShipSpecialBonuses(Player(),bonWEnergy) + 3);
+                                    03=ShipSpecialBonuses(Player(),bonWSplinter,ShipSpecialBonuses(Player(),bonWSplinter) + 3);
+                                    04=ShipSpecialBonuses(Player(),bonWMissile,ShipSpecialBonuses(Player(),bonWMissile) + 3);
+                                    05=ShipCustomShipInfoData(Player(),'DomikSetInfo_ScanWeapon',1,1);
+                                }
+                            }
+                        }
+                        35=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) == 5 && ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) == 5 && ItemOwner(ShipEqInSlot(Player(),t_Engine)) == 5  && ShipEqInSlot(Player(),t_DefGenerator) && ShipEqInSlot(Player(),t_Engine))
+                        36 ^{
+                            01=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_EngineDroidShield') == -1) ShipAddCustomShipInfo(Player(),'DomikSetInfo_FuelDroidShield','NoShow');
+                        }
+                        37=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) == 5 && ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) == 5 && ItemOwner(ShipEqInSlot(Player(),t_FuelTanks)) == 5  && ShipEqInSlot(Player(),t_FuelTanks) && ShipEqInSlot(Player(),t_DefGenerator))
+                        38 ^{
+                            01=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_FuelDroidShield') == -1) ShipAddCustomShipInfo(Player(),'DomikSetInfo_FuelDroidShield','NoShow');
+                        }
+                        39=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Radar)) == 0 && ItemOwner(ShipEqInSlot(Player(),t_FuelTanks)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_FuelTanks)) == 0 && ItemOwner(ShipEqInSlot(Player(),t_Engine)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Engine)) == 0 && ItemOwner(ShipEqInSlot(Player(),t_Scaner)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Scaner)) == 0 && ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_RepairRobot)) == 0 && ItemOwner(ShipEqInSlot(Player(),t_CargoHook)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_CargoHook)) == 0 && ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_DefGenerator)) == 0 && ItemOwner(ShipEqInSlot(Player(),t_Weapon1,1)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,1)) == 0 && ItemOwner(ShipEqInSlot(Player(),t_Weapon1,2)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,2)) == 0 && ItemOwner(ShipEqInSlot(Player(),t_Weapon1,3)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,3)) == 0 && ItemOwner(ShipEqInSlot(Player(),t_Weapon1,4)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,4)) == 0 && ItemOwner(ShipEqInSlot(Player(),t_Weapon1,5)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,5)) == 0);
+                        40 ^{
+                            01=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_BlazerSet') == -1)
+                            02 ^{
+                                01=int coun9=0;
+                                02=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Radar)) == 0) coun9 = coun9 + 1;
+                                03=if(ItemOwner(ShipEqInSlot(Player(),t_FuelTanks)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_FuelTanks)) == 0) coun9 = coun9 + 1;
+                                04=if(ItemOwner(ShipEqInSlot(Player(),t_Engine)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Engine)) == 0) coun9 = coun9 + 1;
+                                05=if(ItemOwner(ShipEqInSlot(Player(),t_Scaner)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Scaner)) == 0) coun9 = coun9 + 1;
+                                06=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_RepairRobot)) == 0) coun9 = coun9 + 1;
+                                07=if(ItemOwner(ShipEqInSlot(Player(),t_CargoHook)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_CargoHook)) == 0) coun9 = coun9 + 1;
+                                08=if(ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_DefGenerator)) == 0) coun9 = coun9 + 1;
+                                09=for(i=0;ShipSlots(Player(),1)>i;i=i+1)
+                                10 ^{
+                                    01=if(ShipEqInSlot(Player(),t_Weapon1,i) == 0)
+                                    02 ^{
+                                        01=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,1)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,i)) == 0) coun9 = coun9 + 1;
+                                    }
+                                }
+                                11=if(coun9 == 12)
+                                12 ^{
+                                    01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_BlazerSet','NoShow');
+                                    02=ShipSpecialBonuses(Player(),bonWMissile,ShipSpecialBonuses(Player(),bonWMissile) + 10);
+                                    03=ShipSpecialBonuses(Player(),bonWEnergy,ShipSpecialBonuses(Player(),bonWEnergy) + 10);
+                                    04=ShipSpecialBonuses(Player(),bonWSplinter,ShipSpecialBonuses(Player(),bonWSplinter) + 10);
+                                }
+                            }
+                        }
+                        41=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_KellerSet') == -1)
+                        42 ^{
+                            01=int coun8=0;
+                            02=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Radar)) == 1) coun8 = coun8 + 1;
+                            03=if(ItemOwner(ShipEqInSlot(Player(),t_FuelTanks)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_FuelTanks)) == 1) coun8 = coun8 + 1;
+                            04=if(ItemOwner(ShipEqInSlot(Player(),t_Engine)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Engine)) == 1) coun8 = coun8 + 1;
+                            05=if(ItemOwner(ShipEqInSlot(Player(),t_Scaner)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Scaner)) == 1) coun8 = coun8 + 1;
+                            06=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_RepairRobot)) == 1) coun8 = coun8 + 1;
+                            07=if(ItemOwner(ShipEqInSlot(Player(),t_CargoHook)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_CargoHook)) == 1) coun8 = coun8 + 1;
+                            08=if(ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_DefGenerator)) == 1) coun8 = coun8 + 1;
+                            09=for(i=0;ShipSlots(Player(),1)>i;i=i+1)
+                            10 ^{
+                                01=if(ShipEqInSlot(Player(),t_Weapon1,i) == 0)
+                                02 ^{
+                                    01=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,1)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,i)) == 1) coun8 = coun8 + 1;
+                                }
+                            }
+                            11=if(coun8 == 12)
+                            12 ^{
+                                01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_KellerSet','NoShow');
+                                02=ShipSpecialBonuses(Player(),bonJump,ShipSpecialBonuses(Player(),bonJump) + 10);
+                            }
+                        }
+                        43=if(ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_TerronSet') == -1)
+                        44 ^{
+                            01=int coun7=0;
+                            02=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Radar)) == 2) coun7 = coun7 + 1;
+                            03=if(ItemOwner(ShipEqInSlot(Player(),t_FuelTanks)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_FuelTanks)) == 2) coun7 = coun7 + 1;
+                            04=if(ItemOwner(ShipEqInSlot(Player(),t_Engine)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Engine)) == 2) coun7 = coun7 + 1;
+                            05=if(ItemOwner(ShipEqInSlot(Player(),t_Scaner)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Scaner)) == 2) coun7 = coun7 + 1;
+                            06=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_RepairRobot)) == 2) coun7 = coun7 + 1;
+                            07=if(ItemOwner(ShipEqInSlot(Player(),t_CargoHook)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_CargoHook)) == 2) coun7 = coun7 + 1;
+                            08=if(ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_DefGenerator)) == 2) coun7 = coun7 + 1;
+                            09=for(i=0;ShipSlots(Player(),1)>i;i=i+1)
+                            10 ^{
+                                01=if(ShipEqInSlot(Player(),t_Weapon1,i) == 0)
+                                02 ^{
+                                    01=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,1)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,i)) == 2) coun7 = coun7 + 1;
+                                }
+                            }
+                            11=if(coun7 == 12)
+                            12 ^{
+                                01=ShipAddCustomShipInfo(Player(),'DomikSetInfo_TerronSet','NoShow');
+                                02=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid) + 25);
+                            }
+                        }
+                        45=for(i=t_FuelTanks;i<t_Weapon1;i=i+1)
+                        46 ^{
+                            01=if(ShipEqInSlot(Player(),i))
+                            02 ^{
+                                01=int glue;
+                                02=int energize;
+                                03=int rockln;
+                                04=if(~EqSpecial(ShipEqInSlot(Player(),i)))
+                                05 ^{
+                                    01=if(FindBonusByNameInCfg('ShuDomiks_EnergizeEqDomModLocked') == EqSpecial(ShipEqInSlot(Player(),t_Weapon1,i))) energize = energize + 1;
+                                    02=if(FindBonusByNameInCfg('ShuDomiks_GlueEqDomModLocked') == EqSpecial(ShipEqInSlot(Player(),t_Weapon1,i))) glue = glue + 1;
+                                    03=if(FindBonusByNameInCfg('ShuDomiks_RocketLauncherEqDomModLocked') == EqSpecial(ShipEqInSlot(Player(),t_Weapon1,i))) rockln = rockln + 1;
+                                }
+                                06=if(energize > 2) ShipAddCustomShipInfo(Player(),'DomikSetInfo_EnergizeBonus','NoShow');
+                                07=if(glue > 2) ShipAddCustomShipInfo(Player(),'DomikSetInfo_GlueBonus','NoShow');
+                                08=if(rockln > 2) ShipAddCustomShipInfo(Player(),'DomikSetInfo_RocketLnBonus','NoShow');
+                            }
+                        }
+                    }
+                    03=if(!ScriptItemActParam(t_OnStep))
+                    04 ^{
+                        01=tstr = 'На борту имеется доминаторское оборудование, способное лучше работать в связке друг с другом.' + CT('FormInfo.br') + 'Текущие бонусы совместимости:';
+                        02=int droi = 0;
+                        03=int rad = 0;
+                        04=int zahv = 0;
+                        05=int ener = 0;
+                        06=int dvig = 0;
+                        07=int splin = 0;
+                        08=int miss = 0;
+                        09=int shiel = 0;
+                        10=int scan = 0;
+                        11=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_FuelDroidShield')) tstr = tstr + CT('FormInfo.br') + 'Защита от осколочного оружия повышена на <clr>15<clrEnd>%';
+                        12=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_EngineDroidShield')) tstr = tstr + CT('FormInfo.br') + 'Дополнительное восстановление корабля в прыжке на <clr>20<clrEnd> ед. структуры за сутки';
+                        13=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_TerronSet')) droi = droi + 25;
+                        14=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_KellerSet')) tstr = tstr + CT('FormInfo.br') + 'Повышен урон в чёрных дырах' + CT('FormInfo.br') + '<clr>10<clrEnd> к дальности прыжка';
+                        15=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_BlazerSet'))
+                        16 ~{
+                            01=miss = miss + 10;
+                            02=splin = splin + 10;
+                            03=ener = ener + 10;
+                        }
+                        17=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_ScanDroid'))
+                        18 ^{
+                            01=if(ShipCustomShipInfoData(Player(),'DomikSetInfo_ScanDroid',1) == 2) droi = droi + 5;
+                            02=else droi = droi + 3;
+                        }
+                        19=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_ScanRadar'))
+                        20 ^{
+                            01=if(ShipCustomShipInfoData(Player(),'DomikSetInfo_ScanRadar',1) == 2)
+                            02 ^{
+                                01=rad = rad + 500;
+                                02=scan = scan + 3;
+                            }
+                            03=else
+                            04 ^{
+                                01=rad = rad + 350;
+                                02=scan = scan + 2;
+                            }
+                        }
+                        21=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_ScanWeapon'))
+                        22 ^{
+                            01=if(ShipCustomShipInfoData(Player(),'DomikSetInfo_ScanWeapon',1) == 2)
+                            02 ^{
+                                01=miss = miss + 5;
+                                02=ener = ener + 5;
+                                03=splin = splin + 5;
+                            }
+                            03=else
+                            04 ^{
+                                01=miss = miss + 3;
+                                02=ener = ener + 3;
+                                03=splin = splin + 3;
+                            }
+                        }
+                        23=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_FuelEngine'))
+                        24 ^{
+                            01=if(ShipCustomShipInfoData(Player(),'DomikSetInfo_FuelEngine',1) == 2) dvig = dvig + 130;
+                            02=else dvig = dvig + 130;
+                        }
+                        25=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_RadarMissile'))
+                        26 ^{
+                            01=if(ShipCustomShipInfoData(Player(),'DomikSetInfo_RadarMissile',1) == 2) tstr = tstr + CT('FormInfo.br') + 'Скорость ракет повышена на <clr>350<clrEnd>';
+                            02=else tstr = tstr + CT('FormInfo.br') + 'Скорость ракет повышена на <clr>250<clrEnd>';
+                        }
+                        27=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_RadarShield'))
+                        28 ^{
+                            01=if(ShipCustomShipInfoData(Player(),'DomikSetInfo_RadarShield',1) == 2) shiel = shiel + 3;
+                            02=else shiel = shiel + 2;
+                        }
+                        29=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_RadarSplinEnergy'))
+                        30 ^{
+                            01=if(ShipCustomShipInfoData(Player(),'DomikSetInfo_RadarSplinEnergy',1) == 2) tstr = tstr + CT('FormInfo.br') + 'Дальность орудий повышена на <clr>50<clrEnd>';
+                            02=else tstr = tstr + CT('FormInfo.br') + 'Дальность орудий повышена на <clr>30<clrEnd>';
+                        }
+                        31=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_RadarZahvat'))
+                        32 ^{
+                            01=if(ShipCustomShipInfoData(Player(),'DomikSetInfo_RadarZahvat',1) == 2)
+                            02 ^{
+                                01=zahv = zahv + 60;
+                                02=tstr = tstr + CT('FormInfo.br') + 'Скорость захвата на дальних дистанциях повышена на <clr>1<clrEnd>';
+                            }
+                            03=else zahv = zahv + 45;
+                        }
+                        33=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_ZahvatDroid'))
+                        34 ^{
+                            01=if(ShipCustomShipInfoData(Player(),'DomikSetInfo_ZahvatDroid',1) == 2) droi = droi + 13;
+                            02=else droi = droi + 7;
+                        }
+                        35=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_DroidShield'))
+                        36 ^{
+                            01=if(ShipCustomShipInfoData(Player(),'DomikSetInfo_DroidShield',1) == 2)
+                            02 ^{
+                                01=droi = droi + 5;
+                                02=shiel = shiel + 4;
+                            }
+                            03=else
+                            04 ^{
+                                01=droi = droi + 3;
+                                02=shiel = shiel + 2;
+                            }
+                        }
+                        37=tstr = tstr + Format(CT('FormInfo.br') + 'Эффективность дроида повышена на <clr>#pods1#<clrEnd>' + CT('FormInfo.br') + 'Сила энергетического оружия повышена на <clr>#pods2#<clrEnd>' + CT('FormInfo.br') + 'Сила осколочного оружия повышена на <clr>#pods3#<clrEnd>' + CT('FormInfo.br') + 'Сила ракетного оружия повышена на <clr>#pods4#<clrEnd>' + CT('FormInfo.br') + 'Мощность защитного поля увеличена <clr>#pods5#<clrEnd>' + CT('FormInfo.br') + 'Дальность захвата увеличена на <clr>#pods6#<clrEnd>' + CT('FormInfo.br') + 'Скорость двигателя увеличена на <clr>#pods7#<clrEnd>' + CT('FormInfo.br') + 'Мощность сканера повышена на <clr>#pods8#<clrEnd>' + CT('FormInfo.br') + 'Дальность радара повышена на <clr>#pods9#<clrEnd>','#pods1#',droi,'#pods2#',ener,'#pods3#',splin,'#pods4#',miss,'#pods5#',shiel,'#pods6#',zahv,'#pods7#',dvig,'#pods8#',scan,'#pods9#',rad);
+                        38=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_EnergizeBonus')) tstr = tstr + CT('FormInfo.br') + 'При попадании торпед бозонное поле разбирает их до детонации, преобразовывая '+ShipCustomShipInfoData()+'% урона в восстановление обшивки';
+                        39=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_GlueBonus')) tstr = tstr + CT('FormInfo.br') + 'Увеличивает восстановление дроидом на '+ShipCustomShipInfoData()+'%';
+                        40=if(~ShipFindCustomShipInfoByType(Player(),'DomikSetInfo_RocketLnBonus')) tstr = tstr + CT('FormInfo.br') + 'С шансом '+ShipCustomShipInfoData()+'% увеличивает скорость любой ракеты или торпеды на 1500, а минимально наносимый ею урон становится равным 80';
+                        41=ShipCustomShipInfoDescription(0,CurInfo(),tstr);
+                        42=if(equipka < 2) ShipCustomShipInfoDescription(0,CurInfo(),'NoShow');
+                    }
+                    05=if(equipka > 1 && !ShipCustomShipInfoData(0,CurInfo(),1))
+                    06 ^{
+                        01=ShipCustomShipInfoData(0,CurInfo(),1,1);
+                        02=NewsAdd('Доминаторское оборудование плохо работает с коалиционным, но чем больше на корабле таких систем, тем проще и эффективнее ему выполнять свои функции. Бортовой компьютер проанализировал возможности вашего оборудования и вывел в удобном инфоформате в правой панели на форме краткой информации о корабле');
+                        03=Sound('Sound.NewMsg');
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_BlazerSet ^{
+                Description=Бонус от блазероидного сета оборудки
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=int dele = 0,i;
+                    02=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_Radar)) != 0) dele = 1;
+                    03=if(ItemOwner(ShipEqInSlot(Player(),t_FuelTanks)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_FuelTanks)) != 0) dele = 1;
+                    04=if(ItemOwner(ShipEqInSlot(Player(),t_Engine)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_Engine)) != 0) dele = 1;
+                    05=if(ItemOwner(ShipEqInSlot(Player(),t_Scaner)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_Scaner)) != 0) dele = 1;
+                    06=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_RepairRobot)) != 0) dele = 1;
+                    07=if(ItemOwner(ShipEqInSlot(Player(),t_CargoHook)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_CargoHook)) != 0) dele = 1;
+                    08=if(ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_DefGenerator)) != 0) dele = 1;
+                    09=for(i=0;ShipSlots(Player(),1)>i;i=i+1)
+                    10 ^{
+                        01=if(ShipEqInSlot(Player(),t_Weapon1,i) != 0)
+                        02 ^{
+                            01=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,1)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,i)) != 0) dele = 1;
+                        }
+                    }
+                    11=if(dele)
+                    12 ^{
+                        01=ShipDeleteCustomShipInfo(0,CurInfo());
+                        02=ShipSpecialBonuses(Player(),bonWMissile,ShipSpecialBonuses(Player(),bonWMissile) - 10);
+                        03=ShipSpecialBonuses(Player(),bonWEnergy,ShipSpecialBonuses(Player(),bonWEnergy) - 10);
+                        04=ShipSpecialBonuses(Player(),bonWSplinter,ShipSpecialBonuses(Player(),bonWSplinter) - 10);
+                        05=exit;
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_DroidShield ^{
+                Description=Бонус совместимости дроида и щита (перераспределяют работу друг друга)
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    02 ^{
+                        01=int dele = 0;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) != 5) dele = 1;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) != 5) dele = 1;
+                        04=if(dele)
+                        05 ^{
+                            01=ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)-2);
+                            02=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-3);
+                            03=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            04 ^{
+                                01=ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)-2);
+                                02=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-2);
+                            }
+                            05=ShipDeleteCustomShipInfo(0,CurInfo());
+                            06=exit;
+                        }
+                        06=int coun=0;
+                        07=if(ItemSubrace(ShipEqInSlot(Player(),t_DefGenerator)) == ItemSubrace(ShipEqInSlot(Player(),t_RepairRobot))) coun = 1;
+                        08=if(!coun)
+                        09 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,1);
+                                02=ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)-2);
+                                03=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-2);
+                            }
+                        }
+                        10=else
+                        11 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) != 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,2);
+                                02=coun = 0;
+                                03=ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)+2);
+                                04=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)+2);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_EnergizeBonus ^{
+                Description=Бонус совместимости акринов доминаторов - Энерджайз
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnTakingDamage))
+                    02 ^{
+                        01=if(CustomMissileType(ScriptItemActObject1()) != 'W15' && GetCustomWeaponData(CustomMissileType(ScriptItemActObject1()),'ShotType') != 'Torpedo') exit;
+                        02=if(HullHP(Player()) + (ScriptItemActParam() * ShipCustomShipInfoData(0,CurInfo(),1) / 100) > ItemSize(ShipEqInSlot(Player(),t_Hull))) HullHP(Player(),'To100');
+                        03=else HullHP(Player(),HullHP(Player())+(ScriptItemActParam() * ShipCustomShipInfoData(0,CurInfo(),1) / 100));
+                        04=ScriptItemActParam(0);
+                    }
+                    03=else if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    04 ^{
+                        01=for(i=t_FuelTanks;i<t_Weapon1;i=i+1)
+                        02 ^{
+                            01=if(ShipEqInSlot(Player(),i))
+                            02 ^{
+                                01=int energize;
+                                02=if(~EqSpecial(ShipEqInSlot(Player(),i)))
+                                03 ^{
+                                    01=if(FindBonusByNameInCfg('ShuDomiks_EnergizeEqDomModLocked') == EqSpecial(ShipEqInSlot(Player(),t_Weapon1,i))) energize = energize + 1;
+                                }
+                                04=if(energize < 3) ShipDeleteCustomShipInfo(Player(),'DomikSetInfo_EnergizeBonus','NoShow');
+                                05=if(energize > 2) ShipCustomShipInfoData(Player(),'DomikSetInfo_EnergizeBonus',1,40);
+                                06=if(energize > 4) ShipCustomShipInfoData(Player(),'DomikSetInfo_EnergizeBonus',1,80);
+                                07=if(energize > 6) ShipCustomShipInfoData(Player(),'DomikSetInfo_EnergizeBonus',1,100);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnTakingDamage,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_EngineDroidShield ^{
+                Description=Бонус совместимости двигателя, дроида и ГЗП (формирует условия для лучшей починки корпуса при прыжках между системами)
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ShipInHyperSpace(Player()) && !ShipInHole(Player()))
+                    02 ^{
+                        01=if(HullDamage(Player()) != 0)
+                        02 ^{
+                            01=if(ItemSize(ShipEqInSlot(Player(),t_Hull)) <= HullHP(Player()) + 20) HullHP(Player(),HullHP(Player()) + 20);
+                            02=else(HullHP(Player(),'To100'));
+                        }
+                    }
+                    03=if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    04 ^{
+                        01=int dele = 0;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_Engine)) != 5) dele = 1;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) != 5) dele = 1;
+                        04=if(ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) != 5) dele = 1;
+                        05=if(dele)
+                        06 ^{
+                            01=ShipDeleteCustomShipInfo(0,CurInfo());
+                            02=exit;
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_FuelDroidShield ^{
+                Description=Бонус совместимости дроида, бака и ГЗП (лучше защита бака, из-за чего снижается урон осколками)
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnTakingDamageSp))
+                    02 ^{
+                        01=ScriptItemActParam(round(ScriptItemActParam() * 85 / 100));
+                    }
+                    03=else if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    04 ^{
+                        01=int dele = 0;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_FuelTanks)) != 5) dele = 1;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) != 5) dele = 1;
+                        04=if(ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) != 5) dele = 1;
+                        05=if(dele)
+                        06 ^{
+                            01=ShipDeleteCustomShipInfo(0,CurInfo());
+                            02=exit;
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnTakingDamageSp,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_FuelEngine ^{
+                Description=Бонус совместимости бака и топлива (улучшенный впрыск топлива и прочая лабуда)
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    02 ^{
+                        01=int dele = 0;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_Engine)) != 5) dele = dele + 2;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_FuelTanks)) != 5) dele = dele + 6;
+                        04=if(dele)
+                        05 ^{
+                            01=ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed)-75);
+                            02=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            03 ^{
+                                01=ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed)-55);
+                            }
+                            04=ShipDeleteCustomShipInfo(0,CurInfo());
+                            05=exit;
+                        }
+                        06=int coun=0;
+                        07=if(ItemSubrace(ShipEqInSlot(Player(),t_Engine)) == ItemSubrace(ShipEqInSlot(Player(),t_FuelTanks))) coun = 1;
+                        08=if(!coun)
+                        09 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,1);
+                                02=ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed)-55);
+                            }
+                        }
+                        10=else
+                        11 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) != 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,2);
+                                02=coun = 0;
+                                03=ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed)+55);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_GlueBonus ^{
+                Description=Бонус совместимости акринов доминаторов - Глю
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnDroidRepair))
+                    02 ^{
+                        01=ScriptItemActParam(ScriptItemActParam()+(ScriptItemActParam() * ShipCustomShipInfoData(0,CurInfo(),1) / 100));
+                    }
+                    03=else if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    04 ^{
+                        01=for(i=t_FuelTanks;i<t_Weapon1;i=i+1)
+                        02 ^{
+                            01=if(ShipEqInSlot(Player(),i))
+                            02 ^{
+                                01=int glue;
+                                02=if(~EqSpecial(ShipEqInSlot(Player(),i)))
+                                03 ^{
+                                    01=if(FindBonusByNameInCfg('ShuDomiks_GlueEqDomModLocked') == EqSpecial(ShipEqInSlot(Player(),t_Weapon1,i))) glue = glue + 1;
+                                }
+                                04=if(glue < 3) ShipDeleteCustomShipInfo(0,CurInfo(),'NoShow');
+                                05=if(glue > 2) ShipCustomShipInfoData(0,CurInfo(),1,30);
+                                06=if(glue > 4) ShipCustomShipInfoData(0,CurInfo(),1,60);
+                                07=if(glue > 6) ShipCustomShipInfoData(0,CurInfo(),1,100);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnDroidRepair,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_KellerSet ^{
+                Description=Бонус от келлероидного сета оборудки
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActParam(t_OnStartAB))
+                    02 ^{
+                        01=ABShipModifiers(Player(),'damage',ABShipModifiers(Player())+20);
+                        02=ShipCustomShipInfoData(0,CurInfo(),1,1);
+                    }
+                    03=if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    04 ^{
+                        01=int dele = 0;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_Radar)) != 1) dele = 1;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_FuelTanks)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_FuelTanks)) != 1) dele = 1;
+                        04=if(ItemOwner(ShipEqInSlot(Player(),t_Engine)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_Engine)) != 1) dele = 1;
+                        05=if(ItemOwner(ShipEqInSlot(Player(),t_Scaner)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_Scaner)) != 1) dele = 1;
+                        06=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_RepairRobot)) != 1) dele = 1;
+                        07=if(ItemOwner(ShipEqInSlot(Player(),t_CargoHook)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_CargoHook)) != 1) dele = 1;
+                        08=if(ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_DefGenerator)) != 1) dele = 1;
+                        09=for(i=0;ShipSlots(Player(),1)>i;i=i+1)
+                        10 ^{
+                            01=if(ShipEqInSlot(Player(),t_Weapon1,i) != 0)
+                            02 ^{
+                                01=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,1)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,i)) != 1) dele = 1;
+                            }
+                        }
+                        11=if(dele)
+                        12 ^{
+                            01=ShipDeleteCustomShipInfo(0,CurInfo());
+                            02=ShipSpecialBonuses(Player(),bonJump,ShipSpecialBonuses(Player(),bonJump) - 10);
+                            03=exit;
+                        }
+                    }
+                    05=if(ShipInNormalSpace && ShipCustomShipInfoData(0,CurInfo(),2) == 1)
+                    06 ^{
+                        01=ShipCustomShipInfoData(0,CurInfo(),2,0);
+                        02=ABShipModifiers(Player(),'damage',ABShipModifiers(Player())-20);
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm,t_OnStartAB
+                OnActStepTypes=0
+            }
+            DomikSetInfo_RadarMissile ^{
+                Description=Бонус совместимости радара и ракет (лучше наводит на цель)
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    02 ^{
+                        01=int dele = 0;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) != 5) dele = 1;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,1)) != 5 && ItemOwner(ShipEqInSlot(Player(),t_Weapon1,2)) != 5 &&ItemOwner(ShipEqInSlot(Player(),t_Weapon1,3)) != 5 &&ItemOwner(ShipEqInSlot(Player(),t_Weapon1,4)) != 5 &&ItemOwner(ShipEqInSlot(Player(),t_Weapon1,5)) != 5) dele = 1;
+                        04=if(dele)
+                        05 ^{
+                            01=ShipSpecialBonuses(Player(),bonMissileSpeed,ShipSpecialBonuses(Player(),bonMissileSpeed)-250);
+                            02=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            03 ^{
+                                01=ShipSpecialBonuses(Player(),bonMissileSpeed,ShipSpecialBonuses(Player(),bonMissileSpeed)-100);
+                            }
+                            04=ShipDeleteCustomShipInfo(0,CurInfo());
+                            05=exit;
+                        }
+                        06=int coun=0,i;
+                        07=for(i=0;ShipSlots(Player(),1)>i;i=i+1)
+                        08 ^{
+                            01=if(ShipEqInSlot(Player(),t_Weapon1,i) != 0)
+                            02 ^{
+                                01=if(ShipEqInSlot(Player(),t_Weapon1,i) != 0) if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,i)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Radar)) == ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,i)) && GetEquipmentStats(ShipEqInSlot(Player(),t_Weapon1,i),3) == 2) coun = 1;
+                            }
+                        }
+                        09=if(!coun)
+                        10 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,1);
+                                02=ShipSpecialBonuses(Player(),bonMissileSpeed,ShipSpecialBonuses(Player(),bonMissileSpeed)-100);
+                            }
+                        }
+                        11=else
+                        12 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) != 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,2);
+                                02=coun = 0;
+                                03=ShipSpecialBonuses(Player(),bonMissileSpeed,ShipSpecialBonuses(Player(),bonMissileSpeed)+100);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_RadarShield ^{
+                Description=Бонус совместимости радара и щита (Предсказывает входящий дамаг типа)
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    02 ^{
+                        01=int dele = 0;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) != 5) dele = 1;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) != 5) dele = 1;
+                        04=if(dele)
+                        05 ^{
+                            01=ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)-2);
+                            02=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            03 ^{
+                                01=ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)-1);
+                            }
+                            04=ShipDeleteCustomShipInfo(0,CurInfo());
+                            05=exit;
+                        }
+                        06=int coun=0;
+                        07=if(ItemSubrace(ShipEqInSlot(Player(),t_Radar)) == ItemSubrace(ShipEqInSlot(Player(),t_DefGenerator))) coun = 1;
+                        08=if(!coun)
+                        09 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,1);
+                                02=ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)-1);
+                            }
+                        }
+                        10=else
+                        11 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) != 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,2);
+                                02=coun = 0;
+                                03=ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)+1);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_RadarSplinEnergy ^{
+                Description=Бонус совместимости радара и энерго/оскола (лучше наводит на цель)
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    02 ^{
+                        01=int dele = 0,i;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) != 5) dele = 1;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,1)) != 5 && ItemOwner(ShipEqInSlot(Player(),t_Weapon1,2)) != 5 &&ItemOwner(ShipEqInSlot(Player(),t_Weapon1,3)) != 5 &&ItemOwner(ShipEqInSlot(Player(),t_Weapon1,4)) != 5 &&ItemOwner(ShipEqInSlot(Player(),t_Weapon1,5)) != 5) dele = 1;
+                        04=if(dele)
+                        05 ^{
+                            01=ShipSpecialBonuses(Player(),bonWRadius,ShipSpecialBonuses(Player(),bonWRadius)-30);
+                            02=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            03 ^{
+                                01=ShipSpecialBonuses(Player(),bonWRadius,ShipSpecialBonuses(Player(),bonWRadius)-20);
+                            }
+                            04=ShipDeleteCustomShipInfo(0,CurInfo());
+                            05=exit;
+                        }
+                        06=int coun=0;
+                        07=for(i=0;ShipSlots(Player(),1)>i;i=i+1)
+                        08 ^{
+                            01=if(ShipEqInSlot(Player(),t_Weapon1,i) != 0)
+                            02 ^{
+                                01=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,i)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Radar)) == ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,i))) coun = 1;
+                            }
+                        }
+                        09=if(!coun)
+                        10 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,1);
+                                02=ShipSpecialBonuses(Player(),bonWRadius,ShipSpecialBonuses(Player(),bonWRadius)-20);
+                            }
+                        }
+                        11=else
+                        12 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) != 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,2);
+                                02=coun = 0;
+                                03=ShipSpecialBonuses(Player(),bonWRadius,ShipSpecialBonuses(Player(),bonWRadius)+20);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_RadarZahvat ^{
+                Description=Бонус совместимости радара и захвата (Лучше показывает захвату, где лут)
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    02 ^{
+                        01=int dele = 0;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) != 5) dele = 1;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_CargoHook)) != 5) dele = 1;
+                        04=if(dele)
+                        05 ^{
+                            01=ShipSpecialBonuses(Player(),bonHookRadius,ShipSpecialBonuses(Player(),bonHookRadius)-45);
+                            02=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            03 ^{
+                                01=ShipSpecialBonuses(Player(),bonHookRadius,ShipSpecialBonuses(Player(),bonHookRadius)-15);
+                                02=ShipSpecialBonuses(Player(),bonHookMaxSpeed,ShipSpecialBonuses(Player(),bonHookMaxSpeed)-1);
+                            }
+                            04=ShipDeleteCustomShipInfo(0,CurInfo());
+                            05=exit;
+                        }
+                        06=int coun=0;
+                        07=if(ItemSubrace(ShipEqInSlot(Player(),t_Radar)) == ItemSubrace(ShipEqInSlot(Player(),t_CargoHook))) coun = 1;
+                        08=if(!coun)
+                        09 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,1);
+                                02=ShipSpecialBonuses(Player(),bonHookRadius,ShipSpecialBonuses(Player(),bonHookRadius)-15);
+                                03=ShipSpecialBonuses(Player(),bonHookMaxSpeed,ShipSpecialBonuses(Player(),bonHookMaxSpeed)-1);
+                            }
+                        }
+                        10=else
+                        11 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) != 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,2);
+                                02=coun = 0;
+                                03=ShipSpecialBonuses(Player(),bonHookRadius,ShipSpecialBonuses(Player(),bonHookRadius)+15);
+                                04=ShipSpecialBonuses(Player(),bonHookMaxSpeed,ShipSpecialBonuses(Player(),bonHookMaxSpeed)+1);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_RocketLnBonus ^{
+                Description=Бонус совместимости акринов доминаторов - Рокет лончер
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnMissileShot))
+                    02 ^{
+                        01=if(RndObject(1,100) > ShipCustomShipInfoData(0,CurInfo())) exit;
+                        02=MissileSpeed(ScriptItemActObject1(),MissileSpeed(ScriptItemActObject1())+1500);
+                        03=if(MissileMaxDamage(ScriptItemActObject1()) < 80) MissileMaxDamage(ScriptItemActObject1(),80);
+                        04=if(MissileMinDamage(ScriptItemActObject1()) < 80) MissileMinDamage(ScriptItemActObject1(),80);
+                    }
+                    03=else if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    04 ^{
+                        01=for(i=t_FuelTanks;i<t_Weapon1;i=i+1)
+                        02 ^{
+                            01=if(ShipEqInSlot(Player(),i))
+                            02 ^{
+                                01=int energize;
+                                02=if(~EqSpecial(ShipEqInSlot(Player(),i)))
+                                03 ^{
+                                    01=if(FindBonusByNameInCfg('ShuDomiks_EnergizeEqDomModLocked') == EqSpecial(ShipEqInSlot(Player(),t_Weapon1,i))) energize = energize + 1;
+                                }
+                                04=if(energize < 3) ShipDeleteCustomShipInfo(0,CurInfo(),'NoShow');
+                                05=if(energize > 2) ShipCustomShipInfoData(0,CurInfo(),1,5);
+                                06=if(energize > 4) ShipCustomShipInfoData(0,CurInfo(),1,7);
+                                07=if(energize > 6) ShipCustomShipInfoData(0,CurInfo(),1,10);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnMissileShot,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_ScanDroid ^{
+                Description=Бонус совместимости сканера и дроида (Сканер анализирует корабль на пробоины, а дроид лучше откликается)
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    02 ^{
+                        01=int dele = 0;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_Scaner)) != 5) dele = 1;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) != 5) dele = 1;
+                        04=if(dele)
+                        05 ^{
+                            01=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-3);
+                            02=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            03 ^{
+                                01=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-2);
+                            }
+                            04=ShipDeleteCustomShipInfo(0,CurInfo());
+                            05=exit;
+                        }
+                        06=int coun=0;
+                        07=if(ItemSubrace(ShipEqInSlot(Player(),t_Scaner)) == ItemSubrace(ShipEqInSlot(Player(),t_RepairRobot))) coun = 1;
+                        08=if(!coun)
+                        09 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,1);
+                                02=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-2);
+                            }
+                        }
+                        10=else
+                        11 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) != 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,2);
+                                02=coun = 0;
+                                03=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)+2);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_ScanRadar ^{
+                Description=Бонус совместимости сканера и радара
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    02 ^{
+                        01=int dele = 0;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_Scaner)) != 5) dele = 1;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) != 5) dele = 1;
+                        04=if(dele)
+                        05 ^{
+                            01=ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)-350);
+                            02=ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)-2);
+                            03=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            04 ^{
+                                01=ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)-150);
+                                02=ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)-1);
+                            }
+                            05=ShipDeleteCustomShipInfo(0,CurInfo());
+                            06=exit;
+                        }
+                        06=int coun=0;
+                        07=if(ItemSubrace(ShipEqInSlot(Player(),t_Scaner)) == ItemSubrace(ShipEqInSlot(Player(),t_Radar))) coun = 1;
+                        08=if(!coun)
+                        09 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,1);
+                                02=ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)-150);
+                                03=ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)-1);
+                            }
+                        }
+                        10=else
+                        11 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) != 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,2);
+                                02=coun = 0;
+                                03=ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)+150);
+                                04=ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)+1);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_ScanWeapon ^{
+                Description=Бонус совместимости сканера и оружия (Лучше анализирует цель на предмет слабых мест)
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) ||  ScriptItemActParam(t_OnStep,0))
+                    02 ^{
+                        01=int dele = 0;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_Scaner)) != 5) dele = 1;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,1)) != 5 && ItemOwner(ShipEqInSlot(Player(),t_Weapon1,2)) != 5 && ItemOwner(ShipEqInSlot(Player(),t_Weapon1,3)) != 5 && ItemOwner(ShipEqInSlot(Player(),t_Weapon1,4)) != 5 && ItemOwner(ShipEqInSlot(Player(),t_Weapon1,5)) != 5) dele = 1;
+                        04=if(dele)
+                        05 ^{
+                            01=ShipSpecialBonuses(Player(),bonWEnergy,ShipSpecialBonuses(Player(),bonWEnergy)-3);
+                            02=ShipSpecialBonuses(Player(),bonWMissile,ShipSpecialBonuses(Player(),bonWMissile)-3);
+                            03=ShipSpecialBonuses(Player(),bonWSplinter,ShipSpecialBonuses(Player(),bonWSplinter)-3);
+                            04=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            05 ^{
+                                01=ShipSpecialBonuses(Player(),bonWEnergy,ShipSpecialBonuses(Player(),bonWEnergy)-2);
+                                02=ShipSpecialBonuses(Player(),bonWMissile,ShipSpecialBonuses(Player(),bonWMissile)-2);
+                                03=ShipSpecialBonuses(Player(),bonWSplinter,ShipSpecialBonuses(Player(),bonWSplinter)-2);
+                            }
+                            06=ShipDeleteCustomShipInfo(0,CurInfo());
+                            07=exit;
+                        }
+                        06=int coun=0,i;
+                        07=if(ItemOwner(ShipEqInSlot(Player(),t_Scaner)) == 5)
+                        08 ^{
+                            01=for(i=0;ShipSlots(Player(),1)>i;i=i+1)
+                            02 ^{
+                                01=if(ShipEqInSlot(Player(),t_Weapon1,i) != 0)
+                                02 ^{
+                                    01=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,i)) == 5 && ItemSubrace(ShipEqInSlot(Player(),t_Scaner)) == ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,i))) coun = 1;
+                                }
+                            }
+                        }
+                        09=if(!coun)
+                        10 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,1);
+                                02=ShipSpecialBonuses(Player(),bonWEnergy,ShipSpecialBonuses(Player(),bonWEnergy)-2);
+                                03=ShipSpecialBonuses(Player(),bonWMissile,ShipSpecialBonuses(Player(),bonWMissile)-2);
+                                04=ShipSpecialBonuses(Player(),bonWSplinter,ShipSpecialBonuses(Player(),bonWSplinter)-2);
+                            }
+                        }
+                        11=else
+                        12 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) != 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,2);
+                                02=coun = 0;
+                                03=ShipSpecialBonuses(Player(),bonWEnergy,ShipSpecialBonuses(Player(),bonWEnergy)+2);
+                                04=ShipSpecialBonuses(Player(),bonWMissile,ShipSpecialBonuses(Player(),bonWMissile)+2);
+                                05=ShipSpecialBonuses(Player(),bonWSplinter,ShipSpecialBonuses(Player(),bonWSplinter)+2);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_TerronSet ^{
+                Description=Бонус от терроноидного сета оборудки
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=int dele = 0,i;
+                    02=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_Radar)) != 2) dele = 1;
+                    03=if(ItemOwner(ShipEqInSlot(Player(),t_FuelTanks)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_FuelTanks)) != 2) dele = 1;
+                    04=if(ItemOwner(ShipEqInSlot(Player(),t_Engine)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_Engine)) != 2) dele = 1;
+                    05=if(ItemOwner(ShipEqInSlot(Player(),t_Scaner)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_Scaner)) != 2) dele = 1;
+                    06=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_RepairRobot)) != 2) dele = 1;
+                    07=if(ItemOwner(ShipEqInSlot(Player(),t_CargoHook)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_CargoHook)) != 2) dele = 1;
+                    08=if(ItemOwner(ShipEqInSlot(Player(),t_DefGenerator)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_DefGenerator)) != 2) dele = 1;
+                    09=for(i=0;ShipSlots(Player(),1)>i;i=i+1)
+                    10 ^{
+                        01=if(ShipEqInSlot(Player(),t_Weapon1,i) != 0)
+                        02 ^{
+                            01=if(ItemOwner(ShipEqInSlot(Player(),t_Weapon1,1)) != 5 && ItemSubrace(ShipEqInSlot(Player(),t_Weapon1,i)) != 2) dele = 1;
+                        }
+                    }
+                    14=if(dele)
+                    15 ^{
+                        01=ShipDeleteCustomShipInfo(0,CurInfo());
+                        02=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid) - 25);
+                        03=exit;
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+            DomikSetInfo_ZahvatDroid ^{
+                Description=Бонус совместимости захвата и дроида (подкидывает дроиду обломки, чтобы дроид быстрее чинил)
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActParam(t_OnReEnteringForm) || ScriptItemActParam(t_OnEnteringForm) || ScriptItemActParam(t_OnStep,0))
+                    02 ^{
+                        01=int dele = 0;
+                        02=if(ItemOwner(ShipEqInSlot(Player(),t_CargoHook)) != 5) dele = 1;
+                        03=if(ItemOwner(ShipEqInSlot(Player(),t_RepairRobot)) != 5) dele = 1;
+                        04=if(dele)
+                        05 ^{
+                            01=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-7);
+                            02=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            03 ^{
+                                01=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-6);
+                            }
+                            04=ShipDeleteCustomShipInfo(0,CurInfo());
+                            05=exit;
+                        }
+                        06=int coun=0;
+                        07=if(ItemSubrace(ShipEqInSlot(Player(),t_CargoHook)) == ItemSubrace(ShipEqInSlot(Player(),t_RepairRobot))) coun = 1;
+                        08=if(!coun)
+                        09 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,1);
+                                02=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-6);
+                            }
+                        }
+                        10=else
+                        11 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) != 2)
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),1,2);
+                                02=coun = 0;
+                                03=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)+6);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnEnteringForm
+                OnActStepTypes=0
+            }
+        }
+    }
+}

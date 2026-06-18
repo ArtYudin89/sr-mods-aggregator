@@ -1,0 +1,733 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_EvoRepairBox",
+    "ScriptFileOut": "D:\\Mod_EvoRepairBox.scr",
+    "ScriptTextOut": "D:\\Mod_EvoRepairBox.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "Купить набор для ремонта Юный техник",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_EvoRepairBox.27\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "Мне не нужны никакие наборы!",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_EvoRepairBox.21\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 30,
+                    "Msg": "Спасибо",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_EvoRepairBox.4\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 360,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 31,
+                    "Msg": "Купить набор для ремонта Умелый техник",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_EvoRepairBox.28\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 32,
+                    "Msg": "Купить набор для ремонта Искусный техник",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_EvoRepairBox.29\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 33,
+                    "Msg": "Купить набор Прочность забиратор",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_EvoRepairBox.30\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 720,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 34,
+                    "Msg": "Ну и ладно, за такие деньги сам залатаю дыры!",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_EvoRepairBox.25\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 25,
+                    "Msg": "Мы предлагаем вам наборы для ремонта оборудования прямо в открытом космосе. Но не думайте, что они заменят вам наших квалифицированных работников станции. Стали бы мы создавать то, что будет отнимать у нас нашу же работу!\r\nДанные наборы сделаны исключительно для изменения положений на фронтах в пользу коалиции разумных рас.\r\nИ при продаже данных наборов вам, определённую роль сыграет ваш статус в борьбе с доминаторами и пиратами.\r\n--------------------------------------------------------\r\nНабор для ремонта \"Юный техник\" для Вас доступен в количестве: <0> ед. по цене: <1> cr.\r\n\r\nНабор для ремонта \"Умелый техник\" для Вас доступен в количестве: <2> ед. по цене: <3> cr.\r\n\r\nНабор для ремонта \"Искусный техник\" для Вас доступен в количестве: <4> ед. по цене: <5> cr.\r\n\r\nНабор \"Прочность забиратор\" для Вас доступен в количестве: <6> ед. по цене: <7> cr.\r\n--------------------------------------------------------\r\nДанные наборы для ремонта показывают лучший результат в руках рейнджера знакомого с техникой. А в набор \"Прочность забиратор\" интегрирован алгоритм ремонта даже доминаторского оборудования путём изъятия нужных деталей из предмета донора.\r\nРаз в год в качестве подарка рейнджерам мы возобновляем выдачу наборов даже при превышении лимитов!",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_EvoRepairBox.36\"),\"<0>\",cur_count1,\"<1>\",cost1,\"<2>\",cur_count2,\"<3>\",cost2,\"<4>\",cur_count3,\"<5>\",cost3,\"<6>\",cur_count4,\"<7>\",cost4))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "Удачного ремонта! И не забывайте о сервисных центрах сети наших баз.",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_EvoRepairBox.33\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "Недостаточно средств для совершения покупки.",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_EvoRepairBox.34\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "RepairBox",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 24
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 19
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 20,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(findsubstr(GameDateTxtByTurn(CurTurn()), '1 января') == 0)",
+                        "{",
+                        "    count1 = 0;",
+                        "    count2 = 0;",
+                        "    count3 = 0;",
+                        "    count4 = 0;",
+                        "}"
+                    ],
+                    "#": 21,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(GetShipRuins(Player()))",
+                        "{",
+                        "    if(ShipType(GetShipRuins(Player())) == 'SB')",
+                        "    {",
+                        "        AddDialogInject('RepairBox', CT(\"Script.Mod_EvoRepairBox.31\"), 'Купить наборы для ремонта', 1);",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 22,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "total1=2+ShipRank(Player());",
+                        "total2=1+ShipRank(Player());",
+                        "total3=ShipRank(Player());",
+                        "total4=1+ShipRank(Player());",
+                        "",
+                        "cost1=1.1*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+                        "cost2=1.2*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+                        "cost3=1.3*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+                        "cost4=1.0*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+                        "cur_count1=total1-count1;",
+                        "cur_count2=total2-count2;",
+                        "cur_count3=total3-count3;",
+                        "cur_count4=total4-count4;",
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 35,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(cur_count1==0)AddDialogBlock('Купить набор для ремонта Юный техник',1);",
+                        "if(cur_count2==0)AddDialogBlock('Купить набор для ремонта Умелый техник',1);",
+                        "if(cur_count3==0)AddDialogBlock('Купить набор для ремонта Искусный техник',1);",
+                        "if(cur_count4==0)AddDialogBlock('Купить набор Прочность забиратор',1);",
+                        "DAdd(0);",
+                        "DAdd(3);",
+                        "DAdd(4);",
+                        "DAdd(5);",
+                        "DAdd(1);"
+                    ],
+                    "#": 36,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(2);"
+                    ],
+                    "#": 37,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(6);"
+                    ],
+                    "#": 38,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(cost1<ShipMoney(Player())) {",
+                        "  AddItemToShip(Player(),CreateQuestItem('TechJunior'));",
+                        "  ShipMoney(Player(),ShipMoney(Player())-cost1);",
+                        "  Sound('Sound.Buy');",
+                        "  count1=count1+1;",
+                        "  DChange(1);",
+                        "  exit;",
+                        "}",
+                        "if(cost1>ShipMoney(Player())) {",
+                        "  DChange(2);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 39,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(cost2<ShipMoney(Player())) {",
+                        "  AddItemToShip(Player(),CreateQuestItem('TechSkillful'));",
+                        "  ShipMoney(Player(),ShipMoney(Player())-cost2);",
+                        "  Sound('Sound.Buy');",
+                        "  count2=count2+1;",
+                        "  DChange(1);",
+                        "  exit;",
+                        "}",
+                        "if(cost2>ShipMoney(Player())) {",
+                        "  DChange(2);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 40,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(cost3<ShipMoney(Player())) {",
+                        "  AddItemToShip(Player(),CreateQuestItem('TechMaster'));",
+                        "  ShipMoney(Player(),ShipMoney(Player())-cost3);",
+                        "  Sound('Sound.Buy');",
+                        "  count3=count3+1;",
+                        "  DChange(1);",
+                        "  exit;",
+                        "}",
+                        "if(cost3>ShipMoney(Player())) {",
+                        "  DChange(2);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 41,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(cost4<ShipMoney(Player())) {",
+                        "  AddItemToShip(Player(),CreateQuestItem('TechZabirator'));",
+                        "  ShipMoney(Player(),ShipMoney(Player())-cost4);",
+                        "  Sound('Sound.Buy');",
+                        "  count4=count4+1;",
+                        "  DChange(1);",
+                        "  exit;",
+                        "}",
+                        "if(cost4>ShipMoney(Player())) {",
+                        "  DChange(2);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 42,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 18
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 17
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 16,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 23
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "cost1",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cost2",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cost3",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cost4",
+                    "Pos.x": 270,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "count1",
+                    "Pos.x": 360,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "count3",
+                    "Pos.x": 450,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "count2",
+                    "Pos.x": 540,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "count4",
+                    "Pos.x": 630,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "total1",
+                    "Pos.x": 720,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "total2",
+                    "Pos.x": 810,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "total3",
+                    "Pos.x": 900,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "total4",
+                    "Pos.x": 990,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 11,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cur_count1",
+                    "Pos.x": 1080,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 12,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cur_count2",
+                    "Pos.x": 1230,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 13,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cur_count3",
+                    "Pos.x": 1380,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 14,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cur_count4",
+                    "Pos.x": 1530,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 15,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 24,
+            "End": 35,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 36,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 37,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 27,
+            "End": 38,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 28,
+            "End": 39,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 31,
+            "End": 40,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 32,
+            "End": 41,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 33,
+            "End": 42,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 17,
+            "End": 16,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 16,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 19,
+            "End": 18,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 19,
+            "End": 23,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

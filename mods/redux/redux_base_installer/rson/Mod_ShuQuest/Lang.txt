@@ -1,0 +1,157 @@
+FormLoadQuest ^{
+    Group2=Из модов
+}
+PlanetQuest ^{
+    ItemForPlanetQuest ^{
+        110=none
+        111=none
+    }
+    List ^{
+        110 ~{
+            Access=1
+            Dif=37
+            Genre=менеджмент с элементами файтинга
+            Group=2
+            Image=Bm.PQI.ShuQuest_02
+            Length=4
+            Name=Long Live the Ranger
+        }
+        111 ^{
+            Access=1
+            Dif=37
+            Genre=файтинг
+            Group=2
+            Image=Bm.PQI.Olympiada_02
+            Length=2
+            Name=Кулачные бои
+        }
+    }
+    PlanetQuest ^{
+        110=Mods\ShusRangers\ShuQuest\DATA\Quest\Rus\LongLiveTheRanger.qmm
+        111=Mods\ShusRangers\ShuQuest\DATA\Quest\Rus\mark05.qmm
+        46=Mods\ShusRangers\ShuQuest\DATA\Quest\Rus\Colonization.qmm
+    }
+    StartText ^{
+        110=Кто не мечтал в детстве стать королем? У Вас есть уникальная возможность воплотить мечту в жизнь!
+        111=Вас ожидает некое специальное задание. Прежде всего нужно выяснить, зачем же им понадобился рейнджер среднего телосложения.
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            ShuQuest_Colonization ^{
+                Description=NoShow
+                Icon=0
+                Name=Превращает незаселенку, заселённую в ходе квеста "Колонизация", в нормальную заселённую планету
+                OnActCode ^{
+                    01=if(QuestsStatusByNom(2, 46) == 2)
+                    02 ^{
+                        01=dword planet = GetShipPlanet(Player());
+                        02=if(!planet)
+                        02 ^{
+                            01=ShipDeleteCustomShipInfo(Player(), 'ShuQuest_Colonization');
+                            02=exit;
+                        }
+                        03=if(PlanetOwner(planet) != None)
+                        03 ^{
+                            01=ShipDeleteCustomShipInfo(Player(), 'ShuQuest_Colonization');
+                            02=exit;
+                        }
+                        04=if(!fun_init)
+                        04 ^{
+                            01=int fun_init = 1;
+                            02=unknown GetPlanetOrbitProbe = ImportedFunction('UtilityFunctions', 'GetPlanetOrbitProbe');
+                        }
+                        05=dword star = PlanetToStar(planet);
+                        06=PlanetRace(planet, People);
+                        07=if(!StarOwner(star))
+                        07 ^{
+                            01=PlanetOwner(planet, People);
+                            02=RelationToRanger(planet, Player(), 100);
+                        }
+                        08=else if(StarOwner(star) == 2)
+                        08 ^{
+                            01=PlanetOwner(planet, PirateClan);
+                            02=RelationToRanger(PlanetPirateClan(), Player(), 100);
+                        }
+                        09=else
+                        09 ^{
+                            01=ExtremalTakeOff();
+                            02=PlanetOwner(planet, Kling);
+                            03=RelationToRanger(planet, Player(), 100);
+                        }
+                        10=PlanetEco(planet, 1);
+                        11=PlanetGov(planet, GQuestVarExt_Colonization_PolitRegime);
+                        12=PlanetPopulation(planet, GQuestVarExt_Colonization_Population);
+                        13=PlanetInventionLevel(planet, 7, max(GalaxyTechLevel() - 1, 1));
+                        14=PlanetBoostInventions(planet, round(0.66 * (CurTurn() - 300)));
+                        15=for(int i = GetPlanetOrbitProbe(planet, -1, 0) - 1; i >= 0; i = i - 1)
+                        15 ^{
+                            01=dword probe = GetPlanetOrbitProbe(planet, i, 1);
+                            02=if(probe) AddItemToStorage(planet, probe);
+                        }
+                        16=for(i = PlanetItems(planet) - 1; i >= 0; i = i - 1)
+                        16 ^{
+                            01=AddItemToStorage(planet, GetItemFromPlanet(planet, i));
+                        }
+                        17=if(PlanetOwner(planet) == Kling)
+                        17 ^{
+                            01=ShipDeleteCustomShipInfo(Player(), 'ShuQuest_Colonization');
+                            02=exit;
+                        }
+                        18=int type = GQuestVarExt_Colonization_PlanetType;
+                        19=if(type == 1)
+                        19 ^{
+                            01=dword ship = BuyWarrior(planet, 200);
+                            02=ShipRefit(ship);
+                            03=ship = BuyWarrior(planet, 150);
+                            04=ShipRefit(ship);
+                            05=ship = BuyWarrior(planet, 100);
+                            06=ShipRefit(ship);
+                            07=ship = BuyTransport(planet, 0, 100);
+                            08=ShipRefit(ship);
+                            09=RelationToRanger(ship, Player(), 100);
+                        }
+                        20=else if(type == 2)
+                        20 ^{
+                            01=ship = BuyTransport(planet, 0, 200);
+                            02=ShipRefit(ship);
+                            03=RelationToRanger(ship, Player(), 100);
+                            04=ship = BuyTransport(planet, 1, 150);
+                            05=ShipRefit(ship);
+                            06=RelationToRanger(ship, Player(), 100);
+                            07=ship = BuyTransport(planet, 0, 100);
+                            08=ShipRefit(ship);
+                            09=RelationToRanger(ship, Player(), 100);
+                            10=ship = BuyWarrior(planet, 100);
+                            11=ShipRefit(ship);
+                        }
+                        21=else if(type == 3)
+                        21 ^{
+                            01=ship = BuyPirate(planet, 0, 175);
+                            02=ShipRefit(ship);
+                            03=RelationToRanger(ship, Player(), 125);
+                            04=ship = BuyPirate(planet, 0, 150);
+                            05=ShipRefit(ship);
+                            06=RelationToRanger(ship, Player(), 100);
+                            07=ship = BuyPirate(planet, 0, 75);
+                            08=ShipRefit(ship);
+                            09=RelationToRanger(ship, Player(), 100);
+                        }
+                        22=FormChange('Planet');
+                        23=Sound('Sound.Colonized');
+                        24=ShipDeleteCustomShipInfo(Player(), 'ShuQuest_Colonization');
+                        25=if(PlanetPopulation(planet) < 1) PlanetPopulation(planet, 40000);
+                        26=exit;
+                    }
+                    03=else if(QuestsStatusByNom(2, 46) > 2)
+                    04 ^{
+                        01=ShipDeleteCustomShipInfo(Player(), 'ShuQuest_Colonization');
+                        02=exit;
+                    }
+                }
+                OnActCodeTypes=t_OnLeavingForm
+            }
+        }
+    }
+}

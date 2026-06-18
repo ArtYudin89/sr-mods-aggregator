@@ -1,0 +1,304 @@
+Items ^{
+    Weapon ^{
+        Stats ^{
+            10 ^{
+                AverageRadius=0300
+                AverageSize=080
+                DamageSet=Energy,Acid,Shock,Destruct,BlockDroid
+                MaxDamage=045
+                MinDamage=030
+                MiningFactor=15
+                SecondaryDamageRadius=100
+                ShotType=Splash
+                Speed=055
+                TechLevel=07
+                kCost=35.0
+                mWeaponDamage=1.00,1.10,1.20,1.35,1.50,1.60,1.80,2.05
+            }
+        }
+        CustomWeapon ~{
+            StatsVersion ^{
+                ExpGuns=14.05.25
+            }
+            MeonPlasmathrower ~{
+                BaseGun=Vertix
+                MinDamage=24
+                MaxDamage=50
+                DamageSet=Splinter,Decelerate,DecelerateA,DecelerateAEx
+                ShotType=AreaDamage
+                Speed=30
+                AverageRadius=215
+                SecondaryDamageRadius=0
+                MissileRadius=0
+                MissileMinSpeed=0
+                MissileMaxSpeed=0
+                MissileChanceToBeHit=0
+                mWeaponDamage=1.00,1.20,1.30,1.45,1.50,1.75,1.80,2.00
+                ShotsPerTurn=1
+                ArcadeType=Vertix
+                MiningFactor=7
+                kCost=50.0
+                AverageSize=95
+                TechLevel=6
+                InventTechLevel=Caphasitor
+                StoreAvailability=MalocOnly
+                ShotEffectPath=
+                ShotEffectPalette=9
+                SplashEffectPath=Weapon.13
+                MissileExplosionEffectPath=
+            }
+        }
+        Name ^{
+            MeonPlasmathrower=Меонный плазмомёт
+        }
+        OriginalWeaponType ~{
+            Industrial_Laser=1
+            Fragmentation_Cannon=2
+            Flux=3
+            Missile_Launcher=4
+            Treton=5
+            Wave_Phaser=6
+            Flow_Blaster=7
+            Electronic_Cutter=8
+            Multiresonator=9
+            Atomic_Vision=10
+            Disintegrator=11
+            Turbogravitron=12
+            IMHO-9000=13
+            Vertix=14
+            Torpedo_Tube=15
+            Esodapher=16
+            Caphasitor=17
+            Lirecron=18
+        }
+        Text ^{
+            10=Взрыв антивещества образует энергетическое поле, наносящее ущерб <MinDamage>-<MaxDamage><Bonus> ед. цели и окружающим ее объектам. Дистанция до <Radius>. Кроме этого ионизирует и корродирует обшивку, а также усиленно разрушает оборудование и особенно - дроида.
+            MeonPlasmathrower=Изливает перегретую плазму в небольшую область вокруг корабля в радиусе <Radius>, нанося серьёзные повреждения в <MinDamage>-<MaxDamage><Bonus> единиц всем попавшим под удар целям, а также существенно перегревая двигатели целей.
+        }
+    }
+}
+MicroModuls ^{
+    ExpGuns_BlockerMM ^{
+        Equipments=MeonPlasmathrower
+        Name=Блокировщик
+        Owner=Any
+        Priority=80
+        Text=Микромодуль третьего уровня. Меняет угол завихрения плазмы <clr>Меонным плазмомётом<clrEnd>, что позволяет "накрывать" цели раскалённым веществом, а не рассекать, что позволило создать эффект угнетения внешней деятельности цели без потери урона.
+        Text=<clr><clrEnd>
+        Text=Дополнительный эффект: <clr>повреждает двигатель, блокирует оружие и дроида<clrEnd>
+        WeaponMods=BlockWeapon,BlockDroid,ReduceEngine
+    }
+    ExpGuns_BuffMM ^{
+        Cost=110
+        Equipments=MeonPlasmathrower
+        Name=Улучшитель
+        Owner=Any
+        Priority=80
+        Text=Микромодуль третьего уровня. Является блоком установки мелких улучшений для <clr>Меонного плазмомёта<clrEnd>. В целом незначительно повышает характеристики орудия при незначительных потерях - в <clr>цене обслуживания<clrEnd> плазмомёта
+        Text=<clr><clrEnd>
+        Text=Стоимость: <clr>+10%<clrEnd>
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        bonWRadius=10
+        bonWSplinter=7
+    }
+    ExpGuns_DmgEffectMM ^{
+        Equipments=MeonPlasmathrower
+        Name=Финист
+        Owner=Any
+        Priority=90
+        Text=Микромодуль третьего уровня. Устанавливает систему примитивного ИскИна, наводящего <clr>Меонный плазмомёт<clrEnd> в уже имеющиеся повреждения, что позволяет достичь большего итогового урона.
+        Text=<clr><clrEnd>
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Дополнительный эффект: <clr>повышенный урон повреждённым целям<clrEnd>
+        WeaponMods=BonusToDamaged
+        bonWSplinter=9
+    }
+    ExpGuns_DmgMM ^{
+        Equipments=MeonPlasmathrower
+        Fragility=111
+        Name=Концентратор
+        Owner=Any
+        Priority=45
+        Size=110
+        Text=Микромодуль второго уровня. Является улучшением <clr>Меонного плазмомёта<clrEnd>. Дополнительно концентрирует плазму, что значительно повышает <clr>мощность<clrEnd> выстрела, но серьёзно <clr>снижает время эксплуатации<clrEnd> орудия.
+        Text=<clr><clrEnd>
+        Text=Прочность: <clr>-10%<clrEnd>
+        Text=Размер: <clr>+10%<clrEnd>
+        Text=Стоимость: <clr>-20%<clrEnd>
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        bonWRadius=-5
+        bonWSplinter=18
+    }
+    ExpGuns_DurabilityMM ^{
+        Cost=70
+        Equipments=MeonPlasmathrower
+        Fragility=50
+        Name=Стабилизатор
+        Owner=Any
+        Priority=45
+        Size=115
+        Text=Микромодуль второго уровня. Устанавливает на <clr>Меонный плазмомёт<clrEnd> набор всевозможных предохранителей и стабилизаторов, что снижает <clr>износ<clrEnd> орудия ценой снижения максимальных боевых характеристик. Стоит учитывать, что сами предохранители немало <clr>весят<clrEnd>, а чинить орудие становится <clr>проще и дешевле<clrEnd> - снижается шанс критических повреждений за счёт блокираторов, принимающий на себя часть урона.
+        Text=<clr><clrEnd>
+        Text=Надежность: <clr>+100%<clrEnd>
+        Text=Размер: <clr>+15%<clrEnd>
+        Text=Стоимость: <clr>-30%<clrEnd>
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        bonWRadius=-10
+        bonWSplinter=-9
+    }
+    ExpGuns_MeonPlasmathrowerColada ^{
+        Cost=170
+        Equipments=MeonPlasmathrower
+        Name="Коллада"
+        OnPlanets=1
+        Owner=Fei,People,Peleng
+        Priority=5
+        Ruins=WB,RC,PB,MB,Manaan,PlayerMB
+        ShotVisual=16
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Модификация</color> <clr>"Коллада"<clrEnd> <color=248,252,248>позволяет за счёт особо изощрённой работы с искажением пространства таким образом создавать завихрение потока плазмы, так что одна волна плазмы становится</color> <clr>двумя<clrEnd><color=248,252,248>.</color><br> <br>
+        Text=<clr><clrEnd>
+        Text=<clr>Стреляет ещё раз за один ход<clrEnd>
+        Text=Дальность стрельбы: <clr>+10<clrEnd> млн км
+        Text=Сила осколочного оружия: <clr>-25<clrEnd> ед.
+        Text=Стоимость: <clr>+70%<clrEnd>
+        Text=Размер: <clr>+20%<clrEnd>
+        bonAttacks=1
+        bonWRadius=10
+        bonWSplinter=-25
+    }
+    ExpGuns_MeonPlasmathrowerCorruptor ^{
+        Cost=130
+        Equipments=MeonPlasmathrower
+        Name="Корраптор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=15
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Данное оружие адаптированно под специальные уплотненные снаряды, существенно лучше пробивающие</color> <clr>броню<clrEnd> <color=248,252,248>противника. Однако, ее установка существенно увеличивает</color> <clr>массу корабля<clrEnd><color=248,252,248>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+25<clrEnd> млн км
+        Text=Масса корабля: <clr>+4%<clrEnd>
+        Text=Дополнительный эффект: <clr>ослабление брони<clrEnd>
+        WeaponMods=Acid
+        bonMass=4
+        bonWRadius=25
+    }
+    ExpGuns_MeonPlasmathrowerDifrod ^{
+        Equipments=MeonPlasmathrower
+        Name="Дифрод"
+        Owner=Any
+        Priority=15
+        Ruins=WB,RC,PB,MB,Manaan,PlayerMB
+        ShotVisual=14
+        Special=1
+        Text=<color=248,252,248>Серийный комплект модифицированных узлов орудия и программных доработок "Дифрод", увеличивающих мощность оружия разных типов.</color><br> <br>
+        Text=<color=248,252,248>Бонус к урону:</color> <clr>15%<clrEnd>
+        Text=<color=248,252,248>(необходимо превышение мощности сканера над защитой цели)</color>
+        Text=Урон осколочного оружия: <clr>+6<clrEnd> ед.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        WeaponMods=ScanBonus
+        bonScan=-2
+        bonWSplinter=6
+    }
+    ExpGuns_MeonPlasmathrowerElectro ^{
+        Cost=150
+        Equipments=MeonPlasmathrower
+        Name="Электро"
+        OnPlanets=1
+        Owner=Fei,People,Peleng
+        Priority=5
+        Ruins=WB
+        ShotVisual=13
+        Special=1
+        Text=<color=248,252,248>Модификация</color> <clr>"Электро"<clrEnd> <color=248,252,248>была разработана за счёт дополнительного гранта от КВСМК одному из отделов разработки акринового оборудования. В результате электризации плазмы та стала наносить доплнительный урон иного характера цели. Увы, это негативно сказалось на количестве вещества, доставляемого до цели.</color><br> <br>
+        Text=<clr><clrEnd>
+        Text=Сила осколочного оружия: <clr>-3<clrEnd> ед.
+        Text=<color=248,252,248>Дополнительные эффекты:</color> <clr>разрушение оборудования, ЭМ-помехи и ионизация<clrEnd>
+        Text=Стоимость: <clr>+50%<clrEnd>
+        WeaponMods=Magnetic,Shock,Destruct
+        bonWSplinter=-3
+    }
+    ExpGuns_MeonPlasmathrowerGrinch ^{
+        Cost=70
+        Equipments=MeonPlasmathrower
+        Fragility=133
+        KindGraph=Grinch
+        Name="Гринч"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=CB,Manaan,PB
+        ShotVisual=11
+        Size=125
+        Special=1
+        Text=<color=248,252,248>Модификация</color> <clr>"Гринч"<clrEnd> <color=248,252,248>представляет собой кустарную</color> <color=198,128,80>пиратскую</color> <color=248,252,248>доработку малокского плазмомёта. Нацепив на него дополнительный бак с фрагилиумной наносмесью, пиратским "кулибиным" удалось нарастить огневую мощь в ущерб дальности и надёжности и без того не самого долговечного орудия.</color><br> <br>
+        Text=<clr><clrEnd>
+        Text=Дополнительный эффект: <clr>разрушение оборудования<clrEnd>
+        Text=Сила осколочного оружия: <clr>+30<clrEnd> ед.
+        Text=Дальность стрельбы: <clr>-25<clrEnd> млн км
+        Text=Стоимость: <clr>-30%<clrEnd>
+        Text=Размер: <clr>+25%<clrEnd>
+        Text=Прочность: <clr>-25%<clrEnd>
+        WeaponMods=Destruct
+        bonWRadius=-25
+        bonWSplinter=30
+    }
+    ExpGuns_MeonPlasmathrowerPlasmaroll ^{
+        Cost=140
+        Equipments=MeonPlasmathrower
+        KindGraph=Plasmaroll
+        Name="Плазмаролл"
+        OnPlanets=1
+        Owner=Peleng,People,PirateClan
+        Priority=10
+        Ruins=WB,RC,PB,MB,Manaan,PlayerMB
+        ShotVisual=10
+        Size=110
+        Special=1
+        Text=<color=248,252,248>Модификация</color> <clr>"Плазмаролл"<clrEnd> <color=248,252,248>была сконструирована в</color> <color=50,150,230>человеческих</color> <color=248,252,248>ОКБ (после чего позаимствована</color> <color=130,200,40>пеленгами</color> <color=248,252,248>и</color> <color=198,128,80>пиратами</color><color=248,252,248>) с целью повышения равномерности распределения плазмы в поражаемой зоне. С задачей конструкторы справились, однако нагнетание стабильного давления привело к снижению поражающего эффекта даже на самых малых дистанциях.</color><br> <br>
+        Text=<clr><clrEnd>
+        Text=Дополнительный эффект: <clr>отсутствует разброс урона<clrEnd>
+        Text=Сила осколочного оружия: <clr>-25<clrEnd> ед.
+        Text=Стоимость: <clr>+40%<clrEnd>
+        Text=Размер: <clr>+10%<clrEnd>
+        WeaponMods=NoDelta
+        bonWSplinter=-25
+    }
+    ExpGuns_MeonPlasmathrowerStilermein ^{
+        Equipments=MeonPlasmathrower
+        Name="Стилермейн"
+        Owner=PirateClan
+        Priority=15
+        Ruins==PB,CB,Manaan
+        ShotVisual=12
+        Size=85
+        Special=1
+        Text=<color=248,252,248>"Стилермейн" -</color> <color=198,128,80>пиратская</color> <color=248,252,248>модификация, монтируемая на корпусе орудийной установки. Во время боя она пытается одновременно со стрельбой транслировать в центральную систему управления вражеского корабля аварийную команду на сброс груза. Вероятность срабатывания относительно невелика, однако это может дать пилоту тактическое преимущество в бою и возможность поживиться добычей. Отличается своей компактностью.</color><br> <br>
+        Text=Дополнительный эффект: <clr>шанс сбросить груз из трюма цели<clrEnd>
+        Text=Мощность захвата: <clr>-5<clrEnd> т.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Размер: <clr>-15%<clrEnd>
+        WeaponMods=DropCargo
+        bonHook=-5
+        bonScan=-1
+    }
+    ExpGuns_RangeMM ^{
+        Equipments=MeonPlasmathrower
+        Fragility=110
+        Name=Удлинитель
+        Owner=Any
+        Priority=45
+        Text=Микромодуль второго уровня. За счёт перераспределения потоков плазмы <clr>Меонного плазмомёта<clrEnd> увеличивает <clr>дальность стрельбы<clrEnd> орудия
+        Text=<clr><clrEnd>
+        Text=Прочность: <clr>-10%<clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        bonWRadius=30
+    }
+}

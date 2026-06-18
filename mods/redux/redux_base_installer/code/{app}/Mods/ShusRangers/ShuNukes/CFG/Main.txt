@@ -1,0 +1,343 @@
+BV ^{
+    OnLoad ^{
+        ShuNukes ^{
+            01=if(!IsScriptActive('Mod_ShuNukes')) ScriptRun(ShipStar(Player()), StarPlanets(ShipStar(Player()), 0), 'Mod_ShuNukes');
+            02=else RunFunctionFromScript('Mod_ShuNukes', 'InventShuNukesCustomGuns');
+        }
+    }
+    OnStart ^{
+        0DayScripts ^{
+            07_ShuNukes=ScriptRun(ShipStar(Player()), StarPlanets(ShipStar(Player()), 0), 'Mod_ShuNukes');
+        }
+    }
+}
+Graph ^{
+    Cursor ^{
+        NukeTarget ^{
+            Image=GAI,Bm.Cursor.NukeTarget
+            Sme=1,1
+        }
+        NukeTargetCorrect ^{
+            Image=GAI,Bm.Cursor.NukeTargetCorrect
+            Sme=1,1
+        }
+    }
+}
+ML ^{
+    StarMap ^{
+        Panel ^{
+            Panel ^{
+                Name=MainPanel
+                Panel ^{
+                }
+                Panel ^{
+                    GraphButton ^{
+                        Name=PS_Show
+                        Pos=379,16,8
+                        Size=28,30
+                    }
+                    GraphButton ^{
+                        Name=PS_Hide
+                        Pos=379,16,8
+                        Size=28,30
+                    }
+                    GraphButton ^{
+                        Name=PS_Scaner
+                        Pos=409,14,8
+                        Size=46,31
+                    }
+                    GraphButton ^{
+                        Name=PS_Talk
+                        Pos=497,14,8
+                        Size=46,33
+                    }
+                    GraphButton ^{
+                        Name=PS_Film
+                        Pos=541,14,8
+                        Size=48,33
+                    }
+                    GraphButton ^{
+                        Name=SM_Info
+                        Pos=453,14,8
+                        Size=46,31
+                    }
+                    Image ^{
+                        Name=PS_ImageBG
+                        Pos=365,12,10
+                        Size=230,51
+                    }
+                    Name=PanelSpace
+                    Panel ^{
+                        GraphButton ^{
+                            Name=PS_W0
+                            Pos=83,0,8
+                        }
+                        GraphButton ^{
+                            Name=PS_W1
+                            Pos=129,0,8
+                        }
+                        GraphButton ^{
+                            Name=PS_W2
+                            Pos=175,0,8
+                        }
+                        GraphButton ^{
+                            Name=PS_W3
+                            Pos=221,0,8
+                        }
+                        GraphButton ^{
+                            Name=PS_W4
+                            Pos=268,0,8
+                        }
+                        GraphButton ^{
+                            Name=PS_WA
+                            Pos=318,7,5
+                        }
+                        GraphButton ^{
+                            Active=False
+                            Help=Help.NukeTorpedo
+                            ImageDisable=GI,Bm.PanelMain2.Nuke_H
+                            ImageDown=GI,Bm.PanelMain2.Nuke_D
+                            ImageNormal=GI,Bm.PanelMain2.Nuke_N
+                            ImageNormalA=GI,Bm.PanelMain2.Nuke_A
+                            Kind=Disable
+                            KindHit=Graph
+                            Name=PS_NukeTorpedo
+                            OnMouseRightClick ^{
+                                01=str nuke_type = ShipCustomShipInfoTextData(Player(), 'ShuNukes_NuclearMissiles', 1);
+                                02=if(nuke_type == 'NukeTorpedo') str new_nuke_type = 'DirtyNukeTorpedo';
+                                03=else if(nuke_type == 'DirtyNukeTorpedo') new_nuke_type = 'CombinedNukeTorpedo';
+                                04=else if(nuke_type == 'CombinedNukeTorpedo') new_nuke_type = 'EMNukeTorpedo';
+                                05=else if(nuke_type == 'EMNukeTorpedo') new_nuke_type = 'NeutronNukeTorpedo';
+                                06=else new_nuke_type = 'NukeTorpedo';
+                                07=dword nukes = 0;
+                                08=dword new_nukes = 0;
+                                09=for(int i = ShipItems(Player()) - 1; i >= 1; i = i - 1)
+                                10 ^{
+                                    01=dword item = ShipItems(Player(), i);
+                                    02=if(ItemType(item) == t_UselessCountableItem)
+                                    03 ^{
+                                        01=if(EquipmentImageName(item) == 'ShuNukes_' + nuke_type)
+                                        02 ^{
+                                            01=nukes = item;
+                                            02=if(new_nukes) break;
+                                        }
+                                        03=else if(EquipmentImageName(item) == 'ShuNukes_' + new_nuke_type)
+                                        04 ^{
+                                            01=new_nukes = item;
+                                            02=if(nukes) break;
+                                        }
+                                    }
+                                }
+                                11=if(new_nukes)
+                                12 ^{
+                                    01=ShipCustomShipInfoTextData(Player(), 'ShuNukes_NuclearMissiles', 1, new_nuke_type);
+                                    02=StarMapBlinkingMessage(Format(CT('Script.Mod_ShuNukes.SetNukeTargetButtonMessages.NukeTypeSet'), '<NukeType'+'>', CT('Items.CustomCountables.ShuNukes_' + new_nuke_type + '.Name'), ''));
+                                    03=InterfaceState('StarMap', 'PS_' + nuke_type, 0);
+                                    04=InterfaceState('StarMap', 'PS_' + new_nuke_type, 1);
+                                    05=Sound('Sound.NukeTypeSet');
+                                }
+                                13=else if(nukes) StarMapBlinkingMessage(CT('Script.Mod_ShuNukes.SetNukeTargetButtonMessages.NoMoreNukeTypesAvailable'));
+                                14=else throw 'Something goes wrong about nuke torpedos at hold of ' + Name(Player()) + '!';
+                            }
+                            OnPressCode ^{
+                                01=if(ShipCustomShipInfoData(Player(), 'ShuNukes_NuclearMissiles', 3) > CurTurn())
+                                01 ^{
+                                    01=if(int(GetParFromString(ShipCustomShipInfoTextData(Player(), 'ShuNukes_NuclearMissiles', 2), ',', 0, 0)) <= 1) StarMapBlinkingMessage(CT('Script.Mod_ShuNukes.SetNukeTargetButtonMessages.IsCooldown'));
+                                    02=else StarMapBlinkingMessage(CT('Script.Mod_ShuNukes.SetNukeTargetButtonMessages.IsCooldownMany'));
+                                    03=exit;
+                                }
+                                02=if(ShipCustomShipInfoTextData(Player(), 'ShuNukes_NuclearMissiles', 3) != '')
+                                02 ^{
+                                    01=ShipCustomShipInfoData(Player(), 'ShuNukes_NuclearMissiles', 1, 0);
+                                    02=ShipCustomShipInfoTextData(Player(), 'ShuNukes_NuclearMissiles', 3, '');
+                                    03=StarMapBlinkingMessage(CT('Script.Mod_ShuNukes.SetNukeTargetButtonMessages.TargetCancel'));
+                                    04=exit;
+                                }
+                                03=int nuke_shafts = GetParFromString(ShipCustomShipInfoTextData(Player(), 'ShuNukes_NuclearMissiles', 2), ',', 0, 0);
+                                04=ShipCustomShipInfoData(Player(), 'ShuNukes_NuclearMissiles', 1, -nuke_shafts);
+                                05=str nuke_type = ShipCustomShipInfoTextData(Player(), 'ShuNukes_NuclearMissiles', 1);
+                                06=StarMapCustomSelectionMode('ShuNukes_NuclearMissiles', g_NukeParams[nuke_type, 'RangeStep'] * ItemLevel(ShipEqInSlot(Player(), t_Hull)) + g_NukeParams[nuke_type, 'RangeMin'], 'NukeTargetCorrect', 'NukeTarget', CT('Script.Mod_ShuNukes.SetNukeTargetButtonMessages.TargetSet'), CT('Script.Mod_ShuNukes.SetNukeTargetButtonMessages.TargetOutOfRange'), CT('Script.Mod_ShuNukes.SetNukeTargetButtonMessages.InvalidTarget'), 220, 210, 80);
+                            }
+                            Pos=48,6,8
+                            Size=38,32
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=False
+                            Help=Help.DirtyNukeTorpedo
+                            ImageDisable=GI,Bm.PanelMain2.DirtyNuke_H
+                            ImageDown=GI,Bm.PanelMain2.DirtyNuke_D
+                            ImageNormal=GI,Bm.PanelMain2.DirtyNuke_N
+                            ImageNormalA=GI,Bm.PanelMain2.DirtyNuke_A
+                            Kind=Disable
+                            KindHit=Graph
+                            Name=PS_DirtyNukeTorpedo
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:1.Panel.GraphButton:6.OnMouseRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:1.Panel.GraphButton:6.OnPressCode', 1));
+                            }
+                            Pos=48,6,8
+                            Size=38,32
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=False
+                            Help=Help.CombinedNukeTorpedo
+                            ImageDisable=GI,Bm.PanelMain2.DirtyNuke_H
+                            ImageDown=GI,Bm.PanelMain2.DirtyNuke_D
+                            ImageNormal=GI,Bm.PanelMain2.DirtyNuke_N
+                            ImageNormalA=GI,Bm.PanelMain2.DirtyNuke_A
+                            Kind=Disable
+                            KindHit=Graph
+                            Name=PS_DirtyNukeTorpedo
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:1.Panel.GraphButton:6.OnMouseRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:1.Panel.GraphButton:6.OnPressCode', 1));
+                            }
+                            Pos=48,6,8
+                            Size=38,32
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=False
+                            Help=Help.EMNukeTorpedo
+                            ImageDisable=GI,Bm.PanelMain2.DirtyNuke_H
+                            ImageDown=GI,Bm.PanelMain2.DirtyNuke_D
+                            ImageNormal=GI,Bm.PanelMain2.DirtyNuke_N
+                            ImageNormalA=GI,Bm.PanelMain2.DirtyNuke_A
+                            Kind=Disable
+                            KindHit=Graph
+                            Name=PS_EMNukeTorpedo
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:1.Panel.GraphButton:6.OnMouseRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:1.Panel.GraphButton:6.OnPressCode', 1));
+                            }
+                            Pos=48,6,8
+                            Size=38,32
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=False
+                            Help=Help.NeutronNukeTorpedo
+                            ImageDisable=GI,Bm.PanelMain2.DirtyNuke_H
+                            ImageDown=GI,Bm.PanelMain2.DirtyNuke_D
+                            ImageNormal=GI,Bm.PanelMain2.DirtyNuke_N
+                            ImageNormalA=GI,Bm.PanelMain2.DirtyNuke_A
+                            Kind=Disable
+                            KindHit=Graph
+                            Name=PS_NeutronNukeTorpedo
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:1.Panel.GraphButton:6.OnMouseRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:1.Panel.GraphButton:6.OnPressCode', 1));
+                            }
+                            Pos=48,6,8
+                            Size=38,32
+                            Style=Style.GB.SoundNormal
+                        }
+                        Image ^{
+                            Name=PS_ImageWeaponBG
+                            Pos=50,2,9
+                        }
+                        Image ^{
+                            Name=PS_W0I
+                            Pos=83,0,7
+                        }
+                        Image ^{
+                            Name=PS_W1I
+                            Pos=129,0,7
+                        }
+                        Image ^{
+                            Name=PS_W2I
+                            Pos=175,0,7
+                        }
+                        Image ^{
+                            Name=PS_W3I
+                            Pos=221,0,7
+                        }
+                        Image ^{
+                            Name=PS_W4I
+                            Pos=268,0,7
+                        }
+                        Image ^{
+                            Active=False
+                            Image=GI,Bm.PanelMain2.Nuke_BG
+                            MouseBlocking=True
+                            Name=PS_ImageNukeBG
+                            Pos=15,2,8.5
+                            Size=108,51
+                            Sme=0,0
+                        }
+                        Name=PS_Up
+                        Pos=0,10
+                        Size=377,53
+                    }
+                    Pos=-369,297,ButtonNav
+                    Size=595,63
+                }
+            }
+        }
+    }
+}
+Data ^{
+    SE ^{
+        Missile ^{
+            wDirtyNukeTorpedo ^{
+                PosZ=Missile
+                Scale=3.0
+            }
+            wNukeTorpedo ^{
+                PosZ=Missile
+                Scale=3.0
+            }
+            wCombinedNukeTorpedo ^{
+                PosZ=Missile
+                Scale=3.0
+            }
+            wEMNukeTorpedo ^{
+                PosZ=Missile
+                Scale=3.0
+            }
+            wNeutronNukeTorpedo ^{
+                PosZ=Missile
+                Scale=3.0
+            }
+        }
+        Weapon ^{
+            MissileHit ^{
+                Palettes ^{
+                    66 ^{
+                        GAI=Bm.Weapon.NukeExplosion
+                        SoundShot=Sound.NukeExplosion
+                    }
+                    67 ^{
+                        GAI=Bm.Weapon.NukeExplosion
+                        SoundShot=Sound.NukeExplosion
+                    }
+                    68 ^{
+                        GAI=Bm.Weapon.NukeExplosion
+                        SoundShot=Sound.NukeExplosion
+                    }
+                    69 ^{
+                        GAI=Bm.Weapon.NukeExplosion
+                        SoundShot=Sound.NukeExplosion
+                    }
+                    70 ^{
+                        GAI=Bm.Weapon.NukeExplosion
+                        SoundShot=Sound.NukeExplosion
+                    }
+                }
+            }
+        }
+    }
+    Script ^{
+        Mod_ShuNukes=1,Script.Mod_ShuNukes
+    }
+}

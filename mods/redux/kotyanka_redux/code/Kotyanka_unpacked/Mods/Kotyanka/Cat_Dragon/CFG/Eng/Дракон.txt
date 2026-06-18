@@ -1,0 +1,155 @@
+UselessItems ^{
+    Cat_Dragon_Egg ^{
+        Cost=Huge
+        Name=Ancient scaly egg
+        Owner=None
+        Size=1
+        Text=In appearance, it is a very large and old scaly egg, black with a red tint.
+    }
+}
+MicroModuls ^{
+    Cat_Dragon_Old ^{
+        BlockImp=1
+        BlockMM=1
+        Color=221,160,221
+        Cost=10000
+        Equipments=Hull
+        FragilityEnergy=70
+        FragilityMissile=70
+        FragilitySplinter=70
+        HullGraphSize=400
+        KindGraph=Dragon
+        Name=Space Dragon
+        OnPlanets=0
+        Owner=None
+        Priority=100
+        RacialRestriction=0
+        Ruins=0
+        Size=350
+        Special=1
+        Text=<color=248,252,248>An adult of an ancient race of space dragons. They say they lived in another universe and were transported to ours after its origin, but for some unknown reason they all died out about 7 billion years ago.</color>
+		Text=Range of magic attacks: <bonWRadius>
+		Text=Power of energy magic: <bonWEnergy>
+		Text=Power of elemental magic: <bonWSplinter>
+		Text=Power of long-range magic: <bonWMissile>
+		Text=Magic acceleration: <bonSpeed>
+		Text=Teleportation range: <bonJump>
+		Text=Magic barrier: <bonDef>
+		Text=Magic Armor: <bonHull>
+		Text=Magic Regeneration: <bonDroid>
+        bonDef=25
+        bonDroid=85
+        bonHull=35
+        bonJump=50
+        bonResistAsteroid=100
+        bonSlotArt=4
+        bonSlotDroid=1
+        bonSlotForsage=1
+        bonSlotWeapon=5
+        bonSpeed=2000
+        bonWEnergy=80
+        bonWMissile=150
+        bonWRadius=200
+        bonWSplinter=100
+    }
+    Cat_Dragon_Young ^{
+        BlockImp=1
+        BlockMM=1
+        Color=221,160,221
+        Cost=10000
+        Equipments=Hull
+        FragilityEnergy=130
+        FragilityMissile=130
+        FragilitySplinter=130
+        HullGraphSize=250
+        KindGraph=Dragon
+        Name=Space Dragon (cub)
+        OnPlanets=0
+        Owner=None
+        Priority=100
+        RacialRestriction=0
+        Ruins=0
+        Size=350
+        Special=1
+        Text=<color=248,252,248>A cub of an ancient race of space dragons. They say they lived in another universe and were transported to ours after its origin, but for some unknown reason they all died out about 7 billion years ago.</color>
+        Text=Range of magic attacks: <bonWRadius>
+		Text=Power of energy magic: <bonWEnergy>
+		Text=Power of elemental magic: <bonWSplinter>
+		Text=Power of long-range magic: <bonWMissile>
+		Text=Magic acceleration: <bonSpeed>
+		Text=Teleportation range: <bonJump>
+		Text=Magic barrier: <bonDef>
+		Text=Magic Armor: <bonHull>
+		Text=Magic Regeneration: <bonDroid>
+        bonDef=15
+        bonDroid=25
+        bonHull=15
+        bonJump=20
+        bonResistAsteroid=100
+        bonSlotArt=4
+        bonSlotDroid=1
+        bonSlotForsage=1
+        bonSlotWeapon=5
+        bonSpeed=500
+        bonWEnergy=40
+        bonWMissile=70
+        bonWRadius=100
+        bonWSplinter=50
+    }
+}
+Settings ~{
+	bad_special_name=Space Dragon (cub)
+	good_special_name=Space Dragon
+	cost=50000000
+	upgrade_cost=7500000
+	hull_cost_1=50000000
+	hull_cost_2=150000000
+	research_time=1000
+	item_size=400
+	hull_size_bad=1500
+	hull_size_good=3500
+}
+Script ~{
+    Dragon ~{
+        184=The base <0> was destroyed, a one-of-a-kind space dragon, lost forever ...
+		185=The base <0> has finished incubating the dragon, you can fly
+		227=Hello, it's me again. And you were already waiting for me, like tracking and diagnostic chips, I completely forgot.
+		228=Speaking of the dragon...
+		229=I came back here to find out what's up with that egg I brought?
+		230=I have this here, not a standard question, in short, I found an egg on an uninhabited planet, here ...
+		190=What-what did you <0> bring? Hmm, let me see.
+		191=Cough-cough, <0>, once again, WHAT have you brought? An egg??? I don't know how you thought of bringing it to US...<br>Well, don't worry so much, take him to the scientific base, I heard they are there, uh, doing such things.
+		192=Yes, yes, we were waiting for you, we succeeded! Just look at this lovely creature, but don't be surprised that he is already so big, we didn't immediately tell you that he could hatch and you could fly, because it was necessary to study everything and stabilize the situation in order to allow non-professional people to work. As you can see, even though it is a cub, but it can already fly in outer space and even carry equipment and equipment of spaceships.
+		193=The Dragon will be waiting for you in the warehouses.
+		194=I don't understand what you're talking about<br>
+		195=You can get a license to control a dragon, and fly it in space, but for this you must sign this contract for the installation of sensors tracking your and his health, as well as location and many other parameters, you will read later yourself. And it will cost <0> cr.<br>Well, do you agree?<br>
+		196=What are you talking about, which dragons?
+		197=The incubation process is not finished yet.
+		198=Well, approximately <0>.
+		114=I don't know what you're talking about
+		199=Yes, we've been following you, we know why you came. The dragon has grown and requires re-equipment of its ammunition, for its comfort and consequently an increase in combat characteristics.
+		200=Well then, shall we start? It will cost (<0>) cr.
+		201=You can fly, try out new features.
+		202=That's right, and we will be able to awaken him and maybe even tame him! You, as the finder, have the right to own this dragon if all state experiments go well, and if not, we will pay you compensation.
+		203=We proceed to incubation.
+		204=Yes, yes, I know, don't get in the way.<br>*Installs an egg in a spectral vacuum hyper-analyzer*<br>Phenomenal! This can't be happening! Ranger <0> you have no idea what, or even who you found! This is the egg of an ancient cosmic dragon, the last documented evidence in Galapedia dates back about 8 billion years ago, everyone believed that there were no more of them left...<br>
+		205=Thanks for the tip, have a nice day.
+		206=I agree! Here are your <0> cr.
+		207=It's unbelievable!
+		208=Great, I'll go take a look.
+		209=Goodbye<br>
+		210=Wait, I don't have that kind of money right now. I'll fly to you later.
+		211=Oh, sorry, I'm already leaving
+		180=Well, it remains only to wait until you finish the job.
+		212=And when will it end?
+		112=Good
+		118=Goodbye
+		213=Uh, yes, everything is exactly as you said.
+		149=I changed my mind.
+		214=New ammunition for the dragon(<0> cr.)
+		215=Excellent!
+		216=Here you go, just be careful it's fragile.
+		217=Bite me, shtip. Is that what it turns out, I found a dragon egg?
+		218=Get started.
+    }
+}

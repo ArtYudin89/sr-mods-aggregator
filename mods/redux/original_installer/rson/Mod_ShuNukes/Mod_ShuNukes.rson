@@ -1,0 +1,2602 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_ShuNukes",
+    "ScriptFileOut": "D:\\Mod_ShuNukes.scr",
+    "ScriptTextOut": "D:\\Mod_ShuNukes.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "restart",
+                    "Pos.x": 0,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 67,
+                    "Msg": "Вот как? Ну ладно...",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.44\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 120,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 68,
+                    "Msg": "Дайте одну боеголовку за <0> cr.",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ShuNukes.45\"),\"<0>\",sum))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 69,
+                    "Msg": "Нисколько, слишком дорогое это удовольствие",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.46\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 70,
+                    "Msg": "Возьму два снаряда за <0> cr.",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ShuNukes.47\"),\"<0>\",sum*2))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 480,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 71,
+                    "Msg": "Вот как? Ну ладно...",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.44\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 600,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 72,
+                    "Msg": "Покупаю один снаряд, <0> cr.",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ShuNukes.48\"),\"<0>\",sum))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 720,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 73,
+                    "Msg": "Дайте две! Плачу <0> cr.",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ShuNukes.49\"),\"<0>\",sum*2))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 840,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 74,
+                    "Msg": "Не нужно мне никаких ядерах",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.50\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 960,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 75,
+                    "Msg": "Вот это настоящее оружие! Беру!",
+                    "AMsg.Num": "8",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.51\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1080,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 76,
+                    "Msg": "Убедил! Давай сюда свой агрегат!",
+                    "AMsg.Num": "9",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.52\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1200,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 77,
+                    "Msg": "Не буду я платить такие бабки за эту погремушку!",
+                    "AMsg.Num": "10",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.53\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1320,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 78,
+                    "Msg": "Меня это не интересует",
+                    "AMsg.Num": "11",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.54\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1440,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 79,
+                    "Msg": "Добро, приступайте",
+                    "AMsg.Num": "12",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.55\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1560,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 80,
+                    "Msg": "Отставить",
+                    "AMsg.Num": "13",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.56\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1680,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 81,
+                    "Msg": "Так держать",
+                    "AMsg.Num": "14",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.57\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 0,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 82,
+                    "Msg": "Нет, в данный момент меня это не интересует",
+                    "AMsg.Num": "15",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.58\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 120,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 83,
+                    "Msg": "Как раз кстати, хоть иногда смогу почувствовать себя в безопасности",
+                    "AMsg.Num": "16",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.59\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 84,
+                    "Msg": "Меня это не интересует",
+                    "AMsg.Num": "17",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.54\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 85,
+                    "Msg": "Вот это настоящее оружие! Беру!",
+                    "AMsg.Num": "18",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.51\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 480,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 86,
+                    "Msg": "Убедил! Давай сюда свой агрегат!",
+                    "AMsg.Num": "19",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.52\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 600,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 87,
+                    "Msg": "Не буду я платить такие бабки за эту погремушку!",
+                    "AMsg.Num": "20",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.53\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 720,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 88,
+                    "Msg": "Загружай три за <0> cr.",
+                    "AMsg.Num": "21",
+                    "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ShuNukes.60\"),\"<0>\",sum*3))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 840,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 89,
+                    "Msg": "Три снаряда за <0> cr.",
+                    "AMsg.Num": "22",
+                    "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ShuNukes.61\"),\"<0>\",sum*3))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 960,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 90,
+                    "Msg": "Четыре будет в самый раз. <0> cr.",
+                    "AMsg.Num": "23",
+                    "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ShuNukes.62\"),\"<0>\",sum*4))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1080,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 91,
+                    "Msg": "А что, грузи пять. <0> cr. уже переведены",
+                    "AMsg.Num": "24",
+                    "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ShuNukes.63\"),\"<0>\",sum*5))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1200,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 92,
+                    "Msg": "Шесть боеголовок и не меньше! <0> cr.",
+                    "AMsg.Num": "25",
+                    "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ShuNukes.64\"),\"<0>\",sum*6))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1320,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 93,
+                    "Msg": "Четыре боеголовки, <0> cr.",
+                    "AMsg.Num": "26",
+                    "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ShuNukes.65\"),\"<0>\",sum*4))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1440,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 94,
+                    "Msg": "Пять штук за <0> cr.",
+                    "AMsg.Num": "27",
+                    "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ShuNukes.66\"),\"<0>\",sum*5))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1560,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 95,
+                    "Msg": "Загружайте сразу шесть, плачу <0> cr.",
+                    "AMsg.Num": "28",
+                    "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ShuNukes.67\"),\"<0>\",sum*6))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1680,
+                    "Pos.y": 615,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 96,
+                    "Msg": "Слишком дорого и ненадёжно. Обойдусь",
+                    "AMsg.Num": "29",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.73\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 0,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 97,
+                    "Msg": "Добро, приступайте к установке",
+                    "AMsg.Num": "30",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuNukes.74\"))"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 120,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 98,
+                    "Msg": "Выход",
+                    "AMsg.Num": "31",
+                    "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_ShuNukes.78\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 50,
+                    "Msg": "По нашим расценкам, одна боеголовка для твоей модели обойдется в <0> cr. Боезапас вашей установки - <1>/<2>, в этом году вам можно получить еще <3> ракет. Ну что, сколько снарядов берете?",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.30\"),\"<0>\",sum,\"<1>\",UselessItemData(PlayerNuke,1),\"<2>\",total,\"<3>\",ammo))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 51,
+                    "Msg": "Простите, <Player>, но ваш лимит на сейчас превышен. Обновление наших баз данных происходит <clr>23 февраля<clrEnd> и <clr>9 мая<clrEnd> - тогда и прилетайте.",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_ShuNukes.31\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 52,
+                    "Msg": "Так-с, дай-ка взглянуть... Один снаряд к твоей крошке у нас стоит <0> cr, а заряжено в ней <1> ракет из <2>. Мы сейчас можем предложить тебе <3> шт. боеголовок, так что определяйся, сколько ядерах тебе загружать.",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.32\"),\"<0>\",sum,\"<1>\",UselessItemData(PlayerNuke,1),\"<2>\",total,\"<3>\",ammo2))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 53,
+                    "Msg": "Пардонь, браток, но мы все ядерахи разбазаривать не можем. Возвращайся как-нибудь в районе <0>, тогда намечается следующий завоз.",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.33\"),\"<0>\",GameDateTxtByTurn(nukeUpdCB)))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 54,
+                    "Msg": "Вы достигли требуемого звания, и имеете право получить доступ к ОМП, адаптированному для применения в космосе. Последнее слово техники - пусковая установка RL-2, способная нести до трёх самонаводящихся ракет одновременно. Спустя годы попыток воссоздать доминаторские торпеды, мы, наконец, нашли идеальное решение вопроса, и заменили боевую начинку ракеты, ведомой системой выстрелил-и-не-вспомнил на тактическую ядерную боеголовку. Орудие недешевое, да и козни пиратского клана, укравшего технологию ещё на ранних стадиях разработки, дел не улучшает, но, поверьте - оно того стоит. \r\nПрименяйте тактические ракеты с умом - мы постоянно улучшаем их оснастку, но по постановлению Галактического Совета имеем право выделять не более <clr>двух<clrEnd> боеприпасов в полгода каждому заинтересованному пилоту. \r\nСама установка обойдётся вам, как свободному пилоту, в <0> cr. Постарайтесь понять нас, <Player>, мы вынуждены оплачивать все страховки на тот случай, если вы примените ядерное оружие не по назначению. \r\nБудьте верны рейнджерскому делу, и примените этих маленьких вестников смерти, сравнимых с мощью кварковых бомб, на борьбу с врагами необъятного народа Коалиции!",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.34\"),\"<0>\",sum))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 55,
+                    "Msg": "Окей, коллега, ты уже набрался достаточно авторитета, чтобы мы могли переговорить с тобой с глазу на глаз. Как жизнь пиратская? Толпы всевозможных отбросов на хвосте не докучают? Не беспокойся, мы нашли этому отличное решение - ядерное оружие! Хе-хе. Пусковая установка, способная нести до трёх самонаводящихся ракет класса ТАС-16 одновременно, свежачком с чертежей яйцеголовых Коалиции. Те годами пытались воссоздать доминаторские торпеды, и, должен признать, хоть раз в жизни пришли к чему-то действительно гениальному - заменили боевую начинку ракеты, ведомой системой выстрелил-и-не-вспомнил на тактическую ядерную боеголовку. Стоит оно, конечно, недешево, да и в космосе хрен применишь из-за неэффективности ядерного оружия в вакууме, но система наведения обычно всё компенсирует. \r\nК сожалению, наши запасы не так обширны, как хотелось бы, и мы не можем выделять больше <clr>двух<clrEnd> ракет в полгода каждому допущенному к большой бабахалке брату. \r\nСама установка обойдётся тебе в <0> cr. Немало, да, но только представь, сколько торгашей можно вынести за раз! \r\nБудь паинькой, и направь эту крошку в правильное русло. Нет такого врага, который избежит разорительного присутствия пиратского клана!",
+                    "DMsg.Num": "5",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.35\"),\"<0>\",sum))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 900,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 56,
+                    "Msg": "Так точно, рейнджер, наша база подпадает под специальное распоряжение Галактического Совета \"О лимитированном контролируемом распространении тактического ядерного оружия в целях противодействия внешней угрозе\", и у нас есть возможность для установки дополнительных систем защиты. В столь неспокойные времена лишним оно точно не станет.\r\nМы рады, что вы заинтересованы в спонсировании этого вопроса, наличие ядерного оружия на борту станции значительно усилит способность станции в случае критической ситуации постоять за себя.\r\nУстановка первичных систем обойдётся в <0> cr. - таким образом, мы сможем запускать по одной боеголовке раз в <1> дней. Не беспокойтесь, <clr>все расходы на боеприпасы Галактический Совет берёт на себя<clrEnd> - ваше дело лишь его к тому обязать.",
+                    "DMsg.Num": "6",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.68\"),\"<0>\",sum,\"<1>\",20))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1050,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 57,
+                    "Msg": "В данный момент станция оборудована моделью пусковой установки <clr>RL-2M MK I<clrEnd>, способной запускать один ядерный заряд раз в <0> дней. За <1> cr. мы можем модернизировать систему до <clr>RL-2M MK II<clrEnd>, что сократит задержку перед следующей атакой до <2> дней.",
+                    "DMsg.Num": "7",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.37\"),\"<0>\",20,\"<1>\",sum,\"<2>\",10))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 58,
+                    "Msg": "В данный момент станция оборудована моделью пусковой установки <clr>RL-2M MK II<clrEnd>, способной запускать один ядерный заряд раз в <0> дней. За <1> cr. мы можем модернизировать систему до <clr>RL-2M MK III<clrEnd>, что сократит задержку перед следующей атакой до <2> дней.",
+                    "DMsg.Num": "8",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.38\"),\"<0>\",10,\"<1>\",sum,\"<2>\",5))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1350,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 59,
+                    "Msg": "В данный момент станция оборудована моделью пусковой установки <clr>RL-2M MK III<clrEnd>, способной запускать один ядерный заряд раз в <0> дней. Это лучшая из доступных на сегодняшний день стационарных ядерных систем тактического назначения.",
+                    "DMsg.Num": "9",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.39\"),\"<0>\",5))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1500,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 60,
+                    "Msg": "Итак, вот оно, детище наших лучших инженеров - <clr>Абсорбер<clrEnd>. Он представляет из себя систему противодействия баллистическому огню, способную нейтрализовать 80% урона от попадания ядерной боеголовки, рассеивая локализованную энергию в вакууме. Не действует на обычные ракеты из-за низкого для локализации энергетического потенциала. Перезарядка после каждой локализации будет занимать приблизительно <0> дней. Такая штучка обойдётся вам в добрые <1> cr., но ставлю на кон свою репутацию управляющего, об этом выборе вы не пожалеете наверняка.",
+                    "DMsg.Num": "10",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.40\"),\"<0>\",30,\"<1>\",sum))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1650,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 61,
+                    "Msg": "Отлично, что ты решил нам с этим подсобить, брат. Наличие ядерного оружия на борту нашей стацнии точно заставит фараонов задуматься, стоит ли устраивать на нас облаву - разнесем их всех в щепки!\r\nУстановка базовых систем выльется тебе в <0> cr. - таким образом, мы сможем запускать по одной боеголовке раз в <1> дней. Не боись, <clr>все расходы на боеприпасы пиратское братство берет на себя<clrEnd>, от тебя требуется только подтолкнуть Верховных Лякуш к такому шагу.",
+                    "DMsg.Num": "11",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.69\"),\"<0>\",sum,\"<1>\",20))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 62,
+                    "Msg": "Рейнджер, насколько нам известно, вы являетесь активным пользователем пусковой установки RL-2. После некоторых размышлений, Командование приняло решение доверить вам уникальную модель RL-3. \r\nВ отличие от стандартного образца, RL-3 обладает вместимостью <0> ракет, а благодаря использованию доминаторских энергопакетов зарядка занимает только <1> дня! Отдадим мы это чудо инженерной мысли за <2> cr. \r\nПонимаю, немало, но гигантское тактическое преимущество в космосе не дрейфует! Не так ли, <Player>?",
+                    "DMsg.Num": "12",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.42\"),\"<0>\",6,\"<1>\",2,\"<2>\",sum))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 63,
+                    "Msg": "Как мне нашептал алкарис, <Player>, ты очень любишь все ядерное и рактное, в частности, пусковую установку RL-2. Хо-хо, как ты разносил этих фараонов - это надо было видеть! \r\nСпрос рождает предложение, брат, и у нас есть, что предложить даже такому бывалому пирату. \r\nС гордостью презентуем тебе ужасную, страшную, безжалостную и безумно опасную RL-3! \"Тройка\" с вместимостью в аж <0> боеголовок и с зарядкой <1> дня позволит тебе сеять хаос и разрушение в троекратном объеме, бу-га-га! По заверениям наших спецов, этот агрегатище также дает плюс к респекту и уважухе среди правильных пацанов. \r\nНачать сеять погромы во всех обитаемых и не очень мирах можно прямо сейчас всего-то за <2> cr. Предложение, от которого невозможно отказаться, не так ли?",
+                    "DMsg.Num": "13",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.43\"),\"<0>\",6,\"<1>\",2,\"<2>\",sum))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 64,
+                    "Msg": "Точечный усилитель поля - устройство, изобретенное нами прежде всего для защиты от внезапных нападений со стороны доминаторов. Наша разработка взаимодейтсвует напрямую с ГЗП, значительно усиливая защитное поле в предполагаемом месте удара на короткий срок. Это позволяет в 50% случаев поглотить весь входящий урон, до пяти раз в день. \r\nОднако, усилитель способен предотвратить только малый и средний ущерб, а при получении значительного, устройство перегружается, чтобы не повредить генератор защитного поля.\r\n\r\nУстановка Точечного усилителя поля будет стоить вам <0> cr. Будем устанавливать?",
+                    "DMsg.Num": "14",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.72\"),\"<0>\",sum))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 65,
+                    "Msg": "<0>",
+                    "DMsg.Num": "15",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.76\"),\"<0>\",tStr))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 66,
+                    "Msg": "<0>",
+                    "DMsg.Num": "16",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuNukes.76\"),\"<0>\",tStr))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "NukeWB",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 425,
+                    "Parent": -1,
+                    "#": 39
+                },
+                {
+                    "Name": "NukeCB",
+                    "Type": "TDialog",
+                    "Pos.x": 120,
+                    "Pos.y": 425,
+                    "Parent": -1,
+                    "#": 40
+                },
+                {
+                    "Name": "BuyNukeWB",
+                    "Type": "TDialog",
+                    "Pos.x": 240,
+                    "Pos.y": 425,
+                    "Parent": -1,
+                    "#": 41
+                },
+                {
+                    "Name": "BuyNukeCB",
+                    "Type": "TDialog",
+                    "Pos.x": 390,
+                    "Pos.y": 425,
+                    "Parent": -1,
+                    "#": 42
+                },
+                {
+                    "Name": "BuyNukeForRuins",
+                    "Type": "TDialog",
+                    "Pos.x": 540,
+                    "Pos.y": 425,
+                    "Parent": -1,
+                    "#": 43
+                },
+                {
+                    "Name": "BuyAbsorber",
+                    "Type": "TDialog",
+                    "Pos.x": 750,
+                    "Pos.y": 425,
+                    "Parent": -1,
+                    "#": 44
+                },
+                {
+                    "Name": "UpgradeWB",
+                    "Type": "TDialog",
+                    "Pos.x": 930,
+                    "Pos.y": 425,
+                    "Parent": -1,
+                    "#": 45
+                },
+                {
+                    "Name": "UpgradeCB",
+                    "Type": "TDialog",
+                    "Pos.x": 1080,
+                    "Pos.y": 425,
+                    "Parent": -1,
+                    "#": 46
+                },
+                {
+                    "Name": "BuyECM",
+                    "Type": "TDialog",
+                    "Pos.x": 1230,
+                    "Pos.y": 425,
+                    "Parent": -1,
+                    "#": 47
+                },
+                {
+                    "Name": "SelectTarget",
+                    "Type": "TDialog",
+                    "Pos.x": 1350,
+                    "Pos.y": 425,
+                    "Parent": -1,
+                    "#": 48
+                },
+                {
+                    "Name": "LaunchNuke",
+                    "Type": "TDialog",
+                    "Pos.x": 1530,
+                    "Pos.y": 425,
+                    "Parent": -1,
+                    "#": 49
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "PlayerGroup",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "InitPlanet",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 300,
+                    "Parent": -1,
+                    "#": 33
+                }
+            ],
+            "Items": [
+                {
+                    "Type": "TItem",
+                    "Name": "PlayerNuke",
+                    "Class": 5,
+                    "Item.Type": 0,
+                    "Size": 10,
+                    "Level": 1,
+                    "Radius": 150,
+                    "Owner": 6,
+                    "Useless": "",
+                    "+Place": "",
+                    "Pos.x": 0,
+                    "Pos.y": 255,
+                    "Parent": -1,
+                    "#": 32
+                }
+            ],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 34,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 710
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "//Инфошка ядерки NPC:",
+                        "//data 1 - ход следующего запуска",
+                        "//data 2 - время перезарядки между запусками",
+                        "//Создание кастомного оружия для запуска нова-торпеды. Нужно, чтобы был радиус взрыва 700.",
+                        "tdwd=InventNewCustomWeapon('nova',t_Weapon9);",
+                        "SetCustomWeaponSE(tdwd,'Weapon.3','Weapon.NoGraph','Weapon.MissileHit',8);",
+                        "SetCustomWeaponPrimaryData(tdwd,6,t_Weapon9,t_Weapon15);",
+                        "SetCustomWeaponSizeAndCost(tdwd,1,1);",
+                        "SetCustomWeaponDamageData(tdwd,1,1,4);",
+                        "SetCustomWeaponShotData(tdwd,'Torpedo1',0,1500,700,6);",
+                        "SetCustomWeaponAvailability(tdwd,'NotSold');",
+                        "SetCustomMissileWeaponStats(tdwd,1500,10,500,0);",
+                        "//Закапываем нова-торпеды и нейтронные бомбы на незаселенках",
+                        "//Заносим в массив все незаселенки, пропускаем родную систему игрока и планеты Дицеи",
+                        "ArrayClear(tempArr);",
+                        "for(i=0;i<GalaxyStars();i=i+1) {",
+                        "    tStar=GalaxyStar(i);",
+                        "    if(tStar==PlanetToStar(GetShipHomePlanet(Player()))) continue;",
+                        "    if(StarToCon(tStar) == StarToCon(PlanetToStar(PlanetPirateClan()))) continue;",
+                        "\tfor(j=0;j<StarPlanets(tStar);j=j+1) {",
+                        "\t\ttPlanet=StarPlanets(tStar,j);",
+                        "\t\tif(PlanetOwner(tPlanet)==None) ArrayAdd(tempArr,Id(tPlanet));",
+                        "\t}",
+                        "}",
+                        "ArrayDelete(tempArr, 0); //Удаляем нулевой элемент, чтобы он не перемешивался",
+                        "ArrayRandomize(150,tempArr);",
+                        "nBombCount=Rnd(12,18);    //Число нейтронных бомб",
+                        "novaCount=Rnd(2,5);    //Число нова-торпед",
+                        "i=1;    //Начальная итерация",
+                        "while(nBombCount) {    //Закапываем нейтронные бомбы",
+                        "    tPlanet=IdToPlanet(tempArr[i]);",
+                        "    AddItemToPlanet(tPlanet,CreateQuestItem('NeutronBomb'));",
+                        "    nBombCount=nBombCount-1;",
+                        "    i=i+1;",
+                        "}",
+                        "while(novaCount) {    //Закапываем нова-торпеды",
+                        "    tPlanet=IdToPlanet(tempArr[i]);",
+                        "    AddItemToPlanet(tPlanet,CreateQuestItem('NovaTorpedo'));",
+                        "    novaCount=novaCount-1;",
+                        "    i=i+1;",
+                        "}",
+                        "//Таймер апгрейда количества доступных ядерок",
+                        "if(GalaxyDiffLevels()<100) nukesCntUpTimer=Rnd(0,960)+365*20;",
+                        "else if(GalaxyDiffLevels()<150) nukesCntUpTimer=Rnd(0,960)+365*27;",
+                        "else if(GalaxyDiffLevels()<175) nukesCntUpTimer=Rnd(0,960)+365*33;",
+                        "else if(GalaxyDiffLevels()<200) nukesCntUpTimer=Rnd(0,960)+365*39;",
+                        "else nukesCntUpTimer=Rnd(0,960)+365*45;",
+                        "//Таймер до возможности апгрейда ядерной установки игрока на ВБ",
+                        "if(GalaxyDiffLevels()<100) nukeLauncherWBUpTimer=Rnd(180,480)+365*15;",
+                        "else if(GalaxyDiffLevels()<150) nukeLauncherWBUpTimer=Rnd(180,480)+365*20;",
+                        "else if(GalaxyDiffLevels()<175) nukeLauncherWBUpTimer=Rnd(180,480)+365*24;",
+                        "else if(GalaxyDiffLevels()<200) nukeLauncherWBUpTimer=Rnd(180,480)+365*28;",
+                        "else nukeLauncherWBUpTimer=Rnd(180,480)+365*32;",
+                        "nukeLauncherCBUpTimer=nukeLauncherWBUpTimer-365*Rnd(1,3);    //До пиратов такое дойдет с задержкой в 1-3 года;"
+                    ],
+                    "#": 35,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 710
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(!bossNuke) {",
+                        "  if(Blazer()) {",
+                        "      if(ShipFindCustomShipInfoByType(Blazer(),'Absorber')==-1) ShipAddCustomShipInfo(Blazer(),'Absorber');",
+                        "  \tif(ShipFindCustomShipInfoByType(Blazer(),'NpcNuke')==-1) {",
+                        "          ShipAddCustomShipInfo(Blazer(),'NpcNuke');",
+                        "          ShipCustomShipInfoData(Blazer(),'NpcNuke',2,5);",
+                        "      }",
+                        "      ShipAddCustomShipInfo(Blazer(),'BossNuke2','NoShow');",
+                        "  \tShipAddCustomShipInfo(Blazer(),'BossNuke3','NoShow');",
+                        "  }",
+                        "  if(Terron()) {",
+                        "      if(ShipFindCustomShipInfoByType(Terron(),'Absorber')==-1) ShipAddCustomShipInfo(Terron(),'Absorber');",
+                        "  \tif(ShipFindCustomShipInfoByType(Terron(),'NpcNuke')==-1) {",
+                        "          ShipAddCustomShipInfo(Terron(),'NpcNuke');",
+                        "          ShipCustomShipInfoData(Terron(),'NpcNuke',2,5);",
+                        "      }",
+                        "  \tShipAddCustomShipInfo(Terron(),'BossNuke2','NoShow');",
+                        "  \tShipAddCustomShipInfo(Terron(),'BossNuke3','NoShow');",
+                        "  }",
+                        "  if(Keller()) {",
+                        "      if(ShipFindCustomShipInfoByType(Keller(),'Absorber')==-1) ShipAddCustomShipInfo(Keller(),'Absorber');",
+                        "  \tif(ShipFindCustomShipInfoByType(Keller(),'NpcNuke')==-1) {",
+                        "          ShipAddCustomShipInfo(Keller(),'NpcNuke');",
+                        "          ShipCustomShipInfoData(Keller(),'NpcNuke',2,5);",
+                        "      }",
+                        "  \tShipAddCustomShipInfo(Keller(),'BossNuke2','NoShow');",
+                        "  \tShipAddCustomShipInfo(Keller(),'BossNuke3','NoShow');",
+                        "  }",
+                        "  bossNuke=1;",
+                        "}",
+                        "GTL=GalaxyTechLevel();",
+                        "//Раздача ядерок, абсорберов и генераторов помех",
+                        "//Перебираем все новые корабли в галактике по заданным фильтрам",
+                        "if(GalaxyShipId()>lastShipId) {",
+                        "    tdwd=BuildListOfNewShips(tempArr,lastShipId,1+2+4+8+16+256+4096+8192,1+2+4+8+16+128,1,'','Militiaman1,,Militiaman2,Militiaman3,Rebel,RangerPirate,RangerExplorer,RangerPirateExplorer,Smuggler,EliteWarrior,Merc,Freelancer,RedLeader,AtlantLeader,FeiLeader,Khan,Headhunter,Marauder,PirateCorvette,PirateFrigate,PirateGalleon,Dreadnought,Klissan5,Klissan4,Klissan3,Klissan2,Klissan1,Machpella');",
+                        "    if(tdwd) {    //Если найден хотя бы один корабль",
+                        "        for(i=0;i<ArrayDim(tempArr);i=i+1) {",
+                        "            tdwd=0;    //Обнуляем флаг",
+                        "            chance=0;    //Обнуляем шанс выдачи",
+                        "            tShip=tempArr[i];    //Выбираем корабль",
+                        "            //if(ShipInScript(tShip,0)) continue; //пропуск скриптовых кораблей?",
+                        "            if(IsPlayer(tShip)) continue;",
+                        "            if(ShipOwner(tShip)==Kling && ShipSubType(tShip)==7) continue;    //Пропуск клигов",
+                        "            if(ShipOwner(tShip)==Kling && !ShipSubType(tShip)) continue;    //Пропуск боссов",
+                        "            if(~ShipFindCustomShipInfoByType(tShip, 'ShuNukes_BlockNukes')) continue;",
+                        "            tStr=ShipType(tShip);",
+                        "            //Абсорбер",
+                        "            //Рейнджеры и производные от них",
+                        "            if(tStr=='Ranger' || tStr=='RangerPirate' || tStr=='Freelancer' || tStr=='Merc' || tStr=='PlayerMerc' || tStr=='RangerExplorer' || tStr=='RangerPirateExplorer') chance=8+GTL*2;",
+                        "\t\t\telse if(tStr=='Smuggler') chance=4+GTL;",
+                        "\t\t\telse if(tStr=='Diplomat') chance=4+GTL;",
+                        "\t\t\telse if(tStr=='Transport' || tStr=='Liner') chance=GTL;",
+                        "\t\t\telse if((tStr=='Pirate' && PirateType(tShip)) || tStr=='Rebel' || tStr=='Thug' || tStr=='PirateCorvette') chance=GTL+GetShipPirateRank(tShip)*5;",
+                        "            else if(tStr=='PirateFrigate') chance=GTL*4;",
+                        "\t\t\telse if(tStr=='Pirate' && !PirateType(tShip)) chance=GTL*2;",
+                        "\t\t\telse if((tStr=='Warrior' && ShipSubType(tShip)) || tStr=='Dreadnought' || tStr=='PirateGalleon') chance=GTL*10;    //Крупные корабли",
+                        "\t\t\telse if((tStr=='Warrior' && !ShipSubType(tShip)) || tStr=='EliteWarrior' || tStr=='Militiaman1' || tStr=='Militiaman2' || tStr=='Militiaman3') chance=GTL+ShipRank(tShip)*5;",
+                        "\t\t\telse if(tStr=='Khan' || tStr=='Marauder' || tStr=='Machpella' || tStr=='Handler' || tStr=='Klissan1' || tStr=='Klissan2' || tStr=='Klissan3' || tStr=='Klissan4' || tStr=='Klissan5' || tStr=='KB' || tStr=='AtlantLeader' || tStr=='RedLeader' || tStr=='FeiLeader' || tStr=='MB' || tStr=='Inhibitor') chance=100;",
+                        "\t\t\telse if(ShipOwner(tShip)==5 && ShipSubType(tShip)==6) chance=GTL*10;",
+                        "\t\t\telse if(ShipOwner(tShip)==5 && ShipSubType(tShip)!=6) chance=11;",
+                        "\t\t\telse if(ObjectType(tShip)==4) chance=100;",
+                        "\t\t\telse chance=0;",
+                        "\t\t\tif(Rnd(1,100)<=chance) ShipAddCustomShipInfo(tShip,'Absorber');",
+                        "            //Генератор помех",
+                        "\t\t\tif(tStr=='Ranger' || tStr=='RangerPirate' || tStr=='Freelancer' || tStr=='Merc' || tStr=='PlayerMerc' || tStr=='RangerExplorer' || tStr=='RangerPirateExplorer') chance=4+GTL*2;",
+                        "\t\t\telse if(tStr=='Smuggler') chance=8+GTL;",
+                        "\t\t\telse if(tStr=='Transport' || tStr=='Liner' || tStr=='Diplomat') chance=4+GTL*80/100;",
+                        "\t\t\telse if(tStr=='Pirate' || tStr=='Rebel' || tStr=='Thug' || tStr=='PirateCorvette' || tStr=='PirateFrigate') chance=GetShipPirateRank(tShip)*3;",
+                        "\t\t\telse if((tStr=='Warrior' && ShipSubType(tShip)) || tStr=='Dreadnought' || tStr=='PirateGalleon') chance=GTL*9;",
+                        "\t\t\telse if((tStr=='Warrior' && !ShipSubType(tShip)) || tStr=='EliteWarrior' || tStr=='Militiaman1' || tStr=='Militiaman2' || tStr=='Militiaman3') chance=ShipRank(tShip)*4;",
+                        "\t\t\telse if(tStr=='Khan' || tStr=='Marauder' || tStr=='Handler' || tStr=='AtlantLeader' || tStr=='RedLeader' || tStr=='FeiLeader' || tStr=='MB' || tStr=='Inhibitor' || tStr=='Salvager') chance=100;",
+                        "\t\t\telse if(ShipOwner(tShip)==5 && ShipSubType(tShip)==6) chance=40+GTL*5;",
+                        "\t\t\telse if(ShipOwner(tShip)==5 && ShipSubType(tShip)) chance=6+GTL*90/100;",
+                        "\t\t\telse if(ObjectType(tShip)==4) chance=100;",
+                        "            else chance=0;",
+                        "            if(!ShipProtectability(tShip)) chance=0;",
+                        "\t\t\tif(Rnd(1,100)<=chance) ShipAddCustomShipInfo(tShip,'ECM');",
+                        "            //Ядерное оружие",
+                        "\t\t\tif(ShipCustomFaction(tShip)!='') continue;",
+                        "            if(tStr=='Ranger' || tStr=='RangerPirate' || tStr=='Freelancer' || tStr=='Merc' || tStr=='PlayerMerc' || tStr=='RangerExplorer' || tStr=='RangerPirateExplorer') {chance=4+GTL*2; charge=20;}",
+                        "\t\t\telse if(tStr=='Smuggler') {chance=5+GTL*50/100; charge=20;}",
+                        "\t\t\telse if((tStr=='Pirate' && PirateType(tShip)) || tStr=='Rebel' || tStr=='Thug') {chance=GTL+GetShipPirateRank(tShip)*4; charge=20;}",
+                        "\t\t\telse if(tStr=='Pirate' && !PirateType(tShip)) {chance=9+GTL*120/100; charge=20;}",
+                        "            else if(tStr=='PirateCorvette' || tStr=='PirateFrigate' ) {chance=9+GTL*120/100; charge=20;}",
+                        "\t\t\telse if(tStr=='Warrior' && ShipSubType(tShip) || tStr=='Dreadnought' || tStr=='PirateGalleon') {chance=30+GTL*8; charge=10;}",
+                        "\t\t\telse if((tStr=='Warrior' && !ShipSubType(tShip)) || tStr=='EliteWarrior' || tStr=='Militiaman1' || tStr=='Militiaman2' || tStr=='Militiaman3')  {chance=GTL+ShipRank(tShip)*4; charge=20;}",
+                        "\t\t\telse if(tStr=='Khan' || tStr=='Marauder' || tStr=='Machpella' || tStr=='Handler' || tStr=='KB' || tStr=='AtlantLeader' || tStr=='RedLeader' || tStr=='FeiLeader' || tStr=='MB' || tStr=='Salvager') {chance=100; charge=20;}",
+                        "            else if(tStr=='WB' || tStr=='CB' || tStr=='Inhibitor') {",
+                        "                ShipAddCustomShipInfo(tShip,'RuinsNuke');",
+                        "                ShipCustomShipInfoData(tShip,'RuinsNuke',2,3);",
+                        "                chance=0;",
+                        "            }",
+                        "\t\t\telse if(ShipOwner(tShip)==5) {",
+                        "                if(ShipSubType(tShip)>3) continue;",
+                        "                else if(ShipSubType(tShip)==6) {chance=25+GTL*5; charge=10;}",
+                        "                else {chance=10+GTL*80/100; charge=20;}",
+                        "            }",
+                        "\t\t\telse chance=0;",
+                        "\t\t\tif(Rnd(1,100)<=chance) {",
+                        "                ShipAddCustomShipInfo(tShip,'NpcNuke');",
+                        "                ShipCustomShipInfoData(tShip,'NpcNuke',2,charge);",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "    lastShipId=GalaxyShipId();    //Обновляем Id последнего рожденного корабля",
+                        "}",
+                        "//Таймер до обновления числа доступных ядерок для ВБ",
+                        "if(findsubstr(GameDateTxtByTurn(CurTurn()),CT(\"Script.Mod_ShuNukes.17\"))==0 || findsubstr(GameDateTxtByTurn(CurTurn()),CT(\"Script.Mod_ShuNukes.16\"))==0) {",
+                        "\tif(CurTurn()>=nukesCntUpTimer && upgrade) ammo=6;",
+                        "\telse if(CurTurn()+2500>=nukesCntUpTimer) ammo=4;",
+                        "\telse if(upgrade) ammo=3;",
+                        "\telse ammo=2;",
+                        "}",
+                        "//Для доминиона",
+                        "if(CurTurn()>=nukeUpdCB) {",
+                        "\tif(upgrade) ammo2=3;",
+                        "\telse ammo2=2;",
+                        "\tnukeUpdCB=CurTurn()+Rnd(175,185);",
+                        "}"
+                    ],
+                    "#": 36,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 710
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if (GetShipRuins(Player())) {",
+                        "  if (!PlayerBridge()) {",
+                        "    tdwd = GetShipRuins(Player());",
+                        "    if (ShipType(tdwd) == 'MC' || ShipType(tdwd) == 'RC' || ShipType(tdwd) == 'SB' || ShipType(tdwd) == 'BK' || ShipType(tdwd) == 'PB') {",
+                        "      AddDialogInject('BuyNukeForRuins', '', CT(\"Script.Mod_ShuNukes.29\"), 1);",
+                        "    } else if (ShipType(tdwd) == 'TC') {",
+                        "      AddDialogInject('BuyNukeForRuins', '', CT(\"Script.Mod_ShuNukes.29\"), 1);",
+                        "      if (GalaxyTechLevel() >= 5) {",
+                        "        if (!playerGotECM) {",
+                        "          AddDialogInject('BuyECM', CT(\"Script.Mod_ShuNukes.71\"), CT(\"Script.Mod_ShuNukes.70\"), 1);",
+                        "        }",
+                        "      }",
+                        "    } else if (ShipType(tdwd) == 'WB') {",
+                        "      if (!ShipOnSidePirateClan(Player())) {",
+                        "        if (!playerGotAbsorber) {",
+                        "          if (ShipRank(Player()) >= 2) {",
+                        "            AddDialogInject('BuyAbsorber', CT(\"Script.Mod_ShuNukes.24\"), CT(\"Script.Mod_ShuNukes.23\"), 1);",
+                        "          }",
+                        "        }",
+                        "        if (playerGotNuke) {",
+                        "          if (upgrade) total = 6;",
+                        "          else total = 4;",
+                        "          AddDialogInject('NukeWB', '', CT(\"Script.Mod_ShuNukes.28\"), 1);",
+                        "          if (UselessItemData(PlayerNuke, 1) == total) AddDialogBlock(CT(\"Script.Mod_ShuNukes.28\"), 1);",
+                        "          else if (!ItemIn(PlayerNuke, Player())) AddDialogBlock(CT(\"Script.Mod_ShuNukes.28\"), 1);",
+                        "          else AddDialogBlock(CT(\"Script.Mod_ShuNukes.28\"), 0);",
+                        "          if (FindItemInShip(Player(), PlayerNuke) > 0) {",
+                        "            if (!upgrade && ShipRank(Player()) >= 5 && CurTurn() > nukeLauncherWBUpTimer) AddDialogInject('UpgradeWB', CT(\"Script.Mod_ShuNukes.27\"), CT(\"Script.Mod_ShuNukes.20\"), 1);",
+                        "          }",
+                        "        }",
+                        "        if (!playerGotNuke) {",
+                        "          if (ShipRank(Player()) >= 3) {",
+                        "            AddDialogInject('BuyNukeWB', CT(\"Script.Mod_ShuNukes.75\"), CT(\"Script.Mod_ShuNukes.25\"), 1);",
+                        "          }",
+                        "        }",
+                        "      }",
+                        "    } else if (ShipType(tdwd) == 'CB') {",
+                        "      if (ShipOnSidePirateClan(Player())) {",
+                        "        if (!playerGotAbsorber) {",
+                        "          if (GetShipPirateRank(Player()) >= 2) {",
+                        "            AddDialogInject('BuyAbsorber', CT(\"Script.Mod_ShuNukes.24\"), CT(\"Script.Mod_ShuNukes.23\"), 1);",
+                        "          }",
+                        "        }",
+                        "        if (playerGotNuke) {",
+                        "          if (upgrade) total = 6;",
+                        "          else total = 4;",
+                        "          AddDialogInject('NukeCB', '', CT(\"Script.Mod_ShuNukes.22\"), 1);",
+                        "          if (UselessItemData(PlayerNuke, 1) == total) AddDialogBlock(CT(\"Script.Mod_ShuNukes.22\"), 1);",
+                        "          else if (!ItemIn(PlayerNuke, Player())) AddDialogBlock(CT(\"Script.Mod_ShuNukes.22\"), 1);",
+                        "          else AddDialogBlock(CT(\"Script.Mod_ShuNukes.22\"), 0);",
+                        "          if (FindItemInShip(Player(), PlayerNuke) > 0) {",
+                        "            if (!upgrade && GetShipPirateRank(Player()) >= 5 && CurTurn() > nukeLauncherCBUpTimer) AddDialogInject('UpgradeCB', CT(\"Script.Mod_ShuNukes.21\"), CT(\"Script.Mod_ShuNukes.20\"), 1);",
+                        "          }",
+                        "        }",
+                        "        if (!playerGotNuke) {",
+                        "          if (GetShipPirateRank(Player()) >= 3) {",
+                        "            AddDialogInject('BuyNukeCB', CT(\"Script.Mod_ShuNukes.19\"), CT(\"Script.Mod_ShuNukes.18\"), 1);",
+                        "          }",
+                        "        }",
+                        "      }",
+                        "    }",
+                        "  }",
+                        "}",
+                        "if (GetTalkShip()) {",
+                        "  if (ShipInNormalSpace(Player())) {",
+                        "    if (ShipType(GetTalkShip()) == 'ShuNukes_SelectTargetNuke') AddDialogOverride('SelectTarget', 20, 0);",
+                        "    else if (ShipType(GetTalkShip()) == 'ShuNukes_SelectTargetNova') AddDialogOverride('SelectTarget', 20, 1);",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 37,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 710
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ammo) {",
+                        "  if (upgrade) total=6;",
+                        "  else total=4;",
+                        "  tdwd=total-UselessItemData(PlayerNuke,1);",
+                        "  sum=GalaxyMoney(4)*1.2;",
+                        "  DChange(0);",
+                        "  exit;",
+                        "}",
+                        "if(!ammo) {",
+                        "  DChange(1);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 99,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 425
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ammo2) {",
+                        "  if (upgrade) total=6;",
+                        "  else total=4;",
+                        "  tdwd=total-UselessItemData(PlayerNuke,1);",
+                        "  sum=GalaxyMoney(4)*1.1;",
+                        "  DChange(2);",
+                        "  exit;",
+                        "}",
+                        "if(!ammo2) {",
+                        "  DChange(3);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 100,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 425
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "sum=GalaxyMoney(4)*11+GalaxyMoney(2);",
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 101,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 425
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "sum=GalaxyMoney(4)*10;",
+                        "DChange(5);",
+                        "exit;"
+                    ],
+                    "#": 102,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 370,
+                    "Pos.y": 425
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tdwd=GetShipRuins(Player());",
+                        "if (ShipFindCustomShipInfoByType(tdwd,'RuinsNuke')==-1) num=0;",
+                        "else num=ShipCustomShipInfoData(tdwd,ShipFindCustomShipInfoByType(tdwd,'RuinsNuke'),2);",
+                        "if (GalaxyTechLevel()<3) sum=175000;",
+                        "if (GalaxyTechLevel()==3) sum=200000;",
+                        "if (GalaxyTechLevel()==4) sum=225000;",
+                        "if (GalaxyTechLevel()==5) sum=260000;",
+                        "if (GalaxyTechLevel()==6) sum=295000;",
+                        "if (GalaxyTechLevel()==7) sum=335000;",
+                        "if (GalaxyTechLevel()==8) sum=375000;",
+                        "sum=sum/2;",
+                        "sum=sum+GalaxyMoney(0);",
+                        "if (nuke_cnt==0) sum=sum*40/100;",
+                        "else if (nuke_cnt==1) sum=sum*75/100;",
+                        "if(num==0 && StarOwner(ShipStar(Player()))==2 || num==0 && ShipType(GetShipRuins(Player()))=='PB') {",
+                        "  DChange(11);",
+                        "  exit;",
+                        "}",
+                        "if(num==0 && StarOwner(ShipStar(Player()))!=2 && ShipType(GetShipRuins(Player()))!='PB') {",
+                        "  DChange(6);",
+                        "  exit;",
+                        "}",
+                        "if(num==1) {",
+                        "  DChange(7);",
+                        "  exit;",
+                        "}",
+                        "if(num==2) {",
+                        "  DChange(8);",
+                        "  exit;",
+                        "}",
+                        "if(num==3) {",
+                        "  DChange(9);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 103,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 520,
+                    "Pos.y": 425
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "sum=GalaxyMoney(4)*9.3+GalaxyMoney(1);",
+                        "DChange(10);",
+                        "exit;"
+                    ],
+                    "#": 104,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 425
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "sum=GalaxyMoney(4)*20+GalaxyMoney(3);",
+                        "DChange(12);",
+                        "exit;"
+                    ],
+                    "#": 105,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 910,
+                    "Pos.y": 425
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "sum=GalaxyMoney(4)*18+GalaxyMoney(2);",
+                        "DChange(13);",
+                        "exit;"
+                    ],
+                    "#": 106,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1060,
+                    "Pos.y": 425
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "sum=GalaxyMoney(4)*7*GalaxyDiffLevels(7)/100+GalaxyMoney(2);",
+                        "DChange(14);",
+                        "exit;"
+                    ],
+                    "#": 107,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1210,
+                    "Pos.y": 425
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ArrayClear(tempArr);",
+                        "tStar = ShipStar(Player());",
+                        "for (i = 0; i < StarShips(tStar); i = i + 1) {",
+                        "  tShip = StarShips(tStar, i);",
+                        "  if (Dist(Player(), tShip) > ShipRadarRange(Player())) continue;",
+                        "  if (!ShipInNormalSpace(tShip)) continue;",
+                        "  if (NoTargetToShip(tShip)) continue;",
+                        "  if (IsPlayer(tShip)) continue;",
+                        "  ArrayAdd(tempArr, tShip);",
+                        "}",
+                        "num = GAnswerData; //Ядерка или нова-торпеда",
+                        "if (ArrayDim(tempArr) <= 1) tStr = '</color>' + CT(\"Script.Mod_ShuNukes.80\");",
+                        "else tStr = '</color>' + CT(\"Script.Mod_ShuNukes.79\");",
+                        "DChange(15);",
+                        "exit;"
+                    ],
+                    "#": 108,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1330,
+                    "Pos.y": 425
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if (~GAnswerData) {",
+                        "  tShip = tempArr[GAnswerData];",
+                        "  tStr = '</color>' + Format(CT(\"Script.Mod_ShuNukes.82\"),\"<0>\",Name(tShip));",
+                        "  if (!num) {",
+                        "    tdwd = SpawnMissile(ShipStar(Player()), tShip, CoordX(Player()), CoordY(Player()), Angle(tShip, Player()), 200 + 65 * GTL, 300 + 85 * GTL, 700 + GTL * 50, t_Weapon15, -1, FindBonusByNameInCfg('ShuNukes_Nuke'));",
+                        "    MissileOwner(tdwd, Player());",
+                        "    UselessItemData(PlayerNuke, 1, UselessItemData(CurItem(), 1) - 1);",
+                        "    UselessItemData(CurItem(), 2, 0);",
+                        "  } else {",
+                        "    tdwd = SpawnMissile(ShipStar(Player()), tShip, CoordX(Player()), CoordY(Player()), Angle(tShip, Player()), 4000, 5000, 400, 'nova', -1, FindBonusByNameInCfg('ShuNukes_Nova'));",
+                        "    MissileOwner(tdwd, Player());",
+                        "    for (i = 0; i < ShipItems(Player()); i = i + 1) {",
+                        "      tdwd = ShipItems(Player(), i);",
+                        "      if (EquipmentImageName(tdwd) == 'NovaTorpedo') {",
+                        "        FreeItem(GetItemFromShip(Player(), tdwd));",
+                        "        break;",
+                        "      }",
+                        "    }",
+                        "  }",
+                        "} else tStr = '</color>' + CT(\"Script.Mod_ShuNukes.81\");",
+                        "DChange(16);",
+                        "exit;"
+                    ],
+                    "#": 109,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1510,
+                    "Pos.y": 425
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ammo>=1 && i>=1 && ShipMoney(Player())>=sum) {",
+                        "  DAdd(1);",
+                        "}",
+                        "if(ammo>=2 && tdwd>=2 && ShipMoney(Player())>=sum*2) {",
+                        "  DAdd(3);",
+                        "}",
+                        "if(ammo>=3 && tdwd>=3 && ShipMoney(Player())>=sum*3) {",
+                        "  DAdd(22);",
+                        "}",
+                        "if(ammo>=4 && tdwd>=4 && ShipMoney(Player())>=sum*4) {",
+                        "  DAdd(26);",
+                        "}",
+                        "if(ammo>=5 && tdwd>=5 && ShipMoney(Player())>=sum*5) {",
+                        "  DAdd(27);",
+                        "}",
+                        "if(ammo>=6 && tdwd>=6 && ShipMoney(Player())>=sum*6) {",
+                        "  DAdd(28);",
+                        "}",
+                        "DAdd(2);"
+                    ],
+                    "#": 110,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(0);"
+                    ],
+                    "#": 111,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ammo2>=1 && tdwd>=1 && ShipMoney(Player())>=sum) {",
+                        "  DAdd(5);",
+                        "}",
+                        "if(ammo2>=2 && tdwd>=2 && ShipMoney(Player())>=sum*2) {",
+                        "  DAdd(6);",
+                        "}",
+                        "if(ammo2>=3 && tdwd>=3 && ShipMoney(Player())>=sum*3) {",
+                        "  DAdd(21);",
+                        "}",
+                        "if(ammo2>=4 && tdwd>=4 && ShipMoney(Player())>=sum*4) {",
+                        "  DAdd(23);",
+                        "}",
+                        "if(ammo2>=5 && tdwd>=5 && ShipMoney(Player())>=sum*5) {",
+                        "  DAdd(24);",
+                        "}",
+                        "if(ammo2>=6 && tdwd>=6 && ShipMoney(Player())>=sum*6) {",
+                        "  DAdd(25);",
+                        "}",
+                        "DAdd(7);"
+                    ],
+                    "#": 112,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(4);"
+                    ],
+                    "#": 113,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=sum) {",
+                        "  DAdd(8);",
+                        "}",
+                        "DAdd(11);"
+                    ],
+                    "#": 114,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=sum) {",
+                        "  DAdd(9);",
+                        "}",
+                        "DAdd(10);"
+                    ],
+                    "#": 115,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=sum) {",
+                        "  DAdd(12);",
+                        "}",
+                        "DAdd(13);"
+                    ],
+                    "#": 116,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 880,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=sum) {",
+                        "  DAdd(12);",
+                        "}",
+                        "DAdd(13);"
+                    ],
+                    "#": 117,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1030,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=sum) {",
+                        "  DAdd(12);",
+                        "}",
+                        "DAdd(13);"
+                    ],
+                    "#": 118,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(14);"
+                    ],
+                    "#": 119,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1330,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=sum) {",
+                        "  DAdd(16);",
+                        "}",
+                        "DAdd(15);"
+                    ],
+                    "#": 120,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1480,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=sum) {",
+                        "  DAdd(12);",
+                        "}",
+                        "DAdd(13);"
+                    ],
+                    "#": 121,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1630,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=sum) {",
+                        "  DAdd(18);",
+                        "}",
+                        "DAdd(17);"
+                    ],
+                    "#": 122,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=sum) {",
+                        "  DAdd(19);",
+                        "}",
+                        "DAdd(20);"
+                    ],
+                    "#": 123,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=sum) {",
+                        "  DAdd(30);",
+                        "}",
+                        "DAdd(29);"
+                    ],
+                    "#": 124,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if (ArrayDim(tempArr) > 1) {",
+                        "  for (int i = 1; i < ArrayDim(tempArr); i = i + 1) InjectAnswer('LaunchNuke', Name(tempArr[i]) + '<Object=' + tempArr[i] + ',23,17,0>', i);",
+                        "}",
+                        "InjectAnswer('LaunchNuke', 'Отмена', -1);"
+                    ],
+                    "#": 125,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(31);"
+                    ],
+                    "#": 126,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+1);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum);",
+                        "Sound('Sound.Buy');",
+                        "ammo=ammo-1;"
+                    ],
+                    "#": 127,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+2);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum*2);",
+                        "Sound('Sound.Buy');",
+                        "ammo=ammo-2;"
+                    ],
+                    "#": 128,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+1);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum);",
+                        "Sound('Sound.Buy');",
+                        "ammo2=ammo2-1;"
+                    ],
+                    "#": 129,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+2);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum*2);",
+                        "Sound('Sound.Buy');",
+                        "ammo2=ammo2-2;"
+                    ],
+                    "#": 130,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tdwd=CreateQuestItem('Nuke',ShipOwner(GetShipRuins(Player())));",
+                        "ItemCost(tdwd,sum);",
+                        "UselessItemData(tdwd,1,1);",
+                        "UselessItemData(tdwd,2,5);",
+                        "ItemSize(tdwd,Rnd(40,80));",
+                        "LinkItemToScript(tdwd,PlayerNuke);",
+                        "AddItemToShip(Player(),tdwd);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum);",
+                        "Sound('Sound.Buy');",
+                        "playerGotNuke=1;"
+                    ],
+                    "#": 131,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 940,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tdwd=CreateQuestItem('Nuke',PirateClan);",
+                        "ItemCost(tdwd,sum);",
+                        "UselessItemData(tdwd,1,1);",
+                        "UselessItemData(tdwd,2,5);",
+                        "ItemSize(tdwd,Rnd(40,80));",
+                        "LinkItemToScript(tdwd,PlayerNuke);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum);",
+                        "AddItemToShip(Player(),tdwd);",
+                        "Sound('Sound.Buy');",
+                        "playerGotNuke=1;"
+                    ],
+                    "#": 132,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1060,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum);",
+                        "if (num==0) ShipAddCustomShipInfo(tdwd,'RuinsNuke','',0,1);",
+                        "if (num==1) ShipCustomShipInfoData(tdwd,ShipFindCustomShipInfoByType(tdwd,'RuinsNuke'),2,2);",
+                        "if (num==2) ShipCustomShipInfoData(tdwd,ShipFindCustomShipInfoByType(tdwd,'RuinsNuke'),2,3);",
+                        "num=num+1;",
+                        "nuke_cnt=nuke_cnt+1;"
+                    ],
+                    "#": 133,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1420,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ShipAddCustomShipInfo(Player(),'Absorber');",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum);",
+                        "Sound('Sound.Buy');",
+                        "playerGotAbsorber=1;"
+                    ],
+                    "#": 134,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 615
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tdwd=CreateQuestItem('Nuke2',ShipOwner(GetShipRuins(Player())));",
+                        "ItemCost(tdwd,sum);",
+                        "UselessItemData(tdwd,1,2);",
+                        "UselessItemData(tdwd,2,2);",
+                        "ItemSize(tdwd,Rnd(40,80));",
+                        "if (FindItemInShip(Player(),PlayerNuke)>0) FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),PlayerNuke)));",
+                        "else FreeItem(GetItemFromStorage(FindItemInStorage(PlayerNuke)));",
+                        "LinkItemToScript(tdwd,PlayerNuke);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum);",
+                        "AddItemToShip(Player(),tdwd);",
+                        "Sound('Sound.Buy');",
+                        "upgrade=1;"
+                    ],
+                    "#": 135,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 615
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tdwd=CreateQuestItem('Nuke2',PirateClan);",
+                        "ItemCost(tdwd,sum);",
+                        "UselessItemData(tdwd,1,2);",
+                        "UselessItemData(tdwd,2,2);",
+                        "ItemSize(tdwd,Rnd(40,80));",
+                        "if (FindItemInShip(Player(),PlayerNuke)>0) FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),PlayerNuke)));",
+                        "else FreeItem(GetItemFromStorage(FindItemInStorage(PlayerNuke)));",
+                        "LinkItemToScript(tdwd,PlayerNuke);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum);",
+                        "AddItemToShip(Player(),tdwd);",
+                        "Sound('Sound.Buy');",
+                        "upgrade=1;"
+                    ],
+                    "#": 136,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 615
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+3);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum*3);",
+                        "Sound('Sound.Buy');",
+                        "ammo2=ammo2-3;"
+                    ],
+                    "#": 137,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 615
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+3);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum*3);",
+                        "Sound('Sound.Buy');",
+                        "ammo=ammo-3;"
+                    ],
+                    "#": 138,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 615
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+4);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum*4);",
+                        "Sound('Sound.Buy');",
+                        "ammo2=ammo2-4;"
+                    ],
+                    "#": 139,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 940,
+                    "Pos.y": 615
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+5);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum*5);",
+                        "Sound('Sound.Buy');",
+                        "ammo2=ammo2-5;"
+                    ],
+                    "#": 140,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1060,
+                    "Pos.y": 615
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+6);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum*6);",
+                        "Sound('Sound.Buy');",
+                        "ammo2=ammo2-6;"
+                    ],
+                    "#": 141,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 615
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+4);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum*4);",
+                        "Sound('Sound.Buy');",
+                        "ammo=ammo-4;"
+                    ],
+                    "#": 142,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1300,
+                    "Pos.y": 615
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+5);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum*5);",
+                        "Sound('Sound.Buy');",
+                        "ammo=ammo-5;"
+                    ],
+                    "#": 143,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1420,
+                    "Pos.y": 615
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+6);",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum*6);",
+                        "Sound('Sound.Buy');",
+                        "ammo=ammo-6;"
+                    ],
+                    "#": 144,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1540,
+                    "Pos.y": 615
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ShipAddCustomShipInfo(Player(),'ECM');",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum);",
+                        "Sound('Sound.Buy');",
+                        "playerGotECM=1;"
+                    ],
+                    "#": 145,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ShipDestroy(GetTalkShip(), 1);",
+                        "ArrayClear(tempArr);"
+                    ],
+                    "#": 146,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 640
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "InitPlanet",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "InitStar",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 210,
+                    "Parent": -1,
+                    "#": 31
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "InitStar",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 120,
+                    "Parent": -1,
+                    "#": 30
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "InitStar",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 165,
+                    "Parent": -1,
+                    "#": 29,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "PlayerState",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 325,
+                    "Parent": -1,
+                    "#": 38
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "playerGotNuke",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "nuke_cnt",
+                    "Pos.x": 210,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "playerGotAbsorber",
+                    "Pos.x": 330,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "ammo",
+                    "Pos.x": 570,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Dword",
+                    "Init": "2",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "sum",
+                    "Pos.x": 660,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "nukeUpdCB",
+                    "Pos.x": 750,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "ammo2",
+                    "Pos.x": 900,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Dword",
+                    "Init": "2",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "num",
+                    "Pos.x": 990,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "bossNuke",
+                    "Pos.x": 1080,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "upgrade",
+                    "Pos.x": 1200,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "total",
+                    "Pos.x": 1320,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "nukeLauncherWBUpTimer",
+                    "Pos.x": 1410,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 11,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "nukeLauncherCBUpTimer",
+                    "Pos.x": 1710,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 12,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "nukesCntUpTimer",
+                    "Pos.x": 0,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 13,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tempArr",
+                    "Pos.x": 210,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 14,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "lastShipId",
+                    "Pos.x": 330,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 15,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 480,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 16,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "j",
+                    "Pos.x": 570,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 17,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tdwd",
+                    "Pos.x": 660,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 18,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tShip",
+                    "Pos.x": 750,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 19,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "chance",
+                    "Pos.x": 840,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 20,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "GTL",
+                    "Pos.x": 930,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 21,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tPlanet",
+                    "Pos.x": 1020,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 22,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tStar",
+                    "Pos.x": 1140,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 23,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "nBombCount",
+                    "Pos.x": 1230,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 24,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "novaCount",
+                    "Pos.x": 1380,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 25,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tStr",
+                    "Pos.x": 1530,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 26,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "charge",
+                    "Pos.x": 1620,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 27,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "playerGotECM",
+                    "Pos.x": 1710,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 28,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 39,
+            "End": 99,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 40,
+            "End": 100,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 41,
+            "End": 101,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 42,
+            "End": 102,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 43,
+            "End": 103,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 44,
+            "End": 104,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 45,
+            "End": 105,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 46,
+            "End": 106,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 47,
+            "End": 107,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 48,
+            "End": 108,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 49,
+            "End": 109,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 50,
+            "End": 110,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 51,
+            "End": 111,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 52,
+            "End": 112,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 53,
+            "End": 113,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 54,
+            "End": 114,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 55,
+            "End": 115,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 56,
+            "End": 116,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 57,
+            "End": 117,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 58,
+            "End": 118,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 59,
+            "End": 119,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 60,
+            "End": 120,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 61,
+            "End": 121,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 62,
+            "End": 122,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 63,
+            "End": 123,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 64,
+            "End": 124,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 65,
+            "End": 125,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 66,
+            "End": 126,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 68,
+            "End": 127,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 70,
+            "End": 128,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 72,
+            "End": 129,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 73,
+            "End": 130,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 75,
+            "End": 131,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 76,
+            "End": 132,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 79,
+            "End": 133,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 83,
+            "End": 134,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 85,
+            "End": 135,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 86,
+            "End": 136,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 88,
+            "End": 137,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 89,
+            "End": 138,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 90,
+            "End": 139,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 91,
+            "End": 140,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 92,
+            "End": 141,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 93,
+            "End": 142,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 94,
+            "End": 143,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 95,
+            "End": 144,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 97,
+            "End": 145,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 98,
+            "End": 146,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 30,
+            "End": 29,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 31,
+            "End": 29,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 32,
+            "End": 30,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 33,
+            "End": 31,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 33,
+            "End": 38,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

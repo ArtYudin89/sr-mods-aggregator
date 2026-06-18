@@ -1,0 +1,61 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            Sponsorship ^{
+                Description=Имитируем спонсирование рейнджером-торгашом
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ShipCustomShipInfoData(0,CurInfo(),1) == 0)
+                    02 ^{
+                        01=int i,j;
+                        02=for(i=0;StarShips(ShipStar(ScriptItemActShip()))>i;i=i+1)
+                        03 ^{
+                            01=dword tdwd = StarShips(ShipStar(ScriptItemActShip()),i);
+                            02=if(GetShipRuins(tdwd) != 0)
+                            03 ^{
+                                01=if(ShipType(GetShipRuins(tdwd)) == 'BK')
+                                02 ^{
+                                    01=if(tdwd == Player()) continue;
+                                    02=if(ShipType(tdwd) != 'Ranger') continue;
+                                    03=if(RangerStatus(tdwd) != 0) continue;
+                                    04=if(Rnd(1,3) == 3)
+                                    05 ^{
+                                        01=int rand = Rnd(1,2);
+                                        02=if(rand == 1)
+                                        03 ^{
+                                            01=AddPlanetNews(Format('Рейнджер name проявил невероятную щедрость и внёс в фонд бедных рейнджеров серьёзный вклад в виде нескольких тысяч кредитов. Эти средства будут использованы для оказания помощи бедным участникам Корпуса.','name',ShortName(tdwd)));
+                                            02=SetRangersCapital = ImportedFunction('UtilityFunctions', 'SetRangersCapital');
+                                            03=SetRangersCapital(RangersCapital+Rnd(10000,40000),0);
+                                        }
+                                        04=if(rand == 2)
+                                        05 ^{
+                                            01=for(j=0;StarPlanets(ShipStar(ScriptItemActShip()))>j;j=j+1)
+                                            02 ^{
+                                                01=if(PlanetOwner(StarPlanets(ShipStar(ScriptItemActShip()),j)) < 5)
+                                                02 ^{
+                                                    01=dword tplan = StarPlanets(ShipStar(ScriptItemActShip()),j);
+                                                    02=break;
+                                                }
+                                                03=else continue;
+                                            }
+                                            03=int rnd2 = Rnd(2,4);
+                                            04=for(j=0;rnd2>j;j=j+1)
+                                            05 ^{
+                                                01=ShipRefit(BuyWarrior(tplan,500));
+                                            }
+                                            06=AddPlanetNews(Format('Покупка cnt военных кораблей - достойный взнос от рейнджера name в пользу победы, а ещё - пример для прочих деловых граждан Коалиции, что способствовать приближению победы можно и за офисным столом','name',ShortName(tdwd),'cnt',rnd2));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    03=else ShipCustomShipInfoData(0,CurInfo(),1,ShipCustomShipInfoData(0,CurInfo(),1) - 1);
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+        }
+    }
+}

@@ -1,0 +1,209 @@
+ActCodeBlocksList ^{
+    HybridDroidActCode ^{
+        00=[t_OnDealingFatalDamage,t_OnStep|5]
+        01=dword cur_item = CurItem();
+        02=dword cur_ship = ScriptItemActShip();
+        03=if(ItemIsInUse(cur_item) && !ItemIsBroken(cur_item))
+        04 ^{
+            01=int att_bonus = ScriptItemData(cur_item, 1);
+            02=int def_bonus = ScriptItemData(cur_item, 2);
+            03=int mov_bonus = ScriptItemData(cur_item, 3);
+            04=int last_bonus = ScriptItemTextData(cur_item, 1);
+            05=if(ScriptItemActionType(t_OnDealingFatalDamage))
+            06 ^{
+                01=att_bonus = att_bonus + 100;
+                02=if((att_bonus + def_bonus + mov_bonus) > 1000)
+                03 ^{
+                    01=att_bonus = (99 * att_bonus) / 100;
+                    02=def_bonus = (99 * def_bonus) / 100;
+                    03=mov_bonus = (99 * mov_bonus) / 100;
+                }
+                04=ScriptItemData(cur_item, 1, att_bonus);
+                05=ScriptItemData(cur_item, 2, def_bonus);
+                06=ScriptItemData(cur_item, 3, mov_bonus);
+                07=exit;
+            }
+            07=if(IsPlayer(cur_ship))
+            08 ^{
+                01=int check = GalaxyEvents() - 1;
+                02=while(check >= 0)
+                03 ^{
+                    01=if(GalaxyEventDate(check) >= CurTurn())
+                    02 ^{
+                        01=if(GalaxyEventType(check) == 'PlayerAssistKillsShip')
+                        02 ^{
+                            01=att_bonus = att_bonus + 100;
+                        }
+                    }
+                    03=if(GalaxyEventDate(check) < CurTurn())
+                    04 ^{
+                        01=check = 0;
+                    }
+                    05=check = check - 1;
+                }
+            }
+            09=def_bonus = def_bonus + HullDamage(cur_ship);
+            10=mov_bonus = mov_bonus + 30 * PlayerQuestInProgress();
+            11=check = 0;
+            12=while(check < 8)
+            13 ^{
+                01=mov_bonus = mov_bonus + GoodsCount(cur_ship, check) / 20;
+                02=check = check + 1;
+            }
+            14=if(ShipGetBad(cur_ship) && ShipSpeed(cur_ship))
+            15 ^{
+                01=if(ShipSpeed(ShipGetBad(cur_ship)) > ShipSpeed(cur_ship))
+                02 ^{
+                    01=mov_bonus = mov_bonus + 100 * ShipSpeed(ShipGetBad(cur_ship)) / ShipSpeed(cur_ship);
+                }
+            }
+            16=if(ShipInHyperSpace(cur_ship))
+            17 ^{
+                01=mov_bonus = mov_bonus + 30;
+            }
+            18=if((att_bonus + def_bonus + mov_bonus) > 1000)
+            19 ^{
+                01=att_bonus = (99 * att_bonus) / 100;
+                02=def_bonus = (99 * def_bonus) / 100;
+                03=mov_bonus = (99 * mov_bonus) / 100;
+            }
+            20=int sum_bonus = att_bonus + def_bonus + mov_bonus;
+            21=int nearest_bonus_distance = 1000;
+            22=int nearest_bonus = 6;
+            23=check = 0;
+            24=while(check < 7)
+            25 ^{
+                01=int cur_point_distance = abs(GetValueFromScript('PC_fem_rangers', 'points_a', check) - (att_bonus * 100) / sum_bonus);
+                02=cur_point_distance = cur_point_distance + abs(GetValueFromScript('PC_fem_rangers', 'points_d', check) - (def_bonus * 100) / sum_bonus);
+                03=cur_point_distance = cur_point_distance + abs(GetValueFromScript('PC_fem_rangers', 'points_m', check) - (mov_bonus * 100) / sum_bonus);
+                04=if(cur_point_distance < nearest_bonus_distance)
+                05 ^{
+                    01=nearest_bonus_distance = cur_point_distance;
+                    02=nearest_bonus = check;
+                }
+                06=check = check + 1;
+            }
+            26=if(nearest_bonus != last_bonus)
+            27 ^{
+                01=if(~FindBonusByCustomTag(GetValueFromScript('PC_fem_rangers', 'points_bonus', nearest_bonus)))
+                02 ^{
+                    01=SpecialToEquipment(FindBonusByCustomTag(GetValueFromScript('PC_fem_rangers', points_bonus, nearest_bonus)), cur_item);
+                    02=att_bonus = att_bonus / 2 + (sum_bonus * GetValueFromScript('PC_fem_rangers', 'points_a', nearest_bonus)) / 200;
+                    03=def_bonus = def_bonus / 2 + (sum_bonus * GetValueFromScript('PC_fem_rangers', 'points_d', nearest_bonus)) / 200;
+                    04=mov_bonus = mov_bonus / 2 + (sum_bonus * GetValueFromScript('PC_fem_rangers', 'points_m', nearest_bonus)) / 200;
+                }
+                03=ShipCalcParam(cur_ship);
+                04=last_bonus = nearest_bonus;
+                05=Ether(2, '6E34ABFA-A3A1-4512-B35B-89DD324A99C9', Format(CT('Script.PC_fem_rangers.325'), '<0' + '>', GetValueFromScript('PC_fem_rangers', 'mode_name', nearest_bonus)));
+            }
+            28=ScriptItemData(cur_item, 1, att_bonus);
+            29=ScriptItemData(cur_item, 2, def_bonus);
+            30=ScriptItemData(cur_item, 3, mov_bonus);
+            31=ScriptItemTextData(cur_item, 1, last_bonus);
+        }
+    }
+}
+Script ^{
+    Mod_DevKit ^{
+        100=Военный
+        101=Пиратский
+        102=Рейнджер
+        103=Транспортный
+        104=Выполнено
+        105=Консоль
+        106=Карта открыта
+        107=На сколько?
+        110=Открыть всю карту
+        111=Ввести нужный размер
+        112=Повысить коалиционное
+        113=Повысить пиратское
+        114=Стать Бароном
+        115=Стать Адмиралом
+        116=Какого тех.уровня?
+        117=A
+        118=B
+        119=C
+        12=Раса
+        120=D
+        121=E
+        122=F
+        123=G
+        124=H
+        125=Базы созданы в данной системе
+        126=Ваш нод-счёт пополнен, а физические ноды доставлены в трюм
+        127=Ввести нужное количество
+        128=Читерный двигатель
+        129=Какой расы?
+        13=Малоки
+        130=Люди
+        132=Пираты
+        133=Доминаторы
+        134=Неизвестные
+        135=Читерный радар
+        137=Какое количество?
+        138=Какое количество нодов получить физически и на какое пополнить нод-счёт?
+        14=Пеленги
+        141=Быстрое оборудования для тестинга
+        144=Телепортация в другую систему
+        146=Куда?
+        147=Готово.
+        148=Никуда я телепортироваться не хочу
+        149=Голопроектор, Пульсар, Блинкер (модуль SubSpaceBase)
+        150=Убить пиратский клан
+        152=Из модуля ExpArts
+        153=Из модуля ExpAcryn
+        154=<0>
+        16=Феяне
+        17=Гаальцы
+        19=Получить двигатель
+        21=Получить сканер
+        22=Получить радар
+        23=Получить дроид
+        24=Получить захват
+        27=Какое именно?
+        28=Получить оборудование
+        29=Получить корпус
+        3=DevKit
+        30=Получить ГЗП
+        32=Деньги переведены
+        33=Получить деньги
+        34=Ввести нужную сумму
+        37=Получить артефакты
+        38=Только Транклюкатора
+        4=Функции для тестирования
+        42=Бак заправлен
+        43=Заправить бак
+        44=Выход
+        45=Получить всё сразу
+        46=Получить микромодули
+        47=Получить оружие
+        49=Оригинальное
+        52=Звание повышено
+        54=Повысить звание
+        57=Какие именно?
+        58=Оригинальные
+        61=Создать базы
+        62=ЧД создана
+        63=Создать ЧД
+        65=Получить ноды
+        70=Артефакты доставлены в трюм
+        71=Микромодули доставлены в трюм
+        74=Создать планету
+        75=Загрузить антидоминатор программы
+        76=Программы загружены
+        79=Корпус расширен
+        8=Спасибо!
+        80=Увеличить размер корпуса
+        82=Починить оборудование
+        88=Экспериментальное оружие
+        9=Получить бак
+        90=Доставлено в трюм или на склад
+        92=Планета создана
+        93=Оборудование отремонтировано
+        94=Мабокит (Evolution)
+        95=Корпус Клещ (Expansion)
+        96=ФизГан (Expansion)
+        98=Какого типа?
+        99=Корпус Тень Империи
+    }
+}

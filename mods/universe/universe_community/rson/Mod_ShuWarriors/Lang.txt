@@ -1,0 +1,472 @@
+FormInfo ^{
+    Blazeroids=Блазероиды
+    Kelleroids=Келлероиды
+    Terronoids=Терроноиды
+    align_right=<align=right>
+    td_310=<td=310>
+    td_312=<td=312>
+    td_324=<td=324>
+    td_325=<td=325>
+}
+GalaxyNews ^{
+    WBGoToEnemyStar ^{
+        Create=Срочная новость из системы <WBStar>!
+        Create=Военная база <WB> планирует совершить беспрецедентную операцию по освобождению системы <StarEnemy>, в которой примут участие элитные армейские подразделения. У рейнджеров также имеется возможность присоединиться к данной акции, дата которой назначена на <Date>. Сообщается, что более подробные инструкции пилоты получат на военной базе.
+        Create1=По сообщению компетентных источников, система <StarEnemy> скоро будет освобождена. Беспрецедентная военная операция начнётся <Date>.
+        Create1=Всем свободным пилотам приказ собраться на военной базе <WB> (система <WBStar>). Поспешите, боевые места строго ограничены!
+        Create2=Наш источник в военных кругах сообщает, что <Date> военная база <WB> собирается совершить гиперпространственный скачок в захваченную врагом систему <StarEnemy>, чтобы раз и навсегда освободить её от незваных оккупантов.
+        Create2=Желающим присоединиться к атаке рекомендуется как можно скорее направиться в систему <WBStar>, где военная база <WB> будет ожидать всех неравнодушных пилотов.
+    }
+}
+Script ^{
+    Mod_ShuWarriors ^{
+        40=<br>
+        41=<0>
+        BattleshipDeclension=Линейным кораблём
+        DreadnoughtDeclension=Дредноутом
+        MilitaryBaseShort=Воен. база
+        MilitaryOperationWBDialog ^{
+            OnLevel0 ^{
+                PlayerRequestOperation=Эмм... я хотел бы тут попросить вас... военную операцию начать
+                PlayerRequestOperationNo=Грубиян!
+                WBRequestOperationNo=Ахахаха! АХАХАХА!!! Ну, <Player> - ну, насмешил! Думаешь, каждому встречному поперечному пройдохе, только вчера получившему значок рейнджера, мы теперь должны в ноги кланяться? Вот уж дудки!
+                WBRequestOperationNo=Прилетай, как военного опыта поднаберёшься да командовать подучишься. А то ишь какой "адмирал" выискался! А ну-ка шагом марш отседова!
+            }
+            OnLevel1 ^{
+                PlayerAfterPlanningNotFound=И всё же это печально
+                PlayerAskWBPrepareStatus=Я бы хотел организовать военную операцию
+                PlayerBeginOperation=Само собой - вот деньги
+                PlayerCancelOperation=Да нет, вы знаете - это как-то уж чересчур
+                PlayerConfirmationNo=Что-то, чувствую я, о таком вложении можно неслабо пожалеть - я пас
+                PlayerConfirmationYes=Ладно, раз это пойдёт на общее благо, то не жалко - согласен
+                PlayerPrepareStatus=Что ж, понятно
+                PlayerRequestOperation=Я бы хотел организовать военную операцию
+                PlayerRequestOperationNoTargetStars=Что ж, понятно
+                PlayerRequestOperationNoWarriors=Что ж, понятно
+                WBAfterPlanning=Слова не мальчика, но мужа! Ну, тогда сейчас соберём аналитиков и прикинем что почём.
+                WBAfterPlanning=...
+                WBAfterPlanning=Итак, перед тобой наброски разработанного нами плана. По нашим расчётам, мы должны смести врага одной левой, от тебя требуется лишь проспонсировать данное мероприятие. Надеюсь, сумма приемлемая?
+                WBAfterPlanning=<clr><clrEnd>
+                WBAfterPlanning=Атакуемая система: <StarToAttack>
+                WBAfterPlanning=Численность наших сил: <AlliesNumbers>
+                WBAfterPlanning=Численность противника: <EnemyNumbers>
+                WBAfterPlanning=Место сбора: <GatheringPlace>
+                WBAfterPlanning=Дата начала атаки: <AttackDate>
+                WBAfterPlanning=Стоимость операции: <Cost> cr.
+                WBAfterPlanningNotFound=Слова не мальчика, но мужа! Ну, тогда сейчас соберём аналитиков и прикинем что почём.
+                WBAfterPlanningNotFound=...
+                WBAfterPlanningNotFound=Что ж, хороших новостей в этот раз не предвидится. Мы долго спорили всем отделом и пришли к заключению, что организовать успешную операцию в настоящее время попросту невозможно. Абсолютно все шансы против нас, для атаки врага сил сектора <Sector> не хватит. Однако не вешай нос, <PlayerRank>! Как только наши верфи наклепают новых ударных кораблей, мы непременно покажем этим утыркам кто кого!
+                WBBeginOperation=Вот это разговор! Товарищи офицеры - вы всё слышали. Совсем скоро наши парни отправятся в бой, который возможно станет для них последним. Каждому из вас в грядущие дни предстоит много работы, и я ожидаю, что вы достойно выполните свой долг. Планируемая дата начала наступления - <AttackDate>. Все свободны.
+                WBCancelOperation=А чего ж тогда так в инвесторы рвался, а? С серьёзными намереньями пришёл, а теперь ему задний ход подавай? Только зря из-за тебя "Свиндевс" запускали!
+                WBConfirmationNo=Ха! Что, сдрейфил, "инвестор"? Ну, с паршивой овцы спрос невелик, так что особо чморить тебя за это не стану. Лети лучше дальше минеральчики собирай.
+                WBPrepareStatus=Наша база сейчас занята подготовкой заказанной тобой атаки на систему <StarToAttack>, а заниматься несколькими операциями сразу мы не можем. Возвращайся после того, как наши парни будут отправлены в бой.
+                WBRequestOperation=Что, <PlayerRank>, уже считаешь себя достаточно опытным для стратегического командования? Ну а вот я тебя таковым не считаю.
+                WBRequestOperation=Тем не менее, если имеется искреннее желание помочь общему делу - такое у нас всегда приветствуется. Выбирать направление удара мы тебе, конечно, не дадим, но зато тебе будет предоставлена честь оплатить установочный сбор для организации атаки. А ещё твоё имя будет отпечатано как минимум на одном использованном в наступлении против жестянок снаряде. Ну, что скажешь, <PlayerRank>?
+                WBRequestOperationNoTargetStars=Я бы, может, и согласился дать тебе возможность проспонсировать такое мероприятие, но, к сожалению, наш аналитический отдел не нашёл в Галактике ни одной подходящей для атаки системы. Похоже, мы всех победили.
+                WBRequestOperationNoWarriors=Я бы, может, и согласился дать тебе возможность проспонсировать такое мероприятие, но судя по нашим последним передачам, в секторе <Sector> не осталось ни одного регулярного военного корабля, который можно было бы в скором времени отправить в бой. Похоже, мы здесь совсем одни.
+            }
+            OnLevel2 ^{
+                PlayerAskWBPrepareStatus=Как там идёт подготовка к военной операции?
+                PlayerBeginOperation=Начать операцию
+                PlayerCancelOperation=Отменить операцию
+                PlayerConfirmationNo=Пожалуй, я слегка поторопился - надо ещё раз хорошенько всё обдумать
+                PlayerConfirmationYes=Конечно!
+                PlayerPlanningChooseAttackDate=Выбрать дату атаки
+                PlayerPlanningChooseAttackDateChoose=Укажите желаемую дату начала атаки:
+                PlayerPlanningChooseAttackers=Выбрать состав атакующих
+                PlayerPlanningChooseAttackersAddAll=Выбрать всех
+                PlayerPlanningChooseAttackersRemoveAll=Отменить всех
+                PlayerPlanningChooseBack=Назад
+                PlayerPlanningChooseConstructionOrderAddAll=Задействовать все
+                PlayerPlanningChooseConstructionOrderRemoveAll=Отменить все
+                PlayerPlanningChooseFlagship=Выбрать флагман
+                PlayerPlanningChooseGatheringPlace=Выбрать место сбора
+                PlayerPlanningChooseGatheringPlaceNotEnoughShips=(недостаточно атакующих кораблей)
+                PlayerPlanningChooseRemoveFlagship=Отменить выбор
+                PlayerPlanningChooseStar=Выбрать атакуемую систему
+                PlayerPlanningChooseStarToAttack=<Star>
+                PlayerPlanningChooseStarUnderAttack=(под атакой)
+                PlayerPlanningConstructionOrder=Заказать постройку кораблей
+                PlayerPlanningConstructionOrderPlanet=Верфь планеты <Planet>
+                PlayerPlanningConstructionOrderPlanetSet=(<color=0,132,15>запущена</color>)
+                PlayerPlanningDone=Завершить планирование
+                PlayerPrepareStatusDelayed=Неплохо бы поторопиться
+                PlayerPrepareStatusOk=Отлично!
+                PlayerRequestOperation=Я бы хотел организовать военную операцию
+                PlayerRequestOperationNoTargetStars=Что ж, понятно
+                PlayerRequestOperationNoWarriors=Что ж, понятно
+                PlayerToPlanning=Перейти к планированию
+                WBAfterPlanning=Ну что, <PlayerRank> - спланировал операцию? Готов поспорить, что-то ты да упустил. Но на то и нужны старшие по званию верно, хе-хе? Но если честно, как по мне - уж коли численность за нами, так тут и рассуждать нечего.
+                WBAfterPlanning=<clr><clrEnd>
+                WBAfterPlanning=Атакуемая система: <StarToAttack>
+                WBAfterPlanning=Численность наших сил: <AlliesNumbers>
+                WBAfterPlanning=Численность противника: <EnemyNumbers>
+                WBAfterPlanning=Место сбора: <GatheringPlace>
+                WBAfterPlanning=Дата начала атаки: <AttackDate>
+                WBAfterPlanning=Стоимость операции: <Cost> cr.
+                WBBeginOperation=Неплохой план, <PlayerRank>! Товарищи офицеры, совсем скоро наши парни отправятся в бой, который возможно станет для них последним. Каждому из вас в грядущие дни предстоит много работы, и я ожидаю, что вы достойно выполните свой долг. Планируемая дата начала наступления - <AttackDate>. Все свободны.
+                WBBeginOperation=Также буду искренне рад, если ты сможешь лично возглавить наших парней в наступлении, <Player>.
+                WBCancelOperation=Возникли какие-то сложности, <PlayerRank>? Понимаю - планирование штука нелёгкая. Дай знать, если захочешь попробовать снова.
+                WBConfirmationNo=Обидно слышать, <PlayerRank>. Я уже было понадеялся на хорошую битву. Надеюсь, в следующий раз ты меня не разочаруешь.
+                WBConfirmationYes=Вот это настрой, <PlayerRank>! В таком случае дай нам несколько минут, чтобы уточнить все данные.
+                WBConfirmationYes=...
+                WBConfirmationYes=Итак, перед тобой экран планирования операции - все наши оперативные данные как на ладони. Удобно, правда? В общем, как закончишь с планированием - дай знать, чтобы я мог отдать приказ к началу сборов.
+                WBConfirmationYes=<clr><clrEnd>
+                WBConfirmationYes=Атакуемая система: <StarToAttack>
+                WBConfirmationYes=Численность наших сил: <AlliesNumbers>
+                WBConfirmationYes=Численность противника: <EnemyNumbers>
+                WBConfirmationYes=Место сбора: <GatheringPlace>
+                WBConfirmationYes=Дата начала атаки: <AttackDate>
+                WBConfirmationYes=Стоимость операции: <Cost> cr.
+                WBDateStatusDelayed=Пока что отстаём от графика всего на <AttackDate> дн., но как только все отстающие прибудут в точку сбора в систему <GatheringStar> - мы тут же отправляем всех в атаку на систему <StarToAttack>.
+                WBDateStatusOk=Налёт на систему <StarToAttack> запланирован на <AttackDate>. Наши ребята уже стягиваются к точке сбора в системе <GatheringStar>.
+                WBPlanningScreen=Перед вами развёрнутая голографическая карта изученного рукава Галактики, на которой красной точкой выделена система, выбранная для нанесения удара. Ниже неё расположен монитор для оценки и выбора ваших наступательных сил.
+                WBPlanningScreen=<SplitLine>
+                WBPlanningScreen=Цель атаки: <Indent><StarToAttack>
+                WBPlanningScreen=Численность ваших сил: <Indent><AlliesNumbers>
+                WBPlanningScreen=Численность противника: <Indent><EnemyNumbers>
+                WBPlanningScreen=Соотношение сил: <Indent><ForcesRatio>
+                WBPlanningScreen=Флагман: <Indent><Flagship>
+                WBPlanningScreen=Место сбора: <Indent><GatheringPlace>
+                WBPlanningScreen=Дата начала: <Indent><AttackDate>
+                WBPlanningScreen=<SplitLine>
+                WBPlanningScreen=<clr><clrEnd>
+                WBPlanningScreen=Участвующие в атаке корабли: <AttackShipsList>
+                WBPlanningScreen=<clr><clrEnd>
+                WBPlanningScreen=Стоимость операции: <Cost> cr.
+                WBPlanningScreenDateNotChoosed=Не выбрана
+                WBPlanningScreenFlagshipNotChoosed=Не выбран
+                WBPlanningScreenGatherNotChoosed=Не выбрано
+                WBPlanningScreenShipsNotChoosed=Нет
+                WBPlanningScreenStarNotChoosed=Не выбрана
+                WBPrepareStatus=Подготовка в самом разгаре, <PlayerRank>. Офицеры потребляют бойкофе декалитрами - каждый хочет как можно лучше выполнить свой долг, дабы не подставить под удар боевых товарищей. <DateStatus>
+                WBPrepareStatus=Вот текущий статус всех официальных участников атаки: <AttackShipsList>
+                WBPrepareStatusShipArrived=(<color=0,132,15>прибыл</color>)
+                WBPrepareStatusShipBuilding=(<color=0,50,200>в постройке</color>)
+                WBPrepareStatusShipOnItsWay=(<color=0,50,200>в пути</color>)
+                WBPrepareStatusShipShipDelayed=(<color=255,0,0>опаздывает</color>)
+                WBRequestOperation=Что ж, инициатива похвальная, <PlayerRank>.
+                WBRequestOperation=Как ты, вероятно, в курсе, командование флота приветствует инициативу опытных рейнджеров в организации атак, тем более тех, которые они соглашаются частично проспонсировать. Так что снабжение наших парней оружием, боеприпасами и прочим необходимым в бою снаряжением - всё на тебе. Выбрать систему для атаки ты, конечно же, не сможешь, но ограниченный доступ к нашему штабному терминалу планирования мы тебе предоставим - заслужил. Кроме того, частичную <clr>координацию<clrEnd> нашими силами уже в самом бою и даже прямое управление собственным <clr>флагманом<clrEnd>, при его наличии в составе атакующих, мы тебе также гарантируем.
+                WBRequestOperation=Ну, что скажешь, <PlayerRank> - всё ещё рвёшься в бой?
+                WBRequestOperationNoTargetStars=Сожалею, <PlayerRank>, но наш аналитический отдел не нашёл в Галактике ни одной подходящей для атаки системы. Похоже, мы всех победили.
+                WBRequestOperationNoWarriors=Сожалею, <PlayerRank>, но судя по нашим последним передачам, в секторе <Sector> не осталось ни одного регулярного военного корабля, который можно было бы в скором времени отправить в бой. Похоже, мы здесь совсем одни.
+            }
+            OnLevel3 ^{
+                PlayerAskWBPrepareStatus=Как там идёт подготовка к военной операции?
+                PlayerBeginOperation=Начать операцию
+                PlayerCancelOperation=Отменить операцию
+                PlayerConfirmationNo=Пожалуй, я слегка поторопился - надо ещё раз хорошенько всё обдумать
+                PlayerConfirmationYes=Конечно!
+                PlayerPlanningChooseAttackDate=Выбрать дату атаки
+                PlayerPlanningChooseAttackDateChoose=Укажите желаемую дату начала атаки:
+                PlayerPlanningChooseAttackers=Выбрать состав атакующих
+                PlayerPlanningChooseAttackersAddAll=Выбрать всех
+                PlayerPlanningChooseAttackersRemoveAll=Отменить всех
+                PlayerPlanningChooseBack=Назад
+                PlayerPlanningChooseConstructionOrderAddAll=Задействовать все
+                PlayerPlanningChooseConstructionOrderRemoveAll=Отменить все
+                PlayerPlanningChooseFlagship=Выбрать флагман
+                PlayerPlanningChooseGatheringPlace=Выбрать место сбора
+                PlayerPlanningChooseGatheringPlaceNotEnoughShips=(недостаточно атакующих кораблей)
+                PlayerPlanningChooseRemoveFlagship=Отменить выбор
+                PlayerPlanningChooseStar=Выбрать атакуемую систему
+                PlayerPlanningChooseStarToAttack=<Star>
+                PlayerPlanningChooseStarUnderAttack=(под атакой)
+                PlayerPlanningConstructionOrder=Заказать постройку кораблей
+                PlayerPlanningConstructionOrderPlanet=Верфь планеты <Planet>
+                PlayerPlanningConstructionOrderPlanetSet=(<color=0,132,15>запущена</color>)
+                PlayerPlanningDone=Завершить планирование
+                PlayerPrepareStatusDelayed=Надо поднажать!
+                PlayerPrepareStatusOk=Отлично!
+                PlayerRequestOperation=Я желаю организовать военную операцию
+                PlayerRequestOperationNoTargetStars=Что ж, понятно
+                PlayerRequestOperationNoWarriors=Что ж, понятно
+                PlayerToPlanning=Перейти к планированию
+                WBAfterPlanning=Ну что, <PlayerRank> - спланировал операцию? Готов объявить о начале наступления? Как по мне - коли численность за нами, так тут и рассуждать нечего!
+                WBAfterPlanning=<clr><clrEnd>
+                WBAfterPlanning=Атакуемая система: <StarToAttack>
+                WBAfterPlanning=Численность наших сил: <AlliesNumbers>
+                WBAfterPlanning=Численность противника: <EnemyNumbers>
+                WBAfterPlanning=Место сбора: <GatheringPlace>
+                WBAfterPlanning=Дата начала атаки: <AttackDate>
+                WBAfterPlanning=Стоимость операции: <Cost> cr.
+                WBBeginOperation=Отличный план, <PlayerRank>! Товарищи офицеры - вы слышали коллегу. Совсем скоро наши парни отправятся в бой, который возможно станет для них последним. Каждому из вас в грядущие дни предстоит много работы, и я ожидаю, что вы достойно выполните свой долг. Планируемая дата начала наступления - <AttackDate>. Все свободны.
+                WBBeginOperation=Также буду искренне рад, если ты сможешь лично возглавить наших парней в наступлении, <Player>.
+                WBBeginOperationWithWB=Отличный план, <PlayerRank>! Товарищи офицеры - вы слышали коллегу. Совсем скоро мы отправимся в бой, и я ожидаю, что каждый из вас выполнит свой долг с честью! Планируемая дата начала наступления - <AttackDate>. Все свободны.
+                WBBeginOperationWithWB=Также искренне надеюсь увидеть и тебя в наших бравых рядах, <Player>. Свободное место в нашей криокапсуле для тебя уже забронировано.
+                WBCancelOperation=Возникли непредвиденные сложности, <PlayerRank>? Понимаю - планирование штука нелёгкая. Дай знать, если захочешь составить новый план.
+                WBConfirmationNo=Как скажешь, <PlayerRank>. Отбой, парни!
+                WBConfirmationNo=В таком случае будем ждать от тебя новых креативных идей.
+                WBConfirmationYes=Отлично, <PlayerRank>! В таком случае дай нам ещё пару минут, чтобы уточнить все данные.
+                WBConfirmationYes=...
+                WBConfirmationYes=Итак, перед тобой экран планирования операции - все наши оперативные данные как на ладони. Удобно, правда? В общем, как закончишь с планированием - дай знать, чтобы я мог отдать приказ к началу сборов.
+                WBConfirmationYes=<clr><clrEnd>
+                WBConfirmationYes=Атакуемая система: <StarToAttack>
+                WBConfirmationYes=Численность наших сил: <AlliesNumbers>
+                WBConfirmationYes=Численность противника: <EnemyNumbers>
+                WBConfirmationYes=Место сбора: <GatheringPlace>
+                WBConfirmationYes=Дата начала атаки: <AttackDate>
+                WBConfirmationYes=Стоимость операции: <Cost> cr.
+                WBDateStatusDelayed=Пока что отстаём от графика всего на <AttackDate> дн., но как только все отстающие прибудут в точку сбора в систему <GatheringStar> - мы тут же отправляем всех в атаку на систему <StarToAttack>.
+                WBDateStatusOk=Налёт на систему <StarToAttack> запланирован на <AttackDate>. Наши ребята уже стягиваются к точке сбора в системе <GatheringStar>.
+                WBPlanningScreen=Перед вами развёрнутая голографическая карта изученного рукава Галактики, на которой красными точками выделены возможные системы для нанесения удара. Ниже неё расположен монитор для оценки и выбора ваших наступательных сил.
+                WBPlanningScreen=<SplitLine>
+                WBPlanningScreen=Цель атаки: <Indent><StarToAttack>
+                WBPlanningScreen=Численность ваших сил: <Indent><AlliesNumbers>
+                WBPlanningScreen=Численность противника: <Indent><EnemyNumbers>
+                WBPlanningScreen=Соотношение сил: <Indent><ForcesRatio>
+                WBPlanningScreen=Флагман: <Indent><Flagship>
+                WBPlanningScreen=Место сбора: <Indent><GatheringPlace>
+                WBPlanningScreen=Дата начала: <Indent><AttackDate>
+                WBPlanningScreen=<SplitLine>
+                WBPlanningScreen=<clr><clrEnd>
+                WBPlanningScreen=Участвующие в атаке корабли: <AttackShipsList>
+                WBPlanningScreen=<clr><clrEnd>
+                WBPlanningScreen=Стоимость операции: <Cost> cr.
+                WBPlanningScreenDateNotChoosed=Не выбрана
+                WBPlanningScreenFlagshipNotChoosed=Не выбран
+                WBPlanningScreenGatherNotChoosed=Не выбрано
+                WBPlanningScreenShipsNotChoosed=Нет
+                WBPlanningScreenStarNotChoosed=Не выбрана
+                WBPrepareStatus=Подготовка в самом разгаре, <PlayerRank>. Офицеры потребляют бойкофе декалитрами - каждый хочет как можно лучше выполнить свой долг, дабы не подставить под удар боевых товарищей. <DateStatus>
+                WBPrepareStatus=Вот текущий статус всех официальных участников атаки: <AttackShipsList>
+                WBPrepareStatusShipArrived=(<color=0,132,15>прибыл</color>)
+                WBPrepareStatusShipBuilding=(<color=0,50,200>в постройке</color>)
+                WBPrepareStatusShipOnItsWay=(<color=0,50,200>в пути</color>)
+                WBPrepareStatusShipShipDelayed=(<color=255,0,0>опаздывает</color>)
+                WBRequestOperation=Похвально, <PlayerRank>! Сейчас же отдам соответствующие распоряжения.
+                WBRequestOperation=На всякий случай напоминаю, что хотя командование флота и берёт на себя немалую часть затрат, тебе всё ещё необходимо будет оплатить организационный сбор: снабдить наших парней оружием, боеприпасами и прочим необходимым в бою снаряжением. Выбрать систему для атаки ты сможешь лично, а если наших текущих сил в секторе <Sector> окажется недостаточно, то ты сможешь также <clr>заказать постройку<clrEnd> нескольких новых истребителей, дабы повысить шансы. Кроме того, тебе, как заслуженному офицеру и воину, будет дозволено <clr>возглавить атаку<clrEnd>, выбрав один из участвующих в атаке линейных кораблей, и <clr>лично повести<clrEnd> его в бой. Конечно, твоё персональное участие в бою вовсе не обязательно, но всегда горячо приветствуется.
+                WBRequestOperation=Наши связисты уже направлены для уточнения наличных сил в секторе <Sector>, но если ты решишь передумать - я немедленно верну их назад. Ну так что, <PlayerRank> - в бой?
+                WBRequestOperationNoTargetStars=Сожалею, <PlayerRank>, но наш аналитический отдел не нашёл в Галактике ни одной подходящей для атаки системы. Похоже, мы всех победили.
+                WBRequestOperationNoWarriors=Сожалею, <PlayerRank>, но судя по нашим последним передачам, в секторе <Sector> не осталось ни одного регулярного военного корабля, который можно было бы в скором времени отправить в бой. Похоже, мы здесь совсем одни.
+            }
+            OnLevel4 ^{
+                PlayerAskWBPrepareStatus=Как там идёт подготовка к военной операции?
+                PlayerBeginOperation=Начать операцию
+                PlayerCancelOperation=Отменить операцию
+                PlayerConfirmationNo=Пожалуй, я слегка поторопился - надо ещё раз хорошенько всё обдумать
+                PlayerConfirmationYes=Конечно!
+                PlayerPlanningChooseAttackDate=Выбрать дату атаки
+                PlayerPlanningChooseAttackDateChoose=Укажите желаемую дату начала атаки:
+                PlayerPlanningChooseAttackers=Выбрать состав атакующих
+                PlayerPlanningChooseAttackersAddAll=Выбрать всех
+                PlayerPlanningChooseAttackersRemoveAll=Отменить всех
+                PlayerPlanningChooseBack=Назад
+                PlayerPlanningChooseConstructionOrderAddAll=Задействовать все
+                PlayerPlanningChooseConstructionOrderRemoveAll=Отменить все
+                PlayerPlanningChooseFlagship=Выбрать флагман
+                PlayerPlanningChooseGatheringPlace=Выбрать место сбора
+                PlayerPlanningChooseGatheringPlaceNotEnoughShips=(недостаточно атакующих кораблей)
+                PlayerPlanningChooseRemoveFlagship=Отменить выбор
+                PlayerPlanningChooseStar=Выбрать атакуемую систему
+                PlayerPlanningChooseStarToAttack=<Star>
+                PlayerPlanningChooseStarUnderAttack=(под атакой)
+                PlayerPlanningConstructionOrder=Заказать постройку кораблей
+                PlayerPlanningConstructionOrderPlanet=Верфь планеты <Planet>
+                PlayerPlanningConstructionOrderPlanetSet=(<color=0,132,15>запущена</color>)
+                PlayerPlanningDone=Завершить планирование
+                PlayerPrepareStatusDelayed=Надо поднажать!
+                PlayerPrepareStatusOk=Отлично!
+                PlayerRequestOperation=Я желаю организовать военную операцию
+                PlayerRequestOperationNoTargetStars=Что ж, понятно
+                PlayerRequestOperationNoWarriors=Что ж, понятно
+                PlayerToPlanning=Перейти к планированию
+                WBAfterPlanning=Ну что, <PlayerRank> - спланировал операцию? Готов принять решение о начале наступления? Как по мне - коли численность за нами, так тут и рассуждать нечего! Но тебе оно, конечно, виднее.
+                WBAfterPlanning=<clr><clrEnd>
+                WBAfterPlanning=Атакуемая система: <StarToAttack>
+                WBAfterPlanning=Численность наших сил: <AlliesNumbers>
+                WBAfterPlanning=Численность противника: <EnemyNumbers>
+                WBAfterPlanning=Место сбора: <GatheringPlace>
+                WBAfterPlanning=Дата начала атаки: <AttackDate>
+                WBAfterPlanning=Стоимость операции: <Cost> cr.
+                WBBeginOperation=Вас понял, <PlayerRank>! Товарищи офицеры - вы слышали приказ. Совсем скоро наши парни отправятся в бой, который возможно станет для них последним. Каждому из вас в грядущие дни предстоит много работы, и я ожидаю, что вы достойно выполните свой долг. Планируемая дата начала наступления - <AttackDate>. Все свободны.
+                WBBeginOperation=Также буду искренне рад, если ты сможешь лично возглавить наших парней в наступлении, <Player>.
+                WBBeginOperationWithWB=Вас понял, <PlayerRank>! Товарищи офицеры - вы слышали приказ. Совсем скоро мы отправимся в бой, и я ожидаю, что каждый из вас выполнит свой долг с честью! Планируемая дата начала наступления - <AttackDate>. Все свободны.
+                WBBeginOperationWithWB=Также искренне надеюсь увидеть и тебя в наших бравых рядах, <Player>. Свободное место в нашей лучшей криокапсуле для тебя уже забронировано.
+                WBCancelOperation=Возникли непредвиденные сложности, <PlayerRank>? Понимаю - планирование штука нелёгкая. Дай знать, если захочешь составить новый план.
+                WBConfirmationNo=Как скажешь, <PlayerRank>. Отбой, парни!
+                WBConfirmationNo=В таком случае будем ждать от тебя новых блестящих идей.
+                WBConfirmationYes=Отлично, <PlayerRank>! В таком случае дай нам ещё пару минут, чтобы уточнить все данные.
+                WBConfirmationYes=...
+                WBConfirmationYes=Итак, перед тобой экран планирования операции - все наши оперативные данные как на ладони. Удобно, правда? В общем, как закончишь с планированием - дай знать, чтобы я мог передать приказ к началу сборов.
+                WBConfirmationYes=<clr><clrEnd>
+                WBConfirmationYes=Атакуемая система: <StarToAttack>
+                WBConfirmationYes=Численность наших сил: <AlliesNumbers>
+                WBConfirmationYes=Численность противника: <EnemyNumbers>
+                WBConfirmationYes=Место сбора: <GatheringPlace>
+                WBConfirmationYes=Дата начала атаки: <AttackDate>
+                WBConfirmationYes=Стоимость операции: <Cost> cr.
+                WBDateStatusDelayed=Пока что отстаём от графика всего на <AttackDate> дн., но как только все отстающие прибудут в точку сбора в систему <GatheringStar> - мы тут же отправляем всех в атаку на систему <StarToAttack>.
+                WBDateStatusDelayedWithWB=Пока что отстаём от графика всего на <AttackDate> дн., но как только все отстающие окажутся на борту - мы сразу же совершаем скачок в систему <StarToAttack>.
+                WBDateStatusOk=Налёт на систему <StarToAttack> запланирован на <AttackDate>. Наши ребята уже стягиваются к точке сбора в системе <GatheringStar>.
+                WBDateStatusOkWithWB=Скачок в систему <StarToAttack> запланирован на <AttackDate>.
+                WBPlanningScreen=Перед вами развёрнутая голографическая карта изученного рукава Галактики, на которой красными точками выделены возможные системы для нанесения удара. Ниже неё расположен монитор для оценки и выбора ваших наступательных сил.
+                WBPlanningScreen=<SplitLine>
+                WBPlanningScreen=Цель атаки: <Indent><StarToAttack>
+                WBPlanningScreen=Численность ваших сил: <Indent><AlliesNumbers>
+                WBPlanningScreen=Численность противника: <Indent><EnemyNumbers>
+                WBPlanningScreen=Соотношение сил: <Indent><ForcesRatio>
+                WBPlanningScreen=Флагман: <Indent><Flagship>
+                WBPlanningScreen=Место сбора: <Indent><GatheringPlace>
+                WBPlanningScreen=Дата начала: <Indent><AttackDate>
+                WBPlanningScreen=<SplitLine>
+                WBPlanningScreen=<clr><clrEnd>
+                WBPlanningScreen=Участвующие в атаке корабли: <AttackShipsList>
+                WBPlanningScreen=<clr><clrEnd>
+                WBPlanningScreen=Стоимость операции: <Cost> cr.
+                WBPlanningScreenDateNotChoosed=Не выбрана
+                WBPlanningScreenFlagshipNotChoosed=Не выбран
+                WBPlanningScreenGatherNotChoosed=Не выбрано
+                WBPlanningScreenShipsNotChoosed=Нет
+                WBPlanningScreenStarNotChoosed=Не выбрана
+                WBPrepareStatus=Подготовка идёт полным ходом, <PlayerRank>! Весь офицерский корпус сидит на стимуляторах - каждый хочет как можно лучше выполнить свой долг, дабы не подставить под удар боевых товарищей. <DateStatus>
+                WBPrepareStatus=Вот текущий статус всех официальных участников атаки: <AttackShipsList>
+                WBPrepareStatusNoShips=С сожалением вынужден сообщить, что мы потеряли все военные корабли, которые должны были принимать участие в наступлении. Тем не менее, воинская гордость не позволяет мне отдать приказ об отмене атаки. Военная база <MilitaryBase> всё ещё является грозной боевой станцией, и будь я проклят, если мы хотя бы не попытаемся отбить у врага систему <StarToAttack>!
+                WBPrepareStatusNoShips=Дата начала операции - <AttackDate>. Рекомендую тебе не опаздывать на наш праздник чистого героизма, <Player>.
+                WBPrepareStatusShipArrived=(<color=0,132,15>прибыл</color>)
+                WBPrepareStatusShipBuilding=(<color=0,50,200>в постройке</color>)
+                WBPrepareStatusShipOnItsWay=(<color=0,50,200>в пути</color>)
+                WBPrepareStatusShipShipDelayed=(<color=255,0,0>опаздывает</color>)
+                WBRequestOperation=Вас понял, <PlayerRank>! Сейчас же отдам соответствующие распоряжения.
+                WBRequestOperation=На всякий случай напоминаю, что хотя командование флота и берёт на себя немалую часть затрат, тебе всё ещё необходимо будет оплатить организационный сбор: снабдить наших парней оружием, боеприпасами и прочим необходимым в бою снаряжением. Выбрать систему для атаки ты сможешь лично, а если наших текущих сил в секторе <Sector> окажется недостаточно, то ты сможешь также <clr>заказать постройку<clrEnd> нескольких новых истребителей, дабы повысить шансы. Кроме того, тебе, как заслуженному офицеру и воину, будет дозволено <clr>возглавить атаку<clrEnd>, выбрав один из участвующих в атаке линейных кораблей, и <clr>лично повести<clrEnd> его в бой. Конечно, твоё персональное участие в бою вовсе не обязательно, но всегда горячо приветствуется. Местом сбора сил перед атакой может стать как любая из подходящих систем, так и наша грозная <clr>военная база<clrEnd> <MilitaryBase>. Для нас будет честью пойти в бой под началом такого прославленного полководца как ты, <Player>.
+                WBRequestOperation=Наши лучшие связисты уже направлены для уточнения наличных сил в секторе <Sector>, но если ты решишь передумать - я немедленно верну их назад. Ну так что, <PlayerRank> - в бой?
+                WBRequestOperationNoTargetStars=Сожалею, <PlayerRank>, но наш аналитический отдел не нашёл в Галактике ни одной подходящей для атаки системы. Похоже, мы всех победили.
+                WBRequestOperationNoWarriors=Сожалею, <PlayerRank>, но судя по нашим последним передачам, в секторе <Sector> не осталось ни одного регулярного военного корабля, который можно было бы в скором времени отправить в бой. Похоже, мы здесь совсем одни.
+            }
+        }
+        OperationFlagshipDialog ^{
+            FlagshipAbandonConfirm=Ты уверен, что хочешь оставить командование флагманом, <PlayerRank>?
+            FlagshipAskDirectControl=Приветствую, <PlayerRank>! От имени всей команды позволь выразить наше глубокое почтение и предложить тебе как можно скорее принять командование над гордостью коалиционного флота - <FlagshipDeclension>!
+            FlagshipAskDirectControlYes=Отлично, <PlayerRank>! Я немедленно проложу курс на сближение и стыковку.
+            FlagshipAskDirectControlYes=Если впоследствии захочешь покинуть наш корабль - просто сообщи об этом дежурному на мостике.
+            FlagshipDirectControlNo=При всём уважении, <PlayerRank>, я не могу выполнить твой приказ. Выполнять стыковку с нашим кораблём для тебя сейчас слишком опасно.
+            FlagshipDirectControlYes=Вас понял, <PlayerRank> - я немедленно проложу курс на сближение и стыковку.
+            FlagshipDirectControlYes=Если впоследствии захочешь покинуть наш корабль - просто сообщи об этом дежурному на мостике.
+            FlagshipPlayerFliesOut=Было честь служить под вашим командованием, <PlayerRank>! Но теперь, когда система <Star> свободна, <Flagship> вновь переходит под прямое управление коалиционного флота. Я вынужден просить вас оставить капитанский мостик. Кстати, пока вы занимались командованием, наши механики успели подлатать и заправить ваш корабль. Надеюсь, однажды, вновь оказаться вашим подчинённым.
+            FlagshipPlayerKickedOut=Ах ты паршивый предатель! Мы доверили тебе гордость коалиционного флота, а ты в ответ решил вонзить ему нож в спину!? Ну что ж, ножей нам на флоте давно не выдают, так что придётся тебя просто застрелить...
+            PlayerAbandonFlagship=Покинуть <Flagship>
+            PlayerAskDirectControl=Я хочу принять командование вашим кораблём
+            PlayerDirectControlNo=Благодарю за предложение, капитан, однако у меня остались неотложные дела - я свяжусь с вами чуть позже
+            PlayerDirectControlYes=Почту за честь взойти к вам на борт!
+            PlayerFliesOut=Приятно было служить бок о бок с такой бравой командой! [вернуться на свой корабль]
+            PlayerKickedOutDead=Но подождите, вы всё совсем не так поняли!
+            PlayerKickedOutRun=Ага, дудки! Бывайте, ихтиандры... [покинуть флагман на своём корабле]
+            PlayerWasShotEnding=Но старший помощник капитана... ваш бывший помощник, вас не слушал. Словно в замедленной съёмке его рука выхватила из кобуры бластер, а спустя какое-то мимолётное мгновение вы ощутили жгучую боль и одновременно странную лёгкость в груди. С удивлением вы опустили взгляд, чтобы обнаружить огромное оплавленное отверстие на вашем красивом рейнджерском мундире.
+            PlayerWasShotEnding=Жизнь великого капитана закончилась.
+        }
+        OperationWarriorDialog ^{
+            PlayerBack=Отставить
+            PlayerCancelPersonalOrder=Нет, это твой персональный приказ
+            PlayerCancelSendOthers=Да, это приказ по всей группе
+            PlayerOrderCancel=Отмена атаки - <Target> больше не приоритетная цель
+            PlayerOrderTarget=Я хочу, чтобы ты атаковал определённую цель
+            PlayerTarget=Атакуй <Target>
+            PlayerTargetPersonalOrder=Нет, это твой персональный приказ
+            PlayerTargetSendOthers=Да, это приказ по всей группе
+            WarriorCancelConfirm=Так точно, <PlayerRank>!
+            WarriorCancelConfirmAll=Мне передать остальным то же распоряжение?
+            WarriorTargetConfirm=Приказ ясен - очень скоро <Target> превратится в горстку космического пепла!
+            WarriorTargetConfirmAgain=Да я уже и так атакую <Target>, как бы... Значит, буду атаковать в два раза сильней!
+            WarriorTargetConfirmAll=Мне передать остальным то же распоряжение?
+            WarriorTargetConfirmAllAgain=Хочешь, чтобы я передал это распоряжение остальным?
+            WarriorWhatTarget=И какую же цель мне атаковать, <PlayerRank>?
+        }
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            ShuWarriors_FlagshipDirectControl ^{
+                Description=NoShow
+                Icon=0
+                Name=Маркер, что игрок в данный момент управляет флагманом, полученным на время военной операции
+                OnActCode ^{
+                    01=dword flagship = IdToShip(ShipCustomShipInfoData(0, CurInfo(), 1));
+                    02=if(int(GetData(0, flagship)) >= -3) exit;
+                    03=ShipSetCoords(flagship, CoordX(Player()), CoordY(Player()));
+                    04=Dialog(flagship);
+                    05=if(ShipCustomShipInfoData(0, CurInfo(), 1) == -1)
+                    05 ^{
+                        01=str text = CT('Script.Mod_ShuWarriors.OperationFlagshipDialog.PlayerWasShotEnding');
+                        02=CustomLose(text, 'PlayerWasShot');
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            ShuWarriors_MilitaryBaseSpecialLogic ^{
+                Description=NoShow
+                Icon=0
+                Name=Обрабатывает логику отступления военной базы из захваченных систем, на которые она сама же совершила налёт
+                OnActCode ^{
+                    01=dword cur_ruin = ScriptItemActShip();
+                    02=dword star = ShipStar(cur_ruin);
+                    03=if(!StarBattle(star)) exit;
+                    04=if(!StarOwner(star)) exit;
+                    05=int hull_damage = HullDamage(cur_ruin);
+                    06=if(hull_damage < 60) exit;
+                    07=if(GetShipRuins(Player()) == cur_ruin) exit;
+                    08=float our_str = 0.0;
+                    09=float foe_str = 0.0;
+                    10=for(int i = StarShips(star) - 1; i >= 0; i = i - 1)
+                    10 ^{
+                        01=dword ship = StarShips(star, i);
+                        02=if(IsPlayer(ship)) continue;
+                        03=if(ShipInHyperSpace(ship)) continue;
+                        04=if(!ShipStanding(ship) || ShipStanding(ship) >= 6) foe_str = foe_str + ShipStrengthInAverageRanger(ship);
+                        05=else if(ShipStanding(ship) >= 2 && ShipStanding(ship) <= 4) our_str = our_str + ShipStrengthInAverageRanger(ship);
+                    }
+                    11=if((our_str / foe_str) >= 0.6 && hull_damage < 75) exit;
+                    12=OrderNone(cur_ruin);
+                    13=OrderTeleport(cur_ruin, ShipPrevStar(cur_ruin), CoordX(cur_ruin), CoordY(cur_ruin));
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+        }
+    }
+}
+ShipCharacterWarriorBigFlagship ^{
+    00=34, 33, 33, Линкор
+}
+ShipCharacterDreadnoughtFlagship ^{
+    00=34, 33, 33, Дредноут
+}
+ShipType ^{
+    Fei ^{
+        DreadnoughtFlagship=Флагман
+        Elite=Экефар
+        EliteWarrior=Экефар
+        WarriorBigFlagship=Флагман
+    }
+    Gaal ^{
+        DreadnoughtFlagship=Флагман
+        Elite=Гетереога
+        EliteWarrior=Гетереога
+        WarriorBigFlagship=Флагман
+    }
+    Maloc ^{
+        DreadnoughtFlagship=Флагман
+        Elite=Дракар
+        EliteWarrior=Дракар
+        WarriorBigFlagship=Флагман
+    }
+    Peleng ^{
+        DreadnoughtFlagship=Флагман
+        Elite=Шаракеш
+        EliteWarrior=Шаракеш
+        WarriorBigFlagship=Флагман
+    }
+    People ^{
+        DreadnoughtFlagship=Флагман
+        Elite=Истребитель
+        EliteWarrior=Истребитель
+        WarriorBigFlagship=Флагман
+    }
+    TypeName ^{
+        DreadnoughtFlagship=Дредноут
+        Elite=Военный
+        EliteWarrior=Военный
+        WarriorBigFlagship=Линкор
+    }
+}

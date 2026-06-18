@@ -1,0 +1,93 @@
+UselessItems ^{
+    NeutronBomb ^{
+        Cost=Big
+        Name=Нейтронная бомба
+        OnActCode ^{
+            01=ScriptItemActParam(Rnd(1200,1400));
+            02=for(int i=0;StarShips(ScriptItemActObject2())>i;i=i+1)
+            03 ^{
+                01=dword ship = StarShips(ScriptItemActObject2(),i);
+                02=if(Dist(ship,CurItem()) > 450) continue;
+                03=ShipHealthFactor(ship,0,PortionInDiapason(Dist(ship,CurItem()),0,450,850,20));
+            }
+        }
+        OnActCodeTypes=t_OnItemHit
+        Owner=None
+        Size=20
+        Text=Нейтронное оружие, сохраняющее ужасающую эффективность даже в безвоздушном пространстве. Наносит ок. <clr>1300<clrEnd> ед. урона всем врагам вокруг.
+        Text=Кроме этого, нейтронное излучение вызывает эффект <clr>Лучевой болезни<clrEnd>
+    }
+    NovaTorpedo ^{
+        Cost=Huge
+        Name=Нова-торпеда
+        OnActCode ^{
+            01=if(CurrentForm() == 'StarMap')
+            02 ^{
+                01=if(UselessItemData(CurItem(),3))
+                02 ^{
+                    01=UselessItemData(CurItem(),3,0);
+                    02=dword ship=BuyTranclucator(PlanetPirateClan());
+                    03=ShipType(ship,'ShuNukes_SelectTargetNova');
+                    04=SetName(ship,'');
+                    06=ShipSetCoords(ship,CoordX(Player()),CoordY(Player()));
+                    07=Dialog(ship);
+                }
+            }
+        }
+        OnActCodeTypes=t_OnEnteringForm
+        OnUseCode ^{
+            01=if(!ShipInNormalSpace(Player())) MessageBox('Этот предмет может быть использован только в открытом космосе');
+            02=else if(!ShipRadarRange(Player())) MessageBox('На корабле не установлен радар');
+            03=else
+            04 ^{
+                01=UselessItemData(CurItem(),3,1);
+                02=ScriptItemActParam(1);
+            }
+        }
+        Owner=None
+        Size=120
+        Text=Сверхтяжёлое оружие массового поражения класса "Нова", способное опустошить целый регион звездной системы. Когда-то было запрещено всеми конвенциями Коалиции, и даже более того - уничтожалось целенаправленными рейдами, ввиду чего технология и 99% всех запасов этих торпед были утеряны.
+        Text=Наносит до <clr>5000<clrEnd> единиц урона в радиусе <clr>700<clrEnd> единиц.
+    }
+}
+MicroModuls ~{
+    ShuNukes_Nova ^{
+        CustomTag=NovaAcryn
+        Equipments=W15
+        LockedAcryn=3
+        MissileGraph=Nova
+        Name=
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        ShotVisual=15
+        Special=1
+        WeaponMods=Acid,Destruct,BlockWeapon,BlockDroid,DropCargo,Decelerate,BonusToDamaged,Magnetic,ReduceEngine,ScanBonus
+    }
+}
+Items ^{
+    Weapon ^{
+        Missile ^{
+            Nova ^{
+                Name=Нова-торпеда
+                Text=Разрушительнейшая нейтронная боеголовка
+            }
+        }
+        Name ^{
+            nova=Test Gun
+        }
+        Text ^{
+            Text=String not found
+        }
+    }
+}
+Script ~{
+    Mod_ShuBombs ~{
+        0=Выберите цель:
+        1=В зоне действия не обнаружено вражеских кораблей
+        2=Запуск отменен
+        3=Производится запуск ракеты в <0>
+        4=<0>
+        5=Выход
+    }
+}

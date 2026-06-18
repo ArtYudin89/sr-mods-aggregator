@@ -1,0 +1,927 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefLandingCost",
+    "ScriptFileOut": "D:\\Mod_RefLandingCost.scr",
+    "ScriptTextOut": "D:\\Mod_RefLandingCost.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "Оплатить задолженности",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefLandingCost.3\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "Вернуться",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefLandingCost.4\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 30,
+                    "Msg": "Оплатить задолженности",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefLandingCost.3\"))"
+                },
+                {
+                    "Name": "block",
+                    "Pos.x": 360,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 31,
+                    "Msg": "Оплатить задолженности",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('block~'+CT(\"Script.Mod_RefLandingCost.3\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 480,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 32,
+                    "Msg": "Вернуться к списку",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefLandingCost.6\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 33,
+                    "Msg": "Подождать",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefLandingCost.11\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 720,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 34,
+                    "Msg": "Подождать ещё",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefLandingCost.12\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 840,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 35,
+                    "Msg": "Ждать быстрее...",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefLandingCost.13\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 960,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 36,
+                    "Msg": "Нажать \"Сделать исключение для этого сайта\"",
+                    "AMsg.Num": "8",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefLandingCost.14\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 21,
+                    "Msg": "Вы оказались на сайте ГосуУслуги. Обычный белый сайт, иконка в виде двух уголков синего и голубого цвета.\r\n\r\nПосередине находился небольшой прямоугольник с текстом шрифтом, известным как Times New London:\r\n\r\nНеоплаченных посадок на планеты: <0>\r\n\r\nНиже появился список доступных функций.",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefLandingCost.1\"),\"<0>\",counting))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 22,
+                    "Msg": "Появился счёт, который в сокращённом виде гласил:\r\n\r\nК оплате <0> посадок по тарифу <1> за единицу.\r\nК оплате <2> заключений контрактов со спецагентками по тарифу <3> за единицу",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefLandingCost.2\"),\"<0>\",counting,\"<1>\",payment,\"<2>\",MarriageCount,\"<3>\",mcost))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 23,
+                    "Msg": "Все задолженности успешно оплачены!",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefLandingCost.5\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 24,
+                    "Msg": "Вы нажали на большую красную кнопку \"ОПЛАТИТЬ ЗАДОЛЖЕННОСТИ\"\r\n\r\nКнопка подумала с минуту в состоянии нажатой, после чего началась загружка следующего сайта.",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefLandingCost.7\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 25,
+                    "Msg": "Сайт всё ещё... Не отвечает",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefLandingCost.8\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "И снова загрузка",
+                    "DMsg.Num": "5",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefLandingCost.9\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 900,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "Наконец, загрузка завершилась...\r\n\r\nПеред вами показалось уведомление:\r\n\"Автоматическая система защиты отметила данный сайт как опасный. Злоумышленники могут использовать его для получения ваших данных и вымогательства денежных средств\"",
+                    "DMsg.Num": "6",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefLandingCost.10\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "GosuUslugi",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 20
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 14
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 15,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "if(GalaxyDiffLevels() > 49) payment = 3;",
+                        "if(GalaxyDiffLevels() > 99) payment = 4;",
+                        "if(GalaxyDiffLevels() > 149) payment = 5;",
+                        "if(GalaxyDiffLevels() > 199) payment = 7;",
+                        "if(GalaxyDiffLevels() > 249) payment = 10;",
+                        "if(GalaxyDiffLevels() > 299) payment = 15;",
+                        "if(GalaxyDiffLevels() > 349) payment = 20;",
+                        "if(GalaxyDiffLevels() > 399) payment = 30;",
+                        "if(GalaxyDiffLevels() > 449) payment = 40;",
+                        "if(GalaxyDiffLevels() > 479) payment = 50;",
+                        "",
+                        "function PlayerActCode() {",
+                        "    if(ScriptItemActionType(t_OnPlayerTalkedWithShip)) {",
+                        "        if(ShipType(ScriptItemActObject1()) == 'FemRanger') {",
+                        "            j = 0;",
+                        "            for(i=0;ShipPartners(Player())>i;i=i+1) {",
+                        "                if(ShipType(ShipPartners(Player(),i)) == 'FemRanger') j = j + 1;",
+                        "            }",
+                        "            if(j > WivesCnt) {",
+                        "                NewsAdd(CT(\"Script.Mod_RefLandingCost.16\")+' '+mcost+' '+CT(\"Script.Mod_RefLandingCost.15\"));",
+                        "                Sound('Sound.NewMsg');",
+                        "                MarriageCount = MarriageCount + 1;",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 16,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipIsTakeoff(Player())) {",
+                        "  if(GetShipRuins(Player()) == 0) {",
+                        "      if(PlanetOwner(GetShipPlanet(Player())) < 6) counting = counting + 1;",
+                        "  }",
+                        "}",
+                        "if(Flag == 0) {",
+                        "    if(counting > 5) {",
+                        "        NewsAdd('Уважаемый рейнджер! Вы не оплатили задолженности за посадку на планеты. Зайдите на сайт ГосуУслуги и оплатите счёт, пока не поздно.');",
+                        "        Flag = 1;",
+                        "    }",
+                        "}",
+                        "if(Flag == 1) {",
+                        "    if(counting > 10) {",
+                        "        NewsAdd('Уважаемый рейнджер! Вы не оплатили задолженности за посадку на планеты. Зайдите на сайт ГосуУслуги и оплатите счёт, пока не поздно.');",
+                        "        Flag = 2;",
+                        "    }",
+                        "}",
+                        "if(Flag == 2) {",
+                        "    if(counting > 15) {",
+                        "        NewsAdd('Уважаемый рейнджер! Вы не оплатили задолженности за посадку на планеты. Зайдите на сайт ГосуУслуги и оплатите счёт, пока не поздно.');",
+                        "        Flag = 3;",
+                        "    }",
+                        "}",
+                        "if(Flag == 3) {",
+                        "    if(counting > 20) {",
+                        "        NewsAdd('Уважаемый рейнджер! Вы не оплатили задолженности за посадку на планеты. Зайдите на сайт ГосуУслуги и оплатите счёт, пока не поздно.');",
+                        "        ChangeGlobalRelationsPlanets(Player(),0,3,25,31);",
+                        "        Flag = 4;",
+                        "    }",
+                        "}",
+                        "if(Flag == 4) {",
+                        "    if(counting > 25) {",
+                        "        NewsAdd('Уважаемый рейнджер! Вы не оплатили задолженности за посадку на планеты. Зайдите на сайт ГосуУслуги и оплатите счёт, пока не поздно.');",
+                        "        ChangeGlobalRelationsPlanets(Player(),0,3,25,31);",
+                        "        Flag = 5;",
+                        "    }",
+                        "}",
+                        "if(Flag == 5) {",
+                        "    if(counting > 30) {",
+                        "        NewsAdd('Уважаемый рейнджер! Вы не оплатили задолженности за посадку на планеты. Зайдите на сайт ГосуУслуги и оплатите счёт, пока не поздно.');",
+                        "        ChangeGlobalRelationsPlanets(Player(),0,3,35,31);",
+                        "        Flag = 6;",
+                        "    }",
+                        "}",
+                        "if(Flag == 6) {",
+                        "    if(counting > 35) {",
+                        "        NewsAdd('Уважаемый рейнджер! Вы не оплатили задолженности за посадку на планеты. Зайдите на сайт ГосуУслуги и оплатите счёт, пока не поздно.');",
+                        "        ChangeGlobalRelationsPlanets(Player(),0,3,45,31);",
+                        "        Flag = 7;",
+                        "    }",
+                        "}",
+                        "if(Flag == 7) {",
+                        "    if(counting > 40) {",
+                        "        NewsAdd('Уважаемый рейнджер! Вы не оплатили задолженности за посадку на планеты. Зайдите на сайт ГосуУслуги и оплатите счёт, пока не поздно.');",
+                        "        ChangeGlobalRelationsPlanets(Player(),0,3,45,31);",
+                        "        Flag = 8;",
+                        "    }",
+                        "}",
+                        "if(Flag == 8) {",
+                        "    if(counting > 45) {",
+                        "        NewsAdd('Уважаемый рейнджер! Вы не оплатили задолженности за посадку на планеты. Зайдите на сайт ГосуУслуги и оплатите счёт, пока не поздно.');",
+                        "        ChangeGlobalRelationsPlanets(Player(),0,3,55,31);",
+                        "        Flag = 9;",
+                        "    }",
+                        "}",
+                        "if(Flag == 9) {",
+                        "    if(counting > 55) {",
+                        "        NewsAdd('Уважаемый рейнджер! Вы не оплатили задолженности за посадку на планеты. Зайдите на сайт ГосуУслуги и оплатите счёт, пока не поздно.');",
+                        "        ChangeGlobalRelationsPlanets(Player(),0,3,65,31);",
+                        "        Flag = 10;",
+                        "    }",
+                        "}",
+                        "if(Flag == 10) {",
+                        "    if(counting > 60) {",
+                        "        NewsAdd('Уважаемый рейнджер! Вы не оплатили задолженности за посадку на планеты. Зайдите на сайт ГосуУслуги и оплатите счёт, пока не поздно.');",
+                        "        ChangeGlobalRelationsPlanets(Player(),0,3,85,31);",
+                        "        Flag = 11;",
+                        "    }",
+                        "}",
+                        "",
+                        "if(CurTurn() > 9065) mcost = 5000;"
+                    ],
+                    "#": 17,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(PlayerBridge() == 11) {",
+                        "  AddDialogInject('GosuUslugi', '', CT(\"Script.Mod_RefLandingCost.0\"), 9);",
+                        "}"
+                    ],
+                    "#": 18,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 37,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(counting > 0) {",
+                        "  DAdd(0);",
+                        "}",
+                        "DAdd(1);"
+                    ],
+                    "#": 38,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player()) >= money) {",
+                        "  DAdd(2);",
+                        "}",
+                        "if(ShipMoney(Player()) < money) {",
+                        "  DAdd(3);",
+                        "}"
+                    ],
+                    "#": 39,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(4);"
+                    ],
+                    "#": 40,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(5);"
+                    ],
+                    "#": 41,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(6);"
+                    ],
+                    "#": 42,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(7);"
+                    ],
+                    "#": 43,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(8);"
+                    ],
+                    "#": 44,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 880,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(joke_flag > 0) {",
+                        "  money = counting * payment + mcost * MarriageCount;",
+                        "  joke_flag = 1;",
+                        "  DChange(1);",
+                        "  exit;",
+                        "}",
+                        "if(joke_flag == 0) {",
+                        "  DChange(3);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 45,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "counting = 0;",
+                        "ShipMoney(Player(),ShipMoney(Player()) - money);",
+                        "Sound('Sound.Buy');",
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 46,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 47,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(5);",
+                        "exit;"
+                    ],
+                    "#": 48,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(6);",
+                        "exit;"
+                    ],
+                    "#": 49,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "money = counting * payment + mcost * MarriageCount;",
+                        "joke_flag = 1;",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 50,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 940,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 13
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 12
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 11,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "[t_OnPlayerTalkedWithShip,t_OnStep|11]\r\nPlayerActCode();",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 19
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "counting",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "payment",
+                    "Pos.x": 120,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "Flag",
+                    "Pos.x": 240,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "joke_flag",
+                    "Pos.x": 330,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "money",
+                    "Pos.x": 480,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "MarriageCount",
+                    "Pos.x": 570,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "money2",
+                    "Pos.x": 780,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "WivesCnt",
+                    "Pos.x": 870,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 990,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "j",
+                    "Pos.x": 1080,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "mcost",
+                    "Pos.x": 1170,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Int",
+                    "Init": "350",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 20,
+            "End": 37,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 21,
+            "End": 38,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 22,
+            "End": 39,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 23,
+            "End": 40,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 24,
+            "End": 41,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 42,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 43,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 27,
+            "End": 44,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 28,
+            "End": 45,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 30,
+            "End": 46,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 33,
+            "End": 47,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 34,
+            "End": 48,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 35,
+            "End": 49,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 36,
+            "End": 50,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 13,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 19,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

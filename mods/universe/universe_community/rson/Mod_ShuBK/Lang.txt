@@ -1,0 +1,265 @@
+MicroModuls ^{
+    ShuBK_Discount25 ^{
+        Cost=75
+        KindGraph=DiscountMM_25
+        LockedAcryn=3
+        Name=<"><">
+        NonSearchable=1
+        Priority=80
+        Special=1
+    }
+    ShuBK_Discount50 ^{
+        Cost=50
+        KindGraph=DiscountMM_50
+        LockedAcryn=3
+        Name=<"><">
+        NonSearchable=1
+        Priority=50
+        Special=1
+    }
+    ShuBK_Discount75 ^{
+        Cost=25
+        KindGraph=DiscountMM_75
+        LockedAcryn=3
+        Name=<"><">
+        NonSearchable=1
+        Priority=20
+        Special=1
+    }
+    ShuBK_FullItemCost ^{
+        LockedAcryn=3
+        NonSearchable=1
+        Special=1
+    }
+}
+Script ^{
+    Mod_ShuBK ^{
+        GrandBKSale1=Сегодня <clr>бизнес-центр<clrEnd> #0# объявил крупную распродажу, установив скидки от <clr>25%<clrEnd> до <clr>75%<clrEnd> процентов на большую часть своего ассортимента из магазина оборудования. Спешите приобрести новейшие запчасти для своего звездолёта по самым низким ценам!
+        GrandBKSale2=Недавно <clr>бизнес-центр<clrEnd> #0# объявил большие скидки на значительную часть своего ассортимента в магазине оборудования. Наиболее экономные рейнджеры и предприниматели уже отправились в систему #1#, чтобы приобрести двигатели, топливные баки, радары, сканеры и многое другое по выгодной цене.
+        GrandBKSale3=Все желающие основательно закупиться приглашаются в систему #0#, в которой <clr>бизнес-центр<clrEnd> #1#, в рамках программы поддержки малоимущих пилотов, снизил цены на значительную часть товаров в своём магазине оборудования.
+        GrandBKSale4=Сегодня <clrEnd>бизнес-центр<clrEnd> #0#, расположенный в системе #1#, объявил очередную грандиозную распродажу почти всего продающегося на станции ассортимента оборудования и оружия. Магазины станции предлагают широкий выбор со скидками от <clr>25%<clrEnd> до <clr>75%<clrEnd>!
+        GrandBKSale5=<clrEnd>Бизнес-центр<clrEnd> #0# объявляет о начале крупной распродажи оборудования. Все заинтересованные пилоты приглашаются в систему #1#, где они смогут приобрести запчасти по самым низким ценам в Галактике!
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            ShuBK_SaleInfo ^{
+                Description=Скрытая инфошка, снимает микромодули-скидки с предметов при их покупке
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword cur_info = CurInfo();
+                    02=if(ScriptItemActionType(t_OnStep))
+                    03 ^{
+                        01=if(ShipOrder(Player()) == 5)
+                        02 ^{
+                            01=dword shop = IdToShip(ShipCustomShipInfoData(0, cur_info, 1));
+                            02=int true_cost_bon = FindBonusByNameInCfg('ShuBK_FullItemCost');
+                            03=for(int i = 0; i < ShipItems(Player()); i = i + 1)
+                            04 ^{
+                                01=dword item = ShipItems(Player(), i);
+                                02=int true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+                                03=if(!true_cost) continue;
+                                04=ItemCost(item, true_cost);
+                            }
+                            05=for(i = 0; i < ShipArts(Player()); i = i + 1)
+                            06 ^{
+                                01=item = ShipArts(Player(), i);
+                                02=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+                                03=if(!true_cost) continue;
+                                04=ItemCost(item, true_cost);
+                            }
+                            07=for(i = 0; i < StorageItems(); i = i + 1)
+                            08 ^{
+                                01=if(StorageItemLocation(i) != shop) continue;
+                                02=item = StorageItems(i);
+                                03=if(ItemType(item) <= t_Narcotics) continue;
+                                04=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+                                05=if(!true_cost) continue;
+                                06=ItemCost(item, true_cost);
+                            }
+                            09=ShipDeleteCustomShipInfo(Player(), 'ShuBK_SaleInfo');
+                        }
+                        03=else if(!ShipCustomShipInfoData(0, cur_info, 2))
+                        04 ^{
+                            01=int dis_25 = FindBonusByNameInCfg('ShuBK_Discount25');
+                            02=int dis_50 = FindBonusByNameInCfg('ShuBK_Discount50');
+                            03=int dis_75 = FindBonusByNameInCfg('ShuBK_Discount75');
+                            04=for(i = GalaxyEvents() - 1; i >= 0; i = i - 1)
+                            05 ^{
+                                01=if(i <= ShipCustomShipInfoData(0, cur_info, 2)) break;
+                                02=if(GalaxyEventDate(i) < CurTurn()) break;
+                                03=if(GalaxyEventType(i) == 'PlayerBuysEquipment')
+                                04 ^{
+                                    01=if(GalaxyEventData(i, 5) == ShipCustomShipInfoData(0, cur_info, 1))
+                                    02 ^{
+                                        01=item = IdToItem(GalaxyEventData(i, 3));
+                                        02=int cur_MM = EqModule(item);
+                                        03=if(cur_MM != dis_75 && cur_MM != dis_50 && cur_MM != dis_25) continue;
+                                        04=int dis_cost = ItemCost(item);
+                                        05=ModuleToEquipment(-1, item);
+                                        06=ItemCost(item, dis_cost);
+                                    }
+                                }
+                            }
+                            06=ShipCustomShipInfoData(0, cur_info, 2, GalaxyEvents() - 1);
+                        }
+                        05=else ShipCustomShipInfoData(0, cur_info, 2, 0);
+                    }
+                    04=else if(ScriptItemActionType(t_OnEnteringForm) || ScriptItemActionType(t_OnReEnteringForm))
+                    05 ^{
+                        01=if(CurrentForm() == 'Ship')
+                        02 ^{
+                            01=dis_25 = FindBonusByNameInCfg('ShuBK_Discount25');
+                            02=dis_50 = FindBonusByNameInCfg('ShuBK_Discount50');
+                            03=dis_75 = FindBonusByNameInCfg('ShuBK_Discount75');
+                            04=for(i = GalaxyEvents() - 1; i >= 0; i = i - 1)
+                            05 ^{
+                                01=if(i <= ShipCustomShipInfoData(0, cur_info, 2)) break;
+                                02=if(GalaxyEventDate(i) < CurTurn()) break;
+                                03=if(GalaxyEventType(i) == 'PlayerBuysEquipment')
+                                04 ^{
+                                    01=if(GalaxyEventData(i, 5) == ShipCustomShipInfoData(0, cur_info, 1))
+                                    02 ^{
+                                        01=item = IdToItem(GalaxyEventData(i, 3));
+                                        02=cur_MM = EqModule(item);
+                                        03=if(cur_MM != dis_75 && cur_MM != dis_50 && cur_MM != dis_25) continue;
+                                        04=dis_cost = ItemCost(item);
+                                        05=ModuleToEquipment(-1, item);
+                                        06=ItemCost(item, dis_cost);
+                                    }
+                                }
+                            }
+                            06=ShipCustomShipInfoData(0, cur_info, 2, GalaxyEvents() - 1);
+                            07=true_cost_bon = FindBonusByNameInCfg('ShuBK_FullItemCost');
+                            08=shop = IdToShip(ShipCustomShipInfoData(0, cur_info, 1));
+                            09=for(i = 0; i < ShopItems(shop); i = i + 1)
+                            10 ^{
+                                01=item = ShopItems(shop, i);
+                                02=cur_MM = EqModule(item);
+                                03=if(cur_MM == dis_75 || cur_MM == dis_50 || cur_MM == dis_25) continue;
+                                04=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+                                05=if(!true_cost) continue;
+                                06=ItemCost(item, true_cost);
+                                07=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
+                                08=if(ShipFindCustomShipInfoByType(shop, 'ShuBK_SellerBKMarkInfo') == -1) continue;
+                                09=int level = ItemLevel(item);
+                                10=if(level < GalaxyTechLevel() - 1)
+                                11 ^{
+                                    01=if(EqModule(item) == -1) ModuleToEquipment(dis_75, item);
+                                }
+                                12=else if(level < GalaxyTechLevel())
+                                13 ^{
+                                    01=if(EqModule(item) == -1) ModuleToEquipment(dis_50, item);
+                                }
+                                14=else if(level >= GalaxyTechLevel())
+                                15 ^{
+                                    01=if(EqModule(item) == -1) ModuleToEquipment(dis_25, item);
+                                }
+                            }
+                        }
+                    }
+                    06=else if(ScriptItemActionType(t_OnLeavingForm))
+                    07 ^{
+                        01=if(CurrentForm() == 'EquipmentShop')
+                        02 ^{
+                            01=dis_25 = FindBonusByNameInCfg('ShuBK_Discount25');
+                            02=dis_50 = FindBonusByNameInCfg('ShuBK_Discount50');
+                            03=dis_75 = FindBonusByNameInCfg('ShuBK_Discount75');
+                            04=for(i = GalaxyEvents() - 1; i >= 0; i = i - 1)
+                            05 ^{
+                                01=if(i <= ShipCustomShipInfoData(0, cur_info, 2)) break;
+                                02=if(GalaxyEventDate(i) < CurTurn()) break;
+                                03=if(GalaxyEventType(i) == 'PlayerBuysEquipment')
+                                04 ^{
+                                    01=if(GalaxyEventData(i, 5) == ShipCustomShipInfoData(0, cur_info, 1))
+                                    02 ^{
+                                        01=item = IdToItem(GalaxyEventData(i, 3));
+                                        02=cur_MM = EqModule(item);
+                                        03=if(cur_MM != dis_75 && cur_MM != dis_50 && cur_MM != dis_25) continue;
+                                        04=dis_cost = ItemCost(item);
+                                        05=ModuleToEquipment(-1, item);
+                                        06=ItemCost(item, dis_cost);
+                                    }
+                                }
+                            }
+                            06=ShipCustomShipInfoData(0, cur_info, 2, GalaxyEvents() - 1);
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnReEnteringForm,t_OnLeavingForm
+                OnActStepTypes=0
+            }
+            ShuBK_SellerBKMarkInfo ^{
+                Description=Скрытая инфошка, отмечает собой бизнес-центр с идущей на нём распродажей
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnStep))
+                    02 ^{
+                        01=if(CurTurn() >= ShipCustomShipInfoData(0, CurInfo(), 1))
+                        02 ^{
+                            01=dword cur_ruin = ScriptItemActShip();
+                            02=int dis_25 = FindBonusByNameInCfg('ShuBK_Discount25');
+                            03=int dis_50 = FindBonusByNameInCfg('ShuBK_Discount50');
+                            04=int dis_75 = FindBonusByNameInCfg('ShuBK_Discount75');
+                            05=for(int i = 0; i < ShopItems(cur_ruin); i = i + 1)
+                            06 ^{
+                                01=dword item = ShopItems(cur_ruin, i);
+                                02=int cur_MM = EqModule(item);
+                                03=if(cur_MM != dis_75 && cur_MM != dis_50 && cur_MM != dis_25) continue;
+                                04=ModuleToEquipment(-1, item);
+                            }
+                            08=int true_cost_bon = FindBonusByNameInCfg('ShuBK_FullItemCost');
+                            09=for(i = 0; i < ShipItems(Player()); i = i + 1)
+                            10 ^{
+                                01=item = ShipItems(Player(), i);
+                                02=int true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+                                03=if(!true_cost) continue;
+                                04=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
+                            }
+                            11=for(i = 0; i < ShipArts(Player()); i = i + 1)
+                            12 ^{
+                                01=item = ShipArts(Player(), i);
+                                02=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+                                03=if(!true_cost) continue;
+                                04=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
+                            }
+                            13=for(i = 0; i < StorageItems(); i = i + 1)
+                            14 ^{
+                                01=if(StorageItemLocation(i) != cur_ruin) continue;
+                                02=item = StorageItems(i);
+                                03=if(ItemType(item) <= t_Narcotics) continue;
+                                04=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+                                05=if(!true_cost) continue;
+                                06=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
+                            }
+                            15=ShipDeleteCustomShipInfo(cur_ruin, 'ShuBK_SellerBKMarkInfo');
+                        }
+                    }
+                    03=else
+                    04 ^{
+                        01=true_cost_bon = FindBonusByNameInCfg('ShuBK_FullItemCost');
+                        02=for(i = 0; i < ShipItems(Player()); i = i + 1)
+                        03 ^{
+                            01=item = ShipItems(Player(), i);
+                            02=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+                            03=if(!true_cost) continue;
+                            04=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
+                        }
+                        04=for(i = 0; i < ShipArts(Player()); i = i + 1)
+                        05 ^{
+                            01=item = ShipArts(Player(), i);
+                            02=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+                            03=if(!true_cost) continue;
+                            04=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnDeath
+                OnActStepTypes=11
+            }
+        }
+    }
+}

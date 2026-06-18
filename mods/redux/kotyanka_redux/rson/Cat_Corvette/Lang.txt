@@ -1,0 +1,149 @@
+MicroModuls ^{
+    Cat_Corvette_FragilityMinus ^{
+        Equipments=Hull
+        Fragility=85
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    Cat_Corvette ^{
+        BlockImp=0
+        BlockMM=0
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Cost=300
+        Equipments=Hull
+        FragilityEnergy=90
+        FragilityMissile=95
+        FragilitySplinter=120
+        HullGraphSize=150
+        KindGraph=Cat_Corvette
+        Name=Корвет "Стремительный"
+        Owner=People
+        Special=1
+        Text=<color=248,252,248>Специальный корвет для высших званий рейнджерского корпуса - элиты из элит. Сконструирован и изготовлен ограниченной партией по заказу КВСМК на верфях Марса. Улучшенные ракетные системы и встроенные системы обороны, а также особо мощные радары позволяют пилоту полностью перейти к роли командира, контролируя поле боя и подавляя огнём врага.</color>
+        Text=<color=0,150,0>Корабль оснащён системами противоракетной обороны</color>
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        Text=Дальность радара: <bonRadar> млн км
+        bonMissileSpeed=300
+        bonRadar=600
+    }
+}
+ActCodeBlocksList ^{
+    Cat_Corvette_OnActCode ^{
+        00=[t_OnStep|0,1,3,5,7,9,11]
+        01=if(ScriptItemActionType(t_OnStep, 0))
+        02 ^{
+            01=int pro_in_hull=ItemExtraSpecialsCountByType(ShipEqInSlot(ScriptItemActShip(), t_Hull),FindBonusByNameInCfg('RefArtsUpgrade_PRO3'));
+        }
+        03=if(pro_in_hull<1)exit;
+        04=dword ship=ScriptItemActShip(), msl=0, hit_msl=0, star=ShipStar(ship);
+        05=if(!ShipInNormalSpace(ship))exit;
+        06=if(StarMissiles(star)==0)exit;
+        07=int a=0, min_dist=1000, msl_dist=0;
+        08=for(a=0;a<StarMissiles(star);a=a+1)
+        09 ^{
+            01=msl=StarMissiles(star, a);
+            02=msl_dist=Dist(ship, msl);
+            03=if(msl_dist>range)continue;
+            04=if(MissileTarget(msl)!=ship)continue;
+            05=if(MissileOwner(msl)==ship)continue;
+            06=if(msl_dist>min_dist)continue;
+            07=min_dist=msl_dist;
+            08=hit_msl=msl;
+        }
+        10=if(!hit_msl)exit;
+        11=ShowEffect('Weapon.PDTurret', 0, hit_msl, ship);
+        12=MissileLive(hit_msl, 1201);
+    }
+}
+UseCodeBlocksList ^{
+    Cat_Corvette_OnUseCode ^{
+        01=if(~ShipFindCustomShipInfoByType(Player(),'CatCorvette_Buffs'))
+        02 ^{
+            01=if(ShipCustomShipInfoDescription(Player(),'CatCorvette_Buffs') == 'NoShow')
+            02 ^{
+                01=ShipCustomShipInfoData(Player(),'CatCorvette_Buffs',1,ShipCustomShipInfoData(0,CurInfo(),2));
+                02=ShipCustomShipInfoDescription(Player(),'CatCorvette_Buffs','Дополнительная защита: '+ShipCustomShipInfoData(0,CurInfo(),1)+'/'+ShipCustomShipInfoData(0,CurInfo(),2)+' ед.');
+                03=Chameleon(Player(),'Ship.Akrin.Cat_Corvette_Shields');
+            }
+            03=else
+            04 ^{
+                01=ShipCustomShipInfoData(Player(),'CatCorvette_Buffs',1,0);
+                02=ShipCustomShipInfoDescription(Player(),'CatCorvette_Buffs','NoShow');
+                03=Chameleon(Player());
+            }
+        }
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            CatCorvette_Buffs ^{
+                Description=NoShow
+                Icon=0
+                Name=Защитные системы
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnStep) || ScriptItemActionType(t_OnReEnteringForm))
+                    02 ^{
+                        01=if(~HullSpecial(Player()))
+                        02 ^{
+                            01=if(HullSpecial(Player()) == FindBonusByNameInCfg('Cat_Corvette'))
+                            02 ^{
+                                01=if(ShipCustomShipInfoData(0,CurInfo(),1) > 0)
+                                02 ^{
+                                    01=ShipCustomShipInfoDescription(0,CurInfo(),'Дополнительная защита: '+ShipCustomShipInfoData(0,CurInfo(),1)+'/'+ShipCustomShipInfoData(0,CurInfo(),2)+' ед.');
+                                }
+                            }
+                            03=else ShipCustomShipInfoDescription(0,CurInfo(),'NoShow');
+                        }
+                        03=else ShipCustomShipInfoDescription(0,CurInfo(),'NoShow');
+                    }
+                    03=else
+                    04 ^{
+                        01=int dmg = ScriptItemActParam();
+                        02=if(dmg < 1) exit;
+                        03=int armor = ShipCustomShipInfoData(0,CurInfo(),1);
+                        04=if(armor > dmg)
+                        05 ^{
+                            01=ScriptItemActParam(0);
+                            02=ShipCustomShipInfoData(0,CurInfo(),1,armor - dmg);
+                        }
+                        06=else
+                        07 ^{
+                            01=ScriptItemActParam(dmg - armor);
+                            02=ShipCustomShipInfoData(0,CurInfo(),1,0);
+                            03=ShipCustomShipInfoDescription(0,CurInfo(),'NoShow');
+                            04=
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnStep,t_OnReEnteringForm
+                OnActStepTypes=0
+            }
+        }
+    }
+}
+Script ^{
+    Cat_Corvette ^{
+        112=Превосходно
+        147=Ну что ж, приступайте
+        155=Я подумаю
+        170=Отлично! Денежки списаны, работы производятся: считайте, что к концу дня или когда вы там заходите вылететь в открытый космос, всё будет уже совсем-совсем готово.
+        194=Хм, дайте взглянуть...<br><br>О-о-о, узнаю работу легендарных верфей Марса! Эргономичный и агрессивный дизайн вкупе с высокими технологиями.<br><br>Впрочем, даже для такого корабля мы знаем, что подобрать<br>Улучшенное покрытие и бронепластины позволят повысить сопротивляемость корабля внешним угрозам, что важно при его командирской роли<br><br>Обойдётся такое улучшение в <0> cr.
+        196=Отлично. Корпус уже перемещн на склад. Пользуйся на здоровье и уничтожай как можно больше врагов Коалиции.<br><br>Удачи!
+        199=Всенепременно!
+        201=Хо-хо, спрашиваете ещё! Плачу!
+        205=Ну, что, рейнджер, не будем ходить вокруг да около: ты вояка бывалый, не один и не два боя прошёл, и наград достоин больших и почётных. Но одними наградами сыт не будешь, и КВСМК приняло решение таким как ты предлагать к обмундированию особые, <clr>ли-ми-ти-ро-ван-ны-е<clrEnd> корабли, построенные на <clr>марсианских<clrEnd> верфях по спецзаказу.<br><br>Стоимость такой игрушки - <0> cr. Интересует?
+        207=А есть у вас уникальные улучшения для моего корабля?
+        208=Что там у вас за подарок?
+        209=Для особо отличившихся в боях рейнджеров мы подготовили особый подарок - уникальный корпус.
+        210=Пожалуй, в другой раз
+        211=Остаётся вам только выбрать конфигурацию. У нас есть на выбор <clr>три<clrEnd><br>-----------<br>1) Лёгкая - 1000 ед.<br>2) Средняя - 1200 ед.<br>3) Тяжёлая - 1400 ед.<br>-----------<br>Выбирайте!
+        212=Лёгкая (1000 ед.)
+        213=Средняя (1200 ед.)
+        214=Тяжёлая (1400 ед.)
+    }
+}

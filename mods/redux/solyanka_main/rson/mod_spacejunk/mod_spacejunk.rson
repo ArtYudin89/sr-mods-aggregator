@@ -1,0 +1,281 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "mod_spacejunk",
+    "ScriptFileOut": "D:\\mod_spacejunk.scr",
+    "ScriptTextOut": "D:\\mod_spacejunk.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [],
+            "DialogMessages": [],
+            "Dialogs": [],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 100,
+                    "StatusTraderMax": 10000,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 0,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 0,
+                    "DistSearch": 2097184,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 7
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 8,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 510
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "Gpages_cnt = 25;",
+                        "Glines_cnt = 20;",
+                        "",
+                        "sjunkGvar = newarray(Glines_cnt * Gpages_cnt + 3 + 0);",
+                        "// sjunkGvar[Glines_cnt * Gpages_cnt + 0] левая кнопка",
+                        "// sjunkGvar[Glines_cnt * Gpages_cnt + 1] правая кнопка кнопка",
+                        "// sjunkGvar[Glines_cnt * Gpages_cnt + 2] число предметов в системе",
+                        "",
+                        "for (i = 0; i <= Glines_cnt * Gpages_cnt + 2; i = i + 1)",
+                        "  sjunkGvar[i] = -1;",
+                        "",
+                        "InterfaceState('StarMap', 'sjMainPanel', 1);",
+                        "",
+                        "for (i = 0; i < Glines_cnt; i = i + 1) {",
+                        "    InterfaceState('StarMap', 'sjItemButton' + i, 1);",
+                        "//    InterfacePos('StarMap', 'sjItemButton' + i, 5, 8 + 30 * i, 1);",
+                        "//    InterfaceSize('StarMap', 'sjItemButton' + i, 23, 24);",
+                        "//",
+                        "//    InterfacePos('StarMap', 'sjItem' + i, 40, 4 + 30 * i, 1);",
+                        "//    InterfaceSize('StarMap', 'sjItem' + i, 420, 33);",
+                        "}",
+                        "",
+                        "InterfaceState('StarMap', 'sjPageButtonR', 0);",
+                        "InterfaceState('StarMap', 'sjPageButtonL', 0);"
+                    ],
+                    "#": 9,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 510
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Gpages_cnt = 25;",
+                        "Glines_cnt = 20;",
+                        "if(ShipInNormalSpace(Player())) {",
+                        "  sjunkGvar[Glines_cnt * Gpages_cnt + 2] = -1;",
+                        "  InterfaceState('StarMap', 'sjInfoPanel', 0);",
+                        "  InterfaceState('StarMap', 'sjOpenPanelButton', 1);",
+                        "  ",
+                        "  if(Glines_cnt != 20) SFT('Переменная Glines_cnt содержит значение ' + Glines_cnt + ', а не 20. Возможны ошибки.');",
+                        "}"
+                    ],
+                    "#": 10,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 510
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 6
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 5
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 4,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 11
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "sjunkGvar",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "None",
+                    "Init": "",
+                    "Global": true
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "Glines_cnt",
+                    "Pos.x": 150,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": true
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "Gpages_cnt",
+                    "Pos.x": 300,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": true
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 450,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 5,
+            "End": 4,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 6,
+            "End": 4,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 7,
+            "End": 6,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 7,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

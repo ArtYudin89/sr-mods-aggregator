@@ -1,0 +1,30 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            FixHulls ^{
+                Description=Фикс гигакорпусов
+                Icon=1
+                Name=-
+            }
+            FixPBGov ^{
+                Description=Фикс разговора на ПБ
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(!ShipInPirateClan(Player())) exit;
+                    02=if(CurrentForm() != 'RuinsTalk') exit;
+                    03=if(!GetShipRuins(Player())) exit;
+                    04=if(PlayerBridge()) exit;
+                    05=if(ShipType(GetShipRuins(Player())) != 'PB') exit;
+                    06=GotoGov(0);
+                }
+                OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnLeavingForm,t_OnReEnteringForm
+            }
+            FixShuNukes ^{
+                Description=Фикс ШуНюков
+                Icon=1
+                Name=-
+            }
+        }
+    }
+}

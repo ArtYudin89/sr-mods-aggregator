@@ -1,0 +1,742 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_ExpCaravan_PB",
+    "ScriptFileOut": "D:\\Mod_ExpCaravan_PB.scr",
+    "ScriptTextOut": "D:\\Mod_ExpCaravan_PB.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 20,
+                    "Msg": "Могли бы и больше предложить, но так уж и быть, продам по-братски. Мне всё равно влом куда-то ещё с этой фигнёй переться",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_ExpCaravan_PB.11\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 21,
+                    "Msg": "Пфф! В пираты что, одни нищеброды идут? Да мне это не возместит даже перегрева пушек!",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_ExpCaravan_PB.6\"))"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 22,
+                    "Msg": "",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('exit')"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 360,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 23,
+                    "Msg": "",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('exit')"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 24,
+                    "Msg": "М-м-м... Простите, не сейчас",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_ExpCaravan_PB.21\"))"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 600,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 25,
+                    "Msg": "",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer('exit')"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 720,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "Конечно передам! Держите!",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_ExpCaravan_PB.22\"))"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 840,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer('exit')"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 14,
+                    "Msg": "Чего, <Player>, развёл на груз какого-то лошка? А ты, я погляжу, совсем не так прост, хотя по морде лица твоей и не скажешь, что способен на такое. Лады, давай мы с корешами глянем, чего там у тебя трюм коптит.\r\n...\r\nНу, в общем, мы тут с пацанами покумекали и пришли к выводу, что <0> cr. вполне готовы отжалеть за твоё барахло. Но ни кредитом больше, извиняй. Я тебе не внук Роок-Феел'Эра.",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ExpCaravan_PB.4\"),\"<0>\",money))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 15,
+                    "Msg": "Э, слышь! Ну ты берега-то свои знай, в натуре! А то ведь мы за такое и обидеть можем.",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpCaravan_PB.9\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 16,
+                    "Msg": "Ну, значит, по рукам! <0> из трюма мы уже отгрузили, а вот и твои денюшки, получите - распишитесь.\r\nИ это, ещё... Уважуха тебе, короче. Всё правильно сделал, клан не забудет.",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ExpCaravan_PB.16\"),\"<0>\",Ttext))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 17,
+                    "Msg": "Та-а-ак-с, рейнджер, что это тут у тебя...\r\n\r\nОго! Да ведь это же наши... Кгхм. Прошу простить, рейнджер, военная тайна.\r\nНо мы готовы вам заплатить за каждый контейнер. <0> cr. из средств КВСМК и наше уважение.",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ExpCaravan_PB.18\"),\"<0>\",money))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 18,
+                    "Msg": "Э-э-эх, рейнджер! Какой пример подаёте подрастающему поколению!\r\n\r\nНу, если передумаете - мы всегда будем рады их забрать.",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpCaravan_PB.19\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 19,
+                    "Msg": "Ну, рейнджер, вы просто мо-ло-дец!\r\nМы передадим эти контейнера куда надо, а вы можете лететь со спокойной душой.",
+                    "DMsg.Num": "5",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpCaravan_PB.20\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "PB_CargoBox",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 12
+                },
+                {
+                    "Name": "WB_CargoBox",
+                    "Type": "TDialog",
+                    "Pos.x": 180,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 13
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 8
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 9,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(GetShipRuins(Player())) {",
+                        "  if(ShipType(GetShipRuins(Player()))=='WB') {",
+                        "    j=0;",
+                        "    money=0;",
+                        "    for(i=0;i<ShipItems(Player());i=i+1)",
+                        "    {",
+                        "        tdwd=ShipItems(Player(),i);",
+                        "        if(ItemType(tdwd)!=t_UselessItem)continue;",
+                        "        if(EquipmentImageName(tdwd)=='ExpCaravan_CargoBox')",
+                        "        {",
+                        "            j=j+1;",
+                        "            money=money+ItemCost(tdwd);",
+                        "        }",
+                        "    }",
+                        "    if(j)",
+                        "    {",
+                        "        if(j==1)Ttext='</color>'+CT(\"Script.Mod_ExpCaravan_PB.15\");",
+                        "        else Ttext='</color>'+CT(\"Script.Mod_ExpCaravan_PB.14\");",
+                        "        money=money+(money*25)/400;",
+                        "        AddDialogInject('WB_CargoBox','',CT(\"Script.Mod_ExpCaravan_PB.17\"),1);",
+                        "    }",
+                        "  }",
+                        "  if(ShipType(GetShipRuins(Player()))=='PB') {",
+                        "    j=0;",
+                        "    money=0;",
+                        "    for(i=0;i<ShipItems(Player());i=i+1)",
+                        "    {",
+                        "        tdwd=ShipItems(Player(),i);",
+                        "        if(ItemType(tdwd)!=t_UselessItem)continue;",
+                        "        if(EquipmentImageName(tdwd)=='ExpCaravan_CargoBox')",
+                        "        {",
+                        "            j=j+1;",
+                        "            money=money+ItemCost(tdwd);",
+                        "        }",
+                        "    }",
+                        "    if(j)",
+                        "    {",
+                        "        if(j==1)Ttext='</color>'+CT(\"Script.Mod_ExpCaravan_PB.15\");",
+                        "        else Ttext='</color>'+CT(\"Script.Mod_ExpCaravan_PB.14\");",
+                        "        money=money+(money*25)/100;",
+                        "        AddDialogInject('PB_CargoBox','',CT(\"Script.Mod_ExpCaravan_PB.0\"),1);",
+                        "    }",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 10,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 28,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(3);",
+                        "exit;"
+                    ],
+                    "#": 29,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 160,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(0);",
+                        "DAdd(1);"
+                    ],
+                    "#": 30,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(2);"
+                    ],
+                    "#": 31,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);"
+                    ],
+                    "#": 32,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(4);",
+                        "DAdd(6);"
+                    ],
+                    "#": 33,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(5);"
+                    ],
+                    "#": 34,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(7);"
+                    ],
+                    "#": 35,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i=ShipItems(Player())-1;i>=0;i=i-1)",
+                        "{",
+                        "    tdwd=ShipItems(Player(),i);",
+                        "    if(ItemType(tdwd)!=t_UselessItem)continue;",
+                        "    if(EquipmentImageName(tdwd)=='ExpCaravan_CargoBox')",
+                        "    {",
+                        "        FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),tdwd)));",
+                        "        //Накидываем по 100 очков пиратского звания за каждый сданный контейнер, если игрок состоит в пиратском клане",
+                        "        //Но всегда оставляем одно очко до звания недополученным, чтобы диалог ПБ не перешёл резко к повышению",
+                        "        if(ShipOnSidePirateClan(Player()))",
+                        "        {",
+                        "            j=ShipNextPirateRankPoints(Player())-ShipPirateRankPoints(Player());",
+                        "            if(j<=100)ShipPirateRankPoints(Player(),ShipNextPirateRankPoints(Player())-1);",
+                        "            else ShipPirateRankPoints(Player(),ShipPirateRankPoints(Player())+100);",
+                        "        }",
+                        "    }",
+                        "}",
+                        "Sound('Sound.Sell');",
+                        "ShipMoney(Player(),ShipMoney(Player())+money);",
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 36,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 37,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 38,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i=ShipItems(Player())-1;i>=0;i=i-1)",
+                        "{",
+                        "    tdwd=ShipItems(Player(),i);",
+                        "    if(ItemType(tdwd)!=t_UselessItem)continue;",
+                        "    if(EquipmentImageName(tdwd)=='ExpCaravan_CargoBox')",
+                        "    {",
+                        "        FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),tdwd)));",
+                        "        //Накидываем по 2500 опыта за каждый контейнер. ",
+                        "        ShipFreeExp(Player(),ShipFreeExp(Player())+2500);",
+                        "    }",
+                        "}",
+                        "//Не забываем массово выправить отношение с игроком, а то ведь он сдал же важный груз!",
+                        "ChangeGlobalRelationsShips(Player(),0,1,75,1,31);",
+                        "ChangeGlobalRelationsShips(Player(),0,1,75,2,31);",
+                        "ChangeGlobalRelationsShips(Player(),0,1,75,4,31);",
+                        "ChangeGlobalRelationsShips(Player(),0,1,75,8,31);",
+                        "ChangeGlobalRelationsShips(Player(),0,1,75,16,31);",
+                        "ChangeGlobalRelationsShips(Player(),0,1,75,32,31);",
+                        "ChangeGlobalRelationsPlanets(Player(),0,1,75,31);",
+                        "",
+                        "Sound('Sound.Sell');",
+                        "ShipMoney(Player(),ShipMoney(Player())+money);",
+                        "DChange(5);",
+                        "exit;"
+                    ],
+                    "#": 39,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 7
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 6
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 5,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 11
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tdwd",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "money",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "j",
+                    "Pos.x": 270,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "Ttext",
+                    "Pos.x": 360,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 28,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 29,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 30,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 15,
+            "End": 31,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 32,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 17,
+            "End": 33,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 34,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 19,
+            "End": 35,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 20,
+            "End": 36,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 21,
+            "End": 37,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 24,
+            "End": 38,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 39,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 6,
+            "End": 5,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 7,
+            "End": 5,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 8,
+            "End": 7,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 8,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

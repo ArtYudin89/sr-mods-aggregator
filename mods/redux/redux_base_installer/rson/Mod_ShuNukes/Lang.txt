@@ -1,0 +1,1550 @@
+Tips ^{
+    28=Ядерные торпеды - особо мощное оружие, которое можно закупить на <clr>Военной Базе<clrEnd> или на <clr>Доминионе<clrEnd>.
+    28=При установке шахты на корабль, закупив ракет на одной из точек закупки, вы сможете запускать их через особую кнопку на панели оружия.
+    28=Учтите, что стрелять <clr>из пушки по воробьям не выйдет<clrEnd>.
+}
+Items ^{
+    CustomCountables ^{
+        ShuNukes_DirtyNukeTorpedo ^{
+            Name=Термоядерная торпеда
+            Text=Мощное самонаводящееся оружие для борьбы с крупными целями или скоплениями противника.
+            Text=<clr><clrEnd>
+            Text=Количество: <N> шт.
+            UnitSize=6
+        }
+        ShuNukes_NukeTorpedo ^{
+            Name=Ядерная торпеда
+            Text=Мощное самонаводящееся оружие для борьбы с крупными целями или скоплениями противника. Запрещено Советом Коалиции из-за устаревшей технологии.
+            Text=<clr><clrEnd>
+            Text=Количество: <N> шт.
+            UnitSize=15
+        }
+        ShuNukes_CombinedNukeTorpedo ^{
+            Name=Комбинированная торпеда
+            Text=Сверхмощное самонаводящееся оружие для борьбы с крупными целями или скоплениями противника. Запрещено Советом Коалиции из-за колоссальной мощности, допускается лишь по санкции КВСМК.
+            Text=<clr><clrEnd>
+            Text=Количество: <N> шт.
+            UnitSize=12
+        }
+        ShuNukes_EMNukeTorpedo ^{
+            Name=Электромагнитная торпеда
+            Text=Самонаводящаяся торпеда с огромным блоком генерации электромагнитного импульса, способного превратить целый флот в металлолом.
+            Text=<clr><clrEnd>
+            Text=Количество: <N> шт.
+            UnitSize=5
+        }
+        ShuNukes_NeutronNukeTorpedo ^{
+            Name=Нейтронная торпеда
+            Text=Мощное самонаводящееся оружие для борьбы с крупными целями или скоплениями противника.
+            Text=<clr><clrEnd>
+            Text=Количество: <N> шт.
+            UnitSize=5
+        }
+    }
+    Weapon ^{
+        CustomWeapon ^{
+            DirtyNukeTorpedo ~{
+                BaseGun=Missile_Launcher
+                MinDamage=1
+                MaxDamage=1
+                DamageSet=Missile,Destruct,BlockWeapon,BlockDroid,ReduceEngine,Decelerate,DecelerateA,BonusToDamaged,Undefendable
+                ShotType=Torpedo
+                Speed=0
+                AverageRadius=1000
+                SecondaryDamageRadius=400
+                MissileRadius=1000
+                MissileMinSpeed=900
+                MissileMaxSpeed=1100
+                MissileChanceToBeHit=20
+                mWeaponDamage=1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00
+                ShotsPerTurn=1
+                ArcadeType=Torpedo_Tube
+                MiningFactor=15
+                kCost=250
+                AverageSize=150
+                TechLevel=8
+                InventTechLevel=Atomic_Vision
+                StoreAvailability=SystemOnly
+                ShotEffectPath=Weapon.4
+                ShotEffectPalette=67
+                SplashEffectPath=Weapon.NoGraph
+                MissileExplosionEffectPath=Weapon.MissileHit
+            }
+            NukeTorpedo ~{
+                BaseGun=Missile_Launcher
+                MinDamage=1
+                MaxDamage=1
+                DamageSet=Missile,Shock,Magnetic,Destruct,Undefendable
+                ShotType=Torpedo
+                Speed=0
+                AverageRadius=1000
+                SecondaryDamageRadius=250
+                MissileRadius=1000
+                MissileMinSpeed=1000
+                MissileMaxSpeed=1200
+                MissileChanceToBeHit=15
+                mWeaponDamage=1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00
+                ShotsPerTurn=1
+                ArcadeType=Torpedo_Tube
+                MiningFactor=10
+                kCost=120
+                AverageSize=150
+                TechLevel=8
+                InventTechLevel=Turbogravitron
+                StoreAvailability=SystemOnly
+                ShotEffectPath=Weapon.4
+                ShotEffectPalette=66
+                SplashEffectPath=Weapon.NoGraph
+                MissileExplosionEffectPath=Weapon.MissileHit
+            }
+            EMNukeTorpedo ~{
+                BaseGun=Missile_Launcher
+                MinDamage=1
+                MaxDamage=1
+                DamageSet=Missile,Shock,Magnetic,Destruct,Decelerate,BonusToDamaged,Undefendable
+                ShotType=Torpedo
+                Speed=0
+                AverageRadius=1000
+                SecondaryDamageRadius=300
+                MissileRadius=1000
+                MissileMinSpeed=1300
+                MissileMaxSpeed=1500
+                MissileChanceToBeHit=15
+                mWeaponDamage=1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00
+                ShotsPerTurn=1
+                ArcadeType=Torpedo_Tube
+                MiningFactor=10
+                kCost=300
+                AverageSize=150
+                TechLevel=8
+                InventTechLevel=Turbogravitron
+                StoreAvailability=SystemOnly
+                ShotEffectPath=Weapon.4
+                ShotEffectPalette=68
+                SplashEffectPath=Weapon.NoGraph
+                MissileExplosionEffectPath=Weapon.MissileHit
+            }
+            CombinedNukeTorpedo ~{
+                BaseGun=Missile_Launcher
+                MinDamage=1
+                MaxDamage=1
+                DamageSet=Missile,Shock,Magnetic,Destruct,Decelerate,BonusToDamaged,Undefendable
+                ShotType=Torpedo
+                Speed=0
+                AverageRadius=1000
+                SecondaryDamageRadius=350
+                MissileRadius=1000
+                MissileMinSpeed=800
+                MissileMaxSpeed=1000
+                MissileChanceToBeHit=15
+                mWeaponDamage=1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00
+                ShotsPerTurn=1
+                ArcadeType=Torpedo_Tube
+                MiningFactor=10
+                kCost=300
+                AverageSize=175
+                TechLevel=8
+                InventTechLevel=Turbogravitron
+                StoreAvailability=SystemOnly
+                ShotEffectPath=Weapon.4
+                ShotEffectPalette=69
+                SplashEffectPath=Weapon.NoGraph
+                MissileExplosionEffectPath=Weapon.MissileHit
+            }
+            NeutronNukeTorpedo ~{
+                BaseGun=Missile_Launcher
+                MinDamage=1
+                MaxDamage=1
+                DamageSet=Missile,Shock,Magnetic,Destruct,Decelerate,BonusToDamaged,Undefendable
+                ShotType=Torpedo
+                Speed=0
+                AverageRadius=1000
+                SecondaryDamageRadius=250
+                MissileRadius=1000
+                MissileMinSpeed=1000
+                MissileMaxSpeed=1200
+                MissileChanceToBeHit=15
+                mWeaponDamage=1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00
+                ShotsPerTurn=1
+                ArcadeType=Torpedo_Tube
+                MiningFactor=10
+                kCost=200
+                AverageSize=150
+                TechLevel=8
+                InventTechLevel=Turbogravitron
+                StoreAvailability=SystemOnly
+                ShotEffectPath=Weapon.4
+                ShotEffectPalette=70
+                SplashEffectPath=Weapon.NoGraph
+                MissileExplosionEffectPath=Weapon.MissileHit
+            }
+            ShuNukes ^{
+                1=NukeTorpedo
+                2=DirtyNukeTorpedo
+                Count=2
+            }
+        }
+        LevelToLetter ^{
+            1=A
+            2=B
+            3=C
+            4=D
+            5=E
+            6=F
+            7=G
+            8=H
+        }
+        Missile ^{
+            DirtyNukeTorpedo ^{
+                Name=Термоядерная торпеда
+                Text=Мощное самонаводящееся оружие для борьбы с крупными целями или скоплениями противника. Запрещено Советом Коалиции.
+            }
+            NukeTorpedo ^{
+                Name=Ядерная торпеда
+                Text=Мощное самонаводящееся оружие для борьбы с крупными целями или скоплениями противника.
+            }
+            CombinedNukeTorpedo ^{
+                Name=Комбинированная торпеда
+                Text=Сверхмощное самонаводящееся оружие для борьбы с крупными целями или скоплениями противника. Запрещено Советом Коалиции из-за колоссальной мощности, допускается лишь по санкции КВСМК.
+            }
+            EMNukeTorpedo ^{
+                Name=Электромагнитная торпеда
+                Text=Самонаводящаяся торпеда с огромным блоком генерации электромагнитного импульса, способного превратить целый флот в металлолом.
+            }
+            NeutronNukeTorpedo ^{
+                Name=Нейтронная торпеда
+                Text=Мощное самонаводящееся оружие для борьбы с крупными целями или скоплениями противника.
+            }
+        }
+        Name ^{
+            DirtyNukeTorpedo=---
+            NukeTorpedo=---
+            CombinedNukeTorpedo=---
+            EMNukeTorpedo=---
+            NeutronNukeTorpedo=---
+        }
+        OriginalWeaponType ~{
+            Industrial_Laser=1
+            Fragmentation_Cannon=2
+            Flux=3
+            Missile_Launcher=4
+            Treton=5
+            Wave_Phaser=6
+            Flow_Blaster=7
+            Electronic_Cutter=8
+            Multiresonator=9
+            Atomic_Vision=10
+            Disintegrator=11
+            Turbogravitron=12
+            IMHO-9000=13
+            Vertix=14
+            Torpedo_Tube=15
+            Esodapher=16
+            Caphasitor=17
+            Lirecron=18
+        }
+        Text ^{
+            DirtyNukeTorpedo=---
+            NukeTorpedo=---
+            CombinedNukeTorpedo=---
+            EMNukeTorpedo=---
+            NeutronNukeTorpedo=---
+        }
+        ShuNukesParams ^{
+            DirtyNukeTorpedo=---
+            Count=5
+            NukeShaftWeight=120
+            NukeTypes ^{
+                1=NukeTorpedo
+                2=DirtyNukeTorpedo
+                3=CombinedNukeTorpedo
+                4=EMNukeTorpedo
+                5=NeutronNukeTorpedo
+            }
+            NukeTorpedo ^{
+                MinDamageMin=150
+                MinDamageStep=55
+                MaxDamageMin=400
+                MaxDamageStep=90
+                RangeMin=700
+                RangeStep=75
+                SpeedMin=600
+                SpeedStep=65
+                NukesPerYear=0
+                NukesSold=0
+                DialogStatus=0
+            }
+            DirtyNukeTorpedo ^{
+                MinDamageMin=450
+                MinDamageStep=85
+                MaxDamageMin=600
+                MaxDamageStep=120
+                RangeMin=700
+                RangeStep=75
+                SpeedMin=600
+                SpeedStep=65
+                NukesPerYear=0
+                NukesSold=0
+                DialogStatus=0
+            }
+            NeutronNukeTorpedo ^{
+                MinDamageMin=350
+                MinDamageStep=85
+                MaxDamageMin=500
+                MaxDamageStep=120
+                RangeMin=800
+                RangeStep=100
+                SpeedMin=800
+                SpeedStep=95
+                NukesPerYear=0
+                NukesSold=0
+                DialogStatus=0
+            }
+            EMNukeTorpedo ^{
+                MinDamageMin=50
+                MinDamageStep=15
+                MaxDamageMin=120
+                MaxDamageStep=40
+                RangeMin=300
+                RangeStep=45
+                SpeedMin=800
+                SpeedStep=65
+                NukesPerYear=0
+                NukesSold=0
+                DialogStatus=0
+            }
+            CombinedNukeTorpedo ^{
+                MinDamageMin=700
+                MinDamageStep=135
+                MaxDamageMin=1000
+                MaxDamageStep=180
+                RangeMin=900
+                RangeStep=75
+                SpeedMin=600
+                SpeedStep=65
+                NukesPerYear=0
+                NukesSold=0
+                DialogStatus=0
+            }
+        }
+    }
+}
+UselessItems ^{
+    ShuNukes_NukesWeight ^{
+        Cost=Small
+        Name=Невидимый утяжелитель
+        Owner=Maloc
+        Size=1
+        Text=You should not see this item. Report to Discord, please.
+    }
+}
+MicroModuls ^{
+    ShuNukes_BallisticUpgrade ^{
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ShuNukes_DamagerUpgrade ^{
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ShuNukes_NukeShaft ^{
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Оснащён пусковыми установками для запуска <color=255,240,100>ядерных торпед</color>.</color>
+        Fragility=117
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ShuNukes_ReloaderUpgrade ^{
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ShuNukes_SpeederUpgrade ^{
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+}
+Help ^{
+    DirtyNukeTorpedo=Термоядерная торпеда (<color=255,240,100>ПКМ</color> - сменить боеприпас)
+    NukeTorpedo=Ядерная торпеда (<color=255,240,100>ПКМ</color> - сменить боеприпас)
+    CombinedNukeTorpedo=Гибридная торпеда (<color=255,240,100>ПКМ</color> - сменить боеприпас)
+    EMNukeTorpedo=Электромагнитная торпеда (<color=255,240,100>ПКМ</color> - сменить боеприпас)
+    NeutronNukeTorpedo=Нейтронная торпеда (<color=255,240,100>ПКМ</color> - сменить боеприпас)
+}
+FormInfo ^{
+    JanuaryFirst=1 января
+}
+FormShip ^{
+    NoDrop92=Торпеды не получится перенести без специальных приспособлений, а тем более - выкинуть
+    NoDrop93=Торпеды не получится перенести без специальных приспособлений, а тем более - выкинуть
+}
+Script ^{
+    Mod_ShuNukes ^{
+        0=<0>
+        MilitaryRankName ^{
+            4=Истребителем
+        }
+        NukeDialogCB ^{
+            AnswerBuyNukes=Считай, уже сделано. Но на всякий случай хочу сразу предупредить - наши торпеды особо ядрёные. "Припекать" от них в корабле может знатно, так что озаботься использованием противорадиационного костюма... Ну, либо фольгой кабину обшей, хе-хе. Хотя воспоминания об уроках гражданской обороны говорят мне, что потребуется особая фольга, толщиной в пару сантиметров, не меньше.
+            AnswerDeinstallLaunchShaft=С нас снять не заржавеет - каждая пусковая на счету.<br>Ну, вот, уже всё готово, видишь? Только назад уже так бесплатно не вернём - не надейся.
+            AnswerInstallLaunchShaft=Ну, это наши ребята мигом порешают - не успеешь до ангара дойти. Пользуйся, как говорится, на здоровье, хе-хе.
+            AnswerNuke=В таком случае наши парни сперва проверят, что у тебя на кораблике есть вообще...
+            AnswerNuke=...
+            AnswerNukeFirstTime=Тебе наверняка уже прожужжали уши о том, как малоки Гралгар "дезинфицировали"? Если нет, то, вкратце, сказ таков, что залили они ту планетку ядерным огнём по самую стратосферу. Это дело им, как известно, не помогло, зато планете настал бесповоротный кирдык, так что Совет Коалиции решил запретить подобные "ядерные излияния" от греха подальше. Однако запретили они это дело не полностью, ведь ядерные бабахи хоть и не экологичны, зато весьма эффективны.
+            AnswerNukeFirstTime=Но это я всё к чему. У нас на применение ядерного оружия никаких запретов, ясное дело, нету, но вот добывать сырье и производить новые торпеды выходит накладно. По этой причине оснащать термоядерными установками всех желающих мы не можем. Приходится ограниченно выдавать торпеды только наиболее авторитетным и умелым парням. Ты в это число с недавнего времени входишь. По заслугам тебе положено выдавать до <NukesMax> ядерных торпед в год, но оплачивать установку <clr>пусковой шахты<clrEnd> и стоимость самих торпед тебе придётся из своего кармана. Предложение устраивает?
+            AnswerNukeFirstTimeNo=Ну, думай, что уж. С нас подождать не убудет. Главное, чтобы с тебя враги за это время шкуру не убыли.
+            AnswerNukeFirstTimeTwice=Сказали по делу, и за их базар мы ответим.
+            AnswerNukeNoLauncher=Итак, пусковой шахты парни у тебя не обнаружили, но, если хочешь, поставим - за ней дело не встанет. Стандартный торпедный аппарат коалиционного образца класса <Class> обойдётся тебе в <Cost> cr. Если пригонишь корабль покруче, то и торпедный аппарат сможем вкорячить покруче, но только если <clr>по размеру<clrEnd> влезет. Они так-то довольно здоровые, заразы - <NukeSize> кубометров.
+            AnswerNukeNoLauncherNoMoreNukes=А вот по торпедам, прости - больше <clr>выдать тебе в этом году не сможем<clrEnd>. Свою долю из общака ты уже всю выбрал, а нам ещё ими свои собственные корабли и доминионы оснащать.
+            AnswerNukeNoLauncherNukes=А по торпедам можем тебе предложить ещё <NukesCount> шт. за <NukeCost> cr. Только учти, что на небольшие манёвренные корабли они наводиться не будут, ибо слишком медленные и неповоротливые для таких задач.
+            AnswerNukeWithLauncher=Так, ну, пусковая установка у тебя уже есть, но если вдруг будет не нужна, то всегда можем снять и забрать себе.
+            AnswerNukeWithLauncherNoMoreNukes=А вот по торпедам, прости - больше <clr>выдать тебе в этом году не сможем<clrEnd>. Свою долю из общака ты уже всю выбрал, а нам ещё ими свои собственные корабли и доминионы оснащать.
+            AnswerNukeWithLauncherNukes=А по торпедам можем тебе предложить ещё <NukesCount> шт. за <NukeCost> cr. Только учти, что на небольшие манёвренные корабли они наводиться не будут, ибо слишком медленные и неповоротливые для таких задач.
+            AnswerRefuse=Сегодня не нужно, а завтра - кто знает. Лучше передумай этот вопрос ещё раз, а то, не ровён час, совсем без думалки останешься.
+            HowMuchNukes=Сколько торпед отгрузить?
+            PlayerAskNuke=Я хотел бы приобрести у вас термоядерное оружие
+            PlayerAskNukeFirstTimeTwice=На одной пиратской базе мне сказали, что став <Rank> я смогу попросить у клана некое мощное оружие...
+            PlayerBuyNukes=Я бы хотел закупить ядерных торпед (<Cost> cr. за штуку)
+            PlayerDeinstallLaunchShaft=Я хочу демонтировать свою пусковую установку
+            PlayerInstallLaunchShaft=Я хочу установить на корабль пусковую установку (<Cost> cr.)
+            PlayerInstallLaunchShaftNoFit=Я хочу установить на корабль пусковую установку (слишком маленький корпус)
+            PlayerNukeFirstTimeNo=Пока что звучит как-то сомнительно, надо подумать
+            PlayerNukeFirstTimeYes=Да, устраивает вполне
+            PlayerRefuse=Пожалуй, мне пока ничего не нужно, спасибо
+        }
+        NukeDialogPB ^{
+            AnswerNukeFirstTimeNoRank=Да есть конечно, об чём базар! Только вот ты это оружие себе не получишь, поскольку в нашей среде ещё не долго шебуршишь, авторитета не имеешь. А вот как <Rank> станешь - дуй на ближайший <clr>доминион<clrEnd>, там спроси снова за эту бодягу.
+            PlayerAskNukeFirstTime=Слушайте, вы ж пиратское братство и всё такое... Нет ли у вас какого-нибудь реально мощного оружия против военных да доминаторов?
+            PlayerNukeFirstTimeNoRank=Уразумел
+        }
+        NukeDialogWB ^{
+            AnswerBuyMod=О-хо-хо! А ты из ценителей, как я погляжу! Что же, если у тебя завалялось несколько лишних кредитов, и ты готов оплатить нам сборку новых устройств, то мы не имеем права тебя останавливать.
+            AnswerBuyMod=Ну а теперь давай перейдём к списку наших "игрушек"
+            AnswerBuyMod=#Modifs#
+            AnswerBuyMod=<clr><clrEnd>
+            AnswerBuyMod=Но учти - больше <clr>одной<clrEnd> модификации на пусковую установку твоего корабля не станет, как ни крутись, поэтому, если что, придётся демонтировать уже установленную.
+            AnswerBuyModEnd=Ну вот, наши спецы уже оснастили твою установку всем необходимым. Пользуйся на здоровье!
+            AnswerBuyModInstalled=Рейнджер, наши спецы говорят, что на вашей пусковой установке уже стоит другая модификация - #name#. Вы действительно хотите, чтобы наши техники демонтировали старую модификацию и разместили новую?
+            AnswerBuyModInstalledSame=Рейнджер, наши спецы говорят, что ты уже поставил на свою пусковую установку эту же модификацию. Что-либо делать попросту бессмысленно!
+            AnswerBuyNukes=Слушай, <Player> - а знаешь, какой запах я обожаю поутру? Нет, не запах термоядерных торпед, разумеется, ведь радиация не имеет запаха, дурень! Поутру я обожаю запах крепкого малокского кофе, а также новостных сводок о том, что какой-то очередной рейнджер распылил на атомы ещё парочку здоровенных стальных засранцев.
+            AnswerBuyNukes=Заказанные ядерные торпеды уже погружены на твой корабль.
+            AnswerDeinstallLaunchShaft=Тьфу - баба! Да кто же такими пушками разбрасывается, а, <Player>?! А ты часом не из этих... не из зелёных? Они-то - зараза похуже доминаторов, уж помяни моё слово! Сперва победили боевой атом, а завтра, глядишь, и до мирного травоеды доберутся...
+            AnswerDeinstallLaunchShaft=Ай, да ладно, пёс с тобой! Демонтировали мы твою установку, не переживай.
+            AnswerInstallLaunchShaft=Сказано - сделано! Новёхонький торпедный аппарат для будущего героя Галактики, ха! Всегда приятно предоставить такой в руки смелого и сознательного гуманоида.
+            AnswerNuke=Тогда сперва мы должны провести краткий техосмотр твоего кораблика...
+            AnswerNuke=...
+            AnswerNukeFirstTime=Слышал ли ты, <Player>, когда-нибудь о ядерном пекле, что наши краснорожие соколы устроили жестянкам в своё время на Гралгаре? Да-а, было время... Тогда ещё Совет Коалиции не ограничивал нас в средствах ведения космического боя. Теперь же ядерные торпеды выдаются лишь в фиксированном количестве и строго под расписку о конвекци... конверси... короче, об ограничении в нормальном применении, мать их ети! Якобы избыточный выброс радиоактивных изотопов в космическую среду может выйти последующим поколениям боком, ха! А захват жестянками всей Галактики им боком не выйдет, так что ли?! Кхм, ну да что-то я отвлёкся.
+            AnswerNukeFirstTime=Итак, ты сказал, что хочешь себе пушку помощнее, да? Исходя из твоего текущего звания, мы могли бы выделить тебе под расписку до <NukesMax> ядерных торпед в год. Естественно, тебе сперва придётся установить на свой корабль габаритную <clr>пусковую шахту<clrEnd> и отсек хранения для ядерных зарядов. Всё это тебе также придётся делать за свой счёт, поскольку мы тут не сыром в масле катаемся, знаешь ли. Согласен ли ты на вышеописанные условия?
+            AnswerNukeFirstTimeNo=Ну, думай-думай, голубчик. А пока ты думаешь, доминаторы будут на своих треклятых базах устанавливать себе всё новые смертоносные игрушки.
+            AnswerNukeFirstTimeNoRank=Бахнуть, говоришь? Это можно, да. Но как рейнджер ты пока ещё слишком зелен и юн в моих авторитетных глазах, так что приходи с этим вопросом как-нибудь потом. Как станешь <Rank>, хотя бы.
+            AnswerNukeFirstTimeTwice=Обещали, говоришь? Ну, раз обещали, то слово сдержим.
+            AnswerNukeNoLauncher=Ну, насколько я вижу, пусковой шахты на твоём корабле ещё нет. Не беда - поставим. В соответствии с <clr>техноуровнем<clrEnd> твоего корпуса, установка торпедного аппарата класса <Class> обойдётся тебе в <Cost> cr. На всякий случай сразу уточню, что чем круче корпус, тем лучшую пусковую установку в него можно вмонтировать. Однако имей в виду, что в совсем маленькие корпуса такая махина никак не поместится - <NukeSize> кубометров как-никак.
+            AnswerNukeNoLauncherNoMoreNukes=Что же касается торпед, то в этом году тебе <clr>больше выдать не можем<clrEnd> - извини. У нас все припасы строго по боевым частям расписаны - рейнджерам остаются только излишки производства, а ты своё уже получил.
+            AnswerNukeNoLauncherNukes=Что же касается торпед, то в этом году тебе доступно ещё <NukesCount> шт. по цене в <NukeCost> cr. И да, напоминаю, что использование данных торпед против кораблей малого тоннажа строжайше запрещено, да и технически невозможно - для подкрепления запрета.
+            AnswerNukeWithLauncher=Вижу, пусковую установку ты себе на корабль уже разместил? Это правильно, одобряю! Но, согласно декларации Совета Коалиции, всё равно обязан уведомить тебя, что в рамках программы по борьбе с загрязнением окружающей среды продуктами ядерного распада, мы можем совершенно безвозмездно и по единому твоему желанию демонтировать пусковую установку с твоего корабля хоть вот прям сейчас. Как боевой офицер, однако, делать это я тебе категорически не советую, но правила есть правила.
+            AnswerNukeWithLauncherNoMoreNukes=Что же касается ядерных торпед, то в этом году тебе <clr>больше выдать не можем<clrEnd> - извини. У нас все припасы строго по боевым частям расписаны - рейнджерам остаются только излишки производства, а ты своё уже получил.
+            AnswerNukeWithLauncherNukes=Касаемо же торпед - в этом году тебе доступно ещё <NukesCount> ед. по цене в <NukeCost> за штуку. И да, напоминаю, что использование данных торпед против кораблей малого тоннажа строжайше запрещено, а потому технически невозможно.
+            AnswerRefuse=Это ты сейчас думаешь, что не нужно, а как прижмут доминаторы к стенке, да как начнут своих наноботов в дюзы запихивать - что тогда делать будешь?
+            AnswerRefuse=Впрочем, это будут уже твои проблемы, не наши. Но попомни мои слова: всегда приятно иметь в запасе "красную кнопку"
+            HowMuchNukes=Сколько торпед закупить?
+            PlayerAskNuke=Я хотел бы приобрести у вас ядерное оружие
+            PlayerAskNukeFirstTime=Скажите, а разве нет у вас какого-нибудь ультимативно мощного оружия против доминаторов? Их бы взять, да и бахнуть чем посильней...
+            PlayerAskNukeFirstTimeTwice=Когда-то мне обещали, что, став <Rank>, я смогу получить в распоряжение некое мощное оружие...
+            PlayerBuyMod=Мощное оружие - хорошо, а ошеломляюще мощное - ещё лучше! Нет ли у вас каких-либо возможностей <color=220,20,20>улучшить<clr> ядерное оружие?
+            PlayerBuyModEnd=Отлично! Пора испробовать улучшение в бою.
+            PlayerBuyModNo=Пожалуй, я ещё не готов к такой мощи. В другой раз.
+            PlayerBuyModReady=Пожалуй, посмотрю на что-нибудь ещё
+            PlayerBuyModReturn=Я готов, начинайте замену!
+            PlayerBuyNukes=Я бы хотел закупить термоядерных торпед (<Cost> cr. за штуку)
+            PlayerBuyNukesNoMoney=Я бы хотел закупить термоядерных торпед (<Cost> cr. за штуку) (Недостаточно средств)
+            PlayerBuyEMNukes=Я бы хотел закупить электромагнитных торпед (<Cost> cr. за штуку)
+            PlayerBuyEMNukesNoMoney=Я бы хотел закупить электромагнитных торпед (<Cost> cr. за штуку) (Недостаточно средств)
+            PlayerBuyNeutronNukes=Я бы хотел закупить нейтронных торпед (<Cost> cr. за штуку)
+            PlayerBuyNeutronNukesNoMoney=Я бы хотел закупить нейтронных торпед (<Cost> cr. за штуку) (Недостаточно средств)
+            PlayerBuyCombinedNukes=Я бы хотел закупить гибридных торпед (<Cost> cr. за штуку)
+            PlayerBuyCombinedNukesNoMoney=Я бы хотел закупить гибридных торпед (<Cost> cr. за штуку) (Недостаточно средств)
+            PlayerDeinstallLaunchShaft=Я хочу демонтировать пусковую установку со своего корабля
+            PlayerInstallLaunchShaft=Я хочу установить на корабль пусковую установку (<Cost> cr.)
+            PlayerInstallLaunchShaftNoFit=Я хочу установить на корабль пусковую установку (слишком маленький корпус)
+            PlayerInstallLaunchShaftNoMoney=Я хочу установить на корабль пусковую установку (<Cost> cr.) (Недостаточно средств)
+            PlayerNukeFirstTimeNo=Вы прям-таки выкручиваете мне руки! Сперва я должен подумать
+            PlayerNukeFirstTimeNoRank=Обязательно приду!
+            PlayerNukeFirstTimeYes=Согласен, куда ж деваться
+            PlayerRefuse=Пожалуй, мне пока ничего не нужно, спасибо
+        }
+        NukeModifications ^{
+            1 ^{
+                Answer=Установить "Уничтожитель миров"
+                GTL=4
+                Info=ShuNukes_DamagerUpgrade
+                Name=Уничтожитель миров
+                Text=1. Модификация "Уничтожитель миров" (#aviable#)
+                Text=Стандартная боеголовка ядерной торпеды усилена сверхчувствительным детонатором на жидких полупроводниках, а один из "слоёв" заменён на кварковый. Итоговая мощь допустима обычно лишь для линейных кораблей, а то и дредноутов, но для тебя мы сделали исключение.
+                Text=Урон торпеды увеличен на <clr>450<clrEnd> ед.
+                Text=Стоимость установки: money cr.
+            }
+            2 ^{
+                Answer=Установить "Патронташ"
+                GTL=6
+                Info=ShuNukes_ReloaderUpgrade
+                Name=Патронташ
+                Text=2. Модификация "Патронташ" (#aviable#)
+                Text=Вспомогательные системы подачи снаряда и подготовки шахты к новому залпу, а также обновлённые программы наведения значительно снижают временные затраты установки на пререрыв между залпами
+                Text=На <clr>три<clrEnd> дня (но не менее одного) снижает время на перезарядку установки
+                Text=Стоимость установки: money cr.
+            }
+            3 ^{
+                Answer=Установить "Катапульту"
+                GTL=5
+                Info=ShuNukes_SpeederUpgrade
+                Name=Катапульта
+                Text=3. Модификация "Катапульта" (#aviable#)
+                Text=Дополнительные ускорители, установленные в шахте, позволяют торпеде развить гораздо большую крейсерскую скорость, и, тем самым, повышают шансы снаряду миновать систему противоракетной обороны.
+                Text=Скорость торпеды увеличена на <clr>750<clrEnd> ед.
+                Text=Стоимость установки: money cr.
+            }
+            4 ^{
+                Answer=Установить "Ракетную завесу"
+                GTL=7
+                Info=ShuNukes_BallisticUpgrade
+                Name=Ракетная завеса
+                Text=4. Модификация "Ракетная завеса" (#aviable#)
+                Text=Тактика разного рода ловушек, включая тепловые, широко применяется планетарными войсками с древних времён. Аналогично же и эта модификация выпускает плеяду малых снарядов, которые прикрывают собой головной, защищая от действия систем противоракетной обороны.
+                Text=Установка дополнительно запускает <clr>25<clrEnd> малых ракет, прикрывающих собой головную, несущую ядерный заряд
+                Text=Стоимость установки: money cr.
+            }
+            Aviable=<color=20,220,20>Доступна к покупке</color>
+            Chance=5
+            ChanceWarriors=15
+            Count=4
+            Unaviable=<color=220,20,20>Находится на полевых испытаниях</color>
+        }
+        PirateRankName ^{
+            4=Головорезом
+        }
+        SetNukeTargetButtonMessages ^{
+            HowMuchToLaunch=Сколько торпед вы хотите выпустить по цели?
+            InvalidShip=Наведение ядерной торпеды на столь малый корабль технически невозможно
+            InvalidTarget=Неверный тип цели
+            IsCooldown=Выбор цели невозможен, торпедная шахта перезаряжается
+            IsCooldownMany=Выбор цели невозможен, торпедные шахты перезаряжаются
+            NoMoreNukeTypesAvailable=Ядерных торпед другого типа в трюме не обнаружено
+            NukeTypeSet=Тип боеприпаса изменён на: <NukeType>
+            TargetCancel=Выбранная цель сброшена
+            TargetOutOfRange=Объект вне радиуса прицеливания
+            TargetSet=Цель установлена
+        }
+        StationNukesDialogs ^{
+            AskHowMuchBuy=Я согласен, начнём оформление покупки
+            Exit=Пожалуй, не сейчас
+            MainBuy=Вы можете докупить для нашей станции ядерные боеприпасы. Один такой выйдет вам в cost cr.
+            MainInstall=Вы можете установить на нашу станцию шахты для запуска ядерных торпед. Обойдутся они вам в cost cr.
+            PlayerBuyOk=Я согласен, начнём оформление покупки
+            PlayerInstallOk=Я согласен, устанавливайте
+        }
+        NukeDetected=Сканерный кэш засёк запуск торпеды класса "Стрела"!
+        NukeDetected=Местоположение запуска: (x;y);
+        NukeDetected=Носитель шахты: ship.
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            ShuNukes_TargetEMNuke ^{
+                Description=---
+                Icon=0
+                Name=Инфошка, детектящая попадание электромагнитной торпеды
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnStep))
+                    02 ^{
+                        01=if(CurTurn() > ShipCustomShipInfoData(0,CurInfo(),1) + 30) ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                    03=else
+                    04 ^{
+                        01=if(ScriptItemActObject1() == IdToShip(ShipCustomShipInfoData(0,CurInfo(),2)) && CustomMissileType(ScriptItemActObject2()) == 'EMNukeTorpedo')
+                        02 ^{
+                            01=int player_can_see = FilmFlags(0);
+                            02=dword boom_ship = ScriptItemActShip(), bomb_star = ShipStar(ScriptItemActShip());
+                            03=if(player_can_see)
+                            04 ^{
+                                01=ShowStaticEffect('EMP_bomb_BAM', CoordX(boom_ship), CoordY(boom_ship));
+                                02=FilmSound('Sound.Zamknulo', boom_ship);
+                            }
+                        }
+                    }
+                    05=for(i = StarShips(bomb_star) - 1; i >= 0; i = i - 1)
+                    06 ^{
+                        01=dword ship = StarShips(bomb_star, i);
+                        02=if(boom_ship)
+                        03 ^{
+                            01=int Tdist = Dist(boom_ship, ship);
+                            02=if(Tdist > 450) continue;
+                        }
+                        04=else
+                        05 ^{
+                            01=Tdist = Dist(bomb, ship);
+                            02=if(Tdist > 450) continue;
+                        }
+                        06=str tempType = TrimNumbers(ShipType(ship));
+                        07=if(!ShipInNormalSpace(ship))
+                        08 ^{
+                            01=if(tempType == 'Rattor')
+                            01 ^{
+                                01=if(ShipInScript(ship, 0))
+                                01 ^{
+                                    01=if(GetData(0, ship) == -1)
+                                    01 ^{
+                                        01=NoDropToShip(ship, 1);
+                                        02=if(ScriptItemActionType(t_OnItemPickUp))
+                                        02 ^{
+                                            01=CoordX(bomb, CoordX(ship));
+                                            02=CoordY(bomb, CoordY(ship));
+                                        }
+                                        03=DealDamageToShip(ship, bomb, 1000000);
+                                    }
+                                }
+                            }
+                            02=continue;
+                        }
+                        09=if(ShipTypeN(ship) == t_Kling)
+                        10 ^{
+                            01=if(ShipSubType(ship) == 7)
+                            02 ^{
+                                01=if(tempType == '' || tempType == 'Rattor')
+                                01 ^{
+                                    01=if(ShipFindCustomShipInfoByType(ship, 'ShipImmortalInfo') == -1)
+                                    01 ^{
+                                        01=if(!ScriptItemActionType(t_OnStep, 11))
+                                        01 ^{
+                                            01=ShipSetBad(ship, ship);
+                                            02=OrderFollowShip(ship, ship, 3);
+                                            03=ItemDurability(ShipEqInSlot(ship, t_Engine), 100);
+                                            04=OrderForsage(ship, 1);
+                                        }
+                                        02=else
+                                        02 ^{
+                                            01=NoDropToShip(ship, 1);
+                                            02=DealDamageToShip(ship, 0, 1000000, 0);
+                                            03=if(player_can_see) ShowEffect('Weapon.NoGraph', 0, ship, 0, 0, 6, 0, 0,0,0);
+                                        }
+                                    }
+                                }
+                            }
+                            03=if(tempType == 'DomRuins') exit;
+                        }
+                        11=if(tempType == 'KillerAsteroid') exit;
+                        12=if(tempType == 'Klissan' || tempType == 'Neurolink' || tempType == 'Machpella')
+                        13 ^{
+                            01=int targ_infos = ShipFindCustomShipInfoByType(ship, 'ExpArts_ShipStunned');
+                            02=if(targ_infos == -1)
+                            03 ^{
+                                01=int DayLong = round(15.0 - (10.0 * (Tdist * Tdist) / 62500));
+                                02=if(ship == Player()) ShipAddCustomShipInfo(ship, 'ExpArts_ShipStunned', 'Вы подверглись воздействию неизвестного излучения и временно утратили контроль над собственными действиями.', DayLong);
+                                03=else ShipAddCustomShipInfo(ship, 'ExpArts_ShipStunned', '', DayLong + 1);
+                                04=ShipSpecialBonuses(ship, bonHook, ShipSpecialBonuses(ship, bonHook) - 50000);
+                                05=if(!NoTalkToShip(ship))
+                                06 ^{
+                                    01=NoTalkToShip(ship, 1);
+                                    02=ShipCustomShipInfoData(ship, ShipFindCustomShipInfoByType(ship, 'ExpArts_ShipStunned'), 3, 1);
+                                }
+                            }
+                            04=else ShipCustomShipInfoData(ship, targ_infos, 1, ShipCustomShipInfoData(ship, targ_infos, 1) + DayLong);
+                        }
+                        14=int is_the_boss = (ship == Keller() || ship == Terron() || ship == Blazer() || tempType == 'NisperBoss');
+                        15=for(int j = ShipItems(ship) - 1; j >= 1; j = j - 1)
+                        16 ^{
+                            01=dword item = ShipItems(ship, j);
+                            02=if(ItemIsBroken(item)) continue;
+                            03=if(!ItemIsInUse(item)) continue;
+                            04=if(ItemType(item) == t_ArtefactPower || ItemType(item) == t_ArtefactDef) continue;
+                            05=if(ItemType(item) < t_ArtefactHull)
+                            06 ^{
+                                01=if(EquipmentImageName(item) == 'ArtHullv2' || EquipmentImageName(item) == 'ArtHullv3' || EquipmentImageName(item) == 'ArtHull') continue;
+                            }
+                            07=if(~EqSpecial(item))
+                            08 ^{
+                                01=if(CT('MicroModuls.' + BonusNumInCfg(EqSpecial(item)) + '.BioEquip') == 1) continue;
+                                02=if(BonusNumInCfg(EqSpecial(item) == 'RevAcryn_BattleDroid8')) continue;
+                            }
+                            09=if(EqCustomFaction(item) == 'Klissan') continue;
+                            10=if(CurrentMods('ShusRangers\ShuNukes') && ItemName(item) == CT('UselessItems.ShuNukes_NukesWeight.Name')) continue;
+                            11=int reduce = round(75.0 - (45.0 * (Tdist * Tdist) / 62500));
+                            12=if(!ShipProtectability(ship)) reduce = reduce * 2;
+                            13=if(ship == boom_ship) reduce = 100;
+                            14=if(is_the_boss) reduce = reduce / 10;
+                            15=if(ObjectType(ship) == 4 || tempType == 'Dreadnought' || tempType == 'DefPlatform' || tempType == 'PirateGalleon' || tempType == 'PirateFrigate' || tempType == 'DreadnoughtFlagship' || tempType == 'NisperRuins') reduce = reduce / 4;
+                            16=if((tempType == 'Warrior' && ShipSubType(ship) == 1) || tempType == 'PirateCorvette' || tempType == 'WarriorBigFlagship') reduce = reduce / 2;
+                            17=if(ArtefactTypeInUse(ship,'ArtReverser'))
+                            18 ^{
+                                01=reduce = reduce / 10 * RndObject(2,3,ship);
+                                02=ShipCustomShipInfoData(ship,'RefEnergyInfo',3,ShipCustomShipInfoData(ship,'RefEnergyInfo',3)+RndObject(1,3,ship));
+                                03=if(ship == Player()) CustomEther('EnergyRebuff',0,'','Реверсер защитил ваш корабль от негативного воздействия ЭМП-волны');
+                            }
+                            19=if(ArtefactTypeInUse(ship,t_ArtefactDef) || ArtefactTypeInUse(ship,'ArtDefv2') || ArtefactTypeInUse(ship,'ArtDefv3'))
+                            20 ^{
+                                01=reduce = reduce / 10 * RndObject(7,9,ship);
+                            }
+                            21=ItemDurability(item, ItemDurability(item) - reduce);
+                            22=if(ItemIsBroken(item))
+                            23 ^{
+                                01=if(IsPlayer(ship)) Ether(8, '', Format(CT('Script.Mod_ExpArts.ItemDestroyedByEMP'), '<Item'+'>', ItemFullName(item) + '<color=' + ItemIsInUse(item, ship) + ',0,0></color>', '255,240,100'));
+                            }
+                            24=if(is_the_boss) continue;
+                            25=ItemDurability(ShipEqInSlot(ship, t_Engine), 0);
+                            26=int memHP = HullHP(ship);
+                            27=HullHP(ship, HullHP(ship) + 100);
+                            28=ShipSpecialBonuses(ship, bonHull, ShipSpecialBonuses(ship, bonHull) + reduce * 15);
+                            29=DealDamageToShip(ship, 0, 10, 256);
+                            30=ShipSpecialBonuses(ship, bonHull, ShipSpecialBonuses(ship, bonHull) - reduce * 15);
+                            31=if(HullHP(ship) != memHP) HullHP(ship, memHP);
+                        }
+                        17=for(j = ShipSlots(ship, 2); j >= 1; j = j - 1)
+                        18 ^{
+                            01=item = ShipEqInSlot(ship, t_Artefact, j);
+                            02=if(!item) continue;
+                            03=if(ItemIsBroken(item)) continue;
+                            04=if(!ItemCanBeBroken(item)) continue;
+                            05=if(ItemType(item) > t_Artefact && ItemType(item) < t_ArtefactRadar) continue;
+                            06=reduce = round(75.0 - (45.0 * (Tdist * Tdist) / 62500));
+                            07=if(!ShipProtectability(ship)) reduce = reduce * 2;
+                            08=if(ship == boom_ship) reduce = 100;
+                            09=if(is_the_boss) reduce = reduce / 10;
+                            10=if(ArtefactTypeInUse(ship,'ArtReverser')) reduce / 10 * RndObject(2,3,ship);
+                            11=if(ArtefactTypeInUse(ship,t_ArtEnergyDef)) reduce / 10 * RndObject(6,7,ship);
+                            12=if(ArtefactTypeInUse(ship,'ArtEnergyDefv2')) reduce / 10 * RndObject(5,7,ship);
+                            13=if(ArtefactTypeInUse(ship,'ArtEnergyDefv3')) reduce / 10 * RndObject(5,6,ship);
+                            14=ItemDurability(item, ItemDurability(item) - reduce);
+                            15=if(ItemIsBroken(item))
+                            16 ^{
+                                01=if(IsPlayer(ship)) Ether(8, '', Format(CT('Script.Mod_ExpArts.ItemDestroyedByEMP'), '<Item'+'>', ItemFullName(item) + '<color=' + ItemIsInUse(item, ship) + ',0,0></color>', '255,240,100'));
+                            }
+                        }
+                    }
+                    07=for(i = StarMissiles(bomb_star) - 1; i >= 0; i = i - 1)
+                    08 ^{
+                        01=dword mis = StarMissiles(bomb_star,i);
+                        02=if(boom_ship) Tdist = Dist(boom_ship, mis);
+                        03=else Tdist = Dist(bomb, mis);
+                        04=if(Tdist > 450) continue;
+                        05=MissileLive(mis,1000);
+                    }
+                    09=for(i = StarItems(bomb_star) - 1; i >= 0; i = i - 1)
+                    10 ^{
+                        01=mis = StarItems(bomb_star,i);
+                        02=if(boom_ship) Tdist = Dist(boom_ship, mis);
+                        03=else Tdist = Dist(bomb, mis);
+                        04=if(Tdist > 450) continue;
+                        05=if(!ItemCanBeBroken(item)) continue;
+                        06=if(ItemType(item) > t_Artefact && ItemType(item) < t_ArtefactRadar) continue;
+                        07=reduce = round(75.0 - (45.0 * (Tdist * Tdist) / 62500)) * 2;
+                        08=if(EquipmentImageName(mis) == 'ArtReverser') reduce / 10 * RndObject(2,3,mis);
+                        09=if(ItemType(mis) == t_ArtEnergyDef) reduce / 10 * RndObject(6,7,mis);
+                        10=if(EquipmentImageName(mis) == 'ArtEnergyDefv2') reduce / 10 * RndObject(5,7,mis);
+                        11=if(EquipmentImageName(mis) == 'ArtEnergyDefv3') reduce / 10 * RndObject(5,6,mis);
+                        12=ItemDurability(mis, ItemDurability(mis) - reduce);
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamageMi
+                OnActStepTypes=1
+            }
+            ShuNukes_TargetNeutronNuke ^{
+                Description=---
+                Icon=0
+                Name=Инфошка, детектящая попадание нейтронной торпеды
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnStep))
+                    02 ^{
+                        01=if(CurTurn() > ShipCustomShipInfoData(0,CurInfo(),1) + 30) ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                    03=else
+                    04 ^{
+                        01=if(ScriptItemActObject1() == IdToShip(ShipCustomShipInfoData(0,CurInfo(),2)) && CustomMissileType(ScriptItemActObject2()) == 'NeutronNukeTorpedo')
+                        02 ^{
+                            01=for(int i = 0; i < StarShips(ShipStar(ScriptItemActShip())); i = i + 1)
+                            02 ^{
+                                01=dword cur_ship = StarShips(ShipStar(ScriptItemActShip()),i), ship = ScriptItemActShip();
+                                02=if(Dist(cur_ship,ship) > 350) continue;
+                                03=ShipHealthFactor(cur_ship,0,PortionInDiapason(Dist(cur_ship,ship),0,350,ShipHealthFactor(0,0)/2,ShipHealthFactor(0,0)*3));
+                                04=ShipHealthFactorStatus(cur_ship,0,100);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamageMi
+                OnActStepTypes=1
+            }
+            ShuNukes_NPCNuclearMissiles ^{
+                Description=На борту данного корабля <NukeShafts> для запуска ядерных торпед.
+                Description=<clr><clrEnd>
+                Description=Занимаемый объём: <NukeShaftsSize>
+                Icon=160745
+                ManyShafts=имеется <NukeShafts> пусковых установок
+                Name=Ядерное оружие
+                OnActCode ^{
+                    01=dword cur_info = CurInfo();
+                    02=dword cur_ship = ScriptItemActShip();
+                    03=if(ScriptItemActionType(t_OnStep))
+                    03 ^{
+                        01=int nukes_cnt = ShipCustomShipInfoData(0, cur_info, 1);
+                        02=if(ShipInNormalSpace(cur_ship))
+                        02 ^{
+                            01=if(nukes_cnt)
+                            01 ^{
+                                01=dword target = ShipGetBad(cur_ship);
+                                02=if(target)
+                                02 ^{
+                                    01=if(ShipCustomShipInfoData(0, cur_info, 3) > CurTurn()) exit;
+                                    02=if(ShipTypeN(cur_ship) <= t_Tranclucator)
+                                    02 ^{
+                                        01=if(ShipOrder(cur_ship) != 6) exit;
+                                        02=if(ShipOrderData1(cur_ship) != 1) exit;
+                                        03=if(ShipOrderObj(cur_ship) != target) exit;
+                                    }
+                                    03=else if(ShipStar(cur_ship) != ShipStar(target)) exit;
+                                    04=int tech = ItemLevel(ShipEqInSlot(cur_ship, t_Hull));
+                                    05=str nuke_type = ShipCustomShipInfoTextData(0, cur_info, 1);
+                                    06=if(Dist(cur_ship, target) > g_NukeParams[nuke_type, 'RangeStep'] * tech + g_NukeParams[nuke_type, 'RangeMin']) exit;
+                                    07=if(ShipSpecialBonuses(target, bonAttacks) < 1) exit;
+                                    08=int damage = HullDamage(target);
+                                    09=if((HullDamage(target) >= 85 && round(HullHP(target) * 100/ HullDamageSuspectibility(target,0)) < 400) || round(HullHP(target) * 100/ HullDamageSuspectibility(target,0)) < 400) exit;
+                                    10=if(ShipTypeN(target) == t_Kling)
+                                    10 ^{
+                                        01=if(DomikProgramm(target) == 9) exit;
+                                        02=else if(DomikProgramm(target) == 11) exit;
+                                        03=else if(DomikProgramm(target) == progSabCrack) exit;
+                                    }
+                                    11=int nuke_shafts = substr(ShipCustomShipInfoTextData(0, cur_info, 2), 0, 1);
+                                    12=if(nuke_shafts > 1) nuke_shafts = min(PortionInDiapason(damage, 80, 20, 1, nukes_cnt), nuke_shafts);
+                                    13=RunFunctionFromScript('Mod_ShuNukes', 'LaunchNukeMissile', cur_ship, target, tech, ShipCustomShipInfoTextData(0, cur_info, 1), nuke_shafts);
+                                    14=ShipCustomShipInfoData(0, cur_info, 1, nukes_cnt - nuke_shafts);
+                                    15=ShipCustomShipInfoData(0, cur_info, 3, CurTurn() + PortionInDiapason(tech, 1, 8, 9, 3) + RndObject(0, 5, cur_ship));
+                                    16=if(ItemExtraSpecialsCountByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('ShuNukes_ReloaderUpgrade'))) ShipCustomShipInfoData(0, cur_info, 3, max(CurTurn() + 1,ShipCustomShipInfoData(0, cur_info, 3)-3));
+                                    17=dword nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                    18=if(nukes || ShipTypeN(target) != t_Kling) ItemSize(nukes, max(ItemSize(nukes, 'Count') - nuke_shafts, 0), 'Count');
+                                    19=else exit;
+                                }
+                            }
+                            02=else if(ShipTypeN(cur_ship) >= t_RC)
+                            02 ^{
+                                01=if(ShipCustomShipInfoData(0, cur_info, 3) <= CurTurn())
+                                01 ^{
+                                    01=if(!RndObject(0, 2, cur_ship)) ShipCustomShipInfoData(0, cur_info, 1, nukes_cnt + 1);
+                                    02=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                    03=if(nukes)
+                                    03 ^{
+                                        01=ItemSize(nukes, ItemSize(nukes, 'Count') + Rnd(3,5), 'Count');
+                                        02=ItemCost(nukes, GalaxyMoney(2, 0) * ItemSize(nukes, 'Count'));
+                                    }
+                                    04=else exit;
+                                }
+                            }
+                        }
+                        03=else
+                        03 ^{
+                            01=int bon_nuke;
+                            02=if(!bon_nuke) bon_nuke = FindBonusByNameInCfg('ShuNukes_NukeShaft');
+                            03=if(!ItemExtraSpecialsCountByType(ShipEqInSlot(cur_ship, t_Hull), bon_nuke))
+                            03 ^{
+                                01=ItemExtraSpecialsAddByType(ShipEqInSlot(cur_ship, t_Hull), bon_nuke, substr(ShipCustomShipInfoTextData(0, cur_info, 2), 0, 1));
+                            }
+                            04=int nukes_limit = ShipCustomShipInfoData(0, cur_info, 2);
+                            05=if(nukes_cnt < nukes_limit)
+                            06 ^{
+                                01=if(GetShipPlanet(cur_ship))
+                                01 ^{
+                                    01=dword place = GetShipPlanet(cur_ship);
+                                    02=if(ShipOwner(cur_ship) <= Gaal)
+                                    02 ^{
+                                        01=if(PlanetOwner(place) <= Gaal)
+                                        01 ^{
+                                            01=if(RndObject(0, ShipTypeN(cur_ship), cur_ship)) ShipCustomShipInfoData(0, cur_info, 1, nukes_cnt + 1);
+                                            02=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                            03=if(nukes)
+                                            03 ^{
+                                                01=ItemSize(nukes, ItemSize(nukes, 'Count') + 1, 'Count');
+                                                02=ItemCost(nukes, GalaxyMoney(2, 0) * ItemSize(nukes, 'Count'));
+                                            }
+                                            04=else exit;
+                                        }
+                                    }
+                                    03=else
+                                    03 ^{
+                                        01=if(PlanetOwner(place) == PirateClan)
+                                        01 ^{
+                                            01=if(RndObject(0, ShipTypeN(cur_ship), cur_ship)) ShipCustomShipInfoData(0, cur_info, 1, nukes_cnt + 1);
+                                            02=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                            03=if(nukes)
+                                            03 ^{
+                                                01=ItemSize(nukes, ItemSize(nukes, 'Count') + 1, 'Count');
+                                                02=ItemCost(nukes, GalaxyMoney(2, 0) * ItemSize(nukes, 'Count'));
+                                            }
+                                            04=else exit;
+                                        }
+                                    }
+                                }
+                                02=else if(GetShipRuins(cur_ship))
+                                02 ^{
+                                    01=place = GetShipRuins(cur_ship);
+                                    02=if(IsPlayer(place)) exit;
+                                    03=if(ShipOwner(cur_ship) <= Gaal)
+                                    04 ^{
+                                        01=if(ShipStanding(place) >= 2 && ShipStanding(place) <= 4)
+                                        01 ^{
+                                            01=if(RndObject(0, ShipTypeN(cur_ship), cur_ship)) ShipCustomShipInfoData(0, cur_info, 1, nukes_cnt + 1);
+                                            02=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                            03=if(nukes)
+                                            03 ^{
+                                                01=ItemSize(nukes, ItemSize(nukes, 'Count') + 1, 'Count');
+                                                02=ItemCost(nukes, GalaxyMoney(2, 0) * ItemSize(nukes, 'Count'));
+                                            }
+                                            04=else exit;
+                                        }
+                                    }
+                                    05=else
+                                    06 ^{
+                                        01=if(ShipStanding(place) >= 6 && ShipStanding(place) <= 8)
+                                        01 ^{
+                                            01=if(RndObject(0, ShipTypeN(cur_ship), cur_ship)) ShipCustomShipInfoData(0, cur_info, 1, nukes_cnt + 1);
+                                            02=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                            03=if(nukes)
+                                            03 ^{
+                                                01=ItemSize(nukes, ItemSize(nukes, 'Count') + 1, 'Count');
+                                                02=ItemCost(nukes, GalaxyMoney(2, 0) * ItemSize(nukes, 'Count'));
+                                            }
+                                            04=else exit;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    04=else if(ScriptItemActionType(t_OnDeath))
+                    04 ^{
+                        01=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                        02=if(nukes)
+                        02 ^{
+                            01=if(ItemSize(nukes)) NoDropItem(nukes, 0);
+                        }
+                    }
+                    05=else if(ScriptItemActionType(t_OnShowingItemInfo))
+                    05 ^{
+                        01=nuke_shafts = substr(ShipCustomShipInfoTextData(0, cur_info, 2), 0, 1);
+                        02=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, substr(ShipCustomShipInfoTextData(0, cur_info, 2), 2));
+                        03=if(!nukes) throw 'Nuke weight are missing at hold of ' + Name(cur_ship) + ', line 7!';
+                        04=if(nuke_shafts <= 1) str text = CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NPCNuclearMissiles.OneShaft');
+                        05=else if(nuke_shafts <= 4) text = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NPCNuclearMissiles.SeveralShafts'), '<NukeShafts'+'>', nuke_shafts);
+                        06=else text = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NPCNuclearMissiles.ManyShafts'), '<NukeShafts'+'>', nuke_shafts);
+                        07=text = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NPCNuclearMissiles.Description'), '<NukeShafts'+'>', text, '<NukeShaftsSize'+'>', '<color=255,240,100>' + ItemSize(nukes) + '</color>', '');
+                        08=ShipCustomShipInfoDescription(0, cur_info, text);
+                    }
+                    06=else
+                    06 ^{
+                        01=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, substr(ShipCustomShipInfoTextData(0, cur_info, 2), 2));
+                        02=if(nukes) ItemIsInUse(nukes, cur_ship, 1);
+                        03=else throw 'Nuke weight are missing at hold of ' + Name(cur_ship) + ', line 8!';
+                        04=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                        05=if(nukes)
+                        05 ^{
+                            01=if(!ItemSize(nukes)) ItemIsInUse(nukes, cur_ship, 1);
+                            02=else ItemIsInUse(nukes, cur_ship, 0);
+                        }
+                        06=else exit;
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnShowingItemInfo,t_OnDeath
+                OnActStepTypes=1
+                OneShaft=имеется пусковая установка
+                SeveralShafts=имеется <NukeShafts> пусковые установки
+            }
+            ShuNukes_NPCNuclearMissilesNoArmada ^{
+                Description=На борту данного корабля <NukeShafts> для запуска ядерных торпед.
+                Description=<clr><clrEnd>
+                Description=Занимаемый объём: <NukeShaftsSize>
+                Icon=160745
+                ManyShafts=имеется <NukeShafts> пусковых установок
+                Name=Ядерное оружие
+                OnActCode ^{
+                    01=dword cur_info = CurInfo();
+                    02=dword cur_ship = ScriptItemActShip();
+                    03=if(ScriptItemActionType(t_OnStep))
+                    04 ^{
+                        01=int nukes_cnt = ShipCustomShipInfoData(0, cur_info, 1);
+                        02=if(ShipInNormalSpace(cur_ship))
+                        03 ^{
+                            01=if(nukes_cnt)
+                            02 ^{
+                                01=dword target = ShipGetBad(cur_ship);
+                                02=if(target)
+                                03 ^{
+                                    01=if(ShipCustomShipInfoData(0, cur_info, 3) > CurTurn()) exit;
+                                    02=if(ShipTypeN(cur_ship) <= t_Tranclucator)
+                                    03 ^{
+                                        01=if(ShipOrder(cur_ship) != 6) exit;
+                                        02=if(ShipOrderData1(cur_ship) != 1) exit;
+                                        03=if(ShipOrderObj(cur_ship) != target) exit;
+                                    }
+                                    04=else if(ShipStar(cur_ship) != ShipStar(target)) exit;
+                                    05=int tech = ItemLevel(ShipEqInSlot(cur_ship, t_Hull));
+                                    06=str nuke_type = ShipCustomShipInfoTextData(0, cur_info, 1);
+                                    07=if(Dist(cur_ship, target) > g_NukeParams[nuke_type, 'RangeStep'] * tech + g_NukeParams[nuke_type, 'RangeMin']) exit;
+                                    08=if(((HullDamage(target) >= 85 && round(HullHP(target) * 100 / max(HullDamageSuspectibility(target,2),1)) < 400) || round(HullHP(target) * 100 / max(HullDamageSuspectibility(target,2),1)) < 600) && round(HullHP(cur_ship)) > 700) exit;
+                                    09=int ship_type_n = ShipTypeN(target);
+                                    10=if(ship_type_n == t_Kling)
+                                    11 ^{
+                                        01=if(ShipSubType(target) != 7)
+                                        02 ^{
+                                            01=if(DomikProgramm(target) == 9) exit;
+                                            02=else if(DomikProgramm(target) == 11) exit;
+                                            03=else if(DomikProgramm(target) == progSabCrack) exit;
+                                            04=RunFunctionFromScript('Mod_ShuNukes', 'LaunchNukeMissile', cur_ship, target, tech, ShipCustomShipInfoTextData(0, cur_info, 1));
+                                            05=ShipCustomShipInfoData(0, cur_info, 1, nukes_cnt - 1);
+                                            06=ShipCustomShipInfoData(0, cur_info, 3, CurTurn() + PortionInDiapason(tech, 1, 8, 9, 3) + RndObject(0, 5, cur_ship));
+                                            07=if(ItemExtraSpecialsCountByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('ShuNukes_ReloaderUpgrade'))) ShipCustomShipInfoData(0, cur_info, 3, max(CurTurn() + 1,ShipCustomShipInfoData(0, cur_info, 3)-3));
+                                            08=dword nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                            09=if(nukes) ItemSize(nukes, max(ItemSize(nukes, 'Count') - 1, 0), 'Count');
+                                            10=else exit;
+                                        }
+                                    }
+                                    12=else
+                                    13 ^{
+                                        01=if(DomikProgramm(cur_ship) == 7) exit;
+                                        02=if(DomikProgramm(cur_ship) == 9) exit;
+                                        03=else if(DomikProgramm(cur_ship) == 11) exit;
+                                        04=else if(DomikProgramm(cur_ship) == progSabCrack) exit;
+                                        05=RunFunctionFromScript('Mod_ShuNukes', 'LaunchNukeMissile', cur_ship, target, tech, ShipCustomShipInfoTextData(0, cur_info, 1));
+                                        06=ShipCustomShipInfoData(0, cur_info, 1, nukes_cnt - 1);
+                                        07=ShipCustomShipInfoData(0, cur_info, 3, CurTurn() + PortionInDiapason(tech, 1, 8, 9, 3) + RndObject(0, 5, cur_ship));
+                                        08=if(ItemExtraSpecialsCountByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('ShuNukes_ReloaderUpgrade'))) ShipCustomShipInfoData(0, cur_info, 3, max(CurTurn() + 1,ShipCustomShipInfoData(0, cur_info, 3)-3));
+                                        09=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                        10=if(nukes) ItemSize(nukes, max(ItemSize(nukes, 'Count') - 1, 0), 'Count');
+                                        11=else exit;
+                                    }
+                                }
+                            }
+                            03=else if(ShipTypeN(cur_ship) >= t_RC)
+                            04 ^{
+                                01=if(ShipCustomShipInfoData(0, cur_info, 3) <= CurTurn())
+                                01 ^{
+                                    01=if(!RndObject(0, 2, cur_ship)) ShipCustomShipInfoData(0, cur_info, 1, nukes_cnt + 1);
+                                    02=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                    03=if(nukes)
+                                    04 ^{
+                                        01=ItemSize(nukes, ItemSize(nukes, 'Count') + 1, 'Count');
+                                        02=ItemCost(nukes, GalaxyMoney(2, 0) * ItemSize(nukes, 'Count'));
+                                    }
+                                    05=else exit;
+                                }
+                            }
+                        }
+                        04=else
+                        05 ^{
+                            01=int bon_nuke;
+                            02=if(!bon_nuke) bon_nuke = FindBonusByNameInCfg('ShuNukes_NukeShaft');
+                            03=if(!ItemExtraSpecialsCountByType(ShipEqInSlot(cur_ship, t_Hull), bon_nuke))
+                            03 ^{
+                                01=ItemExtraSpecialsAddByType(ShipEqInSlot(cur_ship, t_Hull), bon_nuke, substr(ShipCustomShipInfoTextData(0, cur_info, 2), 0, 1));
+                            }
+                            04=int nukes_limit = ShipCustomShipInfoData(0, cur_info, 2);
+                            05=if(nukes_cnt < nukes_limit)
+                            06 ^{
+                                01=if(GetShipPlanet(cur_ship))
+                                01 ^{
+                                    01=dword place = GetShipPlanet(cur_ship);
+                                    02=if(ShipOwner(cur_ship) <= Gaal)
+                                    03 ^{
+                                        01=if(PlanetOwner(place) <= Gaal)
+                                        02 ^{
+                                            01=if(RndObject(0, ShipTypeN(cur_ship), cur_ship)) ShipCustomShipInfoData(0, cur_info, 1, nukes_limit);
+                                            02=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                            03=if(nukes)
+                                            04 ^{
+                                                01=ItemSize(nukes, ItemSize(nukes, 'Count') + (nukes_limit - nukes_cnt), 'Count');
+                                                02=ItemCost(nukes, GalaxyMoney(2, 0) * ItemSize(nukes, 'Count'));
+                                            }
+                                            05=else exit;
+                                        }
+                                    }
+                                    04=else
+                                    05 ^{
+                                        01=if(PlanetOwner(place) == PirateClan)
+                                        02 ^{
+                                            01=if(RndObject(0, ShipTypeN(cur_ship), cur_ship)) ShipCustomShipInfoData(0, cur_info, 1, nukes_cnt + 1);
+                                            02=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                            03=if(nukes)
+                                            04 ^{
+                                                01=ItemSize(nukes, ItemSize(nukes, 'Count') + 1, 'Count');
+                                                02=ItemCost(nukes, GalaxyMoney(2, 0) * ItemSize(nukes, 'Count'));
+                                            }
+                                            05=else exit;
+                                        }
+                                        03=else
+                                        04 ^{
+                                            01=ShipCustomShipInfoData(0, cur_info, 1, nukes_cnt + 1);
+                                            02=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                            03=if(nukes)
+                                            04 ^{
+                                                01=ItemSize(nukes, ItemSize(nukes, 'Count') + 1, 'Count');
+                                                02=ItemCost(nukes, GalaxyMoney(2, 0) * ItemSize(nukes, 'Count'));
+                                            }
+                                            05=else exit;
+                                        }
+                                    }
+                                }
+                                03=else if(GetShipRuins(cur_ship))
+                                04 ^{
+                                    01=place = GetShipRuins(cur_ship);
+                                    02=if(IsPlayer(place)) exit;
+                                    03=if(ShipOwner(cur_ship) <= Gaal)
+                                    03 ^{
+                                        01=if(ShipStanding(place) >= 2 && ShipStanding(place) <= 4)
+                                        02 ^{
+                                            01=if(RndObject(0, ShipTypeN(cur_ship), cur_ship)) ShipCustomShipInfoData(0, cur_info, 1, nukes_cnt + 1);
+                                            02=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                            03=if(nukes)
+                                            04 ^{
+                                                01=ItemSize(nukes, ItemSize(nukes, 'Count') + 1, 'Count');
+                                                02=ItemCost(nukes, GalaxyMoney(2, 0) * ItemSize(nukes, 'Count'));
+                                            }
+                                            05=else exit;
+                                        }
+                                    }
+                                    04=else
+                                    05 ^{
+                                        01=if(ShipStanding(place) >= 6 && ShipStanding(place) <= 8)
+                                        02 ^{
+                                            01=if(RndObject(0, ShipTypeN(cur_ship), cur_ship)) ShipCustomShipInfoData(0, cur_info, 1, nukes_cnt + 1);
+                                            02=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                                            03=if(nukes)
+                                            04 ^{
+                                                01=ItemSize(nukes, ItemSize(nukes, 'Count') + 1, 'Count');
+                                                02=ItemCost(nukes, GalaxyMoney(2, 0) * ItemSize(nukes, 'Count'));
+                                            }
+                                            05=else exit;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    05=else if(ScriptItemActionType(t_OnDeath))
+                    06 ^{
+                        01=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                        02=if(nukes)
+                        03 ^{
+                            01=if(ItemSize(nukes)) NoDropItem(nukes, 0);
+                        }
+                    }
+                    07=else if(ScriptItemActionType(t_OnShowingItemInfo))
+                    08 ^{
+                        01=int nuke_shafts = substr(ShipCustomShipInfoTextData(0, cur_info, 2), 0, 1);
+                        02=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, substr(ShipCustomShipInfoTextData(0, cur_info, 2), 2));
+                        03=if(!nukes) exit;
+                        04=if(nuke_shafts <= 1) str text = CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NPCNuclearMissilesNoArmada.OneShaft');
+                        05=else if(nuke_shafts <= 4) text = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NPCNuclearMissilesNoArmada.SeveralShafts'), '<NukeShafts'+'>', nuke_shafts);
+                        06=else text = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NPCNuclearMissilesNoArmada.ManyShafts'), '<NukeShafts'+'>', nuke_shafts);
+                        07=text = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NPCNuclearMissilesNoArmada.Description'), '<NukeShafts'+'>', text, '<NukeShaftsSize'+'>', '<color=255,240,100>' + ItemSize(nukes) + '</color>', '');
+                        08=ShipCustomShipInfoDescription(0, cur_info, text);
+                    }
+                    09=else
+                    10 ^{
+                        01=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, substr(ShipCustomShipInfoTextData(0, cur_info, 2), 2));
+                        02=if(nukes) ItemIsInUse(nukes, cur_ship, 1);
+                        03=else exit;
+                        04=nukes = RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, ShipCustomShipInfoTextData(0, cur_info, 3));
+                        05=if(nukes)
+                        06 ^{
+                            01=if(!ItemSize(nukes)) ItemIsInUse(nukes, cur_ship, 1);
+                            02=else ItemIsInUse(nukes, cur_ship, 0);
+                        }
+                        07=else exit;
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnShowingItemInfo,t_OnDeath
+                OnActStepTypes=1
+                OneShaft=имеется пусковая установка
+                SeveralShafts=имеется <NukeShafts> пусковые установки
+            }
+            ShuNukes_NuclearMissiles ^{
+                Description=У вас на борту <NukeShafts> для запуска ядерных торпед.
+                Description=<clr><clrEnd>
+                Description=<NukeLauncher>
+                Description=Занимаемый объём: <NukeShaftsSize>
+                Description=Тип боеприпаса: <NukeType>
+                Description=Осталось зарядов: <NukesLeft>
+                Description=Дистанция наведения: <Range>
+                Description=Наносимый урон: <DamageMin>-<DamageMax> ед.
+                Description=Маршевая скорость: <Speed>
+                Description=Статус: <Status>
+                Description=Модификация: Modif
+                Icon=160745
+                ManyShafts=имеется <NukeShafts> пусковых установок
+                ManyShaftsClass=Класс пусковых установок: <NukeLauncherClass>
+                Name=Ядерное оружие
+                OnActCode ^{
+                    01=dword cur_info = CurInfo();
+                    02=dword cur_ship = Player();
+                    03=if(ScriptItemActionType(t_OnStep))
+                    04 ^{
+                        01=int nuke_shafts = ShipCustomShipInfoData(0, cur_info, 1);
+                        02=if(nuke_shafts)
+                        03 ^{
+                            01=ShipCustomShipInfoData(0, cur_info, 1, 0);
+                            02=if(nuke_shafts < 0)
+                            03 ^{
+                                01=nuke_shafts = 0;
+                                02=exit;
+                            }
+                            04=str nuke_type = 'ShuNukes_' + ShipCustomShipInfoTextData(0, cur_info, 1);
+                            05=dword target = ShipCustomShipInfoTextData(0, cur_info, 3, '');
+                            06=int tech = ItemLevel(ShipEqInSlot(cur_ship, t_Hull));
+                            07=RunFunctionFromScript('Mod_ShuNukes', 'LaunchNukeMissile', cur_ship, target, tech, ShipCustomShipInfoTextData(0, cur_info, 1), nuke_shafts);
+                            08=ShipCustomShipInfoData(0, cur_info, 3, CurTurn() + PortionInDiapason(tech, 1, 8, 9, 3));
+                            09=if(ItemExtraSpecialsCountByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('ShuNukes_ReloaderUpgrade'))) ShipCustomShipInfoData(0, cur_info, 3, max(CurTurn() + 1,ShipCustomShipInfoData(0, cur_info, 3)-3));
+                            10=for(int i = ShipItems(cur_ship) - 1; i >= 1; i = i - 1)
+                            11 ^{
+                                01=dword nukes = ShipItems(cur_ship, i);
+                                02=if(ItemType(nukes) == t_UselessCountableItem)
+                                03 ^{
+                                    01=if(EquipmentImageName(nukes) == nuke_type) break;
+                                }
+                                04=nukes = 0;
+                            }
+                            12=if(nukes) int nukes_cnt = ItemSize(nukes, max(ItemSize(nukes, 'Count') - nuke_shafts, 0), 'Count');
+                            13=else throw 'Choosed nuke torpedos are missing at hold of ' + Name(cur_ship) + '!';
+                            14=if(!nukes_cnt)
+                            15 ^{
+                                01=if(!NoDropItem(nukes)) FreeItem(GetItemFromShip(cur_ship, nukes));
+                                02=else
+                                03 ^{
+                                    01=ItemSize(nukes, 0, 'Count');
+                                    02=ItemIsInUse(nukes, Player(), 1);
+                                }
+                                04=str new_nuke_type = '';
+                                05=for(i = ShipItems(Player()) - 1; i >= 1; i = i - 1)
+                                06 ^{
+                                    01=nukes = ShipItems(Player(), i);
+                                    02=if(ItemType(nukes) == t_UselessCountableItem)
+                                    02 ^{
+                                        01=new_nuke_type = EquipmentImageName(nukes);
+                                        02=if(new_nuke_type == 'ShuNukes_NukeTorpedo' || new_nuke_type == 'ShuNukes_DirtyNukeTorpedo') break;
+                                    }
+                                    03=new_nuke_type = '';
+                                }
+                                07=if(new_nuke_type != '')
+                                08 ^{
+                                    01=new_nuke_type = GetParFromString(new_nuke_type, '_', 1, 0);
+                                    02=ShipCustomShipInfoTextData(0, cur_info, 1, new_nuke_type);
+                                    03=StarMapBlinkingMessage(Format(CT('Script.Mod_ShuNukes.SetNukeTargetButtonMessages.NukeTypeSet'), '<NukeType'+'>', CT('Items.CustomCountables.' + new_nuke_type + '.Name'), ''));
+                                    04=InterfaceState('StarMap', 'PS_' + nuke_type, 0);
+                                    05=InterfaceState('StarMap', 'PS_' + new_nuke_type, 1);
+                                    06=Sound('Sound.NukeTypeSet');
+                                }
+                                09=else
+                                10 ^{
+                                    01=InterfaceState('StarMap', 'PS_' + GetParFromString(nuke_type, '_', 1, 0), 2);
+                                }
+                            }
+                        }
+                    }
+                    05=else if(ScriptItemActionType(t_OnEnteringForm) || ScriptItemActionType(t_OnReEnteringForm) || ScriptItemActionType(t_OnItemPickUp))
+                    06 ^{
+                        01=if(ScriptItemActionType(t_OnItemPickUp))
+                        02 ^{
+                            01=nukes = ScriptItemActObject1();
+                            02=if(ItemType(nukes) == t_UselessCountableItem)
+                            03 ^{
+                                01=str text = EquipmentImageName(nukes);
+                                02=if(text == 'ShuNukes_NukeTorpedo' || text == 'ShuNukes_DirtyNukeTorpedo') text = 'StarMap';
+                                03=else text = '';
+                            }
+                            04=else text = '';
+                        }
+                        03=else text = CurrentForm();
+                        04=if(CurrentForm() == 'Ship' || CurrentForm() == 'StarMap')
+                        05 ^{
+                            01=nukes_cnt = ItemExtraSpecialsCountByType(ShipEqInSlot(cur_ship, t_Hull), FindBonusByNameInCfg('ShuNukes_NukeShaft'));
+                            02=if(ScriptItemActionType(t_OnEnteringForm))
+                            03 ^{
+                                01=if(text == 'Ship')
+                                02 ^{
+                                    01=dword nuke_weight = IdToItem(GetParFromString(ShipCustomShipInfoTextData(0, cur_info, 2), ',', 1, 0));
+                                    02=if(!nuke_weight)
+                                    03 ^{
+                                        01=nuke_weight = CreateQuestItem('ShuNukes_NukesWeight', Maloc);
+                                        02=ItemSize(nuke_weight, g_NukeParams['WeightPerShaft'] * nukes_cnt);
+                                        03=ItemCost(nuke_weight, 0);
+                                        04=AddItemToShip(Player(), nuke_weight);
+                                        05=ItemIsInUse(nuke_weight, Player(), 1);
+                                        06=NoDropItem(nuke_weight, 1);
+                                        07=ShipCustomShipInfoTextData(0, cur_info, 2, SetParFromString(ShipCustomShipInfoTextData(0, cur_info, 2), ',', 1, '' + Id(nuke_weight)));
+                                    }
+                                }
+                            }
+                            04=if(!nukes_cnt)
+                            05 ^{
+                                01=ShipCustomShipInfoDescription(0, cur_info, 'NoShow');
+                                02=InterfaceState('StarMap', 'PS_ImageNukeBG', 0);
+                                03=InterfaceState('StarMap', 'PS_NukeTorpedo', 0);
+                                04=InterfaceState('StarMap', 'PS_DirtyNukeTorpedo', 0);
+                                05=exit;
+                            }
+                            06=ShipCustomShipInfoDescription(0, cur_info, 'Show');
+                            07=InterfaceState('StarMap', 'PS_ImageNukeBG', 1);
+                            08=nukes = 0;
+                            09=nuke_type = 'ShuNukes_' + ShipCustomShipInfoTextData(0, cur_info, 1);
+                            10=new_nuke_type = '';
+                            11=if(text == 'Ship')
+                            12 ^{
+                                01=nukes = FormShipCurItem();
+                                02=if(nukes)
+                                03 ^{
+                                    01=if(EquipmentImageName(nukes) == nuke_type) new_nuke_type = nuke_type;
+                                    02=else nukes = 0;
+                                }
+                            }
+                            13=if(!nukes) for(i = ShipItems(Player()) - 1; i >= 1; i = i - 1)
+                            14 ^{
+                                01=nukes = ShipItems(Player(), i);
+                                02=if(ItemType(nukes) == t_UselessCountableItem)
+                                03 ^{
+                                    01=new_nuke_type = EquipmentImageName(nukes);
+                                    02=if(new_nuke_type == nuke_type) break;
+                                    03=if(new_nuke_type != 'ShuNukes_NukeTorpedo' && new_nuke_type != 'ShuNukes_DirtyNukeTorpedo') new_nuke_type = '';
+                                }
+                            }
+                            15=if(new_nuke_type == nuke_type)
+                            16 ^{
+                                01=if(ItemSize(nukes, 'Count'))
+                                02 ^{
+                                    01=text = GetParFromString(nuke_type, '_', 1, 0);
+                                    02=InterfaceState('StarMap', 'PS_' + text, 1);
+                                    03=InterfaceState('StarMap', 'PS_' + text, 3);
+                                }
+                                03=else
+                                04 ^{
+                                    01=text = GetParFromString(nuke_type, '_', 1, 0);
+                                    02=InterfaceState('StarMap', 'PS_' + text, 1);
+                                    03=InterfaceState('StarMap', 'PS_' + text, 2);
+                                }
+                            }
+                            17=else if(new_nuke_type == '')
+                            18 ^{
+                                01=text = GetParFromString(nuke_type, '_', 1, 0);
+                                02=InterfaceState('StarMap', 'PS_' + text, 1);
+                                03=InterfaceState('StarMap', 'PS_' + text, 2);
+                            }
+                            19=else if(new_nuke_type != nuke_type)
+                            20 ^{
+                                01=text = GetParFromString(new_nuke_type, '_', 1, 0);
+                                02=ShipCustomShipInfoTextData(0, cur_info, 1, text);
+                                03=InterfaceState('StarMap', 'PS_' + GetParFromString(nuke_type, '_', 1, 0), 0);
+                                04=InterfaceState('StarMap', 'PS_' + text, 1);
+                                05=InterfaceState('StarMap', 'PS_' + text, 3);
+                            }
+                        }
+                    }
+                    07=else if(ScriptItemActionType(t_OnShowingItemInfo))
+                    08 ^{
+                        01=nuke_shafts = ItemExtraSpecialsCountByType(ShipEqInSlot(cur_ship, t_Hull), FindBonusByNameInCfg('ShuNukes_NukeShaft'));
+                        02=nuke_type = ShipCustomShipInfoTextData(0, cur_info, 1);
+                        03=tech = ItemLevel(ShipEqInSlot(cur_ship, t_Hull));
+                        04=if(nuke_shafts <= 1)
+                        05 ^{
+                            01=text = CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NuclearMissiles.OneShaft');
+                            02=str text2 = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NuclearMissiles.OneShaftsClass'), '<NukeLauncherClass'+'>', CT('Items.Weapon.LevelToLetter.' + tech));
+                        }
+                        06=else if(nuke_shafts <= 4)
+                        07 ^{
+                            01=text = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NuclearMissiles.SeveralShafts'), '<NukeShafts'+'>', nuke_shafts);
+                            02=text2 = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NuclearMissiles.ManyShaftsClass'), '<NukeLauncherClass'+'>', CT('Items.Weapon.LevelToLetter.' + tech));
+                        }
+                        08=else
+                        09 ^{
+                            01=text = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NuclearMissiles.ManyShafts'), '<NukeShafts'+'>', nuke_shafts);
+                            02=text2 = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NuclearMissiles.ManyShaftsClass'), '<NukeLauncherClass'+'>', CT('Items.Weapon.LevelToLetter.' + tech));
+                        }
+                        10=text = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NuclearMissiles.Description'), '<NukeShafts'+'>', text, '<NukeLauncher'+'>', text2, '');
+                        11=nukes_cnt = 0;
+                        12=nukes = FormShipCurItem();
+                        13=if(nukes)
+                        14 ^{
+                            01=if(EquipmentImageName(nukes) == 'ShuNukes_' + nuke_type) nukes_cnt = nukes_cnt + ItemSize(nukes, 'Count');
+                        }
+                        15=for(i = ShipItems(cur_ship) - 1; i >= 1; i = i - 1)
+                        16 ^{
+                            01=nukes = ShipItems(cur_ship, i);
+                            02=if(ItemType(nukes) == t_UselessCountableItem)
+                            02 ^{
+                                01=if(EquipmentImageName(nukes) == 'ShuNukes_' + nuke_type) break;
+                            }
+                            03=nukes = 0;
+                        }
+                        17=if(nukes) nukes_cnt = nukes_cnt + ItemSize(nukes, 'Count');
+                        18=if(nukes_cnt)
+                        19 ^{
+                            01=if(ShipCustomShipInfoData(0, cur_info, 3) <= CurTurn()) text2 = CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NuclearMissiles.StatusReady');
+                            02=else text2 = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NuclearMissiles.StatusReloading'), '<Days'+'>', ShipCustomShipInfoData(0, cur_info, 3) - CurTurn());
+                        }
+                        20=else text2 = CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NuclearMissiles.StatusNoAmmo');
+                        21=for(i=1;i<=CT('Script.Mod_ShuNukes.NukeModifications.Count');i=i+1)
+                        22 ^{
+                            01=if(ItemExtraSpecialsCountByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg(CT('Script.Mod_ShuNukes.NukeModifications.'+i+'.Info'))))
+                            02 ^{
+                                01=str text3 = CT('Script.Mod_ShuNukes.NukeModifications.'+i+'.Name');
+                                02=break;
+                            }
+                            03=else text3 = 'Отсутствует';
+                        }
+                        23=text = Format(text, '<NukeShaftsSize'+'>', ItemSize(IdToItem(GetParFromString(ShipCustomShipInfoTextData(0, cur_info, 2), ',', 1, 0))), '<NukeType'+'>', CT('Items.CustomCountables.ShuNukes_' + ShipCustomShipInfoTextData(0, cur_info, 1) + '.Name'), '<NukesLeft'+'>', nukes_cnt, '<Range'+'>', g_NukeParams[nuke_type, 'RangeStep'] * tech + g_NukeParams[nuke_type, 'RangeMin'], '<DamageMin'+'>', g_NukeParams[nuke_type, 'MinDamageMin'] + tech * g_NukeParams[nuke_type, 'MinDamageStep'] + (ItemExtraSpecialsCountByType(ShipEqInSlot(cur_ship,t_Hull),FindBonusByNameInCfg('ShuNukes_DamagerUpgrade')) * 450), '<DamageMax'+'>', (g_NukeParams[nuke_type, 'MaxDamageMin'] + tech * g_NukeParams[nuke_type, 'MaxDamageStep']) + (ItemExtraSpecialsCountByType(ShipEqInSlot(cur_ship,t_Hull),FindBonusByNameInCfg('ShuNukes_DamagerUpgrade')) * 450), '<Speed'+'>', g_NukeParams[nuke_type, 'SpeedMin'] + tech * g_NukeParams[nuke_type, 'SpeedStep'] + (ItemExtraSpecialsCountByType(ShipEqInSlot(cur_ship,t_Hull),FindBonusByNameInCfg('ShuNukes_ReloaderUpgrade')) * 750), '<Status'+'>', text2, 'Modif', text3);
+                        24=ShipCustomShipInfoDescription(0, cur_info, text);
+                    }
+                    09=else if(ScriptItemActionType(t_OnPlayerChangeHull))
+                    10 ^{
+                        01=nuke_shafts = ItemExtraSpecialsCountByType(ScriptItemActObject1(), FindBonusByNameInCfg('ShuNukes_NukeShaft'));
+                        02=if(nuke_shafts)
+                        03 ^{
+                            01=ShipCustomShipInfoTextData(0, cur_info, 2, SetParFromString(ShipCustomShipInfoTextData(0, cur_info, 2), ',', 0, '' + nuke_shafts));
+                            02=nuke_weight = IdToItem(GetParFromString(ShipCustomShipInfoTextData(0, cur_info, 2), ',', 1, 0));
+                            03=if(nuke_weight) ItemSize(nuke_weight, g_NukeParams['WeightPerShaft'] * nuke_shafts);
+                            04=else throw 'nuke_weight are missing at hold of ' + Name(cur_ship) + '!';
+                            05=ShipCustomShipInfoData(0, cur_info, 3, CurTurn() + PortionInDiapason(ItemLevel(ScriptItemActObject1()), 1, 8, 9, 3));
+                        }
+                        04=else
+                        05 ^{
+                            01=ShipCustomShipInfoTextData(0, cur_info, 2, SetParFromString(ShipCustomShipInfoTextData(0, cur_info, 2), ',', 0, '0'));
+                            02=nuke_weight = IdToItem(GetParFromString(ShipCustomShipInfoTextData(0, cur_info, 2), ',', 1, 0));
+                            03=if(nuke_weight) ItemSize(nuke_weight, 0);
+                            04=else throw 'nuke_weight are missing at hold of ' + Name(cur_ship) + '!';
+                        }
+                    }
+                    11=else
+                    12 ^{
+                        01=target = ScriptItemActObject1();
+                        02=if(ObjectType(target) < 4 || ObjectType(target) > 5 || IsPlayer(target))
+                        03 ^{
+                            01=ScriptItemActParam(0);
+                            02=if(ScriptItemActionType(t_OnCustomTargetting)) ShipCustomShipInfoData(0, cur_info, 1, 0);
+                            03=exit;
+                        }
+                        04=if(CurrentMods('Evolution\EvoArmada'))
+                        05 ^{
+                            01=if(ShipSpecialBonuses(target, bonAttacks) < 1 && ObjectType(target) != 4)
+                            02 ^{
+                                01=ScriptItemActParam(-1);
+                                02=if(ScriptItemActionType(t_OnCustomTargetting))
+                                02 ^{
+                                    01=StarMapBlinkingMessage(CT('Script.Mod_ShuNukes.SetNukeTargetButtonMessages.InvalidShip'));
+                                    02=ShipCustomShipInfoData(0, cur_info, 1, 0);
+                                }
+                                03=exit;
+                            }
+                            03=ScriptItemActParam(1);
+                            04=if(ScriptItemActionType(t_OnCustomTargetting))
+                            05 ^{
+                                01=nuke_shafts = abs(ShipCustomShipInfoData(0, cur_info, 1));
+                                02=ShipCustomShipInfoTextData(0, cur_info, 3, target);
+                                03=if(nuke_shafts > 1)
+                                04 ^{
+                                    01=nukes_cnt = 0;
+                                    02=nuke_type = 'ShuNukes_' + ShipCustomShipInfoTextData(0, cur_info, 1);
+                                    03=for(i = ShipItems(Player()) - 1; i >= 1; i = i - 1)
+                                    04 ^{
+                                        01=nukes = ShipItems(Player(), i);
+                                        02=if(ItemType(nukes) == t_UselessCountableItem)
+                                        03 ^{
+                                            01=if(EquipmentImageName(nukes) == nuke_type)
+                                            02 ^{
+                                                01=nukes_cnt = ItemSize(nukes, 'Count');
+                                                02=break;
+                                            }
+                                        }
+                                        04=nukes = 0;
+                                    }
+                                    05=if(!nukes || !nukes_cnt) throw 'Something goes wrong about nuke torpedos at hold of ' + Name(cur_ship) + '!';
+                                    06=if(nukes_cnt > 1)
+                                    07 ^{
+                                        01=text = NumberBox('Bm.FormShip2.NukeNumberIcon', CT('Script.Mod_ShuNukes.SetNukeTargetButtonMessages.HowMuchToLaunch'), 1, nuke_shafts, nukes_cnt);
+                                        02=if(text != 'Cancel') ShipCustomShipInfoData(0, cur_info, 1, text);
+                                        03=else
+                                        04 ^{
+                                            01=ShipCustomShipInfoData(0, cur_info, 1, 0);
+                                            02=ShipCustomShipInfoTextData(0, cur_info, 3, '');
+                                            03=ScriptItemActParam(-1);
+                                        }
+                                    }
+                                    08=else ShipCustomShipInfoData(0, cur_info, 1, nuke_shafts);
+                                }
+                                05=else ShipCustomShipInfoData(0, cur_info, 1, nuke_shafts);
+                            }
+                        }
+                        06=else
+                        07 ^{
+                            01=if(round(HullHP(target) * 100/ HullDamageSuspectibility(target,0)) < 400)
+                            02 ^{
+                                01=ScriptItemActParam(-1);
+                                02=if(ScriptItemActionType(t_OnCustomTargetting)) StarMapBlinkingMessage(CT('Script.Mod_ShuNukes.SetNukeTargetButtonMessages.InvalidShip'));
+                                03=ShipCustomShipInfoData(0, cur_info, 1, 0);
+                                04=exit;
+                            }
+                            03=ScriptItemActParam(1);
+                            04=if(ScriptItemActionType(t_OnCustomTargetting))
+                            05 ^{
+                                01=nuke_shafts = abs(ShipCustomShipInfoData(0, cur_info, 1));
+                                02=ShipCustomShipInfoTextData(0, cur_info, 3, target);
+                                03=if(nuke_shafts > 1)
+                                04 ^{
+                                    01=nukes_cnt = 0;
+                                    02=nuke_type = 'ShuNukes_' + ShipCustomShipInfoTextData(0, cur_info, 1);
+                                    03=for(i = ShipItems(Player()) - 1; i >= 1; i = i - 1)
+                                    04 ^{
+                                        01=nukes = ShipItems(Player(), i);
+                                        02=if(ItemType(nukes) == t_UselessCountableItem)
+                                        03 ^{
+                                            01=if(EquipmentImageName(nukes) == nuke_type)
+                                            02 ^{
+                                                01=nukes_cnt = ItemSize(nukes, 'Count');
+                                                02=break;
+                                            }
+                                        }
+                                        04=nukes = 0;
+                                    }
+                                    05=if(!nukes || !nukes_cnt) throw 'Something goes wrong about nuke torpedos at hold of ' + Name(cur_ship) + '!';
+                                    06=if(nukes_cnt > 1)
+                                    07 ^{
+                                        01=text = NumberBox('Bm.FormShip2.NukeNumberIcon', CT('Script.Mod_ShuNukes.SetNukeTargetButtonMessages.HowMuchToLaunch'), 1, nuke_shafts, nukes_cnt);
+                                        02=if(text != 'Cancel') ShipCustomShipInfoData(0, cur_info, 1, text);
+                                        03=else
+                                        04 ^{
+                                            01=ShipCustomShipInfoData(0, cur_info, 1, 0);
+                                            02=ShipCustomShipInfoTextData(0, cur_info, 3, '');
+                                            03=ScriptItemActParam(-1);
+                                        }
+                                    }
+                                    08=else ShipCustomShipInfoData(0, cur_info, 1, nuke_shafts);
+                                }
+                                05=else ShipCustomShipInfoData(0, cur_info, 1, nuke_shafts);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnReEnteringForm,t_OnItemPickUp,t_OnPlayerChangeHull,t_OnShowingItemInfo,t_OnCustomTargettingCheck,t_OnCustomTargetting
+                OnActStepTypes=1
+                OneShaft=имеется пусковая установка
+                OneShaftsClass=Класс пусковой установки: <NukeLauncherClass>
+                SeveralShafts=имеется <NukeShafts> пусковые установки
+                StatusNoAmmo=<color=255,0,0>Нет зарядов</color>
+                StatusReady=<color=0,255,0>Готово к залпу</color>
+                StatusReloading=Перезарядка <color=248,252,248>(</color><Days> <color=248,252,248>дн.)</color>
+            }
+        }
+    }
+}

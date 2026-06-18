@@ -1,0 +1,125 @@
+Script ^{
+    mod_operationchameleon ^{
+        0=<0>
+        20=</color>Что? <Player>? Ты ещё тут? Как бы ты тут не старался и не строил из себя важную птицу, но основную часть операции мы уже выполнили сами. Проваливай, пока цел.
+        21=</color>Ну, ты хотя бы не мешал нам, <Player>, и основная часть операции завершена успешно. В качестве благодарности за огневую поддержку прими неиспользованный нами камуфляж серии <0> в колличестве <1> шт. Ты ведь тоже там сбил пару-тройку кораблей, не так ли?
+        22=</color><PlayerFull>? Что вы тут делаете? Хотя, впрочем, неважно. Имею честь сообщить, что мы проводим секретную операцию по освобождению системы <0>. Постарайтесь не мешать нам.
+        23=</color>О, <Player>, систему освобождаешь? Какой молодец, прям герой. А у нас тут секретная операция начинается. Ты это... смотри, куда стреляешь, не перепутай наших в камуфляже с этими жестянками, а то не хочется под твой огонь попасть.
+        24=</color><Player>, ничего себе! Не ожидали мы от рейнджера таких подвигов... Мы даже толком начать не успели, а ты уже всех домиков покрошил! В благодарность за сохранение наших жизней мы передаeм тебе неиспользованный нами камуфляжа серии <0> в количестве <1> шт. - это всe равно уже спишут как использованное. Кроме этого, в качестве дополнительной награды от правительства планеты <2> за проявленный героизм, мы загружаем в твой бортовой компьютер программу <3>. Количество копий: <4> шт.
+        25=</color>Ничего себе! Мы и начать не успели, а основная часть операции уже выполнена тобой, <Player>. Но начальству об этом, конечно же, мы не скажем, хех. Ну а в качестве нашей благодарности передаeм тебе неиспользованный нами камуфляж серии <0> в колличестве <1> шт. А также лично от меня программу <2>. Количество копий: <3> шт. Бери, бери, нет там вирусов типа Шмайнер, не бойся.
+        26=</color>Ты куда шмаляешь, <Player>? Совсем берега попутал?Доминаторы распознали нашу маскировку и теперь операция на грани провала. Тебе что, под трибунал захотелось? У тебя единственный шанс -  покажи всё, на что ты способен и помоги нам отбить эту систему, иначе кары тебе не миновать.
+        27=</color>Ты куда стреляешь, <Player>? Совсем страх потерял? Доминаторы распознали нашу маскировку и операция больше не секретная. Отбивай теперь систему вместе с нами, или суда тебе не миновать.
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            Mod_OperationChameleon0 ^{
+                Description=Кродётся чтобы совершить скрытую атаку.
+                Icon=0
+                Name=Кродётся
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnStep, 0))
+                    02 ^{
+                        01=int a=0; dword gun=0, ship=ScriptItemActShip(), dwd0=0;
+                        02=for(a=1;a<6;a=a+1)
+                        03 ^{
+                            01=gun=ShipEqInSlot(ship,t_Weapon1,a);
+                            02=if(!gun)continue;
+                            03=if(WeaponTarget(gun)==Player())WeaponTarget(gun,0);
+                        }
+                    }
+                    03=if(ScriptItemActionType(t_OnStep, 11))ShipFreeFlight(ship);
+                    04=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp)  || ScriptItemActionType(t_OnTakingDamageMi))
+                    05 ^{
+                        01=if(ObjectType(ScriptItemActObject1())==5)
+                        02 ^{
+                            01=if(ScriptItemActObject1()==Player())
+                            02 ^{
+                                01=if(ShipFindCustomShipInfoByType(Player(),'Mod_OperationChameleon9')==-1)ShipAddCustomShipInfo(Player(),'Mod_OperationChameleon9','NoShow');
+                            }
+                        }
+                        03=if(ObjectType(ScriptItemActObject1())==7)
+                        04 ^{
+                            01=if(MissileOwner(ScriptItemActObject1())==Player())
+                            02 ^{
+                                01=if(ShipFindCustomShipInfoByType(Player(),'Mod_OperationChameleon9')==-1)ShipAddCustomShipInfo(Player(),'Mod_OperationChameleon9','NoShow');
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+                OnActStepTypes=0,11
+            }
+            Mod_OperationChameleon1 ^{
+                Description=Наносимый урон увеличен в 5 раз на 1 ход.
+                Icon=0
+                Name=Скрытая атака
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnStep, 0))
+                    02 ^{
+                        01=int a=0; dword gun=0, ship=ScriptItemActShip();
+                        02=for(a=1;a<6;a=a+1)
+                        03 ^{
+                            01=gun=ShipEqInSlot(ship,t_Weapon1,a);
+                            02=if(!gun)continue;
+                            03=WeaponTarget(gun,ShipOrderObj(ship));
+                        }
+                    }
+                    03=if(ScriptItemActionType(t_OnWeaponShot))
+                    04 ^{
+                        01=if(ObjectType(ScriptItemActObject1())==4 || ObjectType(ScriptItemActObject1())==5)ScriptItemActParam(ScriptItemActParam()*5);
+                    }
+                    05=if(ScriptItemActionType(t_OnStep, 11))
+                    06 ^{
+                        01=OrderLock(ScriptItemActShip(),0);
+                        02=ShipDeleteCustomShipInfo(0, CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnWeaponShot
+                OnActStepTypes=0,11
+            }
+            Mod_OperationChameleon2 ^{
+                Description=проверяем ваншоты от игрока
+                Icon=0
+                Name=---
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp)  || ScriptItemActionType(t_OnTakingDamageMi))
+                    02 ^{
+                        01=if(ObjectType(ScriptItemActObject1())==5)
+                        02 ^{
+                            01=if(ScriptItemActObject1()==Player())
+                            02 ^{
+                                01=if(ShipFindCustomShipInfoByType(Player(),'Mod_OperationChameleon9')==-1)ShipAddCustomShipInfo(Player(),'Mod_OperationChameleon9','NoShow');
+                            }
+                        }
+                        03=if(ObjectType(ScriptItemActObject1())==7)
+                        04 ^{
+                            01=if(MissileOwner(ScriptItemActObject1())==Player())
+                            02 ^{
+                                01=if(ShipFindCustomShipInfoByType(Player(),'Mod_OperationChameleon9')==-1)ShipAddCustomShipInfo(Player(),'Mod_OperationChameleon9','NoShow');
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+            }
+            Mod_OperationChameleon9 ^{
+                Description=особый костыль для игроков которые ваншотят скриптовые корабли, из-за чего не срабатывает Hit(ship,0)
+                Icon=0
+                Name=убиваец!!!11
+            }
+        }
+    }
+}
+mod_operationchameleon ^{
+    programm ^{
+        10=Programms.SelfDestruction.Name
+        11=Programms.Disconnection.Name
+        5=Programms.Intercom.Name
+        6=Programms.Shipwreck.Name
+        7=Programms.WeaponBlocking.Name
+        8=Programms.Insanity.Name
+        9=Programms.Shock.Name
+    }
+}

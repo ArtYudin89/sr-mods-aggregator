@@ -1,0 +1,122 @@
+MicroModuls ^{
+    Cat_Yamato_Rebuilt ^{
+        BlockMM=1
+		BlockImp=1
+        Cost=100
+        Equipments=Hull
+        FragilitySplinter=300
+		FragilityMissile=300
+		FragilityEnergy=300
+        HullGraphSize=250
+        KindGraph=YamatoRebuilt
+        Name=Космический линкор Ямато v2199
+        Owner=People
+        Priority=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Ямато - Линкор японского императорского морского флота времён Второй мировой войны на планете <clr>Земля<clrEnd>, поднятый с морского дна и переоборудованный в космический корабль в <clr>2199 году<clrEnd>. Был подбит после неравной битвы 2875 года, рухнув на одной из незаселённых планет неизвестной системы и долгое время считался утерянным.. В настоящий момент реставрирован на одной из военных баз по древним чертежам.</color>
+        Text=<color=248,252,248>Военные восстановили корпус по чертежам, но оборудование крайне сильно устарело. Без модернизации всех систем корабля это действительно просто музейный экспонат...</color>
+		Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Дальность прыжка: <bonJump> ед.
+        Text=Мощность энергетического оружия: <bonWEnergy> ед.
+        Text=Мощность осколочного оружия: <bonWSplinter> ед.
+        Text=Ракетное вооружение не работает!
+        Text=Масса корабля: <bonMass>%
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Мощность ГЗП: <bonDef> ед.
+        bonDef=-25
+        bonDroid=-80
+        bonHull=-20
+        bonJump=-20
+        bonMass=+25
+        bonRadar=1
+        bonScaner=1
+        bonSlotArt=-4
+        bonSlotHook=1
+        bonSlotWeapon=5
+        bonSpeed=-750
+        bonWEnergy=-30
+        bonWMissile=-1000
+        bonWRadius=-300
+        bonWSplinter=-80
+		bonSkill2=-2
+		bonSkill4=-3
+		bonResistAsteroid=-300
+    }
+    Cat_Yamato_Upgraded ^{
+        BlockMM=1
+		BlockImp=1
+        Cost=100
+        Equipments=Hull
+        FragilitySplinter=60
+		FragilityMissile=100
+		FragilityEnergy=80
+        HullGraphSize=250
+        KindGraph=YamatoUpgraded
+        Name=Космический линкор Ямато
+        Owner=People
+        Priority=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Ямато - Линкор японского императорского морского флота времён Второй мировой войны на планете <clr>Земля<clrEnd>, поднятый с морского дна и переоборудованный в космический корабль в <clr>2199 году<clrEnd>. Был подбит после неравной битвы 2875 года, рухнув на одной из незаселённых планет неизвестной системы и долгое время считался утерянным. В настоящий момент реставрирован на одной из военных баз по древним чертежам, а также модифицирован лучшими умами коалиции по заказу рейнджера, нашедшего корабль.</color>
+        Text=<color=248,252,248>На капитанском мостике сияет гравировка "Per Aspera Ad Astra"</color>
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Мощность энергетического оружия: <bonWEnergy> ед.
+        Text=Мощность ракетного оружия: <bonWMissile> ед.
+		Text=Дальность захвата: <bonHookRadius> ед.
+		Text=Мощность захвата: <bonHook> ед.
+		Text=Мощность ГЗП: <bonDef>%
+        Text=Масса корабля: <bonMass>%
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+		Text=Прыжок двигателя: <bonJump> ед.
+		Text=Навык манёвренности: <bonSkill2>
+		Text=Навык торговли: <bonSkill4>
+		bonJump=-10
+        bonDroid=15
+		bonHook=-100
+		bonHookRadius=-40
+		bonDef=15
+        bonMass=+100
+        bonSlotArt=4
+        bonSlotHook=1
+        bonSlotRadar=1
+        bonSlotScaner=1
+        bonSlotWeapon=5
+		bonSlotForsage=-1
+        bonSpeed=-200
+        bonWEnergy=25
+        bonWMissile=35 
+        bonWRadius=20  
+		bonSkill2=-2
+		bonSkill4=-3
+		bonResistAsteroid=50
+        bonHull=0
+        bonWSplinter=0
+		bonSkill1=0
+		bonSkill3=0
+		bonSkill5=0
+		bonSkill6=0
+    }
+}
+Script ~{
+    Yamato ~{
+	    Settings ~{
+	        bad_special_name=Космический линкор Ямато v2199
+            good_special_name=Космический линкор Ямато
+            cost=1000000
+            upgrade_cost=2500000
+            cost_sponsor=650000
+            cost_museum=500000
+            hull_cost_1=165000
+            hull_cost_2=4200000
+            research_time_slow=1300
+            research_time_fast=550
+            item_size=800
+            hull_size_bad=2000
+            hull_size_good=2000
+	    }
+    }
+}

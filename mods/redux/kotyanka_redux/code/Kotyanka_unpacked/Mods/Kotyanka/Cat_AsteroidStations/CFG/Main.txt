@@ -1,0 +1,228 @@
+Data ^{
+    SE ^{
+        Ruins ^{
+            AS ^{
+                Image=Bm.Ruins.AS
+                ImageI=GI,Bm.Ruins.ASi
+                ImageMap=GI,Bm.Ruins.MapAS
+                PosZ=Ruins
+            }
+        }
+        Sound ^{
+            Loop ^{
+                Ruins ^{
+                    AS ^{
+                        10=3000,Sound.LoopRuins03
+                    }
+                }
+            }
+            Rnd ^{
+                Ruins ^{
+                    AS ^{
+                    }
+                }
+            }
+        }
+    }
+    Script ^{
+        Cat_AsteroidStations=1,Script.Cat_AsteroidStations
+    }
+}
+Music ^{
+    AS ^{
+        1=Music\special\SpaceIsCalling.dat
+        10=Music\fly\Theo-Inside.dat
+    }
+}
+ML ^{
+    RuinsTalk ^{
+        Panel ^{
+            Expansion ^{
+                Panel ^{
+                    Active=False
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-100]
+                        Image=Bm.Gov.2MalocAnim0a
+                        ImageFirst=Bm.Gov.2MalocAnim0i
+                        Name=Panel_Anim0
+                        PBuf=True
+                        Pos=546,127,-2
+                        Size=406,641
+                        SkipImageUpdateRect=True
+                    }
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-100]
+                        Image=Bm.Gov.2MalocAnim1a
+                        ImageFirst=Bm.Gov.2MalocAnim1i
+                        Name=Panel_Anim1
+                        PBuf=True
+                        Pos=545,127,-2
+                        Size=406,641
+                        SkipImageUpdateRect=True
+                    }
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-97]
+                        Image=Bm.GovHD.MalocAnim0a
+                        ImageFirst=Bm.GovHD.MalocAnim0i
+                        Name=PanelHD_Anim0
+                        PBuf=True
+                        Pos=0,-68,-2
+                        Size=583,817
+                        SkipImageUpdateRect=True
+                    }
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-100]
+                        Image=Bm.GovHD.MalocAnim1a
+                        ImageFirst=Bm.GovHD.MalocAnim1i
+                        Name=PanelHD_Anim1
+                        PBuf=True
+                        Pos=0,-68,-2
+                        Size=583,817
+                        SkipImageUpdateRect=True
+                    }
+                    Image ^{
+                        Image=GI,Bm.FormRuins.2Empty_table
+                        Name=Table
+                        Pos=-100,0,-3
+                        Size=1,301
+                    }
+                    Name=PanelMalocTC
+                    Pos=60,0,800
+                    Size=1024,768
+                }
+                Panel ^{
+                    Active=False
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-99]
+                        Image=Bm.Gov.2PeopleAnim0a
+                        ImageFirst=Bm.Gov.2PeopleAnim0i
+                        Name=Panel_Anim0
+                        PBuf=True
+                        Pos=563,97,-2
+                        Size=345,671
+                    }
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-99]
+                        Image=Bm.Gov.2PeopleAnim1a
+                        ImageFirst=Bm.Gov.2PeopleAnim1i
+                        Name=Panel_Anim1
+                        PBuf=True
+                        Pos=514,91,-2
+                        Size=412,677
+                    }
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-99]
+                        Image=Bm.GovHD.PeopleAnim0a
+                        ImageFirst=Bm.GovHD.PeopleAnim0i
+                        Name=PanelHD_Anim0
+                        PBuf=True
+                        Pos=0,-110,-2
+                        Size=515,846
+                    }
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-99]
+                        Image=Bm.GovHD.PeopleAnim1a
+                        ImageFirst=Bm.GovHD.PeopleAnim1i
+                        Name=PanelHD_Anim1
+                        PBuf=True
+                        Pos=0,-110,-2
+                        Size=515,846
+                    }
+                    Image ^{
+                        Image=GI,Bm.FormRuins.2Empty_table
+                        Name=Table
+                        Pos=0,0,-3
+                        Size=1,331
+                    }
+                    Name=PanelPirateClanTC
+                    Pos=0,0,800
+                    Size=1024,768
+                }
+            }
+        }
+    }
+    Scaner ^{
+        Panel ^{
+            Panel ^{
+                Panel ^{
+                    Panel ^{
+                        BlockWeaponSlot1 ^{
+                            GraphButton ^{
+                                Active=False
+                                ImageDisable=GI,Bm.FormShip2.2W1H
+                                ImageDown=GI,Bm.FormShip2.2W1H
+                                ImageNormal=GI,Bm.FormShip2.2W1H
+                                ImageNormalA=GI,Bm.FormShip2.2W1H
+                                Kind=Disable
+                                KindHit=Graph
+                                MVUpdate=True
+                                MouseBlocking=True
+                                MouseBlockingTest=False
+                                Name=BlockWeaponSlot1
+                                Pos=83,107,-1.1
+                                Size=97,77
+                                Style=Style.GB.SoundNormal
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    Ship ^{
+        Panel ^{
+            Panel ^{
+            }
+            Panel ^{
+                Panel ^{
+                }
+                Panel ^{
+                    Panel ^{
+                        BlockWeaponSlot1 ^{
+                            GraphButton ^{
+                                Active=False
+                                ImageDisable=GI,Bm.FormShip2.2W1H
+                                ImageDown=GI,Bm.FormShip2.2W1H
+                                ImageNormal=GI,Bm.FormShip2.2W1H
+                                ImageNormalA=GI,Bm.FormShip2.2W1H
+                                Kind=Disable
+                                KindHit=Graph
+                                MVUpdate=True
+                                MouseBlocking=True
+                                MouseBlockingTest=False
+                                Name=BlockWeaponSlot1
+                                Pos=83,107,-1.1
+                                Size=97,77
+                                Style=Style.GB.SoundNormal
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

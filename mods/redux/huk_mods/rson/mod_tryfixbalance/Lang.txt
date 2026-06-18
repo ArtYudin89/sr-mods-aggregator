@@ -1,0 +1,200 @@
+MicroModuls ^{
+    mod_tryfixbalance_Attack_Group_Hull_Extra ^{
+        CustomTag=mod_tryfixbalance_Attack_Group_Hull_Extra
+        Equipments=Hull
+        Fragility=95
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    mod_tryfixbalance_Coal_Group_Hull ^{
+        CustomTag=mod_tryfixbalance_Coal_Group_Hull
+        Equipments=Hull
+        KindGraph=mod_tryfixbalance_Coal
+        LockedAcryn=3
+        Name=<Type> корпус
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    mod_tryfixbalance_Pirate_Group_Hull ^{
+        CustomTag=mod_tryfixbalance_Pirate_Group_Hull
+        Equipments=Hull
+        KindGraph=mod_tryfixbalance_Pirate
+        LockedAcryn=3
+        Name=<Type> корпус
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    mod_tryfixbalance_Test_Group_Hull ^{
+        CustomTag=mod_tryfixbalance_Test_Group_Hull
+        Equipments=Hull
+        HullGraphSize=50
+        KindGraph=mod_tryfixbalance_Test_Group
+        LockedAcryn=3
+        Name=<Type> корпус
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    mod_tryfixbalance_Test_Group_Hull_Extra ^{
+        CustomTag=mod_tryfixbalance_Test_Group_Hull_Extra
+        Equipments=Hull
+        Fragility=90
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+}
+Script ^{
+    mod_tryfixbalance ^{
+        0=<br>
+    }
+}
+ShipType ^{
+    Fei ^{
+        Coalition_mod_tryfixbalance=Филокай
+        PirateClan_mod_tryfixbalance=Новекай
+        mod_tryfixbalance_Test_Group=Ошибка
+    }
+    Gaal ^{
+        Coalition_mod_tryfixbalance=Лаа-Тен
+        PirateClan_mod_tryfixbalance=Лаа-Тен
+        mod_tryfixbalance_Test_Group=Ошибка
+    }
+    Maloc ^{
+        Coalition_mod_tryfixbalance=Драгобрых
+        PirateClan_mod_tryfixbalance=Грабборх
+        mod_tryfixbalance_Test_Group=Ошибка
+    }
+    Peleng ^{
+        Coalition_mod_tryfixbalance=Шешкельца
+        PirateClan_mod_tryfixbalance=Наёмник
+        mod_tryfixbalance_Test_Group=Ошибка
+    }
+    People ^{
+        Coalition_mod_tryfixbalance=Защитник
+        PirateClan_mod_tryfixbalance=Охранитель
+        mod_tryfixbalance_Test_Group=Ошибка
+    }
+    TypeName ^{
+        Coalition_mod_tryfixbalance=Минитмен
+        PirateClan_mod_tryfixbalance=Кондотьер
+        mod_tryfixbalance_Test_Group=Дефектный робот
+    }
+}
+mod_tryfixbalance ^{
+    Code ^{
+        test ^{
+            00=NewsAdd('Execute Test Code for ship: '+Name(ship)+'/'+ship);
+        }
+    }
+    EnemyPriority ^{
+        1000_Mod_TryFixBalance ^{
+            Attack_Group ^{
+                Hull ^{
+                    ExtraSpecial=mod_tryfixbalance_Attack_Group_Hull_Extra
+                }
+                SpecialBonuses ^{
+                    bonDef=3
+                    bonDroid=3
+                    bonHull=3
+                    bonSpeed=50
+                    bonWEnergy=20
+                    bonWMissile=20
+                    bonWRadius=20
+                    bonWSplinter=20
+                }
+            }
+            Coal_Group ^{
+                Hull ^{
+                    Special=mod_tryfixbalance_Coal_Group_Hull
+                }
+                SpecialBonuses ^{
+                    bonDef=3
+                    bonDroid=3
+                    bonFuel=-200
+                    bonHull=1
+                    bonSpeed=30
+                    bonWEnergy=15
+                    bonWMissile=15
+                    bonWSplinter=15
+                }
+            }
+            Group_help=Attack_Group - группа для атаки систем домиков, атаки начинаются когда одна из сторон(коалы или пираты) полностью побеждены. не просто отсутствуют системы, а именно полностью побеждены. Coal_Group - группа защитников для коалиции. Pirate_Group - группа защитников для пиратского клана. Test_Group - группа тестирующая урон домиков, от неё зависит CurBalanceLevel.
+            Pirate_Group ^{
+                Hull ^{
+                    Special=mod_tryfixbalance_Pirate_Group_Hull
+                }
+                SpecialBonuses ^{
+                    bonDef=3
+                    bonDroid=3
+                    bonFuel=-200
+                    bonHull=1
+                    bonSpeed=30
+                    bonWEnergy=15
+                    bonWMissile=15
+                    bonWSplinter=15
+                }
+            }
+            Test_Group ^{
+                Hull ^{
+                    ExtraSpecial=mod_tryfixbalance_Test_Group_Hull_Extra
+                    Special=mod_tryfixbalance_Test_Group_Hull
+                }
+                SpecialBonuses ^{
+                    bonDroid=3
+                    bonHull=3
+                    bonWEnergy=30
+                    bonWMissile=30
+                    bonWSplinter=30
+                }
+            }
+            example ^{
+                ExecuteCode=mod_tryfixbalance.Code.test
+                ExecuteCode_help=если вам недостаточно возможных параметров, то можно добавить такую строку. она будет выполнять ExecuteCodeFromString(str0);, где str0=GenerateCodeStringFromBlock('mod_tryfixbalance.Code.test');. так как код выполняется внутри скрипта, то можно использовать переменную ship, указатель на корабль. этот код выполняется в момент создания кораблей, в самом конце выбора параметров корабля конкретной группы. параметр ExecuteCode подхватывает любой существующий путь к коду, нет необходимости добавлять свой код в mod_tryfixbalance.Code.
+                Hull ^{
+                    ExtraSpecial=тэг спецакрина акрина
+                    ExtraSpecial_help=какой спецакрин будет накладываться на корпус(ItemExtraSpecialsAddByType). число спецакринов = CurBalanceLevel. накладывать на группы Pirate_Group/Coal_Group почти бессмысленно. эти 2 группы для защиты систем и они садятся на планеты/станции где спокойно сменят корпус с таким спеакрином на какой-то свой хлам.
+                    Special=тэг акрина
+                    Special_help=какой акрин будет накладываться на корпус через SpecialToEquipment. для смены шкуры кораблей, но можно и с другими параметрами.
+                }
+                Hull_help=тут папаметры корпуса корабля, из конкретной группы, выставляемые при создании
+                SpecialBonuses ^{
+                    bonDroid=3
+                    bonHull=3
+                    bonWEnergy=30
+                    bonWMissile=30
+                    bonWSplinter=30
+                }
+                SpecialBonuses_help=какие бонусы накладываются на корабли. зависит от CurBalanceLevel. при CurBalanceLevel=0 и bonHull=3 бонус на корабле будет 0, при CurBalanceLevel=8 и bonHull=3 бонус на корабле будет 24
+            }
+            example_help=на данный момент существуют 4 группы, это для примера возможных параметров
+        }
+        N_ВашМод=где N - приоритет настройки баланса групп скрипта(1-999), выбирается минимальный.
+    }
+    EnemyPriorityRecalc=0
+    TestMode=0
+    mod_tryfixbalance_help=EnemyPriorityRecalc, если =1 перерасчитывает параметры групп. как если бы подключили какой-то мод. TestMode, если =1 выводит разные эзеры о ходе турнкода. EnemyPriority тут настройки баланса групп. пока-что баланс тестируется на домиках, внесу изменения для кастомных фракций, если найдётся противник посильнее домиков и кому-то понадобится тестировать их.
+    text ^{
+        sDestroy ^{
+            0=Exception Exception with message Error in procedure TStar.NextDay
+            1=Access violation at address 007D6624
+            10=Exception ExceptionExpressionEC with message Error array
+            11=Exception Exception with message Error in TEFilmEnd.Run
+            12=EDivByZero Division by zero
+            13=Exception Exception with message TDataEC.PathGetBuf. path=????
+            2=Exception Exception with message Error in procedure TPlanet.Load, label = 4
+            3=Exception Exception with message Error in procedure TStar.Load, label = 2
+            4=EAccessViolation Access violation at address 0076EDAE
+            5=Exception EInvalidPointer with message Invalid pointer operation
+            6=Exception Exception with message Error in procedure TShip.NextDay  label = 3
+            7=EAccessViolation Access violation at address 75B33E8D in module 'oleaut32.dll'. Read of address FFFFFFFD
+            8=Exception Exception with message Error in turn code of script Script.KILL_ALL
+            9=EAccessViolation Access violation at address 0040418C in module 'Core.exe'. Read of address 00000001
+        }
+    }
+}

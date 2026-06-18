@@ -1,0 +1,637 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefBridgeCamo",
+    "ScriptFileOut": "D:\\Mod_RefBridgeCamo.scr",
+    "ScriptTextOut": "D:\\Mod_RefBridgeCamo.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 18,
+                    "Msg": "",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefBridgeCamo.8\"))"
+                },
+                {
+                    "Name": "block",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 19,
+                    "Msg": "",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer('block~'+CT(\"Script.Mod_RefBridgeCamo.8\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 20,
+                    "Msg": "",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefBridgeCamo.9\"))"
+                },
+                {
+                    "Name": "block",
+                    "Pos.x": 360,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 21,
+                    "Msg": "",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('block~'+CT(\"Script.Mod_RefBridgeCamo.9\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 22,
+                    "Msg": "",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefBridgeCamo.10\"))"
+                },
+                {
+                    "Name": "block",
+                    "Pos.x": 600,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 23,
+                    "Msg": "",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer('block~'+CT(\"Script.Mod_RefBridgeCamo.10\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 720,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 24,
+                    "Msg": "",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefBridgeCamo.11\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 840,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 25,
+                    "Msg": "",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefBridgeCamo.12\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 960,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "",
+                    "AMsg.Num": "8",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefBridgeCamo.13\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 14,
+                    "Msg": "",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefBridgeCamo.4\"),\"<0>\",T,\"<1>\",B,\"<2>\",K,\"<3>\",temp_str))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 15,
+                    "Msg": "",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefBridgeCamo.5\"),\"<0>\",K))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 16,
+                    "Msg": "",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefBridgeCamo.6\"),\"<0>\",T))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 17,
+                    "Msg": "",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefBridgeCamo.7\"),\"<0>\",B))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "CamoDialog",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 13
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 8
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 9,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Flag = 3;"
+                    ],
+                    "#": 10,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(PlayerBridge()==12) {",
+                        "  AddDialogInject('CamoDialog',CT(\"Script.Mod_RefBridgeCamo.3\"),CT(\"Script.Mod_RefBridgeCamo.2\"),20);",
+                        "  if(PlayerChameleonCurType() == -1) temp_str = 'Неактивен';",
+                        "  if(PlayerChameleonCurType() == 0) temp_str = 'Блазероидной серии';",
+                        "  if(PlayerChameleonCurType() == 1) temp_str = 'Келлероидной серии';",
+                        "  if(PlayerChameleonCurType() == 2) temp_str = 'Терроноидной серии';",
+                        "  K = PlayerChameleonCharges(0);",
+                        "  B = PlayerChameleonCharges(1);",
+                        "  T = PlayerChameleonCharges(2);",
+                        "}"
+                    ],
+                    "#": 11,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 27,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(K > 0 && PlayerChameleonCurType() != 0) {",
+                        "  DAdd(0);",
+                        "}",
+                        "if(K == 0 || PlayerChameleonCurType() == 0) {",
+                        "  DAdd(1);",
+                        "}",
+                        "if(T > 0 && PlayerChameleonCurType() != 2) {",
+                        "  DAdd(2);",
+                        "}",
+                        "if(T == 0 || PlayerChameleonCurType() == 2) {",
+                        "  DAdd(3);",
+                        "}",
+                        "if(B > 0 && PlayerChameleonCurType() != 1) {",
+                        "  DAdd(4);",
+                        "}",
+                        "if(B == 0 || PlayerChameleonCurType() == 1) {",
+                        "  DAdd(5);",
+                        "}",
+                        "DAdd(6);"
+                    ],
+                    "#": 28,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(7);",
+                        "DAdd(8);"
+                    ],
+                    "#": 29,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(7);",
+                        "DAdd(8);"
+                    ],
+                    "#": 30,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(7);",
+                        "DAdd(8);"
+                    ],
+                    "#": 31,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "PlayerChameleonCharges(0,PlayerChameleonCharges(0) - 1);",
+                        "K = PlayerChameleonCharges(0);",
+                        "Flag = 0;",
+                        "if(Flag != 3) PlayerChameleonCharges(Flag,PlayerChameleonCharges(Flag) + 1);",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 32,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "PlayerChameleonCharges(2,PlayerChameleonCharges(2) - 1);",
+                        "T = PlayerChameleonCharges(2);",
+                        "Flag = 2;",
+                        "if(Flag != 3) PlayerChameleonCharges(Flag,PlayerChameleonCharges(Flag) + 1);",
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 33,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "PlayerChameleonCharges(1,PlayerChameleonCharges(1) - 1);",
+                        "B = PlayerChameleonCharges(1);",
+                        "Flag = 1;",
+                        "if(Flag != 3) PlayerChameleonCharges(Flag,PlayerChameleonCharges(Flag) + 1);",
+                        "DChange(3);",
+                        "exit;"
+                    ],
+                    "#": 34,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//визуальный костыль",
+                        "K = PlayerChameleonCharges(0);",
+                        "B = PlayerChameleonCharges(1);",
+                        "T = PlayerChameleonCharges(2);",
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 35,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 7
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 6
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 5,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 12
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "K",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "T",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "B",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "temp_str",
+                    "Pos.x": 270,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "Flag",
+                    "Pos.x": 390,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "3",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 27,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 28,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 15,
+            "End": 29,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 30,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 17,
+            "End": 31,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 32,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 20,
+            "End": 33,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 22,
+            "End": 34,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 35,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 6,
+            "End": 5,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 7,
+            "End": 5,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 8,
+            "End": 7,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 8,
+            "End": 12,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

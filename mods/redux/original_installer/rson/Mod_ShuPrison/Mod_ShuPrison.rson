@@ -1,0 +1,331 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_ShuPrison",
+    "ScriptFileOut": "D:\\Mod_ShuPrison.scr",
+    "ScriptTextOut": "D:\\Mod_ShuPrison.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [],
+            "DialogMessages": [],
+            "Dialogs": [],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 100,
+                    "StatusTraderMax": 10000,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 0,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 0,
+                    "DistSearch": 2097152,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "InitPlanet",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 13
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 14,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 510
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "k = BuildListOfNewShips(tempArray, 0, 2 + 8, 1 + 2 + 4 + 8 + 16 + 128, 1, ',SubFactionPlayerMercsFixedStanding', ',Rebel,PirateRunner,Thug,Khan,RangerExplorer,RangerPirate,RangerPirateExplorer,Merc,PlayerMerc,Freelancer');",
+                        " if (k) {",
+                        "   for (i = 0; i < ArrayDim(tempArray); i = i + 1) {",
+                        "     k = tempArray[i];",
+                        "     if (IsPlayer(k)) continue;",
+                        "     if (ShipInPrison(k)) {",
+                        "       ill = 0;",
+                        "       if (ShipHealthFactor(k, 0) || ShipHealthFactor(k, 1) || ShipHealthFactor(k, 4) || ShipHealthFactor(k, 6) || ShipHealthFactor(k, 7) || ShipHealthFactor(k, 8) || ShipHealthFactor(k, 21) || ShipHealthFactor(k, 23)) ill = 1;",
+                        "       if (ShipHealthFactor(k, 13) || ShipHealthFactor(k, 18)) ill = 0;",
+                        "       if (ShipSkill(k, 4) == 6 || ShipSkill(k, 5) >= 5) ill = 0;",
+                        "       if (GetShipPirateRank(k) >= 3) ill = 0;",
+                        "       if (ill) {",
+                        "         p = GetShipPlanet(k);",
+                        "         if (PlanetOwner(p) == 1 || PlanetOwner(p) == 7) m = Rnd(1, 235);",
+                        "         if (PlanetOwner(p) == 0 || PlanetOwner(p) == 2) m = Rnd(1, 270);",
+                        "         if (PlanetOwner(p) == 3) m = Rnd(1, 305);",
+                        "         else m = Rnd(1, 330);",
+                        "       } else {",
+                        "         p = GetShipPlanet(k);",
+                        "         if (PlanetOwner(p) == 1 || PlanetOwner(p) == 7) m = Rnd(1, 185);",
+                        "         if (PlanetOwner(p) == 0 || PlanetOwner(p) == 2) m = Rnd(1, 220);",
+                        "         if (PlanetOwner(p) == 3) m = Rnd(1, 265);",
+                        "         else m = Rnd(1, 290);",
+                        "       }",
+                        "       if (m == 1) ShipDestroy(k);",
+                        "     }",
+                        "   }",
+                        " }"
+                    ],
+                    "#": 15,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 510
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "InitPlanet",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "InitStar",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 12
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "InitStar",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 11
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "InitStar",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 10,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 16
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "s",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "rand",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "k",
+                    "Pos.x": 270,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "p",
+                    "Pos.x": 360,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "m",
+                    "Pos.x": 450,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "in",
+                    "Pos.x": 540,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "f",
+                    "Pos.x": 630,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "ill",
+                    "Pos.x": 720,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tempArray",
+                    "Pos.x": 810,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 11,
+            "End": 10,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 10,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 12,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 16,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

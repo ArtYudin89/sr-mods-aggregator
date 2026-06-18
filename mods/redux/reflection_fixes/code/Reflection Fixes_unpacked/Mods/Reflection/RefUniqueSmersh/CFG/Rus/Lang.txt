@@ -1,0 +1,197 @@
+MicroModuls ^{
+    RefUniqueSmersh_Energy ^{
+        Cost=600
+        CustomTag=RefSmershEn
+        Equipments=Hull
+        FragilityEnergy=105
+        FragilityMissile=80
+        FragilitySplinter=105
+        KindGraph=RefSmershEn
+        LockedAcryn=3
+        Name=Корпус "Шершень"
+        NonSearchable=1
+        Owner=People,Fei,Maloc
+        Priority=10
+        Size=100
+        Special=1
+        Text=<color=0,0,0>Режим ближнего боя</color>
+        Text=Уникальная разработка спецотдела Коалиции. Создана в единственном экземпляре для полевых испытаний, но дизайн был отвергнут КВСМК, поэтому более таких кораблей в Галактике не появится.
+        Text=<color=248,252,248>"Против дубины нету силы, если нет другой дубины" - известная малокская поговорка.</color>
+        Text=<color=248,252,248>Борьба с доминаторами всегда была для Коалиции самым проблемным и, соответственно, наиболее приоритетным направлением исследований. Однако не стоит забывать, что Коалицию всегда спасал раздор между тремя сериями доминаторов. По аналогии учeные Коалиции приняли решение применить против доминаторов их же возможности и благодаря участникам из Рейнджерского Корпуса смогли создать уникальный электронно-вычислительный комплекс для управления орудийными системами. Основываясь на логике борьбы со своими "собратьями" других серий, ЭВК наводит орудия на наиболее уязвимые места доминатора, о которых создатели коалиционных систем наведения даже не подозревали. Кроме того, этот ЭВК обладает способностью анализировать весь наносимый текущей цели ущерб, и на основании этого делать вывод о том, какое вооружение нанесeт противнику наибольший урон.</color>
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Мощность энергетического оружия: <bonWEnergy> ед.
+        Text=Мощность осколочного оружия: <bonWSplinter> ед.
+        Text=Восстановление обшивки дроидом: <bonDroid> ед.
+        Text=<clr>Оружие, установленное на этот корпус, наносит больше урона доминаторам<clrEnd>
+        Text=<clr>На корпус установлен генератор камуфляжа<clrEnd>
+        bonDroid=10
+        bonSlotArt=4
+        bonWEnergy=15
+        bonWRadius=25
+        bonWSplinter=17
+    }
+    RefUniqueSmersh_Missile ^{
+        Cost=600
+        CustomTag=RefSmershMi
+        Equipments=Hull
+        FragilityEnergy=85
+        FragilityMissile=120
+        FragilitySplinter=85
+        KindGraph=RefSmershMi
+        LockedAcryn=3
+        Name=Корпус "Шершень"
+        NonSearchable=1
+        Owner=People,Fei,Maloc
+        Priority=10
+        Size=100
+        Special=1
+        Text=<color=0,0,0>Ракетный режим</color>
+        Text=Уникальная разработка спецотдела Коалиции. Создана в единственном экземпляре для полевых испытаний, но дизайн был отвергнут КВСМК, поэтому более таких кораблей в Галактике не появится.
+        Text=<color=248,252,248>"Против дубины нету силы, если нет другой дубины" - известная малокская поговорка.</color>
+        Text=<color=248,252,248>Борьба с доминаторами всегда была для Коалиции самым проблемным и, соответственно, наиболее приоритетным направлением исследований. Однако не стоит забывать, что Коалицию всегда спасал раздор между тремя сериями доминаторов. По аналогии учeные Коалиции приняли решение применить против доминаторов их же возможности и благодаря участникам из Рейнджерского Корпуса смогли создать уникальный электронно-вычислительный комплекс для управления орудийными системами. Основываясь на логике борьбы со своими "собратьями" других серий, ЭВК наводит орудия на наиболее уязвимые места доминатора, о которых создатели коалиционных систем наведения даже не подозревали. Кроме того, этот ЭВК обладает способностью анализировать весь наносимый текущей цели ущерб, и на основании этого делать вывод о том, какое вооружение нанесeт противнику наибольший урон.</color>
+        Text=<clr><clrEnd>
+        Text=Мощность ракетного оружия: <bonWMissile> ед.
+        Text=Скорость ракет и торпед: <bonMissileSpeed> млн км/д
+        Text=Навык точности: <bonSkill1>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Масса корабля: <bonMass>%
+        Text=<clr>Оружие, установленное на этот корпус, наносит больше урона доминаторам<clrEnd>
+        Text=<clr>На корпус установлен генератор камуфляжа<clrEnd>
+        bonMass=5
+        bonMissileSpeed=450
+        bonSkill1=2
+        bonSlotArt=4
+        bonSpeed=-150
+        bonWMissile=35
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RefSmershInfo ^{
+                Description=Да
+                Icon=1
+                Name=-
+            }
+            RefSmershMainInfo ^{
+                Description=Повышает урон по домикам и сообщает, чем лучше бить цель
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=dword ship = ScriptItemActShip();
+                    02=if(!ship) exit;
+                    03=if(~ShipFindCustomShipInfoByType(ship,'RefSmershInfo')) ShipAddCustomShipInfo(ship,'RefSmershInfo','NoShow');
+                    04=dword info = ShipFindCustomShipInfoByType(ship,'RefSmershInfo');
+                    05=if(HullSpecial(ShipEqInSlot(ship,t_Hull)) == FindBonusByNameInCfg('RefUniqueSmersh_Energy') || HullSpecial(ShipEqInSlot(ship,t_Hull)) == FindBonusByNameInCfg('RefUniqueSmersh_Splinter'))
+                    06 ^{
+                        01=if(ScriptItemActionType(t_OnDealingDamage))
+                        02 ^{
+                            01=dword target = ScriptItemActObject1();
+                            02=if(ShipOwner(target) == 5)
+                            03 ^{
+                                01=ScriptItemActParam(round(ScriptItemActParam() * 125 / 100));
+                                02=if(ShipCustomShipInfoData(0,info,1) == 0)
+                                03 ^{
+                                    01=str tstr = ''
+                                    02=tstr = Name(target);
+                                    03=if(HullDamageSuspectibility(target,0) > HullDamageSuspectibility(target,1) && HullDamageSuspectibility(target,0) > HullDamageSuspectibility(target,2)) tstr = tstr + ' наиболее восприимчив к энергетическому урону';
+                                    04=else if(HullDamageSuspectibility(target,1) > HullDamageSuspectibility(target,0) && HullDamageSuspectibility(target,1) > HullDamageSuspectibility(target,2)) tstr = tstr + ' наиболее восприимчив к осколочному урону';
+                                    05=else if(HullDamageSuspectibility(target,2) > HullDamageSuspectibility(target,1) && HullDamageSuspectibility(target,2) > HullDamageSuspectibility(target,0)) tstr = tstr + ' наиболее восприимчив к ракетному урону';
+                                    06=else tstr = tstr + ' равновосприимчив к любому типу урона');
+                                    07=ShipCustomShipInfoData(0,CurInfo(),1,tstr);
+                                }
+                            }
+                        }
+                        03=else if(ScriptItemActionType(t_OnStep,0) && IsPlayer(ship))
+                        04 ^{
+                            01=NewsAdd(ShipCustomShipInfoTextData(0,CurInfo(),1));
+                            02=Sound('Sound.NewMsg');
+                            03=ShipCustomShipInfoData(0,info,1,0);
+                            04=if(ShipCustomShipInfoData(0,info,3)) ShipCustomShipInfoData(0,info,3,ShipCustomShipInfoData(0,info,3)-1);
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnDealingDamage,t_OnStep
+                OnActStepTypes=0
+                OnUseCode ^{
+                    01=dword info = ShipFindCustomShipInfoByType(Player(),'RefSmershInfo');
+                    02=if(ShipCustomShipInfoData(0,info,3))
+                    03 ^{
+                        01=MessageBox('Переключение камуфляжа ещё не готово!');
+                        02=exit;
+                    }
+                    04=if(!ShipInNormalSpace(Player()))
+                    05 ^{
+                        01=MessageBox('Переключение камуфляжа должно происходить в открытом космосе!');
+                        02=exit;
+                        03=if(0) SFT('Вы любите моды?.. А мне лень делать перебор, проще скопипастить одно и то же');
+                    }
+                    06=else
+                    07 ^{
+                        01=dword y = -2;
+                        02=dword star = ShipStar(Player());
+                        03=if(StarOwner(star) != 1) exit;
+                        04=if(PlayerChameleonDetected(0))
+                        05 ^{
+                            01=PlayerChameleonDetected(0,0);
+                            02=ShipCustomShipInfoData(0,info,3,60);
+                            03=Sound('Sound.Repair');
+                            04=MessageBox('Камуфляж восстановлен - доминаторы потеряли цель и снова считают вас за своего');
+                            05=y = 0;
+                        }
+                        06=if(PlayerChameleonDetected(1))
+                        07 ^{
+                            01=PlayerChameleonDetected(1,0);
+                            02=ShipCustomShipInfoData(0,info,3,60);
+                            03=Sound('Sound.Repair');
+                            04=MessageBox('Камуфляж восстановлен - доминаторы потеряли цель и снова считают вас за своего');
+                            05=y = 1;
+                        }
+                        08=if(PlayerChameleonDetected(2))
+                        09 ^{
+                            01=PlayerChameleonDetected(2,0);
+                            02=ShipCustomShipInfoData(0,info,3,60);
+                            03=Sound('Sound.Repair');
+                            04=MessageBox('Камуфляж восстановлен - доминаторы потеряли цель и снова считают вас за своего');
+                            05=y = 2;
+                        }
+                        10=if(PlayerChameleonCurType() != StarSeries(star))
+                        11 ^{
+                            01=PlayerChameleonCurType(StarSeries(star));
+                            02=PlayerChameleonDetected(StarSeries(star),0);
+                            03=ShipCustomShipInfoData(0,info,3,30);
+                            04=Sound('Sound.Repair');
+                            05=MessageBox('Камуфляж установлен - доминаторы потеряли цель и считают вас за своего');
+                            06=y = StarSeries(star);
+                        }
+                        12=for(int i=0;StarShips(star)>i;i=i+1)
+                        13 ^{
+                            01=dword ship = StarShips(star,i);
+                            02=if(ShipOwner(ship) != Kling) continue;
+                            03=if(ShipCustomFaction(ship) != '') continue;
+                            04=if(ShipSubrace(ship,-1) != y) continue;
+                            05=if(ShipGetBad(ship) == Player()) ShipSetBad(ship,0);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+Script ^{
+    Mod_RefUniqueSmersh ^{
+        1=Тип усиления: <0>
+        10=Переключить Шершень на энергетический тип
+        11=Спасибо!
+        12=А что это у вас там за доминаторология?
+        13=Не хотите взглянуть на результат работы спецотдела Коалиции и специалистов в сфере прикладной доминаторологии? Мы готовы дать доступ вам как отличившемуся бойцу Коалиции
+        2=энергетическо-осколочный
+        4=ракетный
+        5=Прикладная доминаторология - важнейшее направление в исследовании доминаторов. Оно подразделяется на использование доминаторских технологий для победы над угрозой в принципе, на использование новых знаний для борьбы с рядовыми доминаторами и на использование полученной информации в собственно наших разработках.<br><br>Одним из примеров такой работы и является то, что мы хотим вам предложить.<br><br>Корпус "Шершень" - уникальный корпус, созданный на основе передовых акриновых технологий и революционных доминаторских разработок. Этот корпус имеет два режима - усиливающий корпус в относительно ближнем бою и нацеленный на ведение боевых действий издалека.<br><br>Текущая цена корпуса - <0> cr.
+        6=Отлично! Корпус уже отправлен на склад. Пользуйтесь!
+        7=Хочу купить!
+        8=Нет, не сейчас
+        9=Переключить Шершень на ракетный тип
+    }
+}

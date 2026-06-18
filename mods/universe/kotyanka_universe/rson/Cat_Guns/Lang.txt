@@ -1,0 +1,303 @@
+ActCodeBlocksList ^{
+    CatGunsBsoActCode ^{
+        00=[t_OnItemDeEquip,t_OnStep|0]
+        01=dword item = CurItem();
+        02=dword ship = ScriptItemActShip();
+        03=if(ScriptItemActionType(t_OnStep, 0))
+        04 ^{
+            01=if(!ship || !item) exit;
+            02=if(!ItemIsInUse(item)) exit;
+            03=if(ItemIsBroken(item)) exit;
+            04=if(ObjectType(ship) == 4) exit;
+            05=if(ShipType(ship) == 'DefPlatform') exit;
+            06=if(ItemSize(ShipItems(ship,0)) > 2499)
+            07 ^{
+                01=if(EqSpecial(item) == FindBonusByCustomTag('BSOMinus'))
+                02 ^{
+                    01=if(EqModule(item))
+                    02 ^{
+                        01=mod = EqModule(item);
+                        02=EqModule(item, -1);
+                        03=name = Name(item);
+                        04=EqModule(item, mod);
+                    }
+                    03=else name = Name(item);
+                    04=EqSpecial(item, -1);
+                    05=EqSpecial(item, FindBonusByCustomTag('BSONormal'));
+                    06=SetName(item, name);
+                }
+                03=exit;
+            }
+            08=for(int i = 1; i <= ShipCntWeapon(ship); i = i + 1) WeaponTarget(ShipWeapon(ship, i), 0);
+            09=if(EqSpecial(item) == FindBonusByCustomTag('BSOMinus')) exit;
+            10=else
+            11 ^{
+                01=if(EqModule(item))
+                02 ^{
+                    01=int mod = EqModule(item);
+                    02=EqModule(item, -1);
+                    03=str name = Name(item);
+                    04=EqModule(item, mod);
+                }
+                03=else name = Name(item);
+                04=EqSpecial(item, -1);
+                05=EqSpecial(item, FindBonusByCustomTag('BSOMinus'));
+                06=SetName(item, name);
+                07=if(ship == Player())
+                08 ^{
+                    01=Ether(8,'','БСО установлено на слишком маленький корабль и недополучает энергию! Большая часть корабельных систем была обесточена.');
+                    02=Sound('Sound.NewMsg');
+                }
+            }
+        }
+        05=else if(ScriptItemActionType(t_OnItemDeEquip))
+        06 ^{
+            01=if(EqModule(item))
+            02 ^{
+                01=mod = EqModule(item);
+                02=EqModule(item, -1);
+                03=name = Name(item);
+                04=EqModule(item, mod);
+            }
+            03=else name = Name(item);
+            04=EqSpecial(item, -1);
+            05=EqSpecial(item, FindBonusByCustomTag('BSONormal'));
+            06=SetName(item, name);
+        }
+    }
+}
+Items ^{
+    Weapon ^{
+        CustomWeapon ~{
+            StatsVersion ^{
+                Cat_Guns=11.08.24
+            }
+            Guns ~{
+                1=bso
+                2=palach
+                3=tornado
+                4=plazma
+                Count=4
+            }
+            bso ^{
+                ArcadeType=Vertix
+                AverageRadius=455
+                AverageSize=2050
+                BaseGun=Industrial_Laser
+                DamageSet=Energy,Destruct,Acid,Magnetic,Decelerate,DecelerateA,DecelerateAEx
+                InventTechLevel=Turbogravitron
+                MaxDamage=100
+                MinDamage=70
+                MiningFactor=9
+                MissileChanceToBeHit=0
+                MissileExplosionEffectPath=
+                MissileMaxSpeed=0
+                MissileMinSpeed=0
+                MissileRadius=0
+                SecondaryDamageRadius=420
+                ShotEffectPalette=45
+                ShotEffectPath=Weapon.8
+                ShotType=Splash
+                ShotsPerTurn=1
+                Speed=0
+                SplashEffectPath=Weapon.NoGraph
+                StoreAvailability=SystemOnly
+                TechLevel=7
+                kCost=500.0
+                mWeaponDamage=1.00,1.25,1.50,1.75,2.00,2.50,3.00,3.50
+            }
+            palach ^{
+                ArcadeType=IMHO-9000
+                AverageRadius=250
+                AverageSize=50
+                BaseGun=IMHO-9000
+                DamageSet=Splinter,Undefendable
+                InventTechLevel=Atomic_Vision
+                MaxDamage=25
+                MinDamage=15
+                MiningFactor=6
+                MissileChanceToBeHit=0
+                MissileExplosionEffectPath=
+                MissileMaxSpeed=0
+                MissileMinSpeed=0
+                MissileRadius=0
+                SecondaryDamageRadius=0
+                ShotEffectPalette=30
+                ShotEffectPath=Weapon.12
+                ShotType=AreaDamage
+                ShotsPerTurn=1
+                Speed=80
+                SplashEffectPath=Weapon.NoGraph
+                StoreAvailability=CoalitionOnly
+                TechLevel=6
+                kCost=50.0
+                mWeaponDamage=1.00,1.15,1.20,1.35,1.55,1.70,1.90,2.10
+            }
+            tornado ^{
+                ArcadeType=Missile_Launcher
+                AverageRadius=2000
+                AverageSize=70
+                BaseGun=Missile_Launcher
+                DamageSet=Missile
+                InventTechLevel=Disintegrator
+                MaxDamage=20
+                MinDamage=15
+                MiningFactor=9
+                MissileChanceToBeHit=10
+                MissileExplosionEffectPath=Weapon.MissileHit
+                MissileMaxSpeed=3000
+                MissileMinSpeed=1500
+                MissileRadius=2000
+                SecondaryDamageRadius=15
+                ShotEffectPalette=112
+                ShotEffectPath=Weapon.3
+                ShotType=Torpedo
+                ShotsPerTurn=8
+                Speed=90
+                SplashEffectPath=Weapon.NoGraph
+                StoreAvailability=CoalitionOnly
+                TechLevel=5
+                kCost=90.0
+                mWeaponDamage=1.00,1.13,1.25,1.40,1.55,1.70,1.85,2.10
+            }
+            plazma ^{
+                ArcadeType=Missile_Launcher
+                AverageRadius=380
+                AverageSize=100
+                BaseGun=Industrial_Laser
+                DamageSet=Energy,NoDelta
+                InventTechLevel=Disintegrator
+                MaxDamage=25
+                MinDamage=25
+                MiningFactor=2
+                MissileChanceToBeHit=0
+                MissileExplosionEffectPath=
+                MissileMaxSpeed=0
+                MissileMinSpeed=0
+                MissileRadius=0
+                SecondaryDamageRadius=420
+                ShotEffectPalette=74
+                ShotEffectPath=Weapon.5
+                ShotType=
+                ShotsPerTurn=3
+                Speed=0
+                SplashEffectPath=Weapon.NoGraph
+                StoreAvailability=CoalitionOnly
+                TechLevel=5
+                kCost=100.0
+                mWeaponDamage=1.00,1.25,1.50,1.70,2.10,2.50,2.60,2.80
+            }
+        }
+        Missile ^{
+            tornado ^{
+                Name=Стандартизированная боеголовка 9М542
+                Text=Самоноводящийся снаряд СЗО Торнадо.
+            }
+            tornadob ^{
+                Name=Кассетная боеголовка 9М55К4
+                Text=Самоноводящийся касетно-разрывной снаряд СЗО Торнадо.
+            }
+            tornadoс ^{
+                Name=Высокоточная боеголовка 9М549
+                Text=Самоноводящийся бронебойный снаряд СЗО Торнадо.
+            }
+        }
+        Name ^{
+            bso=БСО
+            palach=Автопушка "Палач"
+            plazma=Плазменный коливратор
+            tornado=СЗО "Торнадо"
+        }
+        OriginalWeaponType ~{
+            Industrial_Laser=1
+            Fragmentation_Cannon=2
+            Flux=3
+            Missile_Launcher=4
+            Treton=5
+            Wave_Phaser=6
+            Flow_Blaster=7
+            Electronic_Cutter=8
+            Multiresonator=9
+            Atomic_Vision=10
+            Disintegrator=11
+            Turbogravitron=12
+            IMHO-9000=13
+            Vertix=14
+            Torpedo_Tube=15
+            Esodapher=16
+            Caphasitor=17
+            Lirecron=18
+        }
+        Text ^{
+            bso=БСО расшифровывается как Большое Станционарное Оружие. <br>Его разработка началась очень давно, первоначально ей занимались только люди, но позже к проекту подключились малоки и фэяне, что позволило закончить проект к сроку, хоть и с некоторыми изменениями в дизайне и чертежах. <br>Главной задачей этих орудий является защита станций и прилегающего космического пространства от любых предполагаемых угроз. Установка на мобильные защитные установки, транклюкаторов или корабли возможна, однако только если структура корпуса соответствует классу S и превышает <color=255,240,100>2500</color> усл. ед. На меньших корпусах просто-напросто нету достаточно мощного источника внутренней гравитации и энергоядра для стабильной работы орудия. <br>Поражает цель сверхмассивными самонаводящимися сгустками заряженной плазмы, наносящими <MinDamage>-<MaxDamage><Bonus> ед. урона цели и окружающим её объектам на расстоянии <Radius> единиц.<color=255,240,100>Разрушает оборудование и броню цели</color>, а также создаёт <color=255,240,100>ЭМ-помехи</color> на её корпусе.
+            palach=Вскоре после начала войны с доминаторами, в КВСМК осознали важность использования оружия массового поражения. Применение <color=255,240,100>Вертиксов</color> и <color=255,240,100>ИМХО-9000</color> позволяло противнику практически безнаказанно уничтожать целые эскадры. Так как военная промышленность пяти рас не развивалась в этом направлении, гаальскому правительству пришлось предоставить доступ к некоторым наработкам из времен раннего освоения космоса. Всего через несколько лет, общими усилиями ведущих специалистов сети научных и военных баз, был представлен опытный образец, которому дали название "Палач". <br>Наносит <MinDamage>-<MaxDamage><Bonus> ед. ущерба в радиусе <Radius> единиц, <color=255,240,100>игнорируя ГЗП и броню цели</color>.
+            plazma=Это оружие было создано по инициативе весьма влиятельного политика, который находился на борту флагмана "Киофар Фалькон -32-" в тот ужасный момент, когда Алиот атаковали сразу две флотилии разных серий доминаторов. Бой довольно быстро превратился в бойню. Фэяне теряли корабль за кораблём, не наблюдая следов деятельности орудий их флотов на противнике, несмотря на массированность обстрела. Именно тогда политик и военный деятель Далани Раланни, находясь на краю гибели, осознал, чего именно не хватает флоту для победы над доминаторами. Подкрепление прибыло вовремя, и доминаторы были разбиты, а Раланни организовал отдельный НИИ для создания нового энергетического оружия, которое сможет эффективно разрушать оборудование даже у доминаторов, не позволяя им вести ответный огонь. <br>Наносит <CntAttacks>x<MinDamage><Bonus> ед. ущерба в радиусе <Radius> единиц.
+            tornado=Пеленгское правительство, как и рядовые пеленги, не особо любит воевать в открытую и ещё меньше - терпеть поражения на поле боя, в связи с чем многие разработки в сфере орудия дальнего и сверхдальнего действия были проспонсированы именно пеленгами. После долгих лет разработки в режиме полной "секретности", какую только можно было организовать среди пеленгов, был создан проект "Торнадо". Предназначен для максимально комфортного ведения боя в самых разных условиях, но что самое главное, - на большом удалении от врага. <br>Выпускает <color=255,240,100>8</color> торпед наносящих (<MinDamage>-<MaxDamage>)<Bonus> ед. урона. <br>Количество залпов: <Count>/<MaxCount> шт.
+        }
+    }
+}
+MicroModuls ^{
+    BSOMinus ^{
+        BlockMM=1
+        Cost=300
+        CustomTag=BSOMinus
+        Equipments=bso
+        Fragility=400
+        LockedAcryn=3
+        NonSearchable=2
+        Priority=10
+        ScriptItemIgnore=1
+        Special=1
+        Text=Орудие недополучает энергию от слишком слабого реактора, что вызывает сбои в работе всех систем
+        bonDef=-100
+        bonDroid=-30
+        bonHook=-1000
+        bonHookRadius=-500
+        bonJump=-30
+        bonRadar=-1500
+        bonScan=-30
+        bonSpeed=-1200
+        bonWEnergy=-500000000
+        bonWMissile=-500000000
+        bonWRadius=-300
+        bonWSplinter=-500000000
+    }
+    BSONormal ^{
+        BlockMM=1
+        Cost=300
+        CustomTag=BSONormal
+        Equipments=bso
+        Fragility=100
+        LockedAcryn=3
+        NonSearchable=2
+        Priority=10
+        ScriptItemIgnore=1
+        Special=1
+        bonAIValue=100000
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            CatGuns_HaveBSO ^{
+                Description=Костыль, чтобы не искать причины повторного запроса установки БСО
+                Icon=1
+                Name=-
+            }
+            CatGuns_Update ^{
+                Description=Заказ на обновление кораблём своего эквипа в пользу БСО
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(GetShipPlanet(ScriptItemActShip()) || GetShipRuins(ScriptItemActShip()))
+                    02 ^{
+                        01=RunFunctionFromScript('Mod_CatGuns','UpdateForBSO',ScriptItemActShip());
+                        02=ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+        }
+    }
+}

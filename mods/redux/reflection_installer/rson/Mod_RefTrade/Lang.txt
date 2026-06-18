@@ -1,0 +1,68 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            TradeFactor ^{
+                Description=Изменение работы торгового рейтинга
+                Icon=0
+                Name=Торговый фактор
+                OnActCode ^{
+                    01=if(ShipInNormalSpace(Player())==0)
+                    02 ^{
+                        01=if(ScriptItemActionType(t_OnShipSellsGoods))
+                        02 ^{
+                            01=if(ScriptItemActShip()==Player())
+                            02 ^{
+                                01=if(ItemSize(ScriptItemActObject2())==0) exit;
+                                02=int profit=ItemCost(ScriptItemActObject1())-ItemCost(ScriptItemActObject2()),bonus,i;
+                                03=float dealsumm=ItemCost(ScriptItemActObject1());
+                                04=if(profit>0)
+                                05 ^{
+                                    01=if(ShipCustomShipInfoData(Player(),CurInfo(),1)==0)
+                                    02 ^{
+                                        01=float base=ShipStatus(Player(),0)-20;
+                                        02=if(ShipSkill(Player(),3)==0)float skillkoef=1.0;
+                                        03=else if(ShipSkill(Player(),3)==1)skillkoef=1.03;
+                                        04=else if(ShipSkill(Player(),3)==2)skillkoef=1.07;
+                                        05=else if(ShipSkill(Player(),3)==3)skillkoef=1.12;
+                                        06=else if(ShipSkill(Player(),3)==4)skillkoef=1.2;
+                                        07=else if(ShipSkill(Player(),3)==5)skillkoef=1.35;
+                                        08=else if(ShipSkill(Player(),3)==6)skillkoef=1.5;
+                                        09=if(base<=0)ShipMoney(Player(),ShipMoney(Player())+dealsumm*base/100.0*1.5);
+                                        10=else if(base<=70)ShipMoney(Player(),ShipMoney(Player())+dealsumm*base/200.0*skillkoef);
+                                        11=else if(base>=70)ShipMoney(Player(),ShipMoney(Player())+dealsumm*base/200.0*skillkoef*1.25);
+                                        12=if(ItemSize(ScriptItemActObject1())<=50) exit;
+                                        13=else if(ItemSize(ScriptItemActObject1())<=150)bonus=1;
+                                        14=else if(ItemSize(ScriptItemActObject1())<=300)bonus=2;
+                                        15=else if(ItemSize(ScriptItemActObject1())<=2000)bonus=3;
+                                        16=else if(ItemSize(ScriptItemActObject1())>2000)bonus=4;
+                                        17=if(base<=0)bonus=bonus+1;
+                                        18=for(i=0;bonus>i;i=i+1)
+                                        19 ^{
+                                            01=if(ShipStatus(Player(),0) == 100) break;
+                                            02=if(ShipStatus(Player(),1) > 0)
+                                            03 ^{
+                                                01=ShipStatus(Player(),1,ShipStatus(Player(),1) - 1);
+                                                02=continue;
+                                            }
+                                            04=else
+                                            05 ^{
+                                                01=ShipStatus(Player(),2,ShipStatus(Player(),2) - 1);
+                                                02=continue;
+                                            }
+                                        }
+                                        20=ShipCustomShipInfoData(Player(),CurInfo(),1,ShipCustomShipInfoData(Player(),CurInfo(),1)+1);
+                                    }
+                                    03=else if(ShipCustomShipInfoData(Player(),CurInfo(),1)<=4)
+                                    04 ^{
+                                        01=if(ShipStatus(Player(),0) < 0) ShipStatus(Player(),0,ShipStatus(Player(),0)-1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnShipSellsGoods
+            }
+        }
+    }
+}

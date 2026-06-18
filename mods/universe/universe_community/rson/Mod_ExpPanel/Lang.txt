@@ -1,0 +1,196 @@
+FormShip ^{
+    OnSpaceCurrentSet=Текущая комплектация
+    OnSpaceSet1=Первая комплектация (<color=255,245,80>Ctrl+1</color>)
+    OnSpaceSet2=Вторая комплектация (<color=255,245,80>Ctrl+2</color>)
+    OnSpaceSet3=Третья комплектация (<color=255,245,80>Ctrl+3</color>)
+    OnSpaceSet4=Четвёртая комплектация (<color=255,245,80>Ctrl+4</color>)
+    OnSpaceSet5=Пятая комплектация (<color=255,245,80>Ctrl+5</color>)
+    OnSpaceSet6=Шестая комплектация (<color=255,245,80>Ctrl+6</color>)
+    OnSpaceSet7=Седьмая комплектация (<color=255,245,80>Ctrl+7</color>)
+    OnSpaceSet8=Восьмая комплектация (<color=255,245,80>Ctrl+8</color>)
+    OnSpaceSet9=Девятая комплектация (<color=255,245,80>Ctrl+9</color>)
+}
+FormRewards ^{
+    LessRewards=Уменьшить число отображаемых возле портрета пилота наград.
+    MoreRewards=Увеличить число отображаемых возле портрета пилота наград.
+}
+Help ^{
+    EndTurnBrakeOff=Автоостановка хода <color=255,240,100>выключена</color>
+    EndTurnBrakeOn=Автоостановка хода <color=255,240,100>включена</color>
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            ExpPanel_infos ^{
+                Description=NoShow
+                Icon=0
+                Name=Обновляет значения на панели ремонта и отключает звания невоенным NPC при сканировании
+                OnActCode ^{
+                    01=int dur = 0;
+                    02=int dur_count = 0;
+                    03=if(ScriptItemActionType(t_OnStep))
+                    03 ^{
+                        01=if(!ScriptItemActParam())
+                        01 ^{
+                            01=if(GTurnBrakeOff)
+                            01 ^{
+                                01=if(ShipInNormalSpace(Player())) FilmFlags(3, 1);
+                            }
+                        }
+                        02=else
+                        02 ^{
+                            01=if(GTurnBrakeOff)
+                            01 ^{
+                                01=if(ShipInNormalSpace(Player()))
+                                01 ^{
+                                    01=if(IsScriptActive('Mod_AutoBot'))
+                                    01 ^{
+                                        01=if(IsAutoBotCheatOn)
+                                        01 ^{
+                                            01=FilmFlags(3, 1);
+                                        }
+                                    }
+                                }
+                            }
+                            02=for(int i = ShipItems(Player()) - 1; i >= 1; i = i - 1)
+                            02 ^{
+                                01=dword item = ShipItems(Player(), i);
+                                02=if(!ItemIsInUse(item)) continue;
+                                03=dur = dur + ItemDurability(item);
+                                04=dur_count = dur_count + 1;
+                            }
+                            03=for(i = ShipSlots(Player(), 2); i >= 1; i = i - 1)
+                            03 ^{
+                                01=item = ShipEqInSlot(Player(), t_Artefact, i);
+                                02=if(item)
+                                02 ^{
+                                    01=dur = dur + ItemDurability(item);
+                                    02=dur_count = dur_count + 1;
+                                }
+                            }
+                            04=if(dur_count >= 0)
+                            04 ^{
+                                01=dur = dur + (100 - HullDamage(Player()));
+                                02=dur_count = dur_count + 1;
+                            }
+                            05=dur = 43 - 43 * (dur / dur_count) / 100;
+                            06=InterfacePos('StarMap', 'fix_info_butt_a', -dur, 0, 0);
+                            07=if(InterfaceState('StarMap', 'fix_info_window') == 1) InterfaceState('StarMap', 'fix_info_window', 0);
+                            08=InterfaceSize('StarMap', 'HPbar_s', 0, 141 - 141 * HullDamage(Player()) / 100);
+                            09=InterfacePos('StarMap', 'HPbar_s', 0, 141 * HullDamage(Player()) / 100, 0);
+                        }
+                    }
+                    04=else if(ScriptItemActionType(t_OnEnteringForm))
+                    04 ^{
+                        01=str cur_form = CurrentForm();
+                        02=if(cur_form == 'Ship')
+                        02 ^{
+                            01=if(InterfaceState('StarMap', 'fix_info_window') == 1) InterfaceState('StarMap', 'fix_info_window', 0);
+                            02=InterfaceState('Ship', 'HideShipRankPanel', 1);
+                            03=if(GetShipPlanet(FormCurShip()))
+                            03 ^{
+                                01=InterfaceState('Ship', 'GateAnim', 0);
+                                02=InterfaceState('Ship', 'GateBurnAnim', 1);
+                            }
+                            04=else if(GetShipRuins(FormCurShip()))
+                            04 ^{
+                                01=InterfaceState('Ship', 'GateAnim', 0);
+                                02=InterfaceState('Ship', 'GateBurnAnim', 1);
+                            }
+                            05=else
+                            05 ^{
+                                01=InterfaceState('Ship', 'GateAnim', 1);
+                                02=InterfaceState('Ship', 'GateBurnAnim', 0);
+                            }
+                        }
+                        03=else if(cur_form == 'StarMap')
+                        03 ^{
+                            01=InterfaceSize('StarMap', 'HPbar_s', 0, 141 - 141 * HullDamage(Player()) / 100);
+                            02=InterfacePos('StarMap', 'HPbar_s', 0, 141 * HullDamage(Player()) / 100, 0);
+                        }
+                    }
+                    05=else if(ScriptItemActionType(t_OnLeavingForm))
+                    05 ^{
+                        01=cur_form = CurrentForm();
+                        02=if(cur_form == 'Ship')
+                        02 ^{
+                            01=for(i = 1; i <= 9; i = i + 1)
+                            01 ^{
+                                01=if(PlayerEqSet(i) == 0) InterfaceState('StarMap', 'set_button_' + i + '_c', 0);
+                                02=else if(PlayerEqSet(i) == 1) InterfaceState('StarMap', 'set_button_' + i + '_c', 1);
+                                03=else if(PlayerEqSet(i) == 2)
+                                03 ^{
+                                    01=InterfaceState('StarMap', 'set_button_' + i + '_c', 0);
+                                    02=if(i > 1 && i < 9)
+                                    02 ^{
+                                        01=InterfaceState('StarMap', 'set_button_a', 1);
+                                        02=InterfacePos('StarMap', 'set_button_a', PlayerEqSet() * 20, 0, 0);
+                                        03=InterfaceState('StarMap', 'set_button_a_first', 0);
+                                        04=InterfaceState('StarMap', 'set_button_a_last', 0);
+                                    }
+                                    03=else if(i == 1)
+                                    03 ^{
+                                        01=InterfaceState('StarMap', 'set_button_a', 0);
+                                        02=InterfaceState('StarMap', 'set_button_a_first', 1);
+                                        03=InterfaceState('StarMap', 'set_button_a_last', 0);
+                                    }
+                                    04=else if(i == 9)
+                                    04 ^{
+                                        01=InterfaceState('StarMap', 'set_button_a', 0);
+                                        02=InterfaceState('StarMap', 'set_button_a_first', 0);
+                                        03=InterfaceState('StarMap', 'set_button_a_last', 1);
+                                    }
+                                }
+                            }
+                            02=for(i = ShipItems(Player()) - 1; i >= 1; i = i - 1)
+                            02 ^{
+                                01=item = ShipItems(Player(), i);
+                                02=if(!ItemIsInUse(item) || ItemType(item) == t_Hull) continue;
+                                03=dur = dur + ItemDurability(item);
+                                04=dur_count = dur_count + 1;
+                            }
+                            03=for(i = ShipSlots(Player(), 2); i >= 1; i = i - 1)
+                            03 ^{
+                                01=item = ShipEqInSlot(Player(), t_Artefact, i);
+                                02=if(item)
+                                02 ^{
+                                    01=dur = dur + ItemDurability(item);
+                                    02=dur_count = dur_count + 1;
+                                }
+                            }
+                            04=if(dur_count >= 0)
+                            04 ^{
+                                01=dur_count = dur_count + 1;
+                                02=dur = dur + (100 - HullDamage(Player()));
+                            }
+                            05=dur = 43 - 43 * (dur / dur_count) / 100;
+                            06=InterfacePos('StarMap', 'fix_info_butt_a', -dur, 0, 0);
+                            07=InterfaceState('Ship', 'HideShipRankPanel', 0);
+                        }
+                        03=else if(cur_form == 'StarMap')
+                        03 ^{
+                            01=if(InterfaceState('StarMap', 'fix_info_window') == 1) InterfaceState('StarMap', 'fix_info_window', 0);
+                        }
+                    }
+                    06=else
+                    06 ^{
+                        01=dword ship = ScriptItemActObject1();
+                        02=int typeN = ShipTypeN(ship);
+                        03=if(typeN == t_Warrior || typeN == t_Ranger || typeN == t_Pirate)
+                        04 ^{
+                            01=if(ShipCustomFaction(ship) == '')
+                            01 ^{
+                                01=str type = ShipType(ship);
+                                02=if(type != 'Merc' && type != 'PlayerMerc' && type != 'Freelancer' && type != 'MercLeader') InterfaceState('Scaner', 'RankWndCustom', 1);
+                                03=else InterfaceState('Scaner', 'RankWndCustom', 0);
+                            }
+                            02=else InterfaceState('Scaner', 'RankWndCustom', 0);
+                        }
+                        05=else InterfaceState('Scaner', 'RankWndCustom', 0);
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnLeavingForm,t_OnScan
+            }
+        }
+    }
+}

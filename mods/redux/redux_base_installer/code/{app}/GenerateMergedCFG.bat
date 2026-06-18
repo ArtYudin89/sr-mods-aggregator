@@ -1,0 +1,1 @@
+start Rangers.exe savemergedcfg

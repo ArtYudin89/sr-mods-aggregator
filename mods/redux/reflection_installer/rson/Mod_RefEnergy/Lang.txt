@@ -1,0 +1,1318 @@
+Script ^{
+    RefEnergy ^{
+        0=Конец связи
+    }
+}
+FormShip ^{
+    ForsageActivate=Форсаж активирован. Износ двигателя в полете будет максимальным, а энергопотребление двигателя вырастет на 50%.
+}
+UselessItems ^{
+    RefEnergy_Battery ~{
+        Cost=Huge
+        Name=Энергоблок
+        OnUseCode ~{
+            01=if(FindItemInShip(Player(), CurItem()) == -1) exit;
+            02=if(UselessItemData(CurItem(),3))
+            03 ~{
+                01=if(MessageBoxYesNo('Отключить энергоблок от сети вашего корабля?'))
+                02 ~{
+                    01=UselessItemData(CurItem(),3,0);
+                    02=Sound('Sound.Repair');
+                }
+            }
+            04=else
+            05 ~{
+                01=if(MessageBoxYesNo('Подключить энергоблок к сети вашего корабля?'))
+                02 ~{
+                    01=UselessItemData(CurItem(),3,1);
+                    02=Sound('Sound.Repair');
+                }
+            }
+        }
+        Owner=None
+        Size=1
+        Text=Бывшая часть энергоядра, отвечающая за аккумуляцию энергии при её чрезмерной выработке.
+        Text=Накопленная энергия: <Data1>/<Data2> у.е.
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RefEnergyBuffInfo ^{
+                Description=Инфошка для выдачи кораблю бонуса bonEnergy (1) и bonAllEnergy (2)
+                Icon=0
+                Name=RefEnergy
+            }
+            RefEnergyInfo ^{
+                Description=Текущий баланс энергопотребления: <Data1>
+                Description=Текущая выработка энергии: <Data2>
+                Icon=838
+                Name=Энергопотребление
+                OnActCode ^{
+                    001=dword energy = 0;
+                    002=int cur_debuff = 0;
+                    003=int total_income = 0;
+                    004=dword item;
+                    005=dword ship = ScriptItemActShip();
+                    006=dword hull = ShipEqInSlot(ship,t_Hull);
+                    006=int lvl = ItemLevel(hull);
+                    007=if(ItemOwner(hull) == None)
+                    008 ^{
+                        01=if(lvl == 1) total_income = 2;
+                        02=if(lvl == 2) total_income = 3;
+                        03=if(lvl == 3) total_income = 5;
+                        04=if(lvl == 4) total_income = 7;
+                        05=if(lvl == 5) total_income = 9;
+                        06=if(lvl == 6) total_income = 10;
+                        07=if(lvl == 7) total_income = 12;
+                        08=if(lvl == 8) total_income = 15;
+                        09=if(0) SFT('Income is '+total_income+' - base stage');
+                    }
+                    009=else
+                    010 ^{
+                        01=if(lvl == 1) total_income = 0;
+                        02=if(lvl == 2) total_income = 1;
+                        03=if(lvl == 3) total_income = 2;
+                        04=if(lvl == 4) total_income = 3;
+                        05=if(lvl == 5) total_income = 5;
+                        06=if(lvl == 6) total_income = 7;
+                        07=if(lvl == 7) total_income = 8;
+                        08=if(lvl == 8) total_income = 10;
+                    }
+                    011=item = CreateHull(HullType(hull),1,lvl,ItemOwner(hull),-1);
+                    012=if(~HullSeries(hull)) HullSeries(item,HullSeries(hull));
+                    013=if(~HullSpecial(hull)) HullSpecial(item,HullSpecial(hull));
+                    014=if(1)
+                    015 ^{
+                        01=if(GetEquipmentStats(item,8)) modifier = 2;
+                        02=else modifier = 1;
+                        03=if(lvl == 1) total_income = total_income + (5 * modifier);
+                        04=if(lvl == 2) total_income = total_income + (5 * modifier);
+                        05=if(lvl == 3) total_income = total_income + (7 * modifier);
+                        06=if(lvl == 4) total_income = total_income + (10 * modifier);
+                        07=if(lvl == 5) total_income = total_income + (10 * modifier);
+                        08=if(lvl == 6) total_income = total_income + (11 * modifier);
+                        09=if(lvl == 7) total_income = total_income + (12 * modifier);
+                        10=if(lvl == 8) total_income = total_income + (13 * modifier);
+                        11=if(0) NewsAdd('Income is '+total_income+' - engine stage');
+                    }
+                    016=if(GetEquipmentStats(item,4))
+                    017 ^{
+                        01=if(lvl == 1) total_income = total_income + 2;
+                        02=if(lvl == 2) total_income = total_income + 3;
+                        03=if(lvl == 3) total_income = total_income + 4;
+                        04=if(lvl == 4) total_income = total_income + 4;
+                        05=if(lvl == 5) total_income = total_income + 4;
+                        06=if(lvl == 6) total_income = total_income + 5;
+                        07=if(lvl == 7) total_income = total_income + 5;
+                        08=if(lvl == 8) total_income = total_income + 5;
+                        09=if(0) NewsAdd('Income is '+total_income+' - 4 stage');
+                    }
+                    018=if(GetEquipmentStats(item,3))
+                    019 ^{
+                        01=if(lvl == 1) total_income = total_income + 3;
+                        02=if(lvl == 2) total_income = total_income + 3;
+                        03=if(lvl == 3) total_income = total_income + 3;
+                        04=if(lvl == 4) total_income = total_income + 3;
+                        05=if(lvl == 5) total_income = total_income + 5;
+                        06=if(lvl == 6) total_income = total_income + 5;
+                        07=if(lvl == 7) total_income = total_income + 5;
+                        08=if(lvl == 8) total_income = total_income + 5;
+                        09=if(0) NewsAdd('Income is '+total_income+' - 3 stage');
+                    }
+                    020=if(GetEquipmentStats(item,7))
+                    021 ^{
+                        01=if(lvl == 1) total_income = total_income + 7;
+                        02=if(lvl == 2) total_income = total_income + 8;
+                        03=if(lvl == 3) total_income = total_income + 9;
+                        04=if(lvl == 4) total_income = total_income + 10;
+                        05=if(lvl == 5) total_income = total_income + 11;
+                        06=if(lvl == 6) total_income = total_income + 12;
+                        07=if(lvl == 7) total_income = total_income + 13;
+                        08=if(lvl == 8) total_income = total_income + 15;
+                        09=if(0) NewsAdd('Income is '+total_income+' - 7 stage');
+                    }
+                    022=if(GetEquipmentStats(item,5))
+                    023 ^{
+                        01=if(lvl == 1) total_income = total_income + 5;
+                        02=if(lvl == 2) total_income = total_income + 6;
+                        03=if(lvl == 3) total_income = total_income + 7;
+                        04=if(lvl == 4) total_income = total_income + 8;
+                        05=if(lvl == 5) total_income = total_income + 9;
+                        06=if(lvl == 6) total_income = total_income + 10;
+                        07=if(lvl == 7) total_income = total_income + 11;
+                        08=if(lvl == 8) total_income = total_income + 12;
+                        09=if(0) NewsAdd('Income is '+total_income+' - 5 stage');
+                    }
+                    024=if(GetEquipmentStats(item,6))
+                    025 ^{
+                        01=if(lvl == 1) total_income = total_income + 2;
+                        02=if(lvl == 2) total_income = total_income + 3;
+                        03=if(lvl == 3) total_income = total_income + 4;
+                        04=if(lvl == 4) total_income = total_income + 5;
+                        05=if(lvl == 5) total_income = total_income + 5;
+                        06=if(lvl == 6) total_income = total_income + 6;
+                        07=if(lvl == 7) total_income = total_income + 6;
+                        08=if(lvl == 8) total_income = total_income + 7;
+                        09=if(0) NewsAdd('Income is '+total_income+' - 6 stage');
+                    }
+                    026=if(1)
+                    027 ^{
+                        01=if(lvl == 1) total_income = total_income + 5;
+                        02=if(lvl == 2) total_income = total_income + 5;
+                        03=if(lvl == 3) total_income = total_income + 7;
+                        04=if(lvl == 4) total_income = total_income + 10;
+                        05=if(lvl == 5) total_income = total_income + 10;
+                        06=if(lvl == 6) total_income = total_income + 11;
+                        07=if(lvl == 7) total_income = total_income + 12;
+                        08=if(lvl == 8) total_income = total_income + 13;
+                        09=if(0) NewsAdd('Income is '+total_income+' - FuelTanks stage');
+                        10=if(0) SFT('Корабль получает базовую энерговыработку в зависимости от имеющихся у него слотов. Надо бы в будущем, наверное, запоминать это куда-то. Хотя характеристики у NPC ведь могут меняться...');
+                    }
+                    028=for(i=0;i < GetEquipmentStats(item,2);i=i+1) total_income = total_income + 1;
+                    029=for(i=0;i < GetEquipmentStats(item,1);i=i+1)
+                    030 ^{
+                        01=if(lvl == 1) total_income = total_income + 4;
+                        02=if(lvl == 2) total_income = total_income + 5;
+                        03=if(lvl == 3) total_income = total_income + 6;
+                        04=if(lvl == 4) total_income = total_income + 7;
+                        05=if(lvl == 5) total_income = total_income + 10;
+                        06=if(lvl == 6) total_income = total_income + 11;
+                        07=if(lvl == 7) total_income = total_income + 13;
+                        08=if(lvl == 8) total_income = total_income + 15;
+                    }
+                    031=if(~EqSpecial(hull))
+                    032 ^{
+                        01=energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(hull))+'.bonEnergy');
+                        02=int all  = CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(hull))+'.bonAllEnergy');
+                    }
+                    033=if(ItemExtraSpecials(hull))
+                    034 ^{
+                        01=int i;
+                        02=for(i=0;i < ItemExtraSpecials(hull);i=i+1)
+                        03 ^{
+                            01=total_income = total_income - CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(hull))+'.bonEnergy');
+                        }
+                    }
+                    035=if(~EqModule(hull))
+                    036 ^{
+                        01=energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqModule(hull))+'.bonEnergy');
+                    }
+                    037=if(HullDamage(hull) > 80)
+                    038 ^{
+                        01=total_income = total_income - 3;
+                    }
+                    039=if(1)
+                    040 ^{
+                        01=int size = ItemSize(hull);
+                        02=if(size > 2500) total_income = round(total_income * 1.5);
+                        03=else if(size > 2000) total_income = round(total_income * 1.45);
+                        04=else if(size > 1000) total_income = round(total_income * 1.25);
+                        05=else if(size > 500) total_income = round(total_income * 1.1);
+                        06=FreeItem(item);
+                        07=energy = energy + total_income;
+                        08=if(0) NewsAdd('Income is '+total_income+' - end stage');
+                    }
+                    041=if(0) SFT('Я придумал, как мне кажется, довольно оригинальный способ оставлять тут комментарии. Так вот, тут происходит выдача баффов разного толка');
+                    042=if(0) SFT('Алгоритм аналогичный для всего, но только корпус может получать бонус bonAllEnergy, который влияет на ВЕСЬ шмот на борту');
+                    043=if(0) NewsAdd('RefEnergy logging: energy on board - '+energy+'. Turn is '+CurTurn());
+                    044=energy = energy - ShipCustomShipInfoData(ship,'RefEnergyBuffInfo',1);
+                    045=all = all - ShipCustomShipInfoData(ship,'RefEnergyBuffInfo',2);
+                    046=item = ShipEqInSlot(ship,t_FuelTanks);
+                    047=lvl = ItemLevel(item);
+                    048=if(item && !ItemIsBroken(item))
+                    049 ^{
+                        01=if(lvl == 1) energy = energy - 1;
+                        02=if(lvl == 2) energy = energy - 1;
+                        03=if(lvl == 3) energy = energy - 2;
+                        04=if(lvl == 4) energy = energy - 2;
+                        05=if(lvl == 5) energy = energy - 2;
+                        06=if(lvl == 6) energy = energy - 3;
+                        07=if(lvl == 7) energy = energy - 3;
+                        08=if(lvl == 8) energy = energy - 3;
+                        09=if(~EqSpecial(item))
+                        10 ^{
+                            01=if(!CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy')) energy = energy - 1;
+                            02=else energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy');
+                        }
+                        11=if(ItemExtraSpecials(item))
+                        12 ^{
+                            01=for(i=0;i < ItemExtraSpecials(item);i=i+1)
+                            02 ^{
+                                01=energy = energy - CT('MicroModuls.'+ItemExtraSpecials(item,i)+'.bonEnergy');
+                            }
+                        }
+                        13=if(~EqModule(item))
+                        14 ^{
+                            01=energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqModule(item))+'.bonEnergy');
+                        }
+                        15=if(ItemDurability(item) < 10) energy = energy - 2;
+                        16=else if(ItemDurability(item) < 30) energy = energy - 1;
+                    }
+                    050=item = ShipEqInSlot(ship,t_Scaner);
+                    051=lvl = ItemLevel(item);
+                    052=if(item && !ItemIsBroken(item))
+                    053 ^{
+                        01=if(lvl == 1) energy = energy - 2;
+                        02=if(lvl == 2) energy = energy - 3;
+                        03=if(lvl == 3) energy = energy - 4;
+                        04=if(lvl == 4) energy = energy - 4;
+                        05=if(lvl == 5) energy = energy - 4;
+                        06=if(lvl == 6) energy = energy - 5;
+                        07=if(lvl == 7) energy = energy - 5;
+                        08=if(lvl == 8) energy = energy - 5;
+                        09=if(~EqSpecial(item))
+                        10 ^{
+                            01=if(!CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy')) energy = energy - 1;
+                            02=else energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy');
+                        }
+                        11=if(ItemExtraSpecials(item))
+                        12 ^{
+                            01=for(i=0;i < ItemExtraSpecials(item);i=i+1)
+                            02 ^{
+                                01=energy = energy - CT('MicroModuls.'+ItemExtraSpecials(item,i)+'.bonEnergy');
+                            }
+                        }
+                        13=if(~EqModule(item))
+                        14 ^{
+                            01=energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqModule(item))+'.bonEnergy');
+                        }
+                        15=if(ItemDurability(item) < 10) energy = energy - 2;
+                        16=else if(ItemDurability(item) < 30) energy = energy - 1;
+                    }
+                    054=item = ShipEqInSlot(ship,t_Radar);
+                    055=lvl = ItemLevel(item);
+                    056=if(item && !ItemIsBroken(item))
+                    057 ^{
+                        01=if(lvl == 1) energy = energy - 3;
+                        02=if(lvl == 2) energy = energy - 3;
+                        03=if(lvl == 3) energy = energy - 3;
+                        04=if(lvl == 4) energy = energy - 3;
+                        05=if(lvl == 5) energy = energy - 5;
+                        06=if(lvl == 6) energy = energy - 5;
+                        07=if(lvl == 7) energy = energy - 5;
+                        08=if(lvl == 8) energy = energy - 5;
+                        09=if(~EqSpecial(item))
+                        10 ^{
+                            01=if(!CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy')) energy = energy - 1;
+                            02=else energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy');
+                        }
+                        11=if(ItemExtraSpecials(item))
+                        12 ^{
+                            01=for(i=0;i < ItemExtraSpecials(item);i=i+1)
+                            02 ^{
+                                01=energy = energy - CT('MicroModuls.'+ItemExtraSpecials(item,i)+'.bonEnergy');
+                            }
+                        }
+                        13=if(~EqModule(item))
+                        14 ^{
+                            01=energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqModule(item))+'.bonEnergy');
+                        }
+                        15=if(ItemDurability(item) < 10) energy = energy - 2;
+                        16=else if(ItemDurability(item) < 30) energy = energy - 1;
+                    }
+                    058=item = ShipEqInSlot(ship,t_DefGenerator);
+                    059=lvl = ItemLevel(item);
+                    060=if(item && !ItemIsBroken(item))
+                    061 ^{
+                        01=if(lvl == 1) energy = energy - 7;
+                        02=if(lvl == 2) energy = energy - 8;
+                        03=if(lvl == 3) energy = energy - 9;
+                        04=if(lvl == 4) energy = energy - 10;
+                        05=if(lvl == 5) energy = energy - 11;
+                        06=if(lvl == 6) energy = energy - 12;
+                        07=if(lvl == 7) energy = energy - 13;
+                        08=if(lvl == 8) energy = energy - 15;
+                        09=if(~EqSpecial(item))
+                        10 ^{
+                            01=if(!CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy')) energy = energy - 1;
+                            02=else energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy');
+                        }
+                        11=if(ItemExtraSpecials(item))
+                        12 ^{
+                            01=for(i=0;i < ItemExtraSpecials(item);i=i+1)
+                            02 ^{
+                                01=energy = energy - CT('MicroModuls.'+ItemExtraSpecials(item,i)+'.bonEnergy');
+                            }
+                        }
+                        13=if(~EqModule(item))
+                        14 ^{
+                            01=energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqModule(item))+'.bonEnergy');
+                        }
+                        15=if(ItemDurability(item) < 10) energy = energy - 2;
+                        16=else if(ItemDurability(item) < 30) energy = energy - 1;
+                    }
+                    062=item = ShipEqInSlot(ship,t_RepairRobot);
+                    063=lvl = ItemLevel(item);
+                    064=if(item && !ItemIsBroken(item))
+                    065 ^{
+                        01=if(lvl == 1) energy = energy - 5;
+                        02=if(lvl == 2) energy = energy - 6;
+                        03=if(lvl == 3) energy = energy - 7;
+                        04=if(lvl == 4) energy = energy - 8;
+                        05=if(lvl == 5) energy = energy - 9;
+                        06=if(lvl == 6) energy = energy - 10;
+                        07=if(lvl == 7) energy = energy - 11;
+                        08=if(lvl == 8) energy = energy - 12;
+                        09=if(~EqSpecial(item))
+                        10 ^{
+                            01=if(!CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy')) energy = energy - 1;
+                            02=else energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy');
+                        }
+                        11=if(ItemExtraSpecials(item))
+                        12 ^{
+                            01=for(i=0;i < ItemExtraSpecials(item);i=i+1)
+                            02 ^{
+                                01=energy = energy - CT('MicroModuls.'+ItemExtraSpecials(item,i)+'.bonEnergy');
+                            }
+                        }
+                        13=if(~EqModule(item))
+                        14 ^{
+                            01=energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqModule(item))+'.bonEnergy');
+                        }
+                        15=if(ItemDurability(item) < 10) energy = energy - 2;
+                        16=else if(ItemDurability(item) < 30) energy = energy - 1;
+                    }
+                    066=item = ShipEqInSlot(ship,t_CargoHook);
+                    067=lvl = ItemLevel(item);
+                    068=if(item && !ItemIsBroken(item))
+                    069 ^{
+                        01=if(lvl == 1) energy = energy - 2;
+                        02=if(lvl == 2) energy = energy - 3;
+                        03=if(lvl == 3) energy = energy - 4;
+                        04=if(lvl == 4) energy = energy - 5;
+                        05=if(lvl == 5) energy = energy - 5;
+                        06=if(lvl == 6) energy = energy - 6;
+                        07=if(lvl == 7) energy = energy - 6;
+                        08=if(lvl == 8) energy = energy - 7;
+                        09=if(~EqSpecial(item))
+                        10 ^{
+                            01=if(!CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy')) energy = energy - 1;
+                            02=else energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy');
+                        }
+                        11=if(ItemExtraSpecials(item))
+                        12 ^{
+                            01=for(i=0;i < ItemExtraSpecials(item);i=i+1)
+                            02 ^{
+                                01=energy = energy - CT('MicroModuls.'+ItemExtraSpecials(item,i)+'.bonEnergy');
+                            }
+                        }
+                        13=if(~EqModule(item))
+                        14 ^{
+                            01=energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqModule(item))+'.bonEnergy');
+                        }
+                        15=if(ItemDurability(item) < 10) energy = energy - 2;
+                        16=else if(ItemDurability(item) < 30) energy = energy - 1;
+                    }
+                    070=item = ShipEqInSlot(ship,t_Engine);
+                    071=lvl = ItemLevel(item);
+                    072=if(item && !ItemIsBroken(item))
+                    073 ^{
+                        01=if(OrderForsage(ship)) int modifier = 2;
+                        02=else modifier = 1;
+                        03=if(lvl == 1) energy = energy - (5 * modifier);
+                        04=if(lvl == 2) energy = energy - (5 * modifier);
+                        05=if(lvl == 3) energy = energy - (7 * modifier);
+                        06=if(lvl == 4) energy = energy - (10 * modifier);
+                        07=if(lvl == 5) energy = energy - (10 * modifier);
+                        08=if(lvl == 6) energy = energy - (11 * modifier);
+                        09=if(lvl == 7) energy = energy - (12 * modifier);
+                        10=if(lvl == 8) energy = energy - (13 * modifier);
+                        11=if(~EqSpecial(item))
+                        12 ^{
+                            01=if(!CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy')) energy = energy - (1 * modifier);
+                            02=else energy = energy - (CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy') * modifier);
+                        }
+                        13=if(ItemExtraSpecials(item))
+                        14 ^{
+                            01=for(i=0;i < ItemExtraSpecials(item);i=i+1)
+                            02 ^{
+                                01=energy = energy - (CT('MicroModuls.'+ItemExtraSpecials(item,i)+'.bonEnergy') * modifier);
+                            }
+                        }
+                        15=if(~EqModule(item))
+                        16 ^{
+                            01=energy = energy - (CT('MicroModuls.'+FindBonusByNameInCfg(EqModule(item))+'.bonEnergy') * modifier);
+                        }
+                        17=if(ItemDurability(item) < 10) energy = energy - 2;
+                        18=else if(ItemDurability(item) < 30) energy = energy - 1;
+                    }
+                    074=if(0) SFT('Сначала посчитаем артефакты, потому как их досаточно просто проверить на наличие, потом - оружие');
+                    075=for(i=0;i < ShipSlots(ship,2);i=i+1)
+                    076 ^{
+                        01=if(ShipEqInSlot(ship,t_Artefact,i) && !ItemIsBroken(item)) energy = energy - 1;
+                    }
+                    077=for(i=0;i < ShipSlots(ship,1);i=i+1)
+                    078 ^{
+                        01=item = ShipEqInSlot(ship,t_Weapon1,i);
+                        02=lvl = ItemLevel(item);
+                        03=if(item && !ItemIsBroken(item))
+                        04 ^{
+                            01=if(!GetEquipmentStats(item,3))
+                            02 ^{
+                                01=if(lvl == 1) energy = energy - 4;
+                                02=else if(lvl == 2) energy = energy - 5;
+                                03=else if(lvl == 3) energy = energy - 6;
+                                04=else if(lvl == 4) energy = energy - 7;
+                                05=else if(lvl == 5) energy = energy - 10;
+                                06=else if(lvl == 6) energy = energy - 11;
+                                07=else if(lvl == 7) energy = energy - 13;
+                                08=else if(lvl == 8) energy = energy - 15;
+                            }
+                            03=if(GetEquipmentStats(item,3) == 1)
+                            04 ^{
+                                01=if(lvl == 1) energy = energy - 2;
+                                02=else if(lvl == 2) energy = energy - 3;
+                                03=else if(lvl == 3) energy = energy - 3;
+                                04=else if(lvl == 4) energy = energy - 4;
+                                05=else if(lvl == 5) energy = energy - 4;
+                                06=else if(lvl == 6) energy = energy - 5;
+                                07=else if(lvl == 7) energy = energy - 6;
+                                08=else if(lvl == 8) energy = energy - 6;
+                            }
+                            05=if(GetEquipmentStats(item,3) == 2)
+                            06 ^{
+                                01=if(lvl == 1) energy = energy - 6;
+                                02=else if(lvl == 2) energy = energy - 6;
+                                03=else if(lvl == 3) energy = energy - 8;
+                                04=else if(lvl == 4) energy = energy - 8;
+                                05=else if(lvl == 5) energy = energy - 10;
+                                06=else if(lvl == 6) energy = energy - 12;
+                                07=else if(lvl == 7) energy = energy - 14;
+                                08=else if(lvl == 8) energy = energy - 16;
+                            }
+                            07=if(~EqSpecial(item))
+                            08 ^{
+                                01=if(!CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy')) energy = energy - 1;
+                                02=else energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqSpecial(item))+'.bonEnergy');
+                            }
+                            09=if(ItemExtraSpecials(item))
+                            10 ^{
+                                01=for(int j=0;j < ItemExtraSpecials(item);j=j+1)
+                                02 ^{
+                                    01=energy = energy - CT('MicroModuls.'+ItemExtraSpecials(item,j)+'.bonEnergy');
+                                }
+                            }
+                            11=if(~EqModule(item))
+                            12 ^{
+                                01=energy = energy - CT('MicroModuls.'+FindBonusByNameInCfg(EqModule(item))+'.bonEnergy');
+                            }
+                            13=if(ItemDurability(item) < 10) energy = energy - 2;
+                            14=else if(ItemDurability(item) < 30) energy = energy - 1;
+                        }
+                    }
+                    079=energy = energy + ShipCustomShipInfoData(0,CurInfo(),3);
+                    080=ShipCustomShipInfoData(0,CurInfo(),3,0);
+                    081=if(0) SFT('Выше, если что, бонус к приросту энергии, который держится ход (лень было делать с Упырика и Реверсера что-то ещё, чуть накостылил');
+                    082=if(ArtefactTypeInUse(ship,'ArtUlovitel'))
+                    083 ^{
+                        01=int tint1 = 0;
+                        02=for(i = 0; i < ShipArts(Player()); i = i + 1)
+                        03 ^{
+                            01=if(energy > 0) continue;
+                            02=item = ShipArts(Player(), i);
+                            03=if(ItemType(item) != t_Artefact) continue;
+                            04=if(!ItemIsInUse(item)) continue;
+                            05=if(EquipmentImageName(item) != 'ArtUlovitel') continue;
+                            06=if(abs(energy) < CustomArtData(item,1))
+                            07 ^{
+                                01=CustomArtData(item,1,CustomArtData(item,1)+energy);
+                                02=energy = 0;
+                            }
+                            08=else
+                            09 ^{
+                                01=energy = energy + CustomArtData(item,1);
+                                02=CustomArtData(item,1,0);
+                            }
+                        }
+                    }
+                    084=tint1 = 0;
+                    085=if(~ShipFindCustomShipInfoByType(ship,'RefEnergyTretonDebuffInfo')) energy = energy - ShipCustomShipInfosCount(ship,'RefEnergyTretonDebuffInfo');
+                    086=dword cur_energy = energy;
+                    087=for(i = 0; i < ShipItems(Player()); i = i + 1)
+                    088 ^{
+                        01=if(cur_energy >= 0) break;
+                        02=item = ShipItems(Player(), i);
+                        03=if(ItemType(item) != t_UselessItem) continue;
+                        04=if(EquipmentImageName(item) != 'RefEnergy_Battery') continue;
+                        05=if(!UselessItemData(item,1,3)) continue;
+                        06=if(UselessItemData(item,1) < 30 && cur_energy > 0)
+                        07 ^{
+                            01=UselessItemData(item,1,UselessItemData(item,1)+cur_energy);
+                            02=if(UselessItemData(item,1) > 30) UselessItemData(item,1,30);
+                        }
+                        08=if(UselessItemData(item,1) > 0 && cur_energy < 0)
+                        09 ^{
+                            01=if(abs(cur_energy) > UselessItemData(item,1))
+                            02 ^{
+                                01=cur_energy = cur_energy + UselessItemData(item,1);
+                                02=UselessItemData(item,1,0);
+                            }
+                            03=else
+                            04 ^{
+                                01=UselessItemData(item,1,UselessItemData(item,1,)+cur_energy);
+                                02=cur_energy = 0;
+                                03=break;
+                            }
+                        }
+                    }
+                    089=ShipCustomShipInfoData(0,CurInfo(),1,energy);
+                    090=ShipCustomShipInfoData(0,CurInfo(),2,total_income);
+                    091=if(ScriptItemActionType(t_OnStep) && cur_energy < 0)
+                    092 ^{
+                        01=if(~ShipFindCustomShipInfoByType(ship,'RefEnergyNotEnoughEnergyInfo')) ShipAddCustomShipInfo(ship,'RefEnergyNotEnoughEnergyInfo','NoShow');
+                        02=ShipCustomShipInfoData(ship,'RefEnergyNotEnoughEnergyInfo',1,ShipCustomShipInfoData(ship,'RefEnergyNotEnoughEnergyInfo',1)+abs(cur_energy));
+                        03=if(!ShipCustomShipInfoData(ship,'RefEnergyNotEnoughEnergyInfo',2) && !ShipCustomShipInfoData(ship,'RefEnergyNotEnoughEnergyInfo',3)) ShipCustomShipInfoData(ship,'RefEnergyNotEnoughEnergyInfo',2,5);
+                        04=else if(!ShipCustomShipInfoData(ship,'RefEnergyNotEnoughEnergyInfo',3)) ShipCustomShipInfoData(ship,'RefEnergyNotEnoughEnergyInfo',2,ShipCustomShipInfoData(ship,'RefEnergyNotEnoughEnergyInfo',2)-1);
+                    }
+                    093=if(0) SFT('Если кто не понял, чё за нафиг - cur_energy показывает, хватает ли энергии прямщяс, с учётом энергоблоков. energy показывает баланс в целом, ведь энергоблоки рано или поздно кончатся, а игрок должен понимать, почему и насколь быстро уходит их заряд. Иначе было бы некорректно.');
+                }
+                OnActCodeTypes=t_OnStep,t_OnShowingItemInfo,t_OnEnteringForm,t_OnReEnteringForm
+                OnActStepTypes=0
+            }
+            RefEnergyNotEnoughEnergyInfo ^{
+                Description=Инфошка для навешивания кошмара 1 - таймер до отключения, 2 - таймер до включения, 3 - режим отключения
+                Icon=0
+                Name=RefEnergy
+                OnActCode ^{
+                    01=if(ShipCustomShipInfoData(0,CurInfo(),1) && !ShipCustomShipInfoData(0,CurInfo(),3))
+                    02 ^{
+                        01=if(ShipCustomShipInfoData(0,CurInfo(),1) < 6) ShipCustomShipInfoData(0,CurInfo(),3,1);
+                        02=else if(ShipCustomShipInfoData(0,CurInfo(),1) < 16) ShipCustomShipInfoData(0,CurInfo(),3,2);
+                        03=else if(ShipCustomShipInfoData(0,CurInfo(),1) < 26) ShipCustomShipInfoData(0,CurInfo(),3,3);
+                        04=else if(ShipCustomShipInfoData(0,CurInfo(),1) < 31) ShipCustomShipInfoData(0,CurInfo(),3,4);
+                        05=else if(ShipCustomShipInfoData(0,CurInfo(),1) < 41) ShipCustomShipInfoData(0,CurInfo(),3,5);
+                        06=else ShipCustomShipInfoData(0,CurInfo(),3,6);
+                        07=ShipSpecialBonuses(ScriptItemActShip(),bonSpeed,-1*500*ShipCustomShipInfoData(0,CurInfo(),3));
+                        08=ShipSpecialBonuses(ScriptItemActShip(),bonJump,-1*15*ShipCustomShipInfoData(0,CurInfo(),3));
+                        09=ShipSpecialBonuses(ScriptItemActShip(),bonDef,-1*10*ShipCustomShipInfoData(0,CurInfo(),3));
+                        10=ShipSpecialBonuses(ScriptItemActShip(),bonDroid,-1*20*ShipCustomShipInfoData(0,CurInfo(),3));
+                        11=ShipSpecialBonuses(ScriptItemActShip(),bonHookRadius,-1*120*ShipCustomShipInfoData(0,CurInfo(),3));
+                        12=ShipSpecialBonuses(ScriptItemActShip(),bonHook,-1*100*ShipCustomShipInfoData(0,CurInfo(),3));
+                        13=ShipSpecialBonuses(ScriptItemActShip(),bonRadar,-1*1000*ShipCustomShipInfoData(0,CurInfo(),3));
+                        14=ShipSpecialBonuses(ScriptItemActShip(),bonScan,-1*10*ShipCustomShipInfoData(0,CurInfo(),3));
+                        15=ShipSpecialBonuses(ScriptItemActShip(),bonWRadius,-1*100*ShipCustomShipInfoData(0,CurInfo(),3));
+                        16=ShipSpecialBonuses(ScriptItemActShip(),bonWEnergy,-1*30*ShipCustomShipInfoData(0,CurInfo(),3));
+                        17=ShipSpecialBonuses(ScriptItemActShip(),bonWSplinter,-1*30*ShipCustomShipInfoData(0,CurInfo(),3));
+                        18=ShipSpecialBonuses(ScriptItemActShip(),bonWMissile,-1*15*ShipCustomShipInfoData(0,CurInfo(),3));
+                        19=ShipCustomShipInfoData(0,CurInfo(),2,RndObject(3+ShipCustomShipInfoData(0,CurInfo(),3),6+ShipCustomShipInfoData(0,CurInfo(),3)*2,ScriptItemActShip()));
+                        20=ShipCustomShipInfoData(0,CurInfo(),1,0);
+                        21=CustomEther('EnergyDebuff',0,'','Недостаток энергии в сети корабля привёл к критической перегрузке! Системы корабля недополучили энергию и отключились');
+                    }
+                    03=if(ShipCustomShipInfoData(0,CurInfo(),3))
+                    04 ^{
+                        01=if(!ShipCustomShipInfoData(0,CurInfo(),2))
+                        02 ^{
+                            01=ShipSpecialBonuses(ScriptItemActShip(),bonSpeed,500*ShipCustomShipInfoData(0,CurInfo(),3));
+                            02=ShipSpecialBonuses(ScriptItemActShip(),bonJump,15*ShipCustomShipInfoData(0,CurInfo(),3));
+                            03=ShipSpecialBonuses(ScriptItemActShip(),bonDef,10*ShipCustomShipInfoData(0,CurInfo(),3));
+                            04=ShipSpecialBonuses(ScriptItemActShip(),bonDroid,20*ShipCustomShipInfoData(0,CurInfo(),3));
+                            05=ShipSpecialBonuses(ScriptItemActShip(),bonHookRadius,120*ShipCustomShipInfoData(0,CurInfo(),3));
+                            06=ShipSpecialBonuses(ScriptItemActShip(),bonHook,100*ShipCustomShipInfoData(0,CurInfo(),3));
+                            07=ShipSpecialBonuses(ScriptItemActShip(),bonRadar,1000*ShipCustomShipInfoData(0,CurInfo(),3));
+                            08=ShipSpecialBonuses(ScriptItemActShip(),bonScan,10*ShipCustomShipInfoData(0,CurInfo(),3));
+                            09=ShipSpecialBonuses(ScriptItemActShip(),bonWRadius,100*ShipCustomShipInfoData(0,CurInfo(),3));
+                            10=ShipSpecialBonuses(ScriptItemActShip(),bonWEnergy,30*ShipCustomShipInfoData(0,CurInfo(),3));
+                            11=ShipSpecialBonuses(ScriptItemActShip(),bonWSplinter,30*ShipCustomShipInfoData(0,CurInfo(),3));
+                            12=ShipSpecialBonuses(ScriptItemActShip(),bonWMissile,15*ShipCustomShipInfoData(0,CurInfo(),3));
+                            13=ShipCustomShipInfoData(0,CurInfo(),3,0);
+                            14=ShipCustomShipInfoData(0,CurInfo(),1,0);
+                            15=CustomEther('EnergyRebuff',0,'','Отключение части оборудования дало возможность накопить достаточно энергии, чтобы возобновить полноценную подачу энергию. Увы, явно ненадолго');
+                        }
+                        03=else
+                        04 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),2))
+                            02 ^{
+                                01=ShipCustomShipInfoData(0,CurInfo(),2,ShipCustomShipInfoData(0,CurInfo(),2)-1);
+                                02=exit;
+                            }
+                            03=int i;
+                            04=for(i=t_FuelTanks;i<t_DefGenerator;i=i+1)
+                            05 ^{
+                                01=if(ShipEqInSlot(ScriptItemActShip(),i)) ItemDurability(ShipEqInSlot(ScriptItemActShip(),i),max(ItemDurability(ShipEqInSlot(ScriptItemActShip(),i))-(Rnd(1,7) * (ShipCustomShipInfoData(0,CurInfo(),3)-2)),1));
+                            }
+                            06=for(i=0;i<ShipSlots(ScriptItemActShip(),1);i=i+1)
+                            07 ^{
+                                01=if(ShipEqInSlot(ScriptItemActShip(),t_Weapon1,i)) ItemDurability(ShipEqInSlot(ScriptItemActShip(),t_Weapon1,i),max(ItemDurability(ShipEqInSlot(ScriptItemActShip(),t_Weapon1,i))-(Rnd(1,7) * (ShipCustomShipInfoData(0,CurInfo(),3)-2)),1));
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            RefEnergyTretonDebuffInfo ^{
+                Description=Инфошка для получения энергетических люлей от Третона
+                Icon=0
+                Name=RefEnergy
+                OnActCode ^{
+                    01=if(ShipCustomShipInfoData(0,CurInfo(),1))
+                    02 ^{
+                        01=if(ShipEqInSlot(ScriptItemActShip(),t_RepairRobot)) ShipCustomShipInfoData(0,CurInfo(),1,ShipCustomShipInfoData(0,CurInfo(),1)-1);
+                    }
+                    03=if(ShipCustomShipInfoData(0,CurInfo(),1))
+                    04 ^{
+                        01=if(ArtefactTypeInUse(ScriptItemActShip(),t_ArtefactDroid)) ShipCustomShipInfoData(0,CurInfo(),1,ShipCustomShipInfoData(0,CurInfo(),1)-1);
+                    }
+                    05=if(ShipCustomShipInfoData(0,CurInfo(),1))
+                    06 ^{
+                        01=if(ArtefactTypeInUse(ScriptItemActShip(),t_ArtefactNano)) ShipCustomShipInfoData(0,CurInfo(),1,ShipCustomShipInfoData(0,CurInfo(),1)-1);
+                    }
+                    07=if(ShipCustomShipInfoData(0,CurInfo(),1))
+                    08 ^{
+                        01=if(ArtefactTypeInUse(ScriptItemActShip(),'ArtDominator-20')) ShipCustomShipInfoData(0,CurInfo(),1,ShipCustomShipInfoData(0,CurInfo(),1)-1);
+                    }
+                    09=if(!ShipCustomShipInfoData(0,CurInfo(),1))
+                    10 ^{
+                        01=ShipDeleteCustomShipInfo(0,CurInfo());
+                        02=CustomEther('EnergyRebuff',0,'','Энергосети были восстановлены!');
+                        03=exit;
+                    }
+                    11=if(GetShipPlanet(ScriptItemActShip()))
+                    12 ^{
+                        01=if(!HullDamage(ScriptItemActShip()))
+                        02 ^{
+                            01=ShipDeleteCustomShipInfo(0,CurInfo());
+                            02=CustomEther('EnergyRebuff',0,'','Ремонтные бригады восстановили энергосети вашего корабля');
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+                StatusEffect=Повреждённые энергосети
+            }
+            RefEnergyTretonInfo ^{
+                Description=Инфошка для выстреливания энергетических люлей
+                Icon=0
+                Name=RefEnergy
+                OnActCode ^{
+                    01=if(ItemType(ScriptItemActObject2()) != t_Weapon5) exit;
+                    02=if(ObjectType(ScriptItemActObject1()) != 4 && ObjectType(ScriptItemActObject1()) != 5) exit;
+                    03=if(~ShipFindCustomShipInfoByType(ScriptItemActObject1(),'RefEnergyTretonDebuffInfo')) ShipAddCustomShipInfo(ScriptItemActObject1(),'RefEnergyTretonDebuffInfo','NoShow');
+                    04=if(~ShipFindCustomShipInfoByType(ScriptItemActObject1(),'RefEnergyTretonDebuffInfo')) ShipCustomShipInfoData(ScriptItemActObject1(),'RefEnergyTretonDebuffInfo',1,ShipCustomShipInfoData(ScriptItemActObject1(),'RefEnergyTretonDebuffInfo',1)+RndObject(1,3,ScriptItemActObject1()));
+                }
+                OnActCodeTypes=t_OnWeaponShot
+            }
+        }
+    }
+}
+MicroModuls ^{
+    RefEnergy_CyanFantom ^{
+        Cost=200
+        Equipments=Hull
+        ForCharacterTypes=Warrior,Trader
+        ForNPCTypes=RangerExplorer,RangerPirateExplorer
+        FragilityEnergy=135
+        HullGraphSize=100
+        KindGraph=CyanFantom
+        Name=Циановый фантом
+        OnPlanets=1
+        Owner=Fei,Peleng
+        Priority=65
+        Ruins=SB,RC
+        Size=75
+        Special=1
+        Text=Уникальная <color=220,140,245>фэянская</color> разработка в сфере более эргономичного расположения узлов энергосетей. Беспримерное участие специалистов <clr>Дзухаллага<clrEnd>, сумевших достать для учёных уникальные образцы доминаторских компактных энергоустановок, дали этому кораблю повышенную выработку электроэнергии, а также расположение узлов - прирост эффективности некоторых типов оборудования.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Дополнительная энерговыработка: <clr>+25<clrEnd> у.е.
+        bonDef=5
+        bonEnergy=25
+        bonScan=3
+        bonSlotArt=-1
+        bonSlotDroid=-1
+        bonSlotWeapon=-2
+        bonSpeed=85
+        bonWEnergy=17
+    }
+    RefEnergy_Droid_Erg1 ^{
+        AcrynSerie=Эргкономный дроид
+        Cost=75
+        Equipments=Droid
+        Fragility=90
+        KindGraph=Erg
+        LevelsCount=3
+        Name=Эргкономный дроид I
+        OnPlanets=1
+        Owner=Fei,People
+        Priority=75
+        SerieLevel1=RefEnergy_Droid_Erg1
+        SerieLevel2=RefEnergy_Droid_Erg2
+        SerieLevel3=RefEnergy_Droid_Erg3
+        Size=80
+        Special=1
+        Text=<color=248,252,248>Линейка Эргкономных акринов была создана Объединённым КБ КВСМК для массового оснащения пилотов лёгким, относительно дешёвым, простым в использовании и экономичным для энергосетей корабля оборудованием. Подобное оборудование стало массово использоваться для ликвидации потребностей военных в небоевой обстановке.</color>
+        Text=Энергопотребление: <clr>-1<clrEnd> ед.
+        bonEnergy=-1
+    }
+    RefEnergy_Droid_Erg2 ^{
+        AcrynSerie=Эргкономный дроид
+        Cost=70
+        Equipments=Droid
+        Fragility=90
+        KindGraph=Erg
+        LevelsCount=3
+        Name=Эргкономный дроид II
+        OnPlanets=1
+        Owner=Fei,People
+        Priority=55
+        SerieLevel1=RefEnergy_Droid_Erg1
+        SerieLevel2=RefEnergy_Droid_Erg2
+        SerieLevel3=RefEnergy_Droid_Erg3
+        Size=75
+        Special=1
+        Text=<color=248,252,248>Линейка Эргкономных акринов была создана Объединённым КБ КВСМК для массового оснащения пилотов лёгким, относительно дешёвым, простым в использовании и экономичным для энергосетей корабля оборудованием. Подобное оборудование стало массово использоваться для ликвидации потребностей военных в небоевой обстановке.</color>
+        Text=Энергопотребление: <clr>-2<clrEnd> ед.
+        bonEnergy=-2
+    }
+    RefEnergy_Droid_Erg3 ^{
+        AcrynSerie=Эргкономный дроид
+        Cost=65
+        Equipments=Droid
+        Fragility=85
+        KindGraph=Erg
+        LevelsCount=3
+        Name=Эргкономный дроид III
+        OnPlanets=1
+        Owner=Fei,People
+        Priority=45
+        SerieLevel1=RefEnergy_Droid_Erg1
+        SerieLevel2=RefEnergy_Droid_Erg2
+        SerieLevel3=RefEnergy_Droid_Erg3
+        Size=70
+        Special=1
+        Text=<color=248,252,248>Линейка Эргкономных акринов была создана Объединённым КБ КВСМК для массового оснащения пилотов лёгким, относительно дешёвым, простым в использовании и экономичным для энергосетей корабля оборудованием. Подобное оборудование стало массово использоваться для ликвидации потребностей военных в небоевой обстановке.</color>
+        Text=Энергопотребление: <clr>-3<clrEnd> ед.
+        bonEnergy=-3
+    }
+    RefEnergy_EnergeyMM ^{
+        Equipments=WEnergy,WMissile,WSplinter,Engine,FuelTanks,DefGenerator,Radar,Droid,Hook,Scaner
+        Name=Энерджей
+        Priority=70
+        Text=Микромодуль третьего уровня. Содержит набор сменных сверхпроводников, снижающих энергопотери при работе <clr>любого оборудования<clrEnd>.
+        Text=Энергопотребление: <clr>-2<clrEnd> у.е.
+        bonEnergy=-2
+    }
+    RefEnergy_ExtraCore1 ^{
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительное энергоядро<clrEnd>
+        ExText=<color=248,252,248>В трюм данного корпуса установлено дополнительное энергоядро, повышающее выработку электроэнергии</color>
+        ExText=Броня корпуса: <clr>-1<clrEnd>
+        ExText=Дополнительная энерговыработка: <clr>+15<clrEnd> у.е.
+        LockedAcryn=3
+        Name=ExtraCore1
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonEnergy=15
+        bonHull=-1
+    }
+    RefEnergy_ExtraCore2 ^{
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные энергоядра<clrEnd>
+        ExText=<color=248,252,248>В трюм данного корпуса установлено два дополнительных энергоядра, повышающих выработку электроэнергии</color>
+        ExText=Броня корпуса: <clr>-2<clrEnd>
+        ExText=Дополнительная энерговыработка: <clr>+30<clrEnd> у.е.
+        LockedAcryn=3
+        Name=ExtraCore2
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonEnergy=30
+        bonHull=-2
+    }
+    RefEnergy_ExtraCore3 ^{
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные энергоядра<clrEnd>
+        ExText=<color=248,252,248>В трюм данного корпуса установлено три дополнительных энергоядра, повышающих дополнительную выработку электроэнергии</color>
+        ExText=Броня корпуса: <clr>-3<clrEnd>
+        ExText=Дополнительная энерговыработка: <clr>+45<clrEnd> у.е.
+        LockedAcryn=3
+        Name=ExtraCore3
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonEnergy=45
+        bonHull=-3
+    }
+    RefEnergy_FocusatorMM ^{
+        Equipments=WEnergy
+        Name=Фокусатор
+        Priority=40
+        Text=Микромодуль второго уровня. За счёт установки крайне энергоёмких систем позволяет <clr>энергетическому оружию<clrEnd> вести огонь на куда больших дистанциях.
+        Text=Повышение энергопотребления: <clr>+10<clrEnd> у.е.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        bonEnergy=-10
+        bonWRadius=150
+    }
+    RefEnergy_FuelTanks_Erg1 ^{
+        AcrynSerie=Эргкономный топливный бак
+        Cost=75
+        Equipments=FuelTanks
+        Fragility=90
+        KindGraph=Erg
+        LevelsCount=3
+        Name=Эргкономный топливный бак I
+        OnPlanets=1
+        Owner=Fei,People
+        Priority=75
+        SerieLevel1=RefEnergy_FuelTanks_Erg1
+        SerieLevel2=RefEnergy_FuelTanks_Erg2
+        SerieLevel3=RefEnergy_FuelTanks_Erg3
+        Size=80
+        Special=1
+        Text=<color=248,252,248>Линейка Эргкономных акринов была создана Объединённым КБ КВСМК для массового оснащения пилотов лёгким, относительно дешёвым, простым в использовании и экономичным для энергосетей корабля оборудованием. Подобное оборудование стало массово использоваться для ликвидации потребностей военных в небоевой обстановке.</color>
+        Text=Энергопотребление: <clr>-1<clrEnd> ед.
+        bonEnergy=-1
+    }
+    RefEnergy_FuelTanks_Erg2 ^{
+        AcrynSerie=Эргкономный топливный бак
+        Cost=70
+        Equipments=FuelTanks
+        Fragility=90
+        KindGraph=Erg
+        LevelsCount=3
+        Name=Эргкономный топливный бак II
+        OnPlanets=1
+        Owner=Fei,People
+        Priority=55
+        SerieLevel1=RefEnergy_FuelTanks_Erg1
+        SerieLevel2=RefEnergy_FuelTanks_Erg2
+        SerieLevel3=RefEnergy_FuelTanks_Erg3
+        Size=75
+        Special=1
+        Text=<color=248,252,248>Линейка Эргкономных акринов была создана Объединённым КБ КВСМК для массового оснащения пилотов лёгким, относительно дешёвым, простым в использовании и экономичным для энергосетей корабля оборудованием. Подобное оборудование стало массово использоваться для ликвидации потребностей военных в небоевой обстановке.</color>
+        Text=Энергопотребление: <clr>-2<clrEnd> ед.
+        bonEnergy=-2
+    }
+    RefEnergy_FuelTanks_Erg3 ^{
+        AcrynSerie=Эргкономный топливный бак
+        Cost=65
+        Equipments=FuelTanks
+        Fragility=85
+        KindGraph=Erg
+        LevelsCount=3
+        Name=Эргкономный топливный бак III
+        OnPlanets=1
+        Owner=Fei,People
+        Priority=45
+        SerieLevel1=RefEnergy_FuelTanks_Erg1
+        SerieLevel2=RefEnergy_FuelTanks_Erg2
+        SerieLevel3=RefEnergy_FuelTanks_Erg3
+        Size=70
+        Special=1
+        Text=<color=248,252,248>Линейка Эргкономных акринов была создана Объединённым КБ КВСМК для массового оснащения пилотов лёгким, относительно дешёвым, простым в использовании и экономичным для энергосетей корабля оборудованием. Подобное оборудование стало массово использоваться для ликвидации потребностей военных в небоевой обстановке.</color>
+        Text=Энергопотребление: <clr>-3<clrEnd> ед.
+        bonEnergy=-3
+    }
+    RefEnergy_Hook_Erg1 ^{
+        AcrynSerie=Эргкономный захват
+        Cost=75
+        Equipments=Hook
+        Fragility=90
+        KindGraph=Erg
+        LevelsCount=3
+        Name=Эргкономный захват I
+        OnPlanets=1
+        Owner=Fei,People
+        Priority=70
+        SerieLevel1=RefEnergy_Hook_Erg1
+        SerieLevel2=RefEnergy_Hook_Erg2
+        SerieLevel3=RefEnergy_Hook_Erg3
+        Size=80
+        Special=1
+        Text=<color=248,252,248>Линейка Эргкономных акринов была создана Объединённым КБ КВСМК для массового оснащения пилотов лёгким, относительно дешёвым, простым в использовании и экономичным для энергосетей корабля оборудованием. Подобное оборудование стало массово использоваться для ликвидации потребностей военных в небоевой обстановке.</color>
+        Text=Энергопотребление: <clr>-1<clrEnd> ед.
+        bonEnergy=-1
+    }
+    RefEnergy_Hook_Erg2 ^{
+        AcrynSerie=Эргкономный захват
+        Cost=70
+        Equipments=Hook
+        Fragility=90
+        KindGraph=Erg
+        LevelsCount=3
+        Name=Эргкономный захват II
+        OnPlanets=1
+        Owner=Fei,People
+        Priority=55
+        SerieLevel1=RefEnergy_Hook_Erg1
+        SerieLevel2=RefEnergy_Hook_Erg2
+        SerieLevel3=RefEnergy_Hook_Erg3
+        Size=75
+        Special=1
+        Text=<color=248,252,248>Линейка Эргкономных акринов была создана Объединённым КБ КВСМК для массового оснащения пилотов лёгким, относительно дешёвым, простым в использовании и экономичным для энергосетей корабля оборудованием. Подобное оборудование стало массово использоваться для ликвидации потребностей военных в небоевой обстановке.</color>
+        Text=Энергопотребление: <clr>-2<clrEnd> ед.
+        bonEnergy=-2
+    }
+    RefEnergy_Hook_Erg3 ^{
+        AcrynSerie=Эргкономный захват
+        Cost=65
+        Equipments=Hook
+        Fragility=85
+        KindGraph=Erg
+        LevelsCount=3
+        Name=Эргкономный захват III
+        OnPlanets=1
+        Owner=Fei,People
+        Priority=45
+        SerieLevel1=RefEnergy_Hook_Erg1
+        SerieLevel2=RefEnergy_Hook_Erg2
+        SerieLevel3=RefEnergy_Hook_Erg3
+        Size=70
+        Special=1
+        Text=<color=248,252,248>Линейка Эргкономных акринов была создана Объединённым КБ КВСМК для массового оснащения пилотов лёгким, относительно дешёвым, простым в использовании и экономичным для энергосетей корабля оборудованием. Подобное оборудование стало массово использоваться для ликвидации потребностей военных в небоевой обстановке.</color>
+        Text=Энергопотребление: <clr>-3<clrEnd> ед.
+        bonEnergy=-3
+    }
+    RefEnergy_NagnetatelMM ^{
+        Equipments=WEnergy
+        Name=Нагнетатель
+        Priority=40
+        Text=<color=248,252,248>Микромодуль второго уровня. За счёт установки крайне энергоёмких систем сильно увеличивает выходную мощность любого <clr>энергетического оружия<clrEnd>.</color>
+        Text=Энергопотребление: <clr>+7<clrEnd> у.е.
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        bonEnergy=7
+        bonWEnergy=25
+    }
+    RefEnergy_Radar_Erg1 ^{
+        AcrynSerie=Эргкономный радар
+        Cost=75
+        Equipments=Radar
+        Fragility=90
+        KindGraph=Erg
+        LevelsCount=3
+        Name=Эргкономный радар I
+        OnPlanets=1
+        Owner=Fei,People
+        Priority=75
+        SerieLevel1=RefEnergy_Radar_Erg1
+        SerieLevel2=RefEnergy_Radar_Erg2
+        SerieLevel3=RefEnergy_Radar_Erg3
+        Size=80
+        Special=1
+        Text=<color=248,252,248>Линейка Эргкономных акринов была создана Объединённым КБ КВСМК для массового оснащения пилотов лёгким, относительно дешёвым, простым в использовании и экономичным для энергосетей корабля оборудованием. Подобное оборудование стало массово использоваться для ликвидации потребностей военных в небоевой обстановке.</color>
+        Text=Энергопотребление: <clr>-1<clrEnd> ед.
+        bonEnergy=-1
+    }
+    RefEnergy_Radar_Erg2 ^{
+        AcrynSerie=Эргкономный радар
+        Cost=70
+        Equipments=Radar
+        Fragility=90
+        KindGraph=Erg
+        LevelsCount=3
+        Name=Эргкономный радар II
+        OnPlanets=1
+        Owner=Fei,People
+        Priority=55
+        SerieLevel1=RefEnergy_Radar_Erg1
+        SerieLevel2=RefEnergy_Radar_Erg2
+        SerieLevel3=RefEnergy_Radar_Erg3
+        Size=75
+        Special=1
+        Text=<color=248,252,248>Линейка Эргкономных акринов была создана Объединённым КБ КВСМК для массового оснащения пилотов лёгким, относительно дешёвым, простым в использовании и экономичным для энергосетей корабля оборудованием. Подобное оборудование стало массово использоваться для ликвидации потребностей военных в небоевой обстановке.</color>
+        Text=Энергопотребление: <clr>-2<clrEnd> ед.
+        bonEnergy=-2
+    }
+    RefEnergy_Radar_Erg3 ^{
+        AcrynSerie=Эргкономный радар
+        Cost=65
+        Equipments=Radar
+        Fragility=85
+        KindGraph=Erg
+        LevelsCount=3
+        Name=Эргкономный радар III
+        OnPlanets=1
+        Owner=Fei,People
+        Priority=45
+        SerieLevel1=RefEnergy_Radar_Erg1
+        SerieLevel2=RefEnergy_Radar_Erg2
+        SerieLevel3=RefEnergy_Radar_Erg3
+        Size=70
+        Special=1
+        Text=<color=248,252,248>Линейка Эргкономных акринов была создана Объединённым КБ КВСМК для массового оснащения пилотов лёгким, относительно дешёвым, простым в использовании и экономичным для энергосетей корабля оборудованием. Подобное оборудование стало массово использоваться для ликвидации потребностей военных в небоевой обстановке.</color>
+        Text=Энергопотребление: <clr>-3<clrEnd> ед.
+        bonEnergy=-3
+    }
+    RefEnergy_StatisticMM ^{
+        Equipments=Hull
+        Name=Статистик
+        Priority=30
+        Text=<color=248,252,248>Микромодуль первого уровня. Модифицирует бортовой компьютер, в результате чего тот начинает аккуратно следить за потоками энергии во внутренней сети корабля, не допуская перегрузок или нехватки энерговыработки, тем самым снижая затраты на поддержание работы <clr>всего оборудования<clrEnd> на борту.</color>
+        Text=Энергопотребление всего оборудования на борту: <clr>-1<clrEnd> у.е.
+        bonAllEnergy=-1
+    }
+    RefEnergy_SwottMM ^{
+        Equipments=WEnergy,WMissile,WSplinter,Engine,FuelTanks,DefGenerator,Radar,Droid,Hook,Scaner
+        Name=Свотт
+        Priority=50
+        Text=<color=248,252,248>Микромодуль второго уровня. Заменяет все проводящие элементы <clr>любого оборудования<clrEnd> на сверхпроводящие, а также перенастраивает оборудование на режим полной экономии.</color>
+        Text=Энергопотребление: <clr>-4<clrEnd> у.е.
+        bonEnergy=-4
+    }
+    RefEnergy_TesloMM ^{
+        Equipments=WEnergy,WMissile,WSplinter,Engine,FuelTanks,DefGenerator,Radar,Droid,Hook,Scaner
+        Fragility=134
+        Name=Тесло
+        Priority=10
+        Text=<color=248,252,248>Микромодуль первого уровня. Перенастраивает системы оборудования на работающие по принципу обратных токов, что позволяет использовать поступающую энергию на грани нарушения законов физики, колоссально снижая потребление <clr>любого оборудования<clrEnd>. К сожалению, такие "фокусы" сильно снижают срок эксплуатации оборудования.</color>
+        Text=Энергопотребление: <clr>-10<clrEnd> у.е.
+        Text=Надёжность: <clr>-33<clrEnd>%
+        bonEnergy=-10
+    }
+    RefEnergy_VirabotchikMM ^{
+        Cost=140
+        Equipments=WEnergy,WMissile,WSplinter,Engine,FuelTanks,DefGenerator,Radar,Droid,Hook,Scaner
+        Name=Выработчик
+        Priority=40
+        Text=<color=248,252,248>Микромодуль второго уровня. Устанавливает в <clr>любое оборудование<clrEnd> дополнительный мини-реактор, позволяющий ему покрыть часть своих нужд в электроэнергии. К сожалению, такая система довольно дорога в обслуживании.</color>
+        Text=Энергопотребление: <clr>-6<clrEnd> у.е.
+        Text=Стоимость: <clr>+40<clrEnd>%
+        bonEnergy=-6
+    }
+    ShuMM_AuxiliarySubreactor5 ^{
+        LockedAcryn=3
+        Special=1
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Мощность захвата: <bonHook> т.
+        Text=Дальность действия захвата: <bonHookRadius> млн км
+        Text=Дополнительная энерговыработка: +8 ед.
+        bonEnergy=4
+    }
+    ShuMM_AuxiliarySubreactor6 ^{
+        LockedAcryn=3
+        Special=1
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Мощность захвата: <bonHook> т.
+        Text=Дальность действия захвата: <bonHookRadius> млн км
+        Text=Дополнительная энерговыработка: +10 ед.
+        bonEnergy=6
+    }
+    ShuMM_AuxiliarySubreactor7 ^{
+        LockedAcryn=3
+        Special=1
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Мощность захвата: <bonHook> т.
+        Text=Дальность действия захвата: <bonHookRadius> млн км
+        Text=Дополнительная энерговыработка: +12 ед.
+        bonEnergy=8
+    }
+    ShuMM_AuxiliarySubreactor8 ^{
+        LockedAcryn=3
+        Special=1
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Мощность захвата: <bonHook> т.
+        Text=Дальность действия захвата: <bonHookRadius> млн км
+        Text=Дополнительная энерговыработка: +15 ед.
+        bonEnergy=10
+    }
+    ShuMM_PlasmaGeneratorR1 ^{
+        LockedAcryn=3
+        Special=1
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Мощность захвата: <bonHook> т.
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дополнительная энерговыработка: <clr>+2<clrEnd> ед.
+        TextReplace=Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек <clr>генератора защитного поля<clrEnd>.
+        bonEnergy=-2
+    }
+    ShuMM_PlasmaGeneratorR2 ^{
+        LockedAcryn=3
+        Special=1
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Мощность захвата: <bonHook> т.
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дополнительная энерговыработка: <clr>+4<clrEnd> ед.
+        TextReplace=Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек <clr>генератора защитного поля<clrEnd>.
+        bonEnergy=-4
+    }
+    ShuMM_PlasmaGeneratorR3 ^{
+        LockedAcryn=3
+        Special=1
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Дальность действия захвата: <bonHookRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дополнительная энерговыработка: <clr>+5<clrEnd> ед.
+        TextReplace=Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек <clr>генератора защитного поля<clrEnd>.
+        bonEnergy=-5
+    }
+    ShuMM_PlasmaGeneratorR4 ^{
+        LockedAcryn=3
+        Special=1
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Дальность действия захвата: <bonHookRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дополнительная энерговыработка: <clr>+7<clrEnd> ед.
+        TextReplace=Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек <clr>генератора защитного поля<clrEnd>.
+        bonEnergy=-7
+    }
+    ShuMM_StationyDefGenerator1 ^{
+        Text=Серия генераторов защиты, разработанных <color=198,128,80>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной стабильностью энергоёмкие стационные излучатели, долговечность таких генераторов всё равно оказалась на непрактично низком уровне.
+        Text=<clr><clrEnd>
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Энергопотребление: <clr>-1<clrEnd> ед.
+        bonEnergy=-1
+    }
+    ShuMM_StationyDefGenerator2 ^{
+        Text=Серия генераторов защиты, разработанных <color=198,128,80>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной стабильностью энергоёмкие стационные излучатели, долговечность таких генераторов всё равно оказалась на непрактично низком уровне.
+        Text=<clr><clrEnd>
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Энергопотребление: <clr>-2<clrEnd> ед.
+        bonEnergy=-2
+    }
+    ShuMM_StationyDefGenerator3 ^{
+        Text=Серия генераторов защиты, разработанных <color=198,128,80>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной стабильностью энергоёмкие стационные излучатели, долговечность таких генераторов всё равно оказалась на непрактично низком уровне.
+        Text=<clr><clrEnd>
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Энергопотребление: <clr>-2<clrEnd> ед.
+        bonEnergy=-2
+    }
+}
+Artefacts ^{
+    CustomArtefacts ^{
+        ArtReverser ^{
+            CanBeABDrop=1
+            CanBeTreasure=1
+            Description=Реверсер создаёт активное поле, улавливающие мощные электромагнитные волны, создаваемые ЭМ-бомбами, и преобразовывает их в полезную энергию, сводя повреждения оборудования к минимуму.
+            Name=Реверсер
+            NoWear=1
+            Text=Снижает повреждения оборудованию от ЭМ-бомб на <clr>70<clrEnd>-<clr>80<clrEnd>%, преобразовывая в <clr>1<clrEnd>-<clr>3<clrEnd> у.е. энергии
+        }
+        ArtUlovitel ^{
+            Broken=(деэлектризован)
+            BrokenInBattle=Внимание! Во время боя мощный всплеск энергии вызвал критическую перегрузку Уловителя. Требуется ремонт устройства
+            BrokenInUse=Системы Уловителя совсем раскалибровались. Чтобы случайно не навести ток уже на саму обшивку, вы решили отключить устройство и отвезти его на калибровку специалистам.
+            CanBeABDrop=1
+            CanBeReward=1
+            CanBeTreasure=1
+            Description=Уловитель - система, устанавливающаяся на контур, соединённый с обшивкой корабля. Аккумулируя приходящий извне ток, Уловитель вырабатывает полезную энергию, заодно деионизируя обшивку и поглощая ЭМ-помехи.
+            Name=Уловитель
+            OnActCode ^{
+                01=dword ship = ScriptItemActShip();
+                02=if(!ship) exit;
+                03=int shock = ShipStatusEffect(ship,0);
+                04=int emp = ShipStatusEffect(ship,2);
+                05=if(shock || emp)
+                06 ^{
+                    01=if(shock > 4)
+                    02 ^{
+                        01=CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+2);
+                        02=ShipStatusEffect(ship,0,-5);
+                    }
+                    03=if(emp > 4)
+                    04 ^{
+                        01=CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+2);
+                        02=ShipStatusEffect(ship,2,-5);
+                    }
+                }
+            }
+            OnActCodeTypes=t_OnStep
+            OnActStepTypes=9
+            Text=Система аккумулирования негативного заряда (ионизация и ЭМ-помехи) с обшивки корпуса.
+            Text=Текущий накопленный заряд: <Data1> у.е.
+        }
+        ArtUpyrik ^{
+            Broken=(перенасыщен)
+            BrokenInBattle=Во время боя Упырик потерял слишком много наноботных щупов и больше не может вытягивать энергию из ваших врагов
+            BrokenInUse=В режиме ожидания программа Упырика случайно засбоила и начала искать цели для вытягивания энергии на борту корабля. Во избежание энергопотерь бортовой компьютер экстренно отключил Упырика.
+            CanBeABDrop=1
+            CanBeReward=1
+            CanBeTreasure=1
+            Description=Упырик использует явление короткого замыкания, образуя благодаря сверхтонким сверхпроводящим нитям из наноботов тончащие щупы-провода, вытягивающие часть корабельной энергии противников.
+            Name=Упырик
+            OnActCode ^{
+                01=if(!ScriptItemActShip()) exit;
+                02=if(!ShipEqInSlot(ScriptItemActShip(),t_Hull)) exit;
+                03=int range = 250;
+                04=if(ItemOwner(ShipEqInSlot(ScriptItemActShip(),t_Hull)) == 6)
+                05 ^{
+                    01=range = 325;
+                    02=CustomArtTextData(CurItem(),1,'Оборудование работает более эффективно в режиме совместимости с неизвестным оборудованием');
+                }
+                06=else CustomArtTextData(CurItem(),1,'');
+                07=if(ScriptItemActionType(t_OnStep))
+                08 ^{
+                    01=if(!ShipInNormalSpace(ScriptItemActShip())) exit;
+                    02=unknown tarr = newarray(1);
+                    03=int i;
+                    04=dword cur_ship = ScriptItemActShip();
+                    05=for(i=0;StarShips(ShipStar(cur_ship))>i;i=i+1)
+                    06 ^{
+                        01=dword ship = StarShips(ShipStar(cur_ship),i);
+                        02=if(Dist(ship,cur_ship) > range) continue;
+                        03=if(RelationToShip(ship,cur_ship) > 9) continue;
+                        04=if(~PlayerChameleonCurType())
+                        05 ^{
+                            01=if(ShipSubrace(ship,-1) == PlayerChameleonCurType()) continue;
+                        }
+                        06=if(PlayerChameleonDetected(ShipSubrace(ship,-1))) continue;
+                        07=ArrayAdd(tarr,ship);
+                    }
+                    07=if(ArrayDim(tarr) > 1)
+                    08 ^{
+                        01=for(i = 1; i < ArrayDim(tarr); i = i + 1)
+                        02 ^{
+                            01=int u = ArrayDim(tarr)-1;
+                            02=ship = tarr[i];
+                            03=HullHP(ship,max(HullHP(ship)-max((40/u),3),1));
+                            04=ShipStatusEffect(ship,0,max((10/u),1),cur_ship);
+                            05=ShipStatusEffect(ship,2,max((5/u),1),cur_ship);
+                            06=ShipCustomShipInfoData(ship,'RefEnergyInfo',3,ShipCustomShipInfoData(ship,'RefEnergyInfo',3)-max((20/u),1));
+                            07=ShipCustomShipInfoData(cur_ship,'RefEnergyInfo',3,ShipCustomShipInfoData(cur_ship,'RefEnergyInfo',3)+max((7/u),1));
+                            08=ShowEffect('Weapon.AuraEffect',1,ship,0,max((40/u),3));
+                        }
+                    }
+                }
+            }
+            OnActCodeTypes=t_OnStep,t_OnShowingItemInfo
+            OnActStepTypes=3
+            Text=Активный модуль, вытягивающий энергию из систем вражеских кораблей в радиусе <clr>250<clrEnd> млн км, что дополнительно наносит небольшой <clr>чистый<clrEnd> урон, <clr>ионизирует<clrEnd> обшивку и создаёт <clr>ЭМ-помехи<clrEnd>. Кроме того, часть этой энергии попадает в энергосистемы корабля.
+        }
+    }
+}

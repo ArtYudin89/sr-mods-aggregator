@@ -1,0 +1,974 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_EvoAmmoBox",
+    "ScriptFileOut": "D:\\Mod_EvoAmmoBox.scr",
+    "ScriptTextOut": "D:\\Mod_EvoAmmoBox.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 30,
+                    "Msg": "Купить контейнер с боеголовками",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_EvoAmmoBox.42\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 31,
+                    "Msg": "Пожалуй, пока откажусь",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_EvoAmmoBox.35\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 32,
+                    "Msg": "Спасибо",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_EvoAmmoBox.4\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 360,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 33,
+                    "Msg": "Купить контейнер с ракетами",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_EvoAmmoBox.43\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 34,
+                    "Msg": "Купить контейнер со сферами",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_EvoAmmoBox.44\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 35,
+                    "Msg": "Купить контейнер с торпедами",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_EvoAmmoBox.45\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 720,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 36,
+                    "Msg": "Мне нужно пополнить контейнеры",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_EvoAmmoBox.58\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 840,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 37,
+                    "Msg": "Вернуться к закупке контейнеров",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_EvoAmmoBox.67\"))"
+                },
+                {
+                    "Name": "block",
+                    "Pos.x": 960,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 38,
+                    "Msg": "Купить контейнер с торпедами",
+                    "AMsg.Num": "8",
+                    "_orig_danswer": "DAnswer('block~'+CT(\"Script.Mod_EvoAmmoBox.45\"))"
+                },
+                {
+                    "Name": "block",
+                    "Pos.x": 1080,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 39,
+                    "Msg": "Купить контейнер со сферами",
+                    "AMsg.Num": "9",
+                    "_orig_danswer": "DAnswer('block~'+CT(\"Script.Mod_EvoAmmoBox.44\"))"
+                },
+                {
+                    "Name": "block",
+                    "Pos.x": 1200,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 40,
+                    "Msg": "Купить контейнер с ракетами",
+                    "AMsg.Num": "10",
+                    "_orig_danswer": "DAnswer('block~'+CT(\"Script.Mod_EvoAmmoBox.43\"))"
+                },
+                {
+                    "Name": "block",
+                    "Pos.x": 1320,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 41,
+                    "Msg": "Купить контейнер с боеголовками",
+                    "AMsg.Num": "11",
+                    "_orig_danswer": "DAnswer('block~'+CT(\"Script.Mod_EvoAmmoBox.42\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "Для повышения боеготовности наших подразделений мы распределяем среди бойцов специальные контейнера с боеприпасами для ракетного вооружения. К сожалению, текущая обстановка не позволяет нам раздавать контейнера согласно плану, поэтому мы даём возможность рейнджерам закупить их для собственных нужд.\r\n\r\nВ нашем распоряжении есть такой список контейнеров:\r\n---------------------------------------------------------\r\nКонтейнер с боеголовками для Лирекрона для Вас доступен в количестве: <0> ед. по цене: <1> cr.\r\n\r\nКонтейнер с ракетами для Ракетницы для Вас доступен в количестве: <2> ед. по цене: <3> cr.\r\n\r\nКонтейнер со сферами для Мабокита для Вас доступен в количестве: <4> ед. по цене: <5> cr.\r\n\r\nКонтейнер с торпедами для Торпедного аппарата для Вас доступен в количестве: <6> ед. по цене: <7> cr.\r\n---------------------------------------------------------\r\nПримерно раз в год мы обновляем списки, поэтому вы сможете снова закупиться новыми контейнерами. Что, собственно, весьма полезно - контейнера имеют свойство <clr>выходить из строя<clrEnd>",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_EvoAmmoBox.61\"),\"<0>\",cur_count1,\"<1>\",cost1,\"<2>\",cur_count2,\"<3>\",cost2,\"<4>\",cur_count3,\"<5>\",cost3,\"<6>\",cur_count4,\"<7>\",cost4))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "Отлично! Техники скоро закончат погрузку. Что-то ещё?",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_EvoAmmoBox.41\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "Готово! Наши роботы-погрузчики совсем скоро завершат работы. Хотите пополнить ещё один, или закончим?",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_EvoAmmoBox.59\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "Так-так... Да. действительно, есть что пополнять. Выводим список подходящих контейнеров:\r\n<0>\r\n<1>\r\n<2>\r\nКакой из них желаете пополнить?",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_EvoAmmoBox.70\"),\"<0>\",tstr3,\"<1>\",tstr2,\"<2>\",tstr3))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "AmmoBox",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 24
+                },
+                {
+                    "Name": "RearmAmmoBox",
+                    "Type": "TDialog",
+                    "Pos.x": 120,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 25
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "PlayerGroup",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 19
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 20,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(CurTurn()%300==0) {",
+                        "    cur_count1=3+ShipRank(Player());",
+                        "    cur_count2=2+ShipRank(Player());",
+                        "    cur_count3=1+ShipRank(Player());",
+                        "    cur_count4=ShipRank(Player());",
+                        "}"
+                    ],
+                    "#": 21,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(GetShipRuins(Player())) {",
+                        "    if(!PlayerBridge()) {",
+                        "        if(ShipType(GetShipRuins(Player()))=='WB') {",
+                        "            AddDialogInject('AmmoBox',CT(\"Script.Mod_EvoAmmoBox.72\"),CT(\"Script.Mod_EvoAmmoBox.71\"),1);",
+                        "        }",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 22,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "cost1=1.05*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+                        "cost2=1.2*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+                        "cost3=1.12*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+                        "cost4=1.3*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 42,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Списываем деньги со счета игрока и пополняем контейнеры",
+                        "tdw2=(UselessItemData(GAnswerData,1)-UselessItemData(GAnswerData,2))*rCost;",
+                        "ShipMoney(Player(),ShipMoney(Player())-tdw2);",
+                        "Sound('Sound.Buy');",
+                        "UselessItemData(GAnswerData,2,UselessItemData(GAnswerData,1));",
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 43,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tint=0;",
+                        "tstr2='';",
+                        "if(GetGameOptions('FontDialog')==0)tstr3='<clrEnd>-------------------------------------------------------------';",
+                        "else if(GetGameOptions('FontDialog')==1)tstr3='<clrEnd>------------------------------------------';",
+                        "else if(GetGameOptions('FontDialog')==2)tstr3='<clrEnd>-----------------------------------------';",
+                        "else tstr3='<clrEnd>-------------------------------------';",
+                        "//Цена за пополнение",
+                        "tdw=GalaxyTechLevel();",
+                        "if(tdw<2) tdw=2;",
+                        "else if(tdw>7) tdw=7;",
+                        "rCost=10+(tdw-2)*18;",
+                        "//Если у игрока есть неполные контейнеры - добавляем диалог об их пополнении",
+                        "for(i=1;i<ShipItems(Player());i=i+1) {",
+                        "    tdw=ShipItems(Player(),i);",
+                        "    if(ItemType(tdw)!=t_UselessItem)continue;",
+                        "    tstr1=EquipmentImageName(tdw);",
+                        "    if(tstr1=='Container_lirekron' || tstr1=='Container_missile' || tstr1=='Container_sphere' || tstr1=='Container_torpedo') {",
+                        "        tdw2=UselessItemData(tdw,1)-UselessItemData(tdw,2);",
+                        "        if(tdw2) {",
+                        "            tint=tint+1;",
+                        "            tstr2=tstr2+'</color>'+tint+') '+Name(tdw)+Format(' <0></color>',\"<0>\",UselessItemData(tdw,2))+'/'+Format('<0></color>',\"<0>\",UselessItemData(tdw,1))+Format(' за <0> cr.',\"<0>\",rCost*tdw2)+CT(\"Script.Mod_EvoAmmoBox.64\");",
+                        "        }",
+                        "    }",
+                        "}",
+                        "if(tint) {",
+                        "  DAdd(6);",
+                        "}",
+                        "if(cur_count1==0) AddDialogBlock(CT(\"Script.Mod_EvoAmmoBox.42\"),1);",
+                        "if(cur_count2==0) AddDialogBlock(CT(\"Script.Mod_EvoAmmoBox.43\"),1);",
+                        "if(cur_count3==0) AddDialogBlock(CT(\"Script.Mod_EvoAmmoBox.44\"),1);",
+                        "if(cur_count4==0) AddDialogBlock(CT(\"Script.Mod_EvoAmmoBox.45\"),1);",
+                        "if(cost4<=ShipMoney(Player()) && cur_count4) {",
+                        "  DAdd(5);",
+                        "}",
+                        "if(cost4>ShipMoney(Player()) || !cur_count4) {",
+                        "  DAdd(8);",
+                        "}",
+                        "if(cost3<=ShipMoney(Player()) && cur_count3) {",
+                        "  DAdd(4);",
+                        "}",
+                        "if(cost3>ShipMoney(Player()) || !cur_count3) {",
+                        "  DAdd(9);",
+                        "}",
+                        "if(cost2<=ShipMoney(Player()) && cur_count2) {",
+                        "  DAdd(3);",
+                        "}",
+                        "if(cost2>ShipMoney(Player()) || !cur_count2) {",
+                        "  DAdd(10);",
+                        "}",
+                        "if(cost1<=ShipMoney(Player()) && cur_count1) {",
+                        "  DAdd(0);",
+                        "}",
+                        "if(cost1>ShipMoney(Player()) || !cur_count1) {",
+                        "  DAdd(11);",
+                        "}",
+                        "DAdd(1);"
+                    ],
+                    "#": 44,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(cost4<=ShipMoney(Player()) && cur_count4) {",
+                        "  DAdd(5);",
+                        "}",
+                        "if(cost4>ShipMoney(Player()) || !cur_count4) {",
+                        "  DAdd(8);",
+                        "}",
+                        "if(cost3<=ShipMoney(Player()) && cur_count3) {",
+                        "  DAdd(4);",
+                        "}",
+                        "if(cost3>ShipMoney(Player()) || !cur_count3) {",
+                        "  DAdd(9);",
+                        "}",
+                        "if(cost2<=ShipMoney(Player()) && cur_count2) {",
+                        "  DAdd(3);",
+                        "}",
+                        "if(cost2>ShipMoney(Player()) || !cur_count2) {",
+                        "  DAdd(10);",
+                        "}",
+                        "if(cost1<=ShipMoney(Player()) && cur_count1) {",
+                        "  DAdd(0);",
+                        "}",
+                        "if(cost1>ShipMoney(Player()) || !cur_count1) {",
+                        "  DAdd(11);",
+                        "}",
+                        "DAdd(2);"
+                    ],
+                    "#": 45,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i=1;i<ShipItems(Player());i=i+1) {",
+                        "    tdw=ShipItems(Player(),i);",
+                        "    if(ItemType(tdw)!=t_UselessItem)continue;",
+                        "    tstr1=EquipmentImageName(tdw);",
+                        "    if(tstr1=='Container_lirekron' || tstr1=='Container_missile' || tstr1=='Container_sphere' || tstr1=='Container_torpedo') {",
+                        "        tdw2=UselessItemData(tdw,1)-UselessItemData(tdw,2);",
+                        "        if(tdw2) {",
+                        "            tstr1=Name(tdw)+Format('  <0> cr.',\"<0>\",rCost*tdw2);",
+                        "            if(ShipMoney(Player())<(rCost*tdw2)) AddDialogBlock(tstr1,1);",
+                        "            InjectAnswer('RearmAmmoBox',tstr1,tdw);",
+                        "        }",
+                        "    }",
+                        "}",
+                        "DAdd(7);"
+                    ],
+                    "#": 46,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i=1;i<ShipItems(Player());i=i+1) {",
+                        "    tdw=ShipItems(Player(),i);",
+                        "    if(ItemType(tdw)!=t_UselessItem)continue;",
+                        "    tstr1=EquipmentImageName(tdw);",
+                        "    if(tstr1=='Container_lirekron' || tstr1=='Container_missile' || tstr1=='Container_sphere' || tstr1=='Container_torpedo') {",
+                        "        tdw2=UselessItemData(tdw,1)-UselessItemData(tdw,2);",
+                        "        if(tdw2) {",
+                        "            tstr1=Name(tdw)+Format('  <0> cr.',\"<0>\",rCost*tdw2);",
+                        "            if(ShipMoney(Player())<(rCost*tdw2)) AddDialogBlock(tstr1,1);",
+                        "            InjectAnswer('RearmAmmoBox',tstr1,tdw);",
+                        "        }",
+                        "    }",
+                        "}",
+                        "DAdd(7);"
+                    ],
+                    "#": 47,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tdw=CreateQuestItem('Container_lirekron');",
+                        "ItemSize(tdw,20+GalaxyTechLevel()*2+Rnd(-2,4));",
+                        "UselessItemData(tdw,1,ItemSize(tdw));",
+                        "UselessItemData(tdw,2,ItemSize(tdw));",
+                        "UselessItemData(tdw,3,Rnd(3,4));//сколько раз можно зарядить этой коробкой",
+                        "AddItemToShip(Player(),tdw);",
+                        "ShipMoney(Player(),ShipMoney(Player())-cost1);",
+                        "Sound('Sound.Buy');",
+                        "cur_count1=cur_count1-1;",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 48,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tdw=CreateQuestItem('Container_missile');",
+                        "ItemSize(tdw,20+GalaxyTechLevel()*2+Rnd(-2,4));",
+                        "UselessItemData(tdw,1,ItemSize(tdw));",
+                        "UselessItemData(tdw,2,ItemSize(tdw));",
+                        "UselessItemData(tdw,3,Rnd(3,4));//сколько раз можно зарядить этой коробкой",
+                        "AddItemToShip(Player(),tdw);",
+                        "ShipMoney(Player(),ShipMoney(Player())-cost2);",
+                        "Sound('Sound.Buy');",
+                        "cur_count2=cur_count2-1;",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 49,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tdw=CreateQuestItem('Container_sphere');",
+                        "ItemSize(tdw,20+GalaxyTechLevel()*2+Rnd(-2,4));",
+                        "UselessItemData(tdw,1,ItemSize(tdw));",
+                        "UselessItemData(tdw,2,ItemSize(tdw));",
+                        "UselessItemData(tdw,3,Rnd(3,4));//сколько раз можно зарядить этой коробкой",
+                        "AddItemToShip(Player(),tdw);",
+                        "ShipMoney(Player(),ShipMoney(Player())-cost3);",
+                        "Sound('Sound.Buy');",
+                        "cur_count3=cur_count3-1;",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 50,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tdw=CreateQuestItem('Container_torpedo');",
+                        "ItemSize(tdw,20+GalaxyTechLevel()*2+Rnd(-2,4));",
+                        "UselessItemData(tdw,1,ItemSize(tdw));",
+                        "UselessItemData(tdw,2,ItemSize(tdw));",
+                        "UselessItemData(tdw,3,Rnd(3,4));//сколько раз можно зарядить этой коробкой",
+                        "AddItemToShip(Player(),tdw);",
+                        "ShipMoney(Player(),ShipMoney(Player())-cost4);",
+                        "Sound('Sound.Buy');",
+                        "cur_count4=cur_count4-1;",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 51,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(3);",
+                        "exit;"
+                    ],
+                    "#": 52,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 53,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 18
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 17
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 16,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "PlayerState",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 23
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "cost1",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cost2",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cost3",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cost4",
+                    "Pos.x": 270,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cur_count1",
+                    "Pos.x": 360,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "3",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cur_count2",
+                    "Pos.x": 510,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Int",
+                    "Init": "2",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cur_count3",
+                    "Pos.x": 660,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Int",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cur_count4",
+                    "Pos.x": 810,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 960,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tstr1",
+                    "Pos.x": 1050,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tdw",
+                    "Pos.x": 1140,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tint",
+                    "Pos.x": 1230,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 11,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tdw2",
+                    "Pos.x": 1320,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 12,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "rCost",
+                    "Pos.x": 1410,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 13,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tstr2",
+                    "Pos.x": 1500,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 14,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tstr3",
+                    "Pos.x": 1590,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 15,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 24,
+            "End": 42,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 43,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 44,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 27,
+            "End": 45,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 28,
+            "End": 46,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 29,
+            "End": 47,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 30,
+            "End": 48,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 33,
+            "End": 49,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 34,
+            "End": 50,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 35,
+            "End": 51,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 36,
+            "End": 52,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 37,
+            "End": 53,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 17,
+            "End": 16,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 16,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 19,
+            "End": 18,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 19,
+            "End": 23,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

@@ -1,0 +1,203 @@
+Artefacts ^{
+    ArtScaner ^{
+        OnUseCode ^{
+            01=int i;
+            02=dword s, first = 0;
+            03=if(!CurrentMods('ShusRangers\ShuNukes'))
+            04 ^{
+                01=MessageBox('Не подключён PolNukes! Срочно требуется репорт в Discord');
+                02=exit;
+            }
+            05=if(!ShipInNormalSpace(Player()))
+            06 ^{
+                01=MessageBox('Сканерный кэш не может пробиться через помехи, используйте его в открытом космосе!');
+                02=exit;
+            }
+            07=str stroka = 'В системе обнаружены следующие корабли с ядерным оружием:' + Format('<br>') + '==========';
+            08=for(i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
+            09 ^{
+                01=s = StarShips(ShipStar(Player()), i);
+                02=if(IsPlayer(s)) continue;
+                03=if(ShipFindCustomShipInfoByType(s, 'ShuNukes_NPCNuclearMissiles') == -1)
+                04 ^{
+                    01=if(ShipFindCustomShipInfoByType(s, 'ShuNukes_NPCNuclearMissilesNoArmada') == -1) continue;
+                    02=else info = 'ShuNukes_NPCNuclearMissilesNoArmada';
+                }
+                05=else str info = 'ShuNukes_NPCNuclearMissiles';
+                06=stroka = stroka + Format('<br>') + '<clr>' + Name(s) + '<clrEnd>';
+                07=stroka = stroka + Format('<br>') + 'Количество пусковых шахт: '+'<color=250,40,40>'+substr(ShipCustomShipInfoTextData(s, info, 2), 0, 1)+'</color>';
+                08=stroka = stroka + Format('<br>') + 'Количество боеголовок: '+'<color=250,10,10>'+RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' s, substr(ShipCustomShipInfoTextData(s, info, 2), 2));
+                09=if(!first) first = s;
+                10=if(Dist(Player(),first) > Dist(Player(),s)) first = s;
+            }
+            10=if(first) stroka = stroka + Format('<br>') + 'Системы автоматически наведут на ближайший корабль, оснащённый ядерным оружием, при нажатии на данное уведомление';
+            11=if(first) Ether(7, 'ArtScaner', stroka, first);
+            12=else Ether(7, 'ArtScaner', 'В системе не обнаружено кораблей с ядерным оружием.');
+            13=Sound('Sound.NewMsg');
+        }
+        Text=Программный усилитель вычислительной мощности сканера на <clr>10%<clrEnd>. Увеличивает объём получаемой информации о кораблях.
+        Text=При активации сканирует систему на предмет ядерного оружия, составляя список всех кораблей с боеголовками.
+    }
+    CustomArtefacts ^{
+        ArtScanerv2 ^{
+            OnUseCode ^{
+                01=int i;
+                02=dword s, first = 0;
+                03=if(!CurrentMods('ShusRangers\ShuNukes'))
+                04 ^{
+                    01=MessageBox('Не подключён PolNukes! Срочно требуется репорт в Discord');
+                    02=exit;
+                }
+                05=if(!ShipInNormalSpace(Player()))
+                06 ^{
+                    01=MessageBox('Сканерный кэш не может пробиться через помехи, используйте его в открытом космосе!');
+                    02=exit;
+                }
+                07=str stroka = 'В системе обнаружены следующие корабли с ядерным оружием:' + Format('<br>') + '==========';
+                08=for(i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
+                09 ^{
+                    01=s = StarShips(ShipStar(Player()), i);
+                    02=if(s) = Player() continue;
+                    03=if(ShipFindCustomShipInfoByType(s, 'ShuNukes_NPCNuclearMissiles') == -1) continue;
+                    04=else str info = 'ShuNukes_NPCNuclearMissiles';
+                    05=if(ShipFindCustomShipInfoByType(s, 'ShuNukes_NPCNuclearMissilesNoArmada') == -1) continue;
+                    06=else info = 'ShuNukes_NPCNuclearMissilesNoArmada';
+                    07=if(ShipFindCustomShipInfoByType(s, 'ShuNukes_NuclearMissiles') != -1) continue;
+                    08=stroka = stroka + Format('<br>') + '<clr>' + Name(s) + '<clrEnd>';
+                    09=stroka = stroka + Format('<br>') + 'Количество пусковых шахт: '+'<color=250,40,40>'+substr(ShipCustomShipInfoTextData(s, info, 2), 0, 1)+'</color>';
+                    10=stroka = stroka + Format('<br>') + 'Количество боеголовок: '+'<color=250,10,10>'+RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, substr(ShipCustomShipInfoTextData(0, cur_info, 2), 2))
+                    11=if(!first) first = s;
+                    12=if(Dist(Player(),first) > Dist(Player(),s)) first = s;
+                }
+                10=if(first) stroka = stroka + Format('<br>') + 'Системы автоматически наведут на ближайший корабль, оснащённый ядерным оружием, при открытии данного уведомления';
+                11=if(first) Ether(7, 'ArtScaner', stroka, first);
+                12=else Ether(7, 'ArtScaner', 'В системе не обнаружено кораблей с ядерным оружием.');
+                13=Sound('Sound.NewMsg');
+            }
+            Text=Программный усилитель вычислительной мощности сканера. Улучшенная версия артефакта увеличивает мощность сканера на <clr>5<clrEnd> процентов больше по сравнению с обычной версией кэша. Также увеличивает объем получаемой информации о кораблях.
+            Text=При активации сканирует систему на предмет ядерного оружия, составляя список всех кораблей с боеголовками.
+        }
+        ArtScanerv3 ^{
+            OnUseCode ^{
+                01=int i;
+                02=dword s, first = 0;
+                03=if(!CurrentMods('ShusRangers\ShuNukes'))
+                04 ^{
+                    01=MessageBox('Не подключён PolNukes! Срочно требуется репорт в Discord');
+                    02=exit;
+                }
+                05=if(!ShipInNormalSpace(Player()))
+                06 ^{
+                    01=MessageBox('Сканерный кэш не может пробиться через помехи, используйте его в открытом космосе!');
+                    02=exit;
+                }
+                07=str stroka = 'В системе обнаружены следующие корабли с ядерным оружием:' + Format('<br>') + '==========';
+                08=for(i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
+                09 ^{
+                    01=s = StarShips(ShipStar(Player()), i);
+                    02=if(s) = Player() continue;
+                    03=if(ShipFindCustomShipInfoByType(s, 'ShuNukes_NPCNuclearMissiles') == -1) continue;
+                    04=else str info = 'ShuNukes_NPCNuclearMissiles';
+                    05=if(ShipFindCustomShipInfoByType(s, 'ShuNukes_NPCNuclearMissilesNoArmada') == -1) continue;
+                    06=else info = 'ShuNukes_NPCNuclearMissilesNoArmada';
+                    07=if(ShipFindCustomShipInfoByType(s, 'ShuNukes_NuclearMissiles') != -1) continue;
+                    08=stroka = stroka + Format('<br>') + '<clr>' + Name(s) + '<clrEnd>';
+                    09=stroka = stroka + Format('<br>') + 'Количество пусковых шахт: '+'<color=250,40,40>'+substr(ShipCustomShipInfoTextData(s, info, 2), 0, 1)+'</color>';
+                    10=stroka = stroka + Format('<br>') + 'Количество боеголовок: '+'<color=250,10,10>'+RunFunctionFromScript('Mod_ShuNukes', 'FindShipItemById' cur_ship, substr(ShipCustomShipInfoTextData(0, cur_info, 2), 2))
+                    11=if(!first) first = s;
+                    12=if(Dist(Player(),first) > Dist(Player(),s)) first = s;
+                }
+                10=if(first) stroka = stroka + Format('<br>') + 'Системы автоматически наведут на ближайший корабль, оснащённый ядерным оружием, при открытии данного уведомления';
+                11=if(first) Ether(7, 'ArtScaner', stroka, first);
+                12=else Ether(7, 'ArtScaner', 'В системе не обнаружено кораблей с ядерным оружием.');
+                13=Sound('Sound.NewMsg');
+            }
+            Text=Программный усилитель вычислительной мощности сканера. Улучшенная версия артефакта увеличивает мощность сканера на <clr>10<clrEnd> процентов больше по сравнению с обычной версией кэша. Также увеличивает объем получаемой информации о кораблях.
+            Text=При активации сканирует систему на предмет ядерного оружия, составляя список всех кораблей с боеголовками.
+        }
+    }
+}
+MicroModuls ~{
+    ShuNukes_Nova ^{
+        CustomTag=NovaAcryn
+        Equipments=W15
+        LockedAcryn=3
+        MissileGraph=Nova
+        Name=
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        ShotVisual=15
+        Special=1
+        WeaponMods=Acid,Destruct,BlockWeapon,BlockDroid,DropCargo,Decelerate,BonusToDamaged,Magnetic,ReduceEngine,ScanBonus
+    }
+}
+Script ^{
+    Mod_ShuDefence ^{
+        10=Слишком дорого и ненадёжно. Обойдусь
+        11=Добро, приступайте к установке
+        2=Хочу приобрести абсорбер
+        3=Не желаете ли также приобрести абсорбер?
+        4=Приобрести точечный усилитель поля
+        5=Недавно мы наладили серийное производство точечных усилителей поля, не желаете взглянуть?
+        6=Итак, детище наших лучших инженеров - <clr>Абсорбер<clrEnd>.<br>Он представляет из себя систему противодействия баллистическому огню, способную нейтрализовать 80% урона от попадания ядерной боеголовки или любой другой ракеты схожей силы взрыва (откуда бы ей только взяться?), рассеивая локализованную энергию в вакууме. Не действует на обычные ракеты из-за низкого для локализации энергетического потенциала. Перезарядка после каждой локализации будет занимать приблизительно <0> дней. Такая штучка обойдётся вам в добрые <1> cr., но, ставлю на кон свою репутацию управляющего, об этом выборе вы не пожалеете - уж поверьте!
+        7=<clr>Точечный усилитель поля<clrEnd> - устройство, изобретенное нами прежде всего для защиты от внезапных нападений со стороны доминаторов. Наша разработка взаимодействует напрямую с ГЗП, значительно усиливая защитное поле в предполагаемом месте удара на короткий срок. Это позволяет в 50% случаев поглотить весь входящий урон, до пяти раз в день. <br>Однако, усилитель способен предотвратить только малый и средний ущерб, а при получении значительного устройство перезапускается, чтобы не повредить генератор защитного поля.<br><br>Установка Точечного усилителя поля будет стоить вам <0> cr. Будем устанавливать?
+        8=Нет, в данный момент меня это не интересует
+        9=Пожалуй, как раз кстати - хоть иногда буду чувствовать себя в безопасности!
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            Absorber ^{
+                Description=Система противодействия баллистическому огню, способная нейтрализовать 80% урона от попадания ядерной боеголовки или любой иной ракеты со схожим тротиловым эквивалентом, рассеивая локализованную энергию в вакууме. Не действует на обычные ракеты из-за низкого для локализации энергетического потенциала. <br>Заряд: <Data1>/30 ед.
+                Icon=550
+                Name=Абсорбер
+                OnActCode ^{
+                    01=int charge=0;
+                    02=dword info=CurInfo();
+                    03=dword ship=ScriptItemActShip();
+                    04=int i=ShipCustomShipInfoData(0,info,1);
+                    05=if(ShipOwner(ship)==5 && !ShipSubType(ship)) charge=4;
+                    06=else charge=1;
+                    07=if(ScriptItemActionType(t_OnStep,11) && i<30) ShipCustomShipInfoData(0,info,1,i+charge);
+                    08=if(i<30) exit;
+                    09=if(i>30) ShipCustomShipInfoData(0,info,1,30);
+                    10=if(ScriptItemActionType(t_OnTakingDamageMi))
+                    11 ^{
+                        01=if(ScriptItemActParam()<120) exit;
+                        02=else
+                        03 ^{
+                            01=ScriptItemActParam(ScriptItemActParam()/5);
+                            02=ShipCustomShipInfoData(0,info,1,0);
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamageMi
+                OnActStepTypes=11
+            }
+            ECM ^{
+                Description=Мощное устройство, рассеивающее тепловой эффект от любого повреждения обшивке корабля с вероятностью 50%. При рассеивании теряется заряд, что довольно логично. При получении более <clr>75<clrEnd> единиц урона <clr>одномоментно<clrEnd> проводит аварийную перезагрузки во избежание поломки от перегрева, в процессе цего теряет все накопленные заряды. <br>Заряд: <Data1>/5 ед.
+                Icon=552
+                Name=Точечный усилитель поля
+                OnActCode ^{
+                    01=dword info=CurInfo();
+                    02=dword ship=ScriptItemActShip();
+                    03=if(!ShipProtectability(ship)) exit;
+                    04=int i=ShipCustomShipInfoData(0,info,1);
+                    05=if(ScriptItemActionType(t_OnStep,11) && i<5) ShipCustomShipInfoData(0,info,1,i+1);
+                    06=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
+                    07 ^{
+                        01=if(ScriptItemActParam()>=76) ShipCustomShipInfoData(0,info,1,0);
+                        02=i=ShipCustomShipInfoData(0,info,1);
+                        03=if(!i) exit;
+                        04=else if(Rnd(0,1)) ScriptItemActParam(0);
+                        05=ShipCustomShipInfoData(0,info,1,i-1);
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+                OnActStepTypes=11
+            }
+        }
+    }
+}

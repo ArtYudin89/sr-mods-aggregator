@@ -1,0 +1,1249 @@
+Script ^{
+    MS_Begin ^{
+        10=Мы рады обеспечить вас всеми нужными знаниями для рейнджера. Первое задание будет простым - нужно совершить взлёт из центра рейнджеров и приземлиться на вашу родную планету <0>. Опытный инструктор будет ждать вас в космопорте.
+        64=От Межзвёздной Коалиции и в частности Центра рейнджеров <0>, благодарю всех истинных патриотов, которые в этот нелёгкий час записываются в ряды рейнджеров! Все мы помним, что двести лет назад именно рейнджеры положили конец клисанской войне, угрожавшей самому существованию пяти цивилизаций Коалиции разумных рас. Та война многому научила нас, единство Коалиции стало ещё крепче, и все разногласия, возникавшие на протяжении двух столетий, решались исключительно мирным путем. И вдруг, шесть лет назад, в одной из удалённых систем неизвестные враги атаковали научную экспедицию землян. Последнее полученное сообщение гласило, что враги похожи на клисан, но клисаны всегда воевали в космосе, а тут нападение произошло на планете...
+        64=Так Коалиция столкнулась с новым врагом, который напоминает и клисан, и боевые машины неизвестной конструкции. Они самовоспроизводятся с большой скоростью и захватывают систему за системой, одинаково хорошо сражаясь и на планетах, и в космосе, и в гиперпространстве. С лёгкой руки землян, которые приняли на себя первый удар, их назвали доминаторами. Увы, несмотря на героизм наших военных, попытка покончить с врагом одним ударом в Гралгарской битве оказалась неуспешной. Мы понесли большие потери, а доминаторы успели вывести из-под удара свой мозговой центр, <clr>Блазера<clrEnd>, и активно продолжают воспроизводство на неизвестных нам базах в дальнем космосе.
+        65=Не желаете сначала пройти курс обучения начинающего рейнджера? Мы предлагаем уникальную возможность совершенно бесплатно выучить основы пилотирования, стрельбы, подбора грузов и торговли.
+        73=<0>
+    }
+    Mod_SR2Dominators ^{
+        0=<br>
+        1=<0>
+    }
+}
+FormRuins ^{
+    RC ^{
+        TakeNod ^{
+            PlayerSend=BlockTakeNodPlayerSend
+            PlayerSendMod=Получить новый микромодуль
+            RCAfterPlayerNo=Это разумно, <Player>. Привезите еще ноды, чтобы пополнить свой нод-счет.
+            RCAfterPlayerOk=Отлично, <Player>. Мы списали с вашего счета <NodCnt> нодов.
+            RCAfterPlayerOk=Вы получаете микромодуль <Name>. Это просто отличный выбор. Мы рады помочь вам в борьбе с доминаторами.
+            RCAnswer=Уважаемый <Player>! Сегодня мы готовы предложить вам следующие микромодули:
+            RCAnswer=-------------------------------------------
+            RCAnswerEnd=Состояние вашего нод-счета: <BaseNod> нд.
+            RCAnswerMM=. Микромодуль <Name>
+            RCAnswerMMCost=Стоимость модуля: <Count> нд.
+            RCAnswerStart=Уважаемый <Player>! Сегодня мы готовы предложить вам следующие микромодули:<Text>
+        }
+    }
+}
+FormGameSet2 ^{
+    Common ^{
+        HelpGroup1Easy=Доминаторы слабей сил коалиции
+        HelpGroup1Expert=Доминаторы гораздо сильней коалиции
+        HelpGroup1Hard=Доминаторы сильней коалиции
+        HelpGroup1Normal=Силы доминаторов и коалиции равны
+        HelpGroup2Easy=Разброс цен на товары большой
+        HelpGroup2Expert=Разброс цен на товары минимальный
+        HelpGroup2Hard=Разброс цен на товары небольшой
+        HelpGroup2Normal=Разброс цен на товары средний
+        HelpGroup3Easy=Впечатляющая скорость работы научных баз
+        HelpGroup3Expert=Неудовлетворительная скорость работы научных баз
+        HelpGroup3Hard=Замедленная скорость работы научных баз
+        HelpGroup3Normal=Нормальная скорость работы научных баз
+        HelpGroup4Easy=Оборудование выходит из строя медленно
+        HelpGroup4Expert=Оборудование выходит из строя очень быстро
+        HelpGroup4Hard=Оборудование быстро выходит из строя
+        HelpGroup4Normal=У оборудования средний срок эксплуатации
+        HelpGroup5Easy=Доступно много нового оборудования в магазинах
+        HelpGroup5Expert=В магазинах продается одно старье
+        HelpGroup5Hard=Появление новых вещей явно запаздывает
+        HelpGroup5Normal=В магазинах представлено нормальное оборудование
+        HelpGroup6Easy=Задания легкие и высокооплачиваемые
+        HelpGroup6Expert=Очень тяжелые и малооплачиваемые задания
+        HelpGroup6Hard=Тяжелые малооплачиваемые задания
+        HelpGroup6Normal=Задания нормальные и среднеоплачиваемые
+        HelpGroup7Easy=Черные дыры появляются часто, противники слабые
+        HelpGroup7Expert=Очень редкие черные дыры с крутыми противниками
+        HelpGroup7Hard=Черные дыры появляются редко, противники сильные
+        HelpGroup7Normal=Нормальное появление черных дыр с нормальной сложностью
+        HelpGroup8Easy=Игрок удачлив, беды и трудности обходят его стороной
+        HelpGroup8Expert=Игроку хронически не везет во всем
+        HelpGroup8Hard=Игрок не очень удачлив
+        HelpGroup8Normal=Везение игрока среднее
+        Level1=Легко
+        Level2=Нормально
+        Level3=Тяжело
+        Level4=Невозможно
+        LevelGroup1=Доминаторы
+        LevelGroup2=Разброс цен
+        LevelGroup3=Ученые
+        LevelGroup4=Поломки
+        LevelGroup5=Оборудование
+        LevelGroup6=Задания
+        LevelGroup7=Черные дыры
+        LevelGroup8=Удача
+        NameGroup1Easy=Слабые
+        NameGroup1Expert=Крутые
+        NameGroup1Hard=Сильные
+        NameGroup1Normal=Обычные
+        NameGroup2Easy=Большой
+        NameGroup2Expert=Минимум
+        NameGroup2Hard=Небольшой
+        NameGroup2Normal=Нормальный
+        NameGroup3Easy=Гениальные
+        NameGroup3Expert=Тупые
+        NameGroup3Hard=Глупые
+        NameGroup3Normal=Умные
+        NameGroup4Easy=Редко
+        NameGroup4Expert=Постоянно
+        NameGroup4Hard=Часто
+        NameGroup4Normal=Средне
+        NameGroup5Easy=Крутое
+        NameGroup5Expert=Отстой
+        NameGroup5Hard=Плохое
+        NameGroup5Normal=Обычное
+        NameGroup6Easy=Легкие
+        NameGroup6Expert=Неудачные
+        NameGroup6Hard=Тяжелые
+        NameGroup6Normal=Нормальные
+        NameGroup7Easy=Много
+        NameGroup7Expert=Редко
+        NameGroup7Hard=Мало
+        NameGroup7Normal=Средне
+        NameGroup8Easy=Блеск
+        NameGroup8Expert=Нулевая
+        NameGroup8Hard=Плохая
+        NameGroup8Normal=Хорошая
+    }
+}
+Illness ^{
+    Illness ~{
+        EndDate=<clr><clrEnd>
+        EndDate=Болезнь продлится предположительно до<br><Date>
+    }
+    Stimulant ~{
+        EndDate=<clr><clrEnd>
+        EndDate=Эффект стимулятора закончится<br><Date>
+    }
+}
+Planet ^{
+    NotCivil ^{
+        Treasure ^{
+            Few=
+            Lots=
+            Many=
+            Nothing=
+            Some=
+        }
+    }
+}
+ABMap ^{
+    01 ^{
+        Name=Погоня
+    }
+    02 ^{
+        Name=Арена Справедливости
+    }
+    03 ^{
+        Name=Пандорика
+    }
+    04 ^{
+        Name=Лос-Ласониум
+    }
+    05 ^{
+        Name=Центрифуга
+    }
+    06 ^{
+        Group=-1
+        Name=Лабиринт
+    }
+    07 ^{
+        Group=-1
+        Name=Мяч
+    }
+    08 ^{
+        Group=-1
+        Name=Многогранный гаалолипипед
+    }
+    09 ^{
+        Group=-1
+        Name=Артификал
+    }
+    10 ^{
+        Group=-1
+        Name=Трициклизм
+    }
+    11 ^{
+        Group=-1
+        Name=Полусфера
+    }
+    12 ^{
+        Group=-1
+        Name=Квадразырь
+    }
+    13 ^{
+        Group=-1
+        Name=Арена Реегбара
+    }
+    14 ^{
+        Group=-1
+        Name=Крест
+    }
+    15 ^{
+        Group=-1
+        Name=Рачехания
+    }
+    16 ^{
+        Name=Келлериада
+    }
+}
+MicroModuls ^{
+}
+Artefacts ^{
+    ArtAnalyzer ^{
+        AttackDomik=
+        AttackPirates=
+        Broken=(не работает)
+        BrokenInBattle=Внимание! При попадании были размагничены некоторые блоки памяти, и вероятностный анализатор более не функционирует. Вам придется принимать решения без его помощи до тех пор, пока он не будет переинсталлирован.
+        BrokenInUse=Программа вероятностного анализатора совершила недопустимую операцию и будет закрыта. Вам придется принимать решения без его помощи до тех пор, пока он не будет переинсталлирован.
+        Description=Вероятностный анализатор позволяет с высокой точностью предсказывать исход боёв. Инсталлируется в бортовую систему корабля.
+        KellerHole=
+        Name=Вероятностный анализатор
+        TechLevelDown=
+        TechLevelUp=
+        Text=Рассчитывает и показывает вероятность победы над любым противником.
+        TextToRadar=Вероятность победы: <ChanceToWin><color=255,240,100>%</color>
+    }
+    ArtArtefactor ^{
+        Description=Артефактор - переходник для подключения артефактов. В его схеме используется принцип кристаллического инвертирования сигнала, поэтому он позволяет подключить <clr>три<clrEnd> артефакта вместо одного дроида.
+        Name=Артефактор
+        OnActCode ^{
+            01=dword cur_art = CurItem();
+            02=if(ScriptItemActionType(t_OnReEnteringForm)) dword cur_ship = FormCurShip();
+            03=else
+            03 ^{
+                01=cur_ship = ScriptItemActShip();
+                02=if(!cur_ship) exit;
+            }
+            04=int slot = ItemIsInUse(cur_art, cur_ship);
+            05=if(slot)
+            05 ^{
+                01=dword new_art = CreateCustomArt('ArtArtefactor_Custom', ItemSize(cur_art), ItemCost(cur_art), ItemOwner(cur_art));
+                02=ItemDurability(new_art, ItemDurability(cur_art));
+                03=AddItemToShip(cur_ship, new_art);
+                04=FreeItem(GetArtFromShip(cur_ship, cur_art));
+                05=if(GetEquipmentStats(ShipItems(cur_ship, 0), 5))
+                05 ^{
+                    01=ShipSpecialBonuses(cur_ship, bonSlotDroid, ShipSpecialBonuses(cur_ship, bonSlotDroid) - 1);
+                    02=ShipSpecialBonuses(cur_ship, bonSlotArt, ShipSpecialBonuses(cur_ship, bonSlotArt) + 3);
+                    03=CustomArtData(new_art, 1, 1);
+                    04=CustomArtData(new_art, 3, Id(cur_ship));
+                }
+                06=ItemIsInUse(new_art, cur_ship, 1, slot);
+            }
+        }
+        OnActCodeTypes=t_OnStep,t_OnReEnteringForm
+        OnActStepTypes=0
+        Text=Разветвитель для подключения редких видов оборудования. Позволяет использовать коннектор <clr>дроида<clrEnd> для подключения <clr>трёх артефактов<clrEnd>.
+    }
+    ArtDecelerate ^{
+        Description=Вжик - экспериментальный киборг с интеллектуальной матрицей вжика (гаальского насекомого). Полностью повторяет его поведение, а именно - кладку яиц. Роль яиц у киборга выполняют термические заряды, которые он откладывает в осколочные снаряды, чем повышает их эффективность.
+        Name=Вжик
+        OnActCode ^{
+            01=dword cur_art = CurItem();
+            02=if(!ItemIsInUse(cur_art)) exit;
+            03=if(ScriptItemActionType(t_OnReEnteringForm)) dword cur_ship = FormCurShip();
+            04=else
+            04 ^{
+                01=cur_ship = ScriptItemActShip();
+                02=if(!cur_ship) exit;
+            }
+            05=if(ArtefactTypeBoosted(cur_ship, t_ArtDecelerate))
+            05 ^{
+                01=for(int i = 1; i <= ShipCntWeapon(cur_ship); i = i + 1)
+                01 ^{
+                    01=dword gun = ShipWeapon(cur_ship, i);
+                    02=if(GetEquipmentStats(gun, 3) == 1) EqCustomFaction(gun, 'Unknown');
+                }
+            }
+        }
+        OnActCodeTypes=t_OnStep,t_OnReEnteringForm
+        OnActStepTypes=0
+        Text=Добавляет термические заряды в осколочные снаряды. Кроме повреждений, каждый заряд наносит мощный тепловой удар, ведущий к перегреву двигателей противника.
+    }
+    ArtDefToArms1 ^{
+        Description=Протон - дополнение к энергетическому блоку. Встраивается в механизм распределения энергии защитного поля и, используя часть этой энергии, активирует дополнительный слот для орудийной турели.
+        Name=Протон
+        OnActCode ^{
+            01=dword cur_art = CurItem();
+            02=if(!ItemIsInUse(cur_art)) exit;
+            03=if(ScriptItemActionType(t_OnReEnteringForm)) dword cur_ship = FormCurShip();
+            04=else
+            04 ^{
+                01=cur_ship = ScriptItemActShip();
+                02=if(!cur_ship) exit;
+            }
+            05=if(ArtefactTypeBoosted(cur_ship, t_ArtDefToArms1))
+            05 ^{
+                01=EqCustomFaction(ShipEqInSlot(cur_ship, t_DefGenerator), 'Unknown');
+            }
+        }
+        OnActCodeTypes=t_OnStep,t_OnReEnteringForm
+        OnActStepTypes=0
+        Text=Интегрируется в энергетический блок защитного поля. Использует <clr>10%<clrEnd> его мощности для активации дополнительной орудийной турели.
+    }
+    ArtDroid ^{
+        Description=Младший дроид - облегченный вариант основного дроида, при помощи специальной системы синхронизации подключаемый к общему кабелю. Работает вместе с основным дроидом, повышая скорость ремонтных работ на корабле.
+        Name=Дроид младший
+        Text=Этот маленький дроид может восстанавливать <clr>10<clrEnd> единиц поврежденного корпуса корабля и способен работать даже в гиперпространстве.
+    }
+    ArtEnergyDef ^{
+        Description=Проглот - раздвижной механический энергоабсорбент, потребляющий большое количество энергии. Лучшее применение - подключение к генератору защиты корпуса. Поглощает попадания от энергетического оружия, тем самым сводя ущерб к нулю.
+        Name=Проглот
+        OnActCode ^{
+            01=dword cur_art = CurItem();
+            02=if(!ItemIsInUse(cur_art)) exit;
+            03=if(ScriptItemActionType(t_OnReEnteringForm)) dword cur_ship = FormCurShip();
+            04=else
+            04 ^{
+                01=cur_ship = ScriptItemActShip();
+                02=if(!cur_ship) exit;
+            }
+            05=if(ArtefactTypeBoosted(cur_ship, t_ArtEnergyDef))
+            05 ^{
+                01=EqCustomFaction(ShipEqInSlot(cur_ship, t_Hull), 'Unknown');
+            }
+        }
+        OnActCodeTypes=t_OnStep,t_OnReEnteringForm
+        OnActStepTypes=0
+        Text=В <clr>30%<clrEnd> случаев поглощает тепловую составляющую луча энергетического оружия, превращая импульсы попаданий в безопасные электрические всплески.
+    }
+    ArtFastRacks ^{
+        Broken=(сломан)
+        BrokenInBattle=Тряска во время боя сбила навинт с крепежного места. Сместившись, минизавод выполнил недопустимую операцию и вкрутил в свое тело расщепитель. Требуется вмешательство мастера.
+        BrokenInUse=Комплект расщепителей закончился. Последние операции навинт выполнял вхолостую. Это вызвало перегрев механической части минизавода, устройство не функционирует.
+        CanBeABDrop=0
+        CanBeReward=0
+        CanBeTreasure=0
+        Description=Навинт - минизавод по техническому усовершенствованию снарядов. Размещается над затвором орудия и изменяет мощность заряда путем вмонтирования расщепительного элемента. Неприхотлив в использовании: не требует дополнительных источников питания и не перегревается.
+        Name=Навинт
+        Text=Каждый снаряд в затворе оснащается боеголовкой-расщепителем. Благодаря этому эффективность поражения осколочного оружия возрастает на <clr>20%<clrEnd>.
+    }
+    ArtForsage ^{
+        Description=Обливионный коннектор - несколько тысяч наномодулей келлероидов, встроенных в специальную сетку. Сетка распределена по поверхности двигателя и реставрирует его стенки при износе. Даже в режиме форсажа срок работы двигателя продлевается вдвое.
+        Name=Обливионный коннектор
+        OnActCode ^{
+            01=dword cur_art = CurItem();
+            02=if(!ItemIsInUse(cur_art)) exit;
+            03=if(ScriptItemActionType(t_OnReEnteringForm)) dword cur_ship = FormCurShip();
+            04=else
+            04 ^{
+                01=cur_ship = ScriptItemActShip();
+                02=if(!cur_ship) exit;
+            }
+            05=if(ArtefactTypeBoosted(cur_ship, t_ArtForsage))
+            05 ^{
+                01=EqCustomFaction(ShipEqInSlot(cur_ship, t_Engine), 'Unknown');
+            }
+        }
+        OnActCodeTypes=t_OnStep,t_OnReEnteringForm
+        OnActStepTypes=0
+        Text=Технология, созданная на основе наномодулей келлероидов. Позволяет сокращать износ двигателя в режиме форсажа в <clr>2<clrEnd> раза.
+    }
+    ArtGiperJump ^{
+        Description=Гипергенератор - уникальное дополнение для двигателя. Генерирует низкочастотный импульс, который вызывает колебания пространства и переносит носитель в гипертоннель. Это позволяет совершать прыжки до <clr>40<clrEnd> парсек независимо от характеристик двигателя. Имеет большой коэффициент износа.
+        Name=Гипергенератор
+        OnActCode ^{
+            01=dword cur_art = CurItem();
+            02=if(!ItemIsInUse(cur_art)) exit;
+            03=if(ScriptItemActionType(t_OnStep) || ScriptItemActionType(t_OnReEnteringForm))
+            03 ^{
+                01=if(ScriptItemActionType(t_OnReEnteringForm)) dword cur_ship = FormCurShip();
+                02=else
+                02 ^{
+                    01=cur_ship = ScriptItemActShip();
+                    02=if(!cur_ship) exit;
+                }
+                03=if(ArtefactTypeBoosted(cur_ship, t_ArtGiperJump))
+                03 ^{
+                    01=EqCustomFaction(ShipEqInSlot(cur_ship, t_Engine), 'Unknown');
+                }
+                04=if(ScriptItemActionType(t_OnStep, 11))
+                04 ^{
+                    01=if(ShipInHyperSpace(cur_ship))
+                    01 ^{
+                        01=if(!ShipInHole(cur_ship))
+                        01 ^{
+                            01=ShipOrderData1(cur_ship, max(ShipOrderData1(cur_ship) - 1, 1));
+                        }
+                    }
+                }
+            }
+            04=else
+            04 ^{
+                01=if(ItemIsBroken(cur_art)) exit;
+                02=dword engine = ShipEqInSlot(Player(), t_Engine);
+                03=if(!engine) exit;
+                04=int range = CT('Artefacts.NumericValues.kArtGiperJump');
+                05=if(ArtefactTypeBoosted(Player(), t_ArtGiperJump)) range = range + CT('Artefacts.NumericValues.kArtGiperJumpEx');
+                06=str form = CurrentForm();
+                07=if(form == 'Galaxy')
+                07 ^{
+                    01=dword bon_count = FindBonusByNameInCfg('500');
+                    02=dword bon_mark = FindBonusByNameInCfg('501');
+                    03=dword engine_base_jump = FindBonusByNameInCfg('502');
+                    04=if(ScriptItemActionType(t_OnEnteringForm))
+                    04 ^{
+                        01=int bon = ShipSpecialBonuses(Player(), bonJump, 'Total');
+                        02=unknown tarr = newarray(4);
+                        03=for(int i = 1; i <= 4; i = i + 1)
+                        03 ^{
+                            01=dword art = ShipEqInSlot(Player(), t_Artefact, i);
+                            02=if(ItemType(art) != t_ArtGiperJump) continue;
+                            03=tarr[i - 1] = ItemDurability(art);
+                            04=ItemDurability(art, 0);
+                        }
+                        04=int engine_jump_range = ShipJump(Player());
+                        05=for(i = 1; i <= 4; i = i + 1)
+                        05 ^{
+                            01=art = ShipEqInSlot(Player(), t_Artefact, i);
+                            02=if(ItemType(art) != t_ArtGiperJump) continue;
+                            03=ItemDurability(art, tarr[i - 1]);
+                        }
+                        06=if(engine_jump_range <= range)
+                        06 ^{
+                            01=if(bon < 0)
+                            01 ^{
+                                01=ItemExtraSpecialsAddByType(cur_art, bon_count, abs(bon));
+                                02=ShipSpecialBonuses(Player(), bonJump, ShipSpecialBonuses(Player(), bonJump) + abs(bon));
+                                03=ItemExtraSpecialsAddByType(cur_art, engine_base_jump, GetEquipmentStats(engine, 1));
+                                04=SetEquipmentStats(engine, 0, 1);
+                            }
+                            02=else if(bon > 0)
+                            02 ^{
+                                01=ItemExtraSpecialsAddByType(cur_art, bon_count, bon);
+                                02=ItemExtraSpecialsAddByType(cur_art, bon_mark, 1);
+                                03=ShipSpecialBonuses(Player(), bonJump, ShipSpecialBonuses(Player(), bonJump) - bon);
+                            }
+                        }
+                    }
+                    05=else
+                    05 ^{
+                        01=bon = ItemExtraSpecialsCountByType(cur_art, bon_count);
+                        02=if(bon)
+                        02 ^{
+                            01=if(!ItemExtraSpecialsCountByType(cur_art, bon_mark))
+                            01 ^{
+                                01=ShipSpecialBonuses(Player(), bonJump, ShipSpecialBonuses(Player(), bonJump) - bon);
+                                02=ItemExtraSpecialsDeleteByType(cur_art, bon_count, bon);
+                            }
+                            02=else
+                            02 ^{
+                                01=ShipSpecialBonuses(Player(), bonJump, ShipSpecialBonuses(Player(), bonJump) + bon);
+                                02=ItemExtraSpecialsDeleteByType(cur_art, bon_count, bon);
+                                03=ItemExtraSpecialsDeleteByType(cur_art, bon_mark, 1);
+                            }
+                            03=int base_jump = ItemExtraSpecialsCountByType(cur_art, engine_base_jump);
+                            04=if(base_jump)
+                            04 ^{
+                                01=ItemExtraSpecialsDeleteByType(cur_art, engine_base_jump, base_jump);
+                                02=SetEquipmentStats(engine, base_jump, 1);
+                            }
+                        }
+                    }
+                }
+                08=else if(form == 'Ship')
+                08 ^{
+                    01=if(ScriptItemActionType(t_OnLeavingForm))
+                    01 ^{
+                        01=if(IsPlayer(FormCurShip()))
+                        01 ^{
+                            01=if(ShipInNormalSpace(Player()))
+                            01 ^{
+                                01=bon = ShipSpecialBonuses(Player(), bonJump, 'Total');
+                                02=if(bon < 0 && ShipJump(Player()) <= range)
+                                02 ^{
+                                    01=ItemExtraSpecialsAddByType(cur_art, 0, abs(bon));
+                                    02=ShipSpecialBonuses(Player(), bonJump, ShipSpecialBonuses(Player(), bonJump) + abs(bon));
+                                }
+                            }
+                        }
+                    }
+                }
+                09=else if(form == 'StarMap')
+                09 ^{
+                    01=if(ScriptItemActionType(t_OnEnteringForm))
+                    01 ^{
+                        01=bon = ItemExtraSpecialsCountByType(cur_art, 0);
+                        02=if(bon)
+                        02 ^{
+                            01=ShipSpecialBonuses(Player(), bonJump, ShipSpecialBonuses(Player(), bonJump) - bon);
+                            02=ItemExtraSpecialsDeleteByType(cur_art, 0, bon);
+                        }
+                    }
+                }
+            }
+        }
+        OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnReEnteringForm,t_OnLeavingForm
+        OnActStepTypes=0,11
+        Text=Переносит корабль в гипертоннель, что позволяет преодолеть расстояние до <clr>40<clrEnd> парсек вне зависимости от характеристик двигателя.
+    }
+    ArtMiniExpl ^{
+        Description=При попадании локализатор отводит энергию выстрела на внешнюю поверхность вражеского корабля, чтобы при возможном взрыве пострадало как можно меньше оборудования.
+        Name=Локализатор взрывной волны
+        OnActCode ^{
+            01=dword cur_art = CurItem();
+            02=if(!ItemIsInUse(cur_art)) exit;
+            03=if(ScriptItemActionType(t_OnReEnteringForm)) dword cur_ship = FormCurShip();
+            04=else
+            04 ^{
+                01=cur_ship = ScriptItemActShip();
+                02=if(!cur_ship) exit;
+            }
+            05=if(ArtefactTypeBoosted(cur_ship, t_ArtefactMiniExpl))
+            05 ^{
+                01=EqCustomFaction(ShipEqInSlot(cur_ship, t_Scaner), 'Unknown');
+            }
+        }
+        OnActCodeTypes=t_OnStep,t_OnReEnteringForm
+        OnActStepTypes=0
+        Text=Сохраняет много ценного оборудования врага при его ликвидации.
+    }
+    ArtMissileDef ^{
+        Description=Ракетанг - система наномеханизмов, которые покрывают поверхность корпуса тонкой управляемой плазмоуритановой пленкой. Их уникальность в том, что они определяют место попадания ракеты и мгновенно укрепляют броню в нужном месте.
+        Name=Ракетанг
+        OnActCode ^{
+            01=dword cur_art = CurItem();
+            02=if(!ItemIsInUse(cur_art)) exit;
+            03=if(ScriptItemActionType(t_OnReEnteringForm)) dword cur_ship = FormCurShip();
+            04=else
+            04 ^{
+                01=cur_ship = ScriptItemActShip();
+                02=if(!cur_ship) exit;
+            }
+            05=if(ArtefactTypeBoosted(cur_ship, t_ArtMissileDef))
+            05 ^{
+                01=EqCustomFaction(ShipEqInSlot(cur_ship, t_Hull), 'Unknown');
+            }
+        }
+        OnActCodeTypes=t_OnStep,t_OnReEnteringForm
+        OnActStepTypes=0
+        Text=Плазмоуритановый защитный механизм, оснащенный усиленными детекторами ракет. Блокирует <clr>10-40%<clrEnd> ущерба от попадания ракетного оружия.
+    }
+    ArtNano ^{
+        Name=Нанитоиды
+        Text=Миниатюрные роботы чинят в день до <clr>10<clrEnd><color=255,240,100>%</color> от одного из поврежденных предметов на корабле.
+    }
+    ArtPDTurret ^{
+        Broken=(сломан)
+        BrokenInBattle=Внимание! Ракетанг неудачно определил вероятность попадания, и вражеский выстрел разделил общую массу наномеханизмов на две части. Для соединения требуется помощь специалиста.
+        BrokenInUse=Плазмоуритановая составляющая слоя ракетанга высохла из-за сильной звездной активности. Наномеханизмы парализованы, требуется ремонт.
+        CanBeABDrop=0
+        CanBeReward=0
+        CanBeTreasure=0
+        Description=Ракетанг - система наномеханизмов, которые покрывают поверхность корпуса тонкой управляемой плазмоуритановой пленкой. Их уникальность в том, что они определяют место попадания ракеты и мгновенно укрепляют броню в нужном месте.
+        Name=Ракетанг
+        OnUseCode ^{
+            0=OnUseCodeMissileDef();
+        }
+        Text=Плазмоуритановый защитный механизм, оснащенный усиленными детекторами ракет. Блокирует <clr>10-40%<clrEnd> ущерба от попадания ракетного оружия.
+    }
+    ArtPower ^{
+        Description=Отморозки - сверххолодные бактерии. Обитают на любой теплой поверхности. При размещении колонии на двигателе, стараются охладить его, тем самым стабилизируя скорость корабля в жарком бою.
+        Name=Отморозки
+        Text=Охлаждают двигатель, защищая его от перегрева, и быстро восстанавливают потерянную скорость во время боя.
+    }
+    ArtTransmitter ^{
+        Broken=(накапливает заряд)
+        Description=Маяк является дистанционной системой изучения объектов. При активации он передаёт в гиперпространство квадратно-волновой сигнал о большом количестве неизученного материала. Келлероиды, уловившие сигнал, выставляют ему максимальный приоритет и прилетают на место вызова. От силы сигнала зависит количество роботов-исследователей, однако сигнал может быть перехвачен и другими доминаторами.
+        Name=Трансфакторный маяк
+        Text=При использовании в космосе, передает данные о наличии неизученного материала. Энергия заряда: <Power> ед.
+    }
+    CustomArtefacts ^{
+        ArtArtefactor_Custom ^{
+            CountsAs=ArtArtefactor
+            Description=Артефактор - переходник для подключения артефактов. В его схеме используется принцип кристаллического инвертирования сигнала, поэтому он позволяет подключить <clr>три<clrEnd> артефакта вместо одного дроида.
+            Name=Артефактор
+            NoWear=1
+            OnActCode ^{
+                01=dword cur_art = CurItem();
+                02=if(ScriptItemActionType(t_OnReEnteringForm)) dword cur_ship = FormCurShip();
+                03=else if(ScriptItemActionType(t_OnItemDeEquip)) cur_ship = IdToShip(CustomArtData(cur_art, 3));
+                04=else if(ScriptItemActionType(t_OnPlayerUseMM))
+                04 ^{
+                    01=cur_ship = ScriptItemActShip();
+                    02=ModuleToEquipment(EqModule(ScriptItemActObject2(), -1), ScriptItemActObject1());
+                }
+                05=else
+                05 ^{
+                    01=cur_ship = ScriptItemActShip();
+                    02=if(!cur_ship) exit;
+                }
+                06=if(!CustomArtData(cur_art, 1))
+                06 ^{
+                    01=if(ItemIsInUse(cur_art, cur_ship))
+                    01 ^{
+                        01=if(GetEquipmentStats(ShipItems(cur_ship, 0), 5))
+                        01 ^{
+                            01=ShipSpecialBonuses(cur_ship, bonSlotDroid, ShipSpecialBonuses(cur_ship, bonSlotDroid) - 1);
+                            02=ShipSpecialBonuses(cur_ship, bonSlotArt, ShipSpecialBonuses(cur_ship, bonSlotArt) + 3);
+                            03=CustomArtData(cur_art, 1, 1);
+                            04=CustomArtData(cur_art, 3, Id(cur_ship));
+                        }
+                    }
+                }
+                07=else
+                07 ^{
+                    01=if(!ItemIsInUse(cur_art, cur_ship))
+                    01 ^{
+                        01=ShipSpecialBonuses(cur_ship, bonSlotDroid, ShipSpecialBonuses(cur_ship, bonSlotDroid) + 1);
+                        02=ShipSpecialBonuses(cur_ship, bonSlotArt, ShipSpecialBonuses(cur_ship, bonSlotArt) - 3);
+                        03=CustomArtData(cur_art, 1, 0);
+                    }
+                    02=else
+                    02 ^{
+                        01=ShipSpecialBonuses(cur_ship, bonSlotDroid, ShipSpecialBonuses(cur_ship, bonSlotDroid) + 1);
+                        02=if(!GetEquipmentStats(ShipItems(cur_ship, 0), 5))
+                        02 ^{
+                            01=ShipSpecialBonuses(cur_ship, bonSlotArt, ShipSpecialBonuses(cur_ship, bonSlotArt) - 3);
+                            02=CustomArtData(cur_art, 1, 0);
+                        }
+                        03=else ShipSpecialBonuses(cur_ship, bonSlotDroid, ShipSpecialBonuses(cur_ship, bonSlotDroid) - 1);
+                    }
+                }
+            }
+            OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnItemDeEquip,t_OnPlayerUseMM
+            OnActStepTypes=0
+            SharedUse=ArtArtefactor
+            Text=Разветвитель для подключения редких видов оборудования. Позволяет использовать коннектор дроида для подключения <clr>трех<clrEnd> артефактов.
+        }
+        ArtMissileDef_Custom ^{
+            Broken=(сломан)
+            BrokenInBattle=Внимание! Ракетанг неудачно определил вероятность попадания, и вражеский выстрел разделил общую массу наномеханизмов на две части. Для соединения требуется помощь специалиста.
+            BrokenInUse=Плазмоуритановая составляющая слоя ракетанга высохла из-за сильной звездной активности. Наномеханизмы парализованы, требуется ремонт.
+            CountsAs=ArtMissileDef
+            Description=Ракетанг - система наномеханизмов, которые покрывают поверхность корпуса тонкой управляемой плазмоуритановой пленкой. Их уникальность в том, что они определяют место попадания ракеты и мгновенно укрепляют броню в нужном месте.
+            Name=Ракетанг
+            OnUseCode ^{
+                0=OnUseCodeMissileDef();
+            }
+            SharedEffect=ArtMissileDef
+            SharedUse=ArtMissileDef
+            Text=Плазмоуритановый защитный механизм, оснащенный усиленными детекторами ракет. Блокирует <clr>10-40%<clrEnd> ущерба от попадания ракетного оружия.
+        }
+        ArtSplinter_Custom ^{
+            Broken=(сломан)
+            BrokenInBattle=Тряска во время боя сбила навинт с крепежного места. Сместившись, минизавод выполнил недопустимую операцию и вкрутил в свое тело расщепитель. Требуется вмешательство мастера.
+            BrokenInUse=Комплект расщепителей закончился. Последние операции навинт выполнял вхолостую. Это вызвало перегрев механической части минизавода, устройство не функционирует.
+            CountsAs=ArtSplinter
+            Description=Навинт - минизавод по техническому усовершенствованию снарядов. Размещается над затвором орудия и изменяет мощность заряда путем вмонтирования расщепительного элемента. Неприхотлив в использовании: не требует дополнительных источников питания и не перегревается.
+            Name=Навинт
+            SharedEffect=ArtSplinter
+            SharedUse=ArtSplinter
+            Text=Каждый снаряд в затворе оснащается боеголовкой-расщепителем. Благодаря этому эффективность поражения осколочного оружия возрастает на <clr>20%<clrEnd>.
+        }
+    }
+    NumericValues ^{
+        kArtDefToArms1Penalty=0.1
+        kArtDefToEnergyMin=1.1
+        kArtDefToEnergyMinEx=0.0
+        kArtDefToEnergyPenalty=0.5
+        kArtDefToEnergyPenaltyEx=0.0
+        kArtDefToEnergyUp=1.6
+        kArtDefToEnergyUpEx=0.0
+        kArtEnergyPulse=1.3
+        kArtEnergyPulseChance=0.3
+        kArtEnergyPulseEx=0.0
+        kArtFastRacksChance=0.0
+        kArtFastRacksChanceEx=0.0
+        kArtForsage=0.5
+        kArtForsageEx=0
+        kArtGiperJump=40
+        kArtGiperJumpEx=0
+        kArtPowerSunProtection=0.0
+        kArtPowerSunProtectionEx=0.0
+        kArtSplinter=1.2
+        kArtSplinterEx=0.0
+        kArtWeaponToSpeed=100
+        kArtWeaponToSpeedEx=0
+        kArtefactAntigrav=0.75
+        kArtefactAntigravEx=0.0
+        kArtefactDef=0.05
+        kArtefactDefEx=0.0
+        kArtefactDroid=10
+        kArtefactDroidAcidClean=0.0
+        kArtefactDroidAcidCleanEx=0.0
+        kArtefactDroidEx=0
+        kArtefactDroidWear=0.0
+        kArtefactDroidWearEx=0.0
+        kArtefactFuel=2
+        kArtefactFuelEx=0
+        kArtefactHook=30
+        kArtefactHookEx=0
+        kArtefactHookRaduis=25
+        kArtefactHookRaduisEx=0
+        kArtefactHookSpeed=1
+        kArtefactHookSpeedEx=0
+        kArtefactHull=5
+        kArtefactHullEx=0
+        kArtefactHullShockDissipation=0.0
+        kArtefactHullShockDissipationEx=0.0
+        kArtefactNano=10
+        kArtefactNanoEx=0
+        kArtefactPower=20
+        kArtefactPowerEx=0
+        kArtefactRadar=600
+        kArtefactRadarEx=0
+        kArtefactScaner=10
+        kArtefactScanerEx=0
+        kArtefactSpeed=1.2
+        kArtefactSpeedEx=0.0
+        kPDTurretCountShots=0
+        kPDTurretRange=0
+        kPDTurretRangeEx=0
+        kSubportalPenalty=0
+        kSubportalPenaltyDuration=0
+    }
+    TextArtCanGetBoost=
+    TextArtGettingBoost=
+}
+RobotsMap ^{
+    48 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Аль-Кагул
+    }
+    49 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Армагеддец
+    }
+    50 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Бункер
+    }
+    51 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Возгорание
+    }
+    52 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Крио
+    }
+    53 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Перекрестный огонь
+    }
+    54 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Топливо для жизни
+    }
+    55 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Город-113
+    }
+    56 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Грубахар
+    }
+    57 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=In memoria
+    }
+    58 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=X-Ray
+    }
+    59 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Кризисный центр
+    }
+    60 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Тройной удар
+    }
+    61 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Осада
+    }
+    62 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Пирамида
+    }
+    63 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=План
+    }
+    64 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Провалъ
+    }
+    65 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Красная тревога
+    }
+    66 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Рядовой Райан
+    }
+    67 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Морской бой
+    }
+    68 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Сфера
+    }
+    69 ^{
+        Group=-1
+        MaxWins=-1
+        MinWins=-1
+        Name=Зенит
+    }
+}
+PlanetQuest ^{
+    List ^{
+        55 ^{
+            Group=-1
+            Name=Комплекс
+        }
+        56 ^{
+            Group=-1
+            Name=Ралли
+        }
+        57 ^{
+            Group=-1
+            Name=Ухоногий Сиболусовт
+        }
+        58 ^{
+            Group=-1
+            Name=Космолинии
+        }
+        59 ^{
+            Group=-1
+            Name=Таксист
+        }
+        60 ^{
+            Group=-1
+            Name=Диск
+        }
+        61 ^{
+            Group=-1
+            Name=Подстава
+        }
+        62 ^{
+            Group=-1
+            Name=Киберразум
+        }
+        63 ^{
+            Group=-1
+            Name=Доомино
+        }
+        64 ^{
+            Group=-1
+            Name=Филиал
+        }
+        65 ^{
+            Group=-1
+            Name=Форум
+        }
+        66 ^{
+            Group=-1
+            Name=Глюки
+        }
+        67 ^{
+            Group=-1
+            Name=Мегатест
+        }
+        68 ^{
+            Group=-1
+            Name=Провода
+        }
+        69 ^{
+            Group=-1
+            Name=Живым или мертвым
+        }
+        70 ^{
+            Group=-1
+            Name=Похищенный
+        }
+    }
+    PlanetQuest ^{
+        55=data\Quest\Rus\STQ_Ataman1.qmm
+        56=data\Quest\Rus\STQ_Ataman1.qmm
+        57=data\Quest\Rus\STQ_Ataman1.qmm
+        58=data\Quest\Rus\STQ_Ataman1.qmm
+        59=data\Quest\Rus\STQ_Ataman1.qmm
+        60=data\Quest\Rus\STQ_Ataman1.qmm
+        61=data\Quest\Rus\STQ_Ataman1.qmm
+        62=data\Quest\Rus\STQ_Ataman1.qmm
+        63=data\Quest\Rus\STQ_Ataman1.qmm
+        64=data\Quest\Rus\STQ_Ataman1.qmm
+        65=data\Quest\Rus\STQ_Ataman1.qmm
+        66=data\Quest\Rus\STQ_Ataman1.qmm
+        67=data\Quest\Rus\STQ_Ataman1.qmm
+        68=data\Quest\Rus\STQ_Ataman1.qmm
+        69=data\Quest\Rus\STQ_Ataman1.qmm
+        70=data\Quest\Rus\STQ_Ataman1.qmm
+    }
+}
+Quest ^{
+    DefShip ~{
+        48 ^{
+            PlanetRace=None
+            Status=None
+        }
+        49 ^{
+            PlanetRace=None
+            Status=None
+        }
+        50 ^{
+            PlanetRace=None
+            Status=None
+        }
+        51 ^{
+            PlanetRace=None
+            Status=None
+        }
+        52 ^{
+            PlanetRace=None
+            Status=None
+        }
+        53 ^{
+            PlanetRace=None
+            Status=None
+        }
+        54 ^{
+            PlanetRace=None
+            Status=None
+        }
+        55 ^{
+            PlanetRace=None
+            Status=None
+        }
+        56 ^{
+            PlanetRace=None
+            Status=None
+        }
+        57 ^{
+            PlanetRace=None
+            Status=None
+        }
+        58 ^{
+            PlanetRace=None
+            Status=None
+        }
+    }
+    DefSystem ~{
+        43 ^{
+            PlanetRace=None
+            Status=None
+        }
+        44 ^{
+            PlanetRace=None
+            Status=None
+        }
+        45 ^{
+            PlanetRace=None
+            Status=None
+        }
+        46 ^{
+            PlanetRace=None
+            Status=None
+        }
+        47 ^{
+            PlanetRace=None
+            Status=None
+        }
+        48 ^{
+            PlanetRace=None
+            Status=None
+        }
+        49 ^{
+            PlanetRace=None
+            Status=None
+        }
+        50 ^{
+            PlanetRace=None
+            Status=None
+        }
+        51 ^{
+            PlanetRace=None
+            Status=None
+        }
+        52 ^{
+            PlanetRace=None
+            Status=None
+        }
+        53 ^{
+            PlanetRace=None
+            Status=None
+        }
+        54 ^{
+            PlanetRace=None
+            Status=None
+        }
+        55 ^{
+            PlanetRace=None
+            Status=None
+        }
+    }
+    KillShip ~{
+        54 ^{
+            PlanetRace=None
+            ShipRace=None
+            Status=None
+        }
+        55 ^{
+            PlanetRace=None
+            ShipRace=None
+            Status=None
+        }
+        56 ^{
+            PlanetRace=None
+            ShipRace=None
+            Status=None
+        }
+        57 ^{
+            PlanetRace=None
+            ShipRace=None
+            Status=None
+        }
+        58 ^{
+            PlanetRace=None
+            ShipRace=None
+            Status=None
+        }
+        59 ^{
+            PlanetRace=None
+            ShipRace=None
+            Status=None
+        }
+        60 ^{
+            PlanetRace=None
+            ShipRace=None
+            Status=None
+        }
+        61 ^{
+            PlanetRace=None
+            ShipRace=None
+            Status=None
+        }
+        62 ^{
+            PlanetRace=None
+            ShipRace=None
+            Status=None
+        }
+        63 ^{
+            PlanetRace=None
+            ShipRace=None
+            Status=None
+        }
+        64 ^{
+            PlanetRace=None
+            ShipRace=None
+            Status=None
+        }
+    }
+    SendLetter ~{
+        68 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        69 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        70 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        71 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        72 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        73 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        74 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        75 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        76 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        77 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        78 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        79 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        80 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        81 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        82 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        83 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        84 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        85 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+        86 ^{
+            FromRace=None
+            Status=None
+            ToRace=None
+        }
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RCSoldMMChainInfos ^{
+                Description=NoShow
+                Icon=1
+                Name=Инфошка для запоминания всех проданных игроку ММ из цепочек на ЦР
+                OnActCode ^{
+                    01=if(!(CurTurn() % 57))
+                    01 ^{
+                        01=dword cur_info = CurInfo();
+                        02=ShipCustomShipInfoData(0, cur_info, 1, 0);
+                        03=ShipCustomShipInfoData(0, cur_info, 2, 0);
+                        04=ShipCustomShipInfoData(0, cur_info, 3, 0);
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            SR2Dominators_DomiksDropLock ^{
+                Description=NoShow
+                Icon=1
+                Name=При смерти блокирует доминаторам дроп вещей, которые игроку ещё рано получать по ГТУ
+                OnActCode ^{
+                    01=dword cur_ship = ScriptItemActShip();
+                    02=int GTL = GalaxyTechLevel();
+                    03=if(GTL < 6)
+                    03 ^{
+                        01=for(int i = 1; i <= 5; i = i + 1)
+                        01 ^{
+                            01=dword gun = ShipWeapon(cur_ship, i);
+                            02=if(!gun) break;
+                            03=int gun_type = ItemType(gun);
+                            04=if(GTL < 3)
+                            04 ^{
+                                01=if(gun_type >= t_Weapon4) NoDropItem(gun, 1);
+                                02=continue;
+                            }
+                            05=if(GTL < 4)
+                            05 ^{
+                                01=if(gun_type >= t_Weapon7) NoDropItem(gun, 1);
+                                02=continue;
+                            }
+                            06=if(GTL < 5)
+                            06 ^{
+                                01=if(gun_type >= t_Weapon10) NoDropItem(gun, 1);
+                                02=continue;
+                            }
+                            07=if(gun_type >= t_Weapon13) NoDropItem(gun, 1);
+                        }
+                    }
+                    04=dword equip = ShipEqInSlot(cur_ship, t_Engine);
+                    05=if(equip)
+                    05 ^{
+                        01=if(ItemLevel(equip) > GTL) NoDropItem(equip, 1);
+                    }
+                    06=equip = ShipEqInSlot(cur_ship, t_RepairRobot);
+                    07=if(equip)
+                    07 ^{
+                        01=if(ItemLevel(equip) > GTL) NoDropItem(equip, 1);
+                    }
+                    08=equip = ShipEqInSlot(cur_ship, t_DefGenerator);
+                    09=if(equip)
+                    09 ^{
+                        01=if(ItemLevel(equip) > GTL) NoDropItem(equip, 1);
+                    }
+                }
+                OnActCodeTypes=t_OnDeath
+            }
+        }
+    }
+}

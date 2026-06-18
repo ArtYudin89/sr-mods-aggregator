@@ -1,0 +1,246 @@
+MicroModuls ^{
+    ShuMM_TauhitHull ^{
+        Cost=600
+        CustomTag=Tauhitka
+        Equipments=Hull
+        FragilityEnergy=100
+        FragilityMissile=100
+        FragilitySplinter=100
+        KindGraph=Tauhit
+        LockedAcryn=3
+        Name=Корпус "Таухито"
+        NonSearchable=1
+        Owner=People
+        Priority=10
+        Size=100
+        Special=1
+        Text=Старинная разработка Коалиции, переходившая лишь потомкам участников её тестирования в качестве наследства, но лишенная особых свойств, пока диск с данными об оригинальном проекте не был найден неким рейнджером. Корпус был воссоздан специалистами из сети центров рейнджеров, максимально приближенный к изначальной задумке - бортовой компьютер вводит пилота в киберпространство, позволяя за счёт его ресурсов провести и некоторые биржевые и иные финансовые манипуляции, а также максимизируя работу сканера и радара. Расплачиваться приходится частично утерянной связью с реальностью, приводящей к снижению некоторых социальных способностей пилота.
+        Text=<clr><clrEnd>
+        Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan>%
+        Text=Масса корабля: <bonMass>%
+        Text=Навык торговли: <bonSkill4>
+        Text=Навык обаяния: <bonSkill5>
+        Text=Навык лидерства: <bonSkill6>
+        Text=<clr>Кибернетический разум корпуса помогает пилоту в различных торговых делах<clrEnd>
+        bonMass=-10
+        bonRadar=800
+        bonScan=8
+        bonSkill1=-1
+        bonSkill2=-1
+        bonSkill4=2
+        bonSkill5=1
+        bonSkill6=-1
+        bonSlotWeapon=-2
+        bonWRadius=0
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RefTauhito_DecreaseCost ^{
+                Description=Сидя на планете, сбавляет цену покупки
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=dword ship = ScriptItemActShip();
+                    02=dword info = CurInfo();
+                    03=dword plan = GetShipPlanet(ship);
+                    04=if(plan)
+                    05 ^{
+                        01=if(ShipCustomShipInfoData(0,info,1) < 3)
+                        02 ^{
+                            01=GoodsSellPrice(plan,t_Food,GoodsSellPrice(plan,t_Food) - 1);
+                            02=GoodsSellPrice(plan,t_Medicine,GoodsSellPrice(plan,t_Medicine) - Rnd(1,2));
+                            03=GoodsSellPrice(plan,t_Luxury,GoodsSellPrice(plan,t_Luxury) - Rnd(3,7));
+                            04=GoodsSellPrice(plan,t_Narcotics,GoodsSellPrice(plan,t_Narcotics) - Rnd(5,15));
+                            05=GoodsSellPrice(plan,t_Alcohol,GoodsSellPrice(plan,t_Alcohol) - Rnd(2,4));
+                            06=GoodsSellPrice(plan,t_Arms,GoodsSellPrice(plan,t_Arms) - Rnd(2,6));
+                            07=GoodsSellPrice(plan,t_Technics,GoodsSellPrice(plan,t_Technics) - Rnd(4,8));
+                            08=ShipCustomShipInfoData(0,info,1,ShipCustomShipInfoData(0,info,1)+1);
+                        }
+                    }
+                    06=if(ShipInNormalSpace(ship)) ShipCustomShipInfoData(0,info,1,0);
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            RefTauhito_Flying ^{
+                Description=Флажок для абилки при взлёте (из скрипта)
+                Icon=1
+                Name=-
+            }
+            RefTauhito_GoodGov ^{
+                Description=Правительство щедрО и раздаёт программки
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(Rnd(1,3) == 3)
+                    02 ^{
+                        01=SetProgramm(6,GetProgramm(6)+1);
+                    }
+                    03=else
+                    04 ^{
+                        01=SetProgramm(5,GetProgramm(5)+Rnd(1,2));
+                    }
+                }
+                OnActCodeTypes=t_OnGovItemReward
+            }
+            RefTauhito_IncreaseCost ^{
+                Description=Поднимает цену от продаж
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=dword ship = ScriptItemActShip();
+                    02=dword info = CurInfo();
+                    03=if(ShipCustomShipInfoData(0,info,1) < 3 && GetShipPlanet(ship))
+                    04 ^{
+                        01=GoodsBuyPrice(GetShipPlanet(ship),ItemType(ScriptItemActObject1()),GoodsBuyPrice(GetShipPlanet(ship),ItemType(ScriptItemActObject1())) + Rnd(2,5));
+                        02=ShipCustomShipInfoData(0,info,1,ShipCustomShipInfoData(0,info,1)+1);
+                    }
+                    05=if(ShipInNormalSpace(ship)) ShipCustomShipInfoData(0,info,1,0);
+                }
+                OnActCodeTypes=t_OnShipSellsGoods
+            }
+            RefTauhito_NPCTrade ^{
+                Description=Может зажать часть товара при продаже его неписю
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(GetTalkShip())
+                    02 ^{
+                        01=if(ItemSize(ScriptItemActObject1()) > 3 && Rnd(1,3) == 3) GoodsAdd(Player(),ItemType(ScriptItemActObject1()),round(ItemSize(ScriptItemActObject1()) * 0.60));
+                    }
+                }
+                OnActCodeTypes=t_OnShipSellsGoods
+            }
+            RefTauhito_NotIllegal ^{
+                Description=С маленьким шансом сделка не будет нелегальной
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActParam())
+                    02 ^{
+                        01=if(Rnd(1,100) > 90) ScriptItemActParam(0);
+                    }
+                }
+                OnActCodeTypes=t_OnShipSellsGoods
+            }
+            RefTauhito_Removing ^{
+                Description=Централ контрол юнит. Проверяет корпус игрока, и убирает инфощьки, если всё плоха
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=dword ship = Player();
+                    02=if(ShipCustomShipInfoData(0,CurInfo(),1) == 0 && FindBonusByCustomTag('Tauhitka') == HullSpecial(ScriptItemActObject1()))
+                    03 ^{
+                        01=ShipAddCustomShipInfo(ship,'RefTauhito_DecreaseCost','NoShow');
+                        02=ShipAddCustomShipInfo(ship,'RefTauhito_Flying','NoShow');
+                        03=ShipAddCustomShipInfo(ship,'RefTauhito_GoodGov','NoShow');
+                        04=ShipAddCustomShipInfo(ship,'RefTauhito_NotIllegal','NoShow');
+                        05=ShipAddCustomShipInfo(ship,'RefTauhito_NPCTrade','NoShow');
+                        06=ShipAddCustomShipInfo(ship,'RefTauhito_UselessIncrease','NoShow');
+                        07=ShipAddCustomShipInfo(ship,'RefTauhito_WithBiomir','NoShow');
+                        08=ShipAddCustomShipInfo(ship,'RefTauhito_IncreaseCost','NoShow');
+                        09=ShipAddCustomShipInfo(ship,'RefTauhito_TradeRating','NoShow');
+                        10=ShipCustomShipInfoData(0,CurInfo(),1,1);
+                    }
+                    04=if(ShipCustomShipInfoData(0,CurInfo(),1) == 1 && FindBonusByCustomTag('Tauhitka') != HullSpecial(ScriptItemActObject1()))
+                    05 ^{
+                        01=ShipDeleteCustomShipInfo(ship,'RefTauhito_DecreaseCost',1);
+                        02=ShipDeleteCustomShipInfo(ship,'RefTauhito_Flying',1);
+                        03=ShipDeleteCustomShipInfo(ship,'RefTauhito_GoodGov',1);
+                        04=ShipDeleteCustomShipInfo(ship,'RefTauhito_NotIllegal',1);
+                        05=ShipDeleteCustomShipInfo(ship,'RefTauhito_NPCTrade',1);
+                        06=ShipDeleteCustomShipInfo(ship,'RefTauhito_UselessIncrease',1);
+                        07=ShipDeleteCustomShipInfo(ship,'RefTauhito_WithBiomir',1);
+                        08=ShipDeleteCustomShipInfo(ship,'RefTauhito_IncreaseCost',1);
+                        09=ShipDeleteCustomShipInfo(ship,'RefTauhito_TradeRating',1);
+                        10=ShipCustomShipInfoData(0,CurInfo(),1,0);
+                    }
+                }
+                OnActCodeTypes=t_OnPlayerChangeHull
+            }
+            RefTauhito_TradeRating ^{
+                Description=Пассивно повышает торговый рейтинг (зависит от навыка торгашки)
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=dword ship = ScriptItemActShip();
+                    02=dword info = CurInfo();
+                    03=if(ShipStatus(ship,0)!=100)
+                    04 ^{
+                        01=ShipCustomShipInfoData(0,info,1,1+ShipSkill(ship,'TraderCur'));
+                        02=if(ShipCustomShipInfoData(0,info,1)>=7)
+                        03 ^{
+                            01=ShipCustomShipInfoData(0,info,1,ShipCustomShipInfoData(0,info,1)-7);
+                            02=ShipStatus(ship,0,ShipStatus(ship,0)+1);
+                            03=if(ShipStatus(ship,1) > 0) ShipStatus(ship,1,ShipStatus(ship,1)-1);
+                            04=else ShipStatus(ship,2,ShipStatus(ship,2)-1);
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            RefTauhito_UselessIncrease ^{
+                Description=Увеличивает стоимость поднимаемых юзлессов
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=dword item = ScriptItemActObject1();
+                    02=if(ItemType(item) == t_UselessItem)
+                    03 ^{
+                        01=if(Rnd(1,5) == 5) ItemCost(item,ItemCost(item) * 115 / 100);
+                    }
+                }
+                OnActCodeTypes=t_OnItemPickUp
+            }
+            RefTauhito_WithBiomir ^{
+                Description=Заставляет абилку Биомира из RefArtsUpgrade сгенерировать игроку Торговую Маркировку
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=dword ship = ScriptItemActShip();
+                    02=if(ArtefactTypeInUse(ship,t_ArtBio) || ArtefactTypeInUse(ship,'ArtBioEnabled'))
+                    03 ^{
+                        01=if(Rnd(1,4) == 4)
+                        02 ^{
+                            01=ShipHealthFactor(ship,22,ShipHealthFactor(ship,22) + 70);
+                            02=NewsAdd('Биомир освежил вашу Торговую Маркировку, подбавив ей ещё 70 дней действия');
+                            03=Sound('Sound.NewMsg');
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+        }
+    }
+}
+Script ^{
+    Mod_RefTauhitoRework ^{
+        0=Ваш груз наркотиков выгодно сбыть в данной системе невозможно
+        1= cr. на планете
+        10=Ваш груз алкоголя выгодно сбыть в данной системе невозможно
+        11=Ваш груз алкоголя в количестве
+        12=Ваш груз минералов выгодно сбыть в данной системе невозможно
+        13=Ваш груз минералов в количестве
+        14=Ваш груз медикаментов выгодно сбыть в данной системе невозможно
+        15=Ваш груз медикаментов в количестве
+        16=Ваш груз продовольствия выгодно сбыть в данной системе невозможно
+        17=Ваш груз продовольствия в количестве
+        18=Кибернетика Таухито проанализировала предложения покупки товаров согласно имеющимся у вас на борту. Выводим её предложения:
+        19=Кибернетика Таухито дополнительно проанализировала предложения покупки товаров согласно имеющимся у вас на борту, опираясь на данные уже не текущей системы, а текущего сектора. Выводим её предложения:
+        2= т. готовы выкупить за
+        3=Ваш груз наркотиков в количестве
+        4=Ваш груз оружия выгодно сбыть в данной системе невозможно
+        5=Ваш груз оружия в количестве
+        6=Ваш груз техники выгодно сбыть в данной системе невозможно
+        7=Ваш груз техники в количестве
+        8=Ваш груз роскоши выгодно сбыть в данной системе невозможно
+        9=Ваш груз роскоши в количестве
+    }
+}

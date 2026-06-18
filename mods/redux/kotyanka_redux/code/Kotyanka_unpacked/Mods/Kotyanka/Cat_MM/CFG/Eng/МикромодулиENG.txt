@@ -1,0 +1,859 @@
+MicroModuls ^{
+    Cat_MM_001 ^{
+        Color=230,61,118
+        Cost=100
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator,WEnergy,WSplinter,WMissile
+        Fragility=200
+        KindGraph=Cat
+        Name=Answer
+        Owner=Maloc,Peleng,People,Fei,Gaal,NonKling
+        Priority=10
+        Size=125
+        Text=Micromodule of the first level. A relatively successful attempt by an engineer <clr>The coalition<clrEnd> to improve the pirate micromodule <clr>"Cheater-22"<clrEnd>. Inspired by the answer to the main question of life, the universe and all that, he was able to achieve a tremendous improvement in the characteristics of any equipment and their strength, but he messed up something, which is why the bonuses <clr>Engine<clrEnd>, <clr>Shield Generator<clrEnd>, <clr>Droid<clrEnd> and <clr>scanners<clrEnd> are not that efficient.
+        Text=Engine speed: <bonSpeed>
+        Text=Jump range: <bonJump>
+        Text=Fuel tank capacity: <bonFuel>
+        Text=Radar range: <bonRadar>
+        Text=Scanner power: <bonScan>%
+        Text=Droid effectiveness: <bonDroid>
+        Text=Gripper power: <bonHook>
+        Text=Gripper range: <bonHookRadius>
+        Text=Power of Shield Generator: <bonDef>%
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Firing range: <bonWRadius>
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+25%<clrEnd>
+        bonDef=24
+        bonDroid=24
+        bonFuel=42
+        bonHook=42
+        bonHookRadius=42
+        bonJump=24
+        bonRadar=42
+        bonScan=24
+        bonSpeed=42
+        bonWEnergy=42
+        bonWMissile=42
+        bonWRadius=42
+        bonWSplinter=42
+    }
+    Cat_MM_002 ^{
+        Color=230,61,118
+        Cost=100
+        Equipments=WEnergy,WSplinter
+        KindGraph=Cat
+        Name=Shortener
+        Owner=NonKling,Maloc,Fei
+        Priority=15
+        Size=100
+        Text=Micromodule of the first level. Significantly increases the power of the <clr>energy and fragmentation<clrEnd> weapons by reducing the <clr>range of the <clrEnd> shot. Installation is possible only in <clr>Maloqs and Fei<clrEnd> guns, traditionally having elongated barrels and a special configuration of the loading mechanism since the time of the interracial wars.
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Firing range: <bonWRadius>
+        bonWEnergy=50
+        bonWRadius=-80
+        bonWSplinter=50
+    }
+    Cat_MM_003 ^{
+        Color=36,36,248
+        Cost=500
+        Equipments=WMissile
+        Fragility=200
+        KindGraph=CatBlue
+        Name=Exabomber
+        Owner=NonKling,People
+        Priority=10
+        Size=250
+        Text=Micromodule of the first level. It is integrated into any type of <clr>missile<clrEnd> weapon and increases the number of missiles fired in a salvo, as well as their <clr> flight speed and maximum <clr> ammunition<clrEnd> guns. Increases the weight to accommodate additional missile warheads. Compatible only with <clr>People<clrEnd> with rocket launchers.
+        Text=Additional gun shots: <bonAttacks>
+        Text=Missile speed: <bonMissileSpeed>
+        Text=Additional ammunition: <bonAmmo>
+        Text=Cost: <clr>+400%<clrEnd>
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+150%<clrEnd>
+        bonAmmo=55
+        bonAttacks=4
+        bonMissileSpeed=512
+    }
+    Cat_MM_004 ^{
+        Color=230,61,118
+        Cost=600
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        Fragility=200
+        KindGraph=Cat
+        Name=Kilacrine
+        Owner=NonKling,Maloc,Peleng,People,Fei,Gaal,PirateClan,None
+        Priority=10
+        Size=250
+        Text=Micromodule of the first level. It is integrated into any kind of <clr> equipment<clrEnd>, increasing the positive properties of acrin and reducing the negative ones. Developed on the basis of the well-known micromodule "Philosophical", in connection with which the sporadic appearance of precious metals is practically guaranteed. The appearance of gold and platinum in the most unexpected places obviously reduces the life of the equipment, but any rarity hunter will gladly give up his bionic hands for a unique specimen.
+        Text=Positive effects of akrin: <clr>+150%<clrEnd>
+        Text=Negative effects of akrin: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+150%<clrEnd>
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Cost: <clr>+500%<clrEnd>
+        bonExtraAkrinEff=150
+        bonExtraAkrinPenalty=-50
+    }
+    Cat_MM_005 ^{
+        Color=230,61,118
+        Equipments=Hull
+        KindGraph=Cat
+        Name=Armoridze
+        Owner=NonKling,Maloc,Fei
+        Priority=10
+        Text=Micromodule of the first level. It includes a mini-station for the production of nano armor, thereby constantly increasing <clr>armor<clrEnd> up to 25. Due to the introduction of significant mass, it is compatible only with the initially designed for massiveness <clr>Small-scale<clrEnd> and having, thanks to the technological process, a significant supply of <clr>Fei<clrEnd> enclosures.
+        Text=Hull Armor: <bonHull>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        bonHull=25
+        bonMass=175
+    }
+    Cat_MM_006 ^{
+        Color=230,61,118
+        Equipments=WEnergy,WSplinter
+        Fragility=500
+        KindGraph=Cat
+        Name=Dalveren
+        Owner=NonKling,Maloc,Peleng,Fei
+        Priority=10
+        Text=Micromodule of the first level. Special development of <clr>Fei<clrEnd> with the support of <clr>Peleng<clrEnd> and <clr>Maloqs<clrEnd>. Enormously increases the <clr>range of the shot<clrEnd> by reducing the <clr>Reliability<clrEnd> and <clr>damage<clrEnd>. Peoples and the Gaal did not show any interest in the micromodule due to a significant decrease in the characteristics of the weapon, and the development remained a strange exclusive property of the three races.
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Firing range: <bonWRadius>
+        Text=Reliability: <clr>-80%<clrEnd>
+        bonWEnergy=-60
+        bonWRadius=250
+        bonWSplinter=-60
+    }
+    Cat_MM_007 ^{
+        Color=35,248,255
+        Cost=600
+        Equipments=Droid
+        Fragility=0
+        KindGraph=CatNone
+        Name=Aegis
+        Owner=NonKling,None
+        Priority=10
+        Size=600
+        Text=Micromodule of the first level. It is unknown who and when created this micromodule, but one thing is for sure, it makes the <clr>droid<clrEnd> incredibly <clr>efficient<clrEnd> and practically <clr>eternal<clrEnd>, however <clr>the weight and cost<clrEnd> of such a droid becomes very impressive. Only for droids <clr>Unknown origin<clrEnd>.
+        Text=Droid effectiveness: <bonDroid>
+        Text=Reliability: <clr>Вечный<clrEnd>
+        Text=Weight: <clr>+500%<clrEnd>.
+        Text=Cost: <clr>+500%<clrEnd>.
+        bonDroid=80
+    }
+    Cat_MM_008 ^{
+        Color=35,248,255
+        Cost=600
+        Equipments=Hook
+        Fragility=0
+        KindGraph=CatNone
+        Name=Aeternum
+        Owner=NonKling,None
+        Priority=10
+        Size=600
+        Text=Micromodule of the first level. It is suitable exclusively for <clr>capturing<clrEnd>, but this does not make it useless at all. This very rare object works on the inexplicable principles of quantum singularities, "erasing" the space between the object and the ship, allowing objects to be captured much <clr>further<clrEnd> than we could imagine, and does it almost <clr>instantly<clrEnd>. Due to the close to zero load on the key components of conventional grips, it makes them almost <clr>eternal <clrEnd>, but all these amazing technologies <clr> are not<clrEnd> suitable for <clr>standard<clrEnd> equipment and <clr>weigh<clrEnd> a lot.
+        Text=Gripper range: <bonHookRadius>
+        Text=Reliability: <clr>Вечный<clrEnd>
+        Text=Weight: <clr>+500%<clrEnd>.
+        Text=Cost: <clr>+500%<clrEnd>.
+        bonHookMaxSpeed=20
+        bonHookMinSpeed=20
+        bonHookRadius=200
+    }
+    Cat_MM_009 ^{
+        Color=230,61,118
+        Equipments=Engine
+        Fragility=400
+        KindGraph=Cat
+        Name=Decasage
+        Owner=NonKling,Peleng,People
+        Priority=10
+        Size=250
+        Text=Micromodule of the first level. Replaces some parts of the <clr>engine<clrEnd> and adds many new ones, greatly reducing its strength, but increasing speed and size. Created by fanatical racing enthusiasts and compatible, respectively, only with <clr>Peleng and People<clrEnd> engines.
+        Text=Engine speed: <bonSpeed>
+        Text=Reliability: <clr>-75%<clrEnd>
+        Text=Weight: <clr>+150%<clrEnd>
+        bonSpeed=375
+    }
+    Cat_MM_010 ^{
+        Color=230,61,118
+        Equipments=Engine
+        Fragility=200
+        KindGraph=Cat
+        Name=Decavarp
+        Owner=NonKling,People,Gaal
+        Priority=10
+        Size=250
+        Text=Micromodule of the first level. Replaces some of the parts of the <clr>engine<clrEnd> and adds a lot of new ones, greatly reducing its strength, but increasing the jump range and size. Originally intended for <clr>Gaal<clrEnd> research ships, but <clr>Peoples<clrEnd>, sensing the benefit, immediately bought the technology with exclusive rights. Fortunately, adding compatibility is much easier than removing an existing one.
+        Text=Jump range: <bonJump>
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+150%<clrEnd>
+        bonJump=35
+    }
+    Cat_MM_011 ^{
+        Color=230,61,118
+        Equipments=FuelTank
+        Fragility=200
+        KindGraph=Cat
+        Name=Facultatem
+        Owner=NonKling,Maloc,Fei
+        Priority=10
+        Size=250
+        Text=Micromodule of the first level. Restructures the tank by adding somewhat outdated and large high-end parts instead of new medium-quality ones. Reliability decreases and size increases, but the added fuel volume exceeds all expectations. The parts database contains only <clr>Maloqs and Fei<clrEnd> names.
+        Text=Fuel tank capacity: <bonFuel>
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+150%<clrEnd>
+        bonFuel=64
+    }
+    Cat_MM_012 ^{
+        Color=230,61,118
+        Equipments=Radar
+        Fragility=200
+        KindGraph=Cat
+        Name=Radiitel
+        Owner=NonKling,Gaal,Peleng
+        Priority=10
+        Size=250
+        Text=Micromodule of the first level. Replaces part of the parts <clr>Radar <clrEnd> analogues of uranium and plutonium and hacks the power supply system, forcing it to work at a maximum suitable for the material of new elements. Unfortunately, radiation protection has considerable weight, and interference with the energy part leads to rapid breakdowns. It is a rare case when <clr>Gaal<clrEnd> a group of researchers performed work commissioned by a private <clr>Peleng<clrEnd> company and received payment in full.
+        Text=Radar range: <bonRadar>
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+150%<clrEnd>
+        bonRadar=2000
+    }
+    Cat_MM_013 ^{
+        Color=230,61,118
+        Equipments=Scaner
+        Fragility=200
+        KindGraph=Cat
+        Name=Defintutis
+        Owner=NonKling,Gaal,Fei
+        Priority=10
+        Size=250
+        Text=Micromodule of the first level. An interesting attempt by <clr>Fei and Gaal<clrEnd> to implement the Maloq approach in <clr>scanning<clrEnd> hardware. The result was impressive, but the final size of the scanner amazes the imagination no less, and the experimentation of the technology affects the reliability.
+        Text=Scanner power: <bonScan>%
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+150%<clrEnd>
+        bonScan=20
+    }
+    Cat_MM_014 ^{
+        Color=230,61,118
+        Equipments=DefGenerator
+        Fragility=200
+        KindGraph=Cat
+        Name=Prasedium
+        Owner=Kling,Maloc,Peleng,People,Fei,Gaal,PirateClan,None
+        Priority=10
+        Size=250
+        Text=Micromodule of the first level. The creation of Maloq genius is Bambai Goldberg. Despite the exceptional complexity, all brought into the <clr>Shield Generator<clrEnd> parts are created according to the Malok canons: without regard to weight and reliability. <clr>The universality of <clrEnd> was achieved thanks to unsuccessful attempts by scientists of other races to understand the essence of the work of the micromodule.
+        Text=Power of Shield Generator: <bonDef>%
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+150%<clrEnd>
+        bonDef=20
+    }
+    Cat_MM_015 ^{
+        Color=147,10,10
+        Equipments=Hook
+        Fragility=15000
+        KindGraph=CatBlackRed
+        Name=Hyperhook
+        Owner=NonKling,Maloc
+        Priority=10
+        Size=20
+        Text=Micromodule of the first level. Radically rebuilds the mechanisms of capture, making it almost weightless and enormously powerful, but very fragile. Due to the archaic nature and little-studied nature of the lost technology, it is applicable only for <clr>Maloqs<clrEnd> captures.
+        Text=Gripper power: <bonHook>
+        Text=Reliability: <clr>Single-use<clrEnd>
+        Text=Weight: <clr>-80%<clrEnd>
+        bonHook=12500
+    }
+    Cat_MM_016 ^{
+        Color=230,61,118
+        Equipments=Hook
+        Fragility=200
+        KindGraph=Cat
+        Name=Kaptarang
+        Owner=NonKling,Maloc,Peleng,Gaal
+        Priority=10
+        Size=200
+        Text=Micromodule of the first level. Adds to the <clr>Gripper<clrEnd> experimental <clr>Gaal<clrEnd> modular guidance system, significantly improving the range of attraction. Unfortunately, modules weigh a lot and add potential points of failure. <clr>Maloqs<clrEnd> accidentally shot down a diplomatic vessel with a copy intended for them and, after a short trial, gave <clr>Pelengs<clrEnd> in a futile attempt to cover their tracks.
+        Text=Gripper range: <bonHookRadius>
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+100%<clrEnd>
+        bonHookRadius=250
+    }
+    Cat_MM_017 ^{
+        Color=230,61,118
+        Equipments=Droid
+        Fragility=300
+        KindGraph=Cat
+        Name=Retionius
+        Owner=NonKling,Maloc,Fei
+        Priority=10
+        Size=250
+        Text=Micromodule of the first level. <clr>Feis<clrEnd> development commissioned by <clr>Maloqs<clrEnd> after analyzing the Battle of Gralgar. Colossal recovery capabilities at the cost of an equally colossal reduction in reliability and a size that has never worried Maloqs. Compatibility with Feis droids has entered textbooks as an excellent example of Feis black humor.
+        Text=Droid effectiveness: <bonDroid>
+        Text=Reliability: <clr>-65%<clrEnd>
+        Text=Weight: <clr>+150%<clrEnd>
+        bonDroid=64
+    }
+    Cat_MM_018 ^{
+        Color=230,61,118
+        Cost=200
+        Equipments=WEnergy,WSplinter
+        Fragility=200
+        KindGraph=Cat
+        Name=Rangecite
+        Owner=NonKling,Maloc,People,Fei,Gaal,PirateClan
+        Priority=10
+        Size=200
+        Text=Micromodule of the first level. Developed by the stolen Dzuhallag Gaal developer of guidance systems <clr>Coalitions<clrEnd>. Adds an expensive, heavy and fragile system to the <clr>non -rocket<clrEnd> weapon, significantly increasing the range of destruction. The now deceased developer did not believe the promises and vindictively <clr> excluded <clrEnd> any compatibility with weapons <clr>Peleng<clrEnd> in principle, replacing their signatures with <End>Pirate Clan<clrEnd>.
+        Text=Firing range: <bonWRadius>
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+100%<clrEnd>
+        Text=Cost: <clr>+100%<clrEnd>
+        bonWRadius=180
+    }
+    Cat_MM_019 ^{
+        Color=230,61,118
+        Cost=200
+        Equipments=WEnergy,WSplinter
+        Fragility=200
+        KindGraph=Cat
+        Name=Vitucite
+        Owner=NonKling,Maloc,People,PirateClan
+        Priority=10
+        Size=200
+        Text=Micromodule of the first level. Created in a strong alliance of <clr>Maloq<clrEnd> and <clr>People<clrEnd> of military departments. The results of the work of both teams would have been great if not for the different implementation of the terms of reference. The project is divided, and the joint part of the developments is archived and was later stolen by agents of the <clr>Pirate Clan<clrEnd>. The brotherhood's technicians were able to put the structure together without loss of power, but at the cost of reducing reliability and doubling both cost and dimensions.
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+100%<clrEnd>
+        Text=Cost: <clr>+100%<clrEnd>
+        bonWEnergy=45
+        bonWSplinter=45
+    }
+    Cat_MM_020 ^{
+        Color=230,61,118
+        Cost=200
+        Equipments=WMissile
+        Fragility=200
+        KindGraph=Cat
+        Name=Telafakult
+        Owner=NonKling,Peleng
+        Priority=10
+        Size=200
+        Text=Micromodule of the second level. The work of the famous engineer-artist Jazel-Krasel. Replaces the ammunition storage for missile weapons with a larger one, with a magnificent landscape of the planet Phedok, collected from thousands of small drawings of Ragobam toads indulging in the breeding process. It was performed for prototypes, and therefore it is impossible to install rocket launchers in modern <clr>Pelengs<clrEnd> without reducing reliability.
+        Text=Additional ammunition: <bonAmmo>
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+100%<clrEnd>
+        Text=Cost: <clr>+100%<clrEnd>
+        bonAmmo=64
+    }
+    Cat_MM_021 ^{
+        Color=230,61,118
+        Cost=200
+        Equipments=WMissile
+        Fragility=400
+        KindGraph=Cat
+        Name=Fugacelirate
+        Owner=NonKling,Maloc,Peleng,People,Fei,Gaal,PirateClan,None
+        Priority=10
+        Size=200
+        Text=Micromodule of the first level. <clr>Universal<clrEnd> development of coalition scientists. Transforms the shape of the nozzles and the ignition system of projectiles in rocket weapons, significantly increasing the flight speed of projectiles. However, with the new nozzles, the weapon is destroyed many times faster, and together with all other changes, the size and cost increase.
+        Text=Missile speed: <clr>+1000<clrEnd>
+        Text=Reliability: <clr>-75%<clrEnd>
+        Text=Weight: <clr>+100%<clrEnd>
+        Text=Cost: <clr>+100%<clrEnd>
+        bonMissileSpeed=1000
+    }
+    Cat_MM_022 ^{
+        Color=230,61,118
+        Cost=200
+        Equipments=WMissile
+        Fragility=200
+        KindGraph=Cat
+        Name=Vartuthad
+        Owner=NonKling,PirateClan,Peleng,People
+        Priority=10
+        Size=200
+        Text=Micromodule of the first level. Adds a warhead modification node <clr>People<clrEnd> production, which covers them with a thin layer of quark charge. It has an obvious impact on the size and complexity of the repair of the gun, and, thanks to the subsequent intervention of <clr>Peleng<clrEnd>-a trainee from <clr>Pirate Clan<clrEnd>, almost halved reliability.
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+100%<clrEnd>
+        Text=Cost: <clr>+100%<clrEnd>
+        bonWMissile=32
+    }
+    Cat_MM_023 ^{
+        Color=230,61,118
+        Cost=300
+        Equipments=Hull
+        Fragility=250
+        KindGraph=Cat
+        Name=Densisima
+        Owner=NonKling,Gaal,Peleng,Fei
+        Priority=20
+        Size=400
+        Text=Micromodule of the first level. The essence of the Fifth Room project, carried out by scientists <clr>Gaal and Fei<clrEnd>. Transforms the case, tripling its capacity, but without adding material, the conditions for installing a capture, protection generator, radar and scanner become impossible, repair becomes more complicated and protective properties decrease. Later it was stolen by the head of the <clr>Dzuhallaga<clrEnd> and adapted to install a mud jacuzzi.
+        Text=Reliability: <clr>-60%<clrEnd>
+        Text=Hull size: <clr>+300%<clrEnd>
+        Text=Cost: <clr>+200%<clrEnd>
+        bonSlotDef=-1
+        bonSlotHook=-1
+        bonSlotRadar=-1
+        bonSlotScaner=-1
+    }
+    Cat_MM_024 ^{
+        Color=230,61,118
+        Cost=400
+        Equipments=Hull
+        Fragility=125
+        KindGraph=Cat
+        Name=Quaecorporis
+        Owner=NonKling,Maloc,Peleng,People,Fei,Gaal,PirateClan,None
+        Priority=20
+        Size=50
+        Text=Micromodule of the first level. The experiment of the famous designer Kraas-teraa. Reassembles almost any <clr> case, opening all slots at the cost of a significant reduction in external dimensions and armor density. Bas-reliefs, engravings and ornaments are made directly in the metal of the hull and can be changed at the request of the pilot, for which it is highly appreciated.
+        Text=Damage susceptibility to all weapons: <clr>-25%<clrEnd>
+        Text=Hull size: <clr>-50%<clrEnd>
+        Text=Cost: <clr>+300%<clrEnd>
+        Text=Hull Armor: <clr>-5<clrEnd>
+        Text=Activates: <clr>All ship slots<clrEnd>
+        bonHull=-5
+        bonSlotArt=4
+        bonSlotDef=1
+        bonSlotDroid=1
+        bonSlotForsage=1
+        bonSlotHook=1
+        bonSlotRadar=1
+        bonSlotScaner=1
+        bonSlotWeapon=4
+    }
+    Cat_MM_025 ^{
+        Color=35,248,255
+        Cost=600
+        Equipments=WMissile
+        Fragility=1000
+        KindGraph=CatNone
+        Name=Rockevert
+        Owner=NonKling,None
+        Priority=10
+        Size=600
+        Text=Micromodule of the first level. An interesting aggregate, occasionally found by researchers of <clr>black holes<clrEnd>. Vaguely transforms <clr>rocket-torpedo<clrEnd> installations into huge guns <clr>multiple rocket launchers<clrEnd>. Instead of the usual and safe firing in bursts, the installation instantly releases all ammunition around the hull. Due to the instability of the system, it is impossible to fire more than 36 rocket or 24 torpedo shells, while the rest of the ammunition is irretrievably damaged. The equipment of dominators or Coalitions, in principle, is not adapted to such a high intensity of firing, only <clr>unknown<clrEnd> equipment, moreover with huge <clr> losses in Reliability<clrEnd>, is able to withstand such a rate of use of ammunition. In addition, the cost of loading ammunition and repairing such a complex weapon costs <clr> incredibly expensive<clrEnd>.
+        Text=Reliability: <clr>-90%<clrEnd>
+        Text=Weight: <clr>+500%<clrEnd>
+        Text=Cost: <clr>+500%<clrEnd>
+        Text=Type of attack: <clr>Circular<clrEnd>
+        bonAmmo=-29
+        bonAttacks=90
+    }
+    Cat_MM_026 ^{
+        Color=147,10,10
+        Cost=600
+        Equipments=WEnergy,WSplinter
+        Fragility=300
+        KindGraph=CatBlackRed
+        Name=Turkkomprefrator
+        Owner=Kling,Maloc,Peleng,People,Fei,Gaal,PirateClan,None
+        Priority=10
+        Size=300
+        Text=Micromodule of the first level. The latest malok development for energy and fragmentation guns <clr> of any production<clrEnd>. It was born after studying Gaal textbooks of the series "About Grief and Weapons Business", received from Peleng under the guise of top-secret developments. Turns a fairly powerful <clr><clrEnd>, according to Malok concepts, a weapon into a rapid-fire annihilation tool. Due to some reduction in damage, distance and the traditional Maloq approach to Reliability, it is catastrophically underestimated by almost everyone and is considered a collector's item.
+        Text=Weight: <clr>+200%<clrEnd>
+        Text=Cost: <clr>+500%<clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Firing range: <bonWRadius>
+        Text=Reliability: <clr>-80%<clrEnd>
+        Text=Additional gun shots: <bonAttacks>
+        bonAttacks=2
+        bonWEnergy=-55
+        bonWRadius=-120
+        bonWSplinter=-55
+    }
+    Cat_MM_027 ^{
+        Color=255,215,0
+        Cost=600
+        Equipments=Hull
+        Fragility=1100
+        KindGraph=CatGold
+        Name=Philosophical
+        Owner=NonKling,Maloc,Peleng,People,Fei,Gaal,PirateClan,None
+        Priority=1
+        Size=5
+        Text=Micromodule of the first level. In some way, the ingenious development of the scientist Puur'tsovh Muur. Completely changes the body in such a way that it can no longer be called a body: it transmutes all layers of the skin and most of the frame structures into precious metals, in particular, platinum and gold.
+        Text=Damage susceptibility to all weapons: <clr>1000%<clrEnd>
+        Text=Hull size: <clr>-99%<clrEnd>
+        Text=Cost: <clr>+500%<clrEnd>
+        Text=Hull Armor: <clr>-35<clrEnd>
+        Text=Ship mass: <clr>+200%<clrEnd>
+        Text=Positive effects of akrin: <clr>-100%<clrEnd>
+        Text=Closes all slots except the main ones
+        bonExtraAkrinEff=-100
+        bonHull=-35
+        bonMass=300
+        bonSlotArt=-4
+        bonSlotDef=-1
+        bonSlotDroid=-1
+        bonSlotForsage=-1
+        bonSlotHook=-1
+        bonSlotRadar=-1
+        bonSlotScaner=-1
+        bonSlotWeapon=-4
+    }
+    Cat_MM_028 ^{
+        Color=36,36,248
+        Cost=300
+        Equipments=WMissile
+        Fragility=200
+        KindGraph=CatBlue
+        Name=Examumber
+        Owner=NonKling,People
+        Priority=10
+        Text=Micromodule of the first level. Secret development <clr>People<clrEnd> of the military department, long known for its love of <clr>missile weapons<clrEnd>. Reassembles weapons, increasing the <clr> number of<clrEnd> simultaneously fired projectiles, their <clr>speed<clrEnd> and the total <clr>ammunition<clrEnd>, but the insufficiently advanced technology of people imposes a limit on the <clr>duration of work<clrEnd> and significantly increases the <clr>complexity of repair<clrEnd>.
+        Text=Missiles fired per shot: <bonShots>
+        Text=Missile speed: <clr>+512<clrEnd>
+        Text=Additional ammunition: <bonAmmo>
+        Text=Cost: <clr>+200%<clrEnd>
+        Text=Reliability: <clr>-50%<clrEnd>
+        bonAmmo=55
+        bonMissileSpeed=512
+        bonShots=7
+    }
+    Cat_MM_029 ^{
+        Color=35,248,255
+        Cost=300
+        Equipments=WMissile,WEnergy,WSplinter
+        Fragility=300
+        KindGraph=CatNone
+        Name=Obliterator
+        Owner=NonKling,None
+        Priority=1
+        Text=Micromodule of the first level. An ancient and very rare micromodule created before the dominators. With the help of unknown hyperspace technologies, it ignores material and energy barriers, inflicting damage exactly on target. Only for <clr>Unknown<clrEnd> weapon.
+        Text=<clr>Allows you to ignore the enemy's armor and protective field<clrEnd>
+        Text=Cost: <clr>+200%<clrEnd>
+        Text=Reliability: <clr>-80%<clrEnd>
+        WeaponMods=Undefendable
+    }
+    Cat_MM_030 ^{
+        Color=35,248,255
+        Cost=300
+        Equipments=WMissile,WEnergy,WSplinter
+        Fragility=300
+        KindGraph=CatNone
+        Name=Nondispergator
+        Owner=NonKling,None
+        Priority=1
+        Text=Micromodule of the first level. This micromodule was found among the debris after the battle of the dominators with an armada of unknown ships. We do not know how this micromodule and its copies appeared, but the fact that it always allows you to get to the most unprotected point makes it an irreplaceable help in battle. Only for <clr>Unknown<clrEnd> weapon.
+        Text=<clr>Removes the damage spread<clrEnd>
+        Text=Cost: <clr>+200%<clrEnd>
+        Text=Reliability: <clr>-80%<clrEnd>
+        WeaponMods=NoDelta
+    }
+    Cat_MM_031 ^{
+        Color=230,61,118
+        Cost=200
+        Equipments=Hull
+        KindGraph=Cat
+        Name=Ganslinger
+        Owner=NonKling,Maloc,Peleng,People,Fei,Gaal,PirateClan,None
+        Priority=1
+        Text=Micromodule of the first level. <clr>Universal<clrEnd> housing converter. Allocates an additional weapons compartment, rebuilds the cockpit following the example of the latest generation of warships and modifies the aiming systems, as a result, significantly increasing the firing efficiency for inexperienced pilots.
+        Text=Increases the cost of the ship by <clr>2<clrEnd> times
+        Text=Activates <clr>1<clrEnd> weapon slot
+        Text=Attack skill: <bonSkill1>
+        bonSkill1=3
+        bonSlotWeapon=3
+    }
+    Cat_MM_032 ^{
+        Color=230,61,118
+        Cost=200
+        Equipments=Hull
+        KindGraph=Cat
+        Name=Forsando
+        Owner=NonKling,Maloc,Peleng,People,Fei,Gaal,PirateClan,None
+        Priority=1
+        Text=Micromodule of the first level. An old and well-known converter of engine compartments for racing <clr>housings <clrEnd>, into which akrination has breathed new life. Adds afterburner mode and additional maneuverable injectors. The difference from the old version is minimal interference in the energy subsystem.
+        Text=Increases the cost of the ship by <clr>2<clrEnd> times
+        Text=Activates the afterburner slot
+        Text=Mobility skill: <bonSkill2>
+        bonSkill2=3
+        bonSlotForsage=1
+    }
+    Cat_MM_033 ^{
+        Color=230,61,118
+        Cost=200
+        Equipments=Hull
+        KindGraph=Cat
+        Name=Reenactor
+        Owner=NonKling,Maloc,Peleng,People,Fei,Gaal,PirateClan,None
+        Priority=1
+        Text=Micromodule of the first level. An order for the Crown Prince of the planet Ramgatru, who did not want to waste precious wartime on studying the technical component. Organizes a place for a repair droid and adds instructions from the 1968 "if-else" conditions to the on-board computer to monitor the installed equipment. <clr>Universal<clrEnd> and highly appreciated for efficiency.
+        Text=Increases the cost of the ship by <clr>2<clrEnd> times
+        Text=Activates repair droid slot
+        Text=Technology skill: <bonSkill3>
+        bonSkill3=3
+        bonSlotDroid=1
+    }
+    Cat_MM_034 ^{
+        Color=36,36,248
+        Cost=400
+        Equipments=WMissile,WEnergy,WSplinter
+        KindGraph=CatBlue
+        Name=Accuratelymetr
+        Owner=NonKling,Maloc,Peleng,People,Fei,Gaal
+        Priority=1
+        Text=Micromodule of the first level. The prototype of the well-known modification "Extremum". Modifies the targeting systems of <clr> coalition<clrEnd> weapons, increasing accuracy to the limit. The price of such equipment increases very much. For the sake of saving Reliability, the power of shots is reduced.
+        Text=<clr>Removes the damage spread<clrEnd>
+        Text=Increases the cost by <clr>4<clrEnd> times
+        Text=Power of fragmentation and energy weapons: <bonWEnergy>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Attack skill: <bonSkill1>
+        WeaponMods=NoDelta
+        bonSkill1=1
+        bonWEnergy=-30
+        bonWMissile=-15
+        bonWSplinter=-30
+    }
+	Cat_MM_035 ^{
+        Color=36,36,248
+        Cost=100
+        Equipments=WMissile
+        KindGraph=CatBlue
+        Name=Rockshot
+        Owner=People,Maloc
+        Priority=20
+        Text=Micromodule of the first level. <clr>Maloq-Humans<clrEnd> development - replaces most of the rocket fuel system with a live charge, which in turn leads to an incredible <clr> increase in damage<clrEnd> and a proportional <clr> decrease in the speed<clrEnd> of missile flight.
+		Text=Rocket weapon power: <bonWMissile>
+		Text=Missile speed: <bonMissileSpeed>
+		bonWMissile=100
+		bonMissileSpeed=-1500
+    }
+    Cat_MM_Dom_001 ^{
+        Color=119,124,126
+        Cost=200
+        Equipments=WMissile
+        Fragility=120
+        KindGraph=CatDom
+        Name=Urkoragn
+        Owner=Kling
+        Priority=10
+        RacialRestriction=1
+        Text=A completely new line of micromodules <clr>dominators<clrEnd>, incompatible with any other equipment. Significantly accelerates rockets and torpedoes at the cost of overloading the launch site.
+        Text=Missile speed: <clr>+1500<clrEnd>
+        Text=Cost: <clr>+100%<clrEnd>
+        Text=Reliability: <clr>-20%<clrEnd>
+        bonMissileSpeed=1500
+    }
+    Cat_MM_Dom_002 ^{
+        Color=119,124,126
+        Cost=200
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        Fragility=90
+        KindGraph=CatDom
+        Name=Krasergen
+        Owner=Kling
+        Priority=10
+        RacialRestriction=1
+        Size=250
+        Text=A completely new line of micromodules <clr>dominators<clrEnd>, incompatible with any other equipment. Improves the Akrin equipment to the theoretical maximum without regard to the resulting size and cost. Fortunately, the dominators have not studied acrining very well.
+        Text=Cost: <clr>+100%<clrEnd>
+        Text=Reliability: <clr>+10%<clrEnd>
+        Text=Positive effects of akrin: <clr>+150%<clrEnd>
+        Text=Negative effects of akrin: <clr>-50%<clrEnd>
+        Text=Weight: <clr>+150%<clrEnd>
+        bonExtraAkrinEff=150
+        bonExtraAkrinPenalty=-50
+    }
+    Cat_MM_Dom_003 ^{
+        Color=119,124,126
+        Cost=200
+        Equipments=DefGenerator
+        Fragility=300
+        KindGraph=CatDom
+        Name=Gibyakhner
+        Owner=Kling
+        Priority=10
+        RacialRestriction=1
+        Size=300
+        Text=A completely new line of micromodules <clr>dominators<clrEnd>, incompatible with any other equipment. Despite the good bonus, the rarity of materials, the size of the required space and the overload of all the power circuits of the <clr> field generator <clrEnd> in most cases do not allow the AI to consider the installation of this micromodule expedient.
+        Text=Cost: <clr>+100%<clrEnd>
+        Text=Reliability: <clr>-80%<clrEnd>
+        Text=Weight: <clr>+200%<clrEnd>
+        Text=Power of Shield Generator: <bonDef>%
+        bonDef=15
+    }
+    Cat_MM_Dom_004 ^{
+        Color=119,124,126
+        Cost=400
+        Equipments=Hook
+        Fragility=50
+        KindGraph=CatDom
+        Name=Zhurgenpran
+        Owner=Kling
+        Priority=10
+        RacialRestriction=1
+        Size=50
+        Text=A completely new line of micromodules <clr>dominators<clrEnd>, incompatible with any other equipment. It is widely distributed within the Keller series, but sometimes occurs in the other two. It requires a lot of rare materials, but a ship with a <clr>mentoshoop<clrEnd> with this micromodule will definitely be able to attract them.
+        Text=Cost: <clr>+300%<clrEnd>
+        Text=Reliability: <clr>+50%<clrEnd>
+        Text=Weight: <clr>-50%<clrEnd>
+        Text=Gripper power: <bonHook>
+        Text=Gripper range: <bonHookRadius>
+        bonHook=100
+        bonHookRadius=100
+    }
+    Cat_MM_Dom_005 ^{
+        Color=119,124,126
+        Cost=50
+        Equipments=Droid
+        Fragility=90
+        KindGraph=CatDom
+        Name=Drychnagryaz
+        Owner=Kling
+        Priority=10
+        RacialRestriction=1
+        Size=150
+        Text=A completely new line of micromodules <clr>dominators<clrEnd>, incompatible with any other equipment. It was experimentally determined that it contains an advanced AI for the <clr>dianode<clrEnd>, but it is extremely rare. Researchers jokingly suggest that AI is too smart and does not want to participate in combat.
+        Text=Cost: <clr>+50%<clrEnd>
+        Text=Reliability: <clr>+10%<clrEnd>
+        Text=Droid effectiveness: <bonDroid>
+        Text=Weight: <clr>+50%<clrEnd>
+        bonDroid=35
+    }
+    Cat_MM_Dom_006 ^{
+        Color=119,124,126
+        Equipments=Scaner
+        Fragility=190
+        KindGraph=CatDom
+        Name=Sushchornets
+        Owner=Kling
+        Priority=10
+        RacialRestriction=1
+        Text=A completely new line of micromodules <clr>dominators<clrEnd>, incompatible with any other equipment. It occurs only after battles of dominators with highly protected ships. It contains an additional power channel for the tech detector, but it is obvious that the latter does not withstand high-current load for a long time.
+        Text=Reliability: <clr>-50%<clrEnd>
+        Text=Scanner power: <bonScan>%
+        bonScan=20
+    }
+    Cat_MM_Dom_007 ^{
+        Color=119,124,126
+        Equipments=Radar
+        Fragility=100
+        KindGraph=CatDom
+        Name=Ruberschlac
+        Owner=Kling
+        Priority=10
+        RacialRestriction=1
+        Text=A completely new line of micromodules <clr>dominators<clrEnd>, incompatible with any other equipment. It is considered a modification of the coalition micromodule Minimision, but it does not have backward compatibility.
+        Text=Radar range: <bonRadar>
+        bonRadar=1500
+    }
+    Cat_MM_Dom_008 ^{
+        Color=119,124,126
+        Equipments=Engine
+        Fragility=20
+        KindGraph=CatDom
+        Name=Ergurkun
+        Owner=Kling
+        Priority=10
+        RacialRestriction=1
+        Text=A completely new line of micromodules <clr>dominators<clrEnd>, incompatible with any other equipment. A modification of the <clr>torsion reactor<clrEnd> designed to perform unhurried cargo tasks. Limits the maximum speed of the ship, but allows you to supply energy and fuel in a linear manner, significantly extending the service life without any impact on the cost of repairs.
+        Text=Reliability: <clr>+500%<clrEnd>
+        Text=Engine speed: <bonSpeed>
+        bonSpeed=-500
+    }
+    Cat_MM_Dom_009 ^{
+        Color=119,124,126
+        Equipments=Engine
+        Fragility=500
+        KindGraph=CatDom
+        Name=Yerkurgan
+        Owner=Kling
+        Priority=10
+        RacialRestriction=1
+        Text=A completely new line of micromodules <clr>dominators<clrEnd>, incompatible with any other equipment. A modification of the <clr>torsion reactor<clrEnd> designed for assault tasks. They were caught after a sweep by a battleship in a system where several rangers on the ships "Fast" were missing.
+        Text=Reliability: <clr>-80%<clrEnd>
+        Text=Engine speed: <bonSpeed>
+        bonSpeed=400
+    }
+    Cat_MM_Dom_010 ^{
+        Color=119,124,126
+        Cost=20
+        Equipments=FuelTank
+        Fragility=10
+        KindGraph=CatDom
+        Name=Tangshianyur
+        Owner=Kling
+        Priority=10
+        RacialRestriction=1
+        Size=450
+        Text=A completely new line of micromodules <clr>dominators<clrEnd>, incompatible with any other equipment. Uses a huge amount of cheap asteroid material to modify <clr>stackbarell<clrEnd>. It is considered an attempt by the dominators to create a separate series of ships, in this case, for the transportation of fuel. The strength of the recycled material remains a mystery to scientists today.
+        Text=Cost: <clr>-80%<clrEnd>
+        Text=Reliability: <clr>+600%<clrEnd>
+        Text=Weight: <clr>+350%<clrEnd>
+        Text=Fuel tank capacity: <bonFuel>
+        bonFuel=100
+    }
+    Cat_MM_Dom_011 ^{
+        Color=119,124,126
+        Cost=1100
+        Equipments=Hull
+        Fragility=70
+        KindGraph=CatDom
+        Name=Bzhenchishchikevich
+        Owner=Kling
+        Priority=10
+        RacialRestriction=1
+        Size=200
+        Text=A completely new line of micromodules <clr>dominators<clrEnd>, incompatible with any other equipment. The only encounter with an Urgant-class dominator with this micromodule in the <clr> case<clrEnd> turned into a tragedy for the People of the battleship Mars-19. The belated rangers were able to finish off the dominator with a quark bomb and missiles, but the admiral's ship, whose name the micromodule was named after, could no longer be saved.
+        Text=Hull Armor: <bonHull>
+        Text=Hull size: <clr>+100%<clrEnd>
+        Text=Damage susceptibility to all weapons: <clr>-30%<clrEnd>
+        Text=Cost: <clr>+1000%<clrEnd>
+        bonHull=10
+    }
+    Cat_MM_Dom_012 ^{
+        Color=119,124,126
+        Cost=200
+        Equipments=WSplinter
+        Fragility=120
+        KindGraph=CatDom
+        Name=Spiradrum
+        Owner=Kling
+        Priority=10
+        RacialRestriction=1
+        Text=Абсолютно новая линейка микромодулей <clr>доминаторов<clrEnd>, incompatible with any other equipment. The pinnacle of the uncompromising development of the <clr>dominant fragmentation<clrEnd> weapons. The production of a micromodule is extremely difficult and in most cases the AI prefers to simply add more guns.
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        bonWSplinter=40
+    }
+    Cat_MM_Dom_013 ^{
+        Color=119,124,126
+        Cost=200
+        Equipments=WEnergy
+        Fragility=120
+        KindGraph=CatDom
+        Name=Tachyphema
+        Owner=Kling
+        Priority=10
+        RacialRestriction=1
+        Text=Абсолютно новая линейка микромодулей <clr>доминаторов<clrEnd>, incompatible with any other equipment. The pinnacle of the uncompromising development of the <clr>dominant energy<clrEnd> weapon. The production of a micromodule is extremely difficult and in most cases the AI prefers to simply add more guns.
+        Text=Power of energy weapons: <bonWEnergy>
+        bonWEnergy=40
+    }
+    Cat_MM_Dom_014 ^{
+        Color=119,124,126
+        Cost=200
+        Equipments=W04
+        Fragility=300
+        KindGraph=CatDom
+        Name=Balancsot
+        Owner=Kling
+        Priority=1
+        RacialRestriction=1
+        Size=300
+        Text=Абсолютно новая линейка микромодулей <clr>доминаторов<clrEnd>, incompatible with any other equipment. A specific micromodule, installed only in the <clr>rocket launcher of the dominant<clrEnd> production. Adds a huge module for replacing the charge of missile warheads with a quark one, nullifying all target protection. Fortunately for Coalitions, a rocket launcher with such a module does not work for long.
+        Text=Reliability: <clr>-80%<clrEnd>
+        Text=Weight: <clr>+200%<clrEnd>
+        Text=<clr>Allows you to ignore the enemy's armor and protective field<clrEnd>
+        WeaponMods=Undefendable
+    }
+}

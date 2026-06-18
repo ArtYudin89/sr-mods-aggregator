@@ -1,0 +1,198 @@
+Script ^{
+    Mod_DevKit ~{
+        100=Военный
+        101=Пиратский
+        102=Рейнджер
+        103=Транспортный
+        105=Консоль
+        107=На сколько?
+        110=Открыть всю карту
+        111=Ввести нужный размер
+        112=Повысить коалиционное
+        113=Повысить пиратское
+        114=Стать Бароном
+        115=Стать Адмиралом
+        116=Какого тех.уровня?
+        117=A
+        118=B
+        119=C
+        12=Раса
+        120=D
+        121=E
+        122=F
+        123=G
+        124=H
+        127=Ввести нужное количество
+        128=Читерный двигатель
+        129=Какой расы?
+        13=Малоки
+        130=Люди
+        132=Пираты
+        133=Доминаторы
+        134=Неизвестные
+        135=Читерный радар
+        137=Какое количество?
+        138=Какое количество нодов получить физически и на какое пополнить нод-счёт?
+        14=Пеленги
+        141=Быстрое оборудования для тестинга
+        144=Телепортация в другую систему
+        146=Куда?
+        147=Готово.
+        148=Никуда я телепортироваться не хочу
+        149=Голопроектор, Пульсар, Блинкер (модуль SubSpaceBase)
+        150=Убить пиратский клан
+        152=Из модуля ExpArts
+        153=Из модуля ExpAcryn
+        154=Выберите нужное действие.
+        155=Тестовый транк-мишень
+        156=Создание шотного транка с нужным хп
+        157=Изменить навык манёвренности
+        158=Изменить значение брони
+        159=Изменить значение ГЗП
+        16=Феяне
+        160=Сбросить изменённые значения
+        161=Сбросить показания урона
+        164=Уничтожить транка
+        165=Вывести показатели урона
+        166=Убрать показатели урона
+        167=Фэяне
+        17=Гаальцы
+        19=Получить двигатель
+        21=Получить сканер
+        22=Получить радар
+        23=Получить дроид
+        24=Получить захват
+        27=Какое именно?
+        28=Получить оборудование
+        29=Получить корпус
+        3=DevKit
+        30=Получить ГЗП
+        33=Получить деньги
+        34=Ввести нужную сумму
+        37=Получить артефакты
+        38=Только Транклюкатора
+        4=Функции для тестирования
+        43=Заправить бак
+        44=Выход
+        45=Получить всё сразу
+        46=Получить микромодули
+        47=Получить оружие
+        49=Оригинальное
+        54=Повысить звание
+        57=Какие именно?
+        58=Оригинальные
+        61=Создать базы
+        63=Создать ЧД
+        65=Получить ноды
+        74=Создать планету
+        75=Загрузить антидоминатор программы
+        80=Увеличить размер корпуса
+        82=Починить оборудование
+        9=Получить бак
+        94=Мабокит (Evolution)
+        95=Корпус Клещ (Expansion)
+        96=ФизГан (Expansion)
+        98=Какого типа?
+        99=Корпус Тень Империи
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            DMeter_infos ^{
+                Description=Инфошка для вывода урона по транку-мишени
+                Icon=1
+                Name=--
+                OnActCode ^{
+                    00=int set;
+                    01=if(ScriptItemActionType(t_OnStep,0))
+                    01 ^{
+                        00=InterfaceText('StarMap','DM_1_gun','Урон 1 пухи:');
+                        00=InterfaceText('StarMap','DM_2_gun','Урон 2 пухи:');
+                        00=InterfaceText('StarMap','DM_3_gun','Урон 3 пухи:');
+                        00=InterfaceText('StarMap','DM_4_gun','Урон 4 пухи:');
+                        00=InterfaceText('StarMap','DM_5_gun','Урон 5 пухи:');
+                        01=InterfaceText('StarMap','DM_1_gun_v',0);
+                        01=InterfaceText('StarMap','DM_2_gun_v',0);
+                        01=InterfaceText('StarMap','DM_3_gun_v',0);
+                        01=InterfaceText('StarMap','DM_4_gun_v',0);
+                        01=InterfaceText('StarMap','DM_5_gun_v',0);
+                        02=InterfaceText('StarMap','DM_ion_v',0);
+                        03=int damag=0;
+                    }
+                    02=else if(ScriptItemActionType(t_OnGettingWeaponHit))
+                    02 ^{
+                        00=if(ScriptItemActObject1()!=Player())exit;
+                        00=set=ItemIsInUse(ScriptItemActObject2(),Player());
+                        01=if(set>100)set=set-128;
+                        02=InterfaceText('StarMap','DM_'+set+'_gun',ShortName(ScriptItemActObject2())+':');
+                        03=cur_gun=ScriptItemActObject2();
+                    }
+                    03=else if(ScriptItemActionType(t_OnGettingMissileHit))
+                    03 ^{
+                        00=if(ScriptItemActObject1()!=Player())exit;
+                        01=dword weaponR=IdToItem(MissileWeaponID(ScriptItemActObject2()));
+                        03=set=ItemIsInUse(weaponR,Player());
+                        04=if(set>100)set=set-128;
+                        05=InterfaceText('StarMap','DM_'+set+'_gun',ShortName(weaponR+':'));
+                        06=cur_gun=weaponR;
+                    }
+                    04=else if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
+                    04 ^{
+                        00=int infos=ShipFindCustomShipInfoByType(ScriptItemActShip(),'DMeter_infos');
+                        01=int add_damag=0;
+                        02=if((ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi)) && set!=0)
+                        02 ^{
+                            00=if(last_gun==cur_gun)add_damag=InterfaceText('StarMap','DM_'+set+'_gun_v');
+                            02=InterfaceText('StarMap','DM_'+set+'_gun_v',ScriptItemActParam()+add_damag);
+                            03=damag=damag+ScriptItemActParam();
+                            04=if(ScriptItemActParam()>=HullHP(ScriptItemActShip()))ShipRepairEq(ScriptItemActShip());
+                        }
+                        04=else if(ScriptItemActionType(t_OnTakingDamageEn) && !set)
+                        04 ^{
+                            00=InterfaceText('StarMap','DM_ion_v',ScriptItemActParam());
+                            01=damag=damag+ScriptItemActParam();
+                            02=if(ScriptItemActParam()>=HullHP(ScriptItemActShip()))ShipRepairEq(ScriptItemActShip());
+                        }
+                        11=set=0;
+                        13=last_gun=cur_gun;
+                        14=ShipCustomShipInfoData(ScriptItemActShip(),infos,2,1);
+                    }
+                    09=else if(ScriptItemActionType(t_OnStep,11))
+                    09 ^{
+                        00=int infos2=ShipFindCustomShipInfoByType(ScriptItemActShip(),'DMeter_infos');
+                        01=if(ShipCustomShipInfoData(ScriptItemActShip(),infos2,2)!=0)
+                        01 ^{
+                            00=int turn=InterfaceText('StarMap','DM_turn');
+                            01=turn=turn+1;
+                            02=InterfaceText('StarMap','DM_turn',turn);
+                            03=int total_damag=damag+ShipCustomShipInfoData(ScriptItemActShip(),infos2,1);
+                            03=str text='DMG (+DMH)';
+                            04=InterfaceText('StarMap','DM_damag',DeleteTags(Format(text,'DMG',total_damag,'DMH',damag)));
+                            05=ShipCustomShipInfoData(ScriptItemActShip(),infos2,1,total_damag);
+                        }
+                    }
+                    10=else if(ScriptItemActionType(t_OnDeath))
+                    10 ^{
+                        00=InterfaceText('StarMap','DM_1_gun','Урон 1 пухи:');
+                        01=InterfaceText('StarMap','DM_2_gun','Урон 2 пухи:');
+                        02=InterfaceText('StarMap','DM_3_gun','Урон 3 пухи:');
+                        03=InterfaceText('StarMap','DM_4_gun','Урон 4 пухи:');
+                        04=InterfaceText('StarMap','DM_5_gun','Урон 5 пухи:');
+                        05=InterfaceText('StarMap','DM_1_gun_v',0);
+                        06=InterfaceText('StarMap','DM_2_gun_v',0);
+                        07=InterfaceText('StarMap','DM_3_gun_v',0);
+                        08=InterfaceText('StarMap','DM_4_gun_v',0);
+                        09=InterfaceText('StarMap','DM_5_gun_v',0);
+                        10=InterfaceText('StarMap','DM_ion_v',0);
+                        11=InterfaceText('StarMap','DM_turn',0);
+                        12=InterfaceText('StarMap','DM_damag',0);
+                        13=InterfaceState('StarMap','InfoShipTranc',0);
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnGettingWeaponHit,t_OnGettingMissileHit,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnDeath
+                OnActStepTypes=0,11
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            NoGuests ^{
+                Description=Выбрасывает за шкирку с ВБ всех, кто посмел остатся на защищённом объекте во время проведения секретной операции
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ShipInGameEvent(ScriptItemActShip()))
+                    02 ^{
+                        01=int i;
+                        02=for(i=0;StarShips(ShipStar(ScriptItemActShip()))>i;i=i+1)
+                        03 ^{
+                            01=dword tdwd = StarShips(ShipStar(ScriptItemActShip()),i);
+                            02=if(GetShipRuins(tdwd) != 0)
+                            03 ^{
+                                01=if(ShipType(GetShipRuins(tdwd)) == 'WB')
+                                02 ^{
+                                    01=if(tdwd == Player()) continue;
+                                    02=if(ShipType(tdwd) == 'Warrior') continue;
+                                    03=if(ShipType(tdwd) == 'Tranclucator') continue;
+                                    04=if(ShipType(tdwd) == 'FemRanger') continue;
+                                    05=if(ShipType(tdwd) == 'Ranger') continue;
+                                    06=if(ShipType(tdwd) == 'Dreadnought') continue;
+                                    07=if(ShipType(tdwd) == 'RangerExplorer') continue;
+                                    08=if(ShipType(tdwd) == 'EliteWarrior') continue;
+                                    09=if(ShipType(tdwd) == 'Merc') continue;
+                                    10=if(ShipType(tdwd) == 'PlayerMerc') continue;
+                                    11=if(ShipType(tdwd) == 'PlayerMercCruiser') continue;
+                                    12=OrderTakeOff(tdwd);
+                                }
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+        }
+    }
+}

@@ -1,0 +1,615 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "mod_battledrone",
+    "ScriptFileOut": "D:\\mod_battledrone.scr",
+    "ScriptTextOut": "D:\\mod_battledrone.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "restart",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "Да, плачу <0> cr за <1>",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.mod_battledrone.1\"),\"<0>\",curDronArr[3],\"<1>\",curDronArr[5]))"
+                },
+                {
+                    "Name": "block",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "Да, плачу <0> cr за <1>",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer('block~'+Format(CT(\"Script.mod_battledrone.1\"),\"<0>\",curDronArr[3],\"<1>\",curDronArr[5]))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "Нет, пожалуй, зайду за дронами в другой раз",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.mod_battledrone.3\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "Боевые дроны - вспомогательные автоматические огневые установки, используемые подразделениями КВСМК для ликвидации особо опасных противников. По окончании эксплуатации самоликвидируются. По запросу Сети ЦР Боевые дроны могут приобрести отличившиеся пилоты Корпуса.\r\n---------------------------------\r\nСегодня мы можем предложить <0>.\r\nОписание: <1>\r\nСтоимость: <2> cr.\r\n---------------------------------\r\nКоличество дронов у вас: <3> шт.\r\nВаш ранг позволяет приобрести <4> шт.\r\n\r\nБудете брать?",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.mod_battledrone.0\"),\"<0>\",curDronArr[5],\"<1>\",str0,\"<2>\",curDronArr[3],\"<3>\",curDrons,\"<4>\",maxDrons))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "Dlg0",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 25
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 19
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 20,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "//при старте скрипта навешиваем инфошки активации дронов на не скриптовых флагманов и вояк",
+                        "for(a=0;a<GalaxyStars();a=a+1)",
+                        "    {",
+                        "    star=GalaxyStar(a);",
+                        "    for(b=0;b<StarShips(star);b=b+1)",
+                        "        {",
+                        "        ship=StarShips(star,b);",
+                        "        if(ship==Player())continue;",
+                        "        if(ShipOwner(ship)>4)continue;",
+                        "        if(ShipInScript(ship))continue;",
+                        "        if(ShipCustomFaction(ship)!='')continue;",
+                        "        if(ShipTypeN(ship)!=t_Warrior)continue;",
+                        "        if(ShipSubType(ship)==1)ShipAddCustomShipInfo(ship, 'mBtlDrn_NpcDrones','NoShow',0,10+GalaxyTechLevel());",
+                        "        else",
+                        "            {",
+                        "            if(Rnd(0,100)<17)ShipAddCustomShipInfo(ship, 'mBtlDrn_NpcDrones','NoShow',0,3);",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "lastIdWarrior=GalaxyShipId();"
+                    ],
+                    "#": 21,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(!ShipIsTakeoff(Player())) {",
+                        "  //навешиваем инфошки активации дронов на свежие флагманы и вояк",
+                        "  if(GalaxyShipId()>lastIdWarrior)",
+                        "      {",
+                        "      a=BuildListOfNewShips(arr0, lastIdWarrior, 16, 1+2+4+8+16);",
+                        "      if(a)",
+                        "          {",
+                        "          for(a=0;a<ArrayDim(arr0);a=a+1)",
+                        "              {",
+                        "              ship=arr0[a];",
+                        "              if(ship==Player())continue;",
+                        "              if(ShipOwner(ship)>4)continue;",
+                        "              if(ShipInScript(ship))continue;",
+                        "              if(ShipCustomFaction(ship)!='')continue;",
+                        "              if(ShipTypeN(ship)!=t_Warrior)continue;",
+                        "              if(ShipSubType(ship)==1)ShipAddCustomShipInfo(ship, 'mBtlDrn_NpcDrones','NoShow',0,2*GalaxyTechLevel());",
+                        "              else",
+                        "                  {",
+                        "                  if(Rnd(0,100)<17)ShipAddCustomShipInfo(ship, 'mBtlDrn_NpcDrones','NoShow',0,GalaxyTechLevel());",
+                        "                  }",
+                        "              }",
+                        "          }",
+                        "      lastIdWarrior=GalaxyShipId();",
+                        "      }",
+                        "}"
+                    ],
+                    "#": 22,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(GetShipRuins(Player())>0) {",
+                        "  if(ShipType(GetShipRuins(Player()))=='WB') {",
+                        "    if(ShipRank(Player())>2)",
+                        "        {",
+                        "        if(!ShipOnSidePirateClan(Player()))",
+                        "            {",
+                        "            AddDialogInject('Dlg0','',CT(\"Script.mod_battledrone.2\"),3);",
+                        "            }",
+                        "        }",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 23,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//проверяем кол-во дронов у игрока и удаляем несуществующие",
+                        "curDrons=0;",
+                        "for(a=ArrayDim(dronsArr)-1;a>0;a=a-1)",
+                        "    {",
+                        "    dwd0=IdToItem(dronsArr[a]);",
+                        "    if(dwd0)curDrons=curDrons+1;",
+                        "    else ArrayDelete(dronsArr,a);",
+                        "    }",
+                        "//выбираем тип нового дрона, если ещё не выбирали в этом ходу",
+                        "maxDrons=ShipRank(Player()) - 1;",
+                        "if(CurTurn()>newDron)",
+                        "    {",
+                        "    //curDronArr[1] системное имя текущего дрона",
+                        "    //curDronArr[2] раса дрона",
+                        "    //curDronArr[3] цена дрона",
+                        "    //curDronArr[4] описание дрона",
+                        "    //curDronArr[5] текстовое имя дрона",
+                        "    newDron=CurTurn();",
+                        "    ArrayClear(arr0);ArrayClear(arr1);",
+                        "    int0=CT('UselessItems',arr0);",
+                        "    for(a=0;a<int0;a=a+1)",
+                        "        {",
+                        "        str0=GetVariableName(arr0[a]);",
+                        "        if(CT('UselessItems.'+str0+'.Mod_BattleDrone')!=1)continue;",
+                        "        ArrayAdd(arr1,GetVariableName(arr0[a]));",
+                        "        }",
+                        "    int0=Rnd(1,ArrayDim(arr1)-1);",
+                        "    curDronArr[1]=arr1[int0];",
+                        "    curDronArr[2]=CT('UselessItems.'+curDronArr[1]+'.Owner');",
+                        "    curDronArr[3]=50000*GalaxyTechLevel()+GalaxyMoney(4,curDronArr[2])*2;",
+                        "    str0='</color>'+CT('UselessItems.'+curDronArr[1]+'.Text');",
+                        "    str0=Format(str0,'minDmg',15*GalaxyTechLevel(),'maxDmg',25*GalaxyTechLevel());",
+                        "    str0=Format(str0,'minBDmg',80*GalaxyTechLevel(),'maxBDmg',120*GalaxyTechLevel());",
+                        "    curDronArr[4]=str0;",
+                        "    curDronArr[5]=CT('UselessItems.'+curDronArr[1]+'.Name');",
+                        "    }",
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 30,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=curDronArr[3] && curDrons<maxDrons) {",
+                        "  DAdd(0);",
+                        "}",
+                        "if(ShipMoney(Player())<curDronArr[3] || curDrons>=maxDrons) {",
+                        "  DAdd(1);",
+                        "}",
+                        "DAdd(2);"
+                    ],
+                    "#": 31,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "newDron=0;",
+                        "dwd0=CreateQuestItem(curDronArr[1],curDronArr[2]);",
+                        "SetName(dwd0,Name(dwd0)+' MK'+GalaxyTechLevel()+'-'+Rnd(1,9999));",
+                        "UselessItemData(dwd0,2,GalaxyTechLevel());",
+                        "str0=CT('UselessItems.'+curDronArr[1]+'.Text');",
+                        "str0=Format(str0,'minDmg',15*GalaxyTechLevel(),'maxDmg',25*GalaxyTechLevel());",
+                        "str0=Format(str0,'minBDmg',80*GalaxyTechLevel(),'maxBDmg',120*GalaxyTechLevel());",
+                        "UselessItemText(dwd0,str0);",
+                        "ItemCost(dwd0,curDronArr[3]);",
+                        "ItemSize(dwd0,50*GalaxyTechLevel());",
+                        "ShipMoney(Player(),ShipMoney(Player()) - curDronArr[3]);",
+                        "AddItemToShip(Player(),dwd0);",
+                        "ArrayAdd(dronsArr,Id(dwd0));",
+                        "Sound('Sound.Sell');"
+                    ],
+                    "#": 32,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 18
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 17
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 16,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 24
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "a",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "dwd0",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "str0",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "curDrons",
+                    "Pos.x": 270,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "maxDrons",
+                    "Pos.x": 390,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "dronsArr",
+                    "Pos.x": 510,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "int0",
+                    "Pos.x": 630,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "int1",
+                    "Pos.x": 720,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "curDronArr",
+                    "Pos.x": 810,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Array",
+                    "Init": "10",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "newDron",
+                    "Pos.x": 960,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "arr0",
+                    "Pos.x": 1080,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "arr1",
+                    "Pos.x": 1170,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 11,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "ship",
+                    "Pos.x": 1260,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 12,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "b",
+                    "Pos.x": 1350,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 13,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "star",
+                    "Pos.x": 1440,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 14,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "lastIdWarrior",
+                    "Pos.x": 1530,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 15,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 30,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 31,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 27,
+            "End": 32,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 17,
+            "End": 16,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 16,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 19,
+            "End": 18,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 19,
+            "End": 24,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

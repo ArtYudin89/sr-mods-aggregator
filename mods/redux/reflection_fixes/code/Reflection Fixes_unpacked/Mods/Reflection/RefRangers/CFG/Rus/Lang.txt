@@ -1,0 +1,28 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RefRangersGift ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword cur_ship = ScriptItemActShip();
+                    02=if(cur_ship < 1) exit;
+                    03=if(ShipRank(cur_ship) > 3)
+                    04 ^{
+                        01=ShipDeleteCustomShipInfo(0,CurInfo());
+                        02=if(~HullSpecial(cur_ship)) exit;
+                        03=dword acryn = HullSpecial(cur_ship);
+                        04=str tstr = BonusNumInCfg(acryn);
+                        05=acryn = CT('MicroModuls.'+tstr+'.LevelsCount');
+                        06=if(acryn < 2) exit;
+                        07=if(tstr == CT('MicroModuls.'+tstr+'.SerieLevel'+acryn)) exit;
+                        08=HullSpecial(cur_ship,FindBonusByNameInCfg(CT('MicroModuls.'+tstr+'.LevelsCount')));
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+        }
+    }
+}

@@ -1,0 +1,566 @@
+Data ^{
+    CustomBridges ^{
+        2 ^{
+            BGI=Bm.FormLoad2.ShipPanel
+            PanelName=PanelEmptyBridge
+            Table=Bm.FormRuins.2WBtable
+        }
+    }
+    Script ^{
+        Mod_DevKit=1,Script.Mod_DevKit
+    }
+}
+BV ^{
+    OnLoad ^{
+        DevKit ^{
+            01=if(!IsScriptActive('Mod_DevKit')) ScriptRun(ShipStar(Player()), GetShipPlanet(Player()), 'Mod_DevKit');
+        }
+    }
+}
+ML ^{
+    RuinsTalk ^{
+        Panel ^{
+            CustomBridges ^{
+                Panel ^{
+                    Active=False
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-99]
+                        Image=Bm.Gov.2PeopleHoloAnim0a
+                        ImageFirst=Bm.Gov.2PeopleHoloAnim0i
+                        Name=Panel_Anim0
+                        PBuf=True
+                        Pos=546,127,-2
+                        Size=398,654
+                    }
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-99]
+                        Image=Bm.Gov.2PeopleHoloAnim1a
+                        ImageFirst=Bm.Gov.2PeopleHoloAnim1i
+                        Name=Panel_Anim1
+                        PBuf=True
+                        Pos=546,127,-2
+                        Size=398,654
+                    }
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-99]
+                        Image=Bm.GovHD.PeopleHoloAnim0a
+                        ImageFirst=Bm.GovHD.PeopleHoloAnim0i
+                        Name=PanelHD_Anim0
+                        PBuf=True
+                        Pos=0,-81,-2
+                        Size=497,817
+                    }
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-99]
+                        Image=Bm.GovHD.PeopleHoloAnim1a
+                        ImageFirst=Bm.GovHD.PeopleHoloAnim1i
+                        Name=PanelHD_Anim1
+                        PBuf=True
+                        Pos=0,-81,-2
+                        Size=497,817
+                    }
+                    Image ^{
+                        Image=GI,Bm.FormRuins.2WBtable
+                        Name=Table
+                        Pos=0,0,-3
+                        Size=834,662
+                    }
+                    Name=PanelEmptyBridge
+                    Pos=0,0,2000
+                    Size=1024,768
+                }
+            }
+        }
+    }
+    Ship ^{
+        Panel ^{
+            GraphBuf ^{
+            }
+            GraphButton ^{
+                Help=FormShip.HelpDestrInto
+                ImageDown=GI,Bm.FormShip2.ButBrigdeD
+                ImageNormal=GI,Bm.FormShip2.ButBrigdeN
+                ImageNormalA=GI,Bm.FormShip2.ButBrigdeA
+                Kind=Normal
+                KindHit=Rect
+                Name=CustomBridgeInto
+                Pos=378,420,6
+                Size=80,25
+                Style=Style.GB.SoundNormal
+            }
+        }
+    }
+    StarMap ^{
+        Panel ^{
+            DevKitPanel ^{
+                Panel ^{
+                    Active=True
+                    GraphButton ^{
+                        ImageDown=GI,Bm.ConsoleButton.D
+                        ImageNormal=GI,Bm.ConsoleButton.N
+                        ImageNormalA=GI,Bm.ConsoleButton.A
+                        Kind=Normal
+                        KindHit=Rect
+                        MouseBlocking=True
+                        MouseBlockingTest=False
+                        Name=DevKitConsoleButton
+                        OnPressCode ~{
+                            0=str temp_str='1';
+                            0=while(temp_str)
+                            0 ~{
+                                0=temp_str=TextBox('Консоль','',100000000);
+                                0=ExecuteCodeFromString(temp_str);
+                            }
+                        }
+                        Pos=0,0,-1000
+                        Size=18,18
+                        Style=Style.GB.SoundNormal
+                    }
+                    Name=DevKitPanel
+                    Pos=865,141,-1000
+                    PosAutoCorrection=True
+                    PosAutoCorrectionXCoef=1
+                    PosAutoCorrectionYCoef=0
+                    Size=18,18
+                }
+            }
+            Window ^{
+            }
+            Window ^{
+            }
+            Window ^{
+            }
+            Window ^{
+            }
+            Window ^{
+            }
+            Window ^{
+            }
+            Window ^{
+                Active=False
+                Label ^{
+                    AlignX=Center
+                    AlignY=CenterEx
+                    Font=Font.2SmallBold
+                    Pos=90,10,8
+                    Size=200,43
+                    Text=Статистика нанесённых повреждений:
+                    TextColor=57,240,255
+                    WordWrap=True
+                }
+                Label ^{
+                    AlignX=Right
+                    AlignY=CenterEx
+                    Font=Font.2Small
+                    Pos=10,95,8
+                    Size=125,15
+                    Text=Ходов:
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Right
+                    AlignY=CenterEx
+                    Font=Font.2Small
+                    Pos=10,65,8
+                    Size=125,15
+                    Text=Нанесённый урон:
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Right
+                    AlignY=CenterEx
+                    Font=Font.2Small
+                    Pos=10,80,8
+                    Size=125,15
+                    Text=Ионизация:
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Left
+                    AlignY=CenterEx
+                    Font=Font.2Small
+                    Name=DM_1_gun
+                    Pos=20,110,8
+                    Size=270,15
+                    Text=Урон 1 пухи:
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Left
+                    AlignY=CenterEx
+                    Font=Font.2Small
+                    Name=DM_2_gun
+                    Pos=20,125,8
+                    Size=270,15
+                    Text=Урон 2 пухи:
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Left
+                    AlignY=CenterEx
+                    Font=Font.2Small
+                    Name=DM_3_gun
+                    Pos=20,140,8
+                    Size=270,15
+                    Text=Урон 3 пухи:
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Left
+                    AlignY=CenterEx
+                    Font=Font.2Small
+                    Name=DM_4_gun
+                    Pos=20,155,8
+                    Size=270,15
+                    Text=Урон 4 пухи:
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Left
+                    AlignY=CenterEx
+                    Font=Font.2Small
+                    Name=DM_5_gun
+                    Pos=20,170,8
+                    Size=270,15
+                    Text=Урон 5 пухи:
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Left
+                    AlignY=CenterEx
+                    Font=Font.2Normal
+                    Name=DM_turn
+                    Pos=135,95,8
+                    Size=130,15
+                    Text=0
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Left
+                    AlignY=CenterEx
+                    Font=Font.2Normal
+                    Name=DM_damag
+                    Pos=135,65,8
+                    Size=130,15
+                    Text=0
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Left
+                    AlignY=CenterEx
+                    Font=Font.2Normal
+                    Name=DM_ion_v
+                    Pos=135,80,8
+                    Size=130,15
+                    Text=0
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Left
+                    AlignY=CenterEx
+                    Font=Font.2Normal
+                    Name=DM_1_gun_v
+                    Pos=275,110,8
+                    Size=130,15
+                    Text=0
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Left
+                    AlignY=CenterEx
+                    Font=Font.2Normal
+                    Name=DM_2_gun_v
+                    Pos=275,125,8
+                    Size=130,15
+                    Text=0
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Left
+                    AlignY=CenterEx
+                    Font=Font.2Normal
+                    Name=DM_3_gun_v
+                    Pos=275,140,8
+                    Size=130,15
+                    Text=0
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Left
+                    AlignY=CenterEx
+                    Font=Font.2Normal
+                    Name=DM_4_gun_v
+                    Pos=275,155,8
+                    Size=130,15
+                    Text=0
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                Label ^{
+                    AlignX=Left
+                    AlignY=CenterEx
+                    Font=Font.2Normal
+                    Name=DM_5_gun_v
+                    Pos=275,170,8
+                    Size=130,15
+                    Text=0
+                    TextColor=255,255,255
+                    WordWrap=False
+                }
+                MVUpdate=True
+                MouseBlocking=False
+                Name=InfoShipTranc
+                Pos=700,300,-10
+                Size=320,200
+                Style=Style.Window.2Simple
+            }
+        }
+    }
+    Planet ^{
+        Panel ^{
+            Panel ^{
+                OnKey ^{
+                    CheatsInput ^{
+                        01=for(int single_pass = 0; single_pass == 0; single_pass = 1)
+                        01 ^{
+                            DevKit ^{
+                                01=if(~findsubstr(InterfaceText('StarMap', 'CheatsInputField'), 'DEVKIT'))
+                                01 ^{
+                                    01=if(DevKitVisibility)
+                                    01 ^{
+                                        01=DevKitVisibility = 0;
+                                        02=MessageBox('DevKit dialog insert is now <color=0,50,200>OFF</color>');
+                                    }
+                                    02=else
+                                    02 ^{
+                                        01=DevKitVisibility = 1;
+                                        02=MessageBox('DevKit dialog insert is now <color=0,50,200>ON</color>');
+                                    }
+                                    03=InterfaceText('StarMap', 'CheatsInputField', '');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    PlanetNO ^{
+        Panel ^{
+            Panel ^{
+                OnKey ^{
+                    CheatsInput ^{
+                        01=for(int single_pass = 0; single_pass == 0; single_pass = 1)
+                        01 ^{
+                            DevKit ^{
+                                01=if(~findsubstr(InterfaceText('StarMap', 'CheatsInputField'), 'DEVKIT'))
+                                01 ^{
+                                    01=if(DevKitVisibility)
+                                    01 ^{
+                                        01=DevKitVisibility = 0;
+                                        02=MessageBox('DevKit dialog insert is now <color=0,50,200>OFF</color>');
+                                    }
+                                    02=else
+                                    02 ^{
+                                        01=DevKitVisibility = 1;
+                                        02=MessageBox('DevKit dialog insert is now <color=0,50,200>ON</color>');
+                                    }
+                                    03=InterfaceText('StarMap', 'CheatsInputField', '');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    RuinsTalk ^{
+        Panel ^{
+            CustomBridges ^{
+                Panel ^{
+                    Active=False
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-99]
+                        Image=Bm.Gov.2PeopleHoloAnim0a
+                        ImageFirst=Bm.Gov.2PeopleHoloAnim0i
+                        Name=Panel_Anim0
+                        PBuf=True
+                        Pos=546,127,-2
+                        Size=398,654
+                    }
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-99]
+                        Image=Bm.Gov.2PeopleHoloAnim1a
+                        ImageFirst=Bm.Gov.2PeopleHoloAnim1i
+                        Name=Panel_Anim1
+                        PBuf=True
+                        Pos=546,127,-2
+                        Size=398,654
+                    }
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-99]
+                        Image=Bm.GovHD.PeopleHoloAnim0a
+                        ImageFirst=Bm.GovHD.PeopleHoloAnim0i
+                        Name=PanelHD_Anim0
+                        PBuf=True
+                        Pos=0,-81,-2
+                        Size=497,817
+                    }
+                    GAI ^{
+                        Active=False
+                        AlignX=Center
+                        AlignY=Center
+                        Frame=[75,0-99]
+                        Image=Bm.GovHD.PeopleHoloAnim1a
+                        ImageFirst=Bm.GovHD.PeopleHoloAnim1i
+                        Name=PanelHD_Anim1
+                        PBuf=True
+                        Pos=0,-81,-2
+                        Size=497,817
+                    }
+                    Image ^{
+                        Image=GI,Bm.FormRuins.2WBtable
+                        Name=Table
+                        Pos=0,0,-3
+                        Size=834,662
+                    }
+                    Name=PanelEmptyBridge
+                    Pos=0,0,2000
+                    Size=1024,768
+                }
+            }
+            Panel ^{
+                OnKey ^{
+                    CheatsInput ^{
+                        01=for(int single_pass = 0; single_pass == 0; single_pass = 1)
+                        01 ^{
+                            DevKit ^{
+                                01=if(~findsubstr(InterfaceText('StarMap', 'CheatsInputField'), 'DEVKIT'))
+                                01 ^{
+                                    01=if(DevKitVisibility)
+                                    01 ^{
+                                        01=DevKitVisibility = 0;
+                                        02=MessageBox('DevKit dialog insert is now <color=0,50,200>OFF</color>');
+                                    }
+                                    02=else
+                                    02 ^{
+                                        01=DevKitVisibility = 1;
+                                        02=MessageBox('DevKit dialog insert is now <color=0,50,200>ON</color>');
+                                    }
+                                    03=InterfaceText('StarMap', 'CheatsInputField', '');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    Ship ^{
+        Panel ^{
+            GraphBuf ^{
+            }
+            GraphButton ^{
+                Help=FormShip.HelpDestrInto
+                ImageDown=GI,Bm.FormShip2.ButBrigdeD
+                ImageNormal=GI,Bm.FormShip2.ButBrigdeN
+                ImageNormalA=GI,Bm.FormShip2.ButBrigdeA
+                Kind=Normal
+                KindHit=Rect
+                Name=CustomBridgeInto
+                Pos=377,420,6
+                Size=80,25
+                Style=Style.GB.SoundNormal
+            }
+            Panel ^{
+                OnKey ^{
+                    CheatsInput ^{
+                        01=for(int single_pass = 0; single_pass == 0; single_pass = 1)
+                        01 ^{
+                            DevKit ^{
+                                01=if(~findsubstr(InterfaceText('StarMap', 'CheatsInputField'), 'DEVKIT'))
+                                01 ^{
+                                    01=if(DevKitVisibility)
+                                    01 ^{
+                                        01=DevKitVisibility = 0;
+                                        02=MessageBox('DevKit dialog insert is now <color=0,50,200>OFF</color>');
+                                    }
+                                    02=else
+                                    02 ^{
+                                        01=DevKitVisibility = 1;
+                                        02=MessageBox('DevKit dialog insert is now <color=0,50,200>ON</color>');
+                                    }
+                                    03=InterfaceText('StarMap', 'CheatsInputField', '');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    StarMap ^{
+        Panel ^{
+            Panel ^{
+                OnKey ^{
+                    CheatsInput ^{
+                        01=for(int single_pass = 0; single_pass == 0; single_pass = 1)
+                        01 ^{
+                            DevKit ^{
+                                01=if(~findsubstr(InterfaceText('StarMap', 'CheatsInputField'), 'DEVKIT'))
+                                01 ^{
+                                    01=if(DevKitVisibility)
+                                    01 ^{
+                                        01=DevKitVisibility = 0;
+                                        02=MessageBox('DevKit dialog insert is now <color=0,50,200>OFF</color>');
+                                    }
+                                    02=else
+                                    02 ^{
+                                        01=DevKitVisibility = 1;
+                                        02=MessageBox('DevKit dialog insert is now <color=0,50,200>ON</color>');
+                                    }
+                                    03=InterfaceText('StarMap', 'CheatsInputField', '');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

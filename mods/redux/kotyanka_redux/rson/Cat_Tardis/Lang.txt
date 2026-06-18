@@ -1,0 +1,254 @@
+ActCodeBlocksList ^{
+    CatTardisActCode ^{
+        00=[t_OnDealingDamage,t_OnTakingDamageEn,t_OnTakingDamageMi,t_OnTakingDamageSp,t_OnTakingDamage,t_OnStep|0]
+        01=dword item = CurItem();
+        02=dword ship = ScriptItemActShip();
+        03=int i;
+        04=if(ScriptItemActionType(t_OnStep, 0))
+        05 ^{
+            01=for(i=0;ShipSlots(ship,1)>i;i=i+1)
+            02 ^{
+                01=if(WeaponTarget(ShipEqInSlot(ahip,t_Weapon1,i))) WeaponTarget(ShipEqInSlot(ship,t_Weapon1,i),0);
+            }
+            03=if(GetValueFromScript('Cat_Tardis','defstat'))
+            04 ^{
+                01=if(ShipInNormalSpace(ship) && ShipOrder(ahip) != 7) OrderNone(ahip);
+            }
+            05=if(ShipInNormalSpace(ship)) RunFunctionFromScript('Cat_Tardis','GenerateGift');
+            06=if(!ShipInHyperSpace(ship)) exit;
+            07=if(ObjectType(ShipOrderObj(ship)) == 2) exit;
+            08=if(RndObject(0, 4, ship)) exit;
+            09=dword cur_star = ShipStar(ship);
+            10=if(ShipOrder(ship) == 3) MakeShipEnterStar(ship, StarNearbyStars(cur_star, RndObject(1, 10, ship)), ShipPrevStar(ship), ShipOrderData1(ship));
+            11=else ShipOrderObj(ship, StarNearbyStars(cur_star, RndObject(1, 10, ship)));
+            12=if(!RndObject(0,2,ship)) HullHP(ship,'Minus'+RndObject(5,15,ship));
+        }
+        06=else if(ScriptItemActionType(t_OnDealingDamage))
+        07 ^{
+            01=ScriptItemActParam(0);
+        }
+        08=else
+        09 ^{
+            01=if(GetValueFromScript('Cat_Tardis','defstat'))
+            02 ^{
+                01=ScriptItemActParam(0);
+            }
+        }
+    }
+}
+UselessItems ^{
+    Clock ^{
+        Cost=Huge
+        Name=Карманные часы
+        OnUseCode ^{
+            01=if(GetShipRuins(Player()))
+            02 ^{
+                01=if(ShipType(GetShipRuins(Player())) != 'SB')
+                02 ^{
+                    01=MessageBox('Это было странно');
+                    02=exit;
+                }
+                03=if(!UselessItemData(CurItem(),1))
+                04 ^{
+                    01=MessageBox('Это было странно');
+                    02=exit;
+                }
+                05=dword hull = CreateHull(2,2500,GalaxyTechLevel(),People,-1,0);
+                06=ItemCost(hull, 1000);
+                07=HullHP(hull, 2500);
+                08=CanSellItem(hull, 1);
+                09=int bonus_num = FindBonusByNameInCfg('Tardis');
+                10=SpecialToEquipment(bonus_num, hull);
+                11=ShipAddCustomShipInfo(Player(),'Tardis','NoShow');
+                12=ShipAddCustomShipInfo(Player(),'TardisEnergy','NoShow');
+                13=ShipCustomShipInfoData(Player(),'Tardis',1,0);
+                14=AddItemToStorage(GetShipRuins(Player()), hull);
+                15=EtherDelete(GetValueFromScript('Cat_Tardis','ether_iden'));
+                16=Ether(4,'tardis_activate_quest','Активировать часы и вспомнить всё');
+                17=FreeItem(GetItemFromShip(Player(), CurItem()));
+                18=RunFunctionFromScript('Cat_Tardis','LinkTardis',hull);
+                19=MessageBox('Огромный поток мыслей, воспоминаний и знаний, которые кажутся такими родными, заполоняют ваш разум, а часы, к вашему удивлению, попросту растворяются в воздухе');
+            }
+            03=else
+            04 ^{
+                01=MessageBox('Это было странно');
+                02=exit;
+            }
+        }
+        Owner=None
+        Size=1
+        Text=Странный механизм
+        Text=<clr><clrEnd>
+        Text=Очень старые на вид карманные часы.
+        Text=При приближении к ним слышится странная речь, будто кто-то нашептывает в голове
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            Tardis ^{
+                Description=Расширяет вместимость до 50000
+                Icon=1
+                Name=Расширитель
+                OnActCode ^{
+                    01=dword special = FindBonusByNameInCfg('Tardis');
+                    02=dword hullp=ScriptItemActObject1();
+                    03=if(EqSpecial(hullp)==special)
+                    04 ^{
+                        01=dword volumeminus = CreateQuestItem('Usl_64');
+                        02=ItemSize(volumeminus, 0 - 50000 + 2500);
+                        03=AddItemToShip(Player(), volumeminus);
+                        04=NoDropItem(volumeminus, 1);
+                        05=ItemIsInUse(volumeminus, Player(), 1);
+                        06=ShipCustomShipInfoData(Player(),CurInfo(),1,Id(volumeminus));
+                    }
+                    05=else
+                    06 ^{
+                        01=volumeminus = ShipCustomShipInfoData(Player(),CurInfo(),1);
+                        02=if(volumeminus !=0 )
+                        03 ^{
+                            01=ItemIsInUse(IdToItem(volumeminus), Player(), 0);
+                            02=FreeItem(GetItemFromShip(Player(), IdToItem(volumeminus)));
+                            03=if(0) SFT('Удален');
+                        }
+                        04=ShipCustomShipInfoData(Player(),CurInfo(),1,0);
+                    }
+                }
+                OnActCodeTypes=t_OnPlayerChangeHull
+            }
+            TardisEnergy ~{
+                Description=Отвечает за пополнение энергии в Тардис,энергия пополняется только если корпус надет
+                Icon=1
+                Name=Пополнение енергии
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+                OnActCode ^{
+                    01=if(ShipCustomShipInfoData(Player(),'Tardis',1))
+                    02 ^{
+                        01=if(ShipCustomShipInfoData(Player(),CurInfo(), 1) < 10000)
+                        02 ^{
+                            01=int bust = GetValueFromScript('Cat_Tardis','energymod');
+                            02=int rnd = Rnd(8,12);
+                            03=int energyup = rnd * ShipSkill(Player(),'TechnicalCur');
+                            04=if(bust == 1)
+                            05 ^{
+                                01=energyup = energyup/2;
+                            }
+                            06=else if(bust == 2)
+                            07 ^{
+                                01=energyup = energyup;
+                            }
+                            08=else
+                            09 ^{
+                                01=energyup = energyup*2;
+                            }
+                            10=if(ShipCustomShipInfoData(Player(),CurInfo(),1) + energyup > 999)
+                            11 ^{
+                                01=ShipCustomShipInfoData(Player(),CurInfo(),1, 1000);
+                            }
+                            12=else
+                            13 ^{
+                                01=if(bust == 1)
+                                02 ^{
+                                    01=ShipCustomShipInfoData(Player(),CurInfo(), 1, ShipCustomShipInfoData(Player(),CurInfo(), 1) + rnd * ShipSkill(Player(),'TechnicalCur')/2);
+                                }
+                                03=else if(bust == 2)
+                                04 ^{
+                                    01=ShipCustomShipInfoData(Player(),CurInfo(), 1, ShipCustomShipInfoData(Player(),CurInfo(), 1) + rnd * ShipSkill(Player(),'TechnicalCur'));
+                                }
+                                05=else
+                                06 ^{
+                                    01=ShipCustomShipInfoData(Player(),CurInfo(), 1, ShipCustomShipInfoData(Player(),CurInfo(), 1) + rnd * ShipSkill(Player(),'TechnicalCur')*2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+MicroModuls ^{
+    Tardis ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=9000
+        Equipments=Hull
+        FragilityEnergy=90
+        FragilityMissile=120
+        FragilitySplinter=60
+        HullGraphSize=75
+        KindGraph=Tardis
+        Name=ТАРДИС - Тотально Абсолютно Радикальная Дрейфующая Инфосистема
+        Owner=People
+        Priority=1
+        Size=100
+        Special=1
+        Text=Иная форма жизни и одновременно способ перемещения во времени и пространстве, изобретённая на неизвестной планете.
+        Text=Нельзя назвать ТАРДИС именно машиной времени или конкретно космическим кораблём, — они намного сложнее этих узко-специфичных понятий.
+        Text=Данная модель застряла в образе полицейской будки 1960-х из-за сломанной схемы «Хамелеон»
+        Text=Все ТАРДИС связаны со своими пилотами посредством симбиотической связи и телепатической схемы, что делает продажу корабля бессмысленной.
+        Text=При попытке использовать ТАРДИС кем-то, кроме её владельца или его знакомых, она нападает на их разум, что приводит их к полной или частичной потере памяти.
+        Text=Глядя на это чудо технологий глубоко внутри, в закромах сознания зарождается надежда, что у врагов в своё время вызывает трепет
+        bonDroid=20
+        bonHook=200
+        bonHookRadius=200
+        bonMass=-50
+        bonRadar=1000
+        bonScan=30
+        bonSkill1=6
+        bonSkill2=4
+        bonSkill4=2
+        bonSkill5=5
+        bonSkill6=5
+        bonSlotArt=16
+        bonSlotHook=1
+        bonSlotRadar=1
+        bonSlotScaner=1
+        bonSlotWeapon=-100
+        bonWRadius=-10000000
+    }
+}
+Script ~{
+    Cat_Tardis ~{
+        Settings ~{
+            name=ТАРДИС - Тотально Абсолютно Радикальная Дрейфующая Инфосистема
+            hp=2500
+            hullsize=25000
+            PlanetsCount=30
+        }
+        112=Хорошо
+        162=<0> вы что, ещё не открывали их?<br>Ну что же вы, миссию выполнили, а воспоминания ещё не вернули. Открывайте скорее - ваши знания уникальны, вселенная нуждается в них!
+        182=Это часы, которыми древняя раса запечатывала свои воспоминания, а вы - один из последних представителей своей расы.<br><br>Да, вы не совсем человек, вы просто похожи на этот вид, <0><br><br>Что? Откуда я это знаю? Вы же нам это и рассказали с убедительными доказательствами, а потом как раз и запечатали свои воспоминания в этот механизм, который строго-настрого запретили изучать и попросили запрятать так, чтобы никто его не нашёл.<br>Но, видимо, владелец своих воспоминаний всегда тянется к тому, чтобы их обрести вновь.<br><br>Что, ещё не вернули?<br><Player>, давайте быстрее, ваш корабль, который вы оставили на сохранение, вот-вот доставят на склад.<br>Время-Шремя, как говорил один знаменитый Лекарь.<br>
+        188=Вы не тот, кого мы ожидали увидеть с этими, кхм, "часами", так что немедленно отдайте их нам - у вас нет выбора!
+        189=Вы уверены, что это безопасно? Когда они рядом, я слышу странные голоса и вижу непонятные образы в голове, такие родные и знакомые, но в тоже время я ничего не понимаю.
+        190=[Отдать часы]
+        192=ТАРДИС внимательно слушает вас<br><br>Энергия: <0>/1000<br>Текущий прирост: +<1><br><br>Способности ТАРДИС:<br>  Режим Скалы:<br>Перенаправление поток энергии, предназначенный для двигателя, на защитный экран для полной неуязвимости<br> -Требует <clr>500<clrEnd> энергии<br>  Гиперскачок:<br>Почти моментально перемещает в любую точку Галактики<br> -Требует <clr>800<clrEnd> энергии<br><br>Режимы накопления энергии:<br><br> Энергосберегающий режим<br> Обычный режим <br> Защитный режим<br><br>Сейчас корабль в режиме: <2><br>Режим Скалы: <3><br> <br><br>
+        193=Корабль в обычном режиме<br><br>Для включения режима Скалы потребуется 500 енергии
+        194=<0>Энергосберегающий</color> режим<br> + Удвоение выработки энергии<br> - отключение ГЗП<br><br><1>Обычный</color> режим<br> +- Обычная выработка энергии<br> +- ГЗП работает в обычном режиме<br><br><2>Защитный</color> режим<br> - Выработка снижена на 50%<br> + ГЗП усилен на 30%
+        195=Сейчас корабль в режиме Скалы<br><br>Для отключения режима Скалы потребуется <clr>100<clrEnd> энергии
+        196=Этот корабль может совершать <clr>гиперскачки<clrEnd> - моментально перенестись в другую точку пространства. Всё что нужно - большой объём энергии и пункт назначения.
+        197=Убер-Гипер-Перемещение
+        198=Управление неуязвимостью
+        199=Управление энергией
+        200=Активировать Энергосберегающий Режим
+        201=Активировать обычный режим
+        202=Активировать Защитный Режим
+        203=Вернуться на мостик
+        204=Вернутся на мостик
+        205=Включить Режим Скалы
+        206=Отключить Режим Скалы
+        207=Совершить гиперскачок
+        209=Включен
+        210=Выключен
+        211=Энергосбережение
+        212=Обычный
+        213=Защиный
+        216=Какие тайны могут скрывать почти что бесконечные склады ТАРДИС? По крайней мере, кое-что интересное попало в ваши руки
+        217=Активировать часы и вспомнить всё
+        218=Я обнаружил тут странную вещицу. Не подскажете, что это?
+        219=Управление способностями ТАРДИС
+        220=Для применения способности необходимо быть в открытом космосе
+        221=Для совершения скачка в целях безопасности необходимо быть в открытом космосе
+    }
+}

@@ -1,0 +1,2538 @@
+MicroModuls ^{  
+    Percovka_LEOContentMod_MM_054 ^{
+        Cost=400
+        Equipments=Engine
+        Fragility=500
+        Name=False start
+        Owner=Maloc,Peleng,People,Fei,Gaal,PirateClan,Kling,None
+        Priority=30
+        Text=Micromodule of the first level. Changes the structure of the engine so that it works in extreme loads, increasing its speed to the limit. Due to severe overloads, it is impossible to perform a hyper-jump.
+        Text=Engine speed: <bonSpeed>
+        Text=hyper-jump: <clr>Impossible<clrEnd>
+        Text=Reliability: <clr>-75%<clrEnd>
+        bonJump=-100
+        bonSpeed=2000
+    }
+	EvoMM_Clearing ^{
+        Cost=150
+        CustomTag=EvoMM_Clearing
+        Name=Clearing
+        Priority=5
+        Text=Micromodule of the first level. It applies a special material <clr>clearon<clrEnd>, which removes almost all negative effects from <clr>Akrin<clrEnd> equipment or housing.
+        Text=<clr><clrEnd>
+        Text=Negative effects of akrin: <clr>-75%<clrEnd>
+        Text=Cost: <clr>+50%<clrEnd>
+        bonExtraAkrinPenalty=-75
+    }
+	EvoMM_Cheater22 ^{
+        CustomTag=EvoMM_Cheater22
+        Equipments=Engine,WEnergy,WSplinter,WMissile
+        Name=Cheater-22
+        Owner=PirateClan,NonKling
+        Priority=10
+        RacialRestriction=1
+        Text=Micromodule of the first level. One of the pirates' experiments on combining the properties of micromodules in a teleporter. When combining the micromodules of "Burning" and "Dwim", the installation began to smoke and all values hung on the number 22. <clr>The<clrEnd> pirates decided not to knock down the setup and generate a module with these parameters.
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Firing range: <bonWRadius>
+        Text=Engine speed: <bonSpeed>
+        Text=Jump range: <bonJump>
+        bonJump=22
+        bonSpeed=22
+        bonWEnergy=22
+        bonWMissile=22
+        bonWRadius=22
+        bonWSplinter=22
+    }
+	EvoMM_Military ^{
+        CustomTag=EvoMM_Military
+        Equipments=Hull
+        Name=Militar
+        Owner=Fei
+        Priority=10
+        Size=85
+        Text=Micromodule of the first level. Completely transforms the corps into a military one. Opens two slots for guns at once. With a successful transformation, it opens the slot of the droid and the protection generator. Applicable only for <clr>Feiyan<clrEnd> enclosures.
+        Text=Hull Armor: <bonHull>
+        Text=Hull size: <clr>-15%<clrEnd>
+        bonHull=6
+        bonSlotDef=1
+        bonSlotDroid=1
+        bonSlotWeapon=2
+    }
+	EvoMM_Castironium ^{
+        Cost=120
+        CustomTag=EvoMM_Castironium
+        Equipments=Hull
+        Name=Cast iron
+        Owner=Fei,Gaal
+        Priority=1
+        Size=90
+        Text=Micromodule of the first level. Embeds krypton structures into the case, increasing its strength and opening the afterburner slot. The structures take up a small additional space on the ship, which is why the useful volume of the hull decreases, and the cost increases. It is used only for the <clr>Feyan and Gaal<clrEnd> corps.
+        Text=Hull Armor: <bonHull>
+        Text=Hull size: <clr>-10%<clrEnd>
+        Text=Cost: <clr>+20%<clrEnd>
+        bonHull=9
+        bonSlotForsage=1
+    }
+    EvoMM_Ingot ^{
+        Cost=30
+        CustomTag=EvoMM_Ingot
+        Equipments=Hull
+        LockedAcryn=3
+        Name=Ingot
+        NonSearchable=1
+        Priority=25
+        Size=200
+        Special=1
+        Text=Micromodule of the first level. It is built into the housing. Closes four gun slots, droid slots, protection generator, afterburner, radar and scanner, as well as all slots for artifacts. The price of such a case drops significantly. The reverse effect is to increase the case by 2 times.
+        Text=Hull size: <clr>200%<clrEnd>
+        Text=Cost: <clr>-70%<clrEnd>
+        Text=Hull Armor: <bonHull>
+        bonHull=-1
+        bonSlotArt=-4
+        bonSlotDef=-1
+        bonSlotDroid=-1
+        bonSlotForsage=-1
+        bonSlotRadar=-1
+        bonSlotScaner=-1
+        bonSlotWeapon=-4
+    }
+	EvoMM_Inside ^{
+        CustomTag=EvoMM_Inside
+        Equipments=WMissile
+        Name=Inside
+        Owner=Kling
+        Priority=40
+        RacialRestriction=1
+        Size=150
+        Text=Micromodule of the second level. Increases the amount of ammunition <clr> of the dominant<clrEnd> missile gun and equips it with an additional mine for launching missiles. The upgraded launch system takes an additional <clr>50<clrEnd>% of the armament volume.
+        Text=Additional ammunition: <bonAmmo>
+        Text=Missiles fired per shot: <bonShots>
+        bonAmmo=20
+        bonShots=1
+    }
+	EvoMM_Malocuscus ^{
+        Cost=125
+        CustomTag=EvoMM_Malocuscus
+        Equipments=Hull
+        Name=Malocuscus
+        Owner=Maloc
+        Priority=50
+        Size=90
+        Text=Micromodule of the second level. It embeds a giant food generator into the housing of the <clr> Maloksky<clrEnd> production. Although even what it produces will not be enough for a small glutton, so it is sometimes called "Little couscous". A protection generator can also be connected to the food generator.
+        Text=Hull size: <clr>-10%<clrEnd>
+        Text=Cost: <clr>+25%<clrEnd>
+        bonSlotDef=1
+    }
+	EvoMM_Kishrobu ^{
+        CustomTag=EvoMM_Kishrobu
+        Equipments=Engine,Hull
+        Name=Kishchrob
+        Priority=31
+        Text=Micromodule of the second level. Adds the afterburner function and opens the remaining gun slots, while closing the slots of artifacts, scanner and protection generator. When properly installed in the engine, a sharp increase in speed was noticed instead of a strong drop in the jump range.
+        Text=Engine speed: <bonSpeed>
+        Text=Jump range: <bonJump>
+        bonJump=-10
+        bonSlotArt=-4
+        bonSlotDef=-1
+        bonSlotForsage=1
+        bonSlotScaner=-1
+        bonSlotWeapon=4
+        bonSpeed=150
+    }
+	EvoMM_Nebula ^{
+        CustomTag=EvoMM_Nebula
+        Equipments=Hull
+        Name=Nebula
+        Priority=70
+        Text=Micromodule of the third level. Covers the case with a cloud of electrified dust. Generates EMP interference incompatible with the scanner, and an electric field that allows you to slow down the speed of enemy fragmentation shells and missiles, discharges the energy beam and blocks thermal damage, thereby increasing the potential armor of the hull.
+        Text=Hull Armor: <bonHull>
+        bonHull=3
+        bonSlotScan=-1
+    }
+	ExpAcryn_DomAcryn ^{
+        CustomTag=Akrin_dom_ship
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator,WEnergy,WSplinter,WMissile
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Unknown modification of equipment <color=255,240,100>dominators</color>. To activate additional properties, a colossal power supply is needed, which is available on board only for <color=255,240,100> batteries</color>.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        bonDef=5
+        bonDroid=10
+        bonHull=3
+		bonRadar=250
+        bonSpeed=100
+        bonWEnergy=15
+        bonWMissile=20
+        bonWSplinter=15
+    }
+    ExpAcryn_DomMalocAcryn ^{
+        CustomTag=ExpAcryn_ship_maloc
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Unknown modification of equipment <color=255,240,100>dominators</color>. To activate additional properties, a colossal power supply is needed, which is available on board only for <color=255,240,100> batteries</color>.</color>
+    }
+    ExpAcryn_MalocFuelTank ^{
+        CustomTag=Fakrin_0_0
+        Equipments=FuelTank
+        KindGraph=Fakrin_FT
+        Name=Trionic fuel tank
+        Owner=Maloc
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. <color=255,240,100>The Malokskaya</color> assembly has left its rough imprint in the form of a large and very tight red switch, which needs to be turned to activate all the additional properties of this unit. Being an elementary action for <color=255,240,100>small</color>, for other races, turning the damn switch turns into a serious athletic test, extremely rarely ending in success. Simply put, all the additional properties of this equipment become available only to "red-skinned intellectuals".</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Commerce skill: <bonSkill4>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill4=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_MalocEngine ^{
+        CustomTag=Fakrin_0_1
+        Equipments=Engine
+        KindGraph=Fakrin_EG
+        Name=Trionic engine
+        Owner=Maloc
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. <color=255,240,100>The Malokskaya</color> assembly has left its rough imprint in the form of a large and very tight red switch, which needs to be turned to activate all the additional properties of this unit. Being an elementary action for <color=255,240,100>small</color>, for other races, turning the damn switch turns into a serious athletic test, extremely rarely ending in success. Simply put, all the additional properties of this equipment become available only to "red-skinned intellectuals".</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Commerce skill: <bonSkill4>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill4=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_MalocRadar ^{
+        CustomTag=Fakrin_0_2
+        Equipments=Radar
+        KindGraph=Fakrin_RAD
+        Name=Trionic radar
+        Owner=Maloc
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. <color=255,240,100>The Malokskaya</color> assembly has left its rough imprint in the form of a large and very tight red switch, which needs to be turned to activate all the additional properties of this unit. Being an elementary action for <color=255,240,100>small</color>, for other races, turning the damn switch turns into a serious athletic test, extremely rarely ending in success. Simply put, all the additional properties of this equipment become available only to "red-skinned intellectuals".</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Commerce skill: <bonSkill4>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill4=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_MalocScaner ^{
+        CustomTag=Fakrin_0_3
+        Equipments=Scaner
+        KindGraph=Fakrin_SC
+        Name=Trionic scanner
+        Owner=Maloc
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. <color=255,240,100>The Malokskaya</color> assembly has left its rough imprint in the form of a large and very tight red switch, which needs to be turned to activate all the additional properties of this unit. Being an elementary action for <color=255,240,100>small</color>, for other races, turning the damn switch turns into a serious athletic test, extremely rarely ending in success. Simply put, all the additional properties of this equipment become available only to "red-skinned intellectuals".</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Commerce skill: <bonSkill4>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill4=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_MalocDroid ^{
+        CustomTag=Fakrin_0_4
+        Equipments=Droid
+        KindGraph=Fakrin_DRD
+        Name=Trionic Droid
+        Owner=Maloc
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. <color=255,240,100>The Malokskaya</color> assembly has left its rough imprint in the form of a large and very tight red switch, which needs to be turned to activate all the additional properties of this unit. Being an elementary action for <color=255,240,100>small</color>, for other races, turning the damn switch turns into a serious athletic test, extremely rarely ending in success. Simply put, all the additional properties of this equipment become available only to "red-skinned intellectuals".</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Commerce skill: <bonSkill4>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill4=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_MalocHook ^{
+        CustomTag=Fakrin_0_5
+        Equipments=Hook
+        KindGraph=Fakrin_HK
+        Name=Trionic Hook
+        Owner=Maloc
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. <color=255,240,100>The Malokskaya</color> assembly has left its rough imprint in the form of a large and very tight red switch, which needs to be turned to activate all the additional properties of this unit. Being an elementary action for <color=255,240,100>small</color>, for other races, turning the damn switch turns into a serious athletic test, extremely rarely ending in success. Simply put, all the additional properties of this equipment become available only to "red-skinned intellectuals".</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Commerce skill: <bonSkill4>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill4=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_MalocDefGenerator1 ^{
+        CustomTag=Fakrin_0_6
+        Equipments=DefGenerator
+        KindGraph=Fakrin_DEF1
+        Name=Trionic Shield Generator
+        Owner=Maloc
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. <color=255,240,100>The Malokskaya</color> assembly has left its rough imprint in the form of a large and very tight red switch, which needs to be turned to activate all the additional properties of this unit. Being an elementary action for <color=255,240,100>small</color>, for other races, turning the damn switch turns into a serious athletic test, extremely rarely ending in success. Simply put, all the additional properties of this equipment become available only to "red-skinned intellectuals".</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Commerce skill: <bonSkill4>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill4=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_MalocDefGenerator2 ^{
+        CustomTag=Fakrin_0_6_2
+        Equipments=DefGenerator
+        KindGraph=Fakrin_DEF2
+        Name=Trionic Shield Generator
+        Owner=Maloc
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. <color=255,240,100>The Malokskaya</color> assembly has left its rough imprint in the form of a large and very tight red switch, which needs to be turned to activate all the additional properties of this unit. Being an elementary action for <color=255,240,100>small</color>, for other races, turning the damn switch turns into a serious athletic test, extremely rarely ending in success. Simply put, all the additional properties of this equipment become available only to "red-skinned intellectuals".</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Commerce skill: <bonSkill4>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill4=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PelengFuelTank ^{
+        CustomTag=Fakrin_1_0
+        Equipments=FuelTank
+        KindGraph=Fakrin_FT
+        Name=Trionic fuel tank
+        Owner=Peleng
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Being designed by <color=255,240,100>bearings</color>, the activation system of additional properties of this equipment requires the introduction of a special biometroradiocyphic nanoclave, accessible only to representatives of this secretive and distrustful race. The only question that remains unclear is why <color=255,240,100>pelengam</color>, in principle, needed to hide the functionality of equipment that had actually been stolen twice already, first from the dominators, and then from the inventors of the Coalition itself.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Leadership skill: <bonSkill6>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill6=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PelengEngine ^{
+        CustomTag=Fakrin_1_1
+        Equipments=Engine
+        KindGraph=Fakrin_EG
+        Name=Trionic engine
+        Owner=Peleng
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Being designed by <color=255,240,100>bearings</color>, the activation system of additional properties of this equipment requires the introduction of a special biometroradiocyphic nanoclave, accessible only to representatives of this secretive and distrustful race. The only question that remains unclear is why <color=255,240,100>pelengam</color>, in principle, needed to hide the functionality of equipment that had actually been stolen twice already, first from the dominators, and then from the inventors of the Coalition itself.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Leadership skill: <bonSkill6>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill6=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PelengRadar ^{
+        CustomTag=Fakrin_1_2
+        Equipments=Radar
+        KindGraph=Fakrin_RAD
+        Name=Trionic radar
+        Owner=Peleng
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Being designed by <color=255,240,100>bearings</color>, the activation system of additional properties of this equipment requires the introduction of a special biometroradiocyphic nanoclave, accessible only to representatives of this secretive and distrustful race. The only question that remains unclear is why <color=255,240,100>pelengam</color>, in principle, needed to hide the functionality of equipment that had actually been stolen twice already, first from the dominators, and then from the inventors of the Coalition itself.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Leadership skill: <bonSkill6>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill6=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PelengScaner ^{
+        CustomTag=Fakrin_1_3
+        Equipments=Scaner
+        KindGraph=Fakrin_SC
+        Name=Trionic scanner
+        Owner=Peleng
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Being designed by <color=255,240,100>bearings</color>, the activation system of additional properties of this equipment requires the introduction of a special biometroradiocyphic nanoclave, accessible only to representatives of this secretive and distrustful race. The only question that remains unclear is why <color=255,240,100>pelengam</color>, in principle, needed to hide the functionality of equipment that had actually been stolen twice already, first from the dominators, and then from the inventors of the Coalition itself.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Leadership skill: <bonSkill6>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill6=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PelengDroid ^{
+        CustomTag=Fakrin_1_4
+        Equipments=Droid
+        KindGraph=Fakrin_DRD
+        Name=Trionic Droid
+        Owner=Peleng
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Being designed by <color=255,240,100>bearings</color>, the activation system of additional properties of this equipment requires the introduction of a special biometroradiocyphic nanoclave, accessible only to representatives of this secretive and distrustful race. The only question that remains unclear is why <color=255,240,100>pelengam</color>, in principle, needed to hide the functionality of equipment that had actually been stolen twice already, first from the dominators, and then from the inventors of the Coalition itself.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Leadership skill: <bonSkill6>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill6=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PelengHook ^{
+        CustomTag=Fakrin_1_5
+        Equipments=Hook
+        KindGraph=Fakrin_HK
+        Name=Trionic Hook
+        Owner=Peleng
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Being designed by <color=255,240,100>bearings</color>, the activation system of additional properties of this equipment requires the introduction of a special biometroradiocyphic nanoclave, accessible only to representatives of this secretive and distrustful race. The only question that remains unclear is why <color=255,240,100>pelengam</color>, in principle, needed to hide the functionality of equipment that had actually been stolen twice already, first from the dominators, and then from the inventors of the Coalition itself.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Leadership skill: <bonSkill6>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill6=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PelengDefGenerator1 ^{
+        CustomTag=Fakrin_1_6
+        Equipments=DefGenerator
+        KindGraph=Fakrin_DEF1
+        Name=Trionic Shield Generator
+        Owner=Peleng
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Being designed by <color=255,240,100>bearings</color>, the activation system of additional properties of this equipment requires the introduction of a special biometroradiocyphic nanoclave, accessible only to representatives of this secretive and distrustful race. The only question that remains unclear is why <color=255,240,100>pelengam</color>, in principle, needed to hide the functionality of equipment that had actually been stolen twice already, first from the dominators, and then from the inventors of the Coalition itself.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Leadership skill: <bonSkill6>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill6=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PelengDefGenerator2 ^{
+        CustomTag=Fakrin_1_6_2
+        Equipments=DefGenerator
+        KindGraph=Fakrin_DEF2
+        Name=Trionic Shield Generator
+        Owner=Peleng
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Being designed by <color=255,240,100>bearings</color>, the activation system of additional properties of this equipment requires the introduction of a special biometroradiocyphic nanoclave, accessible only to representatives of this secretive and distrustful race. The only question that remains unclear is why <color=255,240,100>pelengam</color>, in principle, needed to hide the functionality of equipment that had actually been stolen twice already, first from the dominators, and then from the inventors of the Coalition itself.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Leadership skill: <bonSkill6>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill6=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PeopleFuelTank ^{
+        CustomTag=Fakrin_2_0
+        Equipments=FuelTank
+        KindGraph=Fakrin_FT
+        Name=Trionic fuel tank
+        Owner=People
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. When assembling this equipment, resourceful <color=255,240,100>people</color> introduced a technical restriction on the activation of additional properties, which can be removed only by correctly guessing a number of images displayed on the control panel. Nine random illustrations describing the brightest moments from the general history and culture of the Earth, mixed with scenes from popular science fiction films, are displayed on the screen in table 3 by 3, and do not present any difficulties in guessing for any more or less educated <color=255,240,100> person </color>, which is definitely not true of representatives of other races.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Technology skill: <bonSkill3>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill3=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PeopleEngine ^{
+        CustomTag=Fakrin_2_1
+        Equipments=Engine
+        KindGraph=Fakrin_EG
+        Name=Trionic engine
+        Owner=People
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. When assembling this equipment, resourceful <color=255,240,100>people</color> introduced a technical restriction on the activation of additional properties, which can be removed only by correctly guessing a number of images displayed on the control panel. Nine random illustrations describing the brightest moments from the general history and culture of the Earth, mixed with scenes from popular science fiction films, are displayed on the screen in table 3 by 3, and do not present any difficulties in guessing for any more or less educated <color=255,240,100> person </color>, which is definitely not true of representatives of other races.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Technology skill: <bonSkill3>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill3=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PeopleRadar ^{
+        CustomTag=Fakrin_2_2
+        Equipments=Radar
+        KindGraph=Fakrin_RAD
+        Name=Trionic radar
+        Owner=People
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. When assembling this equipment, resourceful <color=255,240,100>people</color> introduced a technical restriction on the activation of additional properties, which can be removed only by correctly guessing a number of images displayed on the control panel. Nine random illustrations describing the brightest moments from the general history and culture of the Earth, mixed with scenes from popular science fiction films, are displayed on the screen in table 3 by 3, and do not present any difficulties in guessing for any more or less educated <color=255,240,100> person </color>, which is definitely not true of representatives of other races.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Technology skill: <bonSkill3>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill3=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PeopleScaner ^{
+        CustomTag=Fakrin_2_3
+        Equipments=Scaner
+        KindGraph=Fakrin_SC
+        Name=Trionic scanner
+        Owner=People
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. When assembling this equipment, resourceful <color=255,240,100>people</color> introduced a technical restriction on the activation of additional properties, which can be removed only by correctly guessing a number of images displayed on the control panel. Nine random illustrations describing the brightest moments from the general history and culture of the Earth, mixed with scenes from popular science fiction films, are displayed on the screen in table 3 by 3, and do not present any difficulties in guessing for any more or less educated <color=255,240,100> person </color>, which is definitely not true of representatives of other races.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Technology skill: <bonSkill3>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill3=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PeopleDroid ^{
+        CustomTag=Fakrin_2_4
+        Equipments=Droid
+        KindGraph=Fakrin_DRD
+        Name=Trionic Droid
+        Owner=People
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. When assembling this equipment, resourceful <color=255,240,100>people</color> introduced a technical restriction on the activation of additional properties, which can be removed only by correctly guessing a number of images displayed on the control panel. Nine random illustrations describing the brightest moments from the general history and culture of the Earth, mixed with scenes from popular science fiction films, are displayed on the screen in table 3 by 3, and do not present any difficulties in guessing for any more or less educated <color=255,240,100> person </color>, which is definitely not true of representatives of other races.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Technology skill: <bonSkill3>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill3=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PeopleHook ^{
+        CustomTag=Fakrin_2_5
+        Equipments=Hook
+        KindGraph=Fakrin_HK
+        Name=Trionic Hook
+        Owner=People
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. When assembling this equipment, resourceful <color=255,240,100>people</color> introduced a technical restriction on the activation of additional properties, which can be removed only by correctly guessing a number of images displayed on the control panel. Nine random illustrations describing the brightest moments from the general history and culture of the Earth, mixed with scenes from popular science fiction films, are displayed on the screen in table 3 by 3, and do not present any difficulties in guessing for any more or less educated <color=255,240,100> person </color>, which is definitely not true of representatives of other races.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Technology skill: <bonSkill3>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill3=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PeopleDefGenerator1 ^{
+        CustomTag=Fakrin_2_6
+        Equipments=DefGenerator
+        KindGraph=Fakrin_DEF1
+        Name=Trionic Shield Generator
+        Owner=People
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. When assembling this equipment, resourceful <color=255,240,100>people</color> introduced a technical restriction on the activation of additional properties, which can be removed only by correctly guessing a number of images displayed on the control panel. Nine random illustrations describing the brightest moments from the general history and culture of the Earth, mixed with scenes from popular science fiction films, are displayed on the screen in table 3 by 3, and do not present any difficulties in guessing for any more or less educated <color=255,240,100> person </color>, which is definitely not true of representatives of other races.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Technology skill: <bonSkill3>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill3=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PeopleDefGenerator2 ^{
+        CustomTag=Fakrin_2_6_2
+        Equipments=DefGenerator
+        KindGraph=Fakrin_DEF2
+        Name=Trionic Shield Generator
+        Owner=People
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. When assembling this equipment, resourceful <color=255,240,100>people</color> introduced a technical restriction on the activation of additional properties, which can be removed only by correctly guessing a number of images displayed on the control panel. Nine random illustrations describing the brightest moments from the general history and culture of the Earth, mixed with scenes from popular science fiction films, are displayed on the screen in table 3 by 3, and do not present any difficulties in guessing for any more or less educated <color=255,240,100> person </color>, which is definitely not true of representatives of other races.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Technology skill: <bonSkill3>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill3=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_FeiFuelTank ^{
+        CustomTag=Fakrin_3_0
+        Equipments=FuelTank
+        KindGraph=Fakrin_FT
+        Name=Trionic fuel tank
+        Owner=Fei
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. The extreme degree of manufacturability and complexity of the <color=255,240,100>Feiyan</color> approach to engineering was reflected in the trionic equipment they assembled in all its glory. To maintain the additional properties of this equipment in a constantly active state, it requires regular coordination on the part of the brain of a living humanoid, however, unlike the complex faceted structure of the brain of the <color=255,240,100>feiyang</color> themselves, the brain of representatives of other races is simply not able to maintain the same high level of necessary multitasking.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Mobility skill: <bonSkill2>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill2=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_FeiEngine ^{
+        CustomTag=Fakrin_3_1
+        Equipments=Engine
+        KindGraph=Fakrin_EG
+        Name=Trionic engine
+        Owner=Fei
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. The extreme degree of manufacturability and complexity of the <color=255,240,100>Feiyan</color> approach to engineering was reflected in the trionic equipment they assembled in all its glory. To maintain the additional properties of this equipment in a constantly active state, it requires regular coordination on the part of the brain of a living humanoid, however, unlike the complex faceted structure of the brain of the <color=255,240,100>feiyang</color> themselves, the brain of representatives of other races is simply not able to maintain the same high level of necessary multitasking.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Mobility skill: <bonSkill2>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill2=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_FeiRadar ^{
+        CustomTag=Fakrin_3_2
+        Equipments=Radar
+        KindGraph=Fakrin_RAD
+        Name=Trionic radar
+        Owner=Fei
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. The extreme degree of manufacturability and complexity of the <color=255,240,100>Feiyan</color> approach to engineering was reflected in the trionic equipment they assembled in all its glory. To maintain the additional properties of this equipment in a constantly active state, it requires regular coordination on the part of the brain of a living humanoid, however, unlike the complex faceted structure of the brain of the <color=255,240,100>feiyang</color> themselves, the brain of representatives of other races is simply not able to maintain the same high level of necessary multitasking.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Mobility skill: <bonSkill2>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill2=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_FeiScaner ^{
+        CustomTag=Fakrin_3_3
+        Equipments=Scaner
+        KindGraph=Fakrin_SC
+        Name=Trionic scanner
+        Owner=Fei
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. The extreme degree of manufacturability and complexity of the <color=255,240,100>Feiyan</color> approach to engineering was reflected in the trionic equipment they assembled in all its glory. To maintain the additional properties of this equipment in a constantly active state, it requires regular coordination on the part of the brain of a living humanoid, however, unlike the complex faceted structure of the brain of the <color=255,240,100>feiyang</color> themselves, the brain of representatives of other races is simply not able to maintain the same high level of necessary multitasking.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Mobility skill: <bonSkill2>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill2=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_FeiDroid ^{
+        CustomTag=Fakrin_3_4
+        Equipments=Droid
+        KindGraph=Fakrin_DRD
+        Name=Trionic Droid
+        Owner=Fei
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. The extreme degree of manufacturability and complexity of the <color=255,240,100>Feiyan</color> approach to engineering was reflected in the trionic equipment they assembled in all its glory. To maintain the additional properties of this equipment in a constantly active state, it requires regular coordination on the part of the brain of a living humanoid, however, unlike the complex faceted structure of the brain of the <color=255,240,100>feiyang</color> themselves, the brain of representatives of other races is simply not able to maintain the same high level of necessary multitasking.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Mobility skill: <bonSkill2>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill2=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_FeiHook ^{
+        CustomTag=Fakrin_3_5
+        Equipments=Hook
+        KindGraph=Fakrin_HK
+        Name=Trionic Hook
+        Owner=Fei
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. The extreme degree of manufacturability and complexity of the <color=255,240,100>Feiyan</color> approach to engineering was reflected in the trionic equipment they assembled in all its glory. To maintain the additional properties of this equipment in a constantly active state, it requires regular coordination on the part of the brain of a living humanoid, however, unlike the complex faceted structure of the brain of the <color=255,240,100>feiyang</color> themselves, the brain of representatives of other races is simply not able to maintain the same high level of necessary multitasking.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Mobility skill: <bonSkill2>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill2=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_FeiDefGenerator1 ^{
+        CustomTag=Fakrin_3_6
+        Equipments=DefGenerator
+        KindGraph=Fakrin_DEF1
+        Name=Trionic Shield Generator
+        Owner=Fei
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. The extreme degree of manufacturability and complexity of the <color=255,240,100>Feiyan</color> approach to engineering was reflected in the trionic equipment they assembled in all its glory. To maintain the additional properties of this equipment in a constantly active state, it requires regular coordination on the part of the brain of a living humanoid, however, unlike the complex faceted structure of the brain of the <color=255,240,100>feiyang</color> themselves, the brain of representatives of other races is simply not able to maintain the same high level of necessary multitasking.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Mobility skill: <bonSkill2>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill2=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_FeiDefGenerator2 ^{
+        CustomTag=Fakrin_3_6_2
+        Equipments=DefGenerator
+        KindGraph=Fakrin_DEF2
+        Name=Trionic Shield Generator
+        Owner=Fei
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. The extreme degree of manufacturability and complexity of the <color=255,240,100>Feiyan</color> approach to engineering was reflected in the trionic equipment they assembled in all its glory. To maintain the additional properties of this equipment in a constantly active state, it requires regular coordination on the part of the brain of a living humanoid, however, unlike the complex faceted structure of the brain of the <color=255,240,100>feiyang</color> themselves, the brain of representatives of other races is simply not able to maintain the same high level of necessary multitasking.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Mobility skill: <bonSkill2>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill2=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_GaalFuelTank ^{
+        CustomTag=Fakrin_4_0
+        Equipments=FuelTank
+        KindGraph=Fakrin_FT
+        Name=Trionic fuel tank
+        Owner=Gaal
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Having discovered the extraordinary properties of trionic equipment, <color=255,240,100>the Gaal people</color> immediately declared them a manifestation of the miracle of the great universal balance and imposed protection on their activation from the uninitiated in the ancient mystery of the predominance of the primary over the secondary. Once, a young boy asked <color=255,240,100>gaalts</color> the question of what this mystery is, in response to which he received only a riddle: "The answer is as simple as a wall, but as complex as the starry sky." Then malok ran away and hit the wall with his head with all his stupidity, after which he saw stars in his eyes and decided that he had comprehended the great truth.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Attack skill: <bonSkill1>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill1=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_GaalEngine ^{
+        CustomTag=Fakrin_4_1
+        Equipments=Engine
+        KindGraph=Fakrin_EG
+        Name=Trionic engine
+        Owner=Gaal
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Having discovered the extraordinary properties of trionic equipment, <color=255,240,100>the Gaal people</color> immediately declared them a manifestation of the miracle of the great universal balance and imposed protection on their activation from the uninitiated in the ancient mystery of the predominance of the primary over the secondary. Once, a young boy asked <color=255,240,100>gaalts</color> the question of what this mystery is, in response to which he received only a riddle: "The answer is as simple as a wall, but as complex as the starry sky." Then malok ran away and hit the wall with his head with all his stupidity, after which he saw stars in his eyes and decided that he had comprehended the great truth.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Attack skill: <bonSkill1>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill1=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_GaalRadar ^{
+        CustomTag=Fakrin_4_2
+        Equipments=Radar
+        KindGraph=Fakrin_RAD
+        Name=Trionic radar
+        Owner=Gaal
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Having discovered the extraordinary properties of trionic equipment, <color=255,240,100>the Gaal people</color> immediately declared them a manifestation of the miracle of the great universal balance and imposed protection on their activation from the uninitiated in the ancient mystery of the predominance of the primary over the secondary. Once, a young boy asked <color=255,240,100>gaalts</color> the question of what this mystery is, in response to which he received only a riddle: "The answer is as simple as a wall, but as complex as the starry sky." Then malok ran away and hit the wall with his head with all his stupidity, after which he saw stars in his eyes and decided that he had comprehended the great truth.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Attack skill: <bonSkill1>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill1=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_GaalScaner ^{
+        CustomTag=Fakrin_4_3
+        Equipments=Scaner
+        KindGraph=Fakrin_SC
+        Name=Trionic scanner
+        Owner=Gaal
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Having discovered the extraordinary properties of trionic equipment, <color=255,240,100>the Gaal people</color> immediately declared them a manifestation of the miracle of the great universal balance and imposed protection on their activation from the uninitiated in the ancient mystery of the predominance of the primary over the secondary. Once, a young boy asked <color=255,240,100>gaalts</color> the question of what this mystery is, in response to which he received only a riddle: "The answer is as simple as a wall, but as complex as the starry sky." Then malok ran away and hit the wall with his head with all his stupidity, after which he saw stars in his eyes and decided that he had comprehended the great truth.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Attack skill: <bonSkill1>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill1=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_GaalDroid ^{
+        CustomTag=Fakrin_4_4
+        Equipments=Droid
+        KindGraph=Fakrin_DRD
+        Name=Trionic Droid
+        Owner=Gaal
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Having discovered the extraordinary properties of trionic equipment, <color=255,240,100>the Gaal people</color> immediately declared them a manifestation of the miracle of the great universal balance and imposed protection on their activation from the uninitiated in the ancient mystery of the predominance of the primary over the secondary. Once, a young boy asked <color=255,240,100>gaalts</color> the question of what this mystery is, in response to which he received only a riddle: "The answer is as simple as a wall, but as complex as the starry sky." Then malok ran away and hit the wall with his head with all his stupidity, after which he saw stars in his eyes and decided that he had comprehended the great truth.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Attack skill: <bonSkill1>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill1=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_GaalHook ^{
+        CustomTag=Fakrin_4_5
+        Equipments=Hook
+        KindGraph=Fakrin_HK
+        Name=Trionic Hook
+        Owner=Gaal
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Having discovered the extraordinary properties of trionic equipment, <color=255,240,100>the Gaal people</color> immediately declared them a manifestation of the miracle of the great universal balance and imposed protection on their activation from the uninitiated in the ancient mystery of the predominance of the primary over the secondary. Once, a young boy asked <color=255,240,100>gaalts</color> the question of what this mystery is, in response to which he received only a riddle: "The answer is as simple as a wall, but as complex as the starry sky." Then malok ran away and hit the wall with his head with all his stupidity, after which he saw stars in his eyes and decided that he had comprehended the great truth.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Attack skill: <bonSkill1>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill1=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_GaalDefGenerator1 ^{
+        CustomTag=Fakrin_4_6
+        Equipments=DefGenerator
+        KindGraph=Fakrin_DEF1
+        Name=Trionic Shield Generator
+        Owner=Gaal
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Having discovered the extraordinary properties of trionic equipment, <color=255,240,100>the Gaal people</color> immediately declared them a manifestation of the miracle of the great universal balance and imposed protection on their activation from the uninitiated in the ancient mystery of the predominance of the primary over the secondary. Once, a young boy asked <color=255,240,100>gaalts</color> the question of what this mystery is, in response to which he received only a riddle: "The answer is as simple as a wall, but as complex as the starry sky." Then malok ran away and hit the wall with his head with all his stupidity, after which he saw stars in his eyes and decided that he had comprehended the great truth.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Attack skill: <bonSkill1>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill1=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_GaalDefGenerator2 ^{
+        CustomTag=Fakrin_4_6_2
+        Equipments=DefGenerator
+        KindGraph=Fakrin_DEF2
+        Name=Trionic Shield Generator
+        Owner=Gaal
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Experimental trionic modification of equipment, recreated by outstanding scientists of the Coalition using the latest dominant technologies and improving the characteristics of almost all onboard systems. Having discovered the extraordinary properties of trionic equipment, <color=255,240,100>the Gaal people</color> immediately declared them a manifestation of the miracle of the great universal balance and imposed protection on their activation from the uninitiated in the ancient mystery of the predominance of the primary over the secondary. Once, a young boy asked <color=255,240,100>gaalts</color> the question of what this mystery is, in response to which he received only a riddle: "The answer is as simple as a wall, but as complex as the starry sky." Then malok ran away and hit the wall with his head with all his stupidity, after which he saw stars in his eyes and decided that he had comprehended the great truth.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Attack skill: <bonSkill1>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill1=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PirateClanFuelTank ^{
+        CustomTag=Fakrin_5_0
+        Equipments=FuelTank
+        KindGraph=Fakrin_FT
+        Name=Trionic fuel tank
+        Owner=PirateClan
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>A top-secret joint development of three races, stolen by the fourth, sold by the fifth and finally obtained by the "sixth". Additional properties of the equipment are activated by unique, randomly changing codes known only to some high-ranking members of the <color=255,240,100> pirate clan</color>.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Charisma skill: <bonSkill5>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill5=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PirateClanEngine ^{
+        CustomTag=Fakrin_5_1
+        Equipments=Engine
+        KindGraph=Fakrin_EG
+        Name=Trionic engine
+        Owner=PirateClan
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>A top-secret joint development of three races, stolen by the fourth, sold by the fifth and finally obtained by the "sixth". Additional properties of the equipment are activated by unique, randomly changing codes known only to some high-ranking members of the <color=255,240,100> pirate clan</color>.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Charisma skill: <bonSkill5>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill5=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PirateClanRadar ^{
+        CustomTag=Fakrin_5_2
+        Equipments=Radar
+        KindGraph=Fakrin_RAD
+        Name=Trionic radar
+        Owner=PirateClan
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>A top-secret joint development of three races, stolen by the fourth, sold by the fifth and finally obtained by the "sixth". Additional properties of the equipment are activated by unique, randomly changing codes known only to some high-ranking members of the <color=255,240,100> pirate clan</color>.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Charisma skill: <bonSkill5>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill5=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PirateClanScaner ^{
+        CustomTag=Fakrin_5_3
+        Equipments=Scaner
+        KindGraph=Fakrin_SC
+        Name=Trionic scanner
+        Owner=PirateClan
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>A top-secret joint development of three races, stolen by the fourth, sold by the fifth and finally obtained by the "sixth". Additional properties of the equipment are activated by unique, randomly changing codes known only to some high-ranking members of the <color=255,240,100> pirate clan</color>.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Charisma skill: <bonSkill5>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill5=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PirateClanDroid ^{
+        CustomTag=Fakrin_5_4
+        Equipments=Droid
+        KindGraph=Fakrin_DRD
+        Name=Trionic Droid
+        Owner=PirateClan
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Сверхсекретная совместная разработка трёх рас, украденная четвёртой, проданная пятой и, наконец, добытая "шестой". Дополнительные свойства оборудования активируются уникальными, хаотично меняющимися<br>кодами, известными лишь некоторым высокопоставленным<br>членам <color=255,240,100>пиратского клана</color>.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Charisma skill: <bonSkill5>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill5=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PirateClanHook ^{
+        CustomTag=Fakrin_5_5
+        Equipments=Hook
+        KindGraph=Fakrin_HK
+        Name=Trionic Hook
+        Owner=PirateClan
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>A top-secret joint development of three races, stolen by the fourth, sold by the fifth and finally obtained by the "sixth". Additional properties of the equipment are activated by unique, randomly changing codes known only to some high-ranking members of the <color=255,240,100> pirate clan</color>.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Charisma skill: <bonSkill5>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill5=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PirateClanDefGenerator1 ^{
+        CustomTag=Fakrin_5_6
+        Equipments=DefGenerator
+        KindGraph=Fakrin_DEF1
+        Name=Trionic Shield Generator
+        Owner=PirateClan
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>A top-secret joint development of three races, stolen by the fourth, sold by the fifth and finally obtained by the "sixth". Additional properties of the equipment are activated by unique, randomly changing codes known only to some high-ranking members of the <color=255,240,100> pirate clan</color>.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Charisma skill: <bonSkill5>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill5=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+    ExpAcryn_PirateClanDefGenerator2 ^{
+        CustomTag=Fakrin_5_6_2
+        Equipments=DefGenerator
+        KindGraph=Fakrin_DEF2
+        Name=Trionic Shield Generator
+        Owner=PirateClan
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>A top-secret joint development of three races, stolen by the fourth, sold by the fifth and finally obtained by the "sixth". Additional properties of the equipment are activated by unique, randomly changing codes known only to some high-ranking members of the <color=255,240,100> pirate clan</color>.</color>
+		Text=<clr><clrEnd>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Radar range: <bonRadar>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Charisma skill: <bonSkill5>
+        bonDef=2
+        bonDroid=6
+        bonHull=1
+        bonRadar=200
+        bonSkill5=-1
+        bonSpeed=50
+        bonWEnergy=10
+        bonWMissile=15
+        bonWSplinter=10
+    }
+	RevAcryn_TwinEngine1 ^{
+        AcrynLevel=1
+        AcrynSerie=Twin engine I-III
+        Cost=140
+        Equipments=Engine
+        KindGraph=TwinEngine
+        LevelsCount=3
+        Name=Twin engine I
+        Owner=Gaal,Fei
+        Priority=10
+        Ruins=RC,SB,TC,MB,Manaan
+        SerieLevel1=RevAcryn_TwinEngine1
+        SerieLevel2=RevAcryn_TwinEngine2
+        SerieLevel3=RevAcryn_TwinEngine3
+        Size=125
+        Special=1
+        Text=<color=248,252,248>A unique joint development of <color=255,240,100>Gaal</color> and <color=255,240,100>Feiyan</color> scientists is the Twin engine, built on the principle of jewelry synchronization of two separate turbines. Separately from each other, these power plants are of no interest, but working in a well-coordinated doublet, they are able to produce much <color=255,240,100>more power </color> than one would expect from engines of this class.</color>
+        Text=<clr><clrEnd>
+        Text=Engine speed: <bonSpeed>
+        Text=Jump range: <bonJump>
+        bonJump=5
+        bonSpeed=50
+		bonSkill2=0
+    }
+    RevAcryn_TwinEngine2 ^{
+        AcrynLevel=2
+        AcrynSerie=Twin engine I-III
+        Cost=180
+        Equipments=Engine
+        KindGraph=TwinEngine
+        LevelsCount=3
+        Name=Twin engine II
+        Owner=Gaal,Fei
+        Priority=50
+        Ruins=RC,SB,TC,MB,Manaan
+        SerieLevel1=RevAcryn_TwinEngine1
+        SerieLevel2=RevAcryn_TwinEngine2
+        SerieLevel3=RevAcryn_TwinEngine3
+        Size=125
+        Special=1
+        Text=<color=248,252,248>A unique joint development of <color=255,240,100>Gaal</color> and <color=255,240,100>Feiyan</color> scientists is the Twin engine, built on the principle of jewelry synchronization of two separate turbines. Separately from each other, these power plants are of no interest, but working in a well-coordinated doublet, they are able to produce much <color=255,240,100>more power </color> than one would expect from engines of this class.</color>
+        Text=<clr><clrEnd>
+        Text=Engine speed: <bonSpeed>
+        Text=Jump range: <bonJump>
+        bonJump=7
+        bonSpeed=100
+		bonSkill2=0
+    }
+    RevAcryn_TwinEngine3 ^{
+        AcrynLevel=3
+        AcrynSerie=Twin engine I-III
+        Cost=220
+        Equipments=Engine
+        KindGraph=TwinEngine
+        LevelsCount=3
+        Name=Twin engine III
+        Owner=Gaal,Fei
+        Priority=70
+        Ruins=RC,SB,TC,MB,Manaan
+        SerieLevel1=RevAcryn_TwinEngine1
+        SerieLevel2=RevAcryn_TwinEngine2
+        SerieLevel3=RevAcryn_TwinEngine3
+        Size=125
+        Special=1
+        Text=<color=248,252,248>A unique joint development of <color=255,240,100>Gaal</color> and <color=255,240,100>Feiyan</color> scientists is the Twin engine, built on the principle of jewelry synchronization of two separate turbines. Separately from each other, these power plants are of no interest, but working in a well-coordinated doublet, they are able to produce much <color=255,240,100>more power </color> than one would expect from engines of this class.</color>
+        Text=<clr><clrEnd>
+        Text=Engine speed: <bonSpeed>
+        Text=Jump range: <bonJump>
+        bonJump=9
+        bonSpeed=150
+		bonSkill2=0
+    }
+    RevAcryn_TwinFuelTank1 ^{
+        AcrynLevel=1
+        AcrynSerie=Twin fuel tank I-III
+        Cost=125
+        Equipments=FuelTank
+        KindGraph=TwinFuelTank
+        LevelsCount=3
+        Name=Twin fuel tank I
+        Owner=Gaal,Fei
+        Priority=10
+        Ruins=RC,SB,TC,MB,Manaan
+        SerieLevel1=RevAcryn_TwinFuelTank1
+        SerieLevel2=RevAcryn_TwinFuelTank2
+        SerieLevel3=RevAcryn_TwinFuelTank3
+        Size=125
+        Special=1
+        Text=<color=248,252,248>A unique joint development of <color=255,240,100>Gaal</color> and <color=255,240,100>Feiyan</color> scientists is a Twin fuel tank equipped with a progressive fuel supply system. The smart software of this tank controls the operation of four paired injectors, injecting fuel strictly at the stage of acceleration of the accelerator circuit of the engine, which provides the ship with a solid increase in <color=255,240,100> to the speed and range of the jump.</color>
+        Text=<clr><clrEnd>
+        Text=Engine speed: <bonSpeed>
+        Text=Jump range: <bonJump>
+        bonJump=3
+        bonSpeed=30
+		bonSkill2=0
+    }
+    RevAcryn_TwinFuelTank2 ^{
+        AcrynLevel=2
+        AcrynSerie=Twin fuel tank I-III
+        Cost=150
+        Equipments=FuelTank
+        KindGraph=TwinFuelTank
+        LevelsCount=3
+        Name=Twin fuel tank II
+        Owner=Gaal,Fei
+        Priority=50
+        Ruins=RC,SB,TC,MB,Manaan
+        SerieLevel1=RevAcryn_TwinFuelTank1
+        SerieLevel2=RevAcryn_TwinFuelTank2
+        SerieLevel3=RevAcryn_TwinFuelTank3
+        Size=125
+        Special=1
+        Text=<color=248,252,248>A unique joint development of <color=255,240,100>Gaal</color> and <color=255,240,100>Feiyan</color> scientists is a Twin fuel tank equipped with a progressive fuel supply system. The smart software of this tank controls the operation of four paired injectors, injecting fuel strictly at the stage of acceleration of the accelerator circuit of the engine, which provides the ship with a solid increase in <color=255,240,100> to the speed and range of the jump.</color>
+        Text=<clr><clrEnd>
+        Text=Engine speed: <bonSpeed>
+        Text=Jump range: <bonJump>
+        bonJump=5
+        bonSpeed=50
+		bonSkill2=0
+    }
+    RevAcryn_TwinFuelTank3 ^{
+        AcrynLevel=3
+        AcrynSerie=Twin fuel tank I-III
+        Cost=175
+        Equipments=FuelTank
+        KindGraph=TwinFuelTank
+        LevelsCount=3
+        Name=Twin fuel tank III
+        Owner=Gaal,Fei
+        Priority=70
+        Ruins=RC,SB,TC,MB,Manaan
+        SerieLevel1=RevAcryn_TwinFuelTank1
+        SerieLevel2=RevAcryn_TwinFuelTank2
+        SerieLevel3=RevAcryn_TwinFuelTank3
+        Size=125
+        Special=1
+        Text=<color=248,252,248>A unique joint development of <color=255,240,100>Gaal</color> and <color=255,240,100>Feiyan</color> scientists is a Twin fuel tank equipped with a progressive fuel supply system. The smart software of this tank controls the operation of four paired injectors, injecting fuel strictly at the stage of acceleration of the accelerator circuit of the engine, which provides the ship with a solid increase in <color=255,240,100> to the speed and range of the jump.</color>
+        Text=<clr><clrEnd>
+        Text=Engine speed: <bonSpeed>
+        Text=Jump range: <bonJump>
+        bonJump=7
+        bonSpeed=70
+		bonSkill2=0
+    }
+    RevAcryn_TechnolitHook1 ^{
+        AcrynLevel=1
+        AcrynSerie=Technolytic Hook I-III
+        Cost=120
+        Equipments=Hook
+        Fragility=90
+        KindGraph=TechnolitHook
+        LevelsCount=3
+        Name=Technolytic Hook I
+        Owner=Any
+        Priority=10
+        Ruins=RC,SB,TC,BK,MC,MB,Manaan
+        SerieLevel1=RevAcryn_TechnolitHook1
+        SerieLevel2=RevAcryn_TechnolitHook2
+        SerieLevel3=RevAcryn_TechnolitHook3
+        Special=1
+        Text=<color=248,252,248>The technolytic equipment operates on an akrin matter restructuring generator. The radiation affects the <color=255,240,100>thickness of the armor</color>, thereby increasing its size. Equipment using such a generator works more efficiently, and also becomes noticeably <color=255,240,100> more resistant to breakdowns</color>. Unfortunately, due to the restructuring of atomic bonds in the armor material, the strength of the gravitational field of the hull increases significantly.</color>
+        Text=<clr><clrEnd>
+        Text=Hull Armor: <bonHull>
+        Text=Gripper power: <bonHook>
+        Text=Gripper range: <bonHookRadius>
+        Text=Reliability: <clr>+10%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        bonHook=10
+        bonHookRadius=10
+        bonHull=1
+        bonMass=5
+    }
+    RevAcryn_TechnolitHook2 ^{
+        AcrynLevel=2
+        AcrynSerie=Technolytic Hook I-III
+        Cost=140
+        Equipments=Hook
+        Fragility=87
+        KindGraph=TechnolitHook
+        LevelsCount=3
+        Name=Technolytic Hook II
+        Owner=Any
+        Priority=50
+        Ruins=RC,SB,TC,BK,MC,MB,Manaan
+        SerieLevel1=RevAcryn_TechnolitHook1
+        SerieLevel2=RevAcryn_TechnolitHook2
+        SerieLevel3=RevAcryn_TechnolitHook3
+        Special=1
+        Text=<color=248,252,248>The technolytic equipment operates on an akrin matter restructuring generator. The radiation affects the <color=255,240,100>thickness of the armor</color>, thereby increasing its size. Equipment using such a generator works more efficiently, and also becomes noticeably <color=255,240,100> more resistant to breakdowns</color>. Unfortunately, due to the restructuring of atomic bonds in the armor material, the strength of the gravitational field of the hull increases significantly.</color>
+        Text=<clr><clrEnd>
+        Text=Hull Armor: <bonHull>
+        Text=Gripper power: <bonHook>
+        Text=Gripper range: <bonHookRadius>
+        Text=Reliability: <clr>+15%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        bonHook=20
+        bonHookRadius=20
+        bonHull=2
+        bonMass=10
+		bonSkill3=0
+    }
+    RevAcryn_TechnolitHook3 ^{
+        AcrynLevel=3
+        AcrynSerie=Technolytic Hook I-III
+        Cost=160
+        Equipments=Hook
+        Fragility=80
+        KindGraph=TechnolitHook
+        LevelsCount=3
+        Name=Technolytic Hook III
+        Owner=Any
+        Priority=70
+        Ruins=RC,SB,TC,BK,MC,MB,Manaan
+        SerieLevel1=RevAcryn_TechnolitHook1
+        SerieLevel2=RevAcryn_TechnolitHook2
+        SerieLevel3=RevAcryn_TechnolitHook3
+        Special=1
+        Text=<color=248,252,248>The technolytic equipment operates on an akrin matter restructuring generator. The radiation affects the <color=255,240,100>thickness of the armor</color>, thereby increasing its size. Equipment using such a generator works more efficiently, and also becomes noticeably <color=255,240,100> more resistant to breakdowns</color>. Unfortunately, due to the restructuring of atomic bonds in the armor material, the strength of the gravitational field of the hull increases significantly.</color>
+        Text=<clr><clrEnd>
+        Text=Hull Armor: <bonHull>
+        Text=Gripper power: <bonHook>
+        Text=Gripper range: <bonHookRadius>
+        Text=Reliability: <clr>+25%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        bonHook=30
+        bonHookRadius=30
+        bonHull=3
+        bonMass=15
+		bonSkill3=0
+    }
+    RevAcryn_TechnolitDefGenerator1 ^{
+        AcrynLevel=1
+        AcrynSerie=Technolytic protection generator I-III
+        Cost=120
+        Equipments=DefGenerator
+        Fragility=90
+        KindGraph=TechnolitDefGenerator
+        LevelsCount=3
+        Name=Technolytic protection generator I
+        Owner=Any
+        Priority=10
+        Ruins=RC,SB,TC,BK,MC,MB,Manaan
+        SerieLevel1=RevAcryn_TechnolitDefGenerator1
+        SerieLevel2=RevAcryn_TechnolitDefGenerator2
+        SerieLevel3=RevAcryn_TechnolitDefGenerator3
+        Special=1
+        Text=<color=248,252,248>The technolytic equipment operates on an akrin matter restructuring generator. The radiation affects the <color=255,240,100>thickness of the armor</color>, thereby increasing its size. Equipment using such a generator works more efficiently, and also becomes noticeably <color=255,240,100> more resistant to breakdowns</color>. Unfortunately, due to the restructuring of atomic bonds in the armor material, the strength of the gravitational field of the hull increases significantly.</color>
+        Text=<clr><clrEnd>
+        Text=Hull Armor: <bonHull>
+        Text=Power of Shield Generator: <bonDef>%
+        Text=Reliability: <clr>+10%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        bonDef=1
+        bonHull=1
+        bonMass=5
+    }
+    RevAcryn_TechnolitDefGenerator2 ^{
+        AcrynLevel=2
+        AcrynSerie=Technolytic protection generator I-III
+        Cost=140
+        Equipments=DefGenerator
+        Fragility=87
+        KindGraph=TechnolitDefGenerator
+        LevelsCount=3
+        Name=Technolytic protection generator II
+        Owner=Any
+        Priority=50
+        Ruins=RC,SB,TC,BK,MC,MB,Manaan
+        SerieLevel1=RevAcryn_TechnolitDefGenerator1
+        SerieLevel2=RevAcryn_TechnolitDefGenerator2
+        SerieLevel3=RevAcryn_TechnolitDefGenerator3
+        Special=1
+        Text=<color=248,252,248>The technolytic equipment operates on an akrin matter restructuring generator. The radiation affects the <color=255,240,100>thickness of the armor</color>, thereby increasing its size. Equipment using such a generator works more efficiently, and also becomes noticeably <color=255,240,100> more resistant to breakdowns</color>. Unfortunately, due to the restructuring of atomic bonds in the armor material, the strength of the gravitational field of the hull increases significantly.</color>
+        Text=<clr><clrEnd>
+        Text=Hull Armor: <bonHull>
+        Text=Power of Shield Generator: <bonDef>%
+        Text=Reliability: <clr>+15%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        bonDef=2
+        bonHull=2
+        bonMass=10
+		bonSkill3=0
+    }
+    RevAcryn_TechnolitDefGenerator3 ^{
+        AcrynLevel=3
+        AcrynSerie=Technolytic protection generator I-III
+        Cost=160
+        Equipments=DefGenerator
+        Fragility=80
+        KindGraph=TechnolitDefGenerator
+        LevelsCount=3
+        Name=Technolytic protection generator III
+        Owner=Any
+        Priority=70
+        Ruins=RC,SB,TC,BK,MC,MB,Manaan
+        SerieLevel1=RevAcryn_TechnolitDefGenerator1
+        SerieLevel2=RevAcryn_TechnolitDefGenerator2
+        SerieLevel3=RevAcryn_TechnolitDefGenerator3
+        Special=1
+        Text=<color=248,252,248>The technolytic equipment operates on an akrin matter restructuring generator. The radiation affects the <color=255,240,100>thickness of the armor</color>, thereby increasing its size. Equipment using such a generator works more efficiently, and also becomes noticeably <color=255,240,100> more resistant to breakdowns</color>. Unfortunately, due to the restructuring of atomic bonds in the armor material, the strength of the gravitational field of the hull increases significantly.</color>
+        Text=<clr><clrEnd>
+        Text=Hull Armor: <bonHull>
+        Text=Power of Shield Generator: <bonDef>%
+        Text=Reliability: <clr>+25%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        bonDef=3
+        bonHull=3
+        bonMass=15
+		bonSkill3=0
+    }
+    RevAcryn_TechnolitScaner1 ^{
+        AcrynLevel=1
+        AcrynSerie=Technolytic scanner I-III
+        Cost=120
+        Equipments=Scaner
+        Fragility=90
+        KindGraph=TechnolitScaner
+        LevelsCount=3
+        Name=Technolytic scanner I
+        Owner=Any
+        Priority=10
+        Ruins=RC,SB,TC,BK,MC,MB,Manaan
+        SerieLevel1=RevAcryn_TechnolitScaner1
+        SerieLevel2=RevAcryn_TechnolitScaner2
+        SerieLevel3=RevAcryn_TechnolitScaner3
+        Special=1
+        Text=<color=248,252,248>The technolytic equipment operates on an akrin matter restructuring generator. The radiation affects the <color=255,240,100>thickness of the armor</color>, thereby increasing its size. Equipment using such a generator works more efficiently, and also becomes noticeably <color=255,240,100> more resistant to breakdowns</color>. Unfortunately, due to the restructuring of atomic bonds in the armor material, the strength of the gravitational field of the hull increases significantly.</color>
+        Text=<clr><clrEnd>
+        Text=Hull Armor: <bonHull>
+        Text=Scanner power: <bonScan>%
+        Text=Reliability: <clr>+10%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        bonHull=1
+        bonMass=5
+        bonScan=2
+    }
+    RevAcryn_TechnolitScaner2 ^{
+        AcrynLevel=2
+        AcrynSerie=Technolytic scanner I-III
+        Cost=140
+        Equipments=Scaner
+        Fragility=87
+        KindGraph=TechnolitScaner
+        LevelsCount=3
+        Name=Technolytic scanner II
+        Owner=Any
+        Priority=50
+        Ruins=RC,SB,TC,BK,MC,MB,Manaan
+        SerieLevel1=RevAcryn_TechnolitScaner1
+        SerieLevel2=RevAcryn_TechnolitScaner2
+        SerieLevel3=RevAcryn_TechnolitScaner3
+        Special=1
+        Text=<color=248,252,248>The technolytic equipment operates on an akrin matter restructuring generator. The radiation affects the <color=255,240,100>thickness of the armor</color>, thereby increasing its size. Equipment using such a generator works more efficiently, and also becomes noticeably <color=255,240,100> more resistant to breakdowns</color>. Unfortunately, due to the restructuring of atomic bonds in the armor material, the strength of the gravitational field of the hull increases significantly.</color>
+        Text=<clr><clrEnd>
+        Text=Hull Armor: <bonHull>
+        Text=Scanner power: <bonScan>%
+        Text=Reliability: <clr>+15%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        bonHull=2
+        bonMass=10
+        bonScan=3
+		bonSkill3=0
+    }
+    RevAcryn_TechnolitScaner3 ^{
+        AcrynLevel=3
+        AcrynSerie=Technolytic scanner I-III
+        Cost=160
+        Equipments=Scaner
+        Fragility=80
+        KindGraph=TechnolitScaner
+        LevelsCount=3
+        Name=Technolytic scanner III
+        Owner=Any
+        Priority=70
+        Ruins=RC,SB,TC,BK,MC,MB,Manaan
+        SerieLevel1=RevAcryn_TechnolitScaner1
+        SerieLevel2=RevAcryn_TechnolitScaner2
+        SerieLevel3=RevAcryn_TechnolitScaner3
+        Special=1
+        Text=<color=248,252,248>The technolytic equipment operates on an akrin matter restructuring generator. The radiation affects the <color=255,240,100>thickness of the armor</color>, thereby increasing its size. Equipment using such a generator works more efficiently, and also becomes noticeably <color=255,240,100> more resistant to breakdowns</color>. Unfortunately, due to the restructuring of atomic bonds in the armor material, the strength of the gravitational field of the hull increases significantly.</color>
+        Text=<clr><clrEnd>
+        Text=Hull Armor: <bonHull>
+        Text=Scanner power: <bonScan>%
+        Text=Reliability: <clr>+25%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        bonHull=3
+        bonMass=15
+        bonScan=5
+		bonSkill3=0
+    }
+    RevAcryn_TechnolitRadar1 ^{
+        AcrynLevel=1
+        AcrynSerie=Technolytic radar I-III
+        Cost=120
+        Equipments=Radar
+        Fragility=90
+        KindGraph=TechnolitRadar
+        LevelsCount=3
+        Name=Technolytic radar I
+        Owner=Any
+        Priority=10
+        Ruins=RC,SB,TC,BK,MC,MB,Manaan
+        SerieLevel1=RevAcryn_TechnolitRadar1
+        SerieLevel2=RevAcryn_TechnolitRadar2
+        SerieLevel3=RevAcryn_TechnolitRadar3
+        Special=1
+        Text=<color=248,252,248>The technolytic equipment operates on an akrin matter restructuring generator. The radiation affects the <color=255,240,100>thickness of the armor</color>, thereby increasing its size. Equipment using such a generator works more efficiently, and also becomes noticeably <color=255,240,100> more resistant to breakdowns</color>. Unfortunately, due to the restructuring of atomic bonds in the armor material, the strength of the gravitational field of the hull increases significantly.</color>
+        Text=<clr><clrEnd>
+        Text=Hull Armor: <bonHull>
+        Text=Radar range: <bonRadar>
+        Text=Reliability: <clr>+10%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        bonHull=1
+        bonMass=5
+        bonRadar=100
+    }
+    RevAcryn_TechnolitRadar2 ^{
+        AcrynLevel=2
+        AcrynSerie=Technolytic radar I-III
+        Cost=140
+        Equipments=Radar
+        Fragility=87
+        KindGraph=TechnolitRadar
+        LevelsCount=3
+        Name=Technolytic radar II
+        Owner=Any
+        Priority=50
+        Ruins=RC,SB,TC,BK,MC,MB,Manaan
+        SerieLevel1=RevAcryn_TechnolitRadar1
+        SerieLevel2=RevAcryn_TechnolitRadar2
+        SerieLevel3=RevAcryn_TechnolitRadar3
+        Special=1
+        Text=<color=248,252,248>The technolytic equipment operates on an akrin matter restructuring generator. The radiation affects the <color=255,240,100>thickness of the armor</color>, thereby increasing its size. Equipment using such a generator works more efficiently, and also becomes noticeably <color=255,240,100> more resistant to breakdowns</color>. Unfortunately, due to the restructuring of atomic bonds in the armor material, the strength of the gravitational field of the hull increases significantly.</color>
+        Text=<clr><clrEnd>
+        Text=Hull Armor: <bonHull>
+        Text=Radar range: <bonRadar>
+        Text=Reliability: <clr>+15%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        bonHull=2
+        bonMass=10
+        bonRadar=200
+		bonSkill3=0
+    }
+    RevAcryn_TechnolitRadar3 ^{
+        AcrynLevel=3
+        AcrynSerie=Technolytic radar I-III
+        Cost=160
+        Equipments=Radar
+        Fragility=80
+        KindGraph=TechnolitRadar
+        LevelsCount=3
+        Name=Technolytic radar III
+        Owner=Any
+        Priority=70
+        Ruins=RC,SB,TC,BK,MC,MB,Manaan
+        SerieLevel1=RevAcryn_TechnolitRadar1
+        SerieLevel2=RevAcryn_TechnolitRadar2
+        SerieLevel3=RevAcryn_TechnolitRadar3
+        Special=1
+        Text=<color=248,252,248>The technolytic equipment operates on an akrin matter restructuring generator. The radiation affects the <color=255,240,100>thickness of the armor</color>, thereby increasing its size. Equipment using such a generator works more efficiently, and also becomes noticeably <color=255,240,100> more resistant to breakdowns</color>. Unfortunately, due to the restructuring of atomic bonds in the armor material, the strength of the gravitational field of the hull increases significantly.</color>
+        Text=<clr><clrEnd>
+        Text=Hull Armor: <bonHull>
+        Text=Radar range: <bonRadar>
+        Text=Reliability: <clr>+25%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        bonHull=3
+        bonMass=15
+        bonRadar=300
+		bonSkill3=0
+    }
+    RevAcryn_NOKM ^{
+        BlockImp=1
+        BlockMM=0
+        Cost=350
+        CustomTag=RevAcryn_NOKM
+        Equipments=Engine
+        Fragility=100
+        KindGraph=NOKM
+        LockedAcryn=3
+        Name=</color>OAKM-3314M
+        NonSearchable=2
+        Owner=Maloc
+        Priority=10
+        Size=100
+        Special=1
+        Text=<color=248,252,248>The result of this project was a heavy and very expensive unit that automatically creates portable nuclear warheads from conventional starship fuel and nanoclay from droid tanks, installing the resulting projectiles into the warheads of conventional missiles and torpedoes. Well, since in <color=255,240,100>The Charter</color> says in red on yellow that the ship should have only one fuel line, the unit is designed so that it can only be installed <color=255,240,100> instead of the engine</color>, with<br> all the consequences that follow from this.</color>
+        Text=<clr><clrEnd>
+        Text=Rocket weapon power: <bonWMissile>
+        TextReplace=<color=248,252,248>The reason for the creation of this strange unit was a diplomatic incident, during which the ambassador <color=255,240,100> of Earth</color> threatened the ambassador <color=255,240,100>Ramgatru</color> to "show Kuzkin's mother". And on <color=255,240,100>Ramgatru</color>, without hesitation for a long time, they decided that this very "Kuzkin's mother" is some kind of absolute weapon, in connection with which the project was urgently launched <color=255,240,100>"Our answer to Kuzkin's mother"</color>.</color>
+        bonJump=-500000000
+        bonSpeed=-500000000
+        bonWMissile=50
+    }
+}
+HullType ^{
+    Bichelogr^{
+        Artefact=-1
+        Cost=80
+        Def=-1
+        Droid=1
+        Forsage=-1
+        Fragility=130
+        Hook=-1
+        Name=Bychelogr
+        Probability=5
+        Race=Maloc
+        Radar=1
+        Scaner=1
+        ShipType=Warrior
+        Size=200
+        Text=Cheap housing for unmotivated aggressive personalities. Attached is a set of psychology books for kindling the engine.
+        Weapon=1
+        Year=0
+	}    
+    Desant^{
+        Artefact=-2
+        Cost=220
+        Def=1
+        Droid=1
+        Forsage=-1
+        Fragility=120
+        Hook=-1
+        Name=Paratrooper
+        Probability=5
+        Race=Maloc,People
+        Radar=1
+        Scaner=-1
+        ShipType=Warrior
+        Size=195
+        Text=A heavy amphibious bot designed to land on planets captured by dominators. The limited combat functionality is compensated by the huge capacity and inertia of the mass.
+        Weapon=-1
+        Year=10
+    }
+    Power^{ 
+        Artefact=-2
+        Cost=310
+        Def=1
+        Droid=1
+        Forsage=1
+        Fragility=100
+        Hook=1
+        Name=Honor and Strength
+        Probability=5
+        Race=Maloc,People
+        Radar=1
+        Scaner=1
+        ShipType=Ranger,Warrior
+        Size=200
+        Text=An impressive building for new heroes and fans of exploits in the name of conventional values. The artifacts were partially dismantled as unnecessary.
+        Weapon=1
+        Year=20
+    }
+    Drednout^{
+        Artefact=0
+        Cost=900
+        Def=1
+        Droid=1
+        Forsage=-1
+        Fragility=145
+        Hook=1
+        Name=Fearless
+        Probability=12
+        Race=Maloc,Peleng,People,Fei,Gaal
+        Radar=1
+        Scaner=1
+        ShipType=Warrior
+        Size=550
+        Text=A high-class battleship. It is serially created in the shipyards of the richest planets of the Coalition for military needs in critical situations.
+        Weapon=2
+        Year=40
+    }
+    Diletal^{ 
+        Artefact=0
+        Cost=200
+        Def=1
+        Droid=0
+        Forsage=-1
+        Fragility=140
+        Hook=0
+        Name=Diletal
+        Probability=5
+        Race=Peleng,People
+        Radar=1
+        Scaner=1
+        ShipType=Warrior
+        Size=200
+        Text=A bulky and unwieldy vessel with a doubled hold. Due to the roughly worked deformation, the strength of the seams has dropped significantly.
+        Weapon=1
+        Year=0
+    }
+    Elital^{
+        Artefact=-1
+        Cost=700
+        Def=1
+        Droid=1
+        Forsage=1
+        Fragility=60
+        Hook=1
+        Name=Eliital
+        Probability=11
+    }
+    Elite_aihar^{
+        Artefact=2
+        Cost=610
+        Def=1
+        Droid=-1
+        Forsage=1
+        Fragility=100
+        Hook=1
+        Name=Aiharra Elite
+        Probability=6
+        Race=Maloc
+        Radar=1
+        Scaner=1
+        ShipType=Ranger,Warrior
+        Size=280
+        Text=A heavy corps designed for outstanding warriors. The size of the hold allows you to store a huge amount of combat trophies, but there was no place for a droid.
+        Weapon=2
+        Year=60
+    }
+    Giperbola^{
+        Artefact=0
+        Cost=275
+        Def=1
+        Droid=1
+        Forsage=-1
+        Fragility=150
+        Hook=1
+        Name=Hyperbole
+        Probability=7
+        Race=People
+        Radar=1
+        Scaner=1
+        ShipType=Transport,Liner,Diplomat,Ranger,Pirate,Warrior
+        Size=225
+        Text=Obscuring the neighboring stars of the building, popular among people suffering from gigantism.
+        Weapon=1
+        Year=30
+    }
+    Zabechanz^{
+        Artefact=0
+        Cost=250
+        Def=1
+        Droid=1
+        Forsage=0
+        Fragility=140
+        Hook=0
+        Name=Jabechanz
+        Probability=7
+        Race=Peleng
+        Radar=1
+        Scaner=0
+        ShipType=Transport,Liner,Ranger
+        Size=250
+        Text=A heavy and unwieldy vessel for transporting important persons or cargo. Additional protection systems are installed for the comfort and safety of the contents.
+        Weapon=1
+        Year=10
+    }
+    Kollapar^{
+        Artefact=-2
+        Cost=240
+        Def=1
+        Droid=-1
+        Forsage=-1
+        Fragility=118
+        Hook=-1
+        Name=Collapsar
+        Probability=9
+        Race=Peleng,People
+        Radar=1
+        Scaner=1
+        ShipType=Warrior
+        Size=300
+        Text=A giant warship equipped with a deactivated collapse generator. It is used by the Coalition as a punching ram of the dominator flotillas.
+        Weapon=1
+        Year=20
+    }
+    Legioner^{ 
+        Artefact=-1
+        Cost=275
+        Def=1
+        Droid=1
+        Forsage=-1
+        Fragility=102
+        Hook=-1
+        Name=Legionnaire
+        Probability=5
+        Race=Maloc,People
+        Radar=1
+        Scaner=1
+        ShipType=Warrior
+        Size=215
+        Text=A patrol ship to fight trespassers and hordes of dominators. The possibility of escape on the afterburner is not provided.
+        Weapon=1
+        Year=20
+    }
+    Cherpak^{
+        Artefact=4
+        Cost=550
+        Def=1
+        Droid=1
+        Forsage=-1
+        Fragility=125
+        Hook=1
+        Name=Crimson Scoop
+        Probability=10
+        Race=Maloc,Peleng,People,Fei,Gaal
+        Radar=1
+        Scaner=1
+        ShipType=Pirate
+        Size=240
+        Text=Gold-tinted paneling and soft crimson tones will add credibility to any rich crook. Respect and contempt are wonderfully in harmony with enhanced weaponry.
+        Weapon=2
+        Year=30
+    }
+    Montoara^{
+        Artefact=1
+        Cost=360
+        Def=1
+        Droid=-1
+        Forsage=-1
+        Fragility=87
+        Hook=1
+        Name=Montoara
+        Probability=12
+        Race=Gaal
+        Radar=1
+        Scaner=1
+        ShipType=Warrior
+        Size=260
+        Text=The heavy hull of the Gaal fire support ship. Due to its huge dimensions, it is repaired only at shipyards and does not need a droid.
+        Weapon=4
+        Year=20
+    }
+    Neotwratimost^{
+        Artefact=0
+        Cost=400
+        Def=-1
+        Droid=1
+        Forsage=1
+        Fragility=95
+        Hook=1
+        Name=Inevitability
+        Probability=8
+        Race=Peleng,Gaal
+        Radar=1
+        Scaner=1
+        ShipType=Ranger
+        Size=220
+        Text=An impressive-sized hull, hung with all kinds of attacking systems. Ideal for slow and menacing overhanging the enemy.
+        Weapon=2
+        Year=20
+    }
+    Shamati^{
+        Artefact=4
+        Cost=530
+        Def=1
+        Droid=1
+        Forsage=-1
+        Fragility=57
+        Hook=1
+        Name=Shakhymat
+        Probability=15
+        Race=Peleng
+        Radar=1
+        Scaner=1
+        ShipType=Warrior
+        Size=270
+        Text=Pelengsky battleship. A rare and expensive series, because it's much easier to sponsor the mafia than to spend money on a decent navy.
+        Weapon=2
+        Year=60
+    }
+    Tardim^{
+        Artefact=1
+        Cost=740
+        Def=1
+        Droid=1
+        Forsage=1
+        Fragility=160
+        Hook=1
+        Name=Tardym-ogh
+        Probability=8
+        Race=Maloc
+        Radar=1
+        Scaner=1
+        ShipType=Warrior
+        Size=400
+        Text=It was created according to the project of the famous Malok prince Tardym. It turned out that it was possible to create a giant and powerful ship, but at the same time it would be fragile and of little use. Nevertheless, this series was adopted.
+        Weapon=2
+        Year=30
+    }
+    Star^{
+        Artefact=-4
+        Cost=999
+        Def=1
+        Droid=1
+        Forsage=-1
+        Fragility=95
+        Hook=1
+        Name=Star of Perdition
+        Probability=40
+        Race=People
+        Radar=1
+        Scaner=1
+        ShipType=Warrior
+        Size=660
+        Text=It is extremely rare for humanity to build these gigantic, almost stationary combat stations. However, the result of the construction is always justified due to their incredible destructive power.
+        Weapon=4
+        Year=70
+	}
+}

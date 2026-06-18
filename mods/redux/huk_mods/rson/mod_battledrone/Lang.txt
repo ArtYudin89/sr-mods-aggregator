@@ -1,0 +1,578 @@
+Mod_BattleDrone ^{
+    ExeCode ^{
+        0 ^{
+            02=int a=0; dword curShip=Player(), star=ShipStar(curShip), target=0, drone=0;
+            04=a=ShipCustomShipInfoData(curShip,'mBtlDrn_setTarget',1);
+            06=target=StarShips(star,a);
+            08=if(MessageBoxYesNo(Format(CT('Mod_BattleDrone.Text.TargetConfirm'),'[name]',Name(target),'50,50,255')))
+            10 ^{
+                02=a=ShipCustomShipInfoData(curShip,'mBtlDrn_setTarget',2);
+                04=drone=IdToItem(a);
+                06=float way=100.0, x=CoordX(target)+way*sin((Rnd(0,360)*pi)/180.0), y=CoordY(target)-way*cos((Rnd(0,360)*pi)/180.0);
+                08=UselessItemData(drone,1,Id(target));
+                10=UselessItemData(drone,3,CurTurn());
+                12=ItemDestroy(drone,-999);
+                14=DropItemInSystem(star,GetItemFromShip(curShip,drone),CoordX(curShip),CoordY(curShip),x,y);
+                16=ShipSetBad(target,curShip);
+            }
+            12=else exit;
+            14=for(a=0;a<StarShips(star);a=a+1)
+            16 ^{
+                00=if(a>499)break;
+                02=if(InterfaceState('StarMap','Mod_BattleDroneTarget'+a)!=1)continue;
+                04=InterfaceState('StarMap','Mod_BattleDroneTarget'+a,-1);
+            }
+            20=InterfaceState('StarMap','Mod_BattleDroneTargetsPanel',-1);
+            22=InterfaceState('StarMap','Mod_BattleDroneSetTargetTextPanel',-1);
+            24=ShipDeleteCustomShipInfo(curShip,'mBtlDrn_setTarget');
+        }
+        UseCode ^{
+            02=int a=0, targets=0; dword curShip=Player(), star=ShipStar(curShip), target=0;
+            04=if(!ShipInNormalSpace(curShip))
+            06 ^{
+                01=MessageBox(CT('Mod_BattleDrone.Text.CantUse'));
+                02=exit;
+            }
+            08=for(a=0;a<StarShips(star);a=a+1)
+            10 ^{
+                01=if(a>499)break;
+                02=target=StarShips(star,a);
+                04=if(target==Player())continue;
+                06=if(!ShipInNormalSpace(target))continue;
+                08=if(Dist(curShip,target)>ShipRadarRange(curShip))continue;
+                10=if(ShipTypeN(target)==t_Kling || ShipTypeN(target)==t_Ranger || ShipTypeN(target)==t_Pirate)
+                12 ^{
+                    02=if(ShipTypeN(target)==t_Ranger)
+                    04 ^{
+                        01=if(ShipStatus(target,1)<30)continue;
+                    }
+                    06=targets=1;
+                    07=InterfaceState('StarMap','Mod_BattleDroneTarget'+a,1);
+                    08=InterfacePos('StarMap','Mod_BattleDroneTarget'+a,CoordX(target)-25,CoordY(target)-25,0);
+                }
+            }
+            12=if(!targets)
+            14 ^{
+                01=MessageBox(CT('Mod_BattleDrone.Text.NoTargets'));
+                02=exit;
+            }
+            16=InterfaceState('StarMap','Mod_BattleDroneTargetsPanel',1);
+            18=InterfaceState('StarMap','Mod_BattleDroneSetTargetTextPanel',1);
+            20=FormChange('StarMap');
+            22=ShipAddCustomShipInfo(curShip,'mBtlDrn_setTarget','',-1,Id(CurItem()));
+        }
+    }
+    Text ^{
+        CantUse=Этот предмет может быть использован только в открытом космосе
+        NoTargets=Подходящих целей не обнаружено.
+        Target=->Корректировка дрона<-
+        TargetConfirm=Цель: [name]?
+    }
+}
+Script ^{
+    mod_battledrone ^{
+        0=Боевые дроны - вспомогательные автоматические огневые установки, используемые подразделениями КВСМК для ликвидации особо опасных противников. По окончании эксплуатации самоликвидируются. По запросу Сети ЦР Боевые дроны могут приобрести отличившиеся пилоты Корпуса.<br>---------------------------------<br>Сегодня мы можем предложить <0>.<br>Описание: <1><br>Стоимость: <2> cr.<br>---------------------------------<br>Количество дронов у вас: <3> шт.<br>Ваш ранг позволяет приобрести <4> шт.<br><br>Будете брать?
+        1=Да, плачу <0> cr за <1>
+        2=Меня интересуют боевые дроны
+        3=Нет, пожалуй, зайду за дронами в другой раз
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            mBtlDrn_NpcDrones ^{
+                Data1=до этого хода нельзя использовать дрона
+                Data2=сколько дронов у нпс осталось, при 0 инфошка удаляется
+                Description=инфошка для активации дронов нпсями
+                Icon=1
+                Name=mBtlDrn_NpcDrones
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnStep, 1))
+                    02 ^{
+                        01=dword ship=ScriptItemActShip(), star=ShipStar(ship), target=ShipGetBad(ship); int dist=0;
+                        02=if(ShipCustomShipInfoData(0,CurInfo(),1)>CurTurn())exit;
+                        02=if(ShipCustomShipInfoData(0,CurInfo(),2)<1)exit;
+                        02=if(HullDamage(ship)<50)exit;
+                        02=if(target==0)exit;
+                        02=if(!ShipInNormalSpace(ship))exit;
+                        02=if(!ShipInNormalSpace(target))exit;
+                        02=if(ShipStar(target)!=star)exit;
+                        03=dist=sqrt(sqr(CoordX(ship)-CoordX(target)) + sqr(CoordY(ship)-CoordY(target)));
+                        03=if(dist<=1500)
+                        04 ^{
+                            01=dword drone=CreateQuestItem('mBtlDrn_Type'+ShipPilotRace(ship),ShipPilotRace(ship));
+                            02=SetName(drone,Name(drone)+' MK'+GalaxyTechLevel()+'-'+Rnd(1,9999));
+                            03=UselessItemData(drone,2,GalaxyTechLevel());
+                            04=str str0=CT('UselessItems.mBtlDrn_Type'+ShipPilotRace(ship)+'.Text');
+                            05=str0=Format(str0,'minDmg',15*GalaxyTechLevel(),'maxDmg',25*GalaxyTechLevel());
+                            06=str0=Format(str0,'minBDmg',80*GalaxyTechLevel(),'maxBDmg',120*GalaxyTechLevel());
+                            07=UselessItemText(drone,str0);
+                            08=ItemCost(drone,ItemCost(drone)*2);
+                            09=float way=100.0, x=CoordX(target)+way*sin((Rnd(0,360)*pi)/180.0), y=CoordY(target)-way*cos((Rnd(0,360)*pi)/180.0);
+                            10=DropItemInSystem(star,drone,CoordX(ship),CoordY(ship),x,y);
+                            11=UselessItemData(drone,1,Id(target));
+                            12=UselessItemData(drone,3,CurTurn());
+                            13=ItemDestroy(drone,-999);
+                            14=ShipCustomShipInfoData(0,CurInfo(),1,CurTurn()+15);
+                            15=ShipCustomShipInfoData(0,CurInfo(),2,ShipCustomShipInfoData(0,CurInfo(),2)-1);
+                        }
+                    }
+                    03=if(ShipCustomShipInfoData(0,CurInfo(),2)<1)ShipDeleteCustomShipInfo(0, CurInfo());
+                }
+                OnActStepTypes=1
+            }
+            mBtlDrn_setTarget ^{
+                Data1=номер корабля в списке системы игрока для атаки дроном
+                Data2=ID дрона(юзлес)
+                Description=вспомогательная инфошка для выбора цели дрона
+                Icon=1
+                Name=mBtlDrn_setTarget
+                OnActCode ^{
+                    01=if((ScriptItemActionType(t_OnLeavingForm) && CurrentForm()=='StarMap') || ScriptItemActionType(t_OnStep,0))
+                    02 ^{
+                        02=int a=0; dword curShip=Player(), star=ShipStar(curShip);
+                        14=for(a=0;a<StarShips(star);a=a+1)
+                        16 ^{
+                            00=if(a>499)break;
+                            02=if(InterfaceState('StarMap','Mod_BattleDroneTarget'+a)!=1)continue;
+                            04=InterfaceState('StarMap','Mod_BattleDroneTarget'+a,-1);
+                        }
+                        20=InterfaceState('StarMap','Mod_BattleDroneTargetsPanel',-1);
+                        22=InterfaceState('StarMap','Mod_BattleDroneSetTargetTextPanel',-1);
+                        98=ShipDeleteCustomShipInfo(0, CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnLeavingForm
+                OnActStepTypes=0
+            }
+        }
+    }
+}
+UselessItems ^{
+    mBtlDrn_Type0 ^{
+        Cost=Huge
+        Mod_BattleDrone=1
+        Name=Боевой дрон "Аргррабах"
+        OnActCode ^{
+            01=if(UselessItemData(CurItem(),3)==0)exit;
+            01=if(CurTurn()<=UselessItemData(CurItem(),3))exit;
+            02=if(ScriptItemActionType(t_OnStep, 0))
+            03 ^{
+                01=dword ship=IdToShip(UselessItemData(CurItem(),1)), star=0, starShip=0; int a=0, dist=0, damage=0, damage_min=UselessItemData(CurItem(),2)*15, damage_max=UselessItemData(CurItem(),2)*25, damage_baraboom_min=UselessItemData(CurItem(),2)*80, damage_baraboom_max=UselessItemData(CurItem(),2)*120;
+                02=ItemDestroy(CurItem(),-999);
+                03=if(ship)
+                04 ^{
+                    01=star=ShipStar(ship);
+                    02=for(a=0;a<StarShips(star);a=a+1)
+                    03 ^{
+                        01=starShip=StarShips(star,a);
+                        02=if(ShipPicksItem(starShip,CurItem())==1)ShipPicksItem(starShip,CurItem(),0);
+                    }
+                }
+                05=else ItemDestroy(CurItem(),1);
+            }
+            04=if(ScriptItemActionType(t_OnStep, 1))
+            05 ^{
+                01=float way=150.0, angle=Rnd(-60,60); ship=IdToShip(UselessItemData(CurItem(),1));
+                02=if(ship!=0)
+                03 ^{
+                    01=if(ShipInNormalSpace(ship) && ShipStar(ship)==star)
+                    02 ^{
+                        01=if(ShipSpeed(ship)>400)way=(ShipSpeed(ship)*80)/100;
+                        02=else way=150.0;
+                        03=angle=Rnd(-10,10);
+                        09=float x=CoordX(ship)+way*sin(((ShipAngle(ship)+angle)*pi)/180.0), y=CoordY(ship)-way*cos(((ShipAngle(ship)+angle)*pi)/180.0);
+                    }
+                }
+                04=else
+                05 ^{
+                    01=x=CoordX(CurItem())+50.0*sin((angle*pi)/180.0);
+                    02=y=CoordY(CurItem())-50.0*cos((angle*pi)/180.0);
+                }
+                06=dword item=GetItemFromStar(star,CurItem());
+                07=DropItemInSystem(star,item,CoordX(CurItem()),CoordY(CurItem()),x,y);
+            }
+            06=if(ScriptItemActionType(t_OnStep, 3) || ScriptItemActionType(t_OnStep, 5) || ScriptItemActionType(t_OnStep, 7))
+            07 ^{
+                01=ship=IdToShip(UselessItemData(CurItem(),1));
+                02=if(ship!=0)
+                03 ^{
+                    02=if(ShipInNormalSpace(ship) && ShipStar(ship)==star)
+                    03 ^{
+                        00=damage=Rnd(damage_min,damage_max);
+                        00=dist=round(sqrt(sqr(CoordX(ship)-CoordX(CurItem())) + sqr(CoordY(ship)-CoordY(CurItem()))));
+                        01=if(dist<500)
+                        02 ^{
+                            01=if(ShipInNormalSpace(Player()) && ShipStar(Player())==star)ShowEffect('Weapon.1',0,ship,CurItem(),damage);
+                            02=DealDamageToShip(ship,0,damage,2 + 2048);
+                        }
+                        03=if(Hitpoints(ship)<=0)
+                        04 ^{
+                            01=ItemDestroy(CurItem(),Rnd(damage_baraboom_min,damage_baraboom_max));
+                            02=if(ShipInNormalSpace(Player()) && ShipStar(Player())==star)ShowEffect('Weapon.NoGraph',0,ship,CurItem(),0,1,1,0,0,0);
+                        }
+                    }
+                }
+            }
+            08=if(ScriptItemActionType(t_OnStep, 10))
+            09 ^{
+                01=if(CurTurn()>=(UselessItemData(CurItem(),2)+UselessItemData(CurItem(),3)))ItemDestroy(CurItem(),Rnd(damage_baraboom_min,damage_baraboom_max));
+            }
+            10=if(ScriptItemActionType(t_OnItemPickUp))
+            11 ^{
+                01=if(ScriptItemActShip()==Player())Ether(8,'BtlDrn_broken_'+CurItem(), 'selfdestr on '+Name(CurItem()));
+                02=ScriptItemActParam(-1);
+            }
+        }
+        OnActCodeTypes=t_OnItemPickUp
+        OnActStepTypes=0,1,3,5,7,10
+        OnUseCode ^{
+            00=ExecuteCodeFromString(GenerateCodeStringFromBlock('Mod_BattleDrone.ExeCode.UseCode'));
+        }
+        Owner=0
+        Size=85
+        Text=Дрон атакующего типа. Орудия дрона совокупно наносят minDmg-maxDmg урона, игнорируя защиту цели. Из-за небольших размеров и огромной скорости почти неуязвим, но энергии хватает только на несколько дней, после чего дрон взрывается, нанося дополнительный урон в размере minBDmg-maxBDmg. Разработан и создан Коалицией, поэтому ИИ отказывается атаковать мирные корабли и военных.
+    }
+    mBtlDrn_Type1 ^{
+        Cost=Huge
+        Mod_BattleDrone=1
+        Name=Боевой дрон "Цимцир"
+        OnActCode ^{
+            01=if(UselessItemData(CurItem(),3)==0)exit;
+            01=if(CurTurn()<=UselessItemData(CurItem(),3))exit;
+            02=if(ScriptItemActionType(t_OnStep, 0))
+            03 ^{
+                01=dword ship=IdToShip(UselessItemData(CurItem(),1)), star=0, starShip=0; int a=0, dist=0, damage=0, damage_min=UselessItemData(CurItem(),2)*15, damage_max=UselessItemData(CurItem(),2)*25, damage_baraboom_min=UselessItemData(CurItem(),2)*80, damage_baraboom_max=UselessItemData(CurItem(),2)*120;
+                02=ItemDestroy(CurItem(),-999);
+                03=if(ship)
+                04 ^{
+                    01=star=ShipStar(ship);
+                    02=for(a=0;a<StarShips(star);a=a+1)
+                    03 ^{
+                        01=starShip=StarShips(star,a);
+                        02=if(ShipPicksItem(starShip,CurItem())==1)ShipPicksItem(starShip,CurItem(),0);
+                    }
+                }
+                05=else ItemDestroy(CurItem(),1);
+            }
+            04=if(ScriptItemActionType(t_OnStep, 1))
+            05 ^{
+                01=float way=150.0, angle=Rnd(-60,60); ship=IdToShip(UselessItemData(CurItem(),1));
+                02=if(ship!=0)
+                03 ^{
+                    01=if(ShipInNormalSpace(ship) && ShipStar(ship)==star)
+                    02 ^{
+                        01=if(ShipSpeed(ship)>400)way=(ShipSpeed(ship)*80)/100;
+                        02=else way=150.0;
+                        03=angle=Rnd(-10,10);
+                        09=float x=CoordX(ship)+way*sin(((ShipAngle(ship)+angle)*pi)/180.0), y=CoordY(ship)-way*cos(((ShipAngle(ship)+angle)*pi)/180.0);
+                    }
+                }
+                04=else
+                05 ^{
+                    01=x=CoordX(CurItem())+50.0*sin((angle*pi)/180.0);
+                    02=y=CoordY(CurItem())-50.0*cos((angle*pi)/180.0);
+                }
+                06=dword item=GetItemFromStar(star,CurItem());
+                07=DropItemInSystem(star,item,CoordX(CurItem()),CoordY(CurItem()),x,y);
+            }
+            06=if(ScriptItemActionType(t_OnStep, 3) || ScriptItemActionType(t_OnStep, 5) || ScriptItemActionType(t_OnStep, 7))
+            07 ^{
+                01=ship=IdToShip(UselessItemData(CurItem(),1));
+                02=if(ship!=0)
+                03 ^{
+                    02=if(ShipInNormalSpace(ship) && ShipStar(ship)==star)
+                    03 ^{
+                        00=damage=Rnd(damage_min,damage_max);
+                        00=dist=round(sqrt(sqr(CoordX(ship)-CoordX(CurItem())) + sqr(CoordY(ship)-CoordY(CurItem()))));
+                        01=if(dist<500)
+                        02 ^{
+                            01=if(ShipInNormalSpace(Player()) && ShipStar(Player())==star)ShowEffect('Weapon.3',0,ship,CurItem(),damage);
+                            02=DealDamageToShip(ship,0,damage,1 + 128);
+                        }
+                        03=if(Hitpoints(ship)<=0)
+                        04 ^{
+                            01=ItemDestroy(CurItem(),Rnd(damage_baraboom_min,damage_baraboom_max));
+                            02=if(ShipInNormalSpace(Player()) && ShipStar(Player())==star)ShowEffect('Weapon.NoGraph',0,ship,CurItem(),0,1,1,0,0,0);
+                        }
+                    }
+                }
+            }
+            08=if(ScriptItemActionType(t_OnStep, 10))
+            09 ^{
+                01=if(CurTurn()>=(UselessItemData(CurItem(),2)+UselessItemData(CurItem(),3)))ItemDestroy(CurItem(),Rnd(damage_baraboom_min,damage_baraboom_max));
+            }
+            10=if(ScriptItemActionType(t_OnItemPickUp))
+            11 ^{
+                01=if(ScriptItemActShip()==Player())Ether(8,'BtlDrn_broken_'+CurItem(), 'selfdestr on '+Name(CurItem()));
+                02=ScriptItemActParam(-1);
+            }
+        }
+        OnActCodeTypes=t_OnItemPickUp
+        OnActStepTypes=0,1,3,5,7,10
+        OnUseCode ^{
+            00=ExecuteCodeFromString(GenerateCodeStringFromBlock('Mod_BattleDrone.ExeCode.UseCode'));
+        }
+        Owner=1
+        Size=45
+        Text=Дрон атакующего типа. Орудия дрона совокупно наносят minDmg-maxDmg урона, игнорируя защиту цели. Из-за небольших размеров и огромной скорости почти неуязвим, но энергии хватает только на несколько дней, после чего дрон взрывается, нанося дополнительный урон в размере minBDmg-maxBDmg. Разработан и создан Коалицией, поэтому ИИ отказывается атаковать мирные корабли и военных.
+    }
+    mBtlDrn_Type2 ^{
+        Cost=Huge
+        Mod_BattleDrone=1
+        Name=Боевой дрон "Космокрыц"
+        OnActCode ^{
+            01=if(UselessItemData(CurItem(),3)==0)exit;
+            01=if(CurTurn()<=UselessItemData(CurItem(),3))exit;
+            02=if(ScriptItemActionType(t_OnStep, 0))
+            03 ^{
+                01=dword ship=IdToShip(UselessItemData(CurItem(),1)), star=0, starShip=0; int a=0, dist=0, damage=0, damage_min=UselessItemData(CurItem(),2)*15, damage_max=UselessItemData(CurItem(),2)*25, damage_baraboom_min=UselessItemData(CurItem(),2)*80, damage_baraboom_max=UselessItemData(CurItem(),2)*120;
+                02=ItemDestroy(CurItem(),-999);
+                03=if(ship)
+                04 ^{
+                    01=star=ShipStar(ship);
+                    02=for(a=0;a<StarShips(star);a=a+1)
+                    03 ^{
+                        01=starShip=StarShips(star,a);
+                        02=if(ShipPicksItem(starShip,CurItem())==1)ShipPicksItem(starShip,CurItem(),0);
+                    }
+                }
+                05=else ItemDestroy(CurItem(),1);
+            }
+            04=if(ScriptItemActionType(t_OnStep, 1))
+            05 ^{
+                01=float way=150.0, angle=Rnd(-60,60); ship=IdToShip(UselessItemData(CurItem(),1));
+                02=if(ship!=0)
+                03 ^{
+                    01=if(ShipInNormalSpace(ship) && ShipStar(ship)==star)
+                    02 ^{
+                        01=if(ShipSpeed(ship)>400)way=(ShipSpeed(ship)*80)/100;
+                        02=else way=150.0;
+                        03=angle=Rnd(-10,10);
+                        09=float x=CoordX(ship)+way*sin(((ShipAngle(ship)+angle)*pi)/180.0), y=CoordY(ship)-way*cos(((ShipAngle(ship)+angle)*pi)/180.0);
+                    }
+                }
+                04=else
+                05 ^{
+                    01=x=CoordX(CurItem())+50.0*sin((angle*pi)/180.0);
+                    02=y=CoordY(CurItem())-50.0*cos((angle*pi)/180.0);
+                }
+                06=dword item=GetItemFromStar(star,CurItem());
+                07=DropItemInSystem(star,item,CoordX(CurItem()),CoordY(CurItem()),x,y);
+            }
+            06=if(ScriptItemActionType(t_OnStep, 3) || ScriptItemActionType(t_OnStep, 5) || ScriptItemActionType(t_OnStep, 7))
+            07 ^{
+                01=ship=IdToShip(UselessItemData(CurItem(),1));
+                02=if(ship!=0)
+                03 ^{
+                    02=if(ShipInNormalSpace(ship) && ShipStar(ship)==star)
+                    03 ^{
+                        00=damage=Rnd(damage_min,damage_max);
+                        00=dist=round(sqrt(sqr(CoordX(ship)-CoordX(CurItem())) + sqr(CoordY(ship)-CoordY(CurItem()))));
+                        01=if(dist<500)
+                        02 ^{
+                            01=if(ShipInNormalSpace(Player()) && ShipStar(Player())==star)ShowEffect('Weapon.PDTurret',0,ship,CurItem(),damage);
+                            02=DealDamageToShip(ship,0,damage,2);
+                            03=if(ShipInNormalSpace(Player()) && ShipStar(Player())==star)ShowEffect('Weapon.PDTurret',0,ship,CurItem(),damage);
+                            04=DealDamageToShip(ship,0,damage,2);
+                        }
+                        03=if(Hitpoints(ship)<=0)
+                        04 ^{
+                            01=ItemDestroy(CurItem(),1);
+                            02=if(ShipInNormalSpace(Player()) && ShipStar(Player())==star)ShowEffect('Weapon.NoGraph',0,ship,CurItem(),0,1,1,0,0,0);
+                        }
+                    }
+                }
+            }
+            08=if(ScriptItemActionType(t_OnStep, 10))
+            09 ^{
+                01=if(CurTurn()>=(UselessItemData(CurItem(),2)+UselessItemData(CurItem(),3)))ItemDestroy(CurItem(),1);
+            }
+            10=if(ScriptItemActionType(t_OnItemPickUp))
+            11 ^{
+                01=if(ScriptItemActShip()==Player())Ether(8,'BtlDrn_broken_'+CurItem(), 'selfdestr on '+Name(CurItem()));
+                02=ScriptItemActParam(-1);
+            }
+        }
+        OnActCodeTypes=t_OnItemPickUp
+        OnActStepTypes=0,1,3,5,7,10
+        OnUseCode ^{
+            00=ExecuteCodeFromString(GenerateCodeStringFromBlock('Mod_BattleDrone.ExeCode.UseCode'));
+        }
+        Owner=2
+        Size=55
+        Text=Дрон атакующего типа. Орудия дрона совокупно наносят minDmg-maxDmg урона, игнорируя защиту цели. Из-за небольших размеров и огромной скорости почти неуязвим, но энергии хватает только на несколько дней, после чего дрон самоуничтожается. Разработан и создан Коалицией, поэтому ИИ отказывается атаковать мирные корабли и военных.
+    }
+    mBtlDrn_Type3 ^{
+        Cost=Huge
+        Mod_BattleDrone=1
+        Name=Боевой дрон "Кфена-Фог-Люнч"
+        OnActCode ^{
+            01=if(UselessItemData(CurItem(),3)==0)exit;
+            01=if(CurTurn()<=UselessItemData(CurItem(),3))exit;
+            02=if(ScriptItemActionType(t_OnStep, 0))
+            03 ^{
+                01=dword ship=IdToShip(UselessItemData(CurItem(),1)), star=0, starShip=0; int a=0, dist=0, damage=0, damage_min=UselessItemData(CurItem(),2)*15, damage_max=UselessItemData(CurItem(),2)*25, damage_baraboom_min=UselessItemData(CurItem(),2)*80, damage_baraboom_max=UselessItemData(CurItem(),2)*120;
+                02=ItemDestroy(CurItem(),-999);
+                03=if(ship)
+                04 ^{
+                    01=star=ShipStar(ship);
+                    02=for(a=0;a<StarShips(star);a=a+1)
+                    03 ^{
+                        01=starShip=StarShips(star,a);
+                        02=if(ShipPicksItem(starShip,CurItem())==1)ShipPicksItem(starShip,CurItem(),0);
+                    }
+                }
+                05=else ItemDestroy(CurItem(),1);
+            }
+            04=if(ScriptItemActionType(t_OnStep, 1))
+            05 ^{
+                01=float way=150.0, angle=Rnd(-60,60); ship=IdToShip(UselessItemData(CurItem(),1));
+                02=if(ship!=0)
+                03 ^{
+                    01=if(ShipInNormalSpace(ship) && ShipStar(ship)==star)
+                    02 ^{
+                        01=if(ShipSpeed(ship)>400)way=(ShipSpeed(ship)*80)/100;
+                        02=else way=150.0;
+                        03=angle=Rnd(-10,10);
+                        09=float x=CoordX(ship)+way*sin(((ShipAngle(ship)+angle)*pi)/180.0), y=CoordY(ship)-way*cos(((ShipAngle(ship)+angle)*pi)/180.0);
+                    }
+                }
+                04=else
+                05 ^{
+                    01=x=CoordX(CurItem())+50.0*sin((angle*pi)/180.0);
+                    02=y=CoordY(CurItem())-50.0*cos((angle*pi)/180.0);
+                }
+                06=dword item=GetItemFromStar(star,CurItem());
+                07=DropItemInSystem(star,item,CoordX(CurItem()),CoordY(CurItem()),x,y);
+            }
+            06=if(ScriptItemActionType(t_OnStep, 3) || ScriptItemActionType(t_OnStep, 5) || ScriptItemActionType(t_OnStep, 7))
+            07 ^{
+                01=ship=IdToShip(UselessItemData(CurItem(),1));
+                02=if(ship!=0)
+                03 ^{
+                    02=if(ShipInNormalSpace(ship) && ShipStar(ship)==star)
+                    03 ^{
+                        00=damage=Rnd(damage_min,damage_max);
+                        00=dist=round(sqrt(sqr(CoordX(ship)-CoordX(CurItem())) + sqr(CoordY(ship)-CoordY(CurItem()))));
+                        01=if(dist<500)
+                        02 ^{
+                            01=if(ShipInNormalSpace(Player()) && ShipStar(Player())==star)ShowEffect('Weapon.5',0,ship,CurItem(),damage);
+                            02=DealDamageToShip(ship,0,damage,1 + 256);
+                        }
+                        03=if(Hitpoints(ship)<=0)
+                        04 ^{
+                            01=ItemDestroy(CurItem(),1);
+                            02=if(ShipInNormalSpace(Player()) && ShipStar(Player())==star)ShowEffect('Weapon.NoGraph',0,ship,CurItem(),0,1,1,0,0,0);
+                        }
+                    }
+                }
+            }
+            08=if(ScriptItemActionType(t_OnStep, 10))
+            09 ^{
+                01=if(CurTurn()>=(UselessItemData(CurItem(),2)+UselessItemData(CurItem(),3)))ItemDestroy(CurItem(),1);
+            }
+            10=if(ScriptItemActionType(t_OnItemPickUp))
+            11 ^{
+                01=if(ScriptItemActShip()==Player())Ether(8,'BtlDrn_broken_'+CurItem(), 'selfdestr on '+Name(CurItem()));
+                02=ScriptItemActParam(-1);
+            }
+        }
+        OnActCodeTypes=t_OnItemPickUp
+        OnActStepTypes=0,1,3,5,7,10
+        OnUseCode ^{
+            00=ExecuteCodeFromString(GenerateCodeStringFromBlock('Mod_BattleDrone.ExeCode.UseCode'));
+        }
+        Owner=3
+        Size=40
+        Text=Дрон атакующего типа. Орудия дрона совокупно наносят minDmg-maxDmg урона, игнорируя защиту цели. Из-за небольших размеров и огромной скорости почти неуязвим, но энергии хватает только на несколько дней, после чего дрон самоуничтожается. Разработан и создан Коалицией, поэтому ИИ отказывается атаковать мирные корабли и военных.
+    }
+    mBtlDrn_Type4 ^{
+        Cost=Huge
+        Mod_BattleDrone=1
+        Name=Боевой дрон "Иеоа-Ниммтэ"
+        OnActCode ^{
+            01=if(UselessItemData(CurItem(),3)==0)exit;
+            01=if(CurTurn()<=UselessItemData(CurItem(),3))exit;
+            02=if(ScriptItemActionType(t_OnStep, 0))
+            03 ^{
+                01=dword ship=IdToShip(UselessItemData(CurItem(),1)), star=0, starShip=0; int a=0, dist=0, damage=0, damage_min=UselessItemData(CurItem(),2)*15, damage_max=UselessItemData(CurItem(),2)*25, damage_baraboom_min=UselessItemData(CurItem(),2)*80, damage_baraboom_max=UselessItemData(CurItem(),2)*120;
+                02=ItemDestroy(CurItem(),-999);
+                03=if(ship)
+                04 ^{
+                    01=star=ShipStar(ship);
+                    02=for(a=0;a<StarShips(star);a=a+1)
+                    03 ^{
+                        01=starShip=StarShips(star,a);
+                        02=if(ShipPicksItem(starShip,CurItem())==1)ShipPicksItem(starShip,CurItem(),0);
+                    }
+                }
+                05=else ItemDestroy(CurItem(),1);
+            }
+            04=if(ScriptItemActionType(t_OnStep, 1))
+            05 ^{
+                01=float way=150.0, angle=Rnd(-60,60); ship=IdToShip(UselessItemData(CurItem(),1));
+                02=if(ship!=0)
+                03 ^{
+                    01=if(ShipInNormalSpace(ship) && ShipStar(ship)==star)
+                    02 ^{
+                        01=if(ShipSpeed(ship)>400)
+                        01 ^{
+                            01=if(ShipOrder(ship)!=0)way=(ShipSpeed(ship)*80)/100;
+                            02=else way=400.0;
+                        }
+                        02=else way=150.0;
+                        03=angle=Rnd(-10,10);
+                        04=float x=CoordX(ship)+way*sin(((ShipAngle(ship)+angle)*pi)/180.0), y=CoordY(ship)-way*cos(((ShipAngle(ship)+angle)*pi)/180.0);
+                    }
+                }
+                04=else
+                05 ^{
+                    01=x=CoordX(CurItem())+300.0*sin((angle*pi)/180.0);
+                    02=y=CoordY(CurItem())-300.0*cos((angle*pi)/180.0);
+                }
+                06=dword item=GetItemFromStar(star,CurItem());
+                07=DropItemInSystem(star,item,CoordX(CurItem()),CoordY(CurItem()),x,y);
+            }
+            06=if(ScriptItemActionType(t_OnStep, 3) || ScriptItemActionType(t_OnStep, 5) || ScriptItemActionType(t_OnStep, 7))
+            07 ^{
+                01=ship=IdToShip(UselessItemData(CurItem(),1));
+                02=if(ship!=0)
+                03 ^{
+                    02=if(ShipInNormalSpace(ship) && ShipStar(ship)==star)
+                    03 ^{
+                        00=damage=Rnd(damage_min,damage_max);
+                        00=dist=round(sqrt(sqr(CoordX(ship)-CoordX(CurItem())) + sqr(CoordY(ship)-CoordY(CurItem()))));
+                        01=if(dist<500)
+                        02 ^{
+                            01=if(ShipInNormalSpace(Player()) && ShipStar(Player())==star)ShowEffect('Weapon.11',0,ship,CurItem(),damage);
+                            02=DealDamageToShip(ship,0,damage,1 + 8 + 512 + 1024);
+                        }
+                        03=if(Hitpoints(ship)<=0)
+                        04 ^{
+                            01=ItemDestroy(CurItem(),1);
+                            02=if(ShipInNormalSpace(Player()) && ShipStar(Player())==star)ShowEffect('Weapon.NoGraph',0,ship,CurItem(),0,1,1,0,0,0);
+                        }
+                    }
+                }
+            }
+            08=if(ScriptItemActionType(t_OnStep, 10))
+            09 ^{
+                01=if(CurTurn()>=(UselessItemData(CurItem(),2)+UselessItemData(CurItem(),3)))ItemDestroy(CurItem(),1);
+            }
+            10=if(ScriptItemActionType(t_OnItemPickUp))
+            11 ^{
+                01=if(ScriptItemActShip()==Player())Ether(8,'BtlDrn_broken_'+CurItem(), 'selfdestr on '+Name(CurItem()));
+                02=ScriptItemActParam(-1);
+            }
+        }
+        OnActCodeTypes=t_OnItemPickUp
+        OnActStepTypes=0,1,3,5,7,10
+        OnUseCode ^{
+            00=ExecuteCodeFromString(GenerateCodeStringFromBlock('Mod_BattleDrone.ExeCode.UseCode'));
+        }
+        Owner=4
+        Size=60
+        Text=Дрон атакующего типа. Орудия дрона совокупно наносят minDmg-maxDmg урона, игнорируя защиту цели. Из-за небольших размеров и огромной скорости почти неуязвим, но энергии хватает только на несколько дней, после чего дрон самоуничтожается. Разработан и создан Коалицией, поэтому ИИ отказывается атаковать мирные корабли и военных.
+    }
+}

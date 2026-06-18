@@ -1,0 +1,1557 @@
+BV ^{
+    OnStart ^{
+        0DayScripts ^{
+        }
+    }
+}
+Data ^{
+    Script ^{
+        Mod_UniExtraStarts=1,Script.Mod_UniExtraStarts
+    }
+}
+ML ^{
+    GameSettings ^{
+        Panel ^{
+            GraphButton ^{
+                Name=Cancel
+            }
+            GraphButton ^{
+                Name=Ok
+                OnPressCode ^{
+                    UniStart ^{
+                        00=unknown BeginningsSetParFromTxt = ImportedFunction('UtilityFunctions', 'SetParFromTxt');
+                        01=str selectedClass = '0';
+                        02=int j = 0;
+                        03=if(InterfaceState('GameSettings', 'Char6') >= 1) j = 1;
+                        04=if(InterfaceState('GameSettings', 'Char11') >= 1) j = 2;
+                        05=if(InterfaceState('GameSettings', 'Char16') >= 1) j = 3;
+                        06=if(InterfaceState('GameSettings', 'Char1') >= 1) j = 0;
+                        07=for(int i = 1; i <= 5; i = i + 1)
+                        08 ^{
+                            01=selectedClass=5*j + i;
+                            02=if(!UICheckElement('GameSettings', 'Char'+ selectedClass, 'IsDown')) continue;
+                            03=ButtonClick('GameSettings', 'Char' + i);
+                            04=break;
+                        }
+                        09=BeginningsSetParFromTxt('SpaceRangersHD\ModsCFG.txt', 'CharacterBackground', selectedClass);
+                    }
+                }
+            }
+            Name=MainPanel
+            Panel ^{
+                GraphButton ^{
+                    Name=RaceMaloc
+                    OnPressCode ^{
+                        00=int flag = 0;
+                        01=for(int k = 0;k <= 3; k = k + 1)
+                        02 ^{
+                            01=for(int l = 1; l <=5; l = l+1)
+                            02 ^{
+                                00=if(!UICheckElement('GameSettings', 'Char' + (5*k + l), 'IsDown'))
+                                01=if(UICheckElement('GameSettings', 'Char' + (5*k + l), 'IsDown'))
+                                02 ^{
+                                    01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char' + (5*k + l)));
+                                    03=flag = 1;
+                                    04=break;
+                                }
+                            }
+                            03=if (flag) break;
+                        }
+                    }
+                }
+                GraphButton ^{
+                    Name=RacePeleng
+                    OnPressCode ^{
+                        00=int flag = 0;
+                        01=for(int k = 0;k <= 3; k = k + 1)
+                        02 ^{
+                            01=for(int l = 1; l <=5; l = l+1)
+                            02 ^{
+                                01=if(UICheckElement('GameSettings', 'Char' + (5*k + l), 'IsDown'))
+                                02 ^{
+                                    01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char' + (5*k + l)));
+                                    03=flag = 1;
+                                    04=break;
+                                }
+                            }
+                            03=if (flag) break;
+                        }
+                    }
+                }
+                GraphButton ^{
+                    Name=RacePeople
+                    OnPressCode ^{
+                        00=int flag = 0;
+                        01=for(int k = 0;k <= 3; k = k + 1)
+                        02 ^{
+                            01=for(int l = 1; l <=5; l = l+1)
+                            02 ^{
+                                01=if(UICheckElement('GameSettings', 'Char' + (5*k + l), 'IsDown'))
+                                02 ^{
+                                    01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char' + (5*k + l)));
+                                    03=flag = 1;
+                                    04=break;
+                                }
+                            }
+                            03=if (flag) break;
+                        }
+                    }
+                }
+                GraphButton ^{
+                    Name=RaceFei
+                    OnPressCode ^{
+                        00=int flag = 0;
+                        01=for(int k = 0;k <= 3; k = k + 1)
+                        02 ^{
+                            01=for(int l = 1; l <=5; l = l+1)
+                            02 ^{
+                                01=if(UICheckElement('GameSettings', 'Char' + (5*k + l), 'IsDown'))
+                                02 ^{
+                                    01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char' + (5*k + l)));
+                                    03=flag = 1;
+                                    04=break;
+                                }
+                            }
+                            03=if (flag) break;
+                        }
+                    }
+                }
+                GraphButton ^{
+                    Name=RaceGaal
+                    OnPressCode ^{
+                        00=int flag = 0;
+                        01=for(int k = 0;k <= 3; k = k + 1)
+                        02 ^{
+                            01=for(int l = 1; l <=5; l = l+1)
+                            02 ^{
+                                01=if(UICheckElement('GameSettings', 'Char' + (5*k + l), 'IsDown'))
+                                02 ^{
+                                    01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char' + (5*k + l)));
+                                    03=flag = 1;
+                                    04=break;
+                                }
+                            }
+                            03=if (flag) break;
+                        }
+                    }
+                }
+                GraphButton ^{
+                    ImageDown=Alpha,Bm.FormGameSet2.2Char1D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.2Char1A
+                    Name=Char1
+                    OnPressCode ^{
+                        01=if((CurrentMods('Tweaks\\BlockPirates')) || (CurrentMods('Tweaks\\RevolutionDelayed')))
+                        02 ^{
+                            01=MessageBox(CT('FormGameSet2.Mods.Blockpirates'));
+                            02=InterfaceState('GameSettings', 'Ok', 2);
+                        }
+                        03=else
+                        04 ^{
+                            01=InterfaceState('GameSettings', 'Ok', 3);
+                        }
+                    }
+                    Pos=40,282,50
+                    Size=192,95
+                }
+                GraphButton ^{
+                    ImageDown=Alpha,Bm.FormGameSet2.2Char2D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.2Char2A
+                    Name=Char2
+                    OnPressCode ^{
+                        01=InterfaceState('GameSettings', 'Ok', 3);
+                    }
+                    Pos=88,337,50
+                    Size=150,105
+                }
+                GraphButton ^{
+                    ImageDown=Alpha,Bm.FormGameSet2.2Char3D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.2Char3A
+                    Name=Char3
+                    OnPressCode ^{
+                        01=InterfaceState('GameSettings', 'Ok', 3);
+                    }
+                    Pos=183,337,50
+                    Size=114,119
+                }
+                GraphButton ^{
+                    ImageDown=Alpha,Bm.FormGameSet2.2Char4D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.2Char4A
+                    Name=Char4
+                    OnPressCode ^{
+                        01=if(!CurrentMods('Expansion\\ExpScienceRanks'))
+                        02 ^{
+                            01=MessageBox(CT('FormGameSet2.Mods.ExpScienceRanks'));
+                            02=InterfaceState('GameSettings', 'Ok', 2);
+                        }
+                        03=else
+                        04 ^{
+                            01=InterfaceState('GameSettings', 'Ok', 3);
+                        }
+                    }
+                    Pos=244,337,50
+                    Size=150,105
+                }
+                GraphButton ^{
+                    ImageDown=Alpha,Bm.FormGameSet2.2Char5D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.2Char5A
+                    Name=Char5
+                    OnPressCode ^{
+                        01=InterfaceState('GameSettings', 'Ok', 3);
+                    }
+                    Pos=250,282,50
+                    Size=192,95
+                }
+                GraphButton ^{
+                    Name=FaceLeft
+                }
+                GraphButton ^{
+                    Name=FaceRight
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar6
+                    ImageDown=Alpha,Bm.FormGameSet2.Char6D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char6A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char6
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char6', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char6', 'IsDown', 1);
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 1) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (5+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (5+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char6'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char6'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char6'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char6'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char6'));
+                                02=break;
+                            }
+                        }
+                        08=if((CurrentMods('Tweaks\\BlockPirates')) || (CurrentMods('Tweaks\\RevolutionDelayed')))
+                        09 ^{
+                            01=MessageBox(CT('FormGameSet2.Mods.Blockpirates'));
+                            02=InterfaceState('GameSettings', 'Ok', 2);
+                        }
+                        10=else
+                        11 ^{
+                            01=InterfaceState('GameSettings', 'Ok', 3);
+                        }
+                        12=InterfaceState('GameSettings', 'Char6', 2);
+                    }
+                    Pos=40,282,50
+                    Size=192,95
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar7
+                    ImageDown=Alpha,Bm.FormGameSet2.Char7D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char7A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char7
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char7', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char7', 'IsDown', 1);
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 2) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (5+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (5+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char7'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char7'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char7'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char7'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char7'));
+                                02=break;
+                            }
+                        }
+                        08=if((CurrentMods('Tweaks\\BlockPirates')) || (CurrentMods('Tweaks\\RevolutionDelayed')))
+                        09 ^{
+                            01=MessageBox(CT('FormGameSet2.Mods.Blockpirates'));
+                            02=InterfaceState('GameSettings', 'Ok', 2);
+                        }
+                        10=else
+                        11 ^{
+                            01=InterfaceState('GameSettings', 'Ok', 3);
+                        }
+                        12=InterfaceState('GameSettings', 'Char7', 2);
+                    }
+                    Pos=88,337,50
+                    Size=150,105
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar8
+                    ImageDown=Alpha,Bm.FormGameSet2.Char8D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char8A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char8
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char8', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char8', 'IsDown', 1);
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 3) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (5+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (5+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char8'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char8'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char8'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char8'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char8'));
+                                02=break;
+                            }
+                        }
+                        08=if(!CurrentMods('ShusRangers\\ShuSmugglers'))
+                        09 ^{
+                            01=MessageBox(CT('FormGameSet2.Mods.PolSmugglers'));
+                            02=InterfaceState('GameSettings', 'Ok', 2);
+                        }
+                        10=else
+                        11 ^{
+                            01=InterfaceState('GameSettings', 'Ok', 3);
+                        }
+                        12=InterfaceState('GameSettings', 'Char8', 2);
+                        13=if((CurrentMods('Tweaks\\BlockPirates')) || (CurrentMods('Tweaks\\RevolutionDelayed')))
+                        14 ^{
+                            01=MessageBox(CT('FormGameSet2.Mods.Blockpirates'));
+                            02=InterfaceState('GameSettings', 'Ok', 2);
+                        }
+                        15=else
+                        16 ^{
+                            01=InterfaceState('GameSettings', 'Ok', 3);
+                        }
+                        17=InterfaceState('GameSettings', 'Char8', 2);
+                    }
+                    Pos=183,337,50
+                    Size=114,119
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar9
+                    ImageDown=Alpha,Bm.FormGameSet2.Char9D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char9A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char9
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char9', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char9', 'IsDown', 1);
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 4) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (5+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (5+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char9'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char9'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char9'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char9'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char9'));
+                                02=break;
+                            }
+                        }
+                        08=if(!CurrentMods('Expansion\\ExpTraitors'))
+                        09 ^{
+                            01=MessageBox(CT('FormGameSet2.Mods.ExpTraitors'));
+                            02=InterfaceState('GameSettings', 'Ok', 2);
+                        }
+                        10=else
+                        11 ^{
+                            01=InterfaceState('GameSettings', 'Ok', 3);
+                        }
+                        12=InterfaceState('GameSettings', 'Char9', 2);
+                        13=if((CurrentMods('Tweaks\\BlockPirates')) || (CurrentMods('Tweaks\\RevolutionDelayed')))
+                        14 ^{
+                            01=MessageBox(CT('FormGameSet2.Mods.Blockpirates'));
+                            02=InterfaceState('GameSettings', 'Ok', 2);
+                        }
+                        15=else
+                        16 ^{
+                            01=InterfaceState('GameSettings', 'Ok', 3);
+                        }
+                        17=InterfaceState('GameSettings', 'Char9', 2);
+                    }
+                    Pos=244,337,50
+                    Size=150,105
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar10
+                    ImageDown=Alpha,Bm.FormGameSet2.Char10D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char10A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char10
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char10', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char10', 'IsDown', 1);
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 5) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (5+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (5+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char10'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char10'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char10'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char10'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char10'));
+                                02=break;
+                            }
+                        }
+                        08=if((CurrentMods('Tweaks\\BlockPirates')) || (CurrentMods('Tweaks\\RevolutionDelayed')))
+                        09 ^{
+                            01=MessageBox(CT('FormGameSet2.Mods.Blockpirates'));
+                            02=InterfaceState('GameSettings', 'Ok', 2);
+                        }
+                        10=else
+                        11 ^{
+                            01=InterfaceState('GameSettings', 'Ok', 3);
+                        }
+                        12=InterfaceState('GameSettings', 'Char10', 2);
+                    }
+                    Pos=250,282,50
+                    Size=192,95
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar11
+                    ImageDown=Alpha,Bm.FormGameSet2.Char11D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char11A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char11
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char11', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char11', 'IsDown', 1);
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 1) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (10+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (10+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char11'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char11'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char11'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char11'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char11'));
+                                02=break;
+                            }
+                        }
+                        08=InterfaceState('GameSettings', 'Char11', 2);
+                        09=InterfaceState('GameSettings', 'Ok', 3);
+                    }
+                    Pos=40,282,50
+                    Size=192,95
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar12
+                    ImageDown=Alpha,Bm.FormGameSet2.Char12D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char12A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char12
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char12', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char12', 'IsDown', 1);
+                            02=exit;
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 2) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (10+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (10+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char12'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char12'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char12'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char12'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char12'));
+                                02=break;
+                            }
+                        }
+                        08=InterfaceState('GameSettings', 'Char12', 2);
+                        09=InterfaceState('GameSettings', 'Ok', 3);
+                    }
+                    Pos=88,337,50
+                    Size=150,105
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar13
+                    ImageDown=Alpha,Bm.FormGameSet2.Char13D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char13A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char13
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char13', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char13', 'IsDown', 1);
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 3) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (10+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (10+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char13'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char13'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char13'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char13'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char13'));
+                                02=break;
+                            }
+                        }
+                        08=InterfaceState('GameSettings', 'Char13', 2);
+                        09=InterfaceState('GameSettings', 'Ok', 3);
+                    }
+                    Pos=183,337,50
+                    Size=114,119
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar14
+                    ImageDown=Alpha,Bm.FormGameSet2.Char14D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char14A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char14
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char14', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char14', 'IsDown', 1);
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 4) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (10+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (10+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char14'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char14'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char14'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char14'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char14'));
+                                02=break;
+                            }
+                        }
+                        08=if(!CurrentMods('ShusRangers\\ShuMercs'))
+                        09 ^{
+                            01=MessageBox(CT('FormGameSet2.Mods.PolMercs'));
+                            02=InterfaceState('GameSettings', 'Ok', 2);
+                        }
+                        10=else
+                        11 ^{
+                            01=InterfaceState('GameSettings', 'Ok', 3);
+                        }
+                        12=InterfaceState('GameSettings', 'Char14', 2);
+                    }
+                    Pos=244,337,50
+                    Size=150,105
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar15
+                    ImageDown=Alpha,Bm.FormGameSet2.Char15D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char15A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char15
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char15', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char15', 'IsDown', 1);
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 5) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (10+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (10+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char15'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char15'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char15'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char15'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char15'));
+                                02=break;
+                            }
+                        }
+                        08=InterfaceState('GameSettings', 'Char15', 2);
+                        09=InterfaceState('GameSettings', 'Ok', 3);
+                    }
+                    Pos=250,282,50
+                    Size=192,95
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar16
+                    ImageDown=Alpha,Bm.FormGameSet2.Char16D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char16A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char16
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char16', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char16', 'IsDown', 1);
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 1) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (15+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (15+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char16'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char16'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char16'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char16'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char16'));
+                                02=break;
+                            }
+                        }
+                        08=InterfaceState('GameSettings', 'Char16', 2);
+                        09=InterfaceState('GameSettings', 'Ok', 3);
+                    }
+                    Pos=40,282,50
+                    Size=192,95
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar17
+                    ImageDown=Alpha,Bm.FormGameSet2.Char17D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char17A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char17
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char17', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char17', 'IsDown', 1);
+                            02=exit;
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 2) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (15+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (15+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char17'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char17'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char17'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char17'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char17'));
+                                02=break;
+                            }
+                        }
+                        08=InterfaceState('GameSettings', 'Char17', 2);
+                        09=InterfaceState('GameSettings', 'Ok', 3);
+                    }
+                    Pos=88,337,50
+                    Size=150,105
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar18
+                    ImageDown=Alpha,Bm.FormGameSet2.Char18D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char18A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char18
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char18', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char18', 'IsDown', 1);
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 3) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (15+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (15+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char18'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char18'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char18'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char18'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char18'));
+                                02=break;
+                            }
+                        }
+                        08=InterfaceState('GameSettings', 'Char18', 2);
+                        09=InterfaceState('GameSettings', 'Ok', 3);
+                    }
+                    Pos=183,337,50
+                    Size=114,119
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar19
+                    ImageDown=Alpha,Bm.FormGameSet2.Char19D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char19A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char19
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char19', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char19', 'IsDown', 1);
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 4) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (15+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (15+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char19'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char19'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char19'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char19'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char19'));
+                                02=break;
+                            }
+                        }
+                        08=InterfaceState('GameSettings', 'Char19', 2);
+                        09=InterfaceState('GameSettings', 'Ok', 3);
+                    }
+                    Pos=244,337,50
+                    Size=150,105
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=False
+                    Help=FormGameSet2.Common.HelpChar20
+                    ImageDown=Alpha,Bm.FormGameSet2.Char20D
+                    ImageNormalA=Alpha,Bm.FormGameSet2.Char20A
+                    Kind=Fix
+                    KindHit=Graph
+                    Name=Char20
+                    OnPressCode ^{
+                        01=if(UICheckElement('GameSettings', 'Char20', 'IsDisable'))
+                        02 ^{
+                            01=UICheckElement('GameSettings', 'Char20', 'IsDown', 1);
+                        }
+                        04=for(int i = 1; i <= 5; i = i + 1)
+                        05 ^{
+                            01=if(i == 5) continue;
+                            02=InterfaceState('GameSettings', 'Char' + (15+i), 3);
+                            03=UICheckElement('GameSettings', 'Char' + (15+i), 'IsDown', 0);
+                        }
+                        06=for(i = 1; i <= 5; i = i + 1)
+                        07 ^{
+                            01=if(UICheckElement('GameSettings', 'RaceMaloc', 'IsDown'))
+                            02 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Maloc.Char20'));
+                                02=break;
+                            }
+                            03=if(UICheckElement('GameSettings', 'RacePeleng', 'IsDown'))
+                            04 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Peleng.Char20'));
+                                02=break;
+                            }
+                            05=if(UICheckElement('GameSettings', 'RacePeople', 'IsDown'))
+                            06 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.People.Char20'));
+                                02=break;
+                            }
+                            07=if(UICheckElement('GameSettings', 'RaceFei', 'IsDown'))
+                            08 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Fei.Char20'));
+                                02=break;
+                            }
+                            09=if(UICheckElement('GameSettings', 'RaceGaal', 'IsDown'))
+                            10 ^{
+                                01=InterfaceText('GameSettings', 'Info', CT('FormGameSet2.Gaal.Char20'));
+                                02=break;
+                            }
+                        }
+                        08=InterfaceState('GameSettings', 'Char20', 2);
+                        09=InterfaceState('GameSettings', 'Ok', 3);
+                    }
+                    Pos=250,282,50
+                    Size=192,95
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=True
+                    AlignX=Center
+                    AlignY=Center
+                    Help=FormGameSet2.Common.CharSwitch
+                    ImageDown=GI,Bm.FormCount2.2AddD
+                    ImageNormal=GI,Bm.FormCount2.2AddN
+                    ImageNormalA=GI,Bm.FormCount2.2AddA
+                    Kind=Normal
+                    KindHit=Graph
+                    Name=CharSwitchUp
+                    OnPressCode ^{
+                        01=if(InterfaceState('GameSettings','Char1') >= 1)
+                        02 ^{
+                            01=InterfaceImage('GameSettings','CharOverride','Alpha,Bm.FormGameSet2.CharBG1');
+                            02=for(int i = 1; i <= 5; i = i + 1)
+                            03 ^{
+                                00=
+                                01=InterfaceState('GameSettings', 'Char' + i, 0);
+                                02=InterfaceState('GameSettings', 'Char' + (5+i), 1);
+                                03=InterfaceState('GameSettings', 'LabelChar' + i, 0);
+                                04=InterfaceState('GameSettings', 'LabelChar' + (5+i), 1);
+                            }
+                            04=ButtonClick('GameSettings', 'Char6', 'AllCode');
+                            04=UICheckElement('GameSettings', 'Char1', 'IsDown', 0);
+                            04=UICheckElement('GameSettings', 'Char2', 'IsDown', 0);
+                            04=UICheckElement('GameSettings', 'Char3', 'IsDown', 0);
+                            04=UICheckElement('GameSettings', 'Char4', 'IsDown', 0);
+                            04=UICheckElement('GameSettings', 'Char5', 'IsDown', 0);
+                            05=UICheckElement('GameSettings', 'Char6', 'IsDown', 1);
+                        }
+                        03=else
+                        04 ^{
+                            01=if(InterfaceState('GameSettings','Char6') >= 1)
+                            02 ^{
+                                01=InterfaceImage('GameSettings','CharOverride','Alpha,Bm.FormGameSet2.CharBG2');
+                                02=for(i = 1; i <= 5; i = i + 1)
+                                03 ^{
+                                    01=InterfaceState('GameSettings', 'Char' + (5+i), 0);
+                                    02=InterfaceState('GameSettings', 'Char' + (10+i), 1);
+                                    03=InterfaceState('GameSettings', 'LabelChar' + (5+i), 0);
+                                    04=InterfaceState('GameSettings', 'LabelChar' + (10+i), 1);
+                                }
+                                04=ButtonClick('GameSettings', 'Char11', 'AllCode');
+                                04=UICheckElement('GameSettings', 'Char6', 'IsDown', 0);
+                                04=UICheckElement('GameSettings', 'Char7', 'IsDown', 0);
+                                04=UICheckElement('GameSettings', 'Char8', 'IsDown', 0);
+                                04=UICheckElement('GameSettings', 'Char9', 'IsDown', 0);
+                                04=UICheckElement('GameSettings', 'Char10', 'IsDown', 0);
+                                05=UICheckElement('GameSettings', 'Char11', 'IsDown', 1);
+                            }
+                            03=else
+                            04 ^{
+                                01=if(InterfaceState('GameSettings','Char11') >= 1)
+                                02 ^{
+                                    01=InterfaceImage('GameSettings','CharOverride','Alpha,Bm.FormGameSet2.CharBG3');
+                                    02=for(i = 1; i <= 5; i = i + 1)
+                                    03 ^{
+                                        01=InterfaceState('GameSettings', 'Char' + (10+i), 0);
+                                        02=InterfaceState('GameSettings', 'Char' + (15+i), 1);
+                                        03=InterfaceState('GameSettings', 'LabelChar' + (10+i), 0);
+                                        04=InterfaceState('GameSettings', 'LabelChar' + (15+i), 1);
+                                    }
+                                    04=ButtonClick('GameSettings', 'Char16', 'AllCode');
+                                    04=UICheckElement('GameSettings', 'Char11', 'IsDown', 0);
+                                    04=UICheckElement('GameSettings', 'Char12', 'IsDown', 0);
+                                    04=UICheckElement('GameSettings', 'Char13', 'IsDown', 0);
+                                    04=UICheckElement('GameSettings', 'Char14', 'IsDown', 0);
+                                    04=UICheckElement('GameSettings', 'Char16', 'IsDown', 0);
+                                    05=UICheckElement('GameSettings', 'Char16', 'IsDown', 1);
+                                }
+                                03=else
+                                04 ^{
+                                    01=if(InterfaceState('GameSettings','Char16') >= 1)
+                                    02 ^{
+                                        01=InterfaceImage('GameSettings','CharOverride','Alpha,Bm.FormGameSet2.CharBG0');
+                                        02=for(i = 1; i <= 5; i = i + 1)
+                                        03 ^{
+                                            01=InterfaceState('GameSettings', 'Char' + (15+i), 0);
+                                            02=InterfaceState('GameSettings', 'Char' + i, 1);
+                                            03=InterfaceState('GameSettings', 'LabelChar' + (15+i), 0);
+                                            04=InterfaceState('GameSettings', 'LabelChar' + i, 1);
+                                        }
+                                        04=ButtonClick('GameSettings', 'Char1', 'AllCode');
+                                        04=UICheckElement('GameSettings', 'Char16', 'IsDown', 0);
+                                        04=UICheckElement('GameSettings', 'Char17', 'IsDown', 0);
+                                        04=UICheckElement('GameSettings', 'Char18', 'IsDown', 0);
+                                        04=UICheckElement('GameSettings', 'Char19', 'IsDown', 0);
+                                        04=UICheckElement('GameSettings', 'Char20', 'IsDown', 0);
+                                        05=UICheckElement('GameSettings', 'Char1', 'IsDown', 1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    Pos=312,468,49
+                    Size=21,21
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=True
+                    AlignX=Center
+                    AlignY=Center
+                    Help=FormGameSet2.Common.CharSwitch
+                    ImageDown=GI,Bm.FormCount2.2SubD
+                    ImageNormal=GI,Bm.FormCount2.2SubN
+                    ImageNormalA=GI,Bm.FormCount2.2SubA
+                    Kind=Normal
+                    KindHit=Graph
+                    Name=CharSwitchDown
+                    OnPressCode ^{
+                        01=if(InterfaceState('GameSettings','Char16') >= 1)
+                        02 ^{
+                            01=InterfaceImage('GameSettings','CharOverride','Alpha,Bm.FormGameSet2.CharBG2');
+                            02=for(int i = 1; i <= 5; i = i + 1)
+                            03 ^{
+                                01=InterfaceState('GameSettings', 'Char' + (15+i), 0);
+                                02=InterfaceState('GameSettings', 'Char' + (10+i), 1);
+                                03=InterfaceState('GameSettings', 'LabelChar' + (15+i), 0);
+                                04=InterfaceState('GameSettings', 'LabelChar' + (10+i), 1);
+                            }
+                            04=ButtonClick('GameSettings', 'Char11', 'AllCode');
+                            04=UICheckElement('GameSettings', 'Char16', 'IsDown', 0);
+                            04=UICheckElement('GameSettings', 'Char17', 'IsDown', 0);
+                            04=UICheckElement('GameSettings', 'Char18', 'IsDown', 0);
+                            04=UICheckElement('GameSettings', 'Char19', 'IsDown', 0);
+                            04=UICheckElement('GameSettings', 'Char20', 'IsDown', 0);
+                            05=UICheckElement('GameSettings', 'Char11', 'IsDown', 1);
+                        }
+                        03=else
+                        04 ^{
+                            01=if(InterfaceState('GameSettings','Char11') >= 1)
+                            02 ^{
+                                01=InterfaceImage('GameSettings','CharOverride','Alpha,Bm.FormGameSet2.CharBG1');
+                                02=for(i = 1; i <= 5; i = i + 1)
+                                03 ^{
+                                    01=InterfaceState('GameSettings', 'Char' + (10+i), 0);
+                                    02=InterfaceState('GameSettings', 'Char' + (5+i), 1);
+                                    03=InterfaceState('GameSettings', 'LabelChar' + (10+i), 0);
+                                    04=InterfaceState('GameSettings', 'LabelChar' + (5+i), 1);
+                                }
+                                04=ButtonClick('GameSettings', 'Char6', 'AllCode');
+                                04=UICheckElement('GameSettings', 'Char11', 'IsDown', 0);
+                                04=UICheckElement('GameSettings', 'Char12', 'IsDown', 0);
+                                04=UICheckElement('GameSettings', 'Char13', 'IsDown', 0);
+                                04=UICheckElement('GameSettings', 'Char14', 'IsDown', 0);
+                                04=UICheckElement('GameSettings', 'Char15', 'IsDown', 0);
+                                05=UICheckElement('GameSettings', 'Char6', 'IsDown', 1);
+                            }
+                            03=else
+                            04 ^{
+                                01=if(InterfaceState('GameSettings','Char6') >= 1)
+                                02 ^{
+                                    01=InterfaceImage('GameSettings','CharOverride','Alpha,Bm.FormGameSet2.CharBG0');
+                                    02=for(i = 1; i <= 5; i = i + 1)
+                                    03 ^{
+                                        01=InterfaceState('GameSettings', 'Char' + (5+i), 0);
+                                        02=InterfaceState('GameSettings', 'Char' + i, 1);
+                                        03=InterfaceState('GameSettings', 'LabelChar' + (5+i), 0);
+                                        04=InterfaceState('GameSettings', 'LabelChar' + i, 1);
+                                    }
+                                    04=ButtonClick('GameSettings', 'Char1', 'AllCode');
+                                    04=UICheckElement('GameSettings', 'Char10', 'IsDown', 0);
+                                    04=UICheckElement('GameSettings', 'Char6', 'IsDown', 0);
+                                    04=UICheckElement('GameSettings', 'Char7', 'IsDown', 0);
+                                    04=UICheckElement('GameSettings', 'Char8', 'IsDown', 0);
+                                    04=UICheckElement('GameSettings', 'Char9', 'IsDown', 0);
+                                    05=UICheckElement('GameSettings', 'Char1', 'IsDown', 1);
+                                }
+                                03=else
+                                04 ^{
+                                    01=if(InterfaceState('GameSettings','Char1') >= 1)
+                                    02 ^{
+                                        01=InterfaceImage('GameSettings','CharOverride','Alpha,Bm.FormGameSet2.CharBG3');
+                                        02=for(i = 1; i <= 5; i = i + 1)
+                                        03 ^{
+                                            01=InterfaceState('GameSettings', 'Char' + i, 0);
+                                            02=InterfaceState('GameSettings', 'Char' + (15+i), 1);
+                                            03=InterfaceState('GameSettings', 'LabelChar' + i, 0);
+                                            04=InterfaceState('GameSettings', 'LabelChar' + (15+i), 1);
+                                        }
+                                        04=ButtonClick('GameSettings', 'Char16', 'AllCode');
+                                        04=UICheckElement('GameSettings', 'Char1', 'IsDown', 0);
+                                        04=UICheckElement('GameSettings', 'Char2', 'IsDown', 0);
+                                        04=UICheckElement('GameSettings', 'Char3', 'IsDown', 0);
+                                        04=UICheckElement('GameSettings', 'Char4', 'IsDown', 0);
+                                        04=UICheckElement('GameSettings', 'Char5', 'IsDown', 0);
+                                        05=UICheckElement('GameSettings', 'Char16', 'IsDown', 1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    Pos=152,468,49
+                    Size=21,21
+                    Style=Style.GB.SoundNormal
+                }
+                GraphButton ^{
+                    Active=True
+                    AlignX=Center
+                    AlignY=Center
+                    Help=FormGameSet2.Common.CharHelp
+                    ImageDown=GI,Bm.MsgPlayer.2UserD
+                    ImageNormal=GI,Bm.MsgPlayer.2UserN
+                    ImageNormalA=GI,Bm.MsgPlayer.2UserA
+                    Kind=Normal
+                    KindHit=Graph
+                    Name=CharSwitchDown
+                    OnPressCode ^{
+                        01=if (UICheckElement('GameSettings', 'Char1', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char1'),1,69);
+                        01=if (UICheckElement('GameSettings', 'Char6', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char6'),1,69);
+                        01=if (UICheckElement('GameSettings', 'Char11', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char11'),1,69);
+                        01=if (UICheckElement('GameSettings', 'Char16', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char16'),1,69);
+                        02=if (UICheckElement('GameSettings', 'Char2', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char2'),1,69);
+                        02=if (UICheckElement('GameSettings', 'Char7', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char7'),1,69);
+                        02=if (UICheckElement('GameSettings', 'Char12', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char12'),1,69);
+                        02=if (UICheckElement('GameSettings', 'Char17', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char17'),1,69);
+                        03=if (UICheckElement('GameSettings', 'Char3', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char3'),1,69);
+                        03=if (UICheckElement('GameSettings', 'Char8', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char8'),1,69);
+                        03=if (UICheckElement('GameSettings', 'Char13', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char13'),1,69);
+                        03=if (UICheckElement('GameSettings', 'Char18', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char18'),1,69);
+                        04=if (UICheckElement('GameSettings', 'Char4', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char4'),1,69);
+                        04=if (UICheckElement('GameSettings', 'Char9', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char9'),1,69);
+                        04=if (UICheckElement('GameSettings', 'Char14', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char14'),1,69);
+                        04=if (UICheckElement('GameSettings', 'Char19', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char19'),1,69);
+                        05=if (UICheckElement('GameSettings', 'Char5', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char5'),1,69);
+                        05=if (UICheckElement('GameSettings', 'Char10', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char10'),1,69);
+                        05=if (UICheckElement('GameSettings', 'Char15', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char15'),1,69);
+                        05=if (UICheckElement('GameSettings', 'Char20', 'IsDown',)) MessageBox(CT('UniStartCharInfos.Char20'),1,69);
+                    }
+                    Pos=435,518,49
+                    Size=21,21
+                    Style=Style.GB.SoundNormal
+                }
+                Image ^{
+                    Name=2Left
+                    Pos=0,0,100
+                    Size=481,665
+                }
+                Image ^{
+                    Name=CaptainI
+                }
+                Image ^{
+                    Name=ImageName
+                }
+                Image ^{
+                    Active=True
+                    Image=Alpha,Bm.FormGameSet2.CharBG0
+                    Name=CharOverride
+                    Pos=0,0,99
+                    Size=481,665
+                }
+                Label ^{
+                    Name=LabelRace
+                }
+                Label ^{
+                    Name= LabelChar
+                }
+                Label ^{
+                    Name=LabelMaloc
+                }
+                Label ^{
+                    Name=LabelPeleng
+                }
+                Label ^{
+                    Name=LabelPeople
+                }
+                Label ^{
+                    Name=LabelFei
+                }
+                Label ^{
+                    Name=LabelGaal
+                }
+                Label ^{
+                    Name=LabelChar1
+                    TextColor=88,229,255
+                }
+                Label ^{
+                    Name=LabelChar2
+                    TextColor=88,229,255
+                }
+                Label ^{
+                    Name=LabelChar3
+                    TextColor=88,229,255
+                }
+                Label ^{
+                    Name=LabelChar4
+                    TextColor=88,229,255
+                }
+                Label ^{
+                    Name=LabelChar5
+                    TextColor=88,229,255
+                }
+                Label ^{
+                    Name=LabelPlayerName
+                }
+                Label ^{
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar6
+                    Pos=43,334,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char6
+                    TextColor=255,0,0
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar7
+                    Pos=100,394,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char7
+                    TextColor=255,0,0
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar8
+                    Pos=190,423,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char8
+                    TextColor=255,0,0
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar9
+                    Pos=282,395,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char9
+                    TextColor=255,0,0
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar10
+                    Pos=339,331,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char10
+                    TextColor=255,0,0
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar11
+                    Pos=43,334,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char11
+                    TextColor=174,203,60
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar12
+                    Pos=100,394,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char12
+                    TextColor=174,203,60
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar13
+                    Pos=190,423,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char13
+                    TextColor=174,203,60
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar14
+                    Pos=282,395,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char14
+                    TextColor=174,203,60
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar15
+                    Pos=339,331,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char15
+                    TextColor=174,203,60
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar16
+                    Pos=43,334,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char16
+                    TextColor=255,216,0
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar17
+                    Pos=100,394,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char17
+                    TextColor=255,216,0
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar18
+                    Pos=190,423,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char18
+                    TextColor=255,216,0
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar19
+                    Pos=282,395,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char19
+                    TextColor=255,216,0
+                }
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Ranger
+                    Name=LabelChar20
+                    Pos=339,331,2
+                    Size=100,20
+                    Text=FormGameSet2.Common.Char20
+                    TextColor=255,216,0
+                }
+                Name=PanelChar
+            }
+        }
+    }
+}

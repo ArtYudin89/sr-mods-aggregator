@@ -1,0 +1,174 @@
+FormShip ^{
+    UseTransmitters=Активация трансфакторных маяков (<color=255,245,80>T</color>)
+}
+Illness ^{
+    ExtraIllness ^{
+        1 ^{
+            Text=Возникает под воздействием сильного излучения. У заболевшего ухудшается умственная активность, вследствие чего сильно снижается его обучаемость. Недомогание проходит само через месяц-два, в зависимости от полученной дозы облучения. Методы лечения пока не найдены.
+            TextEx=<clr><clrEnd>
+            TextEx=В вашем текущем состоянии вы теряете <Percent> опыта от уничтожения доминаторов. Рекомендуется воздерживаться от повторного облучения во избежание ухудшения самочувствия.
+        }
+    }
+}
+Main ^{
+    Mod_ExpPanelPlus ^{
+        OnPressQuestionMany=Вы собираетесь активировать<br><0> трансфакторных <1> в системе <2>. Суммарная сила заряда составит <3> ед. Желаете продолжить?
+        OnPressQuestionOne=Вы собираетесь активировать трансфакторный маяк в системе <0>. Энергия заряда составляет <1> ед. Желаете продолжить?
+        OnUseTrans=Сообщение о наличии неизученного материала в системе <0> отправлено. Исследователи прибудут через <color=0,50,200>10</color> дней.
+        Quant2-4=</color>маяка
+        Quant5+=</color>маяков
+        QuestionHowMany=Сколько маяков вы хотите активировать?
+        RUN=.. Бегите, глупцы.
+        TooMuch=.. Да поможет вам бог.
+    }
+}
+Artefacts ^{
+    ArtTransmitter ^{
+        OnUseCode ^{
+            0=if(!ShipInNormalSpace(FormCurShip()))
+            01 ^{
+                01=Sound('Sound.NoSize');
+                02=MessageBox(CT('FormShip.UseOnlyInSpace'));
+                03=exit;
+            }
+            02=int charge = ItemCharge(CurItem());
+            03=int min_charge = CT('Artefacts.NumericValues.MinTransmitterPower');
+            04=if(ItemCharge(CurItem()) < min_charge)
+            04 ^{
+                01=Sound('Sound.NoSize');
+                02=MessageBox(Format(CT('FormShip.NotUseTransmitter'), '<Count'+'>', min_charge - charge));
+                03=exit;
+            }
+            05=if(CurrentMods('Evolution\EvoOldBeacon'))
+            05 ^{
+                01=unknown RndObject = ImportedFunction('UtilityFunctions', 'RndObject');
+                02=int radiation = ShipHealthFactor(Player(), 0);
+                03=if(!radiation)
+                03 ^{
+                    01=ShipHealthFactor(Player(), 0, RndObject(30, 45, Player()));
+                    02=ShipHealthFactorStatus(Player(), 0, 0.5);
+                }
+                04=else
+                04 ^{
+                    01=ShipHealthFactor(Player(), 0, radiation + RndObject(15, 25, Player()));
+                    02=ShipHealthFactorStatus(Player(), 0, max(ShipHealthFactorStatus(Player(), 0) - 0.1, 0.1));
+                }
+            }
+            06=OnUseCodeTransmitter();
+            07=if(1)
+            07 ^{
+                01=if(FormCurShip() == Player())
+                01 ^{
+                    01=ArrayClear(ReadyTrans);
+                    02=int TCount = 0;
+                    03=for(int i = 0; i < ShipArts(Player()); i = i + 1)
+                    03 ^{
+                        01=dword art = ShipArts(Player(), i);
+                        02=if(ItemType(art) == t_ArtefactTransmitter)
+                        02 ^{
+                            01=if(ItemCharge(art) >= CT('Artefacts.NumericValues.MinTransmitterPower'))
+                            01 ^{
+                                01=ArrayAdd(ReadyTrans, art);
+                                02=InterfaceState('Ship', 'UseTransmitters', 1);
+                                03=InterfaceState('Ship', 'UseTransmittersButtonHitBox', 1);
+                                04=TCount = TCount + 1;
+                            }
+                        }
+                    }
+                    04=if(!TCount)
+                    04 ^{
+                        01=InterfaceState('Ship', 'UseTransmitters', 0);
+                        02=InterfaceState('Ship', 'UseTransmittersButtonHitBox', 0);
+                    }
+                }
+            }
+        }
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            UT_HideInfo ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnEnteringForm))
+                    02 ^{
+                        01=if(CurrentForm() == 'Ship')
+                        02 ^{
+                            01=if(ShipInNormalSpace(Player()))
+                            02 ^{
+                                01=if(FormCurShip() == Player())
+                                02 ^{
+                                    01=ArrayClear(ReadyTrans);
+                                    02=for(int i = 0; i < ShipArts(Player()); i = i + 1)
+                                    03 ^{
+                                        01=dword art = ShipArts(Player(), i);
+                                        02=if(ItemType(art) == t_ArtefactTransmitter)
+                                        03 ^{
+                                            01=if(ItemCharge(art) >= CT('Artefacts.NumericValues.MinTransmitterPower'))
+                                            02 ^{
+                                                01=ArrayAdd(ReadyTrans, art);
+                                                02=InterfaceState('Ship', 'UseTransmitters', 1);
+                                                03=InterfaceState('Ship', 'UseTransmittersButtonHitBox', 1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    03=else if(ScriptItemActionType(t_OnLeavingForm))
+                    04 ^{
+                        01=if(CurrentForm() == 'Ship')
+                        02 ^{
+                            01=if(ShipInNormalSpace(Player()))
+                            02 ^{
+                                01=if(FormCurShip() == Player())
+                                02 ^{
+                                    01=InterfaceState('Ship', 'UseTransmitters', -1);
+                                    02=InterfaceState('Ship', 'UseTransmittersButtonHitBox', -1);
+                                }
+                            }
+                        }
+                    }
+                    05=else
+                    06 ^{
+                        01=if(ShipInNormalSpace(Player()) && CurrentForm() == 'Ship')
+                        02 ^{
+                            01=if(FormCurShip() == Player())
+                            02 ^{
+                                01=if(ItemType(ScriptItemActObject1()) == t_ArtefactTransmitter)
+                                02 ^{
+                                    01=ArrayClear(ReadyTrans);
+                                    02=int TCount = 0;
+                                    03=for(i = 0; i < ShipArts(Player()); i = i + 1)
+                                    04 ^{
+                                        01=art = ShipArts(Player(), i);
+                                        02=if(ItemType(art) == t_ArtefactTransmitter)
+                                        03 ^{
+                                            01=if(ItemCharge(art) >= CT('Artefacts.NumericValues.MinTransmitterPower'))
+                                            02 ^{
+                                                01=ArrayAdd(ReadyTrans, art);
+                                                02=InterfaceState('Ship', 'UseTransmitters', 1);
+                                                03=InterfaceState('Ship', 'UseTransmittersButtonHitBox', 1);
+                                                04=TCount = TCount + 1;
+                                            }
+                                        }
+                                    }
+                                    05=if(!TCount)
+                                    06 ^{
+                                        01=InterfaceState('Ship', 'UseTransmitters', 0);
+                                        02=InterfaceState('Ship', 'UseTransmittersButtonHitBox', 0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnEnteringForm,t_OnLeavingForm,t_OnDropItem,t_OnDropItemFixed
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RefForsageHarder ^{
+                Description=NoShow
+                Icon=0
+                Name=Инфошка, тратящая топливо из бака
+                OnActCode ^{
+                    01=if(!ShipInNormalSpace(ScriptItemActShip())) exit;
+                    02=if(!OrderForsage(ScriptItemActShip())) exit;
+                    03=if(!ShipFuel(ScriptItemActShip()))
+                    04 ^{
+                        01=ItemDurability(ShipEqInSlot(ScriptItemActShip(),t_Engine),0);
+                        02=Ether(8,'','Запуск двигателя в режиме форсажа при отсутствующем топливе - дрянная затея, и двигатель ответил мощным взрывом, сотрясшим корабль.');
+                        03=if(ItemDurability(ShipEqInSlot(ScriptItemActShip(),t_FuelTanks)) > 30) ItemDurability(ShipEqInSlot(ScriptItemActShip(),t_FuelTanks),ItemDurability(ShipEqInSlot(ScriptItemActShip(),t_FuelTanks))-Rnd(15,29));
+                        04=else ItemDurability(ShipEqInSlot(ScriptItemActShip(),t_FuelTanks),1);
+                    }
+                    05=else ShipFuel(ScriptItemActShip(),ShipFuel(ScriptItemActShip())-1);
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+        }
+    }
+}

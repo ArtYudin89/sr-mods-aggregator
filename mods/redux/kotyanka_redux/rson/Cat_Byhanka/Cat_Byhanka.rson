@@ -1,0 +1,2384 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Cat_Byhanka",
+    "ScriptFileOut": "D:\\Cat_Byhanka.scr",
+    "ScriptTextOut": "D:\\Cat_Byhanka.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 65,
+                    "Msg": "На каких же условиях?",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Byhanka.23\"))"
+                },
+                {
+                    "Name": "planet",
+                    "Pos.x": 120,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 66,
+                    "Msg": "Знаете, что-то не хочется мне работать на дядю...\r\nВольная жизнь дороже любого \"спец-корпуса\"!",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer('planet~'+CT(\"Script.Cat_Byhanka.24\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 67,
+                    "Msg": "Я согласен, где подписать?",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Byhanka.26\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 68,
+                    "Msg": "Мне по два раза повторять не надо!",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Byhanka.27\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 69,
+                    "Msg": "Грузите быстрей, моё время не бесплатное!",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Byhanka.28\"))"
+                },
+                {
+                    "Name": "planet",
+                    "Pos.x": 600,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 70,
+                    "Msg": "Извините, сейчас не время для почты!",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer('planet~'+CT(\"Script.Cat_Byhanka.29\"))"
+                },
+                {
+                    "Name": "hangar",
+                    "Pos.x": 720,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 71,
+                    "Msg": "Можете и дальше шутить, только вот я тут деньги зарабатываю, а не ящики по ангару таскаю. Чао!",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer('hangar~'+CT(\"Script.Cat_Byhanka.30\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 840,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 72,
+                    "Msg": "Отлично!",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Byhanka.84\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 960,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 73,
+                    "Msg": "Хорошо!",
+                    "AMsg.Num": "8",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Byhanka.31\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1080,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 74,
+                    "Msg": "Хорошо!",
+                    "AMsg.Num": "9",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Byhanka.31\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1200,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 75,
+                    "Msg": "Ну, как-то так получилось...",
+                    "AMsg.Num": "10",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Byhanka.33\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1320,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 76,
+                    "Msg": "А груз-то где получить можно?",
+                    "AMsg.Num": "11",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Byhanka.35\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1440,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 77,
+                    "Msg": "Эм...",
+                    "AMsg.Num": "12",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Byhanka.41\"))"
+                },
+                {
+                    "Name": "planet",
+                    "Pos.x": 1560,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 78,
+                    "Msg": "Ох, ё...",
+                    "AMsg.Num": "13",
+                    "_orig_danswer": "DAnswer('planet~'+CT(\"Script.Cat_Byhanka.42\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1680,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 79,
+                    "Msg": "Но я... Я не смогу никак довезти посылки! Их.. Отобрали гиперкосмические пираты!",
+                    "AMsg.Num": "14",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Byhanka.85\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 0,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 80,
+                    "Msg": "Нет, пожалуй, откажусь",
+                    "AMsg.Num": "15",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Byhanka.86\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 81,
+                    "Msg": "Ну, давайте",
+                    "AMsg.Num": "16",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Byhanka.87\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 82,
+                    "Msg": "Вот оно как, спасибо...",
+                    "AMsg.Num": "17",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Byhanka.88\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 83,
+                    "Msg": "Ну бригадир. Ну погоди!",
+                    "AMsg.Num": "18",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Byhanka.89\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 480,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 84,
+                    "Msg": "Ой...",
+                    "AMsg.Num": "19",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Byhanka.90\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 600,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 85,
+                    "Msg": "Класс!",
+                    "AMsg.Num": "20",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Byhanka.92\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 720,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 86,
+                    "Msg": "*отправиться в кабинет согласно выданному вам плану*",
+                    "AMsg.Num": "21",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Byhanka.93\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 840,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 87,
+                    "Msg": "Ответишь ты у меня, станционный смотритель, за моё заключение в планетарное узилище! Ух, подлец!",
+                    "AMsg.Num": "22",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Byhanka.95\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 960,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 88,
+                    "Msg": "Ой...",
+                    "AMsg.Num": "23",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Byhanka.90\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1080,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 89,
+                    "Msg": "Куда мне нужно отправиться дальше?",
+                    "AMsg.Num": "24",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Byhanka.97\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 90,
+                    "Msg": "Спасибо...",
+                    "AMsg.Num": "25",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Byhanka.98\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1320,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 91,
+                    "Msg": "Ну блин",
+                    "AMsg.Num": "26",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Byhanka.99\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 43,
+                    "Msg": "Добрый день, рейнджер.\r\n\r\nПредставительство известнейшей \"Почты Карагона\" очень заинтересовано вашими успехами в перевозке грузов и предлагает вам контракт.",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.14\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 44,
+                    "Msg": "Наша компания предоставляет вам спец-корпус, вы же, в свою очередь, будете обязаны выполнить <0> успешных рейсов по доставке наших спец-грузов или мы также можем засчитать выполнение специальных заказов на доставку выдаваемых вам правительством разных планет. Контракт заключается на срок в 3 года. Также хочу заметить, что за выполнение наших рейсов вам будут платить определённое вознаграждение.\r\n\r\nПри нарушении условий контракта вы будете обязаны выплатить компенсацию за пользование спец-корпусом и принесённый репутационный ущерб компании, в размере <1> cr.\r\n",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Cat_Byhanka.15\"),\"<0>\",ToComplete,\"<1>\",TreatyCost))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 45,
+                    "Msg": "Теперь вы официальный курьер \"Почты Карагона\", спец-корпус ожидает вас в ангаре, ключи найдёте в бардачке. Кстати, ваш рабочий день уже начался!",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.16\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 46,
+                    "Msg": "Вот ваши грузы на этот рейс, после доставки вам выдадут новые грузы, оплату ставки и информацию о пункте назначения следущего рейса.",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.17\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 47,
+                    "Msg": "Курьер \"Почты Карагона\", вы как раз вовремя, выгружайте груз... Теперь распишитесь за доставку и получение оплаты, после чего можете отдохнуть, а потом - снова в рейс: наши грузчики вас ждут!",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.18\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 48,
+                    "Msg": "Курьер \"Почты Карагона\", вы как раз вовремя, выгружайте груз... Погодите, а где остальное? \r\nЛадно, с каждым бывает. Вот, распишитесь за доставку и получение оплаты с учётом штрафа. Теперь можете отдохнуть, а потом - снова в рейс: наши грузчики вас ждут!\r\n",
+                    "DMsg.Num": "5",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.19\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 900,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 49,
+                    "Msg": "Курьер \"Почты Карагона\", вы опять опоздали, выгружайте груз.\r\nЛадно, с каждым бывает. Вот, распишитесь за доставку и получение оплаты с учётом штрафа. Теперь можете отдохнуть, а потом - снова в рейс: наши грузчики вас ждут!\r\n\r\n",
+                    "DMsg.Num": "6",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.20\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1050,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 50,
+                    "Msg": "Курьер \"Почты Карагона\", вы опять опоздали, выгружайте груз. Погодите, а где остальное?! Нет, это уже ни в какие рамки не лезет! Получите новый груз и постарайтесь доставить его в целости и вовремя, если вам всё ещё нужны ваши деньги, а теперь - вон отсюда!",
+                    "DMsg.Num": "7",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.21\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 51,
+                    "Msg": "Попутного звездного ветра тебе, \"Величайший курьер галактики\".",
+                    "DMsg.Num": "8",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.22\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1350,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 52,
+                    "Msg": "Так-так, курьера вижу, а где груз?",
+                    "DMsg.Num": "9",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.39\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1500,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 53,
+                    "Msg": "Пока я не увижу хоть каких-нибудь посылок - я принять задания не могу!",
+                    "DMsg.Num": "10",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.40\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1650,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 54,
+                    "Msg": "\"Гиперкосмические пираты\" значит... Я могу вам подсказать кое-что. За небольшую сумму в <0> cr.",
+                    "DMsg.Num": "11",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Cat_Byhanka.71\"),\"<0>\",cost2))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 55,
+                    "Msg": "Так вот, вы можете взять задание у правительства нашей или ещё какой планеты,  специальное задание по доставке. \"Почта Карагона\" охотно соглашается учесть задания, выполненные от её имени.",
+                    "DMsg.Num": "12",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.72\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 56,
+                    "Msg": "<0>",
+                    "DMsg.Num": "13",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Cat_Byhanka.73\"),\"<0>\",tstr))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 57,
+                    "Msg": "<clr>Ну всё, рейнджер, легавые прилетели, хана тебе, нарушитель спокойствия!<clrEnd>",
+                    "DMsg.Num": "14",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.74\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 58,
+                    "Msg": "Курьер \"Почты Карагона\", вы как раз вовремя, выгружайте груз... Погодите, а это, что? \r\nЛадненько, я думаю этот \"лишний груз\" я у вас конфискую и отправлю его на свой склад \"Рахишбериз\". Вот, распишитесь за доставку и получение оплаты... с учётом небольшой премии, от меня. Теперь можете отдохнуть, а потом - снова в рейс: наши грузчики вас ждут!\r\n\r\n",
+                    "DMsg.Num": "15",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.75\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 59,
+                    "Msg": "Так... Пройдите по коридору, спуститесь на два этажа... В общем, вот, сейчас вам набросаю на бумажечке.",
+                    "DMsg.Num": "16",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.76\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 60,
+                    "Msg": "День добрый, с чем... Это ты! Как ты мне надоел! Ещё и с тюрьмы сбежал. Что, опять пришёл спрашивать, когда мои ребята разгрузят то, чего на борту твоей посудины нет?!",
+                    "DMsg.Num": "17",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.77\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 900,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 61,
+                    "Msg": "Нет уж, рейнджер, бластер сейчас в ящике моего стола. А точнее, был пару секунд назад...",
+                    "DMsg.Num": "18",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.78\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1050,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 62,
+                    "Msg": "Что же хотите узнать?",
+                    "DMsg.Num": "19",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.79\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 63,
+                    "Msg": "Вас ждут на планете <0> (система <1>)",
+                    "DMsg.Num": "20",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Cat_Byhanka.80\"),\"<0>\",tstr,\"<1>\",tstr2))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1350,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 64,
+                    "Msg": "Ой, рейнджер, мы не нашли для вас подходящего состава заказов... Подождите немножко,",
+                    "DMsg.Num": "21",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Byhanka.81\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "Buha",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 400,
+                    "Parent": -1,
+                    "#": 38
+                },
+                {
+                    "Name": "QuestTake",
+                    "Type": "TDialog",
+                    "Pos.x": 120,
+                    "Pos.y": 400,
+                    "Parent": -1,
+                    "#": 39
+                },
+                {
+                    "Name": "QuestCompleted",
+                    "Type": "TDialog",
+                    "Pos.x": 270,
+                    "Pos.y": 400,
+                    "Parent": -1,
+                    "#": 40
+                },
+                {
+                    "Name": "QuestCompletedFake",
+                    "Type": "TDialog",
+                    "Pos.x": 480,
+                    "Pos.y": 400,
+                    "Parent": -1,
+                    "#": 41
+                },
+                {
+                    "Name": "EarthInfo",
+                    "Type": "TDialog",
+                    "Pos.x": 750,
+                    "Pos.y": 400,
+                    "Parent": -1,
+                    "#": 42
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 32
+                }
+            ],
+            "Items": [
+                {
+                    "Type": "TItem",
+                    "Name": "buhanka",
+                    "Class": 5,
+                    "Item.Type": 0,
+                    "Size": 10,
+                    "Level": 1,
+                    "Radius": 150,
+                    "Owner": 6,
+                    "Useless": "",
+                    "+Place": "",
+                    "Pos.x": 0,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 31
+                }
+            ],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 33,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 660
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "Delivers = CT('Script.Cat_Byhanka.BuhankaCnt');",
+                        "ToComplete = CT('Script.Cat_Byhanka.QuestsCnt');",
+                        "hull_size = CT('Script.Cat_Byhanka.BuhankaSize');",
+                        "Time =  CT('Script.Cat_Byhanka.BuhankaTime');",
+                        "if(PlanetRace(ShipStatistic(Player(),10)) == 2) RaceFlag = 1;"
+                    ],
+                    "#": 34,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 660
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(PlayerRun == 0 && GQuestStatus == 3) {",
+                        "    PlayerRun = 1;",
+                        "}",
+                        "",
+                        "if(CallFlag == 2 || CallFlag > 5) {",
+                        "    if(PlanetOwner(IdToPlanet(LastPlanetID)) == 5) {",
+                        "        Sound('Sound.NewMsg');",
+                        "        NewsAdd(Format(CT(\"Script.Cat_Byhanka.55\"),'pla',CT(\"Script.Cat_Byhanka.9\")));",
+                        "        LastPlanetID = EarthID; //Да, я лентяй",
+                        "        Ether(4,'CargoQuestBuha',CT(\"Script.Cat_Byhanka.46\")+' '+Name(IdToPlanet(LastPlanetID))+CT(\"Script.Cat_Byhanka.37\")+' '+Name(PlanetToStar(IdToPlanet(LastPlanetID)))+Format(CT(\"Script.Cat_Byhanka.45\"),\"<0>\",MissionTime));",
+                        "    }",
+                        "    if(PlanetOwner(IdToPlanet(LastPlanetID)) == 6) {",
+                        "        Sound('Sound.NewMsg');",
+                        "        NewsAdd(Format(CT(\"Script.Cat_Byhanka.54\"),'pla',CT(\"Script.Cat_Byhanka.9\")));",
+                        "        LastPlanetID = EarthID; //Да, я лентяй",
+                        "        Ether(4,'CargoQuestBuha',CT(\"Script.Cat_Byhanka.46\")+' '+Name(IdToPlanet(LastPlanetID))+CT(\"Script.Cat_Byhanka.37\")+' '+Name(PlanetToStar(IdToPlanet(LastPlanetID)))+Format(CT(\"Script.Cat_Byhanka.45\"),\"<0>\",MissionTime));",
+                        "    }",
+                        "    ",
+                        "    if(PlanetOwner(IdToPlanet(EarthID)) == 6) {",
+                        "        Sound('Sound.NewMsg');",
+                        "        NewsAdd(Format(CT(\"Script.Cat_Byhanka.53\"),'pla',CT(\"Script.Cat_Byhanka.52\")));",
+                        "        LastPlanetID = 0;",
+                        "        EarthID = 0;",
+                        "        CallFlag = 5;",
+                        "    ",
+                        "        Ether(5,'Buhanka',Format(CT(\"Script.Cat_Byhanka.50\"),\"<0>\",ToComplete,\"<1>\",Completed,\"<2>\",ToComplete,\"<3>\",Time));",
+                        "        Ether(5,'CargoQuestBuha',CT(\"Script.Cat_Byhanka.46\")+' '+Name(IdToPlanet(LastPlanetID))+CT(\"Script.Cat_Byhanka.37\")+' '+Name(PlanetToStar(IdToPlanet(LastPlanetID)))+Format(CT(\"Script.Cat_Byhanka.45\"),\"<0>\",MissionTime));",
+                        "    }",
+                        "}",
+                        "if(!ShipIsTakeoff(Player())) {",
+                        "  //CallFlag",
+                        "  //0 - задание не давали",
+                        "  //1 - позвали на выдачу задания",
+                        "  //2 - дали задание",
+                        "  //3 - игрок завалил сроки, долг передали банкам",
+                        "  //4 - игрок выполнил всё, и теперь может свободно владеть Бухой",
+                        "  //5 - игрок отказался от Бухи",
+                        "  //6 - игрок взял спецзадание для Почты Карагона",
+                        "  //7 - игрок завалил спецзадание для Почты Карагона",
+                        "   SolarFreeFlag = 0;",
+                        "  if(PlayerQuestsCompleted(0) >= Delivers && !CallFlag && RaceFlag) {",
+                        "      for(i=0;i<GalaxyStars();i=i+1) {",
+                        "          if(StarOwner(GalaxyStar(i)) == 1) continue;",
+                        "          if(findsubstr(CT('Star.02'),Name(GalaxyStar(i)))) SolarFreeFlag = 1;",
+                        "      }",
+                        "      if(SolarFreeFlag) {",
+                        "          CallFlag = 1;",
+                        "          for(i=0;i<GalaxyStars();i=i+1) {",
+                        "              for(j=0;j<StarPlanets(GalaxyStar(i));j=j+1) {",
+                        "                  if(Name(StarPlanets(GalaxyStar(i),j)) == CT('PlanetName.Solar.2')) {",
+                        "                      Ether(3,'Buhanka', Format(CT(\"Script.Cat_Byhanka.51\"),'pla',CT(\"Script.Cat_Byhanka.9\")),StarPlanets(GalaxyStar(i),j));",
+                        "                      break;",
+                        "                      break;",
+                        "                  }",
+                        "              }",
+                        "          }",
+                        "          Sound('Sound.NewMsg');",
+                        "      }",
+                        "  }",
+                        "  if(CallFlag == 2 || CallFlag == 6 || CallFlag == 7) {",
+                        "      if(Time != 0) Time = Time - 1;",
+                        "      if(PlayerQuestsCompleted(0) - LastCompleted + CargoCmpl != Completed) {",
+                        "          Completed = PlayerQuestsCompleted(0) - LastCompleted + CargoCmpl;",
+                        "      }",
+                        "      Ether(3,'Buhanka',Format(CT(\"Script.Cat_Byhanka.50\"),\"<0>\",ToComplete,\"<1>\",Completed,\"<2>\",ToComplete,\"<3>\",Time));",
+                        "  ",
+                        "      if(Time == 0 && Completed != CT('Script.Cat_Byhanka.QuestsCnt')) {",
+                        "          Ether(5,'Buhanka',CT(\"Script.Cat_Byhanka.49\"));",
+                        "          Sound('Sound.QuestCancel');",
+                        "          PlayerDebt(PlayerDebt()+TreatyCost);",
+                        "          if(PlayerDebtDate() == 0) PlayerDebtDate(CurTurn() + Rnd(200,330));",
+                        "          if(PlayerDebtCnt() == 0) PlayerDebtCnt(1);",
+                        "          CallFlag = 3;",
+                        "          Ether(5,'CargoQuestBuha',CT(\"Script.Cat_Byhanka.46\")+' '+Name(IdToPlanet(LastPlanetID))+CT(\"Script.Cat_Byhanka.37\")+' '+Name(PlanetToStar(IdToPlanet(LastPlanetID)))+Format(CT(\"Script.Cat_Byhanka.45\"),\"<0>\",MissionTime));",
+                        "      }",
+                        "      if(Completed == CT('Script.Cat_Byhanka.QuestsCnt')) {",
+                        "          CallFlag = 4;",
+                        "          Ether(4,'Buhanka',CT(\"Script.Cat_Byhanka.48\"));",
+                        "          Sound('Sound.QuestOk');",
+                        "          CanSellItem(buhanka, 1);",
+                        "          for(j=0;j<10;j=j+1) {",
+                        "              for(i=0;ShipItems(Player())>i;i=i+1) {",
+                        "                  if(ItemType(ShipItems(Player(),i)) != t_UselessItem) continue;",
+                        "                  if(Name(ShipItems(Player(),i)) == CT('UselessItems.BuhaCargo.Name')) {",
+                        "                      hull_size = hull_size + 1; //Ну не пропадать же зазря переменной!",
+                        "                      FreeItem(GetItemFromShip(Player(),ShipItems(Player(),i)));",
+                        "                  }",
+                        "              }",
+                        "          }",
+                        "          Ether(5,'CargoQuestBuha',CT(\"Script.Cat_Byhanka.47\"));",
+                        "      }",
+                        "      if(CallFlag == 6) {",
+                        "          if(MissionTime != 0) {",
+                        "              MissionTime = MissionTime - 1;",
+                        "              Ether(3,'CargoQuestBuha',CT(\"Script.Cat_Byhanka.46\")+' '+Name(IdToPlanet(LastPlanetID))+CT(\"Script.Cat_Byhanka.37\")+' '+Name(PlanetToStar(IdToPlanet(LastPlanetID)))+Format(CT(\"Script.Cat_Byhanka.45\"),\"<0>\",MissionTime));",
+                        "          }",
+                        "          if(MissionTime == 0) {",
+                        "              Ether(5,'CargoQuestBuha',CT(\"Script.Cat_Byhanka.46\")+' '+Name(IdToPlanet(LastPlanetID))+CT(\"Script.Cat_Byhanka.37\")+' '+Name(PlanetToStar(IdToPlanet(LastPlanetID)))+Format(CT(\"Script.Cat_Byhanka.45\"),\"<0>\",MissionTime));",
+                        "              Sound('Sound.QuestCancel');",
+                        "              CallFlag = 7;",
+                        "          }",
+                        "      }",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 35,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 660
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(GetShipPlanet(Player())) {",
+                        "    if(CallFlag == 1 && Name(GetShipPlanet(Player())) == CT('PlanetName.Solar.2')) {",
+                        "        AddDialogInject('Buha','',CT(\"Script.Cat_Byhanka.60\"),100);",
+                        "        if(ShipWealth(Player()) >= 10000000) TreatyCost = 100000000;",
+                        "        if(ShipWealth(Player()) < 10000000) TreatyCost = 50000000;",
+                        "        if(ShipWealth(Player()) < 3000000) TreatyCost = 25000000;",
+                        "        if(ShipWealth(Player()) < 1500000) TreatyCost = 10000000;",
+                        "        if(ShipWealth(Player()) < 1000000) TreatyCost = 4000000;",
+                        "        if(ShipWealth(Player()) < 600000) TreatyCost = 2000000;",
+                        "        if(ShipWealth(Player()) < 300000) TreatyCost = 1000000;",
+                        "    }",
+                        "    if(CallFlag == 2 && IdToPlanet(LastPlanetID) == GetShipPlanet(Player()) && ControlledSystems(0) + ControlledSystems(2) >= 8) {",
+                        "        AddDialogInject('QuestTake','',CT(\"Script.Cat_Byhanka.59\"),100);",
+                        "    }",
+                        "    if((CallFlag == 6 || CallFlag == 7) && IdToPlanet(LastPlanetID) == GetShipPlanet(Player()) && ControlledSystems(0) + ControlledSystems(2) >= 8) {",
+                        "        if(PlayerRun) AddDialogInject('QuestCompletedFake','',CT(\"Script.Cat_Byhanka.58\"),100);",
+                        "        else AddDialogInject('QuestCompleted','',CT(\"Script.Cat_Byhanka.57\"),100);",
+                        "        if(Name(GetShipPlanet(Player())) == CT('PlanetName.Solar.2')) {",
+                        "            AddDialogInject('EarthInfo','',CT(\"Script.Cat_Byhanka.56\"),100);",
+                        "        }",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 36,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 660
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 92,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 400
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(3);",
+                        "exit;"
+                    ],
+                    "#": 93,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 400
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "CallFlag = 2;",
+                        "cost = 0;",
+                        "hull_size = 0;",
+                        "",
+                        "for(j=0;j<10;j=j+1) {",
+                        "    for(i=0;ShipItems(Player())>i;i=i+1) {",
+                        "        if(ItemType(ShipItems(Player(),i)) != t_UselessItem) continue;",
+                        "        //if(Name(ShipItems(Player(),i)) == CT('UselessItems.BuhaCargo.Name')) {",
+                        "        //    hull_size = hull_size + 1; //Ну не пропадать же зазря переменной!",
+                        "        //    cost = cost + ItemCost(ShipItems(Player(),i));",
+                        "        //}",
+                        "",
+                        "        if(Name(ShipItems(Player(),i)) == CT('UselessItems.BuhaCargo.Name')) {",
+                        "            hull_size = hull_size + 1; //Ну не пропадать же зазря переменной!",
+                        "            FreeItem(GetItemFromShip(Player(),ShipItems(Player(),i)));",
+                        "        }",
+                        "    }",
+                        "}",
+                        "",
+                        "cost = hull_size * (10000 + Completed * 1000);",
+                        "if(MissionTime == 0 && hull_size > 0) cost = cost/2;",
+                        "if(MissionTime != 0 && hull_size > CargoCount) {",
+                        "  ShipMoney(Player(),ShipMoney(Player())+cost);",
+                        "  Sound('Sound.QuestOk');",
+                        "  DChange(15);",
+                        "  exit;",
+                        "}",
+                        "if(MissionTime != 0 && hull_size == CargoCount) {",
+                        "  ShipMoney(Player(),ShipMoney(Player())+cost);",
+                        "  Sound('Sound.QuestOk');",
+                        "  DChange(4);",
+                        "  exit;",
+                        "}",
+                        "if(MissionTime != 0 && hull_size != CargoCount && hull_size > 0) {",
+                        "  ShipMoney(Player(),ShipMoney(Player())+cost);",
+                        "  Sound('Sound.QuestOk');",
+                        "  DChange(5);",
+                        "  exit;",
+                        "}",
+                        "if(MissionTime == 0 && hull_size == CargoCount) {",
+                        "  ShipMoney(Player(),ShipMoney(Player())+cost);",
+                        "  Sound('Sound.QuestCancel');",
+                        "  DChange(6);",
+                        "  exit;",
+                        "}",
+                        "if(MissionTime == 0 && hull_size != CargoCount && hull_size > 0) {",
+                        "  ShipMoney(Player(),ShipMoney(Player())+cost);",
+                        "  Sound('Sound.QuestCancel');",
+                        "  DChange(7);",
+                        "  exit;",
+                        "}",
+                        "if(hull_size == 0) {",
+                        "  if(MissionTime != 0) CallFlag = 6;",
+                        "  if(MissionTime == 0) CallFlag = 7;",
+                        "  ",
+                        "  tint = tint + 1;",
+                        "  if(tint >= 5) {",
+                        "    if(tint2 >= 10) {",
+                        "      DChange(14);",
+                        "      exit;",
+                        "    }",
+                        "    if(tint2 < 10) {",
+                        "      if(tint2 == 0) tstr = CT(\"Script.Cat_Byhanka.70\");",
+                        "      if(tint2 == 1) tstr = CT(\"Script.Cat_Byhanka.69\");",
+                        "      if(tint2 == 2) tstr = CT(\"Script.Cat_Byhanka.68\");",
+                        "      if(tint2 == 3) tstr = CT(\"Script.Cat_Byhanka.67\");",
+                        "      if(tint2 == 4) tstr = CT(\"Script.Cat_Byhanka.66\");",
+                        "      if(tint2 == 5) tstr = CT(\"Script.Cat_Byhanka.65\");",
+                        "      if(tint2 == 6) tstr = CT(\"Script.Cat_Byhanka.64\");",
+                        "      if(tint2 == 7) tstr = CT(\"Script.Cat_Byhanka.63\");",
+                        "      if(tint2 == 8) tstr = CT(\"Script.Cat_Byhanka.62\");",
+                        "      if(tint2 == 9) tstr = CT(\"Script.Cat_Byhanka.61\");",
+                        "      DChange(13);",
+                        "      exit;",
+                        "    }",
+                        "  }",
+                        "  if(tint < 5) {",
+                        "    DChange(9);",
+                        "    exit;",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 94,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 250,
+                    "Pos.y": 400
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(16);",
+                        "exit;"
+                    ],
+                    "#": 95,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 400
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(19);",
+                        "exit;"
+                    ],
+                    "#": 96,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 400
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(0);"
+                    ],
+                    "#": 97,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(1);",
+                        "DAdd(2);"
+                    ],
+                    "#": 98,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);",
+                        "DAdd(11);"
+                    ],
+                    "#": 99,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(4);",
+                        "DAdd(5);"
+                    ],
+                    "#": 100,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(7);"
+                    ],
+                    "#": 101,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(8);"
+                    ],
+                    "#": 102,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(9);"
+                    ],
+                    "#": 103,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 880,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(10);"
+                    ],
+                    "#": 104,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1030,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(6);"
+                    ],
+                    "#": 105,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(12);"
+                    ],
+                    "#": 106,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1330,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "cost2 = (10000 + Completed * 1000);",
+                        "DAdd(14);",
+                        "DAdd(13);"
+                    ],
+                    "#": 107,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1480,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player()) >= cost2) {",
+                        "  DAdd(16);",
+                        "}",
+                        "DAdd(15);"
+                    ],
+                    "#": 108,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1630,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(17);"
+                    ],
+                    "#": 109,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(18);"
+                    ],
+                    "#": 110,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(19);"
+                    ],
+                    "#": 111,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(20);"
+                    ],
+                    "#": 112,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(21);"
+                    ],
+                    "#": 113,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(22);"
+                    ],
+                    "#": 114,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(23);"
+                    ],
+                    "#": 115,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 880,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(24);"
+                    ],
+                    "#": 116,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1030,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(25);"
+                    ],
+                    "#": 117,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(26);"
+                    ],
+                    "#": 118,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1330,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 119,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Ether(5,'Buhanka',CT(\"Script.Cat_Byhanka.82\"));",
+                        "Sound('Sound.NewMsg');",
+                        "CallFlag = 5;"
+                    ],
+                    "#": 120,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Ether(3,'Buhanka',Format(CT(\"Script.Cat_Byhanka.83\"),\"<0>\",ToComplete,\"<1>\",Completed,\"<2>\",ToComplete,\"<3>\",Time));",
+                        "Sound('Sound.NewMsg');",
+                        "CallFlag = 2;",
+                        "",
+                        "hull = CreateHull(6,hull_size,GalaxyTechLevel(),People,-1,0);",
+                        "bonus_num = FindBonusByName(CT('Script.Cat_Byhanka.Name'));",
+                        "if(bonus_num > -1) {",
+                        "    SpecialToEquipment(bonus_num, hull);",
+                        "}",
+                        "else {",
+                        "    SFT('Саня, мы Буханку не нашли. Пипец!');",
+                        "}",
+                        "",
+                        "ItemSize(hull, hull_size);",
+                        "ItemCost(hull, CT('Script.Cat_Byhanka.BuhankaCost'));",
+                        "HullHP(hull, ItemSize(hull));",
+                        "AddItemToStorage(GetShipPlanet(Player()), hull);",
+                        "LinkItemToScript(hull,buhanka);",
+                        "LastPlanetID = Id(GetShipPlanet(Player()));",
+                        "EarthID = Id(GetShipPlanet(Player()));",
+                        "",
+                        "LastCompleted = PlayerQuestsCompleted(0);",
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 121,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "CallFlag = 6;",
+                        "CargoCount = Rnd(5,12);",
+                        "",
+                        "ArrayClear(tarr);",
+                        "ArrayDelete(tarr,0);",
+                        "",
+                        "for(i=0;CargoCount>i;i=i+1) {",
+                        "    tdwd = CreateQuestItem('BuhaCargo',PlanetRace(GetShipPlanet(Player())));",
+                        "    AddItemToShip(Player(),tdwd);",
+                        "",
+                        "    ItemCost(tdwd,10000 + Completed * 1000 + Rnd(100,499));",
+                        "}",
+                        "for(i=0;GalaxyStars()>i;i=i+1) {",
+                        "    if(StarOwner(GalaxyStar(i)) == 1) continue;",
+                        "    if(round(sqrt(Dist2Star(ShipStar(Player()), GalaxyStar(i)))) < 15) continue;",
+                        "    if(round(sqrt(Dist2Star(ShipStar(Player()), GalaxyStar(i)))) > 50) continue;",
+                        "    if(StarToCon(GalaxyStar(i)) == StarToCon(PlanetToStar(PlanetPirateClan()))) continue;",
+                        "    for(j=0;StarPlanets(GalaxyStar(i))>j;j=j+1) {",
+                        "        if(PlanetOwner(StarPlanets(GalaxyStar(i),j)) > 4) continue;",
+                        "        ArrayAdd(tarr,StarPlanets(GalaxyStar(i),j));",
+                        "    }",
+                        "}",
+                        "",
+                        "ArrayAdd(tarr,1,'Fix');",
+                        "if(ArrayDim(tarr) > 1) {",
+                        "    ArrayDelete(tarr,'Fix');",
+                        "    ArrayRandomize(50,tarr);",
+                        "",
+                        "    LastPlanetID = Id(tarr[min(round(ArrayDim(tarr)/2),1)]);",
+                        "    MissionTime = CT('Script.Cat_Byhanka.CargoTime');",
+                        "",
+                        "    Ether(3,'CargoQuestBuha',CT(\"Script.Cat_Byhanka.46\")+' '+Name(IdToPlanet(LastPlanetID))+CT(\"Script.Cat_Byhanka.37\")+' '+Name(PlanetToStar(IdToPlanet(LastPlanetID)))+Format(CT(\"Script.Cat_Byhanka.45\"),\"<0>\",MissionTime),IdToPlanet(LastPlanetID));",
+                        "    Sound('Sound.NewMsg');",
+                        "    ArrayAdd(tarr,1,'Fix');",
+                        "}",
+                        "if(ArrayDim(tarr) < 2) {",
+                        "  DChange(21);",
+                        "  exit;",
+                        "}",
+                        "if(ArrayDim(tarr) > 1) {",
+                        "  DChange(8);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 122,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i=0;ShipItems(Player())>i;i=i+1) {",
+                        "    if(ItemType(ShipItems(Player(),i)) != t_UselessItem) continue;",
+                        "",
+                        "    if(Name(ShipItems(Player(),i)) == CT('UselessItems.BuhaCargo.Name')) {",
+                        "        FreeItem(GetItemFromShip(Player(),ShipItems(Player(),i)));",
+                        "    }",
+                        "}",
+                        "Completed = Completed + 1;",
+                        "Ether(4,'CargoQuestBuha',CT(\"Script.Cat_Byhanka.46\")+' '+Name(IdToPlanet(LastPlanetID))+CT(\"Script.Cat_Byhanka.37\")+' '+Name(PlanetToStar(IdToPlanet(LastPlanetID)))+Format(CT(\"Script.Cat_Byhanka.45\"),\"<0>\",MissionTime));",
+                        "CargoCmpl = CargoCmpl + 1;",
+                        "tint = 0;",
+                        "tint2 = 0;"
+                    ],
+                    "#": 123,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i=0;ShipItems(Player())>i;i=i+1) {",
+                        "    if(ItemType(ShipItems(Player(),i)) != t_UselessItem) continue;",
+                        "",
+                        "    if(Name(ShipItems(Player(),i)) == CT('UselessItems.BuhaCargo.Name')) {",
+                        "        FreeItem(GetItemFromShip(Player(),ShipItems(Player(),i)));",
+                        "    }",
+                        "}",
+                        "Completed = Completed + 1;",
+                        "Ether(4,'CargoQuestBuha',CT(\"Script.Cat_Byhanka.46\")+' '+Name(IdToPlanet(LastPlanetID))+CT(\"Script.Cat_Byhanka.37\")+' '+Name(PlanetToStar(IdToPlanet(LastPlanetID)))+Format(CT(\"Script.Cat_Byhanka.45\"),\"<0>\",MissionTime));",
+                        "CargoCmpl = CargoCmpl + 1;",
+                        "tint = 0;",
+                        "tint2 = 0;"
+                    ],
+                    "#": 124,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 940,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i=0;ShipItems(Player())>i;i=i+1) {",
+                        "    if(ItemType(ShipItems(Player(),i)) != t_UselessItem) continue;",
+                        "",
+                        "    if(Name(ShipItems(Player(),i)) == CT('UselessItems.BuhaCargo.Name')) {",
+                        "        FreeItem(GetItemFromShip(Player(),ShipItems(Player(),i)));",
+                        "    }",
+                        "}",
+                        "Completed = Completed + 1;",
+                        "Ether(4,'CargoQuestBuha',CT(\"Script.Cat_Byhanka.46\")+' '+Name(IdToPlanet(LastPlanetID))+CT(\"Script.Cat_Byhanka.37\")+' '+Name(PlanetToStar(IdToPlanet(LastPlanetID)))+Format(CT(\"Script.Cat_Byhanka.45\"),\"<0>\",MissionTime));",
+                        "CargoCmpl = CargoCmpl + 1;",
+                        "tint = 0;",
+                        "tint2 = 0;"
+                    ],
+                    "#": 125,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1060,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i=0;ShipItems(Player())>i;i=i+1) {",
+                        "    if(ItemType(ShipItems(Player(),i)) != t_UselessItem) continue;",
+                        "",
+                        "    if(Name(ShipItems(Player(),i)) == CT('UselessItems.BuhaCargo.Name')) {",
+                        "        FreeItem(GetItemFromShip(Player(),ShipItems(Player(),i)));",
+                        "    }",
+                        "}",
+                        "Ether(5,'CargoQuestBuha',CT(\"Script.Cat_Byhanka.46\")+' '+Name(IdToPlanet(LastPlanetID))+CT(\"Script.Cat_Byhanka.37\")+' '+Name(PlanetToStar(IdToPlanet(LastPlanetID)))+Format(CT(\"Script.Cat_Byhanka.45\"),\"<0>\",MissionTime));",
+                        "tint = 0;",
+                        "tint2 = 0;"
+                    ],
+                    "#": 126,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(3);",
+                        "exit;"
+                    ],
+                    "#": 127,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1300,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(10);",
+                        "exit;"
+                    ],
+                    "#": 128,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1420,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(11);",
+                        "exit;"
+                    ],
+                    "#": 129,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1660,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ShipMoney(Player(),ShipMoney(Player())-cost2);",
+                        "Sound('Sound.Buy');",
+                        "DChange(12);",
+                        "exit;"
+                    ],
+                    "#": 130,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tint2 = tint2 + 1;"
+                    ],
+                    "#": 131,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "StartTextQuest('Prison',CT(\"Script.Cat_Byhanka.91\"),CT(\"Script.Cat_Byhanka.91\"));",
+                        "FormChange('Planet');",
+                        "",
+                        "tint = 0;",
+                        "tint2 = 0;",
+                        "PlayerRun = 0;"
+                    ],
+                    "#": 132,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i=0;ShipItems(Player())>i;i=i+1) {",
+                        "    if(ItemType(ShipItems(Player(),i)) != t_UselessItem) continue;",
+                        "",
+                        "    if(Name(ShipItems(Player(),i)) == CT('UselessItems.BuhaCargo.Name')) {",
+                        "        FreeItem(GetItemFromShip(Player(),ShipItems(Player(),i)));",
+                        "    }",
+                        "}",
+                        "Completed = Completed + 1;",
+                        "Ether(4,'CargoQuestBuha',CT(\"Script.Cat_Byhanka.46\")+' '+Name(IdToPlanet(LastPlanetID))+CT(\"Script.Cat_Byhanka.37\")+' '+Name(PlanetToStar(IdToPlanet(LastPlanetID)))+Format(CT(\"Script.Cat_Byhanka.45\"),\"<0>\",MissionTime));",
+                        "CargoCmpl = CargoCmpl + 1;",
+                        "tint = 0;",
+                        "tint2 = 0;"
+                    ],
+                    "#": 133,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "MessageBox(CT(\"Script.Cat_Byhanka.94\"));",
+                        "DChange(17);",
+                        "exit;"
+                    ],
+                    "#": 134,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(18);",
+                        "exit;"
+                    ],
+                    "#": 135,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "CustomLose(CT(\"Script.Cat_Byhanka.96\"));"
+                    ],
+                    "#": 136,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 940,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tstr = Name(IdToPlanet(LastPlanetID));",
+                        "tstr2 = Name(PlanetToStar(IdToPlanet(LastPlanetID)));",
+                        "DChange(20);",
+                        "exit;"
+                    ],
+                    "#": 137,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1060,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(19);",
+                        "exit;"
+                    ],
+                    "#": 138,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 590
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 185,
+                    "Parent": -1,
+                    "#": 30
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 95,
+                    "Parent": -1,
+                    "#": 29
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 140,
+                    "Parent": -1,
+                    "#": 28,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 300,
+                    "Parent": -1,
+                    "#": 37
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "Delivers",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "CallFlag",
+                    "Pos.x": 120,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "RaceFlag",
+                    "Pos.x": 240,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "TreatyCost",
+                    "Pos.x": 360,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "Completed",
+                    "Pos.x": 510,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "Time",
+                    "Pos.x": 660,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "LastCompleted",
+                    "Pos.x": 750,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 960,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "SolarFreeFlag",
+                    "Pos.x": 1050,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "hull_size",
+                    "Pos.x": 1260,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "hull",
+                    "Pos.x": 1410,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "CargoCount",
+                    "Pos.x": 1500,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 11,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "MissionTime",
+                    "Pos.x": 1650,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 12,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tdwd",
+                    "Pos.x": 0,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 13,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cost",
+                    "Pos.x": 90,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 14,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tarr",
+                    "Pos.x": 180,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 15,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "bonus_num",
+                    "Pos.x": 270,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 16,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "LastPlanetID",
+                    "Pos.x": 420,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 17,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "j",
+                    "Pos.x": 600,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 18,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "CargoCmpl",
+                    "Pos.x": 690,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 19,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "ToComplete",
+                    "Pos.x": 840,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 20,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cost2",
+                    "Pos.x": 990,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 21,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tint",
+                    "Pos.x": 1080,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 22,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tint2",
+                    "Pos.x": 1170,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 23,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tstr",
+                    "Pos.x": 1260,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 24,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "PlayerRun",
+                    "Pos.x": 1350,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 25,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tstr2",
+                    "Pos.x": 1500,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 26,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "EarthID",
+                    "Pos.x": 1590,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 27,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 38,
+            "End": 92,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 39,
+            "End": 93,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 40,
+            "End": 94,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 41,
+            "End": 95,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 42,
+            "End": 96,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 43,
+            "End": 97,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 44,
+            "End": 98,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 45,
+            "End": 99,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 46,
+            "End": 100,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 47,
+            "End": 101,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 48,
+            "End": 102,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 49,
+            "End": 103,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 50,
+            "End": 104,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 51,
+            "End": 105,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 52,
+            "End": 106,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 53,
+            "End": 107,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 54,
+            "End": 108,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 55,
+            "End": 109,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 56,
+            "End": 110,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 57,
+            "End": 111,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 58,
+            "End": 112,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 59,
+            "End": 113,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 60,
+            "End": 114,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 61,
+            "End": 115,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 62,
+            "End": 116,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 63,
+            "End": 117,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 64,
+            "End": 118,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 65,
+            "End": 119,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 66,
+            "End": 120,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 67,
+            "End": 121,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 69,
+            "End": 122,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 72,
+            "End": 123,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 73,
+            "End": 124,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 74,
+            "End": 125,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 75,
+            "End": 126,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 76,
+            "End": 127,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 77,
+            "End": 128,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 79,
+            "End": 129,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 81,
+            "End": 130,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 83,
+            "End": 131,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 84,
+            "End": 132,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 85,
+            "End": 133,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 86,
+            "End": 134,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 87,
+            "End": 135,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 88,
+            "End": 136,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 89,
+            "End": 137,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 90,
+            "End": 138,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 29,
+            "End": 28,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 30,
+            "End": 28,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 31,
+            "End": 29,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 32,
+            "End": 30,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 32,
+            "End": 37,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

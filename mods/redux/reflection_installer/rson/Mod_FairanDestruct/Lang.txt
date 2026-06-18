@@ -1,0 +1,43 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            Destractor ^{
+                Description=Нужна для баффа пушек с эффектом разрушения оборудования
+                Icon=0
+                Name=Дестрактор
+                OnActCode ^{
+                    01=if(ScriptItemActParam() & 16)
+                    02 ^{
+                        01=count=0;
+                        02=int item=ShipItems(ScriptItemActObject1(),Rnd(1,ShipItems(ScriptItemActObject1())-1));
+                        03=if(ItemType(ScriptItemActObject2())==t_Weapon8) int percent=11;
+                        04=else if(ItemType(ScriptItemActObject2())==t_Weapon7) percent=7;
+                        05=else if(ItemType(ScriptItemActObject2())==t_Weapon10) percent=4;
+                        06=else if(ItemType(ScriptItemActObject2())==t_Weapon9) percent=5;
+                        07=else if(ItemType(ScriptItemActObject2())==t_Weapon1) percent=6;
+                        08=else if(ItemType(ScriptItemActObject2())==t_Weapon5) percent=5;
+                        09=else if(ItemType(ScriptItemActObject2())==t_Weapon16) percent=7;
+                        10=else if(ItemType(ScriptItemActObject2())==t_Weapon11) percent=6;
+                        11=else if(ItemType(ScriptItemActObject2())==t_Weapon13) percent=3;
+                        12=else if(CustomWeaponType(ScriptItemActObject2())=='splash_faser') percent=5;
+                        13=else if(CustomWeaponType(ScriptItemActObject2())=='slow_gun') percent=6;
+                        14=else if(CustomWeaponType(ScriptItemActObject2())=='gaal_vision') percent=5;
+                        15=else if(CustomWeaponType(ScriptItemActObject2())=='pulse_gun2') percent=2;
+                        16=else if(CustomWeaponType(ScriptItemActObject2())=='pulse_gun') percent=3;
+                        17=else if(CustomWeaponType(ScriptItemActObject2())=='sub_gun') percent=2;
+                        18=else if(CustomWeaponType(ScriptItemActObject2())=='sphere_gun') percent=3;
+                        19=else percent=2;
+                        20=while(ItemIsBroken(item)==1)
+                        21 ^{
+                            01=if(count==15) exit;
+                            02=int count=count+1;
+                            03=item=ShipItems(ScriptItemActObject1(),Rnd(1,ShipItems(ScriptItemActObject1())-1));
+                        }
+                        22=ItemDurability(item,ItemDurability(item)-percent);
+                    }
+                }
+                OnActCodeTypes=t_OnWeaponShot2
+            }
+        }
+    }
+}

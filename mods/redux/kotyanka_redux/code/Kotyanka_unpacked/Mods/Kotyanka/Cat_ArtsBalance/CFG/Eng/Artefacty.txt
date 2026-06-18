@@ -1,0 +1,183 @@
+Artefacts ^{
+    ArtAntigrav ^{
+        Text=Forms a standalone gravitational field, reducing the ship's actual mass by <clr>35<clrEnd> percent.
+    }
+    ArtDef ^{
+        Text=Emits electrons that increase the efficiency of the ship's shield generator by <clr>10<clrEnd> percent. There is also a chance that it may deflect an incoming strike back at the enemy.
+    }
+    ArtDefToArms1 ^{
+        Text=Integrated into the shield generator's power unit. It uses up to <clr>2%<clrEnd> of its power to activate an additional weapon turret.
+    }
+    ArtDefToEnergy ^{
+        Text=It redirects the energy flows within the ship's internal network. It cuts the voltage available to the shield generator <clr>in 80%<clrEnd> to increase the yield of energy weapons proportionally.
+    }
+    ArtDroid ^{
+        Text=This small droid can restore up to <clr>30<clrEnd> units of the ship's damaged hull and is capable of operating even in hyperspace. Also reduces main droid wearing <clr>two times<clrEnd>.
+    }
+    ArtEnergyPulse ^{
+        Text=It increases the yield of the power impulse generated augmenting every <clr>third<clrEnd> shot fired by the energy weapons.
+    }
+    ArtFastRacks ^{
+        Text=Gives a <clr>33%<clrEnd> chance of perfoming double salvo from rocket weaponry.
+    }
+    ArtGiperJump ^{
+        Text=It moves the ship to a hyper-tunnel that allows for shortcuts of up to <clr>50<clrEnd> parsecs regardless of engine capacity, and also reduces the jumping time..
+    }
+    ArtHook ^{
+        Text=It allows the gripper beam to pull in objects whose mass exceeds the device's rated capacity by up to <clr>100<clrEnd>. It increases the gripper's pull-in speed and radius.
+    }
+    ArtHull ^{
+        Text=An iron zoopie colony lead by the queen may increase hull defense by <clr>10<clrEnd>.
+    }
+    ArtNano ^{
+        Text=Miniature robots repair up to <clr>10<clrEnd>% of one of the randomly selected items on the ship per day, the integrity of which does not exceed <clr>60<clrEnd>%.
+    }
+    ArtPDTurret ^{
+        Text=Shoots down missiles and torpedoes fired by the enemy. Can destroy up to ten targets per turn, depending on the density and intensity of fire. The artifact's effective radius is <clr>300<clrEnd>.
+    }
+    ArtRadar ^{
+        Text=A radar extension piece that helps increase its effective range by <clr>1000<clrEnd>. It collects information about ships in distant systems.
+    }
+    ArtScaner ^{
+        Text=Software amplifier capable of increasing the scanner's computing capacity by <clr>20<clrEnd> percent. It helps increase the amount of information about distant ships available to the crew.
+    }
+    ArtSplinter ^{
+        Text=Each shell placed into the breech receives a splitter warhead. This helps increase the combat efficiency of fragmentation weapons by <clr>35%<clrEnd>.
+    }
+    ArtWeaponToSpeed ^{
+        Text=Increases the engine speed by <clr>200<clrEnd> points through installation of additional nozzles in lieu of one <clr>weapon<clrEnd> compartment.
+    }
+    NumericValues ^{
+	        //маяк
+            AverageTransmitterPower=200
+			MaxTransmitterPower=1000
+            MinTransmitterPower=100
+			kTransmitterPenaltyAnySystem=1
+            kTransmitterPenaltyAnySystemDuration=90
+            kTransmitterPenaltySameSystem=5
+            kTransmitterPenaltySameSystemDuration=30
+			
+			//бомба. 600 урона дефолт. мин урона 400. макс урон 800, зависящий от радиус 250.
+			//бомба_КОТ. 2500 урона дефолт. мин урона 800. макс урон 3000, зависящий от радиус 500.
+            BombPower=600
+            BombPowerMax=800
+            BombPowerMin=400
+            BombRadius=250
+				
+			//Протон. использует 10% гзп для открытия пушки.
+			//Протон_КОТ. использует 2% гзп для открытия пушки.
+            kArtDefToArms1Penalty=0.02
+			
+			//Пропорционар. Штрав на гзп 50% и 25% для ЧД. Баф на урон если 5 пушек 10% и 20% для ЧД. Баф на урон если 1 пушка 60% и 120% для ЧД. 
+			//Пропорционар_КОТ. Штрав на гзп 80% и 60% для ЧД. Баф на урон если 5 пушек 50% и 100% для ЧД. Баф на урон если 1 пушка 100% и 200% для ЧД. 
+            kArtDefToEnergyPenalty=0.8
+            kArtDefToEnergyPenaltyEx=-0.20
+			kArtDefToEnergyMin=1.5
+            kArtDefToEnergyMinEx=0.5
+            kArtDefToEnergyUp=2.0
+            kArtDefToEnergyUpEx=1.0
+			
+			//Пятерик. Усиление энерго выстрела на 30% с шансом на 30% и 60% на ЧД.
+			//Пятерик_КОТ. Усиление энерго выстрела на 50% с шансом на 33% и 66% на ЧД.
+            kArtEnergyPulse=1.5
+            kArtEnergyPulseChance=0.33
+            kArtEnergyPulseEx=0.33
+			
+			//Ралс. Шанс на 2 выстрел 15% и 30% для ЧД. 0,15*0,15 = 2,25% шанс тройного залпа
+			//Ралс_КОТ. Шанс на 2 выстрел 33% и 66% для ЧД. 0,33*0,33 = 0,1% шанс тройного залпа
+            kArtFastRacksChance=0.33
+            kArtFastRacksChanceEx=0.33
+			
+			//Гипергенератор. устанавливает прыжок на 40пк и на 60 для ЧД.
+			//Гипергенератор_КОТ. устанавливает прыжок на 50пк и на 70 для ЧД.
+            kArtGiperJump=50
+            kArtGiperJumpEx=20
+			
+			//Навинт. Увеличение урона осколочного на 20% и на 40% для ЧД.
+			//Навинт_КОТ. Увеличение урона осколочного на 35% и на 70% для ЧД.
+            kArtSplinter=1.35
+            kArtSplinterEx=0.35
+			
+			//Сопланатор. Увеличение скорости на 100 и 200 для ЧД.
+			//Сопланатор_КОТ. Увеличение скорости на 200 и 300 для ЧД.
+            kArtWeaponToSpeed=200
+            kArtWeaponToSpeedEx=300
+			
+			//Антиграв. Уменьшение массы на 25% и 50% для ЧД.
+			//Антиграв_КОТ. Уменьшение массы на 35% и 60% для ЧД.
+            kArtefactAntigrav=0.65
+            kArtefactAntigravEx=-0.25
+			
+			//Поляризатор. гзп 5% и 10% для ЧД.
+			//Поляризатор_КОТ. гзп 10% и 15% для ЧД.
+            kArtefactDef=0.1
+            kArtefactDefEx=0.05
+			
+			//Дроид-младший. починка 10 и 20 для ЧД, отчищение от минус брони +50% и +100% для ЧД, уменьшение износа основного дроида на 50% и 67%
+			//Дроид-младший_КОТ. починка 30 и 50 для ЧД, отчищение от минус брони +150% и +200% для ЧД, уменьшение износа основного дроида на 50% и 80%
+            kArtefactDroid=30
+            kArtefactDroidAcidClean=2.5
+            kArtefactDroidAcidCleanEx=0.5
+            kArtefactDroidEx=20
+            kArtefactDroidWear=-0.5
+            kArtefactDroidWearEx=-0.3
+			
+			//Жижа. 2 топлива в день и 4 для ЧД.
+			//Жижа_КОТ. 10 топлива в день и 20 для ЧД.
+            kArtefactFuel=10
+            kArtefactFuelEx=10
+			
+			//Эриметр. доп захват 30 и 60 для чд. доп радиус 25 и 50 для чд. доп скорость 1 и 2 для чд.
+			//Эриметр_КОТ. доп захват 100 и 200 для чд. доп радиус 50 и 100 для чд. доп скорость 5 и 10 для чд.
+            kArtefactHook=100
+            kArtefactHookEx=100
+            kArtefactHookRaduis=50
+            kArtefactHookRaduisEx=50
+            kArtefactHookSpeed=5
+            kArtefactHookSpeedEx=5
+			
+			//Жупи. броня 5 для обычного, 10 для ЧД. рассеивание эффекта ионизации +50% и +100% для чд.
+			//Жупи_КОТ. броня 10 для обычного, 20 для ЧД. рассеивание эффекта ионизации +150% и +200% для чд.
+            kArtefactHull=10
+            kArtefactHullEx=10
+            kArtefactHullShockDissipation=2.5
+            kArtefactHullShockDissipationEx=0.5
+			
+			//Нанитоиды. чинит вещь до 5% в день для обычного, до 10% для ЧД.
+			//Нанитоиды_КОТ. чинит вещь до 15% в день для обычного, до 20% для ЧД.
+            kArtefactNano=15
+            kArtefactNanoEx=5
+			
+			//отморозки. уменьшает перегрев на 20% для обычного, на 40% для ЧД движка. уменьшает урон от звезды на 50% и 75% соответственно.
+			//отморозки_КОТ. уменьшает перегрев на 40% для обычного, на 80% для ЧД движка. уменьшает урон от звезды на 80% и 95% соответственно.
+            kArtefactPower=40
+            kArtefactPowerEx=40
+			kArtPowerSunProtection=0.8
+            kArtPowerSunProtectionEx=0.15
+			
+			//Пролонгер. увеличение радара на 600 и на 1200 для ЧД
+			//Пролонгер_КОТ. увеличение радара на 1000 и на 1500 для ЧД
+            kArtefactRadar=1000
+            kArtefactRadarEx=500
+			
+			//Сканерный кэш, увеличение сканера на 10 и на 20 для ЧД
+			//Сканерный кэш_КОТ, увеличение сканера на 20 и на 30 для ЧД
+            kArtefactScaner=20
+            kArtefactScanerEx=10
+			
+			//Пси-ускоритель. увеличение скорости корабля на 20% и 40% для ЧД
+			//Пси-ускоритель_КОТ. увеличение скорости корабля на 40% и 60% для ЧД
+            kArtefactSpeed=1.4
+            kArtefactSpeedEx=0.2
+			
+			//Аэгис. Выстрелы - 5. радиус 150 и 300 для ЧД.
+			//Аэгис_КОТ. Выстрелы - 10. радиус 300 и 500 для ЧД.
+            kPDTurretCountShots=10
+            kPDTurretRange=300
+            kPDTurretRangeEx=200
+			
+			//Субпортал. Кд на открытие. не работает
+            kSubportalPenalty=30
+            kSubportalPenaltyDuration=30
+    }
+}

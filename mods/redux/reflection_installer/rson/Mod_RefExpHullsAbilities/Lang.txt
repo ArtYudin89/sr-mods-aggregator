@@ -1,0 +1,160 @@
+MicroModuls ^{
+    ExpHulls_Bolide5 ^{
+        CustomTag=Meteor
+        Text=<color=248,252,248>Концентрация всех наработок Коалиции по вопросам исследования. Электронитные усилители радиолокационных систем, квазигенератор подпространственных пузырей и, как венец творения, - новейшая маскировочная система, позволяющая безнаказанно летать по территории, подконтрольной любому формированию. В этом корпусе нет ничего лишнего. Для учёного, разумеется.</color>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Лимит зондов: <bonZonds> шт.
+        Text=<color=20,220,20>Гарантирована работа сканера и радара</color>
+    }
+    ExpHulls_Killer5 ^{
+        CustomTag=Palach
+        Text=<color=248,252,248>Наглые рейды по вражеской территории - времяпрепровождение любого атамана. А для таких дел нужен особый корабль, отвечающий таким запросам.</color>
+        Text=<color=248,252,248>Дополнительный реактор на орудийной палубе позволяет колоссально повысить эффективность работы любого вооружения, а на пиковом напряжении и вовсе нанести</color> <clr>сверхмощный<clrEnd> <color=248,252,248>выстрел - идеальный вариант для идеального убийцы.</color>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Навык точности: <bonSkill1>
+        Text=Навык торговли: <bonSkill4>
+        Text=Навык обаяния: <bonSkill5>
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        Text=Масса корабля: <bonMass>%
+    }
+    ExpHulls_Rock5 ^{
+        CustomTag=Bastion
+        Text="Утюг" <color=248,252,248>предназначался войсками Коалиции для подавления огневых точек противника превосходящим огнeм. Но его оказалось недостаточно, и учeные создали новое творение -</color> <color=20,240,20>Бастион</color>.
+        Text=<color=248,252,248>Вспомогательные ремонтные установки, усилители защитного поля, новейшие закалeнные микробомбардировкой бронепластины с защитой от "каморных" ракет, а также мечта любого военного: </color><clr>дополнительная орудийная палуба<clrEnd><color=248,252,248>, позволяющая по сути удвоить огневую мощь корабля.</color>
+        Text=<color=248,252,248>Увы, за это приходится расплачиваться низкой скоростью, но этой космической бронемашине при должном оснащении вряд ли такое вообще потребуется.</color>
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Навык техники: <bonSkill3>
+        Text=Навык обаяния: <bonSkill5>
+        Text=Навык торговли: <bonSkill4>
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan>%
+        Text=Мощность защитного поля: <bonDef>%
+        Text=Поглощение урона астероидов: <bonResistAsteroid>%
+        Text=<color=20,220,20>Гарантирована работа генератора защитного поля</color>
+    }
+}
+Script ^{
+    Mod_RefExpHullsAbilities ^{
+        10=Включить режим невидимости
+        11=Режим контрбатарейного огня: <clr>Включен<clrEnd>
+        12=Режим контрбатарейного огня: <clr>Отключен<clrEnd>
+        13=Режим невидимости: <clr>Включен<clrEnd>
+        14=Режим невидимости: <clr>Отключен<clrEnd>
+        2=Отключить режим контрбатарейного огня
+        5=Включить режим контрбатарейного огня
+        8=Отключить режим невидимости
+        BastionSwitchedOff=Вы покинули обычное космическое пространство, дополнительная орудийная палуба свёрнута.
+        MeteorSwitchedOff=Вы покинули обычное космическое пространство, режим невидимости деактивирован.
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RefAssasinInfo ^{
+                Description=NoShow
+                Icon=0
+                Name=Инфошка с шансом КРИТА
+                OnActCode ^{
+                    01=if(EqSpecial(ShipEqInSlot(Player(),t_Hull)) == FindBonusByNameInCfg('ExpHulls_Killer5') || EqSpecial(ShipEqInSlot(Player(),t_Hull)) == FindBonusByNameInCfg('350'))
+                    02 ^{
+                        01=if(Rnd(1,100) > 79)
+                        02 ^{
+                            01=ScriptItemActParam(ScriptItemActParam() * 3);
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnDealingDamage
+            }
+            RefBastionFlag ^{
+                Description=NoShow
+                Icon=0
+                Name=Инфошка-флаг. Была
+                OnActCode ^{
+                    01=int MinusSpeed = 0;
+                    02=while(1)
+                    03 ^{
+                        01=int flagg = MinusSpeed * 100;
+                        02=if(ShipSpeed(Player()) - flagg > 400)
+                        03 ^{
+                            01=MinusSpeed = MinusSpeed + 1;
+                            02=continue;
+                        }
+                        04=else break;
+                    }
+                    04=ShipCustomShipInfoData(0,CurInfo(),1,ShipCustomShipInfoData(0,CurInfo(),1)+MinusSpeed);
+                    05=ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed) - flagg);
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            RefGunBatteryLabelsSwitcher ^{
+                Description=NoShow
+                Icon=0
+                Name=Потому что события открытия/закрытия формы срабатывают только для того корабля, на котором они висят, иначе бы было слишком просто
+                OnActCode ^{
+                    01=str form = CurrentForm();
+                    02=if(form == 'Ship')
+                    03 ^{
+                        01=dword ship = FormCurShip();
+                        02=int attacks_count = ShipSpecialBonuses(ship, bonAttacks);
+                        03=if(attacks_count > 0)
+                        04 ^{
+                            01=for(int i = 1; i <= 2; i = i + 1)
+                            02 ^{
+                                01=if(ShipEqInSlot(ship, t_Weapon1, i))
+                                02 ^{
+                                    01=InterfaceText(form, 'GunBatteryLabelSlot' + i, 'x' + (attacks_count + 1));
+                                    02=InterfaceState(form, 'GunBatteryLabelSlot' + i, 1);
+                                }
+                                03=else
+                                04 ^{
+                                    01=InterfaceState(form, 'GunBatteryLabelSlot' + i, 0);
+                                }
+                            }
+                        }
+                        05=else
+                        06 ^{
+                            01=for(i = 1; i <= 2; i = i + 1)
+                            02 ^{
+                                01=InterfaceState(form, 'GunBatteryLabelSlot' + i, 0);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnEnteringForm,t_OnReEnteringForm
+            }
+            RefMeteorDef ^{
+                Description=NoShow
+                Icon=0
+                Name=Инфошка с неуязвимостью Метеорки
+                OnActCode ^{
+                    01=if(EqSpecial(ShipEqInSlot(Player(),t_Hull),Player()) == FindBonusByNameInCfg('ExpHulls_Bolide5') || EqSpecial(ShipEqInSlot(Player(),t_Hull),Player()) == FindBonusByNameInCfg('352'))
+                    02 ^{
+                        01=if(!ScriptItemActionType(t_OnStep) || ScriptItemActionType(t_OnReduceEqBattle)) ScriptItemActParam(0);
+                        02=int i;
+                        03=for(i=0;i<4;i=i+1) ShipStatusEffect(Player(),i,0);
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnReduceEqBattle
+                OnActStepTypes=11
+            }
+            RefMeteorFlag ^{
+                Description=NoShow
+                Icon=0
+                Name=Инфошка-флаг
+                OnActCode ^{
+                    01=int dab;
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+        }
+    }
+}

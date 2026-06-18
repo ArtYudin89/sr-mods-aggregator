@@ -1,0 +1,93 @@
+FormLoadQuest ^{
+    Group2=Из модов
+}
+PlanetQuest ^{
+    ItemForPlanetQuest ^{
+        140=none
+        141=none
+        142=none
+        143=none
+    }
+    List ^{
+        140 ^{
+            Access=1
+            Dif=10
+            Genre=менеджмент
+            Group=2
+            Image=Bm.PQI.Amnesia_02
+            Length=1
+            Name=Больница
+        }
+        141 ^{
+            Access=1
+            Dif=35
+            Genre=бродилка с элементами менеджмента
+            Group=2
+            Image=Bm.PQI.Gluki_06
+            Length=2
+            Name=Горнолыжный спорт
+        }
+        142 ^{
+            Access=1
+            Dif=80
+            Genre=экономический симулятор с тактическими элементами
+            Group=2
+            Image=Bm.PQI.Bank_02
+            Length=2
+            Name=Война Корпораций
+        }
+        143 ^{
+            Access=1
+            Dif=65
+            Genre=бродилка с логическими головоломками
+            Group=2
+            Image=Bm.PQI.Amnesia_02
+            Length=2
+            Name=Потерянные
+        }
+    }
+    PlanetQuest ^{
+        110=Mods\Reflection\RefQuest\DATA\Quest\Rus\LongLiveTheRanger.qmm
+        130=Mods\Reflection\RefQuest\DATA\Quest\Rus\Yahtzee_pravki.qmm
+        140=Mods\Reflection\RefQuest\DATA\Quest\Rus\Hospital.qmm
+        141=Mods\Reflection\RefQuest\DATA\Quest\Rus\GS.qmm
+        142=Mods\Reflection\RefQuest\DATA\Quest\Rus\SpaceCraft.qmm
+        143=Mods\Reflection\RefQuest\DATA\Quest\Rus\Abandoned.qmm
+        19=Mods\Reflection\RefQuest\DATA\Quest\Rus\Muzon.qmm
+        90=Mods\Reflection\RefQuest\DATA\Quest\Rus\Siege.qmm
+    }
+    StartText ^{
+        140=Пора помочь врачам разобраться с их пациентами!
+        141=Быстрее, скоро Чемпионат! Пора показать галактике, что понятия "рейнджер" и "лыжи" абсолютно неразрывны!
+        142=Настало время показать, кто тут лучший игрок в SpaceCraft!
+        143=Надо скорее приступать к поиску пропавших!
+    }
+}
+Quest ^{
+    SendLetter ^{
+        116 ^{
+            End=О, <Player>, наконец-то!
+            End=Партия благодарит вас за доставку хачапури! Это - великолепнейшее из блюд. Наконец накормим им сопартийцев и убедим выделить средства на закупки всех, у кого есть партбилеты Левого Фронта!
+            End=<Money> cr. мы уже вам перечислили. Спасибо!
+            FromRace=People,Gaal
+            GovernmentAward=Reward,Nod
+            Start=<Player>, не поможете ли?
+            Start=Есть у нас тут одна просьба. Наш дизайнер, основатель "Жоржиан Дизайн Интергалактикс" Джа-Джа Ниидзе недавно завершил заказ для Коммунистической партии планеты <ToPlanet> (Это в системе <ToStar>). Так вот, вместе с новой символикой эти ребята попросили выслать им фирменное блюдо, которое делает дочерняя компания "Жоржиан Дизайн Интергалактикс" - <clr>Хачапури<clrEnd> - на пробу.
+            Start=Если им понравится, они обещают ввести обязательным употребление хачапури на всей планете, как только возьмут власть - или хотя бы войдут в парламент.
+            Start=Стазис проработает до <Date> без подзарядки. Управитесь?
+            Status=Trader
+            SysName=Ref_Usl_Hacha
+            ToRace=People,Maloc
+        }
+        Count=116
+    }
+}
+UselessItems ^{
+    Ref_Usl_Hacha ^{
+        Cost=Small
+        Name=Хачапури
+        Owner=People
+        Size=1
+        Text=Небольшое хлебобулочное изделие в форме лодочки. Сохраняется свежим благодаря едва заметным системам стазиса.
+    }
+}

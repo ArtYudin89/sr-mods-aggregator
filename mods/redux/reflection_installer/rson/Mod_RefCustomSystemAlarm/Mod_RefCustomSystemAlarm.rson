@@ -1,0 +1,976 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefCustomSystemAlarm",
+    "ScriptFileOut": "D:\\Mod_RefCustomSystemAlarm.scr",
+    "ScriptTextOut": "D:\\Mod_RefCustomSystemAlarm.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "Не получать уведомления из системы <0>",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RefCustomSystemAlarm.10\"),\"<0>\",temp_str1))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "Настроить уведомления для первой системы",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefCustomSystemAlarm.11\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "Не получать уведомления из системы <0>",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RefCustomSystemAlarm.10\"),\"<0>\",temp_str2))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 360,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 30,
+                    "Msg": "Настроить уведомления для второй системы",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefCustomSystemAlarm.12\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 31,
+                    "Msg": "Не получать уведомления из системы <0>",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RefCustomSystemAlarm.10\"),\"<0>\",temp_str3))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 32,
+                    "Msg": "Настроить уведомления для третьей системы",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefCustomSystemAlarm.13\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 720,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 33,
+                    "Msg": "В меню",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefCustomSystemAlarm.14\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 840,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 34,
+                    "Msg": "Да (вернуться к настройкам)",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefCustomSystemAlarm.16\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 22,
+                    "Msg": "Здесь вы можете установить, об атаках на какие системы вы хотите быть уведомлены:\r\n\r\nСистема №1: <0>\r\nСистема №2: <1>\r\nСистема №3: <2>",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefCustomSystemAlarm.6\"),\"<0>\",temp_str1,\"<1>\",temp_str2,\"<2>\",temp_str3))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 23,
+                    "Msg": "Готово!\r\n\r\nВы всегда сможете настроить уведомления в меню бортовых настроек.",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefCustomSystemAlarm.7\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 24,
+                    "Msg": "Выбранный сектор: <0>\r\n\r\nВыберите систему:",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefCustomSystemAlarm.8\"),\"<0>\",temp_str_local))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 25,
+                    "Msg": "Выбранная система: <0>\r\n\r\nПодтверждаете выбор?",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefCustomSystemAlarm.9\"),\"<0>\",temp_str_local))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "Выберите сектор для поиска нужной вам звезды:",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefCustomSystemAlarm.17\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "AlarmDialog",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 19
+                },
+                {
+                    "Name": "DialogSector",
+                    "Type": "TDialog",
+                    "Pos.x": 180,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 20
+                },
+                {
+                    "Name": "DialogSystems",
+                    "Type": "TDialog",
+                    "Pos.x": 360,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 21
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 14
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 15,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "int cd1, cd2 ,cd3; //кулдаун уведомления о пиздеце в системе",
+                        "if(FlagCount == 1) {",
+                        "    if(cd1 == 0) {",
+                        "        if(StarEnemyThreatLevel(PlanetToStar(IdToPlanet(IDOne)),1) == 2) {",
+                        "            cd1 = 15;",
+                        "            CustomEther('Galaxy_Alert',0,'',Format(CT(\"Script.Mod_RefCustomSystemAlarm.3\"),\"<0>\",temp_str1));",
+                        "        }",
+                        "        if(StarEnemyThreatLevel(PlanetToStar(IdToPlanet(IDOne))) == 3) {",
+                        "            CustomEther('Galaxy_Alert',0,'',Format(CT(\"Script.Mod_RefCustomSystemAlarm.2\"),\"<0>\",temp_str1));",
+                        "            IDOne = 0;",
+                        "            temp_str1 = CT(\"Script.Mod_RefCustomSystemAlarm.18\");",
+                        "            FlagCount = FlagCount - 1;",
+                        "        }",
+                        "    }",
+                        "}",
+                        "if(FlagCount == 2) {",
+                        "    if(cd1 == 0) {",
+                        "        if(StarEnemyThreatLevel(PlanetToStar(IdToPlanet(IDOne)),1) == 2) {",
+                        "            cd1 = 15;",
+                        "            CustomEther('Galaxy_Alert',0,'',Format(CT(\"Script.Mod_RefCustomSystemAlarm.3\"),\"<0>\",temp_str1));",
+                        "        }",
+                        "        if(StarEnemyThreatLevel(PlanetToStar(IdToPlanet(IDOne))) == 3) {",
+                        "            CustomEther('Galaxy_Alert',0,'',Format(CT(\"Script.Mod_RefCustomSystemAlarm.2\"),\"<0>\",temp_str1));",
+                        "            IDOne = IDTwo;",
+                        "            temp_str1 = temp_str2;",
+                        "            FlagCount = FlagCount - 1;",
+                        "        }",
+                        "    }",
+                        "    if(cd2 == 0) {",
+                        "        if(StarEnemyThreatLevel(PlanetToStar(IdToPlanet(IDTwo)),1) == 2) {",
+                        "            cd2 = 15;",
+                        "            CustomEther('Galaxy_Alert',0,'',Format(CT(\"Script.Mod_RefCustomSystemAlarm.3\"),\"<0>\",temp_str2));",
+                        "        }",
+                        "        if(StarEnemyThreatLevel(PlanetToStar(IdToPlanet(IDTwo))) == 3) {",
+                        "            CustomEther('Galaxy_Alert',0,'',Format(CT(\"Script.Mod_RefCustomSystemAlarm.2\"),\"<0>\",temp_str2));",
+                        "            IDTwo = IDThree;",
+                        "            temp_str2 = temp_str3;",
+                        "            if(IDTwo == IDOne) {",
+                        "                IDTwo = 0;",
+                        "                temp_str2 = CT(\"Script.Mod_RefCustomSystemAlarm.18\");",
+                        "            }",
+                        "            FlagCount = FlagCount - 1;",
+                        "        }",
+                        "    }",
+                        "}",
+                        "if(FlagCount == 3) {",
+                        "    if(cd1 == 0) {",
+                        "        if(StarEnemyThreatLevel(PlanetToStar(IdToPlanet(IDOne)),1) == 2) {",
+                        "            cd1 = 15;",
+                        "            CustomEther('Galaxy_Alert',0,'',Format(CT(\"Script.Mod_RefCustomSystemAlarm.3\"),\"<0>\",temp_str1));",
+                        "        }",
+                        "        if(StarEnemyThreatLevel(PlanetToStar(IdToPlanet(IDOne))) == 3) {",
+                        "            CustomEther('Galaxy_Alert',0,'',Format(CT(\"Script.Mod_RefCustomSystemAlarm.2\"),\"<0>\",temp_str1));",
+                        "            IDOne = IDThree;",
+                        "            temp_str1 = temp_str3;",
+                        "            FlagCount = FlagCount - 1;",
+                        "        }",
+                        "    }",
+                        "    if(cd2 == 0) {",
+                        "        if(StarEnemyThreatLevel(PlanetToStar(IdToPlanet(IDTwo)),1) == 2) {",
+                        "            cd2 = 15;",
+                        "            CustomEther('Galaxy_Alert',0,'',Format(CT(\"Script.Mod_RefCustomSystemAlarm.3\"),\"<0>\",temp_str2));",
+                        "        }",
+                        "        if(StarEnemyThreatLevel(PlanetToStar(IdToPlanet(IDTwo))) == 3) {",
+                        "            CustomEther('Galaxy_Alert',0,'',Format(CT(\"Script.Mod_RefCustomSystemAlarm.2\"),\"<0>\",temp_str2));",
+                        "            IDTwo = IDThree;",
+                        "            temp_str2 = temp_str3;",
+                        "            if(IDTwo == IDOne) {",
+                        "                IDTwo = 0;",
+                        "                temp_str2 = CT(\"Script.Mod_RefCustomSystemAlarm.18\");",
+                        "            }",
+                        "            FlagCount = FlagCount - 1;",
+                        "        }",
+                        "    }",
+                        "    if(cd3 == 0) {",
+                        "        if(StarEnemyThreatLevel(PlanetToStar(IdToPlanet(IDThree)),1) == 2) {",
+                        "            cd3 = 15;",
+                        "            CustomEther('Galaxy_Alert',0,'',Format(CT(\"Script.Mod_RefCustomSystemAlarm.3\"),\"<0>\",temp_str3));",
+                        "        }",
+                        "        if(StarEnemyThreatLevel(PlanetToStar(IdToPlanet(IDThree))) == 3) {",
+                        "            CustomEther('Galaxy_Alert',0,'',Format(CT(\"Script.Mod_RefCustomSystemAlarm.2\"),\"<0>\",temp_str3));",
+                        "            IDThree = 0;",
+                        "            temp_str3 = CT(\"Script.Mod_RefCustomSystemAlarm.18\");",
+                        "            FlagCount = FlagCount - 1;",
+                        "        }",
+                        "    }",
+                        "}",
+                        "if(cd1 != 0) cd1 = cd1 - 1;",
+                        "if(cd2 != 0) cd2 = cd2 - 1;",
+                        "if(cd3 != 0) cd3 = cd3 - 1;"
+                    ],
+                    "#": 16,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(PlayerBridge()==12) {",
+                        "  if(FlagCount == 0) {",
+                        "      temp_str_main = CT(\"Script.Mod_RefCustomSystemAlarm.24\");",
+                        "  }",
+                        "  if(FlagCount == 1) {",
+                        "      temp_str_main = CT(\"Script.Mod_RefCustomSystemAlarm.23\")+' ' + temp_str1;",
+                        "  }",
+                        "  if(FlagCount == 2) {",
+                        "      temp_str_main = CT(\"Script.Mod_RefCustomSystemAlarm.22\")+' ' + temp_str1 + ' '+CT(\"Script.Mod_RefCustomSystemAlarm.20\")+' ' + temp_str2;",
+                        "  }",
+                        "  if(FlagCount == 3) temp_str_main = CT(\"Script.Mod_RefCustomSystemAlarm.21\")+' ' + temp_str1 + ', ' + temp_str2 + ' '+CT(\"Script.Mod_RefCustomSystemAlarm.20\")+' ' + temp_str3;",
+                        "  AddDialogInject('AlarmDialog',CT(\"Script.Mod_RefCustomSystemAlarm.19\")+' ' + temp_str_main,CT(\"Script.Mod_RefCustomSystemAlarm.4\"),19);",
+                        "}"
+                    ],
+                    "#": 17,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 35,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "temp_dword = GAnswerData;",
+                        "temp_str_local = Name(temp_dword);",
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 36,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 160,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "temp_dword = GAnswerData;",
+                        "temp_str_local = Name(GAnswerData);",
+                        "DChange(3);",
+                        "exit;"
+                    ],
+                    "#": 37,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(FlagCount >= 1) {",
+                        "  DAdd(0);",
+                        "}",
+                        "if(FlagCount == 0) {",
+                        "  DAdd(1);",
+                        "}",
+                        "if(FlagCount >= 2) {",
+                        "  DAdd(2);",
+                        "}",
+                        "if(FlagCount == 1) {",
+                        "  DAdd(3);",
+                        "}",
+                        "if(FlagCount == 3) {",
+                        "  DAdd(4);",
+                        "}",
+                        "if(FlagCount == 2) {",
+                        "  DAdd(5);",
+                        "}"
+                    ],
+                    "#": 38,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(6);"
+                    ],
+                    "#": 39,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i = 0;ConStars(temp_dword) > i;i = i + 1) {",
+                        "    if(ConStar(temp_dword,i) != ShipStatistic(Player(),10)) {",
+                        "        if(StarEnemyThreatLevel(ConStar(temp_dword,i),1) > 1) continue;",
+                        "        InjectAnswer('DialogSystems',Name(ConStar(temp_dword,i)),ConStar(temp_dword,i));",
+                        "    }",
+                        "}",
+                        "InjectAnswer('AlarmDialog',CT(\"Script.Mod_RefCustomSystemAlarm.25\"),0);"
+                    ],
+                    "#": 40,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "InjectAnswer('AlarmDialog',CT(\"Script.Mod_RefCustomSystemAlarm.25\"),0);",
+                        "DAdd(7);"
+                    ],
+                    "#": 41,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i = 0;GalaxySectors() > i;i = i + 1) {",
+                        "    if(!SectorVisible(GalaxySectors(i))) continue;",
+                        "    InjectAnswer('DialogSector',Name(GalaxySectors(i)),GalaxySectors(i));",
+                        "}",
+                        "InjectAnswer('AlarmDialog',CT(\"Script.Mod_RefCustomSystemAlarm.25\"),0);"
+                    ],
+                    "#": 42,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(FlagCount == 1) {",
+                        "    temp_str1 = CT(\"Script.Mod_RefCustomSystemAlarm.18\");",
+                        "    IDOne = 0;",
+                        "    FlagCount = FlagCount - 1;",
+                        "}",
+                        "if(FlagCount == 2) {",
+                        "    temp_str1 = temp_str2;",
+                        "    IDOne = IDThree;",
+                        "    FlagCount = FlagCount - 1;",
+                        "    IDTwo = 0;",
+                        "    temp_str3 = CT(\"Script.Mod_RefCustomSystemAlarm.18\");",
+                        "}",
+                        "if(FlagCount == 3) {",
+                        "    temp_str1 = temp_str3;",
+                        "    IDOne = IDThree;",
+                        "    FlagCount = FlagCount - 1;",
+                        "    IDThree = 0;",
+                        "    temp_str3 = CT(\"Script.Mod_RefCustomSystemAlarm.18\");",
+                        "}",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 43,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 44,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(FlagCount == 2) {",
+                        "    temp_str2 = CT(\"Script.Mod_RefCustomSystemAlarm.18\");",
+                        "    IDTwo = 0;",
+                        "    FlagCount = FlagCount - 1;",
+                        "}",
+                        "else {",
+                        "    temp_str2 = temp_str3;",
+                        "    IDTwo = IDThree;",
+                        "    FlagCount = FlagCount - 1;",
+                        "    IDThree = 0;",
+                        "    temp_str3 = CT(\"Script.Mod_RefCustomSystemAlarm.18\");",
+                        "}",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 45,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 46,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "temp_str3 = CT(\"Script.Mod_RefCustomSystemAlarm.18\");",
+                        "IDThree = 0;",
+                        "FlagCount = FlagCount - 1;",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 47,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 48,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(FlagCount == 0) {",
+                        "    IDOne = Id(StarPlanets(temp_dword,1));",
+                        "}",
+                        "if(FlagCount == 1) {",
+                        "    IDTwo = Id(StarPlanets(temp_dword,1));",
+                        "}",
+                        "if(FlagCount == 2) {",
+                        "    IDThree = Id(StarPlanets(temp_dword,1));",
+                        "}",
+                        "if(FlagCount == 0) {",
+                        "    temp_str1 = temp_str_local;",
+                        "}",
+                        "if(FlagCount == 1) {",
+                        "    temp_str2 = temp_str_local;",
+                        "}",
+                        "if(FlagCount == 2) {",
+                        "    temp_str3 = temp_str_local;",
+                        "}",
+                        "FlagCount = FlagCount + 1;"
+                    ],
+                    "#": 49,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 13
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 12
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 11,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 18
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "temp_str_main",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "temp_str3",
+                    "Pos.x": 210,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "temp_str2",
+                    "Pos.x": 360,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "temp_str1",
+                    "Pos.x": 510,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "FlagCount",
+                    "Pos.x": 660,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "IDOne",
+                    "Pos.x": 810,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "IDTwo",
+                    "Pos.x": 900,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "IDThree",
+                    "Pos.x": 990,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 1110,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "temp_str_local",
+                    "Pos.x": 1200,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "temp_dword",
+                    "Pos.x": 1410,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 19,
+            "End": 35,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 20,
+            "End": 36,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 21,
+            "End": 37,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 22,
+            "End": 38,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 23,
+            "End": 39,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 24,
+            "End": 40,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 41,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 42,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 27,
+            "End": 43,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 28,
+            "End": 44,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 29,
+            "End": 45,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 30,
+            "End": 46,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 31,
+            "End": 47,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 32,
+            "End": 48,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 34,
+            "End": 49,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 13,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 18,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

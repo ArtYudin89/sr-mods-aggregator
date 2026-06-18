@@ -1,0 +1,751 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_ATLPlanetInfo",
+    "ScriptFileOut": "D:\\Mod_ATLPlanetInfo.scr",
+    "ScriptTextOut": "D:\\Mod_ATLPlanetInfo.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "restart",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "<color=136,0,0>Выход</color>",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ATLPlanetInfo.72\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "Выберите способ выбора планеты для показа её ТУ и проектов.",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_ATLPlanetInfo.71\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "Выберите планету из списка планет системы <0>.",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ATLPlanetInfo.79\"),\"<0>\",Name(q)))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "aTLPlanetInfo",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 20
+                },
+                {
+                    "Name": "aStarName",
+                    "Type": "TDialog",
+                    "Pos.x": 210,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 21
+                },
+                {
+                    "Name": "aChooseStar",
+                    "Type": "TDialog",
+                    "Pos.x": 360,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 22
+                },
+                {
+                    "Name": "aChoosePlanet",
+                    "Type": "TDialog",
+                    "Pos.x": 540,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 23
+                },
+                {
+                    "Name": "aAllPlanets",
+                    "Type": "TDialog",
+                    "Pos.x": 750,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 24
+                },
+                {
+                    "Name": "aSearchPlanet",
+                    "Type": "TDialog",
+                    "Pos.x": 930,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 25
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 100,
+                    "StatusTraderMax": 10000,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 0,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 0,
+                    "DistSearch": 2097184,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 15
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 16,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "//этот код был записан в function, чтобы можно было использовать циклы на коде при выборе ответа \"Выбрать все обитаемые планеты\"",
+                        "function MyFunction() {",
+                        "    if (PlanetCurInvention(w)==0) str2=CT(\"Script.Mod_ATLPlanetInfo.19\");",
+                        "    else if (PlanetCurInvention(w)==1) str2=CT(\"Script.Mod_ATLPlanetInfo.18\");",
+                        "    else if (PlanetCurInvention(w)==2) str2=CT(\"Script.Mod_ATLPlanetInfo.17\");",
+                        "    else if (PlanetCurInvention(w)==3) str2=CT(\"Script.Mod_ATLPlanetInfo.16\");",
+                        "    else if (PlanetCurInvention(w)==4) str2=CT(\"Script.Mod_ATLPlanetInfo.15\");",
+                        "    else if (PlanetCurInvention(w)==5) str2=CT(\"Script.Mod_ATLPlanetInfo.14\");",
+                        "    else if (PlanetCurInvention(w)==6) str2=CT(\"Script.Mod_ATLPlanetInfo.13\");",
+                        "    else if (PlanetCurInvention(w)==7) str2=CT(\"Script.Mod_ATLPlanetInfo.64\");",
+                        "\telse if (PlanetCurInvention(w)==8) str2=CT(\"Script.Mod_ATLPlanetInfo.12\");",
+                        "\telse if (PlanetCurInvention(w)==9) str2=CT(\"Script.Mod_ATLPlanetInfo.11\");",
+                        "\telse if (PlanetCurInvention(w)==10) str2=CT(\"Script.Mod_ATLPlanetInfo.10\");",
+                        "\telse if (PlanetCurInvention(w)==11) str2=CT(\"Script.Mod_ATLPlanetInfo.9\");",
+                        "\telse if (PlanetCurInvention(w)==12) str2=CT(\"Script.Mod_ATLPlanetInfo.8\");",
+                        "\telse if (PlanetCurInvention(w)==13) str2=CT(\"Script.Mod_ATLPlanetInfo.7\");",
+                        "\telse if (PlanetCurInvention(w)==14) str2=CT(\"Script.Mod_ATLPlanetInfo.6\");",
+                        "\telse if (PlanetCurInvention(w)==15) str2=CT(\"Script.Mod_ATLPlanetInfo.5\");",
+                        "\telse if (PlanetCurInvention(w)==16) str2=CT(\"Script.Mod_ATLPlanetInfo.4\");",
+                        "\telse if (PlanetCurInvention(w)==17) str2=CT(\"Script.Mod_ATLPlanetInfo.3\");",
+                        "\telse if (PlanetCurInvention(w)==18) str2=CT(\"Script.Mod_ATLPlanetInfo.2\");",
+                        "\telse if (PlanetCurInvention(w)==19) str2=CT(\"Script.Mod_ATLPlanetInfo.1\");",
+                        "\t//Если все проекты исследованы (8 ТУ), то игра ставит текущим исследованием рандомный и изучает его вечно с 101% исследования, если округлить). Т.к. все проекты уже исследованы до макс. 8 ТУ, то ставим текущее исследование неактивным:",
+                        "\tif (PlanetCurInventionPoints(w)>=100) str2=CT(\"Script.Mod_ATLPlanetInfo.96\");",
+                        "\telse str2=str2+Format(CT(\"Script.Mod_ATLPlanetInfo.61\"),\"<0>\",int(PlanetCurInventionPoints(w))); //в противном случае показывается тип текущего проекта и округлённый % исследования",
+                        "",
+                        "\ttlinfo=Format(CT(\"Script.Mod_ATLPlanetInfo.104\"),\"<0>\",Name(w),\"<1>\",Name(PlanetToStar(w)),\"<2>\",PlanetInventionLevel(w,7),\"<3>\",str2);",
+                        "\t//Если исследование проекта конкретного типа оборудования достигло максимального 8 ТУ, то оно не будет отображаться на инфошке",
+                        "\tif (PlanetInventionLevel(w,0)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.43\"),\"<0>\",PlanetInventionLevel(w,0));",
+                        "\tif (PlanetInventionLevel(w,1)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.42\"),\"<0>\",PlanetInventionLevel(w,1));",
+                        "\tif (PlanetInventionLevel(w,2)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.41\"),\"<0>\",PlanetInventionLevel(w,2));",
+                        "\tif (PlanetInventionLevel(w,3)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.40\"),\"<0>\",PlanetInventionLevel(w,3));",
+                        "\tif (PlanetInventionLevel(w,4)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.39\"),\"<0>\",PlanetInventionLevel(w,4));",
+                        "\tif (PlanetInventionLevel(w,5)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.38\"),\"<0>\",PlanetInventionLevel(w,5));",
+                        "\tif (PlanetInventionLevel(w,6)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.37\"),\"<0>\",PlanetInventionLevel(w,6));",
+                        "\t//Проверка каждого проекта исследования оборудования на ТУ 8",
+                        "\tj=0;",
+                        "\tfor (i=0;i<7;i=i+1)",
+                        "\t{",
+                        "\t\tif (PlanetInventionLevel(w,i)==8) j=j+1; //записывается число проектов типов оборудования с 8 ТУ",
+                        "\t}",
+                        "\tif (j==7) tlinfo=tlinfo+CT(\"Script.Mod_ATLPlanetInfo.52\"); //если все проекты типов оборудования достигли 8 ТУ, то все они исследованы",
+                        "\t//Если исследование проекта конкретного оружия достигло максимального 8 ТУ, то оно не будет отображаться на инфошке",
+                        "\ttlinfo=tlinfo+CT(\"Script.Mod_ATLPlanetInfo.68\");",
+                        "\tif (PlanetInventionLevel(w,8)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.35\"),\"<0>\",PlanetInventionLevel(w,8));",
+                        "\tif (PlanetInventionLevel(w,9)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.34\"),\"<0>\",PlanetInventionLevel(w,9));",
+                        "\tif (PlanetInventionLevel(w,10)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.33\"),\"<0>\",PlanetInventionLevel(w,10));",
+                        "\tif (PlanetInventionLevel(w,11)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.32\"),\"<0>\",PlanetInventionLevel(w,11));",
+                        "\tif (PlanetInventionLevel(w,12)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.31\"),\"<0>\",PlanetInventionLevel(w,12));",
+                        "\tif (PlanetInventionLevel(w,13)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.30\"),\"<0>\",PlanetInventionLevel(w,13));",
+                        "\tif (PlanetInventionLevel(w,14)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.29\"),\"<0>\",PlanetInventionLevel(w,14));",
+                        "\tif (PlanetInventionLevel(w,15)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.28\"),\"<0>\",PlanetInventionLevel(w,15));",
+                        "\tif (PlanetInventionLevel(w,16)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.27\"),\"<0>\",PlanetInventionLevel(w,16));",
+                        "\tif (PlanetInventionLevel(w,17)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.26\"),\"<0>\",PlanetInventionLevel(w,17));",
+                        "\tif (PlanetInventionLevel(w,18)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.25\"),\"<0>\",PlanetInventionLevel(w,18));",
+                        "\tif (PlanetInventionLevel(w,19)<8) tlinfo=tlinfo+Format(CT(\"Script.Mod_ATLPlanetInfo.24\"),\"<0>\",PlanetInventionLevel(w,19));",
+                        "\t//Проверка каждого проекта исследования оружий на ТУ 8",
+                        "\tj=0;",
+                        "\tfor (i=8;i<20;i=i+1)",
+                        "\t{",
+                        "\t\tif (PlanetInventionLevel(w,i)==8) j=j+1; //записывается число проектов оружий с 8 ТУ",
+                        "\t}",
+                        "\tif (j==12) tlinfo=tlinfo+CT(\"Script.Mod_ATLPlanetInfo.51\"); //если все проекты оружий достигли 8 ТУ, то все они исследованы",
+                        "",
+                        "\t//возвращает текущую дату на момент вызова инфошки для того, чтобы через n кол-во ходов сравнить изменения",
+                        "\ttlinfo=tlinfo+CT(\"Script.Mod_ATLPlanetInfo.58\")+GameDateTxtByTurn(CurTurn())+CT(\"Script.Mod_ATLPlanetInfo.45\");",
+                        "",
+                        "\t//Т.к. Ether с указателем на планету не хочет появляться, если планета не находится в системе с игроком или игрок вызвал эзер, находясь на планете/базе, то сделаем проверку:",
+                        "\tif (PlanetToStar(w)==ShipStar(Player()) && ShipInNormalSpace(Player())) CustomEther('Research',7,'',tlinfo,w); //если планета находится в системе с игроком и игрок находится в обычном космосе, то выводится Ether с указателем на эту планету",
+                        "\telse CustomEther('Research',7,'',tlinfo); //в противном случае без указателя",
+                        "",
+                        "\t//сброс переменных на случай, если новые данные запишутся вместе со старыми",
+                        "\tstr2=CT(\"Script.Mod_ATLPlanetInfo.21\");",
+                        "\ttlinfo=CT(\"Script.Mod_ATLPlanetInfo.21\");",
+                        "}"
+                    ],
+                    "#": 17,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(IsScriptActive('Mod_ExpPilotBridge')) {",
+                        "  if(PlayerBridge()==10) {",
+                        "    AddDialogInject('aTLPlanetInfo','',CT(\"Script.Mod_ATLPlanetInfo.0\"),3);",
+                        "  }",
+                        "}",
+                        "if(!IsScriptActive('Mod_ExpPilotBridge')) {",
+                        "  if(GetShipRuins(Player()) || GetShipPlanet(Player())) {",
+                        "    AddDialogInject('aTLPlanetInfo','',CT(\"Script.Mod_ATLPlanetInfo.0\"),3);",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 18,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 29,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "find=CT(\"Script.Mod_ATLPlanetInfo.21\");",
+                        "str1=TextBox(CT(\"Script.Mod_ATLPlanetInfo.105\"));",
+                        "if (str1!='')",
+                        "{",
+                        "    for(i=0;i<GalaxyStars();i=i+1) //перебирает все системы в галактике",
+                        "    {",
+                        "        star=GalaxyStar(i); //система, в которой сейчас воспроизводится поиск",
+                        "        if (DeleteTags('<color=,,>'+DeleteTags(StarName(star))+'</color>')==str1) //если название системы соответствует тому, что написал игрок в боксе, то возвращает систему для дальнейших операций",
+                        "        {",
+                        "            find=1; //система найдена",
+                        "            q=star; //возвращает систему для дальнейших операций",
+                        "        }",
+                        "    }",
+                        "    if (!find)",
+                        "    {",
+                        "        Sound('Sound.DelMsg');",
+                        "        MessageBox(Format('Система <0> не найдена. Вы уверены, что правильно ввели название?',\"<0>\",str1),34);",
+                        "    }",
+                        "    else Sound('Sound.NewMsg');",
+                        "}",
+                        "if(find==1) {",
+                        "  DChange(1);",
+                        "  exit;",
+                        "}",
+                        "if(str1='' || !find ) {",
+                        "  DChange(0);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 30,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 190,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "q=GAnswerData;",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 31,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "w=GAnswerData;",
+                        "MyFunction();",
+                        "Sound('Sound.NewMsg');",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 32,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 520,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(h=0;h<StarPlanets(q);h=h+1)",
+                        "{",
+                        "    w=StarPlanets(q,h);",
+                        "    if (PlanetOwner(w)!=6)",
+                        "    {",
+                        "        MyFunction();",
+                        "    }",
+                        "}",
+                        "Sound('Sound.NewMsg');",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 33,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "find=CT(\"Script.Mod_ATLPlanetInfo.21\");",
+                        "str1=TextBox(CT(\"Script.Mod_ATLPlanetInfo.106\"));",
+                        "if (str1!='')",
+                        "{",
+                        "    for(j=0;j<GalaxyStars();j=j+1) //перебирает все системы в галактике",
+                        "    {",
+                        "        star=GalaxyStar(j); //система, в которой сейчас воспроизводится поиск",
+                        "        for (i=0;i<StarPlanets(star);i=i+1) //перебирает все планеты в системе",
+                        "        {",
+                        "            planet=StarPlanets(star,i);",
+                        "            if (DeleteTags('<color=,,>'+DeleteTags(PlanetName(planet))+'</color>')==str1) //если название планеты соответствует тому, что написал игрок в боксе, то возвращает планету для дальнейших операций",
+                        "            {",
+                        "                find=1; //планета найдена",
+                        "                w=planet; //возвращает планету для дальнейших операций",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "    if (!find)",
+                        "    {",
+                        "        Sound('Sound.DelMsg');",
+                        "        MessageBox(Format('Планета <0> не найдена. Вы уверены, что правильно ввели название?',\"<0>\",str1),34);",
+                        "    }",
+                        "    else { Sound('Sound.NewMsg'); MyFunction(); }",
+                        "}",
+                        "if(str1='' || !find ) {",
+                        "  DChange(0);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 34,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 910,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(0);",
+                        "InjectAnswer('aSearchPlanet',CT(\"Script.Mod_ATLPlanetInfo.73\"),0);",
+                        "InjectAnswer('aStarName',CT(\"Script.Mod_ATLPlanetInfo.95\"),1);",
+                        "InjectAnswer('aStarName',CT(\"Script.Mod_ATLPlanetInfo.84\"),2);",
+                        "for(i=0;i<GalaxyStars();i=i+1)",
+                        "{",
+                        "    star=StarNearbyStars(ShipStar(Player()),i);",
+                        "    if (i==0) InjectAnswer('aChooseStar',Name(star)+CT(\"Script.Mod_ATLPlanetInfo.91\"),star);",
+                        "    else InjectAnswer('aChooseStar',Name(star),star);",
+                        "}"
+                    ],
+                    "#": 35,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(0);",
+                        "InjectAnswer('aTLPlanetInfo',CT(\"Script.Mod_ATLPlanetInfo.77\"),0);",
+                        "k=0;",
+                        "for(i=0;i<StarPlanets(q);i=i+1)",
+                        "{",
+                        "\tw=StarPlanets(q,i);",
+                        "    if (PlanetOwner(w)!=6) k=k+1;",
+                        "}",
+                        "if (k>1) InjectAnswer('aAllPlanets',CT(\"Script.Mod_ATLPlanetInfo.90\"),1);",
+                        "InjectAnswer('aChoosePlanet',CT(\"Script.Mod_ATLPlanetInfo.94\"),2);",
+                        "for(i=0;i<StarPlanets(q);i=i+1)",
+                        "{",
+                        "\tw=StarPlanets(q,i);",
+                        "    if (PlanetOwner(w)!=6) InjectAnswer('aChoosePlanet',Name(w),w);",
+                        "}"
+                    ],
+                    "#": 36,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 14
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 13
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 12,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 19
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "q",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "star",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "planet",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "str1",
+                    "Pos.x": 270,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "find",
+                    "Pos.x": 360,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "str2",
+                    "Pos.x": 450,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "j",
+                    "Pos.x": 540,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 630,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tlinfo",
+                    "Pos.x": 720,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "w",
+                    "Pos.x": 810,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "h",
+                    "Pos.x": 900,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "k",
+                    "Pos.x": 990,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 11,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 20,
+            "End": 29,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 21,
+            "End": 30,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 22,
+            "End": 31,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 23,
+            "End": 32,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 24,
+            "End": 33,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 34,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 35,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 27,
+            "End": 36,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 12,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 12,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 15,
+            "End": 14,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 15,
+            "End": 19,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

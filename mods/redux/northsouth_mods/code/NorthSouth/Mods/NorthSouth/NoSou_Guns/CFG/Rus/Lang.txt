@@ -1,0 +1,62 @@
+Items ^{
+    Weapon ^{
+        CustomWeapon ~{
+            StatsVersion ^{
+                NoSou_Guns=27.04.2025
+            }
+            AeonicBlaster ~{
+                BaseGun=Industrial_Laser
+                MinDamage=25
+                MaxDamage=35
+                DamageSet=Energy,ReduceEngine
+                ShotType=Splash
+                Speed=50
+                AverageRadius=300
+                SecondaryDamageRadius=100
+                MissileRadius=0
+                MissileMinSpeed=0
+                MissileMaxSpeed=0
+                MissileChanceToBeHit=0
+                mWeaponDamage=1.00,1.10,1.20,1.30,1.50,1.70,2.00,2.50
+                ShotsPerTurn=2
+                ArcadeType=Flow_Blaster
+                MiningFactor=2
+                kCost=125
+                AverageSize=125
+                TechLevel=5
+                InventTechLevel=Wave_Phaser
+                StoreAvailability=CoalitionOnly
+                ShotEffectPath=Weapon.0
+                ShotEffectPalette=0
+                SplashEffectPath=Weapon.0
+                MissileExplosionEffectPath=
+            }
+        }
+        Name ^{
+            AeonicBlaster=Эонический бластер
+        }
+        OriginalWeaponType ~{
+            Industrial_Laser=1
+            Fragmentation_Cannon=2
+            Flux=3
+            Missile_Launcher=4
+            Treton=5
+            Wave_Phaser=6
+            Flow_Blaster=7
+            Electronic_Cutter=8
+            Multiresonator=9
+            Atomic_Vision=10
+            Disintegrator=11
+            Turbogravitron=12
+            IMHO-9000=13
+            Vertix=14
+            Torpedo_Tube=15
+            Esodapher=16
+            Caphasitor=17
+            Lirecron=18
+        }
+        Text ^{
+            AeonicBlaster=Оружие <clr>энергетического<clrEnd> класса, использующее принцип плавления. За счёт высокох температур лазерных частиц с добавлением эонического эффекта газ плавится, превращаясь в плазму. Благодаря идеально подобранному углу выстрела сохраняет половину минералов с астероида. При столкновении с объектом плазма разлетается на мелкие куски в радиусе <clr>100 едениц<clrEnd>. Эти частички прицепляются к объекту и тянут в разные стороны, затрудняя работу <clr>двигателя<clrEnd> и постепенно <clr>ломая<clrEnd> его. Совершает <CntAttacks>  выстрелов по (<MinDamage>-<MaxDamage>)<Bonus> ед. урона на расстоянии до <Radius>.
+        }
+    }
+}

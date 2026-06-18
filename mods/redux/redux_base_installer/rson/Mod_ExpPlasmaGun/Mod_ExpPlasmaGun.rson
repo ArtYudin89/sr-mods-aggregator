@@ -1,0 +1,264 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_ExpPlasmaGun",
+    "ScriptFileOut": "D:\\Mod_ExpPlasmaGun.scr",
+    "ScriptTextOut": "D:\\Mod_ExpPlasmaGun.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [],
+            "DialogMessages": [],
+            "Dialogs": [],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 100,
+                    "StatusTraderMax": 10000,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 0,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 0,
+                    "DistSearch": 2097184,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 6
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 7,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 510
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "InventPlasmaGun();",
+                        "gunUpdateCheck=CT('Items.Weapon.CustomWeapon.StatsVersion.ExpPlasmaGun');",
+                        "",
+                        "//Функция для объявления и обновления кастомных орудий",
+                        "function InventPlasmaGun()",
+                        "{",
+                        "    tstr='Items.Weapon.CustomWeapon.';",
+                        "    //Прописываем пушку/сбрасываем уже прописанную пушку до уровня базовой из оригинальной игры",
+                        "    tdwd=InventNewCustomWeapon('PlasmaGun',t_Weapon1-1+CT('Items.Weapon.OriginalWeaponType.'+CT(tstr+'PlasmaGun.BaseGun')));",
+                        "    //Задаём характеристики оружия",
+                        "    SetCustomWeaponShotData(tdwd,CT(tstr+'PlasmaGun.ShotType'),CT(tstr+'PlasmaGun.Speed'),CT(tstr+'PlasmaGun.AverageRadius'),CT(tstr+'PlasmaGun.SecondaryDamageRadius'),CT(tstr+'PlasmaGun.MiningFactor'),CT(tstr+'PlasmaGun.ShotsPerTurn'));",
+                        "    SetCustomWeaponDamageData(tdwd,CT(tstr+'PlasmaGun.MinDamage'),CT(tstr+'PlasmaGun.MaxDamage'),CT(tstr+'PlasmaGun.DamageSet'),CT(tstr+'PlasmaGun.mWeaponDamage'));",
+                        "    SetCustomMissileWeaponStats(tdwd,CT(tstr+'PlasmaGun.MissileRadius'),CT(tstr+'PlasmaGun.MissileMaxSpeed'),CT(tstr+'PlasmaGun.MissileMinSpeed'),CT(tstr+'PlasmaGun.MissileChanceToBeHit'));",
+                        "    SetCustomWeaponPrimaryData(tdwd,CT(tstr+'PlasmaGun.TechLevel'),t_Weapon1-1+CT('Items.Weapon.OriginalWeaponType.'+CT(tstr+'PlasmaGun.InventTechLevel')),t_Weapon1-1+CT('Items.Weapon.OriginalWeaponType.'+CT(tstr+'PlasmaGun.ArcadeType')));",
+                        "    SetCustomWeaponSizeAndCost(tdwd,CT(tstr+'PlasmaGun.kCost'),CT(tstr+'PlasmaGun.AverageSize'));",
+                        "    SetCustomWeaponAvailability(tdwd,CT(tstr+'PlasmaGun.StoreAvailability'));",
+                        "    SetCustomWeaponSE(tdwd,CT(tstr+'PlasmaGun.ShotEffectPath'),CT(tstr+'PlasmaGun.SplashEffectPath'),CT(tstr+'PlasmaGun.MissileExplosionEffectPath'),CT(tstr+'PlasmaGun.ShotEffectPalette'));",
+                        "}"
+                    ],
+                    "#": 8,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 510
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(!ShipIsTakeoff(Player())) {",
+                        "  //Автоматическое обновление характеристик плазмогана",
+                        "  //Срабатывает, только если параметр StatsVersion для ExpPlasmaGun был изменён",
+                        "  if(gunUpdateCheck!=CT('Items.Weapon.CustomWeapon.StatsVersion.ExpPlasmaGun'))",
+                        "  {",
+                        "      InventPlasmaGun();",
+                        "      gunUpdateCheck=CT('Items.Weapon.CustomWeapon.StatsVersion.ExpPlasmaGun');",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 9,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 510
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 5
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 4
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 3,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 10
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "tdwd",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "gunUpdateCheck",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tstr",
+                    "Pos.x": 300,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 4,
+            "End": 3,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 5,
+            "End": 3,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 6,
+            "End": 5,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 6,
+            "End": 10,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

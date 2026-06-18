@@ -1,0 +1,68 @@
+Items ^{
+    Weapon ^{
+        CustomWeapon ~{
+            StatsVersion ^{
+                EvoMabokit=05.05.25
+            }
+            Mabokit ~{
+                BaseGun=Missile_Launcher
+                MinDamage=5
+                MaxDamage=7
+                DamageSet=Missile,Shock
+                ShotType=Missile2
+                Speed=20
+                AverageRadius=500
+                SecondaryDamageRadius=100
+                MissileRadius=800
+                MissileMinSpeed=700
+                MissileMaxSpeed=900
+                MissileChanceToBeHit=70
+                mWeaponDamage=1.00,1.15,1.40,1.55,1.80,1.95,2.20,2.45
+                ShotsPerTurn=1
+                ArcadeType=Missile_Launcher
+                MiningFactor=2
+                kCost=2.5
+                AverageSize=20
+                TechLevel=2
+                InventTechLevel=Industrial_Laser
+                StoreAvailability=Free
+                ShotEffectPath=Weapon.3
+                ShotEffectPalette=33
+                SplashEffectPath=Weapon.NoGraph
+                MissileExplosionEffectPath=Weapon.MissileHit
+            }
+        }
+        Missile ^{
+            Mabokit ^{
+                Name=Снаряд
+                Text=Магнитный самонаводящийся снаряд
+            }
+        }
+        Name ^{
+            Mabokit=МаБоКиТ-79
+        }
+        OriginalWeaponType ~{
+            Industrial_Laser=1
+            Fragmentation_Cannon=2
+            Flux=3
+            Missile_Launcher=4
+            Treton=5
+            Wave_Phaser=6
+            Flow_Blaster=7
+            Electronic_Cutter=8
+            Multiresonator=9
+            Atomic_Vision=10
+            Disintegrator=11
+            Turbogravitron=12
+            IMHO-9000=13
+            Vertix=14
+            Torpedo_Tube=15
+            Esodapher=16
+            Caphasitor=17
+            Lirecron=18
+        }
+        Text ^{
+            Mabokit=Поражает цель магнитными самонаводящимися шаровыми снарядами, наносящими <CntShots>x(<MinDamage>-<MaxDamage>)<Bonus> ед. урона цели и окружающим её объектам.<br>Количество залпов: <Count>/<MaxCount> шт.
+        }
+    }
+}

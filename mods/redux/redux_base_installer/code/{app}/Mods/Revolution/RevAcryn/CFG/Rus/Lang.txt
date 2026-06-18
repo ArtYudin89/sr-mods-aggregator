@@ -1,0 +1,960 @@
+ActCodeBlocksList ^{
+    RevAcrynAssemblyDroidActCode ^{
+        00=[t_OnItemEquip,t_OnItemDeEquip,t_OnItemDestroy,t_OnStep|0]
+        01=if(ScriptItemActionType(t_OnStep, 0))
+        02 ^{
+            01=dword item = CurItem();
+            02=dword ship = ScriptItemActShip();
+            03=if(!ship) exit;
+            04=if(!item) exit;
+            05=if(!ItemIsInUse(item)) exit;
+            06=if(ItemIsBroken(item)) exit;
+            07=if(ObjectType(ship) != 4)
+            08 ^{
+                01=if(ShipType(ship) == 'DefPlatform') exit;
+                02=if(ShipType(ship) == 'Dreadnought') exit;
+                03=if(ShipType(ship) == 'DreadnoughtFlagship') exit;
+                04=if(ShipType(ship) == 'WarriorBigFlagship') exit;
+                05=if(ShipType(ship) == 'NisperBoss') exit;
+                06=if(ShipType(ship) == 'NisperRuins') exit;
+                07=if(ShipType(ship) == 'Warrior' && ShipSubType(ship)) exit;
+                08=for(int i = 1; i <= ShipCntWeapon(ship); i = i + 1)
+                09 ^{
+                    01=WeaponTarget(ShipWeapon(ship, i), 0);
+                }
+            }
+        }
+        03=else if(ScriptItemActionType(t_OnItemEquip))
+        04 ^{
+            01=item = CurItem();
+            02=dword star = ShipStar(Player());
+            03=int check = 0;
+            04=for(int j = 0; j < ShipItems(Player()); j = j + 1)
+            05 ^{
+                01=dword temp_item = ShipItems(Player(), j);
+                02=if(temp_item == item && FindBonusByNameInCfg(EqSpecial(ShipEqInSlot(Player(),t_Hull))) != '490' && FindBonusByNameInCfg(EqSpecial(ShipEqInSlot(Player(),t_Hull))) != 'Keller_Newlomatelebala')
+                03 ^{
+                    01=check = 1;
+                    02=break;
+                }
+            }
+            06=if(!check)
+            07 ^{
+                01=for(j = 0; j < StarRuins(star); j = j + 1)
+                02 ^{
+                    01=ship = StarRuins(star, j);
+                    02=for(int k = 0; k < ShipItems(ship); k = k + 1)
+                    03 ^{
+                        01=temp_item = ShipItems(ship, k);
+                        02=if(temp_item == item)
+                        03 ^{
+                            01=check = 2;
+                            02=break;
+                        }
+                    }
+                }
+            }
+            08=if(!check)
+            09 ^{
+                01=for(j = 0; j < StarShips(star); j = j + 1)
+                02 ^{
+                    01=ship = StarShips(star, j);
+                    02=for(k = 0; k < ShipItems(ship); k = k + 1)
+                    03 ^{
+                        01=temp_item = ShipItems(ship, k);
+                        02=if(temp_item == item)
+                        03 ^{
+                            01=if(ShipType(ship) == 'Dreadnought') check = 2;
+                            02=else if(ShipType(ship) == 'DreadnoughtFlagship') check = 2;
+                            03=else if(ShipType(ship) == 'WarriorBigFlagship') check = 2;
+                            04=else if(ShipType(ship) == 'NisperBoss') check = 2;
+                            05=else if(ShipType(ship) == 'NisperRuins') check = 2;
+                            06=else if(ShipType(ship) == 'Warrior' && ShipSubType(ship)) check = 2;
+                            07=else if(ShipType(ship) == 'DefPlatform') check = 2;
+                            08=else check = 3;
+                            09=break;
+                        }
+                    }
+                }
+            }
+            10=if(check != 2)
+            11 ^{
+                01=if(EqModule(item))
+                02 ^{
+                    01=int mod = EqModule(item);
+                    02=EqModule(item, -1);
+                    03=str name = Name(item);
+                    04=EqModule(item, mod);
+                }
+                03=else name = Name(item);
+                04=EqSpecial(item, -1);
+                05=EqSpecial(item, FindBonusByCustomTag('AssemblyDroidNerfed'));
+                06=SetName(item, name);
+            }
+        }
+        05=else if(ScriptItemActionType(t_OnItemDeEquip))
+        06 ^{
+            01=item = CurItem();
+            02=if(EqModule(item))
+            03 ^{
+                01=mod = EqModule(item);
+                02=EqModule(item, -1);
+                03=name = Name(item);
+                04=EqModule(item, mod);
+            }
+            04=else name = Name(item);
+            05=EqSpecial(item, -1);
+            06=EqSpecial(item, FindBonusByCustomTag('AssemblyDroidNormal'));
+            07=SetName(item, name);
+        }
+        07=else if(ScriptItemActionType(t_OnItemDestroy))
+        08 ^{
+            01=toAddAssemblyDroids = toAddAssemblyDroids + 1;
+        }
+    }
+}
+Items ^{
+    RepairRobot ^{
+        AssemblyDroidType ^{
+            1=Лигеронирный
+            2=Циницотронный
+            3=Реконтрольный
+            4=Генерограммный
+            5=Наноканифольный
+            6=Аргоноимпульсный
+            7=Рентгенотронный
+            8=Ультрабозоновый
+        }
+    }
+}
+MicroModuls ^{
+    498 ^{
+        CustomTag=AkrinAmplifier
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        Name=Акринатор
+        Special=1
+    }
+    RevAcryn_AssemblyDroidNerfed ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=300
+        CustomTag=AssemblyDroidNerfed
+        Equipments=Droid
+        Fragility=400
+        KindGraph=AssemblyDroid
+        LockedAcryn=3
+        Name=<color=49,239,255> сборочный дроид</color>
+        NonSearchable=2
+        Owner=Peleng,People,Fei,Gaal
+        Priority=10
+        ScriptItemIgnore=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Специализированный сборочный дроид, часто применяемый при постройке космических станций. Вопреки своей конструкции и вшитой программе, способен работать в качестве </color><color=255,240,100>ремонтного</color><color=248,252,248> даже на обычных космических кораблях, однако мало какой капитан захочет завести себе такого "друга".</color>
+        Text=<clr><clrEnd>
+        Text=<color=248,252,248>Прожорливость сборочного дроида в работе </color><color=255,240,100>обесточивает корабль</color><color=248,252,248> практически полностью, оставляя всем прочим системам лишь жалкие крохи для поддержания самого базового функционала. Но хуже всего приходится </color><color=255,240,100>орудийным установкам</color><color=248,252,248>, которые дроид (в диагностических целях) </color><color=255,240,100>отключает целиком</color><color=248,252,248>. Сам же дроид от экстремальных условий работы в открытом космосе пребывает далеко "не в восторге", а потому выходит из строя гораздо раньше намеченного срока.</color>
+        Text=<clr><clrEnd>
+        Text=<color=248,252,248>Впрочем, энергосистемы </color><color=255,240,100>крупных станций</color><color=248,252,248> с энергоёмкостью сборочного дроида<br>справляются без проблем, а потому в привычной среде он способен проявлять<br>себя исключительно с лучшей стороны.</color>
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <color=250,20,20>отключено</color>
+        Text=Урон осколочного оружия: <color=250,20,20>отключено</color>
+        Text=Урон ракетного оружия: <color=250,20,20>отключено</color>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Мощность захвата: <bonHook> т.
+        Text=Дальность действия захвата: <bonHookRadius> млн км
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=<clr><clrEnd>
+        Text=<color=255,240,100>Нестандартное оборудование несовместимо с микромодулями и не может быть улучшено на научной базе.</color>
+        bonDef=-30
+        bonHook=-100
+        bonHookRadius=-50
+        bonJump=-30
+        bonRadar=-1500
+        bonScan=-30
+        bonSpeed=-1200
+    }
+    RevAcryn_AssemblyDroidNormal ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=300
+        CustomTag=AssemblyDroidNormal
+        Equipments=Droid
+        Fragility=100
+        KindGraph=AssemblyDroid
+        LockedAcryn=3
+        Name=<color=49,239,255> сборочный дроид</color>
+        NonSearchable=2
+        Owner=Peleng,People,Fei,Gaal
+        Priority=10
+        ScriptItemIgnore=1
+        BonAIValue=10000
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Специализированный сборочный дроид, часто применяемый при постройке космических станций. Вопреки своей конструкции и вшитой программе, способен работать в качестве </color><color=255,240,100>ремонтного</color><color=248,252,248> даже на обычных космических кораблях, однако мало какой капитан захочет завести себе такого "друга".</color>
+        Text=<clr><clrEnd>
+        Text=<color=248,252,248>Прожорливость сборочного дроида в работе </color><color=255,240,100>обесточивает корабль</color><color=248,252,248> практически полностью, оставляя всем прочим системам лишь жалкие крохи для поддержания самого базового функционала. Но хуже всего приходится </color><color=255,240,100>орудийным установкам</color><color=248,252,248>, которые дроид (в диагностических целях) </color><color=255,240,100>отключает целиком</color><color=248,252,248>. Сам же дроид от экстремальных условий работы в открытом космосе пребывает далеко "не в восторге", а потому выходит из строя гораздо<br>раньше намеченного срока.</color>
+        Text=<clr><clrEnd>
+        Text=<color=248,252,248>Впрочем, энергосистемы </color><color=255,240,100>крупных станций</color><color=248,252,248> с энергоёмкостью сборочного дроида справляются без проблем, а потому в привычной среде он способен проявлять себя исключительно с лучшей стороны.</color>
+        Text=<clr><clrEnd>
+        Text=<color=255,240,100>Нестандартное оборудование несовместимо с микромодулями и не может быть улучшено на научной базе.</color>
+    }
+    RevAcryn_BattleDroid5 ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=250
+        CustomTag=RevAcryn_BattleDroid5
+        Equipments=Droid
+        Fragility=45
+        KindGraph=BattleDroid
+        LockedAcryn=3
+        Name=</color>Оберзатворный боевой дроид
+        NonSearchable=2
+        Owner=Maloc,Peleng,People,PirateClan
+        Priority=10
+        Size=175
+        Special=1
+        Text=<color=248,252,248>Прочные и эффективные узлы данного робота обеспечивают ему отличную живучесть, однако потребляемая в бою энергия отрицательно сказывается на работе всего остального бортового оборудования. Корпус робота покрыт надёжной бронёй, а сам он запрограммирован прикрывать корабль от огня противника собственным "телом".</color>
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Мощность захвата: <bonHook> т.
+        Text=Дальность действия захвата: <bonHookRadius> млн км
+        Text=<clr><clrEnd>
+        Text=<color=255,240,100>Нестандартное оборудование несовместимо с микромодулями и не может быть улучшено на научной базе.</color>
+        TextReplace=<color=248,252,248>Восстановленная по старым схемам особая модель дроида, представляющая из себя не ремонтный девайс, но внешнюю независимую боевую платформу.</color>
+        bonDroid=-500000000
+        bonHook=-25
+        bonHookRadius=-20
+        bonHull=4
+        bonJump=-20
+        bonRadar=-520
+        bonScan=-12
+        bonSpeed=-400
+        bonWEnergy=50
+        bonWMissile=37
+        bonWRadius=30
+        bonWSplinter=50
+    }
+    RevAcryn_BattleDroid6 ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=250
+        CustomTag=RevAcryn_BattleDroid6
+        Equipments=Droid
+        Fragility=45
+        KindGraph=BattleDroid
+        LockedAcryn=3
+        Name=</color>Дальноствольный боевой дроид
+        NonSearchable=2
+        Owner=Maloc,Peleng,People,PirateClan
+        Priority=10
+        Size=175
+        Special=1
+        Text=<color=248,252,248>Прочные и эффективные узлы данного робота обеспечивают ему отличную живучесть, однако потребляемая в бою энергия отрицательно сказывается на работе всего остального бортового оборудования. Корпус робота покрыт надёжной бронёй, а сам он запрограммирован прикрывать корабль от огня противника собственным "телом".</color>
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Мощность захвата: <bonHook> т.
+        Text=Дальность действия захвата: <bonHookRadius> млн км
+        Text=Навык точности: <bonSkill1>
+        Text=<clr><clrEnd>
+        Text=<color=255,240,100>Нестандартное оборудование несовместимо с микромодулями и не может быть улучшено на научной базе.</color>
+        TextReplace=<color=248,252,248>Восстановленная по старым схемам особая модель дроида, представляющая из себя не ремонтный девайс, но внешнюю независимую боевую платформу.</color>
+        bonDroid=-500000000
+        bonHook=-25
+        bonHookRadius=-20
+        bonHull=4
+        bonJump=-10
+        bonRadar=-1500
+        bonScan=-8
+        bonSpeed=-200
+        bonSkill1=5
+        bonWEnergy=20
+        bonWMissile=20
+        bonWRadius=85
+        bonWSplinter=20
+    }
+    RevAcryn_BattleDroid7 ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=250
+        CustomTag=RevAcryn_BattleDroid7
+        Equipments=Droid
+        Fragility=45
+        KindGraph=BattleDroid
+        LockedAcryn=3
+        Name=</color>Бронелитовый боевой дроид
+        NonSearchable=2
+        Owner=Maloc,Peleng,People,PirateClan
+        Priority=10
+        Size=175
+        Special=1
+        Text=<color=248,252,248>Прочные и эффективные узлы данного робота обеспечивают ему отличную живучесть, однако потребляемая в бою энергия отрицательно сказывается на работе всего остального бортового оборудования. Корпус робота покрыт надёжной бронёй, а сам он запрограммирован прикрывать корабль от огня противника собственным "телом".</color>
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Мощность захвата: <bonHook> т.
+        Text=Дальность действия захвата: <bonHookRadius> млн км
+        Text=Скорость притягивания захватом: <bonHookMaxSpeed>
+        Text=Поглощение урона астероидов: <bonResistAsteroid><clr>%<clrEnd>
+        Text=<clr><clrEnd>
+        Text=<color=255,240,100>Нестандартное оборудование несовместимо с микромодулями и не может быть улучшено на научной базе.</color>
+        bonDroid=-25
+        bonHook=-120
+        bonHookRadius=-65
+        bonHookMaxSpeed=-3
+        bonHookMinSpeed=-3
+        bonHull=18
+        bonResistAsteroid=20
+        bonJump=-10
+        bonRadar=-520
+        bonScan=-5
+        bonSpeed=-150
+        bonWEnergy=12
+        bonWMissile=16
+        bonWRadius=50
+        bonWSplinter=16
+    }
+    RevAcryn_BattleDroid8 ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=250
+        CustomTag=RevAcryn_BattleDroid8
+        Equipments=Droid
+        Fragility=45
+        KindGraph=BattleDroid
+        LockedAcryn=3
+        Name=</color>Заградительный боевой дроид
+        NonSearchable=2
+        Owner=Maloc,Peleng,People,PirateClan
+        Priority=10
+        Size=175
+        Special=1
+        Text=<color=248,252,248>Прочные и эффективные узлы данного робота обеспечивают ему отличную живучесть, однако потребляемая в бою энергия отрицательно сказывается на работе всего остального бортового оборудования. Корпус робота покрыт надёжной бронёй, а сам он запрограммирован прикрывать корабль от огня противника собственным "телом". Кроме того, мощный накопитель энергии, входящий в интерференцию с защитным полем, позволяет сделать корабль почти неуязвимым к мощным ЭМ-импульсам.</color>
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Мощность захвата: <bonHook> т.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Дальность действия захвата: <bonHookRadius> млн км
+        Text=<clr><clrEnd>
+        Text=<color=255,240,100>Нестандартное оборудование несовместимо с микромодулями и не может быть улучшено на научной базе.</color>
+        TextReplace=<color=248,252,248>Восстановленная по старым схемам особая модель дроида, представляющая из себя не ремонтный девайс, но внешнюю независимую боевую платформу.</color>
+        bonDroid=-500000000
+        bonHook=-25
+        bonHookRadius=-20
+        bonHull=4
+        bonJump=-10
+        bonRadar=-920
+        bonDef=5
+        bonScan=-10
+        bonSpeed=-150
+        bonWEnergy=16
+        bonWMissile=22
+        bonWRadius=60
+        bonWSplinter=22
+    }
+    RevAcryn_NOKM ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=350
+        CustomTag=RevAcryn_NOKM
+        Equipments=Engine
+        Fragility=100
+        KellerExchange=2
+        KellerValue=30
+        KindGraph=NOKM
+        LockedAcryn=3
+        Name=</color>НОКМ-3314М
+        Owner=Maloc
+        Priority=10
+        Size=100
+        Special=1
+        Text=Результатом данного проекта стал тяжеленный и очень дорогой агрегат, который в автоматическом режиме создаёт портативные ядерные боеголовки из обычного звездолётного топлива и наноклея из резервуаров дроида, устанавливая получившиеся снаряды в боеголовки обычных ракет и торпед. Ну а поскольку в <color=255,240,100>Уставе</color> красным по жёлтому сказано, что топливовод у корабля должен быть всего один, агрегат спроектирован так, чтобы его можно было устанавливать только <color=255,240,100>вместо двигателя</color>, со всеми вытекающими отсюда последствиями.
+        Text=<clr><clrEnd>
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=<clr><clrEnd>
+        Text=<color=255,240,100>Нестандартное оборудование несовместимо с микромодулями и не может быть улучшено на научной базе.</color>
+        TextReplace=<color=248,252,248>Причиной создания этого странного агрегата стал дипломатический инцидент, в ходе которого посол <color=255,240,100>Земли</color> пригрозил послу <color=255,240,100>Рамгатру</color> "показать Кузькину мать". А на <color=255,240,100>Рамгатру</color>, долго не раздумывая, решили, что эта самая "Кузькина мать" есть некое абсолютное оружие, в связи с чем был срочно развёрнут проект <color=255,240,100>"Наш ответ Кузькиной матери"</color>.</color>
+        bonJump=-500000000
+        bonSpeed=-500000000
+        bonWMissile=120
+    }
+    RevAcryn_TechnolitDefGenerator1 ^{
+        AcrynLevel=1
+        AcrynSerie=Технолитический генератор защиты I-III
+        Cost=150
+        Equipments=DefGenerator
+        KindGraph=TechnolitDefGenerator
+        LevelsCount=3
+        Name=Технолитический генератор защиты I
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=RC,TC,MC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TechnolitDefGenerator1
+        SerieLevel2=RevAcryn_TechnolitDefGenerator2
+        SerieLevel3=RevAcryn_TechnolitDefGenerator3
+        Size=100
+        Special=1
+        Text=Технолитическое оборудование работает на акриновом генераторе реструктуризации материи. Излучение воздействует на толщину брони, тем самым увеличивая её в размере. Оборудование, использующее такой генератор, работает эффективнее, а также становится заметно устойчивее к поломкам. К сожалению, из-за реструктуризации атомных связей в материале брони, сила гравитационного поля корпуса существенно возрастает.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        bonDef=1
+        bonHull=1
+        bonMass=7
+    }
+    RevAcryn_TechnolitDefGenerator2 ^{
+        AcrynLevel=2
+        AcrynSerie=Технолитический генератор защиты I-III
+        Cost=200
+        Equipments=DefGenerator
+        Fragility=85
+        KindGraph=TechnolitDefGenerator
+        LevelsCount=3
+        Name=Технолитический генератор защиты II
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=30
+        Ruins=RC,TC,MC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TechnolitDefGenerator1
+        SerieLevel2=RevAcryn_TechnolitDefGenerator2
+        SerieLevel3=RevAcryn_TechnolitDefGenerator3
+        Size=100
+        Special=1
+        Text=Технолитическое оборудование работает на акриновом генераторе реструктуризации материи. Излучение воздействует на толщину брони, тем самым увеличивая её в размере. Оборудование, использующее такой генератор, работает эффективнее, а также становится заметно устойчивее к поломкам. К сожалению, из-за реструктуризации атомных связей в материале брони, сила гравитационного поля корпуса существенно возрастает.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Навык техники: <bonSkill3>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Надёжность генератора: <clr>+17%<clrEnd>
+        bonDef=2
+        bonHull=2
+        bonMass=10
+        bonSkill3=-1
+    }
+    RevAcryn_TechnolitDefGenerator3 ^{
+        AcrynLevel=3
+        AcrynSerie=Технолитический генератор защиты I-III
+        Cost=250
+        Equipments=DefGenerator
+        Fragility=75
+        KindGraph=TechnolitDefGenerator
+        LevelsCount=3
+        Name=Технолитический генератор защиты III
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=50
+        Ruins=RC,TC,MC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TechnolitDefGenerator1
+        SerieLevel2=RevAcryn_TechnolitDefGenerator2
+        SerieLevel3=RevAcryn_TechnolitDefGenerator3
+        Size=100
+        Special=1
+        Text=Технолитическое оборудование работает на акриновом генераторе реструктуризации материи. Излучение воздействует на толщину брони, тем самым увеличивая её в размере. Оборудование, использующее такой генератор, работает эффективнее, а также становится заметно устойчивее к поломкам. К сожалению, из-за реструктуризации атомных связей в материале брони, сила гравитационного поля корпуса существенно возрастает.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Навык техники: <bonSkill3>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Надёжность генератора: <clr>+33%<clrEnd>
+        bonDef=2
+        bonHull=3
+        bonMass=12
+        bonSkill3=-1
+    }
+    RevAcryn_TechnolitHook1 ^{
+        AcrynLevel=1
+        AcrynSerie=Технолитический захват I-III
+        Cost=150
+        Equipments=Hook
+        Fragility=100
+        KindGraph=TechnolitHook
+        LevelsCount=3
+        Name=Технолитический захват I
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=RC,TC,MC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TechnolitHook1
+        SerieLevel2=RevAcryn_TechnolitHook2
+        SerieLevel3=RevAcryn_TechnolitHook3
+        Size=100
+        Special=1
+        Text=Технолитическое оборудование работает на акриновом генераторе реструктуризации материи. Излучение воздействует на толщину брони, тем самым увеличивая её в размере. Оборудование, использующее такой генератор, работает эффективнее, а также становится заметно устойчивее к поломкам. К сожалению, из-за реструктуризации атомных связей в материале брони, сила гравитационного поля корпуса существенно возрастает.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность захвата: <bonHook> т.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        bonHook=5
+        bonHull=1
+        bonMass=5
+    }
+    RevAcryn_TechnolitHook2 ^{
+        AcrynLevel=2
+        AcrynSerie=Технолитический захват I-III
+        Cost=200
+        Equipments=Hook
+        Fragility=85
+        KindGraph=TechnolitHook
+        LevelsCount=3
+        Name=Технолитический захват II
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=30
+        Ruins=RC,TC,MC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TechnolitHook1
+        SerieLevel2=RevAcryn_TechnolitHook2
+        SerieLevel3=RevAcryn_TechnolitHook3
+        Size=100
+        Special=1
+        Text=Технолитическое оборудование работает на акриновом генераторе реструктуризации материи. Излучение воздействует на толщину брони, тем самым увеличивая её в размере. Оборудование, использующее такой генератор, работает эффективнее, а также становится заметно устойчивее к поломкам. К сожалению, из-за реструктуризации атомных связей в материале брони, сила гравитационного поля корпуса существенно возрастает.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность захвата: <bonHook> т.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Навык техники: <bonSkill3>
+        Text=Надёжность захвата: <clr>+17%<clrEnd>
+        bonHook=10
+        bonHull=2
+        bonMass=7
+        bonSkill3=-1
+    }
+    RevAcryn_TechnolitHook3 ^{
+        AcrynLevel=3
+        AcrynSerie=Технолитический захват I-III
+        Cost=250
+        Equipments=Hook
+        Fragility=75
+        KindGraph=TechnolitHook
+        LevelsCount=3
+        Name=Технолитический захват III
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=50
+        Ruins=RC,TC,MC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TechnolitHook1
+        SerieLevel2=RevAcryn_TechnolitHook2
+        SerieLevel3=RevAcryn_TechnolitHook3
+        Size=100
+        Special=1
+        Text=Технолитическое оборудование работает на акриновом генераторе реструктуризации материи. Излучение воздействует на толщину брони, тем самым увеличивая её в размере. Оборудование, использующее такой генератор, работает эффективнее, а также становится заметно устойчивее к поломкам. К сожалению, из-за реструктуризации атомных связей в материале брони, сила гравитационного поля корпуса существенно возрастает.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность захвата: <bonHook> т.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Навык техники: <bonSkill3>
+        Text=Надёжность захвата: <clr>+33%<clrEnd>
+        bonHook=15
+        bonHull=3
+        bonMass=10
+        bonSkill3=-1
+    }
+    RevAcryn_TechnolitRadar1 ^{
+        AcrynLevel=1
+        AcrynSerie=Технолитический радар I-III
+        Cost=150
+        Equipments=Radar
+        Fragility=100
+        KindGraph=TechnolitRadar
+        LevelsCount=3
+        Name=Технолитический радар I
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=RC,TC,MC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TechnolitRadar1
+        SerieLevel2=RevAcryn_TechnolitRadar2
+        SerieLevel3=RevAcryn_TechnolitRadar3
+        Size=100
+        Special=1
+        Text=Технолитическое оборудование работает на акриновом генераторе реструктуризации материи. Излучение воздействует на толщину брони, тем самым увеличивая её в размере. Оборудование, использующее такой генератор, работает эффективнее, а также становится заметно устойчивее к поломкам. К сожалению, из-за реструктуризации атомных связей в материале брони, сила гравитационного поля корпуса существенно возрастает.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        bonHull=1
+        bonMass=3
+        bonRadar=100
+    }
+    RevAcryn_TechnolitRadar2 ^{
+        AcrynLevel=2
+        AcrynSerie=Технолитический радар I-III
+        Cost=200
+        Equipments=Radar
+        Fragility=85
+        KindGraph=TechnolitRadar
+        LevelsCount=3
+        Name=Технолитический радар II
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=30
+        Ruins=RC,TC,MC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TechnolitRadar1
+        SerieLevel2=RevAcryn_TechnolitRadar2
+        SerieLevel3=RevAcryn_TechnolitRadar3
+        Size=100
+        Special=1
+        Text=Технолитическое оборудование работает на акриновом генераторе реструктуризации материи. Излучение воздействует на толщину брони, тем самым увеличивая её в размере. Оборудование, использующее такой генератор, работает эффективнее, а также становится заметно устойчивее к поломкам. К сожалению, из-за реструктуризации атомных связей в материале брони, сила гравитационного поля корпуса существенно возрастает.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Навык техники: <bonSkill3>
+        Text=Надёжность радара: <clr>+17%<clrEnd>
+        bonHull=2
+        bonMass=5
+        bonRadar=200
+        bonSkill3=-1
+    }
+    RevAcryn_TechnolitRadar3 ^{
+        AcrynLevel=3
+        AcrynSerie=Технолитический радар I-III
+        Cost=250
+        Equipments=Radar
+        Fragility=75
+        KindGraph=TechnolitRadar
+        LevelsCount=3
+        Name=Технолитический радар III
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=50
+        Ruins=RC,TC,MC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TechnolitRadar1
+        SerieLevel2=RevAcryn_TechnolitRadar2
+        SerieLevel3=RevAcryn_TechnolitRadar3
+        Size=100
+        Special=1
+        Text=Технолитическое оборудование работает на акриновом генераторе реструктуризации материи. Излучение воздействует на толщину брони, тем самым увеличивая её в размере. Оборудование, использующее такой генератор, работает эффективнее, а также становится заметно устойчивее к поломкам. К сожалению, из-за реструктуризации атомных связей в материале брони, сила гравитационного поля корпуса существенно возрастает.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Навык техники: <bonSkill3>
+        Text=Надёжность радара: <clr>+33%<clrEnd>
+        bonHull=3
+        bonMass=7
+        bonRadar=300
+        bonSkill3=-1
+    }
+    RevAcryn_TechnolitScaner1 ^{
+        AcrynLevel=1
+        AcrynSerie=Технолитический сканер I-III
+        Cost=150
+        Equipments=Scaner
+        Fragility=100
+        KindGraph=TechnolitScaner
+        LevelsCount=3
+        Name=Технолитический сканер I
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=RC,TC,MC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TechnolitScaner1
+        SerieLevel2=RevAcryn_TechnolitScaner2
+        SerieLevel3=RevAcryn_TechnolitScaner3
+        Size=100
+        Special=1
+        Text=Технолитическое оборудование работает на акриновом генераторе реструктуризации материи. Излучение воздействует на толщину брони, тем самым увеличивая её в размере. Оборудование, использующее такой генератор, работает эффективнее, а также становится заметно устойчивее к поломкам. К сожалению, из-за реструктуризации атомных связей в материале брони, сила гравитационного поля корпуса существенно возрастает.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        bonHull=1
+        bonMass=2
+        bonScan=1
+    }
+    RevAcryn_TechnolitScaner2 ^{
+        AcrynLevel=2
+        AcrynSerie=Технолитический сканер I-III
+        Cost=200
+        Equipments=Scaner
+        Fragility=85
+        KindGraph=TechnolitScaner
+        LevelsCount=3
+        Name=Технолитический сканер II
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=30
+        Ruins=RC,TC,MC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TechnolitScaner1
+        SerieLevel2=RevAcryn_TechnolitScaner2
+        SerieLevel3=RevAcryn_TechnolitScaner3
+        Size=100
+        Special=1
+        Text=Технолитическое оборудование работает на акриновом генераторе реструктуризации материи. Излучение воздействует на толщину брони, тем самым увеличивая её в размере. Оборудование, использующее такой генератор, работает эффективнее, а также становится заметно устойчивее к поломкам. К сожалению, из-за реструктуризации атомных связей в материале брони, сила гравитационного поля корпуса существенно возрастает.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Навык техники: <bonSkill3>
+        Text=Надёжность сканера: <clr>+17%<clrEnd>
+        bonHull=2
+        bonMass=3
+        bonScan=2
+        bonSkill3=-1
+    }
+    RevAcryn_TechnolitScaner3 ^{
+        AcrynLevel=3
+        AcrynSerie=Технолитический сканер I-III
+        Cost=250
+        Equipments=Scaner
+        Fragility=75
+        KindGraph=TechnolitScaner
+        LevelsCount=3
+        Name=Технолитический сканер III
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=50
+        Ruins=RC,TC,MC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TechnolitScaner1
+        SerieLevel2=RevAcryn_TechnolitScaner2
+        SerieLevel3=RevAcryn_TechnolitScaner3
+        Size=100
+        Special=1
+        Text=Технолитическое оборудование работает на акриновом генераторе реструктуризации материи. Излучение воздействует на толщину брони, тем самым увеличивая её в размере. Оборудование, использующее такой генератор, работает эффективнее, а также становится заметно устойчивее к поломкам. К сожалению, из-за реструктуризации атомных связей в материале брони, сила гравитационного поля корпуса существенно возрастает.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Навык техники: <bonSkill3>
+        Text=Надёжность сканера: <clr>+33%<clrEnd>
+        bonHull=3
+        bonMass=5
+        bonScan=3
+        bonSkill3=-1
+    }
+    RevAcryn_TwinEngine1 ^{
+        AcrynLevel=1
+        AcrynSerie=Спаренный двигатель I-III
+        Cost=150
+        Equipments=Engine
+        Fragility=100
+        KindGraph=TwinEngine
+        LevelsCount=3
+        Name=Спаренный двигатель I
+        Owner=Gaal,Fei
+        Priority=10
+        Ruins=RC,SB,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TwinEngine1
+        SerieLevel2=RevAcryn_TwinEngine2
+        SerieLevel3=RevAcryn_TwinEngine3
+        Size=100
+        Special=1
+        Text=Уникальная совместная разработка <color=255,240,100>гаальских</color> и <color=255,240,100>фэянских</color> учёных - спаренный двигатель, построенный на принципе ювелирной синхронизации двух раздельных турбин. Отдельно друг от друга данные силовые установки не представляют никакого интереса, но работая в слаженном дуплете, они способны выдавать куда большую мощность, чем можно было бы ожидать от двигателей подобного класса.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Навык манёвренности: <bonSkill2>
+        bonJump=4
+        bonSkill2=-1
+        bonSpeed=40
+    }
+    RevAcryn_TwinEngine2 ^{
+        AcrynLevel=2
+        AcrynSerie=Спаренный двигатель I-III
+        Cost=200
+        Equipments=Engine
+        Fragility=125
+        KindGraph=TwinEngine
+        LevelsCount=3
+        Name=Спаренный двигатель II
+        Owner=Gaal,Fei
+        Priority=30
+        Ruins=RC,SB,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TwinEngine1
+        SerieLevel2=RevAcryn_TwinEngine2
+        SerieLevel3=RevAcryn_TwinEngine3
+        Size=100
+        Special=1
+        Text=Уникальная совместная разработка <color=255,240,100>гаальских</color> и <color=255,240,100>фэянских</color> учёных - спаренный двигатель, построенный на принципе ювелирной синхронизации двух раздельных турбин. Отдельно друг от друга данные силовые установки не представляют никакого интереса, но работая в слаженном дуплете, они способны выдавать куда большую мощность, чем можно было бы ожидать от двигателей подобного класса.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Навык манёвренности: <bonSkill2>
+        bonJump=5
+        bonSkill2=-2
+        bonSpeed=50
+    }
+    RevAcryn_TwinEngine3 ^{
+        AcrynLevel=3
+        AcrynSerie=Спаренный двигатель I-III
+        Cost=250
+        Equipments=Engine
+        Fragility=125
+        KindGraph=TwinEngine
+        LevelsCount=3
+        Name=Спаренный двигатель III
+        Owner=Gaal,Fei
+        Priority=50
+        Ruins=RC,SB,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TwinEngine1
+        SerieLevel2=RevAcryn_TwinEngine2
+        SerieLevel3=RevAcryn_TwinEngine3
+        Size=105
+        Special=1
+        Text=Уникальная совместная разработка <color=255,240,100>гаальских</color> и <color=255,240,100>фэянских</color> учёных - спаренный двигатель, построенный на принципе ювелирной синхронизации двух раздельных турбин. Отдельно друг от друга данные силовые установки не представляют никакого интереса, но работая в слаженном дуплете, они способны выдавать куда большую мощность, чем можно было бы ожидать от двигателей подобного класса.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Навык манёвренности: <bonSkill2>
+        bonJump=6
+        bonSkill2=-2
+        bonSpeed=60
+    }
+    RevAcryn_TwinFuelTank1 ^{
+        AcrynLevel=1
+        AcrynSerie=Спаренный топливный бак I-III
+        Cost=150
+        Equipments=FuelTank
+        Fragility=100
+        KindGraph=TwinFuelTank
+        LevelsCount=3
+        Name=Спаренный топливный бак I
+        Owner=Gaal,Fei
+        Priority=10
+        Ruins=RC,SB,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TwinFuelTank1
+        SerieLevel2=RevAcryn_TwinFuelTank2
+        SerieLevel3=RevAcryn_TwinFuelTank3
+        Size=100
+        Special=1
+        Text=Уникальная совместная разработка <color=255,240,100>гаальских</color> и <color=255,240,100>фэянских</color> учёных - спаренный топливный бак, оснащённый прогрессивной системой подачи топлива. Умное программное обеспечение этого бака контролирует работу четырёх спаренных инжекторов, впрыскивая горючее строго на этапе разгона ускорительного контура двигателя, что обеспечивает кораблю солидный прирост к скорости и дальности прыжка.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Навык манёвренности: <bonSkill2>
+        bonJump=4
+        bonSkill2=-1
+        bonSpeed=40
+    }
+    RevAcryn_TwinFuelTank2 ^{
+        AcrynLevel=2
+        AcrynSerie=Спаренный топливный бак I-III
+        Cost=200
+        Equipments=FuelTank
+        Fragility=125
+        KindGraph=TwinFuelTank
+        LevelsCount=3
+        Name=Спаренный топливный бак II
+        Owner=Gaal,Fei
+        Priority=30
+        Ruins=RC,SB,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TwinFuelTank1
+        SerieLevel2=RevAcryn_TwinFuelTank2
+        SerieLevel3=RevAcryn_TwinFuelTank3
+        Size=100
+        Special=1
+        Text=Уникальная совместная разработка <color=255,240,100>гаальских</color> и <color=255,240,100>фэянских</color> учёных - спаренный топливный бак, оснащённый прогрессивной системой подачи топлива. Умное программное обеспечение этого бака контролирует работу четырёх спаренных инжекторов, впрыскивая горючее строго на этапе разгона ускорительного контура двигателя, что обеспечивает кораблю солидный прирост к скорости и дальности прыжка.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Навык манёвренности: <bonSkill2>
+        bonJump=5
+        bonSkill2=-2
+        bonSpeed=50
+    }
+    RevAcryn_TwinFuelTank3 ^{
+        AcrynLevel=3
+        AcrynSerie=Спаренный топливный бак I-III
+        Cost=250
+        Equipments=FuelTank
+        Fragility=125
+        KindGraph=TwinFuelTank
+        LevelsCount=3
+        Name=Спаренный топливный бак III
+        Owner=Gaal,Fei
+        Priority=50
+        Ruins=RC,SB,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
+        SerieLevel1=RevAcryn_TwinFuelTank1
+        SerieLevel2=RevAcryn_TwinFuelTank2
+        SerieLevel3=RevAcryn_TwinFuelTank3
+        Size=105
+        Special=1
+        Text=Уникальная совместная разработка <color=255,240,100>гаальских</color> и <color=255,240,100>фэянских</color> учёных - спаренный топливный бак, оснащённый прогрессивной системой подачи топлива. Умное программное обеспечение этого бака контролирует работу четырёх спаренных инжекторов, впрыскивая горючее строго на этапе разгона ускорительного контура двигателя, что обеспечивает кораблю солидный прирост к скорости и дальности прыжка.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Навык манёвренности: <bonSkill2>
+        bonJump=6
+        bonSkill2=-2
+        bonSpeed=60
+    }
+    RevAcryn_Ubivator7 ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=300
+        CustomTag=RevAcryn_Ubivator7
+        Equipments=Radar
+        Fragility=100
+        KellerExchange=2
+        KellerValue=20
+        KindGraph=Ubivator
+        LockedAcryn=3
+        Name=</color>Неуправляемый Убиватор
+        NonSearchable=2
+        Priority=0
+        Size=75
+        Special=1
+        Text=<color=248,252,248>Пять крупнейших галактических религий предали это устройство анафеме, а семь - канонизировали и сделали главным объектом своего культа.</color>
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=<clr><clrEnd>
+        Text=<color=255,240,100>Нестандартное оборудование несовместимо с микромодулями и не может быть улучшено на научной базе.</color>
+        TextReplace=<color=248,252,248>Порождение больной инженерной фантазии безумного малокского гения <color=255,240,100>Багорбы Ргнарыка</color> - <color=255,240,100>"Неуправляемый Убиватор"</color>, содержащий в себе почти неизученное мощнейшее устройство для универсальной энергоконверсии. При установке <color=255,240,100>Убиватора</color> в отсек для <color=255,240,100>радара</color>, вся доступная в нём энергия перенаправляется на усиление орудийных подсистем. Пользоваться радаром в этом случае становится невозможно, зато боевая мощь корабля возрастает многократно.</color>
+        bonRadar=-500000000
+        bonWEnergy=20
+        bonWSplinter=30
+    }
+    RevAcryn_Ubivator8 ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=400
+        CustomTag=RevAcryn_Ubivator8
+        Equipments=Radar
+        Fragility=100
+        KellerExchange=2
+        KellerValue=30
+        KindGraph=Ubivator2
+        LockedAcryn=3
+        Name=</color>Необузданный Убиватор
+        NonSearchable=2
+        Priority=0
+        Size=75
+        Special=1
+        Text=В бликах пламени космических взрывов, на передней панели<br>корпуса <color=255,240,100>Необузданного Убиватора</color> проступает зловещая надпись<br>на древнем малокском диалекте: <color=255,240,100>"Не искушай меня, Громдар,<br>ибо необуздан я в желаниях своих"</color>.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=<clr><clrEnd>
+        Text=<color=255,240,100>Нестандартное оборудование несовместимо с микромодулями и не может быть улучшено на научной базе.</color>
+        TextReplace=<color=248,252,248>Ещё более смертоносное творение <color=255,240,100>Багорбы Ргнарыка</color> - <color=255,240,100>"Необузданный Убиватор"</color>. По-настоящему безумное устройство, претендующее на секретность уровня технологии создания гиперпространственных пузырей, в военное время, однако, вынужденно выпущенное на рынок, несмотря на непрерывно множащуюся череду таинственных смертей, связанных с его изготовлением и транспортировкой.</color>
+        bonRadar=-500000000
+        bonWEnergy=25
+        bonWSplinter=35
+    }
+}

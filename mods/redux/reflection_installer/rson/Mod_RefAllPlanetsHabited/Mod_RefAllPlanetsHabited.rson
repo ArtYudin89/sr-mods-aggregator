@@ -1,0 +1,248 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefAllPlanetsHabited",
+    "ScriptFileOut": "D:\\Mod_RefAllPlanetsHabited.scr",
+    "ScriptTextOut": "D:\\Mod_RefAllPlanetsHabited.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [],
+            "DialogMessages": [],
+            "Dialogs": [],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 5
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 6,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 510
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "int rand;",
+                        "for(i=0;GalaxyStars() > i;i=i+1) {",
+                        "    for(j=0;StarPlanets(GalaxyStar(i)) > j;j=j+1) {",
+                        "        if(PlanetOwner(StarPlanets(GalaxyStar(i),j)) == 6) {",
+                        "            if(Name(GalaxyStar(i)) == 'Тарон') PlanetRace(StarPlanets(GalaxyStar(i),j),0);",
+                        "            if(Name(GalaxyStar(i)) == 'Краа') PlanetRace(StarPlanets(GalaxyStar(i),j),4);",
+                        "            if(Name(GalaxyStar(i)) == 'Солнце') PlanetRace(StarPlanets(GalaxyStar(i),j),2); // В родных системах заселяем всё своими же",
+                        "            if(Name(GalaxyStar(i)) == 'Пхедок') PlanetRace(StarPlanets(GalaxyStar(i),j),1);",
+                        "            if(Name(GalaxyStar(i)) == 'Атлан') PlanetRace(StarPlanets(GalaxyStar(i),j),3);",
+                        "            rand = Rnd(1,5);",
+                        "            if(rand == 1) PlanetRace(StarPlanets(GalaxyStar(i),j),0);",
+                        "            if(rand == 2) PlanetRace(StarPlanets(GalaxyStar(i),j),1);",
+                        "            if(rand == 3) PlanetRace(StarPlanets(GalaxyStar(i),j),2);",
+                        "            if(rand == 4) PlanetRace(StarPlanets(GalaxyStar(i),j),3);",
+                        "            if(rand == 5) PlanetRace(StarPlanets(GalaxyStar(i),j),4);",
+                        "            if(StarOwner(GalaxyStar(i)) == 1) PlanetOwner(StarPlanets(GalaxyStar(i),j),5);",
+                        "            if(StarOwner(GalaxyStar(i)) == 2) PlanetOwner(StarPlanets(GalaxyStar(i),j),7);",
+                        "            if(StarOwner(GalaxyStar(i)) == 0) {",
+                        "                if(Name(GalaxyStar(i)) == 'Тарон') PlanetOwner(StarPlanets(GalaxyStar(i),j),0); //Ну Коалиция, ну какого фига у тебя каждая раса - отдельный владелец?",
+                        "                if(Name(GalaxyStar(i)) == 'Краа') PlanetOwner(StarPlanets(GalaxyStar(i),j),4); //Правда, это позволит тому же Шу в Секрет Проекте сделать захват системы другой расой",
+                        "                if(Name(GalaxyStar(i)) == 'Солнце') PlanetOwner(StarPlanets(GalaxyStar(i),j),2); //Но фси равно мучацо :(",
+                        "                if(Name(GalaxyStar(i)) == 'Пхедок') PlanetOwner(StarPlanets(GalaxyStar(i),j),1);",
+                        "                if(Name(GalaxyStar(i)) == 'Атлан') PlanetOwner(StarPlanets(GalaxyStar(i),j),3);",
+                        "                if(rand == 1) PlanetOwner(StarPlanets(GalaxyStar(i),j),0);",
+                        "                if(rand == 2) PlanetOwner(StarPlanets(GalaxyStar(i),j),1);",
+                        "                if(rand == 3) PlanetOwner(StarPlanets(GalaxyStar(i),j),2);",
+                        "                if(rand == 4) PlanetOwner(StarPlanets(GalaxyStar(i),j),3);",
+                        "                if(rand == 5) PlanetOwner(StarPlanets(GalaxyStar(i),j),4);",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "}",
+                        "//Простой перебор всех систем с небольшой рандомизацией того, какой расы выйдет планета;"
+                    ],
+                    "#": 7,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 510
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 4
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 3
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 2,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 8
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "j",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 3,
+            "End": 2,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 4,
+            "End": 2,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 5,
+            "End": 4,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 5,
+            "End": 8,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

@@ -1,0 +1,51 @@
+Script ^{
+    RefWBAttacksRework ^{
+        0=Рейнджер, пожалуйста, не отвлекайте наш экипаж. Мы направляемся на Военную Базу Name(ShipCustomShipInfoTextData(CurShip,'RefAttackerInfo',1)), и на посторонние запросы отвечать не можем и не будем.
+        1=Конец связи
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RefAttackerInfo ^{
+                Description=Участник атаки посредством военной базы (флажок 1 означает, что вояка вылетел с военки, и его надо будет потом вернуть)
+                Icon=0
+                Name=Накопитель инфы
+                OnActCode ^{
+                    01=if(!ShipCustomShipInfoData(0,CurInfo(),1))
+                    02 ^{
+                        01=if(ShipInNormalSpace(ScriptItemActShip()))
+                        02 ^{
+                            01=if(StarOwner(ShipStar(ScriptItemActShip())) == 0) ShipCustomShipInfoData(0,CurInfo(),1,1);
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            RefWBInfo ^{
+                Description=Атакующая Военная База
+                Icon=0
+                Name=Накопитель инфы
+                OnActCode ^{
+                    01=if(ShipCustomShipInfoData(0,CurInfo(),1))
+                    02 ^{
+                        01=int i;
+                        02=int power = 0;
+                        03=for(i=0;StarShips(ShipStar(ScriptItemActShip()))>i;i=i+1)
+                        04 ^{
+                            01=dword ship = StarShips(ShipStar(ScriptItemActShip()),i);
+                            02=if(ShipFindCustomShipInfoByType(ship,'RefAttackerInfo')) continue;
+                            03=if(ShipTypeN(ship) == t_Warrior) power = power + 1;
+                            04=if(ShipSubType(ship)) power = power + 4;
+                            05=if(ShipType(ship) == 'Dreadnought') power = power + 10;
+                        }
+                        05=if(power > 5) ShipCustomShipInfoData(0,CurInfo(),1,2);
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+        }
+    }
+}

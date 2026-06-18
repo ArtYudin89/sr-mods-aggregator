@@ -1,0 +1,521 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefUniqueSmersh",
+    "ScriptFileOut": "D:\\Mod_RefUniqueSmersh.scr",
+    "ScriptTextOut": "D:\\Mod_RefUniqueSmersh.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 17,
+                    "Msg": "Хочу купить!",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefUniqueSmersh.7\"))"
+                },
+                {
+                    "Name": "block",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 18,
+                    "Msg": "Хочу купить!",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer('block~'+CT(\"Script.Mod_RefUniqueSmersh.7\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 19,
+                    "Msg": "Нет, не сейчас",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefUniqueSmersh.8\"))"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 360,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 20,
+                    "Msg": "Спасибо!",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_RefUniqueSmersh.11\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 15,
+                    "Msg": "Прикладная доминаторология - важнейшее направление в исследовании доминаторов. Оно подразделяется на использование доминаторских технологий для победы над угрозой в принципе, на использование новых знаний для борьбы с рядовыми доминаторами и на использование полученной информации в собственно наших разработках.\r\n\r\nОдним из примеров такой работы и является то, что мы хотим вам предложить.\r\n\r\nКорпус \"Шершень\" - уникальный корпус, созданный на основе передовых акриновых технологий и революционных доминаторских разработок. Этот корпус имеет два режима - усиливающий корпус в относительно ближнем бою и нацеленный на ведение боевых действий издалека.\r\n\r\nТекущая цена корпуса - <0> cr.",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefUniqueSmersh.5\"),\"<0>\",temp_int))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 16,
+                    "Msg": "Отлично! Корпус уже отправлен на склад. Пользуйтесь!",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefUniqueSmersh.6\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "SmershBuy",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 12
+                },
+                {
+                    "Name": "SwitchOnMi",
+                    "Type": "TDialog",
+                    "Pos.x": 150,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 13
+                },
+                {
+                    "Name": "SwitchOnEn",
+                    "Type": "TDialog",
+                    "Pos.x": 300,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 14
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 8
+                }
+            ],
+            "Items": [
+                {
+                    "Type": "TItem",
+                    "Name": "Shershen",
+                    "Class": 5,
+                    "Item.Type": 0,
+                    "Size": 10,
+                    "Level": 1,
+                    "Radius": 150,
+                    "Owner": 6,
+                    "Useless": "",
+                    "+Place": "",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 7
+                }
+            ],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 9,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(PlayerBridge()==12) {",
+                        "  if(HullSpecial(Player()) == FindBonusByNameInCfg('RefUniqueSmersh_Missile') || HullSpecial(Player()) == FindBonusByNameInCfg('RefUniqueSmersh_Energy') && HullSpecial(Player()) > 0) {",
+                        "      if(HullSpecial(Player()) == FindBonusByNameInCfg('RefUniqueSmersh_Missile'))",
+                        "      {",
+                        "          temp_str=CT(\"Script.Mod_RefUniqueSmersh.4\");",
+                        "          AddDialogInject('SwitchOnEn',Format(CT(\"Script.Mod_RefUniqueSmersh.1\"),\"<0>\",temp_str),CT(\"Script.Mod_RefUniqueSmersh.10\"),17);",
+                        "      }",
+                        "      if(HullSpecial(Player()) == FindBonusByNameInCfg('RefUniqueSmersh_Energy'))",
+                        "      {",
+                        "          temp_str=CT(\"Script.Mod_RefUniqueSmersh.2\");",
+                        "          AddDialogInject('SwitchOnMi',Format(CT(\"Script.Mod_RefUniqueSmersh.1\"),\"<0>\",temp_str),CT(\"Script.Mod_RefUniqueSmersh.9\"),17);",
+                        "      }",
+                        "  }",
+                        "}",
+                        "if(ShipRank(Player()) >=5 && !ShipOnSidePirateClan(Player()) && GalaxyDominatorResearchPercent() > 25) {",
+                        "    if(GetShipRuins(Player())) {",
+                        "        if(ShipType(GetShipRuins(Player())) == 'SB') {",
+                        "            if(Bought < 1 && !CurrentMods('Evolution\\\\EvoSB')) {",
+                        "                AddDialogInject('SmershBuy',CT(\"Script.Mod_RefUniqueSmersh.13\"),CT(\"Script.Mod_RefUniqueSmersh.12\"),34);",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 10,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "temp_int = (round(round((110 - GalaxyDominatorResearchPercent())*5500) + GalaxyDiffLevels()*1000 + Rnd(3000,9000)))*max(1,Bought);",
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 21,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "temp_dword = HullHP(Player());",
+                        "SwitchToMirrorImage(Player(),FindBonusByNameInCfg('RefUniqueSmersh_Missile'));",
+                        "Sound('Sound.ButtonInfoEnter');",
+                        "HullHP(Player(),temp_dword);",
+                        "DAnswer('main');"
+                    ],
+                    "#": 22,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "temp_dword = HullHP(Player());",
+                        "SwitchToMirrorImage(Player(),FindBonusByNameInCfg('RefUniqueSmersh_Energy'));",
+                        "Sound('Sound.ButtonInfoEnter');",
+                        "HullHP(Player(),temp_dword);",
+                        "DAnswer('main');"
+                    ],
+                    "#": 23,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player()) >= temp_int) {",
+                        "  DAdd(0);",
+                        "}",
+                        "if(ShipMoney(Player()) < temp_int) {",
+                        "  DAdd(1);",
+                        "}",
+                        "DAdd(2);"
+                    ],
+                    "#": 24,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);"
+                    ],
+                    "#": 25,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ShipMoney(Player(),ShipMoney(Player()) - temp_int);",
+                        "temp_dword = CreateHull(1,350+GalaxyTechLevel()*200,GalaxyTechLevel(),Fei,-1);",
+                        "SpecialToEquipment(FindBonusByNameInCfg('RefUniqueSmersh_Missile'),temp_dword);",
+                        "AddItemToStorage(GetShipRuins(Player()),temp_dword);",
+                        "ItemCost(temp_dword,temp_int/2);",
+                        "ItemOwner(temp_dword,Kling);",
+                        "ItemSubrace(temp_dword,Rnd(0,2));",
+                        "Sound('Sound.Buy');",
+                        "LinkItemToScript(temp_dword,Shershen);",
+                        "if(Bought < 1) Bought = 1;",
+                        "Bought = Bought + 0.2;",
+                        "ItemOnUseCode(temp_dword,GenerateCodeStringFromBlock('ShipInfo.AddInfo.CustomInfos.RefSmershMainInfo.OnUseCode'));",
+                        "ItemOnActCode(temp_dword,'[t_OnDealingDamage,t_OnStep|0]'+GenerateCodeStringFromBlock('ShipInfo.AddInfo.CustomInfos.RefSmershMainInfo.OnActCode'));",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 26,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 6
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 5
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 4,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 11
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "temp_int",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "temp_dword",
+                    "Pos.x": 120,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "temp_str",
+                    "Pos.x": 270,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "Bought",
+                    "Pos.x": 390,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Float",
+                    "Init": "0.000",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 21,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 22,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 23,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 15,
+            "End": 24,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 25,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 17,
+            "End": 26,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 5,
+            "End": 4,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 6,
+            "End": 4,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 7,
+            "End": 5,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 8,
+            "End": 6,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 8,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

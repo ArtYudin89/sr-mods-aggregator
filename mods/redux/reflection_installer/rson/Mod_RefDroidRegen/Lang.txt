@@ -1,0 +1,20 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RefDroid ^{
+                Description=Инфошка для разброса починки дроидом
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnDroidRepair))
+                    02 ^{
+                        01=int regen = GetEquipmentStats(ShipEqInSlot(Player(),t_RepairRobot),0);
+                        02=ScriptItemActParam(Rnd(regen - 7 + ShipSkill(Player(),'TechnicalCur'),regen+4)+ShipSpecialBonuses(Player(),bonDroid));
+                        03=if(ShipHealthFactor(Player(),16) > 0) ScriptItemActParam(ScriptItemActParam()+Rnd(4,6));
+                    }
+                }
+                OnActCodsTypes=t_OnDroidRepair
+            }
+        }
+    }
+}

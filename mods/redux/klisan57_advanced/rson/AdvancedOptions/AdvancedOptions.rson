@@ -1,0 +1,1099 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "AdvancedOptions",
+    "ScriptFileOut": "D:\\AdvancedOptions.scr",
+    "ScriptTextOut": "D:\\AdvancedOptions.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 33,
+                    "Msg": "Смена расы оборудования",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.AdvancedOptions.12\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 120,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 34,
+                    "Msg": "Отказаться",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.AdvancedOptions.7\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 35,
+                    "Msg": "Покупка бомб",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer(CT(\"Script.AdvancedOptions.13\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 360,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 36,
+                    "Msg": "Спасибо!",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer(CT(\"Script.AdvancedOptions.17\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 480,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 37,
+                    "Msg": "Назад",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.AdvancedOptions.23\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 600,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 38,
+                    "Msg": "Спасибо!",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.AdvancedOptions.17\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 720,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 39,
+                    "Msg": "Отказаться",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer(CT(\"Script.AdvancedOptions.7\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 840,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 40,
+                    "Msg": "Назад",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer(CT(\"Script.AdvancedOptions.23\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "Предлагаемые услуги:\r\n-Покупка бомб\r\n-Изменение расы коалиционного оборудования\r\n",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(CT(\"Script.AdvancedOptions.50\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "Текущие расценки:\r\nКварковая бомба - <0> cr.\r\nСогласны на покупку?",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(Format(CT(\"Script.AdvancedOptions.42\"),\"<0>\",currentBombCost))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "Бомба выдана.",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(CT(\"Script.AdvancedOptions.48\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "Мы можем изменить расу-производителя коалиционного оборудования, в котором отсутствуют стандартные микромодули. Также меняем производителя корпусов.\r\nПроцедура довольно затратная, по сути придётся пересобирать оборудование с нуля из деталей указанной расы по собственной технологии. Также при смене расы оборудование прибавляет в весе не менее, чем 10%, а объём корпуса при смене расы уменьшается на 5%.\r\nКакое оборудование хотите изменить?",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(CT(\"Script.AdvancedOptions.52\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 30,
+                    "Msg": "Для <0> \r\nвыберите нового производителя. Каким хотите его сделать?",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(Format(CT(\"Script.AdvancedOptions.47\"),\"<0>\",Name(ShipItems(Player(),GAnswerData))))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 31,
+                    "Msg": "Раса изменена.",
+                    "DMsg.Num": "5",
+                    "_orig_dtext": "DText(CT(\"Script.AdvancedOptions.49\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 900,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 32,
+                    "Msg": "Текущие расценки:\r\nКварковая бомба - <0> cr.\r\nЭМП бомба - <1> cr.\r\nОглушающая бомба - <2> cr.\r\nЧто приобретаете?",
+                    "DMsg.Num": "6",
+                    "_orig_dtext": "DText(Format(CT(\"Script.AdvancedOptions.44\"),\"<0>\",currentBombCost,\"<1>\",currentBombCost,\"<2>\",currentBombCost/2))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "ask_for_advanced_options",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 400,
+                    "Parent": -1,
+                    "#": 22
+                },
+                {
+                    "Name": "pick_race",
+                    "Type": "TDialog",
+                    "Pos.x": 360,
+                    "Pos.y": 400,
+                    "Parent": -1,
+                    "#": 23
+                },
+                {
+                    "Name": "pick_race_confirm",
+                    "Type": "TDialog",
+                    "Pos.x": 510,
+                    "Pos.y": 400,
+                    "Parent": -1,
+                    "#": 24
+                },
+                {
+                    "Name": "pick_bomb",
+                    "Type": "TDialog",
+                    "Pos.x": 750,
+                    "Pos.y": 400,
+                    "Parent": -1,
+                    "#": 25
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 100,
+                    "StatusTraderMax": 10000,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 0,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 0,
+                    "DistSearch": 2097184,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 17
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 18,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 610
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "// Базовая стоимость бомбы в кредитах на разных ГТУ",
+                        "baseBombCost[1]=40000;",
+                        "baseBombCost[2]=40000;",
+                        "baseBombCost[3]=40000;",
+                        "baseBombCost[4]=55000;",
+                        "baseBombCost[5]=70000;",
+                        "baseBombCost[6]=85000;",
+                        "baseBombCost[7]=100000;",
+                        "baseBombCost[8]=120000;",
+                        "",
+                        "// Имена рас в диалоге",
+                        "raceName[0]='Малокским';",
+                        "raceName[1]='Пеленгским';",
+                        "raceName[2]='Человеческим';",
+                        "raceName[3]='Фэянским';",
+                        "raceName[4]='Гаальским';"
+                    ],
+                    "#": 19,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 610
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(GetShipRuins(Player())>0) {",
+                        "  if(ShipType(GetShipRuins(Player()))=='PB' || ShipType(GetShipRuins(Player()))=='TC') {",
+                        "    AddDialogInject('ask_for_advanced_options','',CT(\"Script.AdvancedOptions.8\"),1);",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 20,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 610
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 41,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 400
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 42,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 400
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Изменение расы",
+                        "ItemOwner(pickedItem, GAnswerData);",
+                        "",
+                        "int currentSizeItem = ItemSize(pickedItem);",
+                        "float currentCostItem = ItemCost(pickedItem);",
+                        "",
+                        "// увеличение веса у всех, кроме корпуса и бака, на 5 тонн + 10% от начального веса",
+                        "if((ItemType(pickedItem) != t_Hull && currentSizeItem < 3000) && ItemType(pickedItem) != t_FuelTanks)",
+                        "    {",
+                        "        ItemSize(pickedItem, currentSizeItem + 5 + currentSizeItem/10);",
+                        "    }",
+                        "",
+                        "// уменьшение объёма у корпуса на 5%",
+                        "if(ItemType(pickedItem) == t_Hull && currentSizeItem > 100)",
+                        "    {",
+                        "        ItemSize(pickedItem, currentSizeItem - currentSizeItem/20);",
+                        "        HullHP(pickedItem, currentSizeItem - currentSizeItem/20);",
+                        "    }",
+                        "",
+                        "// увеличение стомости предмета на 25%",
+                        "ItemCost(pickedItem, round(min(currentCostItem * 1.25, 100000000)));",
+                        "",
+                        "// снятие средств с игрока",
+                        "ShipMoney(Player(),ShipMoney(Player())-finalCost[GAnswerData]);",
+                        "Sound('Sound.Sell');",
+                        "DChange(5);",
+                        "exit;"
+                    ],
+                    "#": 43,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 490,
+                    "Pos.y": 400
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "str artSystemName;",
+                        "int finalBombCost;",
+                        "int item;",
+                        "",
+                        "// Если выбрана Кварковая бомба",
+                        "if (GAnswerData == 1) {finalBombCost = currentBombCost;}",
+                        "",
+                        "// Если выбрана ЭМП бомба",
+                        "if (GAnswerData == 2) {",
+                        "        if (BlockExist('UselessItems.EMP_bomb') == 1) {",
+                        "        artSystemName = 'EMP_bomb'; // redux/community?",
+                        "        } ",
+                        "        else {",
+                        "        artSystemName = 'RNDbomb_3'; // original/shuniverse",
+                        "        }",
+                        "        finalBombCost = currentBombCost;",
+                        "    }",
+                        "",
+                        "// Если выбрана Оглушающая бомба",
+                        "if (GAnswerData == 3) {",
+                        "        if (BlockExist('UselessItems.Stun_bomb') == 1) {",
+                        "        artSystemName = 'Stun_bomb'; // redux/community?",
+                        "        } ",
+                        "        else {",
+                        "        artSystemName = 'RNDbomb_2'; // original/shuniverse",
+                        "        } ",
+                        "        finalBombCost = currentBombCost/2;",
+                        "    }",
+                        "",
+                        "// добавление бомбы на борт",
+                        "if (GAnswerData == 1) {",
+                        "    item=CreateArt(t_ArtefactBomb, GetOwner(GetShipRuins(Player())));",
+                        "}",
+                        "if (GAnswerData == 2 || GAnswerData == 3) {",
+                        "    item=CreateQuestItem(artSystemName, GetOwner(GetShipRuins(Player())));",
+                        "}",
+                        "ItemSize(item, currentGalaxyLevel + Rnd(0, currentGalaxyLevel)); // небольшая надбавка к весу в зависимости от ГТУ",
+                        "ItemCost(item, finalBombCost);",
+                        "AddItemToShip(Player(), item);",
+                        "",
+                        "// снятие средств с игрока",
+                        "ShipMoney(Player(),ShipMoney(Player())-finalBombCost);",
+                        "Sound('Sound.Sell');",
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 44,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 400
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(2);",
+                        "DAdd(0);",
+                        "DAdd(1);"
+                    ],
+                    "#": 45,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "str fullBlock;",
+                        "str halfBlock;",
+                        "int currentMoney = ShipMoney(Player());",
+                        "",
+                        "// Если не хватает денег на дорогие бомбы, ответ заблокируется",
+                        "if (currentMoney < currentBombCost) {",
+                        "    fullBlock = 'block~';",
+                        "} else {",
+                        "    fullBlock = '';",
+                        "}",
+                        "",
+                        "// Если не хватает денег на дешевые бомбы, ответ заблокируется",
+                        "if (currentMoney < currentBombCost/2) {",
+                        "    halfBlock = 'block~';",
+                        "} else {",
+                        "    halfBlock = '';",
+                        "}",
+                        "",
+                        "",
+                        "InjectAnswer('pick_bomb', fullBlock + Format('Кварковая бомба, <0> cr.',\"<0>\",currentBombCost), 1);",
+                        "if (customArtsEnabled) {",
+                        "    InjectAnswer('pick_bomb', fullBlock + Format('ЭМП бомба, <0> cr.',\"<0>\",currentBombCost), 2);",
+                        "    InjectAnswer('pick_bomb', halfBlock + Format('Оглушающая бомба, <0> cr.',\"<0>\",currentBombCost/2), 3);",
+                        "    }",
+                        "DAdd(4);"
+                    ],
+                    "#": 46,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);"
+                    ],
+                    "#": 47,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "playerItemsCount = ShipItems(Player()); // количество вещей на корабле",
+                        "int item;",
+                        "",
+                        "// Добавление оборудования для смены расы в варианты ответа",
+                        "if (playerItemsCount > 0)",
+                        "{",
+                        "    for (i=0;i<playerItemsCount;i=i+1) {",
+                        "    item = ShipItems(Player(),i);",
+                        "    //SFT(item);",
+                        "    //SFT(EqModule(item));",
+                        "    if (ItemType(item) < t_Hull || ItemType(item) > t_CustomWeapon) continue; // если не оборудование, не корпус и не кастомные пушки",
+                        "    if (ItemOwner(item) > 4) continue; // если оборудование некоалиционное",
+                        "    if (EqModule(item) != -1) continue;    // со вставленным ММ",
+                        "",
+                        "    InjectAnswer('pick_race', DeleteTags(Name(item))+Format(', вес <0>,  <1> cr.',\"<0>\",ItemSize(item),\"<1>\",ItemCost(item)), i);",
+                        "    }",
+                        "}",
+                        "DAdd(6);"
+                    ],
+                    "#": 48,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Коэффициенты для улучшения",
+                        "upgradeCoeff[1]=1.2; //+120%",
+                        "upgradeCoeff[2]=1.6;",
+                        "upgradeCoeff[3]=2.0;",
+                        "upgradeCoeff[4]=2.4;",
+                        "",
+                        "//Коэффициенты при ухудшении расы",
+                        "downgradeCoeff[0]=0.6; //+60%",
+                        "downgradeCoeff[1]=0.7;",
+                        "downgradeCoeff[2]=0.8;",
+                        "downgradeCoeff[3]=0.9;",
+                        "",
+                        "float upgradeIncrease;",
+                        "float downgradeIncrease;",
+                        "",
+                        "pickedItem = ShipItems(Player(),GAnswerData);",
+                        "currentRace = ItemOwner(pickedItem);",
+                        "currentCost = ItemCost(pickedItem);",
+                        "",
+                        "str block;",
+                        "currentMoney = ShipMoney(Player());",
+                        "",
+                        "// Вставка вариантов улучшений с расчётом стоимости варианта",
+                        "for (i=0;i<5;i=i+1) {",
+                        "",
+                        "    if (currentRace == i) continue;",
+                        "    // Апгрейд",
+                        "    if (currentRace < i) {",
+                        "        upgradeIncrease = upgradeCoeff[i-currentRace];",
+                        "        downgradeIncrease = 0.0;",
+                        "        }",
+                        "    // Даунгрейд",
+                        "    if (currentRace > i) {",
+                        "        upgradeIncrease = 0.0;",
+                        "        downgradeIncrease = downgradeCoeff[i];",
+                        "        }",
+                        "    // Итоговая стоимость",
+                        "    finalCost[i] = 1000 + round(currentCost * (1.0 + upgradeIncrease + downgradeIncrease));",
+                        "",
+                        "    if (finalCost[i] > 100000000) {finalCost[i] = 100000000;}",
+                        "",
+                        "    // перекраска в серый цвет, если не хватает денег",
+                        "    if (currentMoney < finalCost[i]) {",
+                        "        block = 'block~';",
+                        "    } else {",
+                        "        block = '';",
+                        "    }",
+                        "",
+                        "    InjectAnswer('pick_race_confirm', block + raceName[i] + Format(', <0> cr.',\"<0>\",finalCost[i]), i);",
+                        "}",
+                        "DAdd(7);"
+                    ],
+                    "#": 49,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(5);"
+                    ],
+                    "#": 50,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "str fullBlock;",
+                        "str halfBlock;",
+                        "int currentMoney = ShipMoney(Player());",
+                        "",
+                        "// Если не хватает денег на дорогие бомбы, ответ заблокируется",
+                        "if (currentMoney < currentBombCost) {",
+                        "    fullBlock = 'block~';",
+                        "} else {",
+                        "    fullBlock = '';",
+                        "}",
+                        "",
+                        "// Если не хватает денег на дешевые бомбы, ответ заблокируется",
+                        "if (currentMoney < currentBombCost/2) {",
+                        "    halfBlock = 'block~';",
+                        "} else {",
+                        "    halfBlock = '';",
+                        "}",
+                        "",
+                        "",
+                        "InjectAnswer('pick_bomb', fullBlock + Format('Кварковая бомба, <0> cr.',\"<0>\",currentBombCost), 1);",
+                        "if (customArtsEnabled) {",
+                        "    InjectAnswer('pick_bomb', fullBlock + Format('ЭМП бомба, <0> cr.',\"<0>\",currentBombCost), 2);",
+                        "    InjectAnswer('pick_bomb', halfBlock + Format('Оглушающая бомба, <0> cr.',\"<0>\",currentBombCost/2), 3);",
+                        "    }",
+                        "DAdd(4);"
+                    ],
+                    "#": 51,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 880,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(3);",
+                        "exit;"
+                    ],
+                    "#": 52,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 540
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "// Определение стоимости 1 бомбы в зависимости от ГТУ",
+                        "currentGalaxyLevel = GalaxyTechLevel();",
+                        "currentBombCost = baseBombCost[currentGalaxyLevel];",
+                        "",
+                        "// Проверка на подключение ЭМП и оглушающих бомб",
+                        "if (BlockExist('Artefacts.CustomArtefacts.Stun_bomb') == 1 && BlockExist('Artefacts.CustomArtefacts.EMP_bomb') == 1) {",
+                        "    customArtsEnabled = 1;",
+                        "    } else {",
+                        "        customArtsEnabled = 0;",
+                        "    }",
+                        "if(customArtsEnabled == 1) {",
+                        "  DChange(6);",
+                        "  exit;",
+                        "}",
+                        "if(customArtsEnabled == 0) {",
+                        "  DChange(1);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 53,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 540
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(customArtsEnabled == 1) {",
+                        "  DChange(6);",
+                        "  exit;",
+                        "}",
+                        "if(customArtsEnabled == 0) {",
+                        "  DChange(1);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 54,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 540
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 55,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 540
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(3);",
+                        "exit;"
+                    ],
+                    "#": 56,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 540
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 185,
+                    "Parent": -1,
+                    "#": 16
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 95,
+                    "Parent": -1,
+                    "#": 15
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 140,
+                    "Parent": -1,
+                    "#": 14,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 300,
+                    "Parent": -1,
+                    "#": 21
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "baseBombCost",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Array",
+                    "Init": "9",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "currentGalaxyLevel",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "currentBombCost",
+                    "Pos.x": 450,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "playerItemsCount",
+                    "Pos.x": 660,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "None",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 900,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "currentRace",
+                    "Pos.x": 990,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "upgradeCoeff",
+                    "Pos.x": 1170,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Array",
+                    "Init": "5",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "downgradeCoeff",
+                    "Pos.x": 1350,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Array",
+                    "Init": "5",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "pickedItem",
+                    "Pos.x": 1560,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "raceName",
+                    "Pos.x": 1710,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Array",
+                    "Init": "5",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "finalCost",
+                    "Pos.x": 0,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Array",
+                    "Init": "5",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "currentCost",
+                    "Pos.x": 150,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 11,
+                    "Var.Type": "Float",
+                    "Init": "0.000",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "currentMoney",
+                    "Pos.x": 330,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 12,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "customArtsEnabled",
+                    "Pos.x": 510,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 13,
+                    "Var.Type": "None",
+                    "Init": "",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 22,
+            "End": 41,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 23,
+            "End": 42,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 24,
+            "End": 43,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 44,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 45,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 27,
+            "End": 46,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 28,
+            "End": 47,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 29,
+            "End": 48,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 30,
+            "End": 49,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 31,
+            "End": 50,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 32,
+            "End": 51,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 33,
+            "End": 52,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 35,
+            "End": 53,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 36,
+            "End": 54,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 39,
+            "End": 55,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 40,
+            "End": 56,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 15,
+            "End": 14,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 14,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 17,
+            "End": 16,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 17,
+            "End": 21,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

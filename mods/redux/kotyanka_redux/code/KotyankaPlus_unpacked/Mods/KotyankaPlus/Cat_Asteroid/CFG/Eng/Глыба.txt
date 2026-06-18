@@ -1,0 +1,86 @@
+MicroModuls ^{
+    Cat_Asteroid ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=10000
+        Equipments=Hull
+        FragilityEnergy=70
+        FragilityMissile=115
+        FragilitySplinter=100
+        HullGraphSize=100
+        KindGraph=Asteroid
+        Name=Big Rock
+        Owner=Gaal
+        Special=1
+        Text=<color=248,252,248>This creation appeared under a bottle of Gaaldok yanvelb in the gloomy mind of the technician Uul Moloka, who handed over the drawings of this ship to the network of Technical Centers in the name of victory in his will the next day. Made of precious minerals, furnished with the latest technology, however, due to the peculiarities of the structure, a huge amount of energy is spent mainly on making it just fly, but the mobility of the weapon systems allows you to aim guns even without the pilot's efforts. Because of the shape and size of the ship, few people want to deal with the owner of the ship. </color>
+		Text=Firing range: <bonWRadius>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Droid effectiveness: <bonDroid>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+		Text=Radar range: <bonRadar>
+		Text=Scanner power: <bonScan>%
+		Text=Gripper power: <bonHook>
+		Text=Attack skill: <bonSkill1>
+		Text=Mobility skill: <bonSkill2>
+		Text=Technology skill: <bonSkill3>
+        Text=Commerce skill: <bonSkill4>
+        Text=Charisma skill: <bonSkill5>
+		Text=Leadership skill: <bonSkill6>
+		bonRadar=-1000
+		bonScan=-15
+		bonHook=-100
+        bonDroid=50
+		bonDef=-99
+        bonHull=30
+        bonSpeed=750
+        bonWEnergy=-40
+        bonWMissile=20
+        bonWRadius=50
+        bonWSplinter=15
+		bonSkill1=6
+		bonSkill2=-6
+		bonSkill3=6
+		bonSkill4=-6
+		bonSkill5=-6
+		bonSkill6=-6
+	}
+}
+Script {
+    Asteroid {
+	        Settings ~{
+				good_special_name=Big Rock
+				cost_sponsor=3500000
+				hull_cost_1=5000000
+				research_time_fast=180
+				hull_size_good=5000
+				cost=1
+	    }
+        187=The base <0> has been destroyed, as well as your investment in the project ...
+		188=The base <0> has completed construction and research, you can fly!
+		189=I came back here to find out what's going on with the project I sponsored?
+		202=Hello, I would like to ask if you currently have any projects where the ranger's help could be useful?
+		190=A? Aah, it's you <0>, yes, we have a very interesting project here, although it costs a very large amount of loans and the management does not want to allocate money for it. However, judging by your reputation, you love everything unusual, regardless of the cost. So I decided to ask if you might be interested in our experiment?
+		204=Yes, yes, we were waiting for you, we managed to build this unit and carry out all the necessary tests, you can get it in the hangar. And thanks again for the help in the research, this testing has helped us a lot in understanding some things.<br>
+		192=What project?
+		193=I don't know anything, you didn't sponsor anything at this station, maybe they will help you on <0>
+		194=The work is experimental, and we conduct testing at every stage of the construction of the ship. So far I can only say that he is not ready.<br>
+		170=The work will end approximately <0>.
+		114=I don't know what you're talking about
+		195=The fact is that the technician Uula Molek, who recently died of a heart attack, left us very drawings in his will.. an extravagant ship. Judging by the documentation, it should be made of precious minerals, furnished with expensive equipment and an incredibly strong energy core. We are interested in the possibility of building this unit and conducting some tests, after which you will be able to get it into your possession. If you still haven't changed your mind, then it will cost <0> cr.
+		196=Getting to work
+		142=Great, I'll go look at it.
+		197=Well, there's about Uul Molek's technique and his drawings ...
+		198=Ok
+		199=Well, it remains only to wait for you to finish
+		147=And when can you finish?
+		112=Good
+		118=Goodbye
+		200=Listen, and you interested me. So, what kind of project is there and how much will it cost?
+		201=I will be happy to help you, because unique things are something worth living for!
+		155=I'll think about it
+    }
+}

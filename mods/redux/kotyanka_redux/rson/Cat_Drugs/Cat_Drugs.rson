@@ -1,0 +1,1445 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Cat_Drugs",
+    "ScriptFileOut": "D:\\Cat_Drugs.scr",
+    "ScriptTextOut": "D:\\Cat_Drugs.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "restart",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 33,
+                    "Msg": "О, нет, забудьте, я перепутал.",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Drugs.12\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 34,
+                    "Msg": "Да. Я встретил гаальца <clr>У'Кур О<clrEnd>, он предлагает всем пилотам пролетающих кораблей принять сильнодействующие наркотические вещества.",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Drugs.13\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 35,
+                    "Msg": "Нет, меня это не интересует",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Drugs.14\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 36,
+                    "Msg": "Да, я готов вам помочь.",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_Drugs.15\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 37,
+                    "Msg": "А чем ты занимаешься?",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Drugs.16\"))"
+                },
+                {
+                    "Name": "fastexit",
+                    "Pos.x": 600,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 38,
+                    "Msg": "Конец связи",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer('fastexit~'+CT(\"Script.Cat_Drugs.17\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 720,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 39,
+                    "Msg": "Ясно",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Drugs.18\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 840,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 40,
+                    "Msg": "Я нашёл кое-что...",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Drugs.19\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 960,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 41,
+                    "Msg": "Я передумал",
+                    "AMsg.Num": "8",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Drugs.20\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1080,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 42,
+                    "Msg": "Я хочу купить у тебя твоих расширителей.",
+                    "AMsg.Num": "9",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Drugs.21\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 43,
+                    "Msg": "Ну, ладно",
+                    "AMsg.Num": "10",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Drugs.25\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1320,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 44,
+                    "Msg": "Нет, пожалуй, не буду сейчас ничего покупать.",
+                    "AMsg.Num": "11",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Drugs.26\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1440,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 45,
+                    "Msg": "А давай-ка",
+                    "AMsg.Num": "12",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_Drugs.27\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 23,
+                    "Msg": "Наркоторговце? О, это действительно важно! Расскажите поподробнее, мы проводим масштабную кампанию против этих отбросов общества.",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Drugs.1\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 24,
+                    "Msg": "Перепутали?.. Ну, ладно. Ваше дело.",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Drugs.2\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 25,
+                    "Msg": "Ага... Да, да, этот пилот уже есть в наших базах.\r\n\r\nК сожалению, нам нечем вам помочь, силы Коалиции очень ограничены.\r\n\r\nОднако, если бы вы смогли заманить этого пилота сюда... И не подумайте - мы не постоим за наградой.",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Drugs.3\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "Отлично! Будем ждать вашего возвращения с нарушителем порядка.",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Drugs.4\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "Здравствуй, рейнджер!\r\n\r\nНадеюсь, у тебя на борту нет никаких этих гадских нейростимуляторов!",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Drugs.5\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "Помимо своей обычной деятельности, я уполномочен нашим обществом по пропаганде здорового образа жизни уничтожать все найденные и переданные нам наркотические вещества.\r\n\r\nПоэтому, кстати, мы готовы выкупить у вас любые найденные вами <clr>наркотики<clrEnd> и <clr>стимуляторы<clrEnd> по <clr>повышенной<clrEnd> цене.",
+                    "DMsg.Num": "5",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Drugs.6\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 900,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "Итак, что вы нашли?",
+                    "DMsg.Num": "6",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Drugs.8\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1050,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 30,
+                    "Msg": "О, дорогой друг. Чего хочешь?\r\n\r\nДля всех моих друзей у меня есть особые... \"Расширители сознания\".",
+                    "DMsg.Num": "7",
+                    "_orig_dtext": "DText(CT(\"Script.Cat_Drugs.9\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 31,
+                    "Msg": "Извини, друг, всё закончилось. Прилетай попозже... Ну, дней через <0>, во!",
+                    "DMsg.Num": "8",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Cat_Drugs.10\"),\"<0>\",DrugsCD))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1350,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 32,
+                    "Msg": "Ну, есть немного <0>. За <1> cr. я готов продать тебе одну штуку, а в запасах у меня <2> штук.",
+                    "DMsg.Num": "9",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Cat_Drugs.11\"),\"<0>\",tstr,\"<1>\",GalaxyMoney(3),\"<2>\",DrugsCnt))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "DialogFei",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 19
+                },
+                {
+                    "Name": "DialogGaal",
+                    "Type": "TDialog",
+                    "Pos.x": 150,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 20
+                },
+                {
+                    "Name": "DialogRC",
+                    "Type": "TDialog",
+                    "Pos.x": 300,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 21
+                },
+                {
+                    "Name": "Sell",
+                    "Type": "TDialog",
+                    "Pos.x": 420,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 22
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 9
+                },
+                {
+                    "Name": "GroupFei",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 0,
+                    "CntShipMax": 0,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": 19,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 1,
+                    "Type": "TGroup",
+                    "Pos.x": 90,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 10
+                },
+                {
+                    "Name": "GroupGaal",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 0,
+                    "CntShipMax": 0,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": 20,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 2,
+                    "Type": "TGroup",
+                    "Pos.x": 180,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 11
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "//stateFei == 0 - фэянина в галактике нет",
+                        "//stateFei == 1 - фэянин есть в галактике",
+                        "",
+                        "//stateGaal == 0 - гаальца в галактике нет",
+                        "//stateGaal == 1 - гаалец есть в галактике",
+                        "//stateGaal == 2 - мы рассказали о гаальце на ЦР",
+                        "//stateGaal == 3 - мы тянем гаальца на ЦР",
+                        "//stateGaal == 4 - мы сдали гаальца на ЦР",
+                        "",
+                        "GRun();"
+                    ],
+                    "#": 12,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "function FindCigarettes() {",
+                        "    int cigar = 0;",
+                        "    int cnt = ShipItems(Player());",
+                        "    for(int i = 1; i < cnt; i = i + 1) {",
+                        "        dword item = ShipItems(Player(), i);",
+                        "        if(ItemType(item) != t_UselessItem) continue;",
+                        "        if(EquipmentImageName(item) == 'Usl_19') cigar = cigar + 1;",
+                        "    }",
+                        "",
+                        "    result = cigar;",
+                        "}",
+                        "",
+                        "function FindDust() {",
+                        "    int hiperd = 0;",
+                        "    int cnt = ShipItems(Player());",
+                        "    for(int i = 1; i < cnt; i = i + 1) {",
+                        "        dword item = ShipItems(Player(), i);",
+                        "        if(ItemType(item) != t_UselessItem) continue;",
+                        "        if(EquipmentImageName(item) == 'ShuBounty_Hyperdust') hiperd = hiperd + 1;",
+                        "    }",
+                        "",
+                        "    result = hiperd;",
+                        "}",
+                        "",
+                        "function FindStims() {",
+                        "    int stims = 0;",
+                        "    int cnt = ShipItems(Player());",
+                        "    for(int i = 1; i < cnt; i = i + 1) {",
+                        "        dword item = ShipItems(Player(), i);",
+                        "        if(ItemType(item) != t_UselessItem) continue;",
+                        "        if(EquipmentImageName(item) == 'Usl_Drug06') stims = stims + 1;",
+                        "        if(EquipmentImageName(item) == 'Usl_Drug07') stims = stims + 1;",
+                        "        if(EquipmentImageName(item) == 'Usl_Drug08') stims = stims + 1;",
+                        "        if(EquipmentImageName(item) == 'Usl_Drug09') stims = stims + 1;",
+                        "        if(EquipmentImageName(item) == 'Usl_Drug10') stims = stims + 1;",
+                        "        if(EquipmentImageName(item) == 'Usl_Drug11') stims = stims + 1;",
+                        "        if(EquipmentImageName(item) == 'Usl_Drug12') stims = stims + 1;",
+                        "        if(EquipmentImageName(item) == 'Usl_Drug13') stims = stims + 1;",
+                        "        if(EquipmentImageName(item) == 'Usl_Drug14') stims = stims + 1;",
+                        "        if(EquipmentImageName(item) == 'Usl_Drug15') stims = stims + 1;",
+                        "        if(EquipmentImageName(item) == 'Usl_Drug16') stims = stims + 1;",
+                        "        if(EquipmentImageName(item) == 'Usl_Drug17') stims = stims + 1;",
+                        "    }",
+                        "",
+                        "    result = stims;",
+                        "}",
+                        "",
+                        "function SpawnFei() {",
+                        "    dword planet = FindPlanet(ShipStar(Player()),'NotNone');",
+                        "",
+                        "    int k = PlanetRace(planet);",
+                        "    PlanetRace(planet,Fei);",
+                        "",
+                        "    dword cur_ship = BuyTransport(planet,2);",
+                        "    SetName(cur_ship,CT(\"Script.Cat_Drugs.28\"));",
+                        "",
+                        "    //Накидываем в трюм \"конфискованных\" наркотиков",
+                        "    dword item;",
+                        "    item = CreateQuestItem('ShuBounty_Hyperdust');",
+                        "    AddItemToShip(cur_ship,item);",
+                        "    if(!Rnd(0,1)) {",
+                        "        item = CreateQuestItem('ShuBounty_Hyperdust');",
+                        "        AddItemToShip(cur_ship,item);",
+                        "    }",
+                        "    item = CreateQuestItem('Usl_19');",
+                        "    AddItemToShip(cur_ship,item);",
+                        "    item = CreateQuestItem('Usl_19');",
+                        "    AddItemToShip(cur_ship,item);",
+                        "    item = CreateQuestItem('Usl_19');",
+                        "    AddItemToShip(cur_ship,item);",
+                        "    if(!Rnd(0,1)) {",
+                        "        item = CreateQuestItem('Usl_19');",
+                        "        AddItemToShip(cur_ship,item);",
+                        "    }",
+                        "    if(!Rnd(0,2)) {",
+                        "        item = CreateQuestItem('Usl_19');",
+                        "        AddItemToShip(cur_ship,item);",
+                        "    }",
+                        "",
+                        "    PlanetRace(planet,k);",
+                        "",
+                        "    ShipJoin(GroupFei,cur_ship);",
+                        "    stateFei = 1;",
+                        "}",
+                        "",
+                        "function SpawnGaal() {",
+                        "    dword planet = FindPlanet(ShipStar(Player()),'NotNone');",
+                        "",
+                        "    int k = PlanetRace(planet);",
+                        "    PlanetRace(planet,Gaal);",
+                        "",
+                        "    dword cur_ship = BuyTransport(planet,1);",
+                        "    SetName(cur_ship,CT('Script.Cat_Drugs.GaalName'));",
+                        "",
+                        "    PlanetRace(planet,k);",
+                        "",
+                        "    ShipJoin(GroupGaal,cur_ship);",
+                        "    stateGaal = 1;",
+                        "}"
+                    ],
+                    "#": 13,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Подчищаем значения, если ребят убило",
+                        "if(!GroupCount(GroupFei)) {",
+                        "    stateFei = 0;",
+                        "}",
+                        "if(!GroupCount(GroupGaal)) {",
+                        "    stateGaal = 0;",
+                        "}",
+                        "",
+                        "if(!stateFei) {",
+                        "    if(ShipInNormalSpace(Player())) {",
+                        "        if(StarOwner(ShipStar(Player())) == 0 && StarCustomFaction(ShipStar(Player())) == '' && !StarBattle(ShipStar(Player()))) {",
+                        "            if(CurTurn() % 30 == 0) {",
+                        "                if(FindCigarettes()) {",
+                        "                    SpawnFei(ShipStar(Player()));",
+                        "                }",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "}",
+                        "",
+                        "if(!stateGaal) {",
+                        "    if(ShipInNormalSpace(Player())) {",
+                        "        if(StarOwner(ShipStar(Player())) == 0 && StarCustomFaction(ShipStar(Player())) == '' && !StarBattle(ShipStar(Player()))) {",
+                        "            if(CurTurn() % 30 == 0) {",
+                        "                if(FindCigarettes()) {",
+                        "                    SpawnGaal(ShipStar(Player()));",
+                        "                }",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "}",
+                        "",
+                        "if(DrugsCD) DrugsCD = DrugsCD - 1;",
+                        "else {",
+                        "    DrugsCD = Rnd(30,40);",
+                        "    DrugsType = Rnd(1,3);",
+                        "    if(DrugsType == 1) {",
+                        "        //Гиперпыль",
+                        "        DrugsCnt = Rnd(2,4);",
+                        "    }",
+                        "    else if(DrugsType == 2) {",
+                        "        //Гаалистра времени",
+                        "        DrugsCnt = Rnd(1,2);",
+                        "    }",
+                        "    else if(DrugsType == 3) {",
+                        "        //Рагобамский шёпот",
+                        "        DrugsCnt = Rnd(1,3);",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 14,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(stateGaal == 1) {",
+                        "    if(GetShipRuins(Player())) {",
+                        "        if(ShipType(GetShipRuins(Player())) == 'RC') {",
+                        "            AddDialogInject('DialogRC','',CT(\"Script.Cat_Drugs.0\"),25);",
+                        "        }",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 15,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(stateGaal == 3) {",
+                        "    //Если игрок в открытом космосе - гаалец следует за ним",
+                        "    //Если игрок сидит на планете/станции - гаалец садится туда либо летит садиться туда",
+                        "    if(ShipInNormalSpace(CurShip)) {",
+                        "        if(ShipInNormalSpace(Player())) {",
+                        "            if(ShipInStar(CurShip,ShipStar(Player()))) {",
+                        "                OrderFollowShip(CurShip,Player());",
+                        "            }",
+                        "            else {",
+                        "                OrderJump(CurShip,ShipStar(Player()));",
+                        "            }",
+                        "        }",
+                        "        else if(GetShipPlanet(Player())) {",
+                        "            if(ShipInStar(CurShip,ShipStar(Player()))) {",
+                        "                OrderLanding(CurShip,GetShipPlanet(Player()));",
+                        "            }",
+                        "            else {",
+                        "                OrderJump(CurShip,ShipStar(Player()));",
+                        "            }",
+                        "        }",
+                        "        else if(GetShipRuins(Player())) {",
+                        "            if(ShipInStar(CurShip,ShipStar(Player()))) {",
+                        "                OrderLanding(CurShip,GetShipRuins(Player()));",
+                        "            }",
+                        "            else {",
+                        "                OrderJump(CurShip,ShipStar(Player()));",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "    else if(GetShipPlanet(CurShip)) {",
+                        "        OrderTakeOff(CurShip);",
+                        "    }",
+                        "    else if(GetShipRuins(CurShip)) {",
+                        "        //Если гаалец на ЦР - он типа арестован",
+                        "        if(ShipType(GetShipRuins(CurShip)) == 'RC') {",
+                        "            OrderLock(CurShip,1);",
+                        "        }",
+                        "        else {",
+                        "            OrderTakeOff(CurShip);",
+                        "        }",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 46,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 80
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 47,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(7);",
+                        "exit;"
+                    ],
+                    "#": 48,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 49,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "dword item = GAnswerData;",
+                        "",
+                        "if(EquipmentImageName(item) == 'Usl_Drug06') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*125/100));",
+                        "if(EquipmentImageName(item) == 'Usl_Drug07') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*125/100));",
+                        "if(EquipmentImageName(item) == 'Usl_Drug08') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*125/100));",
+                        "if(EquipmentImageName(item) == 'Usl_Drug09') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*125/100));",
+                        "if(EquipmentImageName(item) == 'Usl_Drug10') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*125/100));",
+                        "if(EquipmentImageName(item) == 'Usl_Drug11') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*125/100));",
+                        "if(EquipmentImageName(item) == 'Usl_Drug12') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*125/100));",
+                        "if(EquipmentImageName(item) == 'Usl_Drug13') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*125/100));",
+                        "if(EquipmentImageName(item) == 'Usl_Drug14') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*125/100));",
+                        "if(EquipmentImageName(item) == 'Usl_Drug15') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*125/100));",
+                        "if(EquipmentImageName(item) == 'Usl_Drug16') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*125/100));",
+                        "if(EquipmentImageName(item) == 'Usl_Drug17') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*125/100));",
+                        "if(EquipmentImageName(item) == 'ShuBounty_Hyperdust') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*150/100));",
+                        "if(EquipmentImageName(item) == 'Usl_19') ShipMoney(Player(),ShipMoney(Player())+(ItemCost(item)*10));",
+                        "",
+                        "FreeItem(GetItemFromShip(Player(),item));",
+                        "Sound('Sound.Buy');",
+                        "DChange(6);",
+                        "exit;"
+                    ],
+                    "#": 50,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 400,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(0);",
+                        "DAdd(1);"
+                    ],
+                    "#": 51,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(2);",
+                        "DAdd(3);"
+                    ],
+                    "#": 52,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(4);",
+                        "DAdd(5);",
+                        "DAdd(7);"
+                    ],
+                    "#": 53,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(6);"
+                    ],
+                    "#": 54,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "int cnt = ShipItems(Player());",
+                        "for(i = 1; i < cnt; i = i + 1) {",
+                        "    dword item = ShipItems(Player(), i);",
+                        "    if(ItemType(item) != t_UselessItem) continue;",
+                        "    if(EquipmentImageName(item) == 'Usl_Drug06') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*125/100)+' cr.)',item);",
+                        "    if(EquipmentImageName(item) == 'Usl_Drug07') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*125/100)+' cr.)',item);",
+                        "    if(EquipmentImageName(item) == 'Usl_Drug08') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*125/100)+' cr.)',item);",
+                        "    if(EquipmentImageName(item) == 'Usl_Drug09') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*125/100)+' cr.)',item);",
+                        "    if(EquipmentImageName(item) == 'Usl_Drug10') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*125/100)+' cr.)',item);",
+                        "    if(EquipmentImageName(item) == 'Usl_Drug11') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*125/100)+' cr.)',item);",
+                        "    if(EquipmentImageName(item) == 'Usl_Drug12') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*125/100)+' cr.)',item);",
+                        "    if(EquipmentImageName(item) == 'Usl_Drug13') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*125/100)+' cr.)',item);",
+                        "    if(EquipmentImageName(item) == 'Usl_Drug14') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*125/100)+' cr.)',item);",
+                        "    if(EquipmentImageName(item) == 'Usl_Drug15') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*125/100)+' cr.)',item);",
+                        "    if(EquipmentImageName(item) == 'Usl_Drug16') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*125/100)+' cr.)',item);",
+                        "    if(EquipmentImageName(item) == 'Usl_Drug17') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*125/100)+' cr.)',item);",
+                        "    if(EquipmentImageName(item) == 'ShuBounty_Hyperdust') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*150/100)+' cr.)',item);",
+                        "    if(EquipmentImageName(item) == 'Usl_19') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*10)+' cr.)',item);",
+                        "}",
+                        "DAdd(8);"
+                    ],
+                    "#": 55,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(9);"
+                    ],
+                    "#": 56,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(10);"
+                    ],
+                    "#": 57,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 880,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player()) >= GalaxyMoney(3)) {",
+                        "  DAdd(12);",
+                        "}",
+                        "DAdd(11);"
+                    ],
+                    "#": 58,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1030,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 59,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 60,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "stateGaal = 2;",
+                        "Sound('Sound.NewMsg');",
+                        "DChange(3);",
+                        "exit;"
+                    ],
+                    "#": 61,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(5);",
+                        "exit;"
+                    ],
+                    "#": 62,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 63,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(6);",
+                        "exit;"
+                    ],
+                    "#": 64,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 65,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 940,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(!DrugsCnt) {",
+                        "  DChange(8);",
+                        "  exit;",
+                        "}",
+                        "if(DrugsCnt) {",
+                        "  if(DrugsType == 1) tstr = CT(\"Script.Cat_Drugs.24\");",
+                        "  if(DrugsType == 2) tstr = CT(\"Script.Cat_Drugs.23\");",
+                        "  if(DrugsType == 3) tstr = CT(\"Script.Cat_Drugs.22\");",
+                        "  DChange(9);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 66,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1060,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(7);",
+                        "exit;"
+                    ],
+                    "#": 67,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(7);",
+                        "exit;"
+                    ],
+                    "#": 68,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1300,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),ShipMoney(Player())-GalaxyMoney(3));",
+                        "",
+                        "if(DrugsType == 1) {",
+                        "    dword item = CreateQuestItem('ShuBounty_Hyperdust');",
+                        "    AddItemToShip(Player(),item);",
+                        "}",
+                        "else if(DrugsType == 2) {",
+                        "    item = CreateQuestItem('Usl_Drug10');",
+                        "    AddItemToShip(Player(),item);",
+                        "}",
+                        "else if(DrugsType == 3) {",
+                        "    item = CreateQuestItem('Usl_Drug12');",
+                        "    AddItemToShip(Player(),item);",
+                        "}",
+                        "",
+                        "DrugsCnt = DrugsCnt - 1;",
+                        "DChange(7);",
+                        "exit;"
+                    ],
+                    "#": 69,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1420,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 8
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 7
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 6,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 16
+                },
+                {
+                    "Name": "State1",
+                    "Move": 5,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 90,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 17
+                },
+                {
+                    "Name": "State2",
+                    "Move": 5,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 180,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 18
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "stateFei",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "stateGaal",
+                    "Pos.x": 120,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "DrugsCD",
+                    "Pos.x": 270,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "35",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "DrugsCnt",
+                    "Pos.x": 390,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "DrugsType",
+                    "Pos.x": 510,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tstr",
+                    "Pos.x": 660,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 46,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 19,
+            "End": 47,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 20,
+            "End": 48,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 21,
+            "End": 49,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 22,
+            "End": 50,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 23,
+            "End": 51,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 52,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 27,
+            "End": 53,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 28,
+            "End": 54,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 29,
+            "End": 55,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 30,
+            "End": 56,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 31,
+            "End": 57,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 32,
+            "End": 58,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 33,
+            "End": 59,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 34,
+            "End": 60,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 36,
+            "End": 61,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 37,
+            "End": 62,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 39,
+            "End": 63,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 40,
+            "End": 64,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 41,
+            "End": 65,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 42,
+            "End": 66,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 43,
+            "End": 67,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 44,
+            "End": 68,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 45,
+            "End": 69,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 7,
+            "End": 6,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 8,
+            "End": 6,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 9,
+            "End": 8,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 9,
+            "End": 16,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 10,
+            "End": 8,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 10,
+            "End": 17,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 11,
+            "End": 8,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 11,
+            "End": 18,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

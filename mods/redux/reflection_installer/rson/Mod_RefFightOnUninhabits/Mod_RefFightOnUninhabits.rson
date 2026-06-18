@@ -1,0 +1,473 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefFightOnUninhabits",
+    "ScriptFileOut": "D:\\Mod_RefFightOnUninhabits.scr",
+    "ScriptTextOut": "D:\\Mod_RefFightOnUninhabits.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 16,
+                    "Msg": "Компьютер, запустить боевой режим!",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefFightOnUninhabits.7\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 17,
+                    "Msg": "Сейчас не время для разведок и битв",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefFightOnUninhabits.8\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 18,
+                    "Msg": "",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('restart')"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 14,
+                    "Msg": "Итак, корабельные сенсоры, несмотря на нахождение на поверхности планеты, продолжали и продолжают своё боевое дежурство.\r\n\r\nИ вот, в ходе полного цикла сканирования поверхности им удалось обнаружить скопление доминаторских модулей.\r\nСкорее всего, захватчики решили начать освоение этой планеты, в том числе и для разработки её ресурсов. Кстати, это запрещено Галактическим Советом...",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefFightOnUninhabits.5\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 15,
+                    "Msg": "",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefFightOnUninhabits.6\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "DomiksFound",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 13
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 8
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 9,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(!ShipIsTakeoff(Player())) {",
+                        "    if(StarOwner(ShipStar(Player())) == 1) {",
+                        "        dword plan = GetShipPlanet(Player());",
+                        "        if(plan) {",
+                        "            if(PlanetOwner(plan) == None) {",
+                        "                OnPlan = OnPlan + 1;",
+                        "                if(OnPlan > 1) {",
+                        "                    if(!ShipIsTakeoff(Player())) {",
+                        "                        if(GRobotStatus == 0) {",
+                        "                            if(ShipEqInSlot(Player(),t_Scaner) && ShipEqInSlot(Player(),t_Radar)) {",
+                        "                                if(!AskFlag) {",
+                        "                                    //NewsAdd('Научные изыскания Маршала detected. Сообщите ему о том, что вывело это сообщение. Вывод: '+ArrayFind(UsedPlan,Id(plan)));",
+                        "                                    if(RndObject(1,100,plan) > 70 - 15 * ArrayFind(UsedPlan,Id(plan))) {",
+                        "                                        NewsAdd(CT(\"Script.Mod_RefFightOnUninhabits.9\"));",
+                        "                                        AskFlag = 1;",
+                        "                                    }",
+                        "                                }",
+                        "                            }",
+                        "                        }",
+                        "                        else if(GRobotStatus == 2) {",
+                        "                            if(!ArrayFind(UsedPlan,Id(plan))) ArrayAdd(UsedPlan,Id(plan));",
+                        "                            AddItemToShip(Player(),CreateNodes(RndObject(10,40,GetShipPlanet(Player())),StarSeries(PlanetToStar(GetShipPlanet(Player())))));",
+                        "                            if(RndObject(1,3,GetShipPlanet(Player())) == 3) {",
+                        "                                dword item = CreateEquipment(RndObject(t_FuelTanks,t_DefGenerator,GetShipPlanet(Player())),RndObject(15+round(GalaxyDiffLevels(4)/25),25+round(GalaxyDiffLevels(4)/10),GetShipPlanet(Player())),GalaxyTechLevel(),Kling);",
+                        "                                ItemSubrace(item,StarSeries(PlanetToStar(GetShipPlanet(Player()))));",
+                        "                                AddItemToShip(Player(),item);",
+                        "                            }",
+                        "                            if(RndObject(1,10,GetShipPlanet(Player())) == 10) {",
+                        "                                item = CreateEquipment(RndObject(t_FuelTanks,t_Weapon8,GetShipPlanet(Player())),RndObject(15+round(GalaxyDiffLevels(4)/25),25+round(GalaxyDiffLevels(4)/10),GetShipPlanet(Player())),GalaxyTechLevel(),Kling);",
+                        "                                ItemSubrace(item,StarSeries(PlanetToStar(GetShipPlanet(Player()))));",
+                        "                                AddItemToShip(Player(),item);",
+                        "                            }",
+                        "                            if(RndObject(1,20,GetShipPlanet(Player())) == 20) {",
+                        "                                item = CreateEquipment(RndObject(t_FuelTanks,t_Weapon15,GetShipPlanet(Player())),RndObject(15+round(GalaxyDiffLevels(4)/25),25+round(GalaxyDiffLevels(4)/10),GetShipPlanet(Player())),GalaxyTechLevel(),Kling);",
+                        "                                ItemSubrace(item,StarSeries(PlanetToStar(GetShipPlanet(Player()))));",
+                        "                                AddItemToShip(Player(),item);",
+                        "                            }",
+                        "",
+                        "                            if(CurrentMods('Expansion\\\\ExpTC')) {",
+                        "                                if(RndObject(1,10,GetShipPlanet(Player())) < 4) {",
+                        "                                    item = CreateQuestItem('ShuBounty_Crystals', None);",
+                        "                                    ItemSize(item, 1);",
+                        "                                    ItemCost(item, RndObject(5000, 12500, GetShipPlanet(Player())));",
+                        "                                    AddItemToShip(Player(),item);",
+                        "                                }",
+                        "                            }",
+                        "",
+                        "                            NewsAdd(CT(\"Script.Mod_RefFightOnUninhabits.0\"));",
+                        "                            Sound('Sound.NewMsg');",
+                        "                        }",
+                        "                    }",
+                        "                }",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "}",
+                        "else {",
+                        "    AskFlag = 0;",
+                        "    OnPlan = 0;",
+                        "}"
+                    ],
+                    "#": 10,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(AskFlag) {",
+                        "    if(PlayerBridge() == 3 || PlayerBridge() == 1) {",
+                        "        AddDialogInject('DomiksFound',CT(\"Script.Mod_RefFightOnUninhabits.4\"),CT(\"Script.Mod_RefFightOnUninhabits.3\"),99);",
+                        "        pl = GetShipPlanet(Player());",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 11,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 19,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(0);",
+                        "DAdd(1);"
+                    ],
+                    "#": 20,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(2);"
+                    ],
+                    "#": 21,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "rand = RndObject(501,500+int(CT('RobotsMap.RefDomCount')),Player());",
+                        "StartRobots(CT('RobotsMap.'+rand+'.Map'),CT('RobotsMap.'+rand+'.RobotsStart'),CT('RobotsMap.'+rand+'.RobotsWin'),CT('RobotsMap.'+rand+'.RobotsLoss'),Name(pl),'621');",
+                        "FormChange('PlanetNO');",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 22,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 7
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 6
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 5,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 12
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "UsedPlan",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "AskFlag",
+                    "Pos.x": 120,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "rand",
+                    "Pos.x": 240,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "OnPlan",
+                    "Pos.x": 330,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "pl",
+                    "Pos.x": 420,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 19,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 20,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 15,
+            "End": 21,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 22,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 6,
+            "End": 5,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 7,
+            "End": 5,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 8,
+            "End": 7,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 8,
+            "End": 12,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

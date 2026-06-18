@@ -1,0 +1,1766 @@
+Artefacts ^{
+    ArtAntigrav ^{
+        Name=Антигравитатор
+        OnActCode ^{
+            01=if(ScriptItemActionType(t_OnAnotherItem) || ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+                01=dword item = ScriptItemActObject1();
+                02=if(ItemType(item) > t_Hull || ItemType(item) < t_Protoplasm)
+                03 ^{
+                    01=if(ItemInScript(item) != 1) int y;
+                    02=if(ItemType(item) == t_Hull) exit;
+                    03=int min_size = 0;
+                    04=if(ItemType(item) == t_FuelTanks) min_size = CT('Items.FuelTanks.AverageSize');
+                    05=else if(ItemType(item) == t_Engine) min_size = CT('Items.Engine.AverageSize');
+                    06=else if(ItemType(item) == t_Radar) min_size = CT('Items.Radar.AverageSize');
+                    07=else if(ItemType(item) == t_Scaner) min_size = CT('Items.Scaner.AverageSize');
+                    08=else if(ItemType(item) == t_RepairRobot) min_size = CT('Items.RepairRobot.AverageSize');
+                    09=else if(ItemType(item) == t_CargoHook) min_size = CT('Items.CargoHook.AverageSize');
+                    10=else if(ItemType(item) == t_DefGenerator) min_size = CT('Items.DefGenerator.AverageSize');
+                    11=else if(ItemType(item) > t_DefGenerator && ItemType(item) < t_CustomWeapon) min_size = CT('Items.Weapon.Stats.' + (ItemType(item) - t_DefGenerator) + '.AverageSize');
+                    12=else if(ItemType(item) == t_CustomWeapon) min_size = GetCustomWeaponData(CustomWeaponType(item),'AverageSize');
+                    13=if(ItemSize(item) > min_size / 2)
+                    14 ^{
+                        01=if(ScriptItemActionType(t_OnCheckingUsability)) ScriptItemActParam(1);
+                        02=else
+                        03 ^{
+                            01=if(MessageBoxYesNo('Уменьшить вес предмета <color=0,150,200>' + DeleteTags(ItemFullName(item)) + '</color> на <color=0,150,200>30%</color>? Артефакт будет уничтожен.'))
+                            02 ^{
+                                01=ItemSize(item, max(1,ItemSize(item) - (ItemSize(item) / 10 * 3)));
+                                02=Sound('Sound.Repair');
+                                03=ScriptItemActParam(1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        OnActCodeTypes=t_OnAnotherItem,t_OnCheckingUsability
+        Text=Создаёт собственное гравитационное поле, уменьшая фактическую массу корабля на <clr>25%<clrEnd>.
+        Text=<clr><clrEnd>
+        Text=При активации позволяет уменьшить размер выбранного оборудования на <clr>30%<clrEnd>, но не более минимально допустимого веса. Его же собственная масса при этом становится нулевой, что приводит к самоаннигиляции.
+    }
+    ArtDef ^{
+        Name=Поляризатор
+        OnUseCode ^{
+            01=if(ShipInNormalSpace(Player()))
+            02 ^{
+                01=if(ItemDurability(CurItem()) < 50) MessageBox('Запаса прочности поляризатора недостаточно для активации перегрузки.');
+                02=else
+                03 ^{
+                    01=if(MessageBoxYesNo('Вы действительно хотите перегрузить поляризатор?'))
+                    02 ^{
+                        01=Sound('Sound.Zamknulo');
+                        02=Sound('Sound.ab_shot11');
+                        03=Sound('Sound.ab_shot13');
+                        04=int scaner_val = ShipScanerPower(Player());
+                        05=for(int i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
+                        05 ^{
+                            01=if(ItemDurability(CurItem()) < 3) break;
+                            02=dword ship = StarShips(ShipStar(Player()), i);
+                            03=if(ship == Player()) continue;
+                            04=if(RelationToShip(ship, Player()) < 10)
+                            04 ^{
+                                01=if(ShipEqInSlot(ship, t_DefGenerator) > 0)
+                                01 ^{
+                                    01=if(Dist(Player(), ship) <= 500)
+                                    01 ^{
+                                        01=if(findsubstr(ShipCustomFaction(ship), 'Klissan') == -1)
+                                        01 ^{
+                                            01=dword target = ShipEqInSlot(ship, t_DefGenerator);
+                                            02=if(ItemDurability(target))
+                                            02 ^{
+                                                01=int target_dmg = RndObject(15, 25, ship);
+                                                02=if(ShipProtectability(ship) <= scaner_val) target_dmg = target_dmg * 2;
+                                                03=target_dmg = ItemDurability(target) - target_dmg;
+                                                04=if(target_dmg < 0) target_dmg = 0;
+                                                05=ItemDurability(target, target_dmg);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        06=ItemDurability(CurItem(), max(ItemDurability(CurItem()) - 50, 0));
+                    }
+                }
+            }
+            03=if(!ShipInNormalSpace(Player())) MessageBox('Этот предмет может быть использован только в открытом космосе');
+        }
+        Text=Испускает электроны, усиливающие защитное поле корабля на <clr>5<clrEnd> процентов. С небольшой вероятностью отражает нанесенный урон обратно в противника.
+        Text=При активации, перегружает свои электрические цепи, генерируя мощный электромагнитный импульс, наносящий серьёзные повреждения генераторам защитного поля всех противников на дистанции <clr>500<clrEnd> ед. Сам при этом сильно изнашивается.
+    }
+    ArtDefToArms1 ^{
+        Name=Протон
+        OnActCode ^{
+            01=if(ScriptItemActionType(t_OnAnotherItem) || ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+                01=dword item = ScriptItemActObject1();
+                02=if(ItemType(item) == t_Hull)
+                03 ^{
+                    01=if(EqCustomFaction(item) != 'Klissan')
+                    02 ^{
+                        01=if(ItemInScript(item) == 1)
+                        02 ^{
+                            01=int acryn_num = EqSpecial(item);
+                            02=if(~acryn_num)
+                            03 ^{
+                                01=if(!CT('MicroModuls.' + BonusNumInCfg(acryn_num) + '.ScriptItemIgnore')) exit;
+                            }
+                            04=else exit;
+                        }
+                        03=if(ScriptItemActionType(t_OnCheckingUsability))
+                        04 ^{
+                            01=ScriptItemActParam(1);
+                            02=exit;
+                        }
+                        05=if(ScriptItemActionType(t_OnAnotherItem))
+                        06 ^{
+                            01=if(GetEquipmentStats(item, 1) >= 5)
+                            02 ^{
+                                01=MessageBox('Все слоты под оружие уже и так открыты');
+                                02=exit;
+                            }
+                            03=else
+                            04 ^{
+                                01=if(ItemExtraSpecials(item))
+                                02 ^{
+                                    01=for(int i = 0; i < ItemExtraSpecials(item); i = i + 1)
+                                    02 ^{
+                                        01=int spNum = ItemExtraSpecials(item, i);
+                                        02=str spName = BonusNumInCfg(spNum);
+                                        03=if(spName == 'ExpArtsPlus_AddSlotWeapon')
+                                        04 ^{
+                                            01=if(ScriptItemActionType(t_OnAnotherItem)) MessageBox('Этот корпус уже имеет дополнительную орудийную турель');
+                                            02=exit;
+                                        }
+                                    }
+                                }
+                                03=else
+                                04 ^{
+                                    01=if(MessageBoxYesNo('Вы уверены, что хотите встроить протон в корпус навсегда?') == 1)
+                                    02 ^{
+                                        01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_AddSlotWeapon'), 1);
+                                        02=ItemSize(item, ItemSize(item) - ItemSize(CurItem()));
+                                        03=ItemCost(item, ItemCost(item) + ItemCost(CurItem()));
+                                        04=if(HullHP(item) > ItemSize(item)) HullHP(item, ItemSize(item));
+                                        05=ScriptItemActParam(1);
+                                        06=Sound('Sound.Repair');
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        OnActCodeTypes=t_OnAnotherItem,t_OnCheckingUsability
+        Text=Интегрируется в энергетический блок защитного поля. Использует <clr>10%<clrEnd> его мощности для активации дополнительной орудийной турели.
+        Text=Может быть навсегда встроен в корпус, уменьшая при этом его вместимость.
+    }
+    ArtDefToArms2 ^{
+        Description=Армс - стационарный комплект для быстрой переоснастки слота генератора защитного поля. Включает в себя универсальные коннекторы для пары орудийных турелей.
+        Name=Армс
+        OnActCode ^{
+            01=dword item = ScriptItemActObject1();
+            02=if(ItemType(item) != t_Hull) exit;
+            03=if(ItemInScript(item) == 1)
+            04 ^{
+                01=int acryn_num = EqSpecial(item);
+                02=if(~acryn_num)
+                03 ^{
+                    01=if(!CT('MicroModuls.' + BonusNumInCfg(acryn_num) + '.ScriptItemIgnore')) exit;
+                }
+                04=else exit;
+            }
+            05=if(ItemExtraSpecials(item))
+            06 ^{
+                01=for(int i = 0; i < ItemExtraSpecials(item); i = i + 1)
+                02 ^{
+                    01=int spNum = ItemExtraSpecials(item, i);
+                    02=str spName = BonusNumInCfg(spNum);
+                    03=if(spName == 'TwoWeaponSlot')
+                    04 ^{
+                        01=if(ScriptItemActionType(t_OnAnotherItem)) MessageBox('Этот корпус уже имеет дополнительные орудийные турели');
+                        02=exit;
+                    }
+                }
+            }
+            07=if(GetEquipmentStats(item, 1) >= 5)
+            08 ^{
+                01=if(ScriptItemActionType(t_OnAnotherItem)) MessageBox('Все слоты под оружие уже и так открыты');
+                02=exit;
+            }
+            09=if(ScriptItemActionType(t_OnCheckingUsability))
+            10 ^{
+                01=ScriptItemActParam(1);
+                02=exit;
+            }
+            11=if(MessageBoxYesNo('Вы уверены, что хотите встроить Армс в корпус навсегда?'))
+            12 ^{
+                01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('TwoWeaponSlot'), 1);
+                02=float hullSize = ItemSize(item)-ItemSize(CurItem());
+                03=float hullCost = ItemCost(item)+ItemCost(CurItem());
+                04=ItemSize(item, hullSize);
+                05=ItemCost(item, hullCost);
+                06=HullHP(item,'To1');
+                07=HullHP(item,'To100');
+                08=ScriptItemActParam(1);
+                09=Sound('Sound.Repair');
+            }
+        }
+        OnActCodeTypes=t_OnAnotherItem,t_OnCheckingUsability
+        Text=Позволяет разместить в отсеке, предназначенном для генератора защитного поля, <clr>две<clrEnd> орудийных турели.
+        Text=Можно вставить в <clr>корпус<clrEnd> - открывает <clr>2<clrEnd> слота для вооружения, но уменьшает размер корпуса на <clr>10<clrEnd> процентов и увеличивает стоимость на <clr>30<clrEnd> процентов.
+    }
+    ArtDroid ^{
+        Broken=(испорчен)
+        BrokenInBattle=Внимание! Младший дроид был повреждён в бою. Требуется ремонт.
+        BrokenInUse=Младший дроид долго работал в невыносимых условиях и сломался. Требуется ремонт.
+        Description=Младший дроид - облегчённый вариант основного дроида, при помощи специальной системы синхронизации подключаемый к общему кабелю. Работает вместе с основным дроидом, снижая его износ в два раза, а также увеличивая скорость ремонтных работ на корабле.
+        Name=Дроид младший
+        OnActCode ^{
+            01=if(ScriptItemActionType(t_OnStep,11))
+            02 ^{
+                01=dword ship = ScriptItemActShip();
+                02=if(!ship)
+                03 ^{
+                    01=int dab;
+                }
+                04=else
+                05 ^{
+                    01 ^{
+                        01=if(ItemIsBroken(CurItem())) exit;
+                        02=dword droid = ShipEqInSlot(ship, t_RepairRobot);
+                        03=if(!droid || ItemDurability(droid) <= 0)
+                        04 ^{
+                            01=dword hull = ShipItems(ship, 0);
+                            02=if(HullHP(hull) < ItemSize(hull))
+                            03 ^{
+                                01=if(ArtefactTypeBoosted(ship, t_ArtefactDroid)) HullHP(hull, HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid') + CT('Artefacts.NumericValues.kArtefactDroidEx'));
+                                02=else HullHP(hull, HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid'));
+                                03=if(HullHP(hull) > ItemSize(hull)) HullHP(hull, ItemSize(hull));
+                                04=if(RndObject(1, 100, ship) <= 15) ItemDurability(CurItem(), max(ItemDurability(CurItem()) - 1, 0));
+                            }
+                        }
+                        05=else if(EqSpecial(droid) > -1)
+                        06 ^{
+                            01=if(BonusNumInCfg(EqSpecial(droid)) == 'RevAcrynBattleDroid')
+                            01 ^{
+                                01=hull = ShipItems(ship, 0);
+                                02=if(HullHP(hull) < ItemSize(hull))
+                                03 ^{
+                                    01=if(ArtefactTypeBoosted(ship, t_ArtefactDroid)) HullHP(hull, HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid') + CT('Artefacts.NumericValues.kArtefactDroidEx'));
+                                    02=else HullHP(hull, HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid'));
+                                    03=if(HullHP(hull) > ItemSize(hull)) HullHP(hull, ItemSize(hull));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        OnActCodeTypes=t_OnStep
+        OnActStepTypes=11
+        Text=Этот маленький дроид может восстанавливать <clr>10<clrEnd> единиц повреждённого корпуса корабля и способен работать даже в гиперпространстве. Также снижает износ основного дроида в <clr>2<clrEnd> раза.
+    }
+    ArtEnergyDef ^{
+        Name=Проглот
+        OnUseCode ^{
+            01=if(ShipInNormalSpace(Player()))
+            01 ^{
+                01=if(!ItemIsBroken(CurItem()))
+                01 ^{
+                    01=if(ItemDurability(CurItem()) < 90) MessageBox('Запас прочности проглота недостаточен для активации перегрузки');
+                    02=else
+                    02 ^{
+                        01=if(MessageBoxYesNo('Перегрузить проглот для получения временнй неуязвимости?'))
+                        01 ^{
+                            01=Sound('Sound.HangarOpen');
+                            02=ShipAddCustomShipInfo(Player(), 'ArtEnergyDef_infos', 'NoShow');
+                            03=ItemDurability(CurItem(), 0);
+                            04=int i;
+                            05=for(i=0;i<ShipArts(Player());i=i+1)
+                            06 ^{
+                                01=dword item = ShipArts(Player(),i);
+                                02=if(ItemType(item) == t_ArtEnergyDef) ItemDurability(item, 0);
+                                03=if(EquipmentImageName(item) == 'ArtEnergyDefv2') ItemDurability(item, max(ItemDurability(item) - Rnd(85,100), 0));
+                                04=if(EquipmentImageName(item) == 'ArtEnergyDefv3') ItemDurability(item, max(ItemDurability(item) - Rnd(70,90), 0));
+                            }
+                        }
+                    }
+                }
+            }
+            02=else MessageBox(CT('FormShip.UseOnlyInSpace'));
+        }
+        Text=В <clr>30%<clrEnd> случаев поглощает тепловую составляющую луча энергетического оружия, превращая импульсы попаданий в безопасные электрические всплески.
+        Text=<clr><clrEnd>
+        Text=При активации многократно увеличивает мощность защитного поля корабля, давая ему <clr>полную неуязвимость<clrEnd> на один ход. Сам при этом <clr>изнашивается<clrEnd> до полностью неработоспособного состояния.
+    }
+    ArtFastRacks ^{
+        Description=Ралс - тестовая версия нового программного обеспечения механизма заряжания ракетного оружия, выполненная в виде отдельного субблока. Позволяет произвести два залпа вместо одного за счёт оптимизации алгоритмов перемещения подвижных частей.
+        Name=Ралс
+        OnUseCode ^{
+            01=OnUseCodeMissileDef();
+        }
+        Text=Обеспечивает <clr>15%<clrEnd> шанс двойного залпа из ракетного оружия.
+        Text=<br> <br>
+        Text=При активации передаёт всем выпущенным ракетам команду на мгновенную детонацию, тем самым ликвидируя их ещё до подлёта к заданной цели.
+    }
+    ArtForsage ^{
+        Name=Обливионный коннектор
+        OnActCode ^{
+            01=if(ScriptItemActionType(t_OnItemEquip) || ScriptItemActionType(t_OnNonStandartEqChange)) ShipSpecialBonuses(Player(),bonSlotForsage,10);
+            02=if(ScriptItemActionType(t_OnItemDeEquip) && ArtefactTypeInUse(Player(),t_ArtForsage))
+            03 ^{
+                01=dword ship = Player();
+                02=OrderForsage(ship,0);
+                03=ShipSpecialBonuses(ship,bonSlotForsage,0);
+            }
+            04=if(ScriptItemActionType(t_OnReduceEqUse) || ScriptItemActionType(t_OnReduceEqForce) || ScriptItemActionType(t_OnReduceEqBattle))
+            05 ^{
+                01=if(ItemIsBroken(CurItem()) || ItemDurability(CurItem()) < 1)
+                02 ^{
+                    01=ship = ScriptItemActShip();
+                    02=OrderForsage(ship,0);
+                    03=ShipSpecialBonuses(ship,bonSlotForsage,0);
+                }
+            }
+        }
+        OnActCodeTypes=t_OnItemEquip,t_OnItemDeEquip,t_OnNonStandartEqChange,t_OnReduceEqBattle,t_OnReduceEqForce,t_OnReduceEqUse
+        Text=Технология, созданная на основе наномодулей келлероидов. Позволяет сымитировать заводскую <clr>установку ускорения<clrEnd>, а также сокращать износ двигателя в режиме форсажа в <clr>2<clrEnd> раза.
+    }
+    ArtFuel ^{
+        BrokenInBattle=Ужас! Вражеский выстрел попал прямо в чёрную жижу. Выработка топлива прекращена.
+        BrokenInUse=Чёрная жижа исчерпала свои ресурсы. Необходимо заправить её. Но чем?
+        Description=Чёрная жижа - смесь, полученная учёными древности. Способ приготовления чёрной жижи безвозвратно утерян, но несколько порций этого вещества сохранилось в Галактике по сей день. Помещённая в топливный бак, жижа действует как катализатор, постепенно увеличивая количество топлива.
+        KellerExchange=2
+        KellerValue=30
+        Name=Чёрная жижа
+        OnActCode ^{
+            01=dword ship = ScriptItemActShip();
+            02=if(ship)
+            03 ^{
+                01=if(ItemIsBroken(CurItem())) exit;
+                02=if(ScriptItemActionType(t_OnStep, 11))
+                03 ^{
+                    01=if(~EqModule(CurItem()))
+                    02 ^{
+                        01=if(!OrderForsage(ship))
+                        02 ^{
+                            01=int compCheck = ArtefactTypeBoosted(ship, t_ArtefactFuel);
+                            02=if(compCheck == 1) int rollChance = 75;
+                            03=else rollChance = 50;
+                            04=if(RndObject(1, 100, ship) <= rollChance)
+                            05 ^{
+                                01=dword tdwd = ShipEqInSlot(ship, t_Engine);
+                                02=if(tdwd != 0)
+                                03 ^{
+                                    01=if(ItemDurability(tdwd) < 85) ItemDurability(tdwd, ItemDurability(tdwd) + 1);
+                                }
+                                04=tdwd = ShipEqInSlot(ship, t_FuelTanks);
+                                05=if(tdwd != 0)
+                                06 ^{
+                                    01=if(ItemDurability(tdwd) < 85) ItemDurability(tdwd, ItemDurability(tdwd) + 1);
+                                }
+                                07=if(!compCheck) rollChance = 100;
+                                08=if(RndObject(1, 100, ship) <= rollChance) ItemDurability(CurItem(), max(ItemDurability(CurItem()) - 1, 0));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        OnActCodeTypes=t_OnStep
+        OnActStepTypes=11
+        OnUseCode ^{
+            01=if(~EqModule(CurItem()))
+            01 ^{
+                01=EqModule(CurItem(), -1);
+                02=EquipmentImageName(CurItem(), '');
+                03=Sound('Sound.Mod_Switch');
+            }
+            02=else
+            02 ^{
+                01=EqModule(CurItem(), FindBonusByCustomTag('AkrinAmplifier'));
+                02=EquipmentImageName(CurItem(), 'ArtFuel_AddOn');
+                03=Sound('Sound.Mod_Switch');
+            }
+        }
+        Text=Вырабатывает топливо, постепенно наполняя топливный бак.
+        Text=<br> <br>
+        Text=<color=255,17,0>Дополнительное свойство отключено:</color>
+        Text=При соблюдении определённых условий имеет<br>шанс произвести особые наночастицы, которые,<br>смешиваясь с топливом, благоприятно воздействуют<br>на топливный бак и двигатель изнутри, постепенно<br>восстанавливая их структуру.
+    }
+    ArtFuel_AddOn ^{
+        KellerExchange=2
+        KellerValue=30
+        Text=Вырабатывает топливо, постепенно наполняя топливный бак.
+        Text=<br> <br>
+        Text=<color=0,255,0>Дополнительное свойство активно:</color>
+        Text=При соблюдении определённых условий имеет<br>шанс произвести особые наночастицы, которые,<br>смешиваясь с топливом, благоприятно воздействуют<br>на топливный бак и двигатель изнутри, постепенно<br>восстанавливая их структуру.
+    }
+    ArtGiperJump ^{
+        Name=Гипергенератор
+        OnActCode ^{
+            01=dword cur_art = CurItem();
+            02=if(ItemIsBroken(cur_art) == 0)
+            02 ^{
+                01=dword engine = ShipEqInSlot(Player(), t_Engine);
+                02=if(engine)
+                02 ^{
+                    01=int range = CT('Artefacts.NumericValues.kArtGiperJump');
+                    02=if(ArtefactTypeBoosted(Player(), t_ArtGiperJump)) range = range + CT('Artefacts.NumericValues.kArtGiperJumpEx');
+                    03=str form = CurrentForm();
+                    04=if(form == 'Galaxy')
+                    04 ^{
+                        01=dword bon_count = FindBonusByNameInCfg('500');
+                        02=dword bon_mark = FindBonusByNameInCfg('501');
+                        03=dword engine_base_jump = FindBonusByNameInCfg('502');
+                        04=if(ScriptItemActionType(t_OnEnteringForm))
+                        04 ^{
+                            01=int bon = ShipSpecialBonuses(Player(), bonJump, 'Total');
+                            02=unknown tarr = newarray(4);
+                            03=for(int i = 1; i <= 4; i = i + 1)
+                            03 ^{
+                                01=dword art = ShipEqInSlot(Player(), t_Artefact, i);
+                                02=if(ItemType(art) != t_ArtGiperJump) continue;
+                                03=tarr[i - 1] = ItemDurability(art);
+                                04=ItemDurability(art, 0);
+                            }
+                            04=int engine_jump_range = ShipJump(Player());
+                            05=for(i = 1; i <= 4; i = i + 1)
+                            05 ^{
+                                01=art = ShipEqInSlot(Player(), t_Artefact, i);
+                                02=if(ItemType(art) != t_ArtGiperJump) continue;
+                                03=ItemDurability(art, tarr[i - 1]);
+                            }
+                            06=if(engine_jump_range <= range)
+                            06 ^{
+                                01=if(bon < 0)
+                                01 ^{
+                                    01=ItemExtraSpecialsAddByType(cur_art, bon_count, abs(bon));
+                                    02=ShipSpecialBonuses(Player(), bonJump, ShipSpecialBonuses(Player(), bonJump) + abs(bon));
+                                    03=ItemExtraSpecialsAddByType(cur_art, engine_base_jump, GetEquipmentStats(engine, 1));
+                                    04=SetEquipmentStats(engine, 0, 1);
+                                }
+                                02=else if(bon > 0)
+                                02 ^{
+                                    01=ItemExtraSpecialsAddByType(cur_art, bon_count, bon);
+                                    02=ItemExtraSpecialsAddByType(cur_art, bon_mark, 1);
+                                    03=ShipSpecialBonuses(Player(), bonJump, ShipSpecialBonuses(Player(), bonJump) - bon);
+                                }
+                            }
+                        }
+                        05=else
+                        05 ^{
+                            01=bon = ItemExtraSpecialsCountByType(cur_art, bon_count);
+                            02=if(bon)
+                            02 ^{
+                                01=if(!ItemExtraSpecialsCountByType(cur_art, bon_mark))
+                                01 ^{
+                                    01=ShipSpecialBonuses(Player(), bonJump, ShipSpecialBonuses(Player(), bonJump) - bon);
+                                    02=ItemExtraSpecialsDeleteByType(cur_art, bon_count, bon);
+                                }
+                                02=else
+                                02 ^{
+                                    01=ShipSpecialBonuses(Player(), bonJump, ShipSpecialBonuses(Player(), bonJump) + bon);
+                                    02=ItemExtraSpecialsDeleteByType(cur_art, bon_count, bon);
+                                    03=ItemExtraSpecialsDeleteByType(cur_art, bon_mark, 1);
+                                }
+                                03=int base_jump = ItemExtraSpecialsCountByType(cur_art, engine_base_jump);
+                                04=if(base_jump)
+                                04 ^{
+                                    01=ItemExtraSpecialsDeleteByType(cur_art, engine_base_jump, base_jump);
+                                    02=SetEquipmentStats(engine, base_jump, 1);
+                                }
+                            }
+                        }
+                    }
+                    05=else if(form == 'Ship')
+                    05 ^{
+                        01=if(ScriptItemActionType(t_OnLeavingForm))
+                        01 ^{
+                            01=if(IsPlayer(FormCurShip()))
+                            01 ^{
+                                01=if(ShipInNormalSpace(Player()))
+                                01 ^{
+                                    01=bon = ShipSpecialBonuses(Player(), bonJump, 'Total');
+                                    02=if(bon < 0 && ShipJump(Player()) <= range)
+                                    02 ^{
+                                        01=ItemExtraSpecialsAddByType(cur_art, 0, abs(bon));
+                                        02=ShipSpecialBonuses(Player(), bonJump, ShipSpecialBonuses(Player(), bonJump) + abs(bon));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    08=else if(form == 'StarMap')
+                    09 ^{
+                        01=if(ScriptItemActionType(t_OnEnteringForm))
+                        02 ^{
+                            01=bon = ItemExtraSpecialsCountByType(cur_art, 0);
+                            02=if(bon)
+                            03 ^{
+                                01=ShipSpecialBonuses(Player(), bonJump, ShipSpecialBonuses(Player(), bonJump) - bon);
+                                02=ItemExtraSpecialsDeleteByType(cur_art, 0, bon);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        OnActCodeTypes=t_OnEnteringForm,t_OnLeavingForm
+    }
+    ArtHook ^{
+        Broken=(не функционирует)
+        BrokenInBattle=В бою с эриметра был сбит поляризующий наконечник. Устройство вышло из строя и мешает функционированию захвата.
+        BrokenInUse=Длительный срок эксплуатации эриметра подошёл к концу. Он срочно требует ремонта, так как стал мешать функционированию захвата.
+        Description=Эриметр фокусирует луч захвата, благодаря чему его направленность резко сужается, а КПД увеличивается. В итоге луч захвата может притягивать предметы с массой больше расчётной.
+        Name=Эриметр
+        OnActCode ^{
+            01=if(ScriptItemActionType(t_OnCheckingUsability) || ScriptItemActionType(t_OnAnotherItem))
+            02 ^{
+                01=dword item = ScriptItemActObject1();
+                02=if(ItemType(item) == t_CargoHook)
+                03 ^{
+                    01=if(EqCustomFaction(item) != 'Klissan')
+                    02 ^{
+                        01=if(ItemInScript(item) == 1)
+                        02 ^{
+                            01=int acryn_num = EqSpecial(item);
+                            02=if(~acryn_num)
+                            03 ^{
+                                01=if(!CT('MicroModuls.' + BonusNumInCfg(acryn_num) + '.ScriptItemIgnore')) exit;
+                            }
+                            04=else exit;
+                        }
+                        03=int status = 0;
+                        04=if(ItemExtraSpecials(item))
+                        05 ^{
+                            01=for(int i = 0; i < ItemExtraSpecials(item); i = i + 1)
+                            02 ^{
+                                01=int spNum = ItemExtraSpecials(item, i);
+                                02=str spName = BonusNumInCfg(spNum);
+                                03=if(spName == 'ExpArtsPlus_ArtBonusHookNormal3' || spName == 'ExpArtsPlus_ArtBonusHookBoosted3') status = -1;
+                                04=else if(spName == 'ExpArtsPlus_ArtBonusHookNormal2' || spName == 'ExpArtsPlus_ArtBonusHookBoosted2') status = 2;
+                                05=else if(spName == 'ExpArtsPlus_ArtBonusHookNormal1' || spName == 'ExpArtsPlus_ArtBonusHookBoosted1') status = 1;
+                            }
+                        }
+                        06=if(ScriptItemActionType(t_OnCheckingUsability))
+                        07 ^{
+                            01=if(~status) ScriptItemActParam(1);
+                            02=exit;
+                        }
+                        08=if(status < 0)
+                        09 ^{
+                            01=MessageBox('Достигнуто предельное увеличение характеристик захвата.');
+                            02=exit;
+                        }
+                        10=if(!ItemImprovement(item)) str tStr = ' Улучшить такой захват на научной базе будет невозможно.';
+                        11=else tStr = '';
+                        12=if(MessageBoxYesNo('Вы уверены, что хотите навсегда встроить эриметр в захват?' + tStr))
+                        13 ^{
+                            01=if(ItemOwner(item) != None) dword eqNone = 0;
+                            02=else eqNone = 1;
+                            03=if(status > 0) ItemExtraSpecialsDeleteByType(item, spNum);
+                            04=if(eqNone)
+                            05 ^{
+                                01=if(status == 2)
+                                02 ^{
+                                    01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookBoosted3'), 1);
+                                    02=SetEquipmentStats(item, GetEquipmentStats(item, 2) + 2.0, 2);
+                                    03=SetEquipmentStats(item, GetEquipmentStats(item, 3) + 2.0, 3);
+                                }
+                                03=else if(status == 1) ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookBoosted2'), 1);
+                                04=else ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookBoosted1'), 1);
+                                05=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 25, 0);
+                                06=SetEquipmentStats(item, GetEquipmentStats(item, 1) + 25, 1);
+                            }
+                            06=else
+                            07 ^{
+                                01=if(status == 2)
+                                02 ^{
+                                    01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookNormal3'), 1);
+                                    02=SetEquipmentStats(item, GetEquipmentStats(item, 2) + 1.0, 2);
+                                    03=SetEquipmentStats(item, GetEquipmentStats(item, 3) + 1.0, 3);
+                                }
+                                03=else if(status == 1) ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookNormal2'), 1);
+                                04=else ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookNormal1'), 1);
+                                05=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 15, 0);
+                                06=SetEquipmentStats(item, GetEquipmentStats(item, 1) + 15, 1);
+                            }
+                            08=ItemSize(item, ItemSize(item) + ItemSize(CurItem()));
+                            09=ItemCost(item, ItemCost(item) + ItemCost(CurItem()));
+                            10=ScriptItemActParam(1);
+                            11=Sound('Sound.Repair');
+                        }
+                    }
+                }
+            }
+        }
+        OnActCodeTypes=t_OnAnotherItem,t_OnCheckingUsability
+        Text=Позволяет лучу захвата притягивать предметы с массой больше расчётной на <clr>30<clrEnd> единиц. Повышает скорость притягивания вещей и радиус захвата.
+        Text=<clr><clrEnd>
+        Text=При совмещении с захватом навсегда увеличивает его дальность (Эффект усиливается на неизвестном оборудовании).
+    }
+    ArtHull ^{
+        Name=Железные жупи
+        OnActCode ^{
+            01=dword item = ScriptItemActObject1();
+            02=if(ScriptItemActShip() != Player()) exit;
+            03=if(ItemType(item) == t_Hull)
+            04 ^{
+                01=if(EqCustomFaction(item) == 'Klissan') exit;
+                02=if(ItemInScript(item) == 1)
+                03 ^{
+                    01=int acryn_num = EqSpecial(item);
+                    02=if(~acryn_num)
+                    03 ^{
+                        01=if(!CT('MicroModuls.' + BonusNumInCfg(acryn_num) + '.ScriptItemIgnore')) exit;
+                    }
+                    04=else exit;
+                }
+                04=int status = 0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
+                    01=for(int i = 0; i < ItemExtraSpecials(item); i = i + 1)
+                    02 ^{
+                        01=int spNum = ItemExtraSpecials(item, i);
+                        02=str spName = BonusNumInCfg(spNum);
+                        03=if(spName == 'ExpArtsPlus_AddHullArmor3') status = -1;
+                        04=else if(spName == 'ExpArtsPlus_AddHullArmor2') status = 2;
+                        05=else if(spName == 'ExpArtsPlus_AddHullArmor1') status = 1;
+                    }
+                }
+                07=if(ScriptItemActionType(t_OnCheckingUsability))
+                08 ^{
+                    01=if(~status) ScriptItemActParam(1);
+                    02=exit;
+                }
+                09=if(status < 0)
+                10 ^{
+                    01=MessageBox('Колония жупи на этом корпусе уже достигла максимально возможного размера');
+                    02=exit;
+                }
+                11=if(!ItemImprovement(item)) str tStr=' Улучшить такой корпус на научной базе будет невозможно.';
+                12=else tStr = '';
+                13=if(MessageBoxYesNo('Вы уверены, что хотите навсегда переселить колонию в этот корпус?' + tStr))
+                14 ^{
+                    01=if(status > 0) ItemExtraSpecialsDeleteByType(item, spNum);
+                    02=if(status == 2) ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_AddHullArmor3'), 1);
+                    03=else if(status == 1) ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_AddHullArmor2'), 1);
+                    04=else ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_AddHullArmor1'), 1);
+                    05=SetEquipmentStats(item,GetEquipmentStats(item, 0) + 1, 0);
+                    06=ItemSize(item, ItemSize(item) - ItemSize(CurItem()));
+                    07=ItemCost(item, ItemCost(item) + ItemCost(CurItem()));
+                    08=if(HullHP(item) > ItemSize(item)) HullHP(item, ItemSize(item));
+                    09=ScriptItemActParam(1);
+                    10=Sound('Sound.Repair');
+                }
+            }
+        }
+        OnActCodeTypes=t_OnAnotherItem,t_OnCheckingUsability
+        Text=Колония железных жупи, во главе с маткой, увеличивает защиту корпуса на <clr>5<clrEnd> единиц.
+        Text=При активации вся колония переселяется на корпус, броня которого увеличивается на <clr>1<clrEnd> ед. Жупи сильно привязываются к месту обитания и уже не возвращаются в контейнер, строят себе новое гнездо в корпусе, уменьшая там самым его вместимость.
+    }
+    ArtMiniExpl ^{
+        Description=При попадании локализатор отводит энергию выстрела на внешнюю поверхность вражеского корабля, чтобы при возможном взрыве пострадало как можно меньше оборудования.
+        Name=Локализатор взрывной волны
+        OnActCode ^{
+            01=if(ScriptItemActionType(t_OnWeaponShot) || ScriptItemActionType(t_OnMissileHittingObject) || ScriptItemActionType(t_OnTakingDamage))
+            02 ^{
+                01=if(IsScriptActive('Mod_ExpTC'))
+                02 ^{
+                    01=if(ItemIsInUse(CurItem()) && !ItemIsBroken(CurItem()))
+                    02 ^{
+                        01=dword asteroid = ScriptItemActObject1();
+                        02=if(ObjectType(asteroid) == 8)
+                        03 ^{
+                            01=dword shup = ScriptItemActShip();
+                            02=int minerals = AsteroidMinerals(asteroid);
+                            03=dword nugget = CreateCustomCountableItem('NuggetAsteroid', minerals / 5, 1);
+                            04=dword planet;
+                            05=int i = 0;
+                            06=int cost = 0;
+                            07=while(!cost)
+                            08 ^{
+                                01=planet = StarPlanets(ShipStar(shup), i);
+                                02=if(ObjectType(planet) != 3)
+                                02=if(PlanetOwner(planet) != 6) cost = GoodsBuyPrice(planet, t_Minerals) * RndObject(2, 6, shup);
+                                03 ^{
+                                    01=cost=12 * RndObject(2, 6, shup);
+                                    02=break;
+                                }
+                                03=i = i + 1;
+                            }
+                            09=ItemCost(nugget, ItemSize(nugget) * cost);
+                            10=DropItemInSystem(ShipStar(shup), nugget, CoordX(asteroid), CoordY(asteroid), 0.0 + CoordX(asteroid) + 100.0 * sin((pi * RndObject(0, 360, shup)) / 180.0), CoordY(asteroid) - 100.0 * cos((pi * RndObject(0, 360, shup)) / 180.0));
+                        }
+                    }
+                }
+            }
+        }
+        OnActCodeTypes=t_OnWeaponShot,t_OnMissileHittingObject,t_OnTakingDamage
+        Text=Сохраняет много ценного оборудования врага при его ликвидации, а также ценную руду из астероидов.
+    }
+    ArtMissileDef ^{
+        BrokenInUse=Плазмоуритановая составляющая слоя ракетанга высохла из-за сильной звёздной активности. Наномеханизмы парализованы, требуется ремонт.
+        Description=Ракетанг - система наномеханизмов, которые покрывают поверхность корпуса тонкой управляемой плазмоуритановой плёнкой. Уникальность этих наномеханизмов заключается в том, что они точно определяют место попадания ракеты и мгновенно укрепляют броню корабля на соответствующем участке. Кроме того, наномеханизмы способны собирать ракеты самостоятельно, используя в качестве подручного материала обломки реактивных снарядов, поглощаемых ими при отражении вражеских атак.
+        KellerExchange=2
+        KellerValue=25
+        Name=Ракетанг
+        OnActCode ^{
+            01=dword ship = ScriptItemActShip();
+            02=if(ship)
+            03 ^{
+                01=dword cur_item = CurItem();
+                02=if(ScriptItemActionType(t_OnStep, 0))
+                03 ^{
+                    01=dword TnewItem = CreateCustomArt('ArtMissileDef_Modified', ItemSize(cur_item), ItemCost(cur_item), ItemOwner(cur_item));
+                    02=ItemDurability(TnewItem, ItemDurability(cur_item));
+                    03=int Tcheck = 0;
+                    04=if(ItemIsInUse(cur_item)) Tcheck = ItemIsInUse(cur_item, ship);
+                    05=if(EqModule(cur_item) == -1)
+                    06 ^{
+                        01=CustomArtTextData(TnewItem, 1, '<color=255,17,0>Дополнительное свойство отключено:</color>');
+                        02=CustomArtData(TnewItem, 1, 0);
+                    }
+                    07=else
+                    08 ^{
+                        01=CustomArtTextData(TnewItem, 1, '<color=0,255,0>Дополнительное свойство активно:</color>');
+                        02=CustomArtData(TnewItem, 1, 1);
+                    }
+                    09=FreeItem(GetArtFromShip(ship, FindItemInShip(ship, cur_item)));
+                    10=AddItemToShip(ship, TnewItem);
+                    11=if(Tcheck) ItemIsInUse(TnewItem, ship, 1, Tcheck);
+                }
+            }
+        }
+        OnActCodeTypes=t_OnStep
+        OnActStepTypes=0
+        OnUseCode ^{
+            0=if(EqModule(CurItem()) == -1)
+            01 ^{
+                01=EqModule(CurItem(), FindBonusByCustomTag('AkrinAmplifier'));
+                02=EquipmentImageName(CurItem(), 'ArtMissileDef_AddOn');
+                03=Sound('Sound.Mod_Switch');
+            }
+            02=else
+            03 ^{
+                01=EqModule(CurItem(), -1);
+                02=EquipmentImageName(CurItem(), '');
+                03=Sound('Sound.Mod_Switch');
+            }
+        }
+        Text=Плазмоуритановый защитный механизм, оснащённый усиленными детекторами и встроенным сборщиком ракет. Блокирует <clr>10-40%<clrEnd> ущерба от попадания ракетного оружия, попутно поглощая обломки, из которых в дальнейшем способен собирать полноценные боевые снаряды.
+        Text=<br> <br>
+        Text=<color=255,17,0>Дополнительное свойство отключено:</color>
+        Text=При наличии материала, ежедневно восполняет <clr>1<clrEnd> заряд в одном из экипированных ракетных орудий, начиная с самого разряженного. Для заправки двигателей произведённых боеприпасов расходует по <clr>1<clrEnd> ед. топлива из основного бака.
+        Text=Доступно зарядов для сборки: <clr>0<clrEnd>\100 шт.
+    }
+    ArtMissileDef_AddOn ^{
+        KellerExchange=2
+        KellerValue=25
+        Text=Плазмоуритановый защитный механизм, оснащённый усиленными детекторами и встроенным сборщиком ракет. Блокирует <clr>10-40%<clrEnd> ущерба от попадания ракетного оружия, попутно поглощая обломки, из которых в дальнейшем способен собирать полноценные боевые снаряды.
+        Text=<br> <br>
+        Text=<color=0,255,0>Дополнительное свойство активно:</color>
+        Text=При наличии материала, ежедневно восполняет <clr>1<clrEnd> заряд в одном из экипированных ракетных орудий, начиная с самого разряженного. Для заправки двигателей произведённых боеприпасов расходует по <clr>1<clrEnd> ед. топлива из основного бака.
+        Text=Доступно зарядов для сборки: <clr>0<clrEnd> шт.
+    }
+    ArtNano ^{
+        KellerExchange=2
+        KellerValue=35
+        Name=Нанитоиды
+        OnActCode ^{
+            01=dword ship = ScriptItemActShip();
+            02=if(!ship)
+            03 ^{
+                01=int dab;
+            }
+            04=else
+            05 ^{
+                01=dword cur_item = CurItem();
+                02=if(ItemIsBroken(cur_item)) exit;
+                03=if(ScriptItemActionType(t_OnStep, 11))
+                04 ^{
+                    01=if(~EqModule(cur_item))
+                    02 ^{
+                        01=int flag = 0;
+                        02=if(!ArtefactTypeBoosted(ship, t_ArtefactNano))
+                        03 ^{
+                            01=for(int i = 1; i < 6; i = i + 1)
+                            02 ^{
+                                01=dword tdwd = ShipEqInSlot(ship, t_Weapon1, i);
+                                02=if((ItemType(tdwd) < t_Weapon13 || ItemType(tdwd) > t_Weapon15) && ItemType(tdwd) != t_CustomWeapon) continue;
+                                03=else if(ItemType(tdwd) == t_CustomWeapon)
+                                04 ^{
+                                    01=if(GetCustomWeaponData(CustomWeaponType(tdwd), 'Availability') != 'NotSoldAndNodeRepair') continue;
+                                }
+                                05=if(GetNodesFromShip(ship) < 1) break;
+                                06=if(flag) break;
+                                07=if(ItemDurability(tdwd) < 61)
+                                08 ^{
+                                    01=if(ItemIsBroken(tdwd)) Ether(2, '', Format(CT('Artefacts.ArtNano.RepairItem'), '<Name'+'>', Name(tdwd)));
+                                    02=int rand = RndObject(2, 5, ship);
+                                    03=ItemDurability(tdwd, ItemDurability(tdwd) + rand);
+                                    04=GetNodesFromShip(ship, RndObject(rand, rand * 2, ship));
+                                    05=flag = 1;
+                                    06=if(RndObject(1, 100, ship) <= 33) ItemDurability(cur_item, max(ItemDurability(cur_item) - 1, 0));
+                                }
+                            }
+                        }
+                        04=else
+                        05 ^{
+                            01=for(int j = 1; j < ShipItems(ship); j = j + 1)
+                            02 ^{
+                                01=dword tdwd2 = ShipItems(ship, j);
+                                02=if((ItemType(tdwd2) < t_Weapon13 || ItemType(tdwd2) > t_Weapon15) && ItemType(tdwd2) != t_CustomWeapon) continue;
+                                03=else if(ItemType(tdwd2) == t_CustomWeapon)
+                                04 ^{
+                                    01=if(GetCustomWeaponData(CustomWeaponType(tdwd2), 'Availability') != 'NotSoldAndNodeRepair') continue;
+                                }
+                                05=if(GetNodesFromShip(ship) < 1) break;
+                                06=if(flag) break;
+                                07=if(ItemDurability(tdwd2) < 61)
+                                08 ^{
+                                    01=if(ItemIsBroken(tdwd2)) Ether(2, '', Format(CT('Artefacts.ArtNano.RepairItem'), '<Name'+'>', Name(tdwd2)));
+                                    02=rand = RndObject(2, 5, ship);
+                                    03=ItemDurability(tdwd2, ItemDurability(tdwd2) + rand);
+                                    04=GetNodesFromShip(ship, RndObject(rand, rand * 2, ship));
+                                    05=flag = 1;
+                                    06=if(RndObject(1, 100, ship) <= 33) ItemDurability(cur_item, max(ItemDurability(cur_item) - 1, 0));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        OnActCodeTypes=t_OnStep
+        OnActStepTypes=11
+        OnUseCode ^{
+            01=if(EqModule(CurItem()) == -1)
+            02 ^{
+                01=EqModule(CurItem(), FindBonusByCustomTag('AkrinAmplifier'));
+                02=EquipmentImageName(CurItem(), 'ArtNano_AddOn');
+                03=Sound('Sound.Mod_Switch');
+            }
+            03=else
+            04 ^{
+                01=EqModule(CurItem(), -1);
+                02=EquipmentImageName(CurItem(), '');
+                03=Sound('Sound.Mod_Switch');
+            }
+        }
+        RepairItem=Хорошая новость - нанитоиды подлатали <Name>!
+        Text=Миниатюрные роботы чинят в день до <clr>10%<clrEnd> от одного из случайно выбранных предметов на корабле, целостность которых не превышает <clr>60%<clrEnd>.
+        Text=<br> <br>
+        Text=<color=255,17,0>Дополнительное свойство отключено:</color>
+        Text=Способны чинить даже уникальные виды <clr>доминаторского<clrEnd> вооружения, но при этом будут ежедневно расходовать <clr>ноды<clrEnd> из трюма.
+    }
+    ArtNano_AddOn ^{
+        KellerExchange=2
+        KellerValue=35
+        Text=Миниатюрные роботы чинят в день до <clr>10%<clrEnd> от одного из случайно выбранных предметов на корабле, целостность которых не превышает <clr>60%<clrEnd>.
+        Text=<br> <br>
+        Text=<color=0,255,0>Дополнительное свойство активно:</color>
+        Text=Способны чинить даже уникальные виды <clr>доминаторского<clrEnd> вооружения, но при этом будут ежедневно расходовать <clr>ноды<clrEnd> из трюма.
+    }
+    ArtPDTurret ^{
+        Name=а'Эгис
+        OnUseCode ^{
+            01=if(!ShipInNormalSpace(Player())) MessageBox('Этот предмет может быть использован только в открытом космосе');
+            02=else
+            03 ^{
+                01=if(ItemIsBroken(CurItem())) MessageBox('а\'Эгис сломан. Активация невозможна');
+                02=else
+                03 ^{
+                    01=if(MessageBoxYesNo('Вы действительно хотите активировать а\'Эгис?'))
+                    02 ^{
+                        01=int m_count = 0;
+                        02=int dist_ship = 50000;
+                        03=for(int i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
+                        04 ^{
+                            01=dword tdw = StarShips(ShipStar(Player()), i);
+                            02=if(Dist(Player(), tdw) <= dist_ship && (RelationToRanger(tdw, Player()) < 10 || ShipGetBad(tdw) == Player()))
+                            03 ^{
+                                01=dword ship = tdw;
+                                02=dist_ship = Dist(Player(), tdw);
+                            }
+                        }
+                        05=if(!ship)
+                        06 ^{
+                            01=MessageBox('В системе не обнаружено вражеских кораблей. а\'Эгису  некуда перенаправлять ракеты');
+                            02=m_count = -1;
+                        }
+                        07=else
+                        08 ^{
+                            01=for(i = 0; i < StarMissiles(ShipStar(Player())); i = i + 1)
+                            02 ^{
+                                01=tdw = StarMissiles(ShipStar(Player()), i);
+                                02=if(ItemIsBroken(CurItem())) break;
+                                03=if(MissileOwner(tdw) == Player()) continue;
+                                04=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) == 6 && Dist(Player(), tdw) > 1350) continue;
+                                05=if(ItemOwner(ShipEqInSlot(Player(),t_Radar)) != 6 && Dist(Player(), tdw) > 1000) continue;
+                                06=int dur_sub = 0;
+                                07=int redirect = 0;
+                                08=if(MissileType(tdw) == t_Weapon4) dur_sub = 2;
+                                09=else if(MissileType(tdw) == t_Weapon15) dur_sub = 3;
+                                10=else if(MissileType(tdw) == t_Weapon18) dur_sub = 1;
+                                11=else if(CustomMissileType(tdw) == 'DirtyNukeTorpedo') dur_sub = 20;
+                                12=else if(CustomMissileType(tdw) == 'NukeTorpedo') dur_sub = 15;
+                                13=else dur_sub = 2;
+                                14=dword mTarget = MissileTarget(tdw);
+                                15=if(!mTarget) continue;
+                                16=if(mTarget == Player()) redirect = 1;
+                                17=if(ShipPartners(Player()))
+                                18 ^{
+                                    01=if(ShipIsPartner(mTarget) == Player()) redirect = 1;
+                                }
+                                19=if(ShipTypeN(mTarget) == 5)
+                                20 ^{
+                                    01=if(TranclucatorData(mTarget, 0) == Player()) redirect = 1;
+                                }
+                                21=if(redirect)
+                                22 ^{
+                                    01=if(MissileOwner(tdw)) MissileTarget(tdw, MissileOwner(tdw));
+                                    02=else MissileTarget(tdw, ship);
+                                    03=MissileOwner(tdw, Player());
+                                    04=ItemDurability(CurItem(), max(ItemDurability(CurItem()) - dur_sub, 0));
+                                    05=m_count = m_count + 1;
+                                    06=if(!ItemDurability(CurItem()) && m_count) MessageBox('а\'Эгис вышел из строя, успев перенаправить ' + m_count + ' ракет');
+                                }
+                            }
+                        }
+                        09=if(!m_count) MessageBox('В зоне действия не обнаружено вражеских ракет');
+                        10=if(!ItemIsBroken(CurItem()) && m_count > 0) MessageBox('а\'Эгис перенаправил ' + m_count + ' ракет');
+                    }
+                }
+            }
+        }
+        Text=Стреляет по выпущенным противниками ракетам и торпедам. Может уничтожить до пяти целей за ход, в зависимости от кучности и интенсивности стрельбы. Радиус действия артефакта составляет <clr>150<clrEnd> ед.
+        Text=При активации на расстоянии <clr>1000<clrEnd> ед. взламывает защиту систем наведения вражеских ракет и <clr>перенаправляет<clrEnd> их в выпустившего ракету или в ближайшего к кораблю-носителю артефакта противника. Сам при этом получает <clr>20<clrEnd>/<clr>15<clrEnd>/<clr>3<clrEnd>/<clr>2<clrEnd>/<clr>1<clrEnd>% износа за каждую перенаправленную <clr>термоядерную торпеду<clrEnd>/<clr>ядерную торпеду<clrEnd>/<clr>торпеду<clrEnd>/<clr>ракету<clrEnd>/<clr>ЭМ-ракету<clrEnd>.
+    }
+    ArtWeaponToSpeed ^{
+        Name=Сопланатор
+        OnActCode ^{
+            01=if(ScriptItemActionType(t_OnAnotherItem) || ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+                01=dword item = ScriptItemActObject1();
+                02=if(ItemType(item) == t_Engine)
+                03 ^{
+                    01=if(EqCustomFaction(item) != 'Klissan')
+                    02 ^{
+                        01=if(ItemInScript(item) == 1)
+                        02 ^{
+                            01=int acryn_num = EqSpecial(item);
+                            02=if(~acryn_num)
+                            03 ^{
+                                01=if(!CT('MicroModuls.' + BonusNumInCfg(acryn_num) + '.ScriptItemIgnore')) exit;
+                            }
+                            04=else exit;
+                        }
+                        03=int status = 0;
+                        04=if(EqSpecial(item) == FindBonusByNameInCfg('RevAcryn_NOKM')) exit;
+                        05=if(ItemExtraSpecials(item))
+                        06 ^{
+                            01=for(int i = 0; i < ItemExtraSpecials(item); i = i + 1)
+                            02 ^{
+                                01=int spNum = ItemExtraSpecials(item, i);
+                                02=str spName = BonusNumInCfg(spNum);
+                                03=if(spName == 'ExpArtsPlus_ArtWeaponToSpeedNormal3' || spName == 'ExpArtsPlus_ArtWeaponToSpeedBoosted3') status = -1;
+                                04=else if(spName == 'ExpArtsPlus_ArtWeaponToSpeedNormal2' || spName == 'ExpArtsPlus_ArtWeaponToSpeedBoosted2') status = 2;
+                                05=else if(spName == 'ExpArtsPlus_ArtWeaponToSpeedNormal1' || spName == 'ExpArtsPlus_ArtWeaponToSpeedBoosted1') status = 1;
+                            }
+                        }
+                        07=if(ScriptItemActionType(t_OnCheckingUsability))
+                        08 ^{
+                            01=if(~status) ScriptItemActParam(1);
+                            02=exit;
+                        }
+                        09=if(status < 0)
+                        10 ^{
+                            01=MessageBox('Достигнуто предельное увеличение скорости');
+                            02=exit;
+                        }
+                        11=if(!ItemImprovement(item)) str tStr = ' Улучшить такой двигатель на научной базе будет невозможно.';
+                        12=else tStr = '';
+                        13=if(MessageBoxYesNo('Вы уверены, что хотите навсегда встроить сопланатор в двигатель?' + tStr))
+                        14 ^{
+                            01=if(ItemOwner(item) != 6) dword eqNone = 0;
+                            02=else eqNone = 1;
+                            03=if(status > 0) ItemExtraSpecialsDeleteByType(item, spNum);
+                            04=if(eqNone)
+                            05 ^{
+                                01=if(status == 2) ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedBoosted3'), 1);
+                                02=else if(status == 1) ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedBoosted2'), 1);
+                                03=else ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedBoosted1'), 1);
+                                04=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 60, 0);
+                            }
+                            06=else
+                            07 ^{
+                                01=if(status == 2) ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedNormal3'), 1);
+                                02=else if(status == 1) ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedNormal2'), 1);
+                                03=else ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedNormal1'), 1);
+                                04=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 40, 0);
+                            }
+                            08=ItemSize(item, ItemSize(item) + ItemSize(CurItem()));
+                            09=ItemCost(item, ItemCost(item) + ItemCost(CurItem()));
+                            10=ScriptItemActParam(1);
+                            11=Sound('Sound.Repair');
+                        }
+                    }
+                }
+            }
+        }
+        OnActCodeTypes=t_OnAnotherItem,t_OnCheckingUsability
+        Text=На <clr>100<clrEnd> единиц увеличивает скорость двигателя за счет установки дополнительных сопел на базе одного <clr>орудийного<clrEnd> отсека.
+        Text=При совмещении с двигателем навсегда повышает его скорость (Эффект усиливается на неизвестном оборудовании).
+    }
+    CustomArtefacts ^{
+        ArtAntigravv2 ^{
+            OnActCode ^{
+                01=if(ScriptItemActionType(t_OnAnotherItem) || ScriptItemActionType(t_OnCheckingUsability))
+                02 ^{
+                    01=dword item = ScriptItemActObject1();
+                    02=if(ItemType(item) > t_Hull || ItemType(item) < t_Protoplasm)
+                    03 ^{
+                        01=if(ItemInScript(item) != 1) int y;
+                        02=if(ItemType(item) == t_Hull) exit;
+                        03=int min_size = 0;
+                        04=if(ItemType(item) == t_FuelTanks) min_size = CT('Items.FuelTanks.AverageSize');
+                        05=else if(ItemType(item) == t_Engine) min_size = CT('Items.Engine.AverageSize');
+                        06=else if(ItemType(item) == t_Radar) min_size = CT('Items.Radar.AverageSize');
+                        07=else if(ItemType(item) == t_Scaner) min_size = CT('Items.Scaner.AverageSize');
+                        08=else if(ItemType(item) == t_RepairRobot) min_size = CT('Items.RepairRobot.AverageSize');
+                        09=else if(ItemType(item) == t_CargoHook) min_size = CT('Items.CargoHook.AverageSize');
+                        10=else if(ItemType(item) == t_DefGenerator) min_size = CT('Items.DefGenerator.AverageSize');
+                        11=else if(ItemType(item) > t_DefGenerator && ItemType(item) < t_CustomWeapon) min_size = CT('Items.Weapon.Stats.' + (ItemType(item) - t_DefGenerator) + '.AverageSize');
+                        12=else if(ItemType(item) == t_CustomWeapon) min_size = GetCustomWeaponData(CustomWeaponType(item),'AverageSize');
+                        13=if(ItemSize(item) > min_size / 2)
+                        14 ^{
+                            01=if(ScriptItemActionType(t_OnCheckingUsability)) ScriptItemActParam(1);
+                            02=else
+                            03 ^{
+                                01=if(MessageBoxYesNo('Уменьшить вес предмета <color=0,150,200>' + DeleteTags(ItemFullName(item)) + '</color> на <color=0,150,200>40%</color>? Артефакт будет уничтожен.'))
+                                02 ^{
+                                    01=ItemSize(item, max(1,ItemSize(item) - (ItemSize(item) / 10 * 4)));
+                                    02=Sound('Sound.Repair');
+                                    03=ScriptItemActParam(1);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            OnActCodeTypes=t_OnAnotherItem,t_OnCheckingUsability
+            Text=Создает собственное гравитационное поле, уменьшая фактическую массу корабля. Улучшенная версия артефакта уменьшает массу корабля на дополнительные <clr>5<clrEnd> процентов по сравнению с основной версией антигравитатора.
+            Text=<clr><clrEnd>
+            Text=При активации позволяет уменьшить размер выбранного оборудования на <clr>40%<clrEnd>, но не более минимально допустимого веса. Его  же собственная масса при этом становится нулевой, что приводит к самоаннигиляции.
+        }
+        ArtAntigravv3 ^{
+            OnActCode ^{
+                01=if(ScriptItemActionType(t_OnAnotherItem) || ScriptItemActionType(t_OnCheckingUsability))
+                02 ^{
+                    01=dword item = ScriptItemActObject1();
+                    02=if(ItemType(item) > t_Hull || ItemType(item) < t_Protoplasm)
+                    03 ^{
+                        01=if(ItemInScript(item) != 1) int y;
+                        02=if(ItemType(item) == t_Hull) exit;
+                        03=int min_size = 0;
+                        04=if(ItemType(item) == t_FuelTanks) min_size = CT('Items.FuelTanks.AverageSize');
+                        05=else if(ItemType(item) == t_Engine) min_size = CT('Items.Engine.AverageSize');
+                        06=else if(ItemType(item) == t_Radar) min_size = CT('Items.Radar.AverageSize');
+                        07=else if(ItemType(item) == t_Scaner) min_size = CT('Items.Scaner.AverageSize');
+                        08=else if(ItemType(item) == t_RepairRobot) min_size = CT('Items.RepairRobot.AverageSize');
+                        09=else if(ItemType(item) == t_CargoHook) min_size = CT('Items.CargoHook.AverageSize');
+                        10=else if(ItemType(item) == t_DefGenerator) min_size = CT('Items.DefGenerator.AverageSize');
+                        11=else if(ItemType(item) > t_DefGenerator && ItemType(item) < t_CustomWeapon) min_size = CT('Items.Weapon.Stats.' + (ItemType(item) - t_DefGenerator) + '.AverageSize');
+                        12=else if(ItemType(item) == t_CustomWeapon) min_size = GetCustomWeaponData(CustomWeaponType(item),'AverageSize');
+                        13=if(ItemSize(item) > min_size / 2)
+                        14 ^{
+                            01=if(ScriptItemActionType(t_OnCheckingUsability)) ScriptItemActParam(1);
+                            02=else
+                            03 ^{
+                                01=if(MessageBoxYesNo('Уменьшить вес предмета <color=0,150,200>' + DeleteTags(ItemFullName(item)) + '</color> на <color=0,150,200>50%</color>? Артефакт будет уничтожен.'))
+                                02 ^{
+                                    01=ItemSize(item, max(1,ItemSize(item) - (ItemSize(item) / 2)));
+                                    02=Sound('Sound.Repair');
+                                    03=ScriptItemActParam(1);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            OnActCodeTypes=t_OnAnotherItem,t_OnCheckingUsability
+            Text=Создает собственное гравитационное поле, уменьшая фактическую массу корабля. Улучшенная версия артефакта уменьшает массу корабля на дополнительные <clr>10<clrEnd> процентов по сравнению с основной версией антигравитатора.
+            Text=<clr><clrEnd>
+            Text=При активации позволяет уменьшить размер выбранного оборудования на <clr>50%<clrEnd>, но не более минимально допустимого веса. Его  же собственная масса при этом становится нулевой, что приводит к самоаннигиляции.
+        }
+        ArtDefv2 ^{
+            OnUseCode ^{
+                01=if(ShipInNormalSpace(Player()))
+                02 ^{
+                    01=if(ItemDurability(CurItem()) < 50) MessageBox('Запаса прочности поляризатора недостаточно для активации перегрузки.');
+                    02=else
+                    03 ^{
+                        01=if(MessageBoxYesNo('Вы действительно хотите перегрузить поляризатор?'))
+                        02 ^{
+                            01=Sound('Sound.Zamknulo');
+                            02=Sound('Sound.ab_shot11');
+                            03=Sound('Sound.ab_shot13');
+                            04=int scaner_val = ShipScanerPower(Player());
+                            05=for(int i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
+                            05 ^{
+                                01=if(ItemDurability(CurItem()) < 3) break;
+                                02=dword ship = StarShips(ShipStar(Player()), i);
+                                03=if(ship == Player()) continue;
+                                04=if(RelationToShip(ship, Player()) < 10)
+                                04 ^{
+                                    01=if(ShipEqInSlot(ship, t_DefGenerator) > 0)
+                                    01 ^{
+                                        01=if(Dist(Player(), ship) <= 500)
+                                        01 ^{
+                                            01=if(findsubstr(ShipCustomFaction(ship), 'Klissan') == -1)
+                                            01 ^{
+                                                01=dword target = ShipEqInSlot(ship, t_DefGenerator);
+                                                02=if(ItemDurability(target))
+                                                02 ^{
+                                                    01=int target_dmg = RndObject(12, 20, ship);
+                                                    02=if(ShipProtectability(ship) <= scaner_val) target_dmg = target_dmg * 2;
+                                                    03=target_dmg = ItemDurability(target) - target_dmg;
+                                                    04=if(target_dmg < 0) target_dmg = 0;
+                                                    05=ItemDurability(target, target_dmg);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            06=ItemDurability(CurItem(), max(ItemDurability(CurItem()) - 50, 0));
+                        }
+                    }
+                }
+                03=if(!ShipInNormalSpace(Player())) MessageBox('Этот предмет может быть использован только в открытом космосе');
+            }
+            Text=Испускает электроны, усиливающие защитное поле корабля. Улучшенная версия артефакта увеличивает защиту генератора поля на <clr>2<clrEnd> процента больше по сравнению с основной версией поляризатора. С небольшой вероятностью отражает нанесенный урон обратно в противника.
+            Text=При активации, перегружает свои электрические цепи, генерируя мощный электромагнитный импульс, наносящий серьёзные повреждения генераторам защитного поля всех противников на дистанции <clr>500<clrEnd> ед. Сам при этом сильно изнашивается.
+        }
+        ArtDefv3 ^{
+            OnUseCode ^{
+                01=if(ShipInNormalSpace(Player()))
+                02 ^{
+                    01=if(ItemDurability(CurItem()) < 50) MessageBox('Запаса прочности поляризатора недостаточно для активации перегрузки.');
+                    02=else
+                    03 ^{
+                        01=if(MessageBoxYesNo('Вы действительно хотите перегрузить поляризатор?'))
+                        02 ^{
+                            01=Sound('Sound.Zamknulo');
+                            02=Sound('Sound.ab_shot11');
+                            03=Sound('Sound.ab_shot13');
+                            04=int scaner_val = ShipScanerPower(Player());
+                            05=for(int i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
+                            05 ^{
+                                01=if(ItemDurability(CurItem()) < 3) break;
+                                02=dword ship = StarShips(ShipStar(Player()), i);
+                                03=if(ship == Player()) continue;
+                                04=if(RelationToShip(ship, Player()) < 10)
+                                04 ^{
+                                    01=if(ShipEqInSlot(ship, t_DefGenerator) > 0)
+                                    01 ^{
+                                        01=if(Dist(Player(), ship) <= 500)
+                                        01 ^{
+                                            01=if(findsubstr(ShipCustomFaction(ship), 'Klissan') == -1)
+                                            01 ^{
+                                                01=dword target = ShipEqInSlot(ship, t_DefGenerator);
+                                                02=if(ItemDurability(target))
+                                                02 ^{
+                                                    01=int target_dmg = RndObject(10, 15, ship);
+                                                    02=if(ShipProtectability(ship) <= scaner_val) target_dmg = target_dmg * 2;
+                                                    03=target_dmg = ItemDurability(target) - target_dmg;
+                                                    04=if(target_dmg < 0) target_dmg = 0;
+                                                    05=ItemDurability(target, target_dmg);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            06=ItemDurability(CurItem(), max(ItemDurability(CurItem()) - 50, 0));
+                        }
+                    }
+                }
+                03=if(!ShipInNormalSpace(Player())) MessageBox('Этот предмет может быть использован только в открытом космосе');
+            }
+            Text=Испускает электроны, усиливающие защитное поле корабля. Улучшенная версия артефакта увеличивает защиту генератора поля на <clr>4<clrEnd> процента больше по сравнению с основной версией поляризатора. С небольшой вероятностью отражает нанесенный урон обратно в противника.
+            Text=При активации, перегружает свои электрические цепи, генерируя мощный электромагнитный импульс, наносящий серьёзные повреждения генераторам защитного поля всех противников на дистанции <clr>500<clrEnd> ед. Сам при этом сильно изнашивается.
+        }
+        ArtDroidv2 ^{
+            OnActCode ^{
+                01=if(ScriptItemActionType(t_OnStep,11))
+                02 ^{
+                    01=dword ship = ScriptItemActShip();
+                    02=if(!ship)
+                    03 ^{
+                        01=int dab;
+                    }
+                    04=else
+                    05 ^{
+                        01 ^{
+                            01=if(ItemIsBroken(CurItem())) exit;
+                            02=dword droid = ShipEqInSlot(ship, t_RepairRobot);
+                            03=if(!droid || ItemDurability(droid) <= 0)
+                            04 ^{
+                                01=dword hull = ShipItems(ship, 0);
+                                02=if(HullHP(hull) < ItemSize(hull))
+                                03 ^{
+                                    01=if(ArtefactTypeBoosted(ship, t_ArtefactDroid)) HullHP(hull, HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid') + CT('Artefacts.NumericValues.kArtefactDroidEx'));
+                                    02=else HullHP(hull, HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid'));
+                                    03=if(HullHP(hull) > ItemSize(hull)) HullHP(hull, ItemSize(hull));
+                                    04=if(RndObject(1, 100, ship) <= 15) ItemDurability(CurItem(), max(ItemDurability(CurItem()) - 1, 0));
+                                }
+                            }
+                            05=else if(EqSpecial(droid) > -1)
+                            06 ^{
+                                01=if(BonusNumInCfg(EqSpecial(droid)) == 'RevAcrynBattleDroid')
+                                01 ^{
+                                    01=hull = ShipItems(ship, 0);
+                                    02=if(HullHP(hull) < ItemSize(hull))
+                                    03 ^{
+                                        01=if(ArtefactTypeBoosted(ship, t_ArtefactDroid)) HullHP(hull, HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid') + CT('Artefacts.NumericValues.kArtefactDroidEx'));
+                                        02=else HullHP(hull, HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid'));
+                                        03=if(HullHP(hull) > ItemSize(hull)) HullHP(hull, ItemSize(hull));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            OnActCodeTypes=t_OnStep
+            OnActStepTypes=11
+        }
+        ArtDroidv3 ^{
+            OnActCode ^{
+                01=if(ScriptItemActionType(t_OnStep,11))
+                02 ^{
+                    01=dword ship = ScriptItemActShip();
+                    02=if(!ship)
+                    03 ^{
+                        01=int dab;
+                    }
+                    04=else
+                    05 ^{
+                        01 ^{
+                            01=if(ItemIsBroken(CurItem())) exit;
+                            02=dword droid = ShipEqInSlot(ship, t_RepairRobot);
+                            03=if(!droid || ItemDurability(droid) <= 0)
+                            04 ^{
+                                01=dword hull = ShipItems(ship, 0);
+                                02=if(HullHP(hull) < ItemSize(hull))
+                                03 ^{
+                                    01=if(ArtefactTypeBoosted(ship, t_ArtefactDroid)) HullHP(hull, HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid') + CT('Artefacts.NumericValues.kArtefactDroidEx'));
+                                    02=else HullHP(hull, HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid'));
+                                    03=if(HullHP(hull) > ItemSize(hull)) HullHP(hull, ItemSize(hull));
+                                    04=if(RndObject(1, 100, ship) <= 15) ItemDurability(CurItem(), max(ItemDurability(CurItem()) - 1, 0));
+                                }
+                            }
+                            05=else if(EqSpecial(droid) > -1)
+                            06 ^{
+                                01=if(BonusNumInCfg(EqSpecial(droid)) == 'RevAcrynBattleDroid')
+                                01 ^{
+                                    01=hull = ShipItems(ship, 0);
+                                    02=if(HullHP(hull) < ItemSize(hull))
+                                    03 ^{
+                                        01=if(ArtefactTypeBoosted(ship, t_ArtefactDroid)) HullHP(hull, HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid') + CT('Artefacts.NumericValues.kArtefactDroidEx'));
+                                        02=else HullHP(hull, HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid'));
+                                        03=if(HullHP(hull) > ItemSize(hull)) HullHP(hull, ItemSize(hull));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            OnActCodeTypes=t_OnStep
+            OnActStepTypes=11
+        }
+        ArtEnergyDefv2 ^{
+            OnUseCode ^{
+                01=if(ShipInNormalSpace(Player()))
+                01 ^{
+                    01=if(!ItemIsBroken(CurItem()))
+                    01 ^{
+                        01=if(ItemDurability(CurItem()) < 80) MessageBox('Запаса прочности проглота недостаточен для активации перегрузки');
+                        02=else
+                        02 ^{
+                            01=if(MessageBoxYesNo('Перегрузить проглот для получения временнй неуязвимости?'))
+                            01 ^{
+                                01=Sound('Sound.HangarOpen');
+                                02=ShipAddCustomShipInfo(Player(), 'ArtEnergyDef_infos', 'NoShow');
+                                03=ItemDurability(CurItem(), max(ItemDurability(CurItem()) - Rnd(85,100), 0));
+                                04=int i;
+                                05=for(i=0;i<ShipArts(Player());i=i+1)
+                                06 ^{
+                                    01=dword item = ShipArts(Player(),i);
+                                    02=if(ItemType(item) == t_ArtEnergyDef) ItemDurability(item, 0);
+                                    03=if(EquipmentImageName(item) == 'ArtEnergyDefv2') ItemDurability(item, max(ItemDurability(item) - Rnd(85,100), 0));
+                                    04=if(EquipmentImageName(item) == 'ArtEnergyDefv3') ItemDurability(item, max(ItemDurability(item) - Rnd(70,90), 0));
+                                }
+                            }
+                        }
+                    }
+                }
+                02=else MessageBox(CT('FormShip.UseOnlyInSpace'));
+            }
+            Text=В <clr>30%<clrEnd> случаев поглощает тепловую составляющую луча энергетического оружия, превращая импульсы попаданий в безопасные электрические всплески. В дополнение к основному эффекту добавляет <clr>1<clrEnd>% к мощности генератора защитного поля.
+            Text=<clr><clrEnd>
+            Text=При перегрузке многократно увеличивает мощность защитного поля корабля, давая ему <clr>полную неуязвимость<clrEnd> на один ход. Сам при этом практически полностью изнашивается.
+        }
+        ArtEnergyDefv3 ^{
+            OnUseCode ^{
+                01=if(ShipInNormalSpace(Player()))
+                01 ^{
+                    01=if(!ItemIsBroken(CurItem()))
+                    01 ^{
+                        01=if(ItemDurability(CurItem()) < 70) MessageBox('Запаса прочности проглота недостаточен для активации перегрузки');
+                        02=else
+                        02 ^{
+                            01=if(MessageBoxYesNo('Перегрузить проглот для получения временнй неуязвимости?'))
+                            01 ^{
+                                01=Sound('Sound.HangarOpen');
+                                02=ShipAddCustomShipInfo(Player(), 'ArtEnergyDef_infos', 'NoShow');
+                                03=ItemDurability(CurItem(), max(ItemDurability(CurItem()) - Rnd(70,90), 0));
+                                04=int i;
+                                05=for(i=0;i<ShipArts(Player());i=i+1)
+                                06 ^{
+                                    01=dword item = ShipArts(Player(),i);
+                                    02=if(ItemType(item) == t_ArtEnergyDef) ItemDurability(item, 0);
+                                    03=if(EquipmentImageName(item) == 'ArtEnergyDefv2') ItemDurability(item, max(ItemDurability(item) - Rnd(85,100), 0));
+                                    04=if(EquipmentImageName(item) == 'ArtEnergyDefv3') ItemDurability(item, max(ItemDurability(item) - Rnd(70,90), 0));
+                                }
+                            }
+                        }
+                    }
+                }
+                02=else MessageBox(CT('FormShip.UseOnlyInSpace'));
+            }
+            Text=В <clr>30%<clrEnd> случаев поглощает тепловую составляющую луча энергетического оружия, превращая импульсы попаданий в безопасные электрические всплески. В дополнение к основному эффекту добавляет <clr>1<clrEnd>% к мощности генератора защитного поля.
+            Text=<clr><clrEnd>
+            Text=При перегрузке многократно увеличивает мощность защитного поля корабля, давая ему <clr>полную неуязвимость<clrEnd> на один ход. Сам при этом практически полностью изнашивается.
+        }
+        ArtFastRacksv2 ^{
+            OnUseCode ^{
+                01=OnUseCodeMissileDef();
+            }
+            Text=Обеспечивает шанс двойного залпа из ракетного оружия. Также добавляет <clr>5<clrEnd> единиц урона к ракетному оружию и <clr>100<clrEnd> единиц к скорости ракет.
+            Text=<br> <br>
+            Text=При активации передаёт всем выпущенным ракетам команду на мгновенную детонацию, тем самым ликвидируя их ещё до подлёта к заданной цели.
+        }
+        ArtFastRacksv3 ^{
+            OnUseCode ^{
+                01=OnUseCodeMissileDef();
+            }
+            Text=Обеспечивает шанс двойного залпа из ракетного оружия. Также добавляет <clr>10<clrEnd> единиц урона к ракетному оружию и <clr>200<clrEnd> единиц к скорости ракет.
+            Text=<br> <br>
+            Text=При активации передаёт всем выпущенным ракетам команду на мгновенную детонацию, тем самым ликвидируя их ещё до подлёта к заданной цели.
+        }
+        ArtMissileDef_Modified ^{
+            Broken=(сломан)
+            BrokenInBattle=Внимание! Ракетанг неудачно определил вероятность попадания, и вражеский выстрел разделил общую массу наномеханизмов на две части. Для соединения требуется помощь специалиста.
+            BrokenInUse=Плазмоуритановая составляющая слоя ракетанга высохла из-за сильной звёздной активности. Наномеханизмы парализованы, требуется ремонт.
+            CountsAs=ArtMissileDef
+            KellerExchange=2
+            KellerValue=25
+            Name=Ракетанг
+            OnActCode ^{
+                01=dword ship = ScriptItemActShip();
+                02=if(!ship) exit;
+                03=if(ItemIsBroken(CurItem())) exit;
+                04=dword cur_item = CurItem();
+                05=if(ScriptItemActionType(t_OnStep, 11))
+                06 ^{
+                    01=if(CustomArtData(cur_item, 1))
+                    02 ^{
+                        01=int fuel = 0;
+                        02=for(i=0;ShipItems(ship)>i;i=i+1)
+                        03 ^{
+                            01=dword item = ShipItems(ship,i);
+                            02=if(ItemType(item) == t_FuelTanks || ItemType(item) == t_Cistern) fuel = fuel + GetEquipmentStats(item,1);
+                        }
+                        04=int compCheck = ArtefactTypeBoosted(ship, t_ArtMissileDef);
+                        05=if(!compCheck && !fuel) exit;
+                        06=int rounds = 1;
+                        07=if(compCheck) rounds = 2;
+                        08=for(int i = rounds; i > 0; i = i - 1)
+                        09 ^{
+                            01=if(CustomArtData(cur_item, 2))
+                            02 ^{
+                                01=dword gun = 0;
+                                02=int missiles = 0;
+                                03=for(int j = 1; j <= ShipCntWeapon(ship); j = j + 1)
+                                04 ^{
+                                    01=dword tdwd = ShipWeapon(ship, j);
+                                    02=dword tdwd2 = MissilesToRearm(tdwd);
+                                    03=if(tdwd2)
+                                    04 ^{
+                                        01=if(tdwd2 > missiles)
+                                        02 ^{
+                                            01=gun = tdwd;
+                                            02=missiles = tdwd2;
+                                        }
+                                    }
+                                }
+                                05=if(gun)
+                                06 ^{
+                                    01=MissilesToRearm(gun, 1);
+                                    02=if(!compCheck)
+                                    03 ^{
+                                        01=for(i=0;ShipItems(ship)>i;i=i+1)
+                                        02 ^{
+                                            01=item = ShipItems(ship,i);
+                                            02=if(ItemType(item) == t_FuelTanks || ItemType(item) == t_Cistern)
+                                            03 ^{
+                                                01=if(fuel < GetEquipmentStats(item,1))
+                                                02 ^{
+                                                    01=SetEquipmentStats(item,GetEquipmentStats(item,1)-fuel,1);
+                                                    02=break;
+                                                }
+                                                03=else
+                                                04 ^{
+                                                    01=fuel = fuel - GetEquipmentStats(item,1);
+                                                    02=SetEquipmentStats(item,0,1);
+                                                    03=continue;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    04=CustomArtData(cur_item, 2, CustomArtData(cur_item, 2) - 1);
+                                    05=if(RndObject(1, 100, ship) <= 50) ItemDurability(cur_item, ItemDurability(cur_item) - 1);
+                                }
+                            }
+                        }
+                    }
+                }
+                07=if(ScriptItemActionType(t_OnGettingMissileHit))
+                08 ^{
+                    01=if(!ItemIsBroken(cur_item))
+                    02 ^{
+                        01=if(ScriptItemActObject2())
+                        02 ^{
+                            01=if(CustomArtData(cur_item, 2) < 100)
+                            02 ^{
+                                01=int nuclearCheck = 0;
+                                02=int acrinCheck = EqSpecial(ScriptItemActObject2());
+                                03=if(acrinCheck > -1)
+                                04 ^{
+                                    01=if(BonusCustomTag(acrinCheck) == 'NukeAcryn')
+                                    02 ^{
+                                        01=nuclearCheck = 1;
+                                        02=CustomArtData(cur_item, 2, CustomArtData(cur_item, 2) + 5);
+                                        03=if(CustomArtData(cur_item, 2) > 100) CustomArtData(cur_item, 2, 100);
+                                    }
+                                }
+                                05=if(!nuclearCheck)
+                                06 ^{
+                                    01=str Tmissile = CustomMissileType(ScriptItemActObject2());
+                                    02=int Tshots = 1;
+                                    03=if(Tmissile == 'W04' || Tmissile == 'W15' || Tmissile == 'W18')
+                                    04 ^{
+                                        01=Tshots = GetCustomWeaponData(t_Weapon1 - 1 + Tmissile, 'ShotCount');
+                                        02=if(!Tshots) Tshots = 1;
+                                        03=CustomArtData(cur_item, 3, CustomArtData(cur_item, 3) + 120 / (Tshots * 2));
+                                        04=if(CustomArtData(cur_item, 3) >= 120)
+                                        05 ^{
+                                            01=CustomArtData(cur_item, 3, CustomArtData(cur_item, 3) - 120);
+                                            02=CustomArtData(cur_item, 2, CustomArtData(cur_item, 2) + 1);
+                                        }
+                                    }
+                                    05=else
+                                    06 ^{
+                                        01=Tshots = GetCustomWeaponData(Tmissile, 'ShotCount');
+                                        02=if(!Tshots) Tshots = 1;
+                                        03=CustomArtData(cur_item, 3, CustomArtData(cur_item, 3) + 120 / (Tshots * 2));
+                                        04=if(CustomArtData(cur_item, 3) >= 120)
+                                        05 ^{
+                                            01=CustomArtData(cur_item, 3, CustomArtData(cur_item, 3) - 120);
+                                            02=CustomArtData(cur_item, 2, CustomArtData(cur_item, 2) + 1);
+                                        }
+                                    }
+                                }
+                            }
+                            03=else CustomArtData(cur_item, 3, 0);
+                        }
+                    }
+                }
+            }
+            OnActCodeTypes=t_OnStep,t_OnGettingMissileHit
+            OnActStepTypes=11
+            OnUseCode ^{
+                01=if(!CustomArtData(CurItem(), 1))
+                01 ^{
+                    01=CustomArtData(CurItem(), 1, 1);
+                    02=CustomArtTextData(CurItem(), 1, '<color=0,255,0>Дополнительное свойство активно:</color>');
+                    03=Sound('Sound.Mod_Switch');
+                }
+                02=else
+                02 ^{
+                    01=CustomArtData(CurItem(), 1, 0);
+                    02=CustomArtTextData(CurItem(), 1, '<color=255,17,0>Дополнительное свойство отключено:</color>');
+                    03=Sound('Sound.Mod_Switch');
+                }
+            }
+            SharedEffect=1
+            SharedUse=1
+            Text=Плазмоуритановый защитный механизм, оснащённый усиленными детекторами и встроенным сборщиком ракет. Блокирует <clr>10-40%<clrEnd> ущерба от попадания ракетного оружия, попутно поглощая обломки, из которых в дальнейшем способен собирать полноценные боевые снаряды.
+            Text=<br> <br>
+            Text=<TextData1>
+            Text=При наличии материала, ежедневно восполняет <clr>1<clrEnd> заряд в одном из экипированных ракетных орудий, начиная с самого разряженного. Для заправки двигателей произведённых боеприпасов расходует по <clr>1<clrEnd> ед. топлива из основного бака.
+            Text=Доступно зарядов для сборки: <Data2>\100 шт.
+        }
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            ArtEnergyDef_infos ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnStep, 11)) ShipDeleteCustomShipInfo(ScriptItemActShip(), 'ArtEnergyDef_infos');
+                    02=else ScriptItemActParam(0);
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+                OnActStepTypes=11
+            }
+        }
+    }
+}
+MicroModuls ^{
+    ExpArtsPlus_AddHullArmor1 ^{
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Небольшая колония жупи<clrEnd>
+        ExText=<color=248,252,248>Поверхность этого корпуса облюбовала немногочисленная колония жупи. Броня корпуса незначительно увеличена.</color>
+        ExText=<clr><clrEnd>
+        ExText=Броня корпуса: <clr>+1<clrEnd> ед.
+        LockedAcryn=3
+        Name=add_hull_armor1
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_AddHullArmor2 ^{
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Колония жупи<clrEnd>
+        ExText=<color=248,252,248>Поверхность этого корпуса облюбовала колония жупи. Броня корпуса увеличена.</color>
+        ExText=<clr><clrEnd>
+        ExText=Броня корпуса: <clr>+2<clrEnd> ед.
+        LockedAcryn=3
+        Name=add_hull_armor2
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_AddHullArmor3 ^{
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Большая колония жупи<clrEnd>
+        ExText=<color=248,252,248>Поверхность этого корпуса облюбовала крупная колония жупи. Броня корпуса значительно увеличена.</color>
+        ExText=<clr><clrEnd>
+        ExText=Броня корпуса: <clr>+3<clrEnd> ед.
+        LockedAcryn=3
+        Name=add_hull_armor3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_AddSlotWeapon ^{
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительная турель<clrEnd>
+        ExText=<color=248,252,248>Встроенный в корпус протон координирует действия дополнительного орудия.</color>
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonSlotWeapon=1
+    }
+    ExpArtsPlus_ArtBonusHookBoosted1 ^{
+        Equipments=Hook
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Сфокусированный луч I<clrEnd>
+        ExText=<color=248,252,248>Интегрированный эриметр незначительно увеличивает характеристики захвата. Модификация более эффективна за счет использования в оборудовании неизвестного производства.</color>
+        ExText=<clr><clrEnd>
+        ExText=Мощность захвата: <clr>+25<clrEnd> т.
+        ExText=Дальность действия захвата: <clr>+25<clrEnd> млн км
+        LockedAcryn=3
+        Name=add_hook_boosted1
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_ArtBonusHookBoosted2 ^{
+        Equipments=Hook
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Сфокусированный луч II<clrEnd>
+        ExText=<color=248,252,248>Пара интегрированных эриметров увеличивает характеристики захвата. Модификация более эффективна за счет использования в оборудовании неизвестного производства.</color>
+        ExText=<clr><clrEnd>
+        ExText=Мощность захвата: <clr>+50<clrEnd> т.
+        ExText=Дальность действия захвата: <clr>+50<clrEnd> млн км
+        LockedAcryn=3
+        Name=add_hook_boosted2
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_ArtBonusHookBoosted3 ^{
+        Equipments=Hook
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Сфокусированный луч III<clrEnd>
+        ExText=<color=248,252,248>Несколько интегрированных эриметров резко увеличивают характеристики захвата. Модификация более эффективна за счет использования в оборудовании неизвестного производства.</color>
+        ExText=<clr><clrEnd>
+        ExText=Мощность захвата: <clr>+75<clrEnd> т.
+        ExText=Дальность действия захвата: <clr>+75<clrEnd> млн км
+        ExText=Скорость притяжения захватом: <clr>+2<clrEnd>
+        LockedAcryn=3
+        Name=add_hook_boosted1
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_ArtBonusHookNormal1 ^{
+        Equipments=Hook
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Сфокусированный луч I<clrEnd>
+        ExText=<color=248,252,248>Интегрированный эриметр незначительно увеличивает характеристики захвата.</color>
+        ExText=<clr><clrEnd>
+        ExText=Мощность захвата: <clr>+15<clrEnd> т.
+        ExText=Дальность действия захвата: <clr>+15<clrEnd> млн км
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_ArtBonusHookNormal2 ^{
+        Equipments=Hook
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Сфокусированный луч II<clrEnd>
+        ExText=<color=248,252,248>Пара интегрированных эриметров увеличивает характеристики захвата.</color>
+        ExText=<clr><clrEnd>
+        ExText=Мощность захвата: <clr>+30<clrEnd> т.
+        ExText=Дальность действия захвата: <clr>+30<clrEnd> млн км
+        LockedAcryn=3
+        Name=add_hook_normal2
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_ArtBonusHookNormal3 ^{
+        Equipments=Hook
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Сфокусированный луч III<clrEnd>
+        ExText=<color=248,252,248>Несколько интегрированных эриметров резко увеличивают характеристики захвата.</color>
+        ExText=<clr><clrEnd>
+        ExText=Мощность захвата: <clr>+45<clrEnd> т.
+        ExText=Дальность действия захвата: <clr>+45<clrEnd> млн км
+        ExText=Скорость притяжения захватом: <clr>+1<clrEnd>
+        LockedAcryn=3
+        Name=add_hook_normal3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_ArtWeaponToSpeedBoosted1 ^{
+        Equipments=Engine
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные ускорители I<clrEnd>
+        ExText=<color=248,252,248>Интегрированный сопланатор увеличивает скорость двигателя. Модификация более эффективна за счет использования в оборудовании неизвестного производства.</color>
+        ExText=<clr><clrEnd>
+        ExText=Скорость двигателя: <clr>+60<clrEnd> ед.
+        LockedAcryn=3
+        Name=add_speed_boosted1
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_ArtWeaponToSpeedBoosted2 ^{
+        Equipments=Engine
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные ускорители II<clrEnd>
+        ExText=<color=248,252,248>Несколько интегрированных сопланаторов увеличивают скорость двигателя. Модификация более эффективна за счет использования в оборудовании неизвестного производства.</color>
+        ExText=<clr><clrEnd>
+        ExText=Скорость двигателя: <clr>+120<clrEnd> ед.
+        LockedAcryn=3
+        Name=add_speed_boosted2
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_ArtWeaponToSpeedBoosted3 ^{
+        Equipments=Engine
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные ускорители III<clrEnd>
+        ExText=<color=248,252,248>Ряд интегрированных сопланаторов увеличивают скорость двигателя. Модификация более эффективна за счет использования в оборудовании неизвестного производства.</color>
+        ExText=<clr><clrEnd>
+        ExText=Скорость двигателя: <clr>+180<clrEnd> ед.
+        LockedAcryn=3
+        Name=add_speed_boosted3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_ArtWeaponToSpeedNormal1 ^{
+        Equipments=Engine
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные ускорители I<clrEnd>
+        ExText=<color=248,252,248>Интегрированный сопланатор увеличивает скорость двигателя.</color>
+        ExText=<clr><clrEnd>
+        ExText=Скорость двигателя: <clr>+40<clrEnd> ед.
+        LockedAcryn=3
+        Name=add_speed_normal1
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_ArtWeaponToSpeedNormal2 ^{
+        Equipments=Engine
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные ускорители II<clrEnd>
+        ExText=<color=248,252,248>Несколько интегрированных сопланаторов увеличивают скорость двигателя. увеличивает скорость двигателя.</color>
+        ExText=<clr><clrEnd>
+        ExText=Скорость двигателя: <clr>+80<clrEnd> ед.
+        LockedAcryn=3
+        Name=add_speed_normal2
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ExpArtsPlus_ArtWeaponToSpeedNormal3 ^{
+        Equipments=Engine
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные ускорители III<clrEnd>
+        ExText=<color=248,252,248>Ряд интегрированных сопланаторов увеличивают скорость двигателя.</color>
+        ExText=<clr><clrEnd>
+        ExText=Скорость двигателя: <clr>+120<clrEnd> ед.
+        LockedAcryn=3
+        Name=add_speed_normal3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    TwoWeaponSlot ^{
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Армс встроен:</color> <clr>дополнительное вооружение<clrEnd>
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonSlotWeapon=2
+    }
+}

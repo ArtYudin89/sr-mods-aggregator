@@ -1,0 +1,58 @@
+AMod_HardSkills_text ^{
+    0=Навык точности повысился!<br>
+    1=Навык маневренности повысился!<br>
+    2=Навык техники повысился!<br>
+    3=Навык торговли повысился!<br>
+    4=Навык обаяния повысился!<br>
+    5=Навык лидерства повысился!<br>
+    SkillsText=<td=0><align=left>Точность:</align><td=160><align=right>CurExp0</align><td=170><align=right>/</align><td=225><align=right>NeedExp0</align><br>Маневренность:</align><td=160><align=right>CurExp1</align><td=170><align=right>/</align><td=225><align=right>NeedExp1</align><br>Знание техники:</align><td=160><align=right>CurExp2</align><td=170><align=right>/</align><td=225><align=right>NeedExp2</align><br>Навык торговли:</align><td=160><align=right>CurExp3</align><td=170><align=right>/</align><td=225><align=right>NeedExp3</align><br>Обаяние:</align><td=160><align=right>CurExp4</align><td=170><align=right>/</align><td=225><align=right>NeedExp4</align><br>Лидерство:</align><td=160><align=right>CurExp5</align><td=170><align=right>/</align><td=225><align=right>NeedExp5</align><br>
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            AMod_HardSkills_infos ^{
+                Description=description
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    00=if(HardSkillsArr0[3]<3 && ShipSkill(Player(),0)<6)
+                    01 ^{
+                        00=if(ScriptItemActionType()==t_OnWeaponShot)
+                        01 ^{
+                            00=HardSkillsArr0[3]=HardSkillsArr0[3]+1;
+                            01=if(ObjectType(ScriptItemActObject1())==4 || ObjectType(ScriptItemActObject1())==5)HardSkillsArr0[0]=HardSkillsArr0[0]+Rnd(15,35);
+                            02=if(ObjectType(ScriptItemActObject1())==6)HardSkillsArr0[0]=HardSkillsArr0[0]+Rnd(10,20);
+                            03=if(ObjectType(ScriptItemActObject1())==7 || ObjectType(ScriptItemActObject1())==8)HardSkillsArr0[0]=HardSkillsArr0[0]+Rnd(30,75);
+                            04=HardSkillsArr0[6]=1;
+                        }
+                    }
+                    02=if(HardSkillsArr0[4]<3 && ShipSkill(Player(),1)<6)
+                    03 ^{
+                        00=if(ScriptItemActionType()==t_OnTakingDamage || ScriptItemActionType()==t_OnTakingDamageEn || ScriptItemActionType()==t_OnTakingDamageSp || ScriptItemActionType()==t_OnTakingDamageMi)
+                        01 ^{
+                            00=if(ObjectType(ScriptItemActObject1())!=1)
+                            01 ^{
+                                00=HardSkillsArr0[4]=HardSkillsArr0[4]+1;
+                                01=if(ObjectType(ScriptItemActObject1())==4 || ObjectType(ScriptItemActObject1())==5)HardSkillsArr0[1]=HardSkillsArr0[1]+Rnd(20,50);
+                                02=if(ObjectType(ScriptItemActObject1())==7 || ObjectType(ScriptItemActObject1())==8)HardSkillsArr0[1]=HardSkillsArr0[1]+Rnd(25,75);
+                                03=HardSkillsArr0[6]=1;
+                            }
+                        }
+                    }
+                    04=if(HardSkillsArr0[5]<3 && ShipSkill(Player(),2)<6)
+                    05 ^{
+                        00=if(ScriptItemActionType()==t_OnReduceEqBattle || ScriptItemActionType()==t_OnReduceEqUse)
+                        01 ^{
+                            00=HardSkillsArr0[5]=HardSkillsArr0[5]+1;
+                            01=HardSkillsArr0[2]=HardSkillsArr0[2]+ScriptItemActParam()/50;
+                            04=HardSkillsArr0[6]=1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+Skills ^{
+    PointForNextLevel=
+}

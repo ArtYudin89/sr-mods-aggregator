@@ -1,0 +1,564 @@
+AMod_CammonPanel ^{
+    2 ^{
+        ButtonName=AMod_Merchant_Button
+    }
+    3 ^{
+        ButtonName=AMod_Merchant_Button_Player
+    }
+}
+Artefacts ^{
+    CustomArtefacts ^{
+        scrItem0_ShipGroup ^{
+            Cost=1000
+            Name=убогий костыль
+            Size=5
+            Text=для возвращения скриптовый группы из скрипта в мэйн
+        }
+    }
+}
+MicroModuls ^{
+    mod_merchant_acr0 ^{
+        Cost=350
+        CustomTag=mod_merchant_acr0
+        Equipments=Hull
+        KindGraph=mod_merchant_acr0
+        LockedAcryn=3
+        Name=Корпус "Тиандонг"
+        NonSearchable=1
+        Priority=0
+        Size=110
+        Special=1
+        Text=<color=248,252,248>Эксклюзивная серия торговых корпусов от компании "Моддинг". Данная версия сосредоточена на получении максимальной эффективности установленного оборудования за счёт оружейных систем и некоторых слотов корпуса.</color>
+        Text=Скорость двигателя: <bonSpeed> ед. Дальность прыжка: <bonJump> ед.
+        Text=Эффективность дроида: <bonDroid> ед. Генератор поля: <bonDef> ед.
+        Text=Оружие: Э:<bonWEnergy> ед. О:<bonWSplinter> ед. Р:<bonWMissile> ед. Д:<bonWRadius> ед.
+        bonDef=10
+        bonDroid=30
+        bonJump=10
+        bonSlotArt=-4
+        bonSlotDef=1
+        bonSlotDroid=1
+        bonSlotForsage=1
+        bonSlotHook=-1
+        bonSlotRadar=1
+        bonSlotScaner=-1
+        bonSlotWeapon=-3
+        bonSpeed=200
+        bonWEnergy=-10
+        bonWMissile=-20
+        bonWRadius=-50
+        bonWSplinter=-30
+    }
+    mod_merchant_acr1 ^{
+        Cost=350
+        CustomTag=mod_merchant_acr1
+        Equipments=Hull
+        Fragility=77
+        KindGraph=mod_merchant_acr1
+        LockedAcryn=3
+        Name=Корпус "Меледэйн"
+        NonSearchable=1
+        Priority=0
+        Size=110
+        Special=1
+        Text=<color=248,252,248>Эксклюзивная серия торговых корпусов от компании "Моддинг". Данная версия сосредоточена на усилении защиты корпуса, путём интеграции бронепластин за счёт оружейных систем и некоторых слотов корпуса.</color>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Общая восприимчивость к урону: <clr>-30<clrEnd> %.
+        Text=Оружие: Э:<bonWEnergy> ед. О:<bonWSplinter> ед. Р:<bonWMissile> ед. Д:<bonWRadius> ед.
+        bonHull=10
+        bonSlotArt=-4
+        bonSlotDef=1
+        bonSlotDroid=1
+        bonSlotForsage=1
+        bonSlotHook=-1
+        bonSlotRadar=1
+        bonSlotScaner=-1
+        bonSlotWeapon=-3
+        bonWEnergy=-10
+        bonWMissile=-20
+        bonWRadius=-50
+        bonWSplinter=-30
+    }
+    mod_merchant_acr2 ^{
+        Cost=700
+        CustomTag=mod_merchant_acr2
+        Equipments=Hull
+        Fragility=77
+        KindGraph=mod_merchant_acr2
+        LockedAcryn=3
+        Name=Корпус "Хэшан 112"
+        NonSearchable=1
+        Priority=0
+        Size=130
+        Special=1
+        Text=<color=248,252,248>Эксклюзивная серия торговых корпусов от компании "Моддинг". Объединяет преимущества корпусов серий "Тиандонг" и "Меледэйн". Но мощность оружейных систем страдает ещё больше. К тому же, корпус значительно дороже в эксплуатации чем прошлые серии.</color>
+        Text=Скорость двигателя: <bonSpeed> ед. Дальность прыжка: <bonJump> ед.
+        Text=Эффективность дроида: <bonDroid> ед. Генератор поля: <bonDef> ед.
+        Text=Оружие: Э:<bonWEnergy> ед. О:<bonWSplinter> ед. Р:<bonWMissile> ед. Д:<bonWRadius> ед.
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Общая восприимчивость к урону: <clr>-30<clrEnd> %.
+        bonDef=8
+        bonDroid=40
+        bonHull=8
+        bonJump=10
+        bonSlotArt=-4
+        bonSlotDef=1
+        bonSlotDroid=1
+        bonSlotForsage=1
+        bonSlotHook=-1
+        bonSlotRadar=1
+        bonSlotScaner=-1
+        bonSlotWeapon=-3
+        bonSpeed=300
+        bonWEnergy=-15
+        bonWMissile=-30
+        bonWRadius=-100
+        bonWSplinter=-45
+    }
+    mod_merchant_add_acr0 ^{
+        Cost=2000
+        CustomTag=mod_merchant_TC_acryn
+        Equipments=Hull
+        Fragility=77
+        KindGraph=mod_merchant_add_acr0
+        LockedAcryn=3
+        Name=Корпус "Сюрприз"
+        NonSearchable=1
+        Priority=0
+        Size=140
+        Special=1
+        Text=<color=248,252,248>Порождение безумного воображение и глубокой обиды на пиратов одного из инженеров технологического центра. Корпус, выглядящий как безобидный гаальский транспортник, скрывает в себе мощь нескольких военных кораблей. По задумке автора проекта, пирата, выбравшего в роли жертвы подобный корабль, должен ожидать "внезапны сюрприз". Однако, плану великой мести всему пиратскому отребью так и не суждено было сбыться. Из-за огромной стоимости внутренних комплектующих покупать корпус стоимостью десятка военных кораблей(а то и не одного) станут редкие коллекционеры или редкие идиоты.</color>
+        Text=Скорость двигателя: <bonSpeed> ед. Дальность прыжка: <bonJump> ед.
+        Text=Эффективность дроида: <bonDroid> ед. Генератор поля: <bonDef> ед.
+        Text=Броня корпуса: <bonHull> ед. Масса корабля: <bonMass>%
+        Text=Оружие: Э:<bonWEnergy> ед. О:<bonWSplinter> ед. Р:<bonWMissile> ед. Д:<bonWRadius> ед.
+        Text=Общая восприимчивость к урону: <clr>-30<clrEnd> %.
+        bonDef=8
+        bonDroid=40
+        bonHull=8
+        bonJump=10
+        bonMass=-42
+        bonSlotArt=-2
+        bonSlotDef=1
+        bonSlotDroid=1
+        bonSlotForsage=1
+        bonSlotHook=-1
+        bonSlotRadar=1
+        bonSlotScaner=-1
+        bonSlotWeapon=5
+        bonSpeed=300
+        bonWEnergy=20
+        bonWMissile=35
+        bonWRadius=150
+        bonWSplinter=50
+    }
+}
+Script ^{
+    mod_merchant ^{
+        1=Я бы хотел создать свою торговую компанию
+        10=Хандел
+        11=Название вашей компании:
+        12=Я передумал
+        13=Есть ли у вас чертежи корпусов для торговцев?
+        14=Именно для торговцев? Ах да! Одного из наших инженеров ограбил какой-то пират. Он захотел отомстить, но не ему одному, а всем пиратам разом. Долго и упорно он разрабатывал чертёж корпуса. Характеристики получились вполне себе достойные, да вот цена такого корпуса великовата для нашей сети центров.<br>Корпус "Сюрприз":<br><0><br><br>Берёте? Всего за <1> cr.
+        15=Да
+        16=Нет
+        19=<0> по цене <1> за тонну, в наличии <2> тонн. Интересует?
+        20=Сейчас проверю.<br>...<br>...<br>Сейчас у нас нет для вас доступных торговых сделок. Возможно, что-нибудь появится завтра.
+        21=Да, отправьте на склад
+        24=<PlayerFull>, вы последний сотрудник оставшийся в компании, даже глава компании сбежал, оставив <0> cr долга. Но ничего, мы найдём на него управу.<br>Что касается вас, то придётся в одностороннем порядке разорвать соглашение о найме. Теперь такое часто случается, времена нынче тяжелые.
+        25=Я понимаю
+        27=Лаааадно, давайте подберём вам компанию.<br>...<br>... (что-то кликает в планшете) ...<br>...<br>Ага, вот есть свободная вакансия. Теперь позвольте кое-что объяснить.<br>У торговых компаний есть такое понятие как ранги. Они позволяют получать дополнительные преимущества. Например, ваш наниматель, на первом ранге, позволит вам от своего имени совершать дополнительные торговые сделки на планетах. Чем выше ранг - тем выгодней сделка. Ранг повышается при накоплении опыта. В отличие от торгового опыта рейнджеров, опыт компаний учитывает не только прибыльность сделки, но и качество сделки. Бывает что за продажу 500 т. минералов с прибыльностью цены в 200-300% вы получите больше опыта чем от продажи 500 т. роскоши с прибыльность 5-10%. Это позволяет вам расширить свой ассортимент, а не гонятся только за дорогими товарами.<br>Но у опыта компаний есть и недостаток. Полный опыт от сделки вы получите только если продадите товар купленный лично вами. Подобранный товар в космосе или выданный вам кем-то принесёт какой-то опыт, но не максимально возможный.<br>Регистрировать вас?
+        29=Наняться в существующую компанию
+        3=Вы уверены? Управление компанией дело не простое, необходимо анализировать ситуацию в галактике, а также требуется вложить довольно много кредитов, прежде чем вы сможете получать прибыль.
+        30=Торговые компании.<br>Нанявшись в одну из них вы получите доступ к дополнительному торговому интерфейсу, а также возможность брать ссуду. Ссуда это не кредит, у неё нет процентной ставки, но погасить её вам придётся в любом случае.<br>Работа в компании выгодна начинающим торговцам, но если вам этого мало, вы можете создать свою торговую компанию.
+        31=Так может быть я выкуплю компанию, раз она никому не надо?
+        32=Узнать о банкротстве компании
+        34=Хочу торговую сделку, да пожирнее. Что вы можете предложить?
+        35=Мне надо подумать
+        37=. Подробности можно узнать в ближайшем бизнес-центре.
+        39=Компания вашего нанимателя обанкротилась. Процесс банкротства завершён.
+        4=Отлично! Мы успешно перечислили кредиты с вашего счета.<br>А, ну и ваша торговая компания "<0>" зарегистрирована. Прямо сейчас вы не сможете кого-то нанять, потребуется некоторое время, чтобы о вас узнали.
+        40=Мне бы хотелось расширить возможности для торговли, что вы можете предложить?
+        41=Компания вашего нанимателя обанкротилась. Процесс банкротства завершится
+        5=День, когда я увижу в космосе обломки твоего корабля, <PlayerFull>, я буду отмечать как свой второй день рождения. Так что не откажи в любезности и умри.
+        6=О, шеф, не ожидал вас тут встретить. Хотите повысить мне зарплату или выдать премию?
+        7=Что ж, тогда позвольте объяснить вам основы. <br>На первый взгляд, управление компанией дело не сложное, от вас требуется только оплачивать новые корабли и поддерживать положительный баланс для закупок товара. Но на этом погорело очень много начинающих предпринимателей. <br>Закупили много новых кораблей на весь бюджет, а платить заработную плату нечем - все работники разбегутся, никто не станет работать на вас бесплатно. <br>Всё шло хорошо, но корабли ваших работников уничтожили пираты - начинайте всё с начала, компенсации не будет. <br>Не стоит забывать и о отношении подчинённых к вам - торговцы ненавидят пиратов и прочих аморальных типов. <br>Для успешного процветания вашей компании потребуется обширная территория. Чем больше союзных систем - тем больше простора для торговли. <br>Ну и последнее, зарегистрировать новую компанию будет стоить <0> cr. Кроме этого, вам необходимо придумать название для своей компании. Настоятельно рекомендую придумать <clr>уникальное<clrEnd> название.
+        8=Я точно в этом уверен
+        9=Думаю, я справлюсь
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            AMod_Merchant0 ^{
+                Description=основная инфошка торгашей(покупка/продажа/ранги/опыт)
+                Icon=1
+                Name=infs AMod_Merchant0
+                OnActCode ^{
+                    01=dword ship = ScriptItemActShip(), inf = CurInfo(), shop = GetShipPlanet(ship);
+                    02=int rank=ShipCustomShipInfoTextData(ship, inf, 2);
+                    03=if(!shop) shop = GetShipRuins(ship);
+                    04=if(ScriptItemActionType(t_OnShipBuysGoods))
+                    05 ^{
+                        01=int bonus_rank_buy=ItemCost(ScriptItemActObject1());
+                        02=bonus_rank_buy=bonus_rank_buy*rank*10;
+                        03=bonus_rank_buy=bonus_rank_buy/100;
+                        04=mod_merchantArr0[5,0]=mod_merchantArr0[5,0]+ItemCost(ScriptItemActObject1())-bonus_rank_buy;
+                    }
+                    06=if(ScriptItemActionType(t_OnShipSellsGoods))
+                    07 ^{
+                        01=int exp=ItemCost(ScriptItemActObject1()), exp2=Rnd(0,50), sell=ItemCost(ScriptItemActObject1()), bonus_rank_sell=0;
+                        02=if(sell>0)
+                        03 ^{
+                            01=int pay=sell*ShipCustomShipInfoData(ship, inf, 1);
+                            02=pay=pay/100;
+                            03=bonus_rank_sell=sell*(rank+2)*10;
+                            04=bonus_rank_sell=bonus_rank_sell/100;
+                            05=sell=sell+bonus_rank_sell;
+                            06=sell=sell-pay;
+                            07=mod_merchantArr0[4,0]=mod_merchantArr0[4,0]+pay;
+                            08=mod_merchantArr0[2,0]=mod_merchantArr0[2,0]+sell;
+                            09=ShipMoney(ship, ShipMoney(ship) + pay);
+                        }
+                        04=if(exp>0)
+                        05 ^{
+                            01=int nextRankExp=CT('mod_merchant.Rank.RankExp'+rank);
+                            02=exp=exp/100;
+                            03=exp=ShipCustomShipInfoData(ship, inf, 3) + exp + exp2;
+                            04=ShipCustomShipInfoData(ship, inf, 3, exp);
+                            05=if(exp>=nextRankExp && nextRankExp!=0)
+                            06 ^{
+                                01=if(rank<3)
+                                02 ^{
+                                    00=rank = rank + 1;
+                                    01=ShipCustomShipInfoData(ship, inf, 1, ShipCustomShipInfoData(ship, inf, 1)+Rnd(1,4));
+                                    02=ShipCustomShipInfoTextData(ship, inf, 2, rank);
+                                    03=ShipCustomShipInfoData(ship, inf, 3, 0);
+                                    04=ShipFreeExp(ship, ShipFreeExp(ship) + exp*5);
+                                }
+                                03=else ShipCustomShipInfoData(ship, inf, 3, nextRankExp - 1);
+                            }
+                        }
+                    }
+                    08=if(ScriptItemActionType(t_OnStep, 11))
+                    09 ^{
+                        05=if(GetShipPlanet(ship))
+                        06 ^{
+                            01=int chns = rank + rank;
+                            02=chns = chns * rank;
+                            03=dword pla=GetShipPlanet(ship);
+                            04=if(rank > 1 && Rnd(0, 100) < chns)
+                            05 ^{
+                                01=unknown arr0=newarray(1);
+                                02=int i=0;
+                                03=for(i=0;i<7;i=i+1)
+                                04 ^{
+                                    01=if(!ShipGoodsIllegalOnPlanet(ship, i, pla))ArrayAdd(arr0, i);
+                                }
+                                05=if(ArrayDim(arr0)>1) UpsurgeGoods(pla, Rnd(1, arr0[Rnd(1, ArrayDim(arr0)-1)]));
+                            }
+                            06=if(rank > 2 && Rnd(0, 100) < (chns / 2) )PlanetBoostInventions(pla, Rnd(3, 10));
+                        }
+                        08=if(mod_merchantArr0[0, 4] == 0)
+                        09 ^{
+                            00=if(Hit(ship, 0))
+                            01 ^{
+                                00=CustomEther('Galaxy_Alert', 0, 'player_shot_merchantfleet', CT('mod_merchant.Text.45'));
+                                01=mod_merchantArr0[0, 4] = 1;
+                                02=mod_merchant_scrState = -1;
+                            }
+                        }
+                        10=if(mod_merchantArr0[0, 4] == 1) RelationToRanger(ship, Player(), 0);
+                        11=if(RelationToRanger(ship, Player()) < 30 || mod_merchantArr0[0, 5] == 2)
+                        12 ^{
+                            01=if(shop)
+                            02 ^{
+                                01=ShipOut(ship);
+                                02=OrderNone(ship, 1);
+                                03=OrderLock(ship, 1);
+                                04=ShipDestroy(ship, 1);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnShipBuysGoods,t_OnShipSellsGoods
+                OnActStepTypes=11
+            }
+            AMod_Merchant1 ^{
+                Description=инфошка смены корпуса торгашам
+                Icon=1
+                Name=infs AMod_Merchant1
+                OnActCode ^{
+                    01=dword ship = ScriptItemActShip(), inf = CurInfo(), shop = GetShipPlanet(ship);
+                    02=if(!shop) shop = GetShipRuins(ship);
+                    03=if(ScriptItemActionType(t_OnStep, 11))
+                    04 ^{
+                        01=if(shop)
+                        02 ^{
+                            01=dword hull=ShipEqInSlot(ship, t_Hull);
+                            02=int cost=ShipCustomShipInfoData(ship, inf, 1), size=ItemSize(hull);
+                            03=SpecialToEquipment(FindBonusByCustomTag(ShipCustomShipInfoTextData(ship, inf, 3)), hull);
+                            04=HullSeries(hull, -1);
+                            05=ItemCost(hull, cost);
+                            06=ItemSize(hull, size);
+                            07=Chameleon(ship);
+                            08=ShipDeleteCustomShipInfo(ship, inf);
+                        }
+                    }
+                }
+                OnActStepTypes=11
+            }
+            AMod_Merchant_player ^{
+                Description=player infos
+                Icon=1
+                Name=infs AMod_Merchant_player
+                OnActCode ^{
+                    01=dword ship = ScriptItemActShip(), inf = CurInfo(), shop = GetShipPlanet(ship);
+                    02=int rank=ShipCustomShipInfoData(ship, inf, 2);
+                    03=if(!shop) shop = GetShipRuins(ship);
+                    04=if(ScriptItemActionType(t_OnShipSellsGoods))
+                    05 ^{
+                        01=int exp=ItemCost(ScriptItemActObject1())-ItemCost(ScriptItemActObject2()), exp2=0;
+                        02=if(ItemCost(ScriptItemActObject2())>0)
+                        03 ^{
+                            01=exp2=100*ItemCost(ScriptItemActObject1());
+                            02=exp2=exp2 / ItemCost(ScriptItemActObject2());
+                            03=exp2=exp2-99;
+                            04=exp2=exp*exp2;
+                            05=exp2=exp2/10000;
+                        }
+                        04=if(exp>0)
+                        05 ^{
+                            01=int nextRankExp=CT('mod_merchant.Rank_pla.RankExp'+rank), pay_ssuda=exp/10;
+                            02=if((mod_merchantArr0[0,3] - pay_ssuda)>=0)mod_merchantArr0[0,3] = mod_merchantArr0[0,3] - pay_ssuda;
+                            03=else
+                            04 ^{
+                                01=pay_ssuda = mod_merchantArr0[0,3] - pay_ssuda;
+                                02=mod_merchantArr0[0,3] = 0;
+                            }
+                            05=ShipMoney(Player(), ShipMoney(Player()) - pay_ssuda);
+                            06=exp=exp/100;
+                            07=exp=ShipCustomShipInfoData(ship, inf, 1) + exp + exp2;
+                            08=ShipCustomShipInfoData(ship, inf, 1, exp);
+                            09=if(exp>=nextRankExp && nextRankExp!=0)
+                            10 ^{
+                                01=if(rank<3)
+                                02 ^{
+                                    00=rank = rank + 1;
+                                    01=ShipCustomShipInfoData(ship, inf, 2, rank);
+                                    02=ShipCustomShipInfoData(ship, inf, 1, 0);
+                                    03=ShipFreeExp(ship, ShipFreeExp(ship) + exp*3);
+                                    04=CustomEther('TradeRankUp',0,'next_trade_rank',CT('mod_merchant.Rank_pla.RankUp'+rank));
+                                    05=Sound('Sound.QuestOk');
+                                }
+                                03=else
+                                04 ^{
+                                    01=if(mod_merchantArr0[0,5]==0 && mod_merchantArr0[0,3]==0)
+                                    02 ^{
+                                        01=mod_merchantArr0[0,5]=2;
+                                        02=mod_merchantArr0[0,6]=CurTurn()+365;
+                                        03=Ether(3,'mod_merchant_quest0',Format(CT('mod_merchant.Text.68'),'<DATA>',GameDateTxtByTurn(mod_merchantArr0[0,6])));
+                                        04=ShipDeleteCustomShipInfo(0, CurInfo());
+                                    }
+                                    03=ShipCustomShipInfoData(ship, inf, 1, nextRankExp - 1);
+                                }
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnShipSellsGoods
+            }
+        }
+    }
+}
+mod_merchant ^{
+    ActCode ^{
+        1 ^{
+            01=if(ScriptItemActionType(t_OnItemEquip))
+            02 ^{
+                01=if(ScriptItemActObject1()==1)
+                02 ^{
+                    00=ArrayClear(scrArr0);
+                    01=for(i=0;i<GroupCount(MerchantFleet);i=i+1)ArrayAdd(scrArr0,GroupShip(MerchantFleet,i));
+                    02=scrArr0[0]=GroupCount(MerchantFleet);
+                }
+                03=if(ScriptItemActObject1()==2)
+                04 ^{
+                    01=mod_merchantArr0[0, 2] = 0;
+                    02=mod_merchantArr0[8, 0] = 0;
+                    03=for (i = 1; i < 11; i = i + 1)
+                    04 ^{
+                        00=if (mod_merchantArr0[8, i] != 2) continue;
+                        01=mod_merchantArr0[8, i] = 0;
+                        02=shipNumb = shipNumb + 1;
+                        03=dwd1 = GalaxyStar(mod_merchantArr0[10, i]);
+                        04=dwd0 = StarPlanets(dwd1, mod_merchantArr0[11, i]);
+                        05=dwd1 = BuyTransport(dwd0, 0);
+                        06=ShipJoin(MerchantFleet, dwd1);
+                        07=ShipAddCustomShipInfo(dwd1, 'AMod_Merchant0', 'NoShow', mod_merchantArr0[9, i], 0, 0, CurTurn(), 0);
+                        08=SetName(dwd1, mod_merchantArr0[0, 0] + ' -' + shipNumb + '-');
+                        09=if (mod_merchantArr0[0, 3] == -1) NoTargetToShip(dwd1, 3);
+                        10=ShipMoney(dwd1, ShipMoney(dwd1)+ 500000);
+                        11=ShipRefit(dwd1, 600, ShipMoney(dwd1) + GalaxyTechLevel() * 20000);
+                    }
+                    05=ArrayClear(scrArr0);
+                    06=for(i=0;i<GroupCount(MerchantFleet);i=i+1)ArrayAdd(scrArr0,GroupShip(MerchantFleet,i));
+                    07=mod_merchantArr0[9, 0] = GroupCount(MerchantFleet);
+                    08=scrArr0[0] = GroupCount(MerchantFleet);
+                }
+                05=if(ScriptItemActObject1()==3)scrArr0[0]=GroupCount(MerchantFleet);
+            }
+        }
+    }
+    ActCode_help=вызывается пинком по скриптовому через CreateActCodeEvent из мэйна, для возвращения скриптовой группы. ФУЭ ГАДОСТЬ! но лучшей реализации стандартными средствами не придумал.
+    Hulls ^{
+        mod_merchant_TC_acryn=Корпус "Сюрприз"
+        mod_merchant_acr0=Корпус "Тиандонг"
+        mod_merchant_acr1=Корпус "Меледэйн"
+        mod_merchant_acr2=Корпус "Хэшан 112"
+    }
+    Hulls_help=акрины корпусов которыми можно улучшить торгашей.
+    Hulls_help2=если у кого-то появится желание добавлять торгашам корпуса из своего мода после каких-то особых действий(диалог/использование арта/использование юзлеса), пишите, сделаю костыль в коде, пока аткой возможности нет.
+    Race ^{
+        0=Малок
+        1=Пеленг
+        2=Человек
+        3=Фэянин
+        4=Гаалец
+    }
+    Rank ^{
+        0=Новичок. Познаёт основы торговли.
+        1=Начинающий торговец. Умеет рассчитывать прибыль от покупки-продажи товара. Иногда даже правильно.
+        2=Опытный спекулянт. Знает где продать подороже. Умеет манипулировать внутренним рынком планеты, из-за чего может начаться распродажа товара.
+        3=Элитный торгаш. Накопленный опыт позволяет получать дополнительную прибыль с продаж товара. При посещении планет может ускорить их развитие.
+        RankExp0=1000
+        RankExp1=2000
+        RankExp2=4000
+        RankExp3=4000
+    }
+    Rank_help=рангов пока 4, не придумал что будут делать торгаши на рангах выше. но добавлять ранги можно почти бесконечно.
+    Rank_pla ^{
+        RankExp0=1000
+        RankExp1=2000
+        RankExp2=4000
+        RankExp3=4000
+        RankUp1=Ваш корпоративный торговый ранг повышен до 1 уровня. Теперь вам доступны торговые сделки на планетах.
+        RankUp2=Ваш корпоративный торговый ранг повышен до 2 уровня. Торговые сделки на планетах более выгодны.
+        RankUp3=Ваш корпоративный торговый ранг повышен до 3 уровня. Торговые сделки на планетах максимально выгодны.
+    }
+    Rank_pla_help=текст и параметры для игрока в при найме в компанию
+    Text ^{
+        00=Баланс компании:
+        01=Ваша компания
+        02=Выход
+        03=Добавить
+        04=Доход от продаж
+        05=Закупки товара
+        06=Заменить на
+        07=Зарплата
+        08=Инфо
+        09=Информация о работнике:
+        10=Компания
+        11=Корабли для новых работников:
+        12=Корабль
+        13=Корпус
+        14=На балансе компании недостаточно кредитов.
+        15=Наем работников
+        16=Назад
+        17=Нанят
+        18=Нанять
+        19=Опыт
+        20=Отмена
+        21=Отчеты
+        22=Отчеты и финансы
+        23=Период
+        24=Планета(система) работника
+        25=Плата работникам
+        26=Положить на баланс
+        27=Превышен предел работников.
+        28=Работники компании:
+        29=Ранг
+        30=Раса
+        31=Сколько перечислить?
+        32=Сколько снять?
+        33=Снять с баланса
+        34=Цена замены
+        35=Новый работник:
+        36=выберите тип корпуса
+        37=Местонахождение
+        38=нанятые работники
+        39=оплатить замену
+        40=Работник
+        41=<ship> уже в процессе замены корпуса на <newHull>. Продолжить?
+        42=Выберите корпус:
+        43=Чертёж корпуса "Сюрприз" загружен в базу данных вашей компании.
+        44=Название компании:
+        45=Работник вашей компании сообщил, что к нему применяются грубые методы физического давления, направленные с вашей стороны или ваших союзников. Не беспокойтесь, об этом уже узнала вся законопослушная часть галактики, новых работников вы вряд ли найдете. Кроме того, ваша лицензия предпринимателя аннулирована.<br>С презрением, профсоюз торговцев.
+        46=next player rank
+        47=ваш профиль
+        48=взять ссуду
+        49=погасить ссуду
+        50=уволиться
+        51=продажа товара
+        52=покупка товара
+        53=системы
+        54=планеты/базы
+        55=сохранить
+        56=Статус: работник компании
+        57=Имя:
+        58=Ранг:
+        59=Опыт:
+        60=ССуда:
+        61=Анализ рынка продаж:
+        62=Анализ рынка закупок:
+        63=Превышен предел ссуды. Погасите задолженность.
+        64=Сколько взять:
+        65=Сколько выплатить:
+        66=Увольнение невозможно. Выплатите задолженность по ссуде.
+        67=Уволиться из компании?
+        68=Компания вашего нанимателя обанкротилась. Процесс банкротства завершится <DATA>. Подробности можно узнать в ближайшем бизнес-центре.
+    }
+    Text_help=этот текст тянется мэйном для всяких кнопок и прочих ярлыков. может быть пропустил несколько.
+    months ^{
+        f1=января
+        f10=октября
+        f11=ноября
+        f12=декабря
+        f2=февраля
+        f3=марта
+        f4=апреля
+        f5=мая
+        f6=июня
+        f7=июля
+        f8=августа
+        f9=сентября
+        m1=Январь
+        m10=Октябрь
+        m11=Ноябрь
+        m12=Декабрь
+        m2=Февраль
+        m3=Март
+        m4=Апрель
+        m5=Май
+        m6=Июнь
+        m7=Июль
+        m8=Август
+        m9=Сентябрь
+    }
+    sText ^{
+        br=<br>
+        td0=<td=0>
+        td1=<td=165>
+        td2=<td=330>
+        td3=<td=0>
+        td4=<td=165>
+        td5=<td=330>
+        td_e0=<td=0>
+        td_e1=<td=250>
+        td_e2=<td=0>
+        td_e3=<td=250>
+        td_e4=<td=0>
+        td_e5=<td=250>
+    }
+}

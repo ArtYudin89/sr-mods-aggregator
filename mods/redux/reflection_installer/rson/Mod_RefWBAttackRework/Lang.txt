@@ -1,0 +1,228 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RefMedalsBlackHeart ^{
+                Description=Флажок набора медалек
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=int i;
+                    02=for(i=(GalaxyEvents()-1);i>=0;i=i-1)
+                    03 ^{
+                        01=if(GalaxyEventDate(i) < CurTurn()) break;
+                        02=if(GalaxyEventType(i) == 'PlayerFinishesQuest')
+                        03 ^{
+                            01=int temp_int = RndObject(1, 100, Player());
+                            02=if(1)
+                            03 ^{
+                                01=int temp_int_1 = GalaxyEventData(i, 2);
+                                02=if(temp_int_1 > 10)
+                                03 ^{
+                                    01=temp_int = RndObject(50, 85, Player());
+                                    02=temp_int_1 = round((0.01 * temp_int) * temp_int_1);
+                                    03=ShipMoney(Player(), ShipMoney(Player()) + temp_int_1);
+                                    04=Sound('Sound.Sell');
+                                    05=NewsAdd('Отличные агенты получают повышенные выплаты от Совета... Поздравляем вас с дополнительным гонораром в <temp_int_1> cr. за блестяще выполненное задание.');
+                                }
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnGovItemReward
+            }
+            RefMedalsCoalition ^{
+                Description=Флажок набора медалек
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ShipCustomShipInfoData(0,CurInfo(),1)) ShipCustomShipInfoData(0,CurInfo(),1,ShipCustomShipInfoData(0,CurInfo(),1)-1);
+                    02=else
+                    03 ^{
+                        01=ChangeGlobalRelationsPlanets(Player(),0,2,Rnd(3,5),31);
+                        02=ShipCustomShipInfoData(0,CurInfo(),1,30);
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            RefMedalsController ^{
+                Description=Основная инфошка мода
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=while(ShipFindCustomShipInfoByType(ScriptItemActShip(),'RefMedalsMalocs') < 1)
+                    02 ^{
+                        01=if(CountRewardByNom(ScriptItemActShip(),0) == 0) break;
+                        02=if(CountRewardByNom(ScriptItemActShip(),1) == 0) break;
+                        03=if(CountRewardByNom(ScriptItemActShip(),2) == 0) break;
+                        04=if(CountRewardByNom(ScriptItemActShip(),3) == 0) break;
+                        05=if(CountRewardByNom(ScriptItemActShip(),14) == 0) break;
+                        06=if(CountRewardByNom(ScriptItemActShip(),23) == 0) break;
+                        07=if(CountRewardByNom(ScriptItemActShip(),24) == 0) break;
+                        08=if(CountRewardByNom(ScriptItemActShip(),40) == 0) break;
+                        09=ShipAddCustomShipInfo(ScriptItemActShip(),'RefMedalsMalocs','NoShow');
+                        10=ShipSpecialBonuses(ScriptItemActShip(),bonSkill1,ShipSpecialBonuses(ScriptItemActShip(),bonSkill1) + 1);
+                        11=ShipSpecialBonuses(ScriptItemActShip(),bonWRadius,ShipSpecialBonuses(ScriptItemActShip(),bonWRadius) + 5);
+                        12=NewsAdd('Вы - воистину выдающийся воин, отмеченный всеми наградами малокской расы. Честь вам и хвала!');
+                    }
+                    03=while(ShipFindCustomShipInfoByType(ScriptItemActShip(),'RefMedalsPelengs') < 1)
+                    04 ^{
+                        01=if(CountRewardByNom(ScriptItemActShip(),4) == 0) break;
+                        02=if(CountRewardByNom(ScriptItemActShip(),5) == 0) break;
+                        03=if(CountRewardByNom(ScriptItemActShip(),15) == 0) break;
+                        04=if(CountRewardByNom(ScriptItemActShip(),16) == 0) break;
+                        05=if(CountRewardByNom(ScriptItemActShip(),17) == 0) break;
+                        06=if(CountRewardByNom(ScriptItemActShip(),25) == 0) break;
+                        07=if(CountRewardByNom(ScriptItemActShip(),26) == 0) break;
+                        08=if(CountRewardByNom(ScriptItemActShip(),27) == 0) break;
+                        09=if(CountRewardByNom(ScriptItemActShip(),41) == 0) break;
+                        10=if(CountRewardByNom(ScriptItemActShip(),45) == 0) break;
+                        11=ShipAddCustomShipInfo(ScriptItemActShip(),'RefMedalsPelengs','NoShow');
+                        12=ShipSpecialBonuses(ScriptItemActShip(),bonJump,ShipSpecialBonuses(ScriptItemActShip(),bonJump) + 3);
+                        13=ShipSpecialBonuses(ScriptItemActShip(),bonSpeed,ShipSpecialBonuses(ScriptItemActShip(),bonSpeed) + 50);
+                        14=NewsAdd('Вы - один из тех, кому мы вам без сожаления дали звание Лякуши, а то, возможно, и выдвинули бы на звание Верховного. Рады награждать новыми наградами ваши достижения!');
+                    }
+                    05=while(ShipFindCustomShipInfoByType(ScriptItemActShip(),'RefMedalsPeople') < 1)
+                    06 ^{
+                        01=if(CountRewardByNom(ScriptItemActShip(),6) == 0) break;
+                        02=if(CountRewardByNom(ScriptItemActShip(),7) == 0) break;
+                        03=if(CountRewardByNom(ScriptItemActShip(),18) == 0) break;
+                        04=if(CountRewardByNom(ScriptItemActShip(),19) == 0) break;
+                        05=if(CountRewardByNom(ScriptItemActShip(),28) == 0) break;
+                        06=if(CountRewardByNom(ScriptItemActShip(),42) == 0) break;
+                        07=if(CountRewardByNom(ScriptItemActShip(),47) == 0) break;
+                        08=ShipAddCustomShipInfo(ScriptItemActShip(),'RefMedalsPeople','NoShow');
+                        10=ShipSpecialBonuses(ScriptItemActShip(),bonSkill4,ShipSpecialBonuses(ScriptItemActShip(),bonSkill4) + 1);
+                        11=ShipSpecialBonuses(ScriptItemActShip(),bonSkill5,ShipSpecialBonuses(ScriptItemActShip(),bonSkill5) + 1);
+                        12=ShipSpecialBonuses(ScriptItemActShip(),bonMissileSpeed,ShipSpecialBonuses(ScriptItemActShip(),bonMissileSpeed) + 125);
+                        13=NewsAdd('Вы - воистину выдающийся воин, отмеченный всеми наградами человеческой расы. Честь вам и хвала!');
+                    }
+                    07=while(ShipFindCustomShipInfoByType(ScriptItemActShip(),'RefMedalsFei') < 1)
+                    08 ^{
+                        01=if(CountRewardByNom(ScriptItemActShip(),8) == 0) break;
+                        02=if(CountRewardByNom(ScriptItemActShip(),9) == 0) break;
+                        03=if(CountRewardByNom(ScriptItemActShip(),10) == 0) break;
+                        04=if(CountRewardByNom(ScriptItemActShip(),20) == 0) break;
+                        05=if(CountRewardByNom(ScriptItemActShip(),29) == 0) break;
+                        06=if(CountRewardByNom(ScriptItemActShip(),30) == 0) break;
+                        07=if(CountRewardByNom(ScriptItemActShip(),43) == 0) break;
+                        08=ShipAddCustomShipInfo(ScriptItemActShip(),'RefMedalsFei','NoShow');
+                        10=ShipSpecialBonuses(ScriptItemActShip(),bonSkill3,ShipSpecialBonuses(ScriptItemActShip(),bonSkill3) + 1);
+                        11=ShipSpecialBonuses(ScriptItemActShip(),bonRadar,ShipSpecialBonuses(ScriptItemActShip(),bonRadar) + 300);
+                        12=NewsAdd('Вы - один из лучших бойцов, доказавших в бою превосходство фэянской мысли. Благодаря таким как вы, наши гипотезы раз за разом повергают доводы спиритуалистов, и мы рады награждать вас высочайшими наградами.');
+                    }
+                    09=while(ShipFindCustomShipInfoByType(ScriptItemActShip(),'RefMedalsGaals') < 1)
+                    10 ^{
+                        01=if(CountRewardByNom(ScriptItemActShip(),12) == 0) break;
+                        02=if(CountRewardByNom(ScriptItemActShip(),21) == 0) break;
+                        03=if(CountRewardByNom(ScriptItemActShip(),11) == 0) break;
+                        04=if(CountRewardByNom(ScriptItemActShip(),22) == 0) break;
+                        05=if(CountRewardByNom(ScriptItemActShip(),31) == 0) break;
+                        06=if(CountRewardByNom(ScriptItemActShip(),32) == 0) break;
+                        07=if(CountRewardByNom(ScriptItemActShip(),44) == 0) break;
+                        08=if(CountRewardByNom(ScriptItemActShip(),13) == 0) break;
+                        09=if(CountRewardByNom(ScriptItemActShip(),33) == 0) break;
+                        10=ShipAddCustomShipInfo(ScriptItemActShip(),'RefMedalsGaals','NoShow');
+                        10=ShipSpecialBonuses(ScriptItemActShip(),bonSkill2,ShipSpecialBonuses(ScriptItemActShip(),bonSkill2) + 1);
+                        11=ShipSpecialBonuses(ScriptItemActShip(),bonDef,ShipSpecialBonuses(ScriptItemActShip(),bonDef) + 3);
+                        12=NewsAdd('Вы - один из лучших и наиболее гармоничных элементов вселенской Иккэ-Бааны, что только был!');
+                    }
+                    11=while(ShipFindCustomShipInfoByType(ScriptItemActShip(),'RefMedalsPirates') < 1)
+                    12 ^{
+                        01=if(CountRewardByNom(ScriptItemActShip(),34) == 0) break;
+                        02=if(CountRewardByNom(ScriptItemActShip(),35) == 0) break;
+                        03=if(CountRewardByNom(ScriptItemActShip(),36) == 0) break;
+                        04=if(CountRewardByNom(ScriptItemActShip(),37) == 0) break;
+                        05=if(CountRewardByNom(ScriptItemActShip(),38) == 0) break;
+                        06=if(CountRewardByNom(ScriptItemActShip(),39) == 0) break;
+                        07=ShipAddCustomShipInfo(ScriptItemActShip(),'RefMedalsPirates','NoShow');
+                        10=ShipSpecialBonuses(ScriptItemActShip(),bonHook,ShipSpecialBonuses(ScriptItemActShip(),bonHook) + 25);
+                        11=ShipSpecialBonuses(ScriptItemActShip(),bonScan,ShipSpecialBonuses(ScriptItemActShip(),bonScan) + 3);
+                        12=NewsAdd('Вы - злейший пират, трус из трусов! Пиратское братсво и сыны и дочери Рахиша во веки веков будут славить ваши коварство и подлость!');
+                    }
+                    13=while(ShipFindCustomShipInfoByType(ScriptItemActShip(),'RefMedalsCoalition') < 1)
+                    14 ^{
+                        01=if(CountRewardByNom(ScriptItemActShip(),1) == 0) break;
+                        02=if(CountRewardByNom(ScriptItemActShip(),9) == 0) break;
+                        03=if(CountRewardByNom(ScriptItemActShip(),18) == 0) break;
+                        04=if(CountRewardByNom(ScriptItemActShip(),19) == 0) break;
+                        05=if(CountRewardByNom(ScriptItemActShip(),28) == 0) break;
+                        06=if(CountRewardByNom(ScriptItemActShip(),42) == 0) break;
+                        07=if(CountRewardByNom(ScriptItemActShip(),47) == 0) break;
+                        08=ShipAddCustomShipInfo(ScriptItemActShip(),'RefMedalsCoalition','NoShow');
+                        09=ShipSpecialBonuses(ScriptItemActShip(),bonSkill5,ShipSpecialBonuses(ScriptItemActShip(),bonSkill5) + 1);
+                        10=ShipSpecialBonuses(ScriptItemActShip(),bonSkill6,ShipSpecialBonuses(ScriptItemActShip(),bonSkill6) + 1);
+                        11=NewsAdd('Вы - величайший герой Коалиции, которого только видели в этой Галактике! Вы заслужили вечную славу и как минимум строчку в любом учебнике истории на сотни лет вперёд!');
+                    }
+                    15=while(ShipFindCustomShipInfoByType(ScriptItemActShip(),'RefMedalsBlackHeart') < 1)
+                    16 ^{
+                        01=if(CountRewardByNom(ScriptItemActShip(),39) < 5) break;
+                        02=ShipAddCustomShipInfo(ScriptItemActShip(),'RefMedalsBlackHeart','NoShow');
+                        03=NewsAdd('Вы - гроза Транспортного Департамента Коалиции, о вашем имени знает каждый делец, и появление вас на сканерах вызывает лишь молитвы богам с просьбой спасти от смерти.');
+                    }
+                    17=while(ShipFindCustomShipInfoByType(ScriptItemActShip(),'RefMedalsSpAg') < 1)
+                    18 ^{
+                        01=if(CountRewardByNom(ScriptItemActShip(),13) < 3) break;
+                        02=if(CountRewardByNom(ScriptItemActShip(),33) < 3) break;
+                        03=ShipAddCustomShipInfo(ScriptItemActShip(),'RefMedalsSpAg','NoShow');
+                        04=NewsAdd('Вы - один из лучших агентов, помогавших Галактическому Совету. Рады награждать вас и впредь за образцовую службу на благо Коалиции.');
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnGovItemReward
+                OnActStepTypes=0
+            }
+            RefMedalsFei ^{
+                Description=Флажок набора медалек
+                Icon=0
+                Name=-
+            }
+            RefMedalsGaals ^{
+                Description=Флажок набора медалек
+                Icon=0
+                Name=-
+            }
+            RefMedalsMalocs ^{
+                Description=Флажок набора медалек
+                Icon=0
+                Name=-
+            }
+            RefMedalsPelengs ^{
+                Description=Флажок набора медалек
+                Icon=0
+                Name=-
+            }
+            RefMedalsPeople ^{
+                Description=Флажок набора медалек
+                Icon=0
+                Name=-
+            }
+            RefMedalsPirates ^{
+                Description=Флажок набора медалек
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ShipCustomShipInfoData(0,CurInfo(),1)) ShipCustomShipInfoData(0,CurInfo(),1,ShipCustomShipInfoData(0,CurInfo(),1)-1);
+                    02=else
+                    03 ^{
+                        01=RelationToRanger(PlanetPirateClan(),Player(),RelationToRanger(PlanetPirateClan(),Player())+Rnd(1,5));
+                        02=ShipCustomShipInfoData(0,CurInfo(),1,30);
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            RefMedalsSpAg ^{
+                Description=Флажок набора медалек
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ShipTypeN(ScriptItemActObject1()) == 2)
+                    02 ^{
+                        01=ScriptItemActParam(round(ScriptItemActParam()*110/100));
+                    }
+                }
+                OnActCodeTypes=t_OnDealingDamage
+            }
+        }
+    }
+}

@@ -1,0 +1,263 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            ABWeaponSets ^{
+                Description=ѕровер¤ем, что у нас на борту нашего членолЄта телесного цвета... ќй, то есть корабл¤ рейнджера
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=int i;
+                    02=int prom=0;
+                    03=int osk=0;
+                    04=int les=0;
+                    05=int raket=0;
+                    06=int treton=0;
+                    07=int ver=0;
+                    08=int ta=0;
+                    09=int des=0;
+                    10=int im=0;
+                    11=int tur=0;
+                    12=int es=0;
+                    13=int lir=0;
+                    14=for(i=0;ShipSlots(Player(),1)>i;i=i+1)
+                    15 ^{
+                        01=dword gun = ShipEqInSlot(Player(),t_Weapon1,i);
+                        02=if(gun==0)continue;
+                        03=if(ItemType(gun)==t_Weapon1) prom=prom+1;
+                        04=if(ItemType(gun)==t_Weapon2) osk=osk+1;
+                        05=if(ItemType(gun)==t_Weapon3) les=les+1;
+                        06=if(ItemType(gun)==t_Weapon4) raket=raket+1;
+                        07=if(ItemType(gun)==t_Weapon5) treton=treton+1;
+                        08=if(ItemType(gun)==t_Weapon14) ver=ver+1;
+                        09=if(ItemType(gun)==t_Weapon15) ta=ta+1;
+                        10=if(ItemType(gun)==t_Weapon11) des=des+1;
+                        11=if(ItemType(gun)==t_Weapon13) im=im+1;
+                        12=if(ItemType(gun)==t_Weapon12) tur=tur+1;
+                        13=if(ItemType(gun)==t_Weapon16) es=es+1;
+                        14=if(ItemType(gun)==t_Weapon18) lir=lir+1;
+                        15=if(ItemType(gun)==t_CustomWeapon)
+                        16 ^{
+                            01=if(CT('Items.Weapon.CustomWeapon.'+CustomWeaponType(gun)+'.ArcadeType') == 'Industrial_Laser') prom=prom+1;
+                            02=if(CT('Items.Weapon.CustomWeapon.'+CustomWeaponType(gun)+'.ArcadeType') == 'Fragmentation_Cannon') osk=osk+1;
+                            03=if(CT('Items.Weapon.CustomWeapon.'+CustomWeaponType(gun)+'.ArcadeType') == 'Flux') les=les+1;
+                            04=if(CT('Items.Weapon.CustomWeapon.'+CustomWeaponType(gun)+'.ArcadeType') == 'Missile_Launcher') raket=raket+1;
+                            05=if(CT('Items.Weapon.CustomWeapon.'+CustomWeaponType(gun)+'.ArcadeType') == 'Treton') treton=treton+1;
+                            06=if(CT('Items.Weapon.CustomWeapon.'+CustomWeaponType(gun)+'.ArcadeType') == 'Vertix') ver=ver+1;
+                            07=if(CT('Items.Weapon.CustomWeapon.'+CustomWeaponType(gun)+'.ArcadeType') == 'Torpedo_Tube')  ta=ta+1;
+                            08=if(CT('Items.Weapon.CustomWeapon.'+CustomWeaponType(gun)+'.ArcadeType') == 'Disintegrator') des=des+1;
+                            09=if(CT('Items.Weapon.CustomWeapon.'+CustomWeaponType(gun)+'.ArcadeType') == 'IMHO-9000') im=im+1;
+                            10=if(CT('Items.Weapon.CustomWeapon.'+CustomWeaponType(gun)+'.ArcadeType') == 'Turbogravitron') tur=tur+1;
+                            11=if(CT('Items.Weapon.CustomWeapon.'+CustomWeaponType(gun)+'.ArcadeType') == 'Esodapher') es=es+1;
+                            12=if(CT('Items.Weapon.CustomWeapon.'+CustomWeaponType(gun)+'.ArcadeType') == 'Lirecron') lir=lir+1;
+                        }
+                    }
+                    16=if(ver==1 && ta==1 && des==1 && im==1 && tur==1)
+                    17 ^{
+                        01=ShipAddCustomShipInfo(Player(),'ABWeaponSets_Royal','NoShow');
+                        02=ABShipModifiers(Player(),'recharge',ABShipModifiers(Player(),'recharge')+20);
+                    }
+                    18=if(prom==5 || prom==ShipSlots(Player(),1))
+                    19 ^{
+                        01=ShipAddCustomShipInfo(Player(),'ABWeaponSets_Lasers','NoShow');
+                        02=ABShipModifiers(Player(),'damage',ABShipModifiers(Player(),'damage')+50);
+                    }
+                    20=if(treton==5 || treton==ShipSlots(Player(),1))
+                    21 ^{
+                        01=ShipAddCustomShipInfo(Player(),'ABWeaponSets_Drobovik','NoShow');
+                        02=ABShipModifiers(Player(),'fragility',ABShipModifiers(Player(),'fragility')-15);
+                        03=ABShipModifiers(Player(),'gravity',ABShipModifiers(Player(),'gravity')-10);
+                        04=ABShipModifiers(Player(),'regen',ABShipModifiers(Player(),'regen')+40);
+                    }
+                    22=if(ver>=4)
+                    23 ^{
+                        01=ShipAddCustomShipInfo(Player(),'ABWeaponSets_Master','NoShow');
+                        02=ABShipModifiers(Player(),'damage',ABShipModifiers(Player(),'damage')+40);
+                        03=ABShipModifiers(Player(),'speed',ABShipModifiers(Player(),'speed')-10);
+                        04=ABShipModifiers(Player(),'recharge',ABShipModifiers(Player(),'recharge')-20);
+                    }
+                    24=if(prom==1 && osk==1 && les==1 && raket==1 && treton==1)
+                    25 ^{
+                        01=ShipAddCustomShipInfo(Player(),'ABWeaponSets_UnRoyal','NoShow');
+                        02=ABShipModifiers(Player(),'damage',ABShipModifiers(Player(),'damage')+10);
+                        03=ABShipModifiers(Player(),'recharge',ABShipModifiers(Player(),'recharge')+5);
+                    }
+                    26=if(es)
+                    27 ^{
+                        01=for(i=0;es>i;i=i+1) ShipAddCustomShipInfo(Player(),'ABWeaponSets_Catapult','NoShow');
+                        02=ABShipModifiers(Player(),'damage',ABShipModifiers(Player(),'damage')+es*5);
+                        03=if(es==5)
+                        04 ^{
+                            01=ABShipModifiers(Player(),'recharge',ABShipModifiers(Player(),'recharge')+10);
+                            02=ShipAddCustomShipInfo(Player(),'ABWeaponSets_Catapult5','NoShow');
+                        }
+                    }
+                    28=if(les==5 || les==ShipSlots(Player(),1))
+                    29 ^{
+                        01=ShipAddCustomShipInfo(Player(),'ABWeaponSets_Muchitel','NoShow');
+                        02=ABShipModifiers(Player(),'damage',ABShipModifiers(Player(),'damage')-50);
+                        03=ABShipModifiers(Player(),'recharge',ABShipModifiers(Player(),'recharge')+70);
+                    }
+                    30=if(des==5 || des==ShipSlots(Player(),1))
+                    31 ^{
+                        01=ShipAddCustomShipInfo(Player(),'ABWeaponSets_Javelinner','NoShow');
+                        02=ABShipModifiers(Player(),'damage',ABShipModifiers(Player(),'damage')+40);
+                        03=ABShipModifiers(Player(),'speed',ABShipModifiers(Player(),'speed')-20);
+                    }
+                    32=if(lir>2)
+                    33 ^{
+                        01=for(i=0;lir<i;i=i+1) ShipAddCustomShipInfo(Player(),'ABWeaponSets_KungFu','NoShow');
+                        02=for(i=0;lir<i;i=i+1) ABShipModifiers(Player(),'fragility',ABShipModifiers(Player(),'fragility')-10);
+                    }
+                }
+                OnActCodeTypes=t_OnStartAB
+            }
+            ABWeaponSets_Catapult ^{
+                Description=Удаляем инфошку, если на борту было 5 третонов
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ShipInNormalSpace(ScriptItemActShip()))
+                    02 ^{
+                        01=ABShipModifiers(Player(),'damage',ABShipModifiers(Player(),'damage')-5);
+                        02=ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+            ABWeaponSets_Catapult5 ^{
+                Description=Удаляем инфошку, если на борту было 5 третонов
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ShipInNormalSpace(ScriptItemActShip()))
+                    02 ^{
+                        01=ABShipModifiers(Player(),'recharge',ABShipModifiers(Player(),'recharge')-10);
+                        02=ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+            ABWeaponSets_Drobovik ^{
+                Description=Удаляем инфошку, если на борту было 5 третонов
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ShipInNormalSpace(ScriptItemActShip()))
+                    02 ^{
+                        01=ABShipModifiers(Player(),'fragility',ABShipModifiers(Player(),'damage')+15);
+                        02=ABShipModifiers(Player(),'gravity',ABShipModifiers(Player(),'gravity')+10);
+                        03=ABShipModifiers(Player(),'regen',ABShipModifiers(Player(),'regen')-40);
+                        04=ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+            ABWeaponSets_Javelinner ^{
+                Description=Удаляем инфошку, если на борту было 5 третонов
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ShipInNormalSpace(ScriptItemActShip()))
+                    02 ^{
+                        01=ABShipModifiers(Player(),'damage',ABShipModifiers(Player(),'damage')-40);
+                        02=ABShipModifiers(Player(),'speed',ABShipModifiers(Player(),'speed')+20);
+                        03=ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+            ABWeaponSets_KungFu ^{
+                Description=Удаляем инфошку, если на борту было 5 третонов
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ShipInNormalSpace(ScriptItemActShip()))
+                    02 ^{
+                        01=ABShipModifiers(Player(),'fragility',ABShipModifiers(Player(),'fragility')+10);
+                        02=ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+            ABWeaponSets_Lasers ^{
+                Description=Удаляем инфошку, если на борту было 5 промлазеров
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ShipInNormalSpace(ScriptItemActShip()))
+                    02 ^{
+                        01=ABShipModifiers(Player(),'damage',ABShipModifiers(Player(),'damage')-50);
+                        02=ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+            ABWeaponSets_Master ^{
+                Description=Удаляем инфошку, если на борту было 5 вертиксов
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ShipInNormalSpace(ScriptItemActShip()))
+                    02 ^{
+                        01=ABShipModifiers(Player(),'damage',ABShipModifiers(Player(),'damage')-40);
+                        02=ABShipModifiers(Player(),'speed',ABShipModifiers(Player(),'speed')+10);
+                        03=ABShipModifiers(Player(),'recharge',ABShipModifiers(Player(),'recharge')+20);
+                        04=ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+            ABWeaponSets_Muchitel ^{
+                Description=Удаляем инфошку, если на борту было 5 третонов
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ShipInNormalSpace(ScriptItemActShip()))
+                    02 ^{
+                        01=ABShipModifiers(Player(),'damage',ABShipModifiers(Player(),'damage')+50);
+                        02=ABShipModifiers(Player(),'recharge',ABShipModifiers(Player(),'recharge')-70);
+                        03=ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+            ABWeaponSets_Royal ^{
+                Description=Удаляем инфошку, если на борту были 5 оружий с последними в оригинальной игре номерами (11-15)
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ShipInNormalSpace(ScriptItemActShip()))
+                    02 ^{
+                        01=ABShipModifiers(Player(),'recharge',ABShipModifiers(Player(),'recharge')-20);
+                        02=ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+            ABWeaponSets_UnRoyal ^{
+                Description=Удаляем инфошку, если на борту было 5 третонов
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ShipInNormalSpace(ScriptItemActShip()))
+                    02 ^{
+                        01=ABShipModifiers(Player(),'damage',ABShipModifiers(Player(),'damage')-10);
+                        02=ABShipModifiers(Player(),'recharge',ABShipModifiers(Player(),'recharge')-5);
+                        03=ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+        }
+    }
+}

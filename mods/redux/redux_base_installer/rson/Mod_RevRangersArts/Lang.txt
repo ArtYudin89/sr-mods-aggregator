@@ -1,0 +1,31 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RevRangersArtsRepair ^{
+                Description=Инфошка для починки рейнджерами своих артефактов
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword cur_ship = ScriptItemActShip();
+                    02=if(GetShipPlanet(cur_ship) || GetShipRuins(cur_ship))
+                    03 ^{
+                        01=int i = 0, y = 0;
+                        02=if(ShipMoney(cur_ship) < GalaxyMoney(2)) exit;
+                        03=for(i=0;ShipArts(cur_ship)>i;i=i=1)
+                        04 ^{
+                            01=dword cur_item = ShipArts(cur_ship,i);
+                            02=if(ItemDurability(cur_item) < 80 && ItemCanBeBroken(cur_item))
+                            03 ^{
+                                01=y = y + 1;
+                                02=ItemDurability(cur_item,100);
+                            }
+                        }
+                        05=if(y) ShipMoney(cur_ship,ShipMoney(cur_ship)-GalaxyMoney(2));
+                    }
+                }
+                OnActCodsTypes=t_OnStep
+                OnActStepTypes=1
+            }
+        }
+    }
+}

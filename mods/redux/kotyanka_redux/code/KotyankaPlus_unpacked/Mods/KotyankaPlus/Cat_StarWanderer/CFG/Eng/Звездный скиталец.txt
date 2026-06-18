@@ -1,0 +1,62 @@
+MicroModuls ^{
+    Cat_StarWanderer^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=Hull
+        FragilityEnergy=30
+        FragilityMissile=40
+        FragilitySplinter=30
+        HullGraphSize=120
+        KindGraph=StarWanderer
+        Name=Star Wanderer
+        Owner=None
+        Special=1
+        Text=<color=248,252,248>An experimental sample created by scientists from the wreckage of spacecraft of an unknown race using akrin technology. The uniqueness of this spaceship lies in the multitude of already built-in artifacts and micromodules. Unfortunately, all attempts to launch into mass production were unsuccessful, due to the lack of appropriate manufacturing technologies.</color>
+		Text=Firing range: <bonWRadius>
+		Text=Ship mass: <bonMass><clr>%<clrEnd>
+		Text=Jump range: <bonJump>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+		bonDef=20
+		bonMass=-40
+        bonHull=30
+		bonJump=20
+        bonSpeed=400
+        bonWRadius=200
+	}
+}
+Script {
+    StarWanderer {
+	        Settings ~{
+				good_special_name=Star Wanderer
+				cost_sponsor=2000000
+				hull_cost_1=2500000
+				research_time_fast=180
+				hull_size_good=900
+				cost=1
+	    }
+        187=The base <0> has been destroyed, as well as your investment in the project ...
+		188=The base <0> has completed construction and research, you can fly!
+		189=I came back here to find out what's going on with the project I sponsored?
+		205=Hello, I recently surfed galanet and saw an article that you are looking for an experienced pilot to sponsor and test a new experimental ship, is that right?
+		211=Yes, that's right. If you are <0> ready to allocate <1> cr. and <2> nodes to us, we undertake to prepare the ship for flights in the near future and give it to your location. Do you agree?
+		204=Yes, yes, we were waiting for you, we managed to build this unit and carry out all the necessary tests, you can get it in the hangar. And thanks again for the help in the research, this testing has helped us a lot in understanding some things.<br>
+		192=What project?
+		193=I don't know anything, you didn't sponsor anything at this station, maybe they will help you on <0>
+		194=The work is experimental, and we conduct testing at every stage of the construction of the ship. So far I can only say that he is not ready.<br>
+		170=The work will end approximately <0>.
+		114=I don't know what you're talking about
+		196=Getting to work
+		142=Great, I'll go look at it.
+		207=For which you were looking for an experienced pilot...
+		198=Ok
+		199=Well, it remains only to wait for you to finish
+		147=And when can you finish?
+		112=Good
+		208=Apparently the wrong address, sorry.
+		209=That's what I came for! I'm already transferring money and unloading the nodes to your warehouse.
+		210=I need to think about it.
+    }
+}

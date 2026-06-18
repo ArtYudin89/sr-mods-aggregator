@@ -1,0 +1,1743 @@
+FormInfo ^{
+    br=<br>
+}
+Items ^{
+    Weapon ^{
+        CustomWeapon ^{
+            PhysGun ~{
+                BaseGun=Missile_Launcher
+                MinDamage=1
+                MaxDamage=1
+                DamageSet=Splinter,Undefendable,NoDelta
+                ShotType=Rocket
+                Speed=5000
+                AverageRadius=100
+                SecondaryDamageRadius=0
+                MissileRadius=1500
+                MissileMinSpeed=5000
+                MissileMaxSpeed=5000
+                MissileChanceToBeHit=0
+                mWeaponDamage=1.00,1.15,1.30,1.45,1.60,1.75,1.90,2.05
+                ShotsPerTurn=1
+                ArcadeType=Flow_Blaster
+                MiningFactor=1.5
+                kCost=100.0
+                AverageSize=100
+                TechLevel=8
+                InventTechLevel=Turbogravitron
+                StoreAvailability=SystemOnly
+                ShotEffectPath=Weapon.4
+                ShotEffectPalette=0
+                SplashEffectPath=Weapon.NoGraph
+                MissileExplosionEffectPath=Weapon.MissileHit
+            }
+        }
+        Missile ^{
+            Missile_Asteroid_blue ^{
+                Name=Выпущенный из физгана астероид
+                Text=Главное - не вставать у него на пути...
+            }
+            Missile_Asteroid_green ^{
+                Name=Выпущенный из физгана астероид
+                Text=Главное - не вставать у него на пути...
+            }
+            Missile_Asteroid_red ^{
+                Name=Выпущенный из физгана астероид
+                Text=Главное - не вставать у него на пути...
+            }
+            Missile_Asteroid_violet ^{
+                Name=Выпущенный из физгана астероид
+                Text=Главное - не вставать у него на пути...
+            }
+            Missile_Asteroid_white ^{
+                Name=Выпущенный из физгана астероид
+                Text=Главное - не вставать у него на пути...
+            }
+            Missile_Asteroid_yellow ^{
+                Name=Выпущенный из физгана астероид
+                Text=Главное - не вставать у него на пути...
+            }
+            Missile_Average_item ^{
+                Name=Выпущенный из физгана средний контейнер
+                Text=Бездарная трата полезных ресурсов
+            }
+            Missile_Big_item ^{
+                Name=Выпущенный из физгана крупный контейнер
+                Text=Бездарная трата полезных ресурсов
+            }
+            Missile_Discharged_EMP_bomb ^{
+                Name=Выпущенная из физгана разряженная ЭМП бомба
+                Text=Не взорвётся, но может больно дать по лбу
+            }
+            Missile_Discharged_Stun_bomb ^{
+                Name=Выпущенная из физгана разряженная оглушающая бомба
+                Text=Не взорвётся, но может больно дать по лбу
+            }
+            Missile_EMP_bomb ^{
+                Name=Выпущенная из физгана ЭМП бомба
+                Text=Взведённая ЭМП бомба
+            }
+            Missile_Escape_pod ^{
+                Name=Выпущенная из физгана спасательная капсула
+                Text=Навстречу приключениям!
+            }
+            Missile_Fuel_tank ^{
+                Name=Выпущенная из физгана ёмкость с топливом
+                Text=Ёмкость с взрывоопасным веществом
+            }
+            Missile_Maloq_stool ^{
+                Name=Выпущенный из физгана малокский табурет
+                Text=Непоколебимый и гордый
+            }
+            Missile_Quark_bomb ^{
+                Name=Выпущенная из физгана кварковая бомба
+                Text=Взведённая кварковая бомба
+            }
+            Missile_Small_item ^{
+                Name=Выпущенный из физгана небольшой контейнер
+                Text=Бездарная трата полезных ресурсов
+            }
+            Missile_Stun_bomb ^{
+                Name=Выпущенная из физгана оглушающая бомба
+                Text=Взведённая оглушающая бомба
+            }
+            Missile_Urine_tank ^{
+                Name=Выпущенная из физгана ёмкость с уриной
+                Text=Хоть один... глоток...
+            }
+        }
+        Name ^{
+            PhysGun=Кастомное орудие физган (без акрина в игре не используется)
+        }
+        OriginalWeaponType ^{
+            Atomic_Vision=10
+            Caphasitor=17
+            Disintegrator=11
+            Electronic_Cutter=8
+            Esodapher=16
+            Flow_Blaster=7
+            Flux=3
+            Fragmentation_Cannon=2
+            IMHO-9000=13
+            Industrial_Laser=1
+            Lirecron=18
+            Missile_Launcher=4
+            Multiresonator=9
+            Torpedo_Tube=15
+            Treton=5
+            Turbogravitron=12
+            Vertix=14
+            Wave_Phaser=6
+        }
+        Text ^{
+            PhysGun=Урон: <MinDamage>-<MaxDamage><br>Количество залпов: <Count>/<MaxCount> шт.
+        }
+    }
+}
+MicroModuls ^{
+    ExpPhysGun_PhysGunEmpty ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Quark_bomb
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>отсутствует</color>
+    }
+    ExpPhysGun_PhysGunMissileAsteroidBlue ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Asteroid_blue
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>астероид</color>
+    }
+    ExpPhysGun_PhysGunMissileAsteroidGreen ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Asteroid_green
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>астероид</color>
+    }
+    ExpPhysGun_PhysGunMissileAsteroidRed ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Asteroid_red
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>астероид</color>
+    }
+    ExpPhysGun_PhysGunMissileAsteroidViolet ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Asteroid_violet
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>астероид</color>
+    }
+    ExpPhysGun_PhysGunMissileAsteroidWhite ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Asteroid_white
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>астероид</color>
+    }
+    ExpPhysGun_PhysGunMissileAsteroidYellow ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Asteroid_yellow
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>астероид</color>
+    }
+    ExpPhysGun_PhysGunMissileAverageItem ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Average_item
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>средний предмет</color>
+    }
+    ExpPhysGun_PhysGunMissileBigItem ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Big_item
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>большой предмет</color>
+    }
+    ExpPhysGun_PhysGunMissileDischargedEMPBomb ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Discharged_EMP_bomb
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>разряженная ЭМП бомба</color>
+    }
+    ExpPhysGun_PhysGunMissileDischargedStunBomb ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Discharged_Stun_bomb
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>разряженная оглушающая бомба</color>
+    }
+    ExpPhysGun_PhysGunMissileEMPBomb ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_EMP_bomb
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>ЭМП бомба</color>
+    }
+    ExpPhysGun_PhysGunMissileEscapePod ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Escape_pod
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>спасательная капсула</color>
+    }
+    ExpPhysGun_PhysGunMissileFuelTank ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Fuel_tank
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>ёмкость с топливом</color>
+    }
+    ExpPhysGun_PhysGunMissileHyperlink ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Hyperlink
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>гиперлинк</color>
+    }
+    ExpPhysGun_PhysGunMissileHyperlinkFirstPart ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_HyperlinkFirstPart
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>частица гиперлинка</color>
+    }
+    ExpPhysGun_PhysGunMissileHyperlinkSecondPart ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_HyperlinkSecondPart
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>частица гиперлинка</color>
+    }
+    ExpPhysGun_PhysGunMissileMaloqStool ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Maloq_stool
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>малокский табурет</color>
+    }
+    ExpPhysGun_PhysGunMissileNeutronBomb ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Quark_bomb
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>нейтронная бомба</color>
+    }
+    ExpPhysGun_PhysGunMissileQuarkBomb ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Quark_bomb
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>кварковая бомба</color>
+    }
+    ExpPhysGun_PhysGunMissileSmallItem ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Small_item
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>небольшой предмет</color>
+    }
+    ExpPhysGun_PhysGunMissileStunBomb ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Stun_bomb
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>оглушающая бомба</color>
+    }
+    ExpPhysGun_PhysGunMissileUrineTank ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Urine_tank
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        ShotVisual=33
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>ёмкость с уриной</color>
+        bonShots=-2
+    }
+    ExpPhysGun_PhysGunMissileWeapon ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=PhysGun
+        LockedAcryn=3
+        MissileGraph=Missile_Small_item
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>взрывчатка</color>
+    }
+}
+Script ^{
+    Mod_ExpPhysGun ^{
+        101=<0>
+        108=Отлично, мы уже перенесли физган в ваш трюм. Как только взлетите, ищите ближайший астероид. Потом подлетите к нему и используйте встроенный в физган захват, чтобы поймать его. После чего запустите импровизированный снаряд в Разрушителя - вот, собственно, и все. Тут нет ничего сложного, но время поджимает, так что поторопитесь!
+        109=Ну, что же... Это ваше право. К сожалению, мы вряд ли теперь успеем найти кого-нибудь еще... Боюсь, жителям планеты <0> теперь остается рассчитывать только на скорейшую эвакуацию... Если честно - я разочарован в вас, <Player>. Но, конечно, вам от этого ни горячо, ни холодно.
+        110=Отлично! Покажите там этому камню! Вдарьте всей мощью, что у вас есть! Да, и еще кое-что: как я уже говорил, мы проводим эвакуацию, однако она и гроша ломанного не будет стоить, если на наши лайнеры нападут пираты, а ведь они могут. Очень вас прошу, если у вас будет возможность, постарайтесь защитить наши эвакуационные лайнеры. А теперь идите...<br><br>Скорее, <Player>, наша жизнь сейчас в ваших руках. Вперед!
+        111=Вы что, все еще здесь? На нас все еще летит самый большой астероид в истории Коалиции, и у нас действительно нет времени на праздные разговоры. Отправляйтесь в космос и уничтожьте уже этот камень!
+        113=Ну, давайте сюда свою бахалку. Только учтите - если и она попытается меня взорвать, то я сюда вернусь!
+        114=Что вы, разумеется нет... Позвольте я вам объясню: дело в том, что внутренняя структура данного космического тела представляет собой огромный кристалл. Плотность этого кристалла невероятно высока и все, что сможет ему сделать наше стандартное вооружение - уничтожить верхний слой, состоящий из мягких горных пород и водяного льда, и слегка поцарапать сердцевину. Однако путь есть и он состоит в том, чтобы разбить кристалл. Достаточно всего нескольких точных ударов большой мощности. Приложить, так сказать, достаточно кинетической энергии на достаточно малой площади, и, к счастью, мы уже придумали, как это сделать. Нужно запустить в нашего Разрушителя - именно так мы его тут называем по названию его класса - "Разрушитель планет" - другой астероид, а если быть точным -несколько...<br>И не надо смотреть на меня как на умалишенного, это действительно можно сделать. Слышали когда-нибудь о физических устройствах направленной антигравитации? В просторечье - <clr>физганах<clrEnd>? Эти устройства были изобретены знаменитым гаальским инженером Рее-Кляйном и используются сейчас для погрузочных работ. Мы же увеличили энергетическое ядро физгана и добавили ему стазисный генератор нулевой энергии. Естественно, это привело к увеличению устройства и невозможности его ручного использования, зато резко увеличило максимальную массу объектов, которые он может перемещать, а создание вокруг перемещаемого объекта энергетического стазиса защищает его от любых повреждений. Короче говоря - представляем вам первую экспериментальную модель <clr>Бортового физгана<clrEnd>. Он способен захватывать объекты размером со стандартный астероид и помещать их в стазис под днищем корабля, а когда вам понадобится, достаточно направить физган в нужную сторону и отключить стазис - большое количество энергии, до тех пор изолируемое от объекта с помощью стазиса, войдет в свои права и придаст объекту огромное ускорение. К сожалению, это делает бортовой физган совершенно несостоятельным как устройство для перемещения грузов, зато делает его полезным в качестве оружия, чем вам и необходимо воспользоваться, если вы, конечно, согласитесь. Как я уже сказал - это первая экспериментальная модель. Возможны... <clr>форс-мажоры<clrEnd>... Но учтите, если вы откажетесь - это может стать причиной гибели целой планеты.
+        116=Всегда хотел оставить свой след в истории! Новое имя планеты... Хм, дайте-ка подумать...
+        119=Кроме того, пусть и не всем, но хотя бы некоторым лайнерам удалось успешно эвакуировать часть жителей с нашей планеты. По нашим данным, места назначения достигли <0> лайнеров из <1>. А теперь, если вы не против, предлагаю проследовать на банкет.
+        121=Сматываемся отсюда!
+        129=Вот вы где! Наш герой и спаситель - рейнджер <Player>! Я бы расцеловал вас, но, боюсь, меня могут неправильно понять.<br>Мы вас уже тут заждались! Банкет в вашу честь уже подготовлен, но это не самое главное... Что? Конечно же награда! Сумма в <0> cr. уже переведена на ваш счет, а наша бесконечная благодарность как представителей всей планеты, надеюсь, будет согревать душу в бескрайнем холодном космосе.<br><br><1>
+        131=Вы спасли целую планету! Мы видели, как это произошло. Было так круто! Вы запускаете свой астероид прямо по Разрушителю, и он раскалывается на мелкие кусочки! У нас тут столько народу хотят взять у вас автограф!<br><br>Что говорите? Физган взорвался от перегрузки? Ну, бывает, это ведь первая экспериментальная модель была. Так вы дадите мне автограф? Ну ладно, ладно, не надо на меня так смотреть...<br>В качестве извинения за инцидент с поломкой мы хотим предложить вам обновленную версию физгана. Защитные механизмы были значительно усовершенствованы, так что теперь мы можем гарантировать, что никаких взрывов от перегрузки не будет… Ну, по крайней мере, в <clr>99%<clrEnd> случаев... В <clr>98%<clrEnd> так точно... Ну, может быть, в <clr>97%<clrEnd>...<br>Кроме того, мы оборудовали новую модель удобным приемником, позволяющим заряжать её прямо <clr>изнутри корабля<clrEnd>. Собственно, вы и раньше могли это делать, просто это было бы не так удобно... А я что, не говорил вам? Ну, значит, забыл. Так вот, заряжать вы его можете практически чем угодно. Абсолютно все, что есть у вас в трюме, может быть использовано в качестве снаряда для физгана. Разумеется, возможность захватывать астероиды тоже никуда не делась. Единственное, что нам так и не удалось - это добавить совместимость с микромодулями. Уж слишком нетипичное в плане применения устройство, так сказать.<br>Ну, что скажете?
+        142=Ого! А вы затейник, <Player>. Замечательное название подобрали нашей планете.<br>Чтобы утрясти все бюрократические формальности нам потребуется где-то ещё неделя. Но не сомневайтесь, жители планеты <0> уже приняли своё твёрдое решение и от него не отступятся!
+        143=Рад, что вам тоже понравилось :-)
+        153=День прожит не зря! Планета <0> спасена от неминуемой гибели, меня публично объявили героем, а самое главное - мой банковский счет изрядно прибавил в цифровом эквиваленте. Кто бы мог подумать, что предотвращение катастрофы планетарного масштаба может принести столько положительных эмоций.
+        154=Кроме того, абсолютно все лайнеры, которых мы послали, успешно достигли пункта назначения. Это самая настоящая победа! Деньги не могут служить в данном случае адекватной оценкой вашего труда, <Player>. Мы долго думали чем бы достойно отблагодарить вас, и после долгих споров в Галактическом Совете нам всё таки разрешили дать вам уникальную возможность переименовать нашу планету!
+        155=К сожалению, наше торжество омрачается тем, что все лайнеры, которые мы снарядили эвакуировать мирных жителей, были уничтожены, но я уверен, что это не ваша вина: в конце концов, вашей первостепенной задачей было остановить астероид. А теперь, если вы не против, предлагаю проследовать на банкет.
+        156=Жаль, рейнджер, очень жаль. Упускаете такую возможность!<br><br>Ну ничего. Поставим её на наш центр и будем стрелять астероидами! Главное - в ту же планету не попасть, кхе...
+        157=Чиновники попросили вас не приравнивать население планеты к представителям данного народа во избежание волнений среди малоков.
+        163=Чиновники не оценили вашу шутку, но дали вам возможность изменить своё мнение.
+        31=Понял, конец связи
+        33=Внимание, рейнджер <Player>! Немедленно прекратите атаку на планетоид и как можно скорее прибудьте на технологический центр <0>! Это дело первостепенной важности!
+        34=Рейнджер <Player>, наконец-то вы прибыли! Мы боялись, что вы пропустите наше сообщение или не придадите ему значения, особенно учитывая, насколько важным делом вы были заняты. Но все дело в том, что ваши попытки сбить данный планетоид ни к чему не приведут - он обладает слишком необычной структурой, да и просто колоссальным запасом прочности, стандартное бортовое вооружение просто не в состоянии нанести ему хоть сколько-нибудь существенный урон.
+        40=И что же теперь делать? Неужели опускать руки и дать планете погибнуть?
+        41=Ладно, уговорили. Ставьте свой агрегат
+        42=Ну уж нет, не надо мне такой радости. Еще взорвется у меня на корабле, знаю я вас
+        44=Уже вылетаю!
+        47=Ничем не могу вам с этим помочь
+        49=Мне сейчас некогда общаться, <Player>. Я провожу эвакуацию населения с планеты <0>, которая находится под угрозой столкновения с астероидом. Нужно вывести оттуда как можно больше жителей, пока астероид не врезался. Нет ни минуты на перерыв!
+        50=Конец связи
+        51=Рейнджер <Player>! Наконец-то адекватное лицо. Вы просто представить себе не можете, что тут творится. Все наши попытки не допустить паники потерпели сокрушительное фиаско! В космопорте гигантские толпы беженцев, все наши транспортные корабли работают на пределе, но всех вывезти мы все равно не успеем.<br>Народ уже дошел до предела, бегают повсюду с плакатами на тему нашего незавидного будущего, а точнее его отсутствия. Из всех щелей повылезали фанатики, зачитывающие такие места из религиозных текстов, что мне самому становится не по себе, и я уже не говорю про мародеров... Словом - ад, такое впечатление, что астероид уже в нас врезался. Не помню такого бардака с тех времен, когда широкая общественность впервые услышала о доминаторах.<br>Так или иначе, у нас тут объявлено чрезвычайное положение и нам бы очень пригодилась ваша помощь. Астероид необходимо уничтожить и за это мы уже назначили крупную награду, вы готовы нам помочь?
+        53=И вы туда же? Проклятье, скоро с этим астероидом вообще здравомыслящих гуманоидов не останется. Ну тогда проваливайте, хватит отнимать мое время! Единственная просьба: когда будете убегать, словно крыса с тонущего корабля, захватите с собой кого-нибудь из местных. Хотя бы чуть-чуть облегчите мою задачу.
+        54=Опять вы?! У меня нет времени слушать ваши апокалиптические бредни! Мы здесь пытаемся как-то организовать то недоразумение, что у нас называют эвакуацией, и вы мне тут совсем не помогаете. Проваливайте.
+        56=Разумеется готов!
+        57=Мы все погибнем! Надо бежать! КОНЕЦ БЛИЗОК!
+        58=Уже бегу!
+        71=Нет, я уже ухожу
+        72=А, это вы, <Player>... А вы чего хотите? Награду за уничтожение астероида? Ну ладно, так уж и быть. Спасибо! Похоже, вы чем-то недовольны, придётся добавить лично от себя... <color=20,220,20>Большое спасибо</color>!!!<br>Мы всё видели, астероид развалился сам по себе, так и не долетев до нашей планеты. А паники-то сколько было! Вам ещё что-то надо?
+        79=Проследовать на банкет
+        88=Новое имя планеты:
+        89=Благодарю за оказаную честь, но я не могу себе такого позволить... А от банкета не откажусь!
+        90=Планета с таким именем уже существует, повторите ввод.
+        91=Новое имя планеты слишком длинное, повторите ввод.
+        97=Нет уж, спасибо. Не надо мне такого счастья. Не доверяю я теперь этим вашим экспериментальным технологиям
+        AsteroidDetected=Сперва вы не поверили собственным глазам.
+        AsteroidDetected=Огромный астероид держит курс прямиком в центр системы! Бортовой компьютер рассчитал приблизительную траекторию движения:
+        AsteroidDetected=<clr><clrEnd>
+        AsteroidDetected=Регистровый номер астероида: <AsteroidNumber>
+        AsteroidDetected=Класс астероида: <clr>Убийца планет<clrEnd>
+        AsteroidDetected=Скорость: <AsteroidSpeed>
+        AsteroidDetected=Координаты: <AsteroidCoordX>, <AsteroidCoordY>
+        AsteroidDetected=Направление: <AsteroidDirection>
+        AsteroidDetected=С вероятностью <ChanceToHit><clr>%<clrEnd> астероид столкнётся с планетой <PlanetName>!
+        AsteroidToMissileList ^{
+            00 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidViolet
+            }
+            01 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            02 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidYellow
+            }
+            03 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            04 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            05 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidViolet
+            }
+            06 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidWhite
+            }
+            07 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidYellow
+            }
+            08 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidViolet
+            }
+            09 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            10 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            11 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidViolet
+            }
+            12 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            13 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidYellow
+            }
+            14 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidWhite
+            }
+            Blue00 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue01 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue02 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue03 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue04 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue05 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue06 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue07 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue08 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidViolet
+            }
+            Blue09 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidViolet
+            }
+            Blue10 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Blue11 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue12 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue13 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue14 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue15 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue16 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidBlue
+            }
+            Blue17 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidYellow
+            }
+            Blue18 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            Green00 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            Green01 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            Green02 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            Green03 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            Green04 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            Green05 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            Green06 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            Green07 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            Green08 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            Green09 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidViolet
+            }
+            Green10 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            Green11 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            Green12 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidGreen
+            }
+            Green13 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidYellow
+            }
+            Green14 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Red00 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Red01 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Red02 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Red03 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Red04 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Red05 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Red06 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Red07 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Red08 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Red09 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidYellow
+            }
+            Red10 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Red11 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Red12 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidYellow
+            }
+            Red13 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidRed
+            }
+            Yellow00 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidWhite
+            }
+            Yellow01 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidWhite
+            }
+            Yellow02 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidWhite
+            }
+            Yellow03 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidWhite
+            }
+            Yellow04 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidWhite
+            }
+            Yellow05 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidWhite
+            }
+            Yellow06 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidWhite
+            }
+            Yellow07 ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileAsteroidWhite
+            }
+            Taburet ^{
+                AcrynNumInCfg=ExpPhysGun_PhysGunMissileMaloqstool
+            }
+        }
+        QuestStage0=Планета name находится в большой опасности. Мне необходимо найти способ уничтожить Астероид -num-, который угрожает столкновением с ней.
+        QuestStage1=Похоже, обычные пушки его не берут. Мне прислали сообщение с технологического центра tech, возможно, они чем-то смогут помочь.
+        QuestStage2No=На Технологическом Центре попытались всучить какую-то непонятную экспериментальную пушку. На вид доверия она не вызывает, так что я отказался. Меньше всего нужно, чтобы она взорвала мой корабль в самый ответственный момент. Лучше справлюсь сам.
+        QuestStage2Yes=Мне предоставили какую-то экспериментальную пушку, говорят, с помощью неё астероид можно будет уничтожить. Ну попробуем. Все что от меня требуется - это ловить маленькие астероиды и запускать их в большой. Даже ребёнок справится.
+        GalaxyNews1=Поступила информация, что в системе star обнаружен астероид рекордных размеров. К несчастью, траектория полета астероида с большой вероятностью пересечется с планетой plan, на которой сейчас объявлен режим чрезвычайного положения. В случае столкновения ни системы планетарной защиты, ни подземные убежища не смогут уберечь жителей планеты. Галактический Совет обратился с убедительной просьбой к каждому пилоту прибыть в систему и помочь с эвакуацией, либо с уничтожением астероида.
+        PlayerNews1=Требуется помощь всех свободных пилотов! СРОЧНО! ВСЕМ КОРАБЛЯМ!
+        PlayerNews1=Чрезвычайная ситуация в системе star! Планета plan в большой опасности!
+        PlayerNews1=Повторяю: Требуется помощь всех свободных пилотов! СРОЧНО! ВСЕМ КОРАБЛЯМ! Чрезвычайная ситуация в системе...
+        PlayerPlanetDestroyed=Столкновение подтверждено. Практически всё население и вся инфраструктура планеты plan были уничтожены. Повторяю. Столкновение подтверждено...
+        GalaxyPlanetDestroyed=Сегодняшний день days объявлен датой траура. Сегодня произошла одна из самых ужасных катастроф за все историю Коалиции. Миллионы жителей планеты plan (система star) погибли в результате её столкновения с Астероидом -num-. Поиски выживших уже ведутся, но спасатели утверждают, что надежды очень призрачны - столкновение было безумно мощным. Почтим погибших минутой молчания.
+        PhysGunDestroyed=Мощный взрыв сотряс корабль и выбил вас из кресла пилота. Физган взорвался и чуть было не уничтожил ваш корабль. Не совсем, правда, понятно, что стало тому причиной... Может быть, пыль попала? Или он не выдержал полетных нагрузок? Так или иначе, теперь от этой игрушки пользы нет.
+        TheDayBefore=Столкновение с Астероидом -num- произойдёт в течении дня. Паника на планете plan достигла пика!
+        RenamingPlanet=История с астероидом получила неожиданное продолжение. Правительство планеты plan в качестве особой награды разрешило своему спасителю (рейнджеру по имени <Player>) переименовать планету. Галактический Совет в последний момент наложил запрет на смену названия, но абсолютная поддержка жителей спасённой планеты не оставила им выбора. Теперь планета 'plan' называется new_name! Данные всех галактических карт уже изменены.
+        PlayerInviting=Рейнджер <Player>, от лица всего спасённого вами населения планеты plan, позвольте пригласить вас на торжественную церемонию награждения. Мы все вас очень ждём.
+        PlayerInvitingGalaxy=Сегодня, благодаря слаженным действиям пилотов в системе star, а также личному героизму рейнджера по имени <Player>, была предотвращена, возможно, самая крупная катастрофа за всю историю Коалиции. Астероид рекордных размеров чуть было не уничтожил всю жизнь на планете plan, но трагедии удалось избежать. Власти спасенной планеты уже изъявили желание по-королевски наградить рейнджера.
+        AsteroidDestroyed=Уничтожение цели - Астероид -num- подтверждено. Планета plan вне опасности. Повторяю. Уничтожение цели подтверждено. Отбой боевой тревоги по всем каналам.
+        AtBeginning=Во время гиперпрыжков время тянется особенно медленно. Изнывая от скуки, вы открыли Галанет на странице, посвященной истории системы <StarName>. Ничего особенного... за исключением древней секты "Наследие свидетеля", которая поклялась наслать проклятие "Армагеддон 13-го уровня" на все планеты, где отказались выполнить их требования. Секта была довольно обширной и имела несколько ячеек в разных системах. Возможно, вы ещё не раз встретите упоминание о них.
+        AtBeginning=Увлёкшись чтением - данная тема всё ещё вызывает интерес у общества, - вы и не заметили, как вышли из гиперпространства.
+        PhysGunDestroyedName=Уничтоженный физган
+        PhysGunName=Бортовой физган
+        PhysGunPrototypeName=Непротестированный физган
+        PlayerLockOnAsteroid=[Подготовить орудия и выставить курс на перехват, но перед этим передать информацию об астероиде на планету <PlanetName>]
+        PlayerSkipQuest=[Вернуться к повседневным обязаностям]
+        PlayerStartQuest=[На всякий случай проверить систему на наличие аномалий]
+        UrineHumiliation1=ДА ТЫ ЧЁ, СОВСЕМ СТРАХ ПОТЕРЯЛ!!?
+        UrineHumiliation2=ААААРГХ!!! А НУ ИДИ СЮДА, ТЫ, МЕЛКИЙ ВОНЮЧИЙ СВАРОКОК!!!
+        UrineHumiliation3=Ох, фу, боже! Боже мой, что это!? Это что, ты сделал?! Да я же тебя сейчас на куски порву!!!
+        UrineHumiliation4=Ну всё, приятель. Ты только что нарвался на танец с девияблом...
+        WholePlanetInDanger=Планета <PlanetName> находится в большой опасности. Мне необходимо найти способ уничтожить Астероид -<AsteroidNumber>-, который может вскоре с ней столкнуться.
+    }
+}
+ActCodeBlocksList ^{
+    PhysGunActCode ^{
+        00=[t_OnCheckingUsability2,t_OnCheckingUsabilityGoods,t_OnAnotherItem2,t_OnAnotherGoods,t_OnMissileShot,t_OnMissileShot2,t_OnMissileHittingObject,t_OnItemDestroy|]
+        01=dword physGun = CurItem();
+        02=if(ScriptItemActionType(t_OnCheckingUsability2))
+        02 ^{
+            01=if(WeaponAmmunition(physGun)) exit;
+            02=dword loaded_item = ScriptItemActObject1();
+            03=int item_size = ItemSize(loaded_item);
+            04=if(item_size > ItemSize(ShipItems(Player(), 0)) / 2) exit;
+            05=if(ItemInScript(loaded_item) == 1)
+            05 ^{
+                01=int item_acryn = EqSpecial(loaded_item);
+                02=if(~item_acryn)
+                02 ^{
+                    01=if(!CT('MicroModuls.' + BonusNumInCfg(item_acryn) + '.ScriptItemIgnore')) exit;
+                }
+                03=else exit;
+            }
+            06=ScriptItemActParam(1);
+        }
+        03=else if(ScriptItemActionType(t_OnCheckingUsabilityGoods))
+        03 ^{
+            01=if(WeaponAmmunition(physGun)) exit;
+            02=ScriptItemActParam(1);
+        }
+        04=else if(ScriptItemActionType(t_OnAnotherItem2))
+        04 ^{
+            01=if(ItemIsBroken(physGun)) exit;
+            02=if(!WeaponAmmunition(physGun))
+            02 ^{
+                01=loaded_item = ScriptItemActObject1();
+                02=int item_type = ItemType(loaded_item);
+                03=item_size = ItemSize(loaded_item);
+                04=if(item_size >= 500)
+                04 ^{
+                    01=MessageBox('Размер этого предмета слишком велик, зарядить его в физган не представляется возможным.');
+                    02=exit;
+                }
+                05=if(item_type != t_Hull)
+                05 ^{
+                    01=if(ItemInScript(loaded_item) == 1)
+                    01 ^{
+                        01=item_acryn = EqSpecial(loaded_item);
+                        02=if(~item_acryn)
+                        02 ^{
+                            01=if(!CT('MicroModuls.' + BonusNumInCfg(item_acryn) + '.ScriptItemIgnore'))
+                            01 ^{
+                                01=MessageBox('Пожалуй, ' + Name(loaded_item) + ' ещё может вам пригодиться. Неразумно будет превращать его в одноразовый метательный снаряд.');
+                                02=exit;
+                            }
+                        }
+                        03=else
+                        03 ^{
+                            01=MessageBox('Пожалуй, ' + Name(loaded_item) + ' ещё может вам пригодиться. Неразумно будет превращать его в одноразовый метательный снаряд.');
+                            02=exit;
+                        }
+                    }
+                    02=int size_limit = round(ItemSize(ShipItems(Player(), 0)) / 2, 100);
+                    03=if(item_size > size_limit) MessageBox('Данный предмет имеет размер более <color=0,50,200>' + size_limit + '</color> ед. и не может быть заряжен в физган.');
+                    04=if(MessageBoxYesNo('Вы точно хотите зарядить <color=0,50,200>' + Name(loaded_item) + '</color> в физган?'))
+                    04 ^{
+                        01=dword physGunConf = GetCustomWeaponInfo('PhysGun');
+                        02=int splash = 0;
+                        03=while(1)
+                        03 ^{
+                            01=if(item_type == t_ArtefactBomb)
+                            01 ^{
+                                01=str text = 'ExpPhysGun_PhysGunMissileQuarkBomb';
+                                02=int damage = item_size;
+                                03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                04=break;
+                            }
+                            02=if(item_type == t_UselessItem)
+                            02 ^{
+                                01=text = EquipmentImageName(loaded_item);
+                                02=if(text == 'Quark_bomb')
+                                02 ^{
+                                    01=text = 'ExpPhysGun_PhysGunMissileQuarkBomb';
+                                    02=damage = item_size;
+                                    03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                    04=break;
+                                }
+                                03=else if(text == 'Stun_bomb')
+                                03 ^{
+                                    01=if(UselessItemData(loaded_item, 2) != 1)
+                                    01 ^{
+                                        01=text = 'ExpPhysGun_PhysGunMissileStunBomb';
+                                        02=damage = item_size;
+                                        03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                        04=break;
+                                    }
+                                    02=else
+                                    02 ^{
+                                        01=text = 'ExpPhysGun_PhysGunMissileDischargedStunBomb';
+                                        02=damage = item_size;
+                                        03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                        04=break;
+                                    }
+                                }
+                                04=else if(text == 'EMP_bomb')
+                                04 ^{
+                                    01=if(UselessItemData(loaded_item, 2) != 1)
+                                    01 ^{
+                                        01=text = 'ExpPhysGun_PhysGunMissileEMPBomb';
+                                        02=damage = item_size;
+                                        03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                        04=break;
+                                    }
+                                    02=else
+                                    02 ^{
+                                        01=text = 'ExpPhysGun_PhysGunMissileDischargedEMPBomb';
+                                        02=damage = item_size;
+                                        03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                        04=break;
+                                    }
+                                }
+                                05=else if(text == 'NeutronBomb')
+                                05 ^{
+                                    01=text = 'ExpPhysGun_PhysGunMissileNeutronBomb';
+                                    02=damage = item_size;
+                                    03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                    04=break;
+                                }
+                                06=else if(text == 'HyperlinkFirstPart')
+                                06 ^{
+                                    01=text = 'ExpPhysGun_PhysGunMissileHyperlinkFirstPart';
+                                    02=damage = item_size;
+                                    03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                    04=break;
+                                }
+                                07=else if(text == 'HyperlinkSecondPart')
+                                07 ^{
+                                    01=text = 'ExpPhysGun_PhysGunMissileHyperlinkSecondPart';
+                                    02=damage = item_size;
+                                    03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                    04=break;
+                                }
+                                08=else if(text == 'Hyperlink')
+                                08 ^{
+                                    01=text = 'ExpPhysGun_PhysGunMissileHyperlink';
+                                    02=damage = item_size;
+                                    03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                    04=break;
+                                }
+                                09=else if(text == 'Usl_64')
+                                09 ^{
+                                    01=text = 'ExpPhysGun_PhysGunMissileMaloqStool';
+                                    02=damage = RndObject(100, 200, Player());
+                                    03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+8+512+1024+2048+1048576);
+                                    04=break;
+                                }
+                                10=else if(text == 'ShuBounty_EscapePod')
+                                10 ^{
+                                    01=text = 'ExpPhysGun_PhysGunMissileEscapePod';
+                                    02=damage = item_size;
+                                    03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                    04=break;
+                                }
+                            }
+                            03=if(item_type == t_FuelTanks || item_type == t_Cistern)
+                            03 ^{
+                                01=text = 'ExpPhysGun_PhysGunMissileFuelTank';
+                                02=damage = item_size / 3;
+                                03=tempActCodeData2 = ContainerFuel(loaded_item);
+                                04=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                04=break;
+                            }
+                            04=if(item_size <= 20) text = 'ExpPhysGun_PhysGunMissileSmallItem';
+                            05=else if(item_size <= 75) text = 'ExpPhysGun_PhysGunMissileAverageItem';
+                            06=else text = 'ExpPhysGun_PhysGunMissileBigItem';
+                            07=if(item_type >= t_Weapon1 && item_type <= t_CustomWeapon)
+                            07 ^{
+                                01=if(GetEquipmentStats(loaded_item, 3) == 2)
+                                01 ^{
+                                    01=damage = WeaponAmmunition(loaded_item) * 2 + item_size / 3;
+                                    02=splash = 1;
+                                }
+                                02=else damage = item_size + item_size / 2;
+                                03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                04=break;
+                            }
+                            08=if(item_type >= t_Artefact && item_type <= t_DefGenerator)
+                            08 ^{
+                                01=if(EquipmentImageName(loaded_item) == 'UrineTincture')
+                                01 ^{
+                                    01=text = 'ExpPhysGun_PhysGunMissileUrineTank';
+                                    02=damage = item_size;
+                                    03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                    04=break;
+                                }
+                                02=else
+                                02 ^{
+                                    01=damage = item_size + item_size / 2;
+                                    02=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                                    03=break;
+                                }
+                            }
+                            09=damage = item_size;
+                            10=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                            11=break;
+                        }
+                        04=SetEquipmentStats(physGun, damage - 1, 1);
+                        05=SetEquipmentStats(physGun, damage, 0);
+                        06=tempActCodeData = ItemOwner(loaded_item);
+                        07=if(splash) SetCustomWeaponShotData(physGunConf, 'Missile', 5000, 800, 150);
+                        08=else SetCustomWeaponShotData(physGunConf, 'Rocket', 5000, 800, 0);
+                        09=SpecialToEquipment(FindBonusByNameInCfg(text), physGun);
+                        10=WeaponAmmunition(physGun, 1);
+                        11=ScriptItemTextData(physGun, 1, item_size);
+                        12=ItemSize(physGun, ItemSize(physGun) + item_size);
+                        13=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeLoaded'));
+                        14=PutItemInVault('PhysGunChamber', FormShipCurItem('Detach'));
+                        15=ScriptItemActParam(2);
+                    }
+                    05=else
+                    05 ^{
+                        01=ScriptItemActParam(2);
+                        02=exit;
+                    }
+                }
+            }
+            03=else exit;
+        }
+        05=else if(ScriptItemActionType(t_OnAnotherGoods))
+        05 ^{
+            01=if(ItemIsBroken(physGun)) exit;
+            02=if(WeaponAmmunition(physGun)) exit;
+            03=item_type = ScriptItemActObject1();
+            04=item_size = ScriptItemActObject2();
+            05=if(item_size >= 500)
+            05 ^{
+                01=MessageBox('Размер этого предмета слишком велик, зарядить его в физган не представляется возможным.');
+                02=exit;
+            }
+            06=if(MessageBoxYesNo('Вы точно хотите зарядить <color=0,50,200>' + lowercase(CT('Items.Goods.NameBuy.' + (item_type + 1))) + '</color> в физган?'))
+            06 ^{
+                02=physGunConf = GetCustomWeaponInfo('PhysGun');
+                03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+                04=SetEquipmentStats(physGun, item_size - 1, 1);
+                05=SetEquipmentStats(physGun, item_size, 0);
+                06=SetCustomWeaponShotData(physGunConf, 'Rocket', 5000, 800, 0);
+                07=if(item_type != t_Arms)
+                08 ^{
+                    01=if(item_size <= 20) text = 'ExpPhysGun_PhysGunMissileSmallItem';
+                    02=else if(item_size <= 75) text = 'ExpPhysGun_PhysGunMissileAverageItem';
+                    03=else text = 'ExpPhysGun_PhysGunMissileBigItem';
+                    04=SpecialToEquipment(FindBonusByNameInCfg(text), physGun);
+                    05=WeaponAmmunition(physGun, 1);
+                    06=ScriptItemTextData(physGun, 1, item_size);
+                    07=ItemSize(physGun, ItemSize(physGun) + item_size);
+                    08=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeLoaded'));
+                    09=loaded_item = CreateGoods(item_type, item_size);
+                    10=ItemCost(loaded_item, FormShipCurItem('StackableCost'));
+                    11=PutItemInVault('PhysGunChamber', loaded_item);
+                    12=ScriptItemActParam(item_size);
+                    13=SetEquipmentStats(physGun, (item_size*3) - 1, 1);
+                    14=SetEquipmentStats(physGun, (item_size*3), 0);
+                }
+                09=else
+                10 ^{
+                    01=text = 'ExpPhysGun_PhysGunMissileWeapon';
+                    02=SpecialToEquipment(FindBonusByNameInCfg(text), physGun);
+                    03=WeaponAmmunition(physGun, 1);
+                    04=ScriptItemTextData(physGun, 1, item_size);
+                    05=ItemSize(physGun, ItemSize(physGun) + item_size);
+                    06=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeLoaded'));
+                    07=loaded_item = CreateGoods(item_type, item_size);
+                    08=ItemCost(loaded_item, FormShipCurItem('StackableCost'));
+                    09=PutItemInVault('PhysGunChamber', loaded_item);
+                    10=ScriptItemActParam(item_size);
+                }
+            }
+        }
+        06=if(!ItemIsInUse(physGun)) exit;
+        07=if(ScriptItemActionType(t_OnMissileShot))
+        07 ^{
+            01=dword missile = ScriptItemActObject1();
+            02=if(CustomMissileType(missile) != 'PhysGun') exit;
+            03=float angle = Angle(WeaponTarget(physGun), missile);
+            04=MissileAngle(missile, angle);
+            05=MissileLive(missile, 200);
+            06=MissileSpeed(missile, 5000);
+            07=unknown PortionInDiapason = ImportedFunction('UtilityFunctions', 'PortionInDiapason');
+            08=if(ScriptItemData(physGun, 3) == -1)
+            08 ^{
+                01=if(RndObject(1, 100, Player()) <= PortionInDiapason(Dist(missile, MissileTarget(missile)), 0, GetCustomWeaponData('PhysGun', 'MissileRadius'), 25, 90))
+                02 ^{
+                    01=MissileTarget(missile, 0);
+                }
+            }
+            09=else if(RndObject(1, 100, Player()) <= PortionInDiapason(Dist(missile, MissileTarget(missile)), 0, GetCustomWeaponData('PhysGun', 'MissileRadius'), 0, 45))
+            09 ^{
+                01=MissileTarget(missile, 0);
+            }
+            10=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
+            11=WeaponAmmunition(physGun, 0);
+            12=ItemSize(physGun, ItemSize(physGun) - ScriptItemTextData(physGun, 1));
+            13=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeEmpty'));
+            14=ItemDurability(physGun, ItemDurability(physGun) - RndObject(4, 8, Player()));
+            15=str acryn_name = BonusNumInCfg(EqSpecial(missile));
+            16=if(findsubstr(acryn_name, 'Asteroid') == -1)
+            16 ^{
+                01=dword shot_item = GetItemFromVault('PhysGunChamber');
+                02=if(acryn_name == 'ExpPhysGun_PhysGunMissileHyperlinkFirstPart')
+                02 ^{
+                    01=ScriptItemTextData(physGun, 3, UselessItemData(shot_item, 1));
+                }
+                03=else if(acryn_name == 'ExpPhysGun_PhysGunMissileHyperlinkSecondPart')
+                03 ^{
+                    01=ScriptItemTextData(physGun, 3, UselessItemData(shot_item, 1));
+                }
+                04=else if(acryn_name == 'ExpPhysGun_PhysGunMissileEscapePod')
+                04 ^{
+                    01=if(MissileOwner(missile) == Player())
+                    01 ^{
+                        01=dword cur_star = MissileStar(missile);
+                        02=if(UselessItemData(shot_item, 3))
+                        02 ^{
+                            01=str ship_type = ScriptItemTextData(shot_item, 1);
+                            02=if(ship_type == 'RangerPirate') int relation_change = 10;
+                            03=else if(ship_type == 'Smuggler') relation_change = 5;
+                            04=else if(UselessItemData(shot_item, 1) != t_Pirate) relation_change = -15;
+                            05=else relation_change = 10;
+                            06=if(relation_change < 0)
+                            06 ^{
+                                01=relation_change = abs(relation_change);
+                                02=for(int i = 0; i < StarPlanets(cur_star); i = i + 1)
+                                02 ^{
+                                    01=dword planet = StarPlanets(cur_star, i);
+                                    02=if(PlanetOwner(planet) != None) RelationToRanger(planet, Player(), max(RelationToRanger(planet, Player()) - relation_change, 0));
+                                }
+                                03=if(CurrentMods('Expansion\ExpTraitors'))
+                                03 ^{
+                                    01=for(i = StarRuins(cur_star) - 1; i >= 0; i = i - 1)
+                                    01 ^{
+                                        01=dword ruin = StarRuins(cur_star, i);
+                                        02=if(ShipOwner(ruin) != PirateClan && ShipType(ruin) != 'PB')
+                                        02 ^{
+                                            01=RelationToRanger(ruin, Player(), max(RelationToRanger(ruin, Player()) - relation_change, 10));
+                                        }
+                                    }
+                                }
+                            }
+                            07=else
+                            07 ^{
+                                01=RelationToRanger(PlanetPirateClan(), Player(), max(RelationToRanger(PlanetPirateClan(), Player()) - relation_change, 0));
+                                02=if(CurrentMods('Expansion\ExpTraitors'))
+                                02 ^{
+                                    01=for(i = StarRuins(cur_star) - 1; i >= 0; i = i - 1)
+                                    01 ^{
+                                        01=ruin = StarRuins(cur_star, i);
+                                        02=if(ShipOwner(ruin) == PirateClan || ShipType(ruin) == 'PB')
+                                        02 ^{
+                                            01=RelationToRanger(ruin, Player(), max(RelationToRanger(ruin, Player()) - relation_change, 10));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                05=FreeItem(shot_item);
+            }
+        }
+        08=else if(ScriptItemActionType(t_OnMissileShot2))
+        08 ^{
+            01=missile = ScriptItemActObject2();
+            02=if(CustomMissileType(missile) != 'PhysGun') exit;
+            03=dword target = ScriptItemActObject1();
+            04=cur_star = MissileStar(missile);
+            05=acryn_name = BonusNumInCfg(EqSpecial(missile));
+            06=if(acryn_name == 'ExpPhysGun_PhysGunMissileQuarkBomb')
+            06 ^{
+                01=if(CurrentMods('Expansion\ExpArts'))
+                01 ^{
+                    01=dword item = CreateQuestItem('Quark_bomb', tempActCodeData);
+                    02=DropItemInSystem(cur_star, item, CoordX(target) + 1000000, CoordY(target), CoordX(target) + 1000000, CoordY(target));
+                    03=StopMovingItem(cur_star, item);
+                    04=UselessItemData(item, 2, -10);
+                    05=UselessItemData(item, 3, Id(cur_star) - 1);
+                    06=CreateActCodeEvent(t_OnItemDestroy, item, 0, 0, 0, 0);
+                    07=FreeItem(GetItemFromStar(cur_star, item));
+                }
+                02=else
+                02 ^{
+                    01=item = CreateArt(t_ArtefactBomb, tempActCodeData);
+                    02=DropItemInSystem(cur_star, item, CoordX(target), CoordY(target), CoordX(target), CoordY(target));
+                    03=StopMovingItem(cur_star, item);
+                    04=FireWeapon(target, item, 0);
+                }
+            }
+            07=else if(acryn_name == 'ExpPhysGun_PhysGunMissileStunBomb')
+            07 ^{
+                01=item = CreateQuestItem('Stun_bomb', tempActCodeData);
+                02=UselessItemData(item, 2, -6);
+                03=UselessItemData(item, 3, Id(cur_star) - 1);
+                04=CreateActCodeEvent(t_OnItemPickUp, item, target, item, 1, 0);
+                05=cur_star = StarNearbyStars(ShipStar(Player()), 1);
+                06=DropItemInSystem(cur_star, item, 0, 0, 0, 0);
+                07=StopMovingItem(cur_star, item);
+            }
+            08=else if(acryn_name == 'ExpPhysGun_PhysGunMissileEMPBomb')
+            08 ^{
+                01=item = CreateQuestItem('EMP_bomb', tempActCodeData);
+                02=UselessItemData(item, 2, -6);
+                03=UselessItemData(item, 3, Id(cur_star) - 1);
+                04=CreateActCodeEvent(t_OnItemPickUp, item, target, item, 1, 0);
+                05=cur_star = StarNearbyStars(ShipStar(Player()), 1);
+                06=DropItemInSystem(cur_star, item, 0, 0, 0, 0);
+                07=StopMovingItem(cur_star, item);
+            }
+            09=else if(acryn_name == 'ExpPhysGun_PhysGunMissileFuelTank')
+            09 ^{
+                01=if(tempActCodeData2)
+                01 ^{
+                    01=if(IsScriptActive('Mod_ExpArts'))
+                    01 ^{
+                        01=item = CreateQuestItem('Quark_bomb', tempActCodeData);
+                        02=DropItemInSystem(cur_star, item, CoordX(target) + 1000000, CoordY(target), CoordX(target) + 1000000, CoordY(target));
+                        03=StopMovingItem(cur_star, item);
+                        04=UselessItemData(item, 2, -10);
+                        05=UselessItemData(item, 3, Id(cur_star) - 1);
+                        06=CreateActCodeEvent(t_OnItemDestroy, item, 0, 0, 0, tempActCodeData2);
+                        07=FreeItem(GetItemFromStar(cur_star, item));
+                    }
+                    02=else
+                    02 ^{
+                        01=item = CreateEquipment(t_Cistern, MissileMaxDamage(missile), tempActCodeData2, tempActCodeData);
+                        02=DropItemInSystem(cur_star, item, CoordX(target), CoordY(target), CoordX(target), CoordY(target));
+                        03=StopMovingItem(cur_star, item);
+                        04=FireWeapon(target, item, 0);
+                    }
+                }
+            }
+            10=else if(acryn_name == 'ExpPhysGun_PhysGunMissileUrineTank')
+            10 ^{
+                01=dword pisser = ScriptItemActShip();
+                02=if(pisser)
+                02 ^{
+                    01=if(ShipTypeN(target) < t_Ranger || ShipTypeN(target) > t_Warrior) exit;
+                    02=if(~ShipFindCustomShipInfoByType(target, 'EvoMC_YellowShroud'))
+                    02 ^{
+                        01=ShipCustomShipInfoData(target, 'EvoMC_YellowShroud', 1, Id(pisser));
+                        02=ShipCustomShipInfoData(target, 'EvoMC_YellowShroud', 3, CurTurn() + 7);
+                    }
+                    03=else
+                    03 ^{
+                        01=ShipAddCustomShipInfo(target, 'EvoMC_YellowShroud', '', Id(pisser), 0, CurTurn() + 7);
+                    }
+                    04=NoTalkToShip(target, 1);
+                    05=OrderFollowShip(target, pisser, 1);
+                    06=ShipSetBad(target, pisser);
+                    07=if(IsPlayer(target))
+                    07 ^{
+                        01=NoTalkToShip(1);
+                        02=AutoBattle(pisser);
+                    }
+                    08=else if(ShipTypeN(pisser) == t_Ranger)
+                    08 ^{
+                        01=RelationToRanger(target, pisser, 0);
+                    }
+                    09=OrderLock(target, 1);
+                    10=if(ShipInNormalSpace(Player()))
+                    10 ^{
+                        01=if(ShipStar(Player()) == ShipStar(target))
+                        01 ^{
+                            01=if(ShipRadarRange(Player()) >= Dist(Player(), target))
+                            01 ^{
+                                01=if(IsPlayer(pisser)) Ether(10, '', '<color=255,240,100>' + Name(target) + '</color>' + CT('FormInfo.br') + '<clr><clrEnd>' + CT('FormInfo.br') + CT('Script.Mod_ExpPhysGun.UrineHumiliation' + RndObject(1, 4, target)));
+                                02=else Ether(1, '', '<color=255,240,100>' + Name(target) + '</color>' + '-->' + '<color=255,240,100>' + Name(pisser) + '</color>' + CT('FormInfo.br') + '- ' + CT('Script.Mod_ExpPhysGun.UrineHumiliation' + RndObject(1, 4, target)));
+                            }
+                        }
+                    }
+                }
+            }
+            11=else
+            11 ^{
+                01=if(~findsubstr(acryn_name, 'Asteroid'))
+                01 ^{
+                    01=int size_minerals = round(0.80 * GetEquipmentStats(physGun, 0) / 1.5);
+                    02=if(size_minerals)
+                    02 ^{
+                        01=int minerals_dropped = 0;
+                        02=while(size_minerals)
+                        02 ^{
+                            01=int part_size = 0;
+                            02=if(size_minerals < 10 || minerals_dropped >= 3) part_size = size_minerals;
+                            03=else part_size = round((0.2 * (0.1 * RndObject(0, 10, Player())) + 0.55) * size_minerals);
+                            04=size_minerals = size_minerals - part_size;
+                            05=minerals_dropped = minerals_dropped = 1;
+                            06=dword minerals = CreateGoods(t_Minerals, part_size, 1);
+                            07=angle = 0.01 * RndObject(0, 200, Player()) * pi;
+                            08=int rad = RndObject(50, 150, Player());
+                            09=DropItemInSystem(cur_star, minerals, CoordX(target), CoordY(target), round(cos(angle) * rad) + CoordX(target), round(sin(angle) * rad) + CoordY(target));
+                        }
+                    }
+                    03=damage = 0;
+                    04=str str_type = ShipType(target);
+                    05=if(target == Blazer() || target == Keller() || target == Terron() || str_type == 'Machpella')
+                    05 ^{
+                        01=damage = Rnd(185, 315, sqr(CurTurn()) + CurTurn() + 42) * (1 + ArtefactTypeInUse(ScriptItemActShip(),t_ArtefactAntigrav));
+                    }
+                    06=else
+                    06 ^{
+                        01=item = ShipItems(target, 0);
+                        02=if(!ShipProtectability(target))
+                        02 ^{
+                            01=if(ItemSize(item) <= 150) damage = ItemSize(item) + 20;
+                            02=else if(ItemSize(item) < 300) damage = 80 * ItemSize(item) / 100;
+                            03=else damage = Rnd(30, 50, sqr(CurTurn()) + CurTurn() + 3) * ItemSize(item) / 100;
+                        }
+                        03=else
+                        03 ^{
+                            01=if(ItemSize(item) <= 150) damage = 50 * ItemSize(item) / 100;
+                            02=else if(ItemSize(item) < 300) damage = 40 * ItemSize(item) / 100;
+                            03=else damage = Rnd(15, 25, sqr(CurTurn()) + CurTurn() - 3) * ItemSize(item) / 100;
+                        }
+                        04=int resist = ShipSpecialBonuses(target, bonResistAsteroid, 'Total');
+                        05=if(resist > 100) resist = 100;
+                        06=else if(resist < 0) resist = 0;
+                        07=damage = damage - round(0.01 * resist * damage) + damage  * (ArtefactTypeInUse(ScriptItemActShip(),t_ArtefactAntigrav)) * 0.35;
+                    }
+                    07=MissileMinDamage(missile, damage - 1);
+                    08=MissileMaxDamage(missile, damage);
+                }
+            }
+            12=if(acryn_name == 'ExpPhysGun_PhysGunMissileNeutronBomb')
+            12 ^{
+                01=item = CreateQuestItem('NeutronBomb', tempActCodeData);
+                02=DropItemInSystem(cur_star, item, CoordX(target) + 1000000, CoordY(target), CoordX(target) + 1000000, CoordY(target));
+                03=StopMovingItem(cur_star, item);
+                04=UselessItemData(item, 2, -10);
+                05=UselessItemData(item, 3, Id(cur_star) - 1);
+                06=CreateActCodeEvent(t_OnItemDestroy, item, 0, 0, 0, 0);
+                07=FreeItem(GetItemFromStar(cur_star, item));
+            }
+        }
+        09=else if(ScriptItemActionType(t_OnMissileHittingObject))
+        09 ^{
+            01=missile = ScriptItemActObject2();
+            02=if(CustomMissileType(missile) != 'PhysGun') exit;
+            03=target = ScriptItemActObject1();
+            04=cur_star = MissileStar(missile);
+            05=acryn_name = BonusNumInCfg(EqSpecial(missile));
+            06=if(acryn_name == 'ExpPhysGun_PhysGunMissileHyperlinkFirstPart')
+            06 ^{
+                01=part_size = ItemType(target);
+                02=if(FilmFlags(0)) ShowStaticEffect('HyperlinkTransfer', CoordX(target), CoordY(target), 15);
+                03=if(part_size == t_Protoplasm) exit;
+                04=if(part_size <= t_Narcotics) exit;
+                05=if(part_size == t_UselessCountableItem) exit;
+                06=ScriptItemActParam(0);
+                07=CoordX(missile, 100500);
+                08=CoordY(missile, 100500);
+                09=item = IdToItem(ScriptItemTextData(physGun, 3));
+                10=if(target == item)
+                10 ^{
+                    01=if(FilmFlags(0))
+                    01 ^{
+                        01=ShowStaticEffect('HyperlinkTransfer', CoordX(target), CoordY(target), 15);
+                        02=FilmSound('Sound.HyperlinkMerged', target);
+                    }
+                    02=exit;
+                }
+                11=GetItemFromStar(cur_star, target);
+                12=ruin = FindItemInStorage(item);
+                13=if(~int(ruin)) AddItemToStorage(StorageItemLocation(ruin), target);
+                14=else
+                14 ^{
+                    01=ruin = ExecuteCodeFromString(GenerateCodeStringFromBlock('UselessItems.Hyperlink.FindItemInGalaxy'), 'other_part', item, 'place');
+                    02=if(ObjectType(ruin) == 5 || ObjectType(ruin) == 4) AddItemToShip(ruin, target);
+                    03=else if(ObjectType(ruin) == 1)
+                    03 ^{
+                        01=size_minerals = CoordX(item) + RndObject(-33, 33, cur_star);
+                        02=part_size = CoordY(item) + RndObject(-33, 33, cur_star);
+                        03=DropItemInSystem(ruin, target, size_minerals, part_size, size_minerals, part_size);
+                        04=StopMovingItem(ruin, target);
+                        05=if(FilmFlags(0))
+                        05 ^{
+                            01=ShowStaticEffect('HyperlinkTransfer', size_minerals, part_size, 15);
+                            02=FilmSound('Sound.HyperlinkMerged', item);
+                        }
+                    }
+                    04=else throw 'Unknown HyperlinkPart location in ExpPhysGun Lang code: t_OnMissileHittingObject!';
+                }
+            }
+            07=else if(acryn_name == 'ExpPhysGun_PhysGunMissileHyperlinkSecondPart')
+            07 ^{
+                01=part_size = ItemType(target);
+                02=if(FilmFlags(0)) ShowStaticEffect('HyperlinkTransfer', CoordX(target), CoordY(target), 15);
+                03=if(part_size == t_Protoplasm) exit;
+                04=if(part_size <= t_Narcotics) exit;
+                05=if(part_size == t_UselessCountableItem) exit;
+                06=if(ScriptItemActShip())
+                06 ^{
+                    01=if(ShipPicksItem(ScriptItemActShip(), target) == -1) exit;
+                }
+                07=ScriptItemActParam(0);
+                08=CoordX(missile, 100500);
+                09=CoordY(missile, 100500);
+                10=item = IdToItem(ScriptItemTextData(physGun, 3));
+                11=if(target == item)
+                11 ^{
+                    01=if(FilmFlags(0))
+                    01 ^{
+                        01=ShowStaticEffect('HyperlinkTransfer', CoordX(target), CoordY(target), 15);
+                        02=FilmSound('Sound.HyperlinkMerged', target);
+                    }
+                    02=exit;
+                }
+                12=GetItemFromStar(cur_star, target);
+                13=ruin = FindItemInStorage(item);
+                14=if(~int(ruin)) AddItemToStorage(StorageItemLocation(ruin), target);
+                15=else
+                15 ^{
+                    01=ruin = ExecuteCodeFromString(GenerateCodeStringFromBlock('UselessItems.Hyperlink.FindItemInGalaxy'), 'other_part', item, 'place');
+                    02=if(ObjectType(ruin) == 5 || ObjectType(ruin) == 4) AddItemToShip(ruin, target);
+                    03=else if(ObjectType(ruin) == 1)
+                    04 ^{
+                        01=size_minerals = CoordX(item) + RndObject(-33, 33, cur_star);
+                        02=part_size = CoordY(item) + RndObject(-33, 33, cur_star);
+                        03=DropItemInSystem(ruin, target, size_minerals, part_size, size_minerals, part_size);
+                        04=StopMovingItem(ruin, target);
+                        05=if(FilmFlags(0))
+                        06 ^{
+                            01=ShowStaticEffect('HyperlinkTransfer', size_minerals, part_size, 15);
+                            02=FilmSound('Sound.HyperlinkMerged', item);
+                        }
+                    }
+                    05=else throw 'Unknown HyperlinkPart location in ExpPhysGun Lang code: t_OnMissileHittingObject!';
+                }
+            }
+            08=else if(acryn_name == 'ExpPhysGun_PhysGunMissileQuarkBomb')
+            08 ^{
+                01=if(IsScriptActive('Mod_ExpArts'))
+                01 ^{
+                    01=item = CreateQuestItem('Quark_bomb', tempActCodeData);
+                    02=CoordX(item, CoordX(target));
+                    03=CoordY(item, CoordY(target));
+                    04=UselessItemData(item, 2, -4);
+                    05=UselessItemData(item, 3, Id(cur_star) - 1);
+                    06=CreateActCodeEvent(t_OnItemHit, item, 0, missile, cur_star, 0);
+                    07=cur_star = StarNearbyStars(ShipStar(Player()), 1);
+                    08=DropItemInSystem(cur_star, item, 0, 0, 0, 0);
+                    09=StopMovingItem(cur_star, item);
+                }
+                02=else
+                02 ^{
+                    01=item = CreateArt(t_ArtefactBomb, tempActCodeData);
+                    02=DropItemInSystem(cur_star, item, CoordX(target), CoordY(target), CoordX(target), CoordY(target));
+                    03=StopMovingItem(cur_star, item);
+                    04=FireWeapon(Player(), item, 0);
+                }
+            }
+            09=else if(acryn_name == 'ExpPhysGun_PhysGunMissileStunBomb')
+            09 ^{
+                01=item = CreateQuestItem('Stun_bomb', tempActCodeData);
+                02=CoordX(item, CoordX(target));
+                03=CoordY(item, CoordY(target));
+                04=UselessItemData(item, 2, -4);
+                05=UselessItemData(item, 3, Id(cur_star) - 1);
+                06=CreateActCodeEvent(t_OnItemDestroy, item, 0, 0, 0, 0);
+                08=cur_star = StarNearbyStars(ShipStar(Player()), 1);
+                09=DropItemInSystem(cur_star, item, 0, 0, 0, 0);
+                10=StopMovingItem(cur_star, item);
+            }
+            10=else if(acryn_name == 'ExpPhysGun_PhysGunMissileEMPBomb')
+            10 ^{
+                01=item = CreateQuestItem('EMP_bomb', tempActCodeData);
+                02=CoordX(item, CoordX(target));
+                03=CoordY(item, CoordY(target));
+                04=UselessItemData(item, 2, -4);
+                05=UselessItemData(item, 3, Id(cur_star) - 1);
+                06=CreateActCodeEvent(t_OnItemDestroy, item, 0, 0, 0, 0);
+                08=cur_star = StarNearbyStars(ShipStar(Player()), 1);
+                09=DropItemInSystem(cur_star, item, 0, 0, 0, 0);
+                10=StopMovingItem(cur_star, item);
+            }
+            11=else if(acryn_name == 'ExpPhysGun_PhysGunMissileFuelTank')
+            11 ^{
+                01=if(tempActCodeData2)
+                01 ^{
+                    01=if(IsScriptActive('Mod_ExpArts'))
+                    01 ^{
+                        01=item = CreateQuestItem('Quark_bomb', tempActCodeData);
+                        02=CoordX(item, CoordX(target));
+                        03=CoordY(item, CoordY(target));
+                        04=UselessItemData(item, 2, -4);
+                        05=UselessItemData(item, 3, Id(cur_star) - 1);
+                        06=CreateActCodeEvent(t_OnItemHit, item, 0, missile, cur_star, tempActCodeData2);
+                        07=cur_star = StarNearbyStars(ShipStar(Player()), 1);
+                        08=DropItemInSystem(cur_star, item, 0, 0, 0, 0);
+                        09=StopMovingItem(cur_star, item);
+                    }
+                    02=else
+                    02 ^{
+                        01=item = CreateEquipment(t_Cistern, MissileMaxDamage(missile), tempActCodeData2, tempActCodeData);
+                        02=DropItemInSystem(cur_star, item, CoordX(target), CoordY(target), CoordX(target), CoordY(target));
+                        03=StopMovingItem(cur_star, item);
+                        04=FireWeapon(Player(), item, 0);
+                    }
+                }
+            }
+            12=else if(~findsubstr(acryn_name, 'Asteroid'))
+            12 ^{
+                01=if(ShipInNormalSpace(Player()))
+                01 ^{
+                    01=size_minerals = round(0.90 * GetEquipmentStats(physGun, 0) / 1.5);
+                    02=if(size_minerals)
+                    02 ^{
+                        01=minerals_dropped = 0;
+                        02=while(size_minerals)
+                        02 ^{
+                            01=part_size = 0;
+                            02=if(size_minerals < 10 || minerals_dropped >= 3) part_size = size_minerals;
+                            03=else part_size = round((0.2 * (0.1 * RndObject(0, 10, Player())) + 0.55) * size_minerals);
+                            04=size_minerals = size_minerals - part_size;
+                            05=minerals_dropped = minerals_dropped = 1;
+                            06=minerals = CreateGoods(t_Minerals, part_size, 1);
+                            07=angle = 0.01 * RndObject(0, 200, Player()) * pi;
+                            08=rad = RndObject(50, 150, Player());
+                            09=DropItemInSystem(cur_star, minerals, CoordX(target), CoordY(target), round(cos(angle) * rad) + CoordX(target), round(sin(angle) * rad) + CoordY(target));
+                        }
+                    }
+                }
+            }
+            13=if(acryn_name == 'ExpPhysGun_PhysGunMissileNeutronBomb')
+            13 ^{
+                01=item = CreateQuestItem('NeutronBomb', tempActCodeData);
+                02=CoordX(item, CoordX(target));
+                03=CoordY(item, CoordY(target));
+                04=UselessItemData(item, 2, -4);
+                05=UselessItemData(item, 3, Id(cur_star) - 1);
+                06=CreateActCodeEvent(t_OnItemDestroy, item, 0, 0, 0, 0);
+                08=cur_star = StarNearbyStars(ShipStar(Player()), 1);
+                09=DropItemInSystem(cur_star, item, 0, 0, 0, 0);
+                10=StopMovingItem(cur_star, item);
+            }
+        }
+        10=else if(ScriptItemActionType(t_OnItemDestroy))
+        10 ^{
+            01=item = GetItemFromVault('PhysGunChamber');
+            02=if(item) FreeItem(item);
+        }
+    }
+    PhysGunActCodeQuest ^{
+        00=[t_OnMissileShot,t_OnMissileShot2|]
+        01=dword physGun = CurItem();
+        02=if(!ItemIsInUse(physGun)) exit;
+        03=if(ScriptItemActionType(t_OnMissileShot))
+        03 ^{
+            01=dword missile = ScriptItemActObject1();
+            02=if(CustomMissileType(missile) != 'PhysGun') exit;
+            03=float angle = Angle(WeaponTarget(physGun), missile);
+            04=MissileAngle(missile, angle);
+            05=MissileLive(missile, 200);
+            06=MissileSpeed(missile, 5000);
+            07=if(ObjectType(WeaponTarget(physGun)) == 5)
+            07 ^{
+                01=if(ShipType(WeaponTarget(physGun)) != 'KillerAsteroid') MissileTarget(missile, 0);
+            }
+            08=else MissileTarget(missile, 0);
+            09=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
+            10=WeaponAmmunition(physGun, 0);
+            11=ItemSize(physGun, ItemSize(physGun) - ScriptItemTextData(physGun, 1));
+            12=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeEmpty'));
+            13=ItemDurability(physGun, ItemDurability(physGun) - 21);
+        }
+        04=else
+        04 ^{
+            01=missile = ScriptItemActObject2();
+            02=if(CustomMissileType(missile) != 'PhysGun') exit;
+            03=dword target = ScriptItemActObject1();
+            04=ScriptItemData(physGun, 1, ScriptItemData(physGun, 1) + 1);
+            05=int size_minerals = round(0.90 * GetEquipmentStats(physGun, 0) / 1.5);
+            06=if(size_minerals)
+            06 ^{
+                01=int minerals_dropped = 0;
+                02=while(size_minerals)
+                02 ^{
+                    01=int part_size = 0;
+                    02=if(size_minerals < 10 || minerals_dropped >= 3) part_size = size_minerals;
+                    03=else part_size = round((0.2 * (0.1 * RndObject(0, 10, Player())) + 0.55) * size_minerals);
+                    04=size_minerals = size_minerals - part_size;
+                    05=minerals_dropped = minerals_dropped = 1;
+                    06=dword minerals = CreateGoods(t_Minerals, part_size, 1);
+                    07=angle = 0.01 * RndObject(0, 200, Player()) * pi;
+                    08=int rad = RndObject(50, 150, Player());
+                    09=DropItemInSystem(MissileStar(missile), minerals, CoordX(target), CoordY(target), round(cos(angle) * rad) + CoordX(target), round(sin(angle) * rad) + CoordY(target));
+                }
+            }
+        }
+    }
+}
+UseCodeBlocksList ^{
+    PhysGunUseCodeEmpty ^{
+        01=dword physGun = CurItem();
+        02=if(!ItemInScript(physGun)) exit;
+        03=if(ItemIsBroken(physGun)) exit;
+        04=if(!ShipInNormalSpace(Player()))
+        04 ^{
+            01=MessageBox(CT('FormShip.UseOnlyInSpace'));
+            02=exit;
+        }
+        05=if(!WeaponAmmunition(physGun))
+        05 ^{
+            01=dword dwd1 = 0;
+            02=dword closest_asteroid = 0;
+            03=int closest_dist = 500000;
+            04=for(int i = StarAsteroids(ShipStar(Player())) - 1; i >= 0; i = i - 1)
+            05 ^{
+                01=dwd1 = StarAsteroids(ShipStar(Player()), i);
+                02=if(Dist(Player(), dwd1) <= 200)
+                02 ^{
+                    01=if(Dist(Player(), dwd1) < closest_dist)
+                    01 ^{
+                        01=closest_asteroid = dwd1;
+                        02=closest_dist = Dist(Player(), dwd1);
+                    }
+                }
+            }
+            06=if(!closest_asteroid)
+            07 ^{
+                01=MessageBox('В радиусе <color=0,50,200>200</color> ед. вокруг корабля астероидов не обнаружено');
+                02=exit;
+            }
+            08=int ast_size = round(1.5 * AsteroidMinerals(closest_asteroid));
+            09=WeaponAmmunition(physGun, 1);
+            10=SetEquipmentStats(physGun, ast_size - 1, 1);
+            11=SetEquipmentStats(physGun, ast_size, 0);
+            12=ItemSize(physGun, ItemSize(physGun) + ast_size);
+            13=ScriptItemTextData(physGun, 1, ast_size);
+            14=SpecialToEquipment(FindBonusByNameInCfg(CT('Script.Mod_ExpPhysGun.AsteroidToMissileList.' + Format(AsteroidGraph(closest_asteroid), 'Asteroid.', '', '') + '.AcrynNumInCfg')), physGun);
+            15=AsteroidRespawn(closest_asteroid);
+            16=dwd1 = GetCustomWeaponInfo('PhysGun');
+            17=SetCustomWeaponShotData(dwd1, 'Rocket', 5000, 800, 0);
+            18=SetCustomWeaponDamageData(dwd1, 1, 1, 2+2048+1048576);
+            19=ItemDurability(physGun, ItemDurability(physGun) - RndObject(2, 5, Player()));
+            20=if(!ItemDurability(physGun)) ItemDurability(physGun, 0);
+            21=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeLoaded'));
+            22=MessageBox('Ближайший астероид успешно захвачен физганом');
+        }
+        06=else MessageBox('Физган уже заряжен');
+    }
+    PhysGunUseCodeLoaded ^{
+        01=if(MessageBoxYesNo('Вы уверены, что хотите разрядить физган?'))
+        01 ^{
+            01=dword physGun = CurItem();
+            02=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
+            03=WeaponAmmunition(physGun, 0);
+            04=ItemSize(physGun, ItemSize(physGun) - ScriptItemTextData(physGun, 1));
+            05=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeEmpty'));
+            06=str acryn_name = BonusNumInCfg(EqSpecial(physGun));
+            07=if(findsubstr(acryn_name, 'Asteroid') == -1)
+            07 ^{
+                01=AddItemToShip(Player(), GetItemFromVault('PhysGunChamber'));
+            }
+        }
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            ExpPhysGun_ImmortalAsteroid ^{
+                Description=Инфошка для блокирования урона астероидом (будет получать урон только от физгана и других случайных астероидов)
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnTakingDamage))
+                    01 ^{
+                        01=if(ObjectType(ScriptItemActObject1()) == 8) ScriptItemActParam(round(0.10 * ItemSize(ShipItems(ship, 0))));
+                        02=else ScriptItemActParam(0);
+                    }
+                    02=else if(ScriptItemActionType(t_OnTakingDamageSp))
+                    02 ^{
+                        01=dword missile = ScriptItemActObject1();
+                        02=if(ObjectType(missile) == 7)
+                        02 ^{
+                            01=if(CustomMissileType(missile) == 'PhysGun')
+                            01 ^{
+                                01=dword ship = ScriptItemActShip();
+                                02=int damage = round(0.01 * RndObject(34, 41, Player()) * ItemSize(ShipItems(ship, 0)));
+                                03=ScriptItemActParam(damage);
+                                04=if(Hitpoints(ship) <= damage)
+                                04 ^{
+                                    01=dword attack_ship = MissileOwner(missile);
+                                    02=if(ShipStar(Player()) == ShipStar(attack_ship) && ShipInNormalSpace(attack_ship))
+                                    02 ^{
+                                        01=ShowEffect('Weapon.MissileHit', 2, attack_ship, attack_ship, round(0.40 * HullHP(attack_ship)), 0, 0, 255,255,255);
+                                        02=int rand = RndObject(3, 5, Player());
+                                        03=for(int i = 1; i <= 5; i = i + 1) FilmSound('Sound.expl' + rand, ship);
+                                    }
+                                }
+                                05=else
+                                05 ^{
+                                    01=attack_ship = MissileOwner(missile);
+                                    02=if(ShipStar(Player()) == ShipStar(attack_ship) && ShipInNormalSpace(attack_ship))
+                                    02 ^{
+                                        01=rand = RndObject(3, 5, Player());
+                                        02=for(i = 1; i <= 2; i = i + 1) FilmSound('Sound.expl' + rand, ship);
+                                    }
+                                }
+                            }
+                            02=else ScriptItemActParam(0);
+                        }
+                        03=else ScriptItemActParam(0);
+                    }
+                    03=else ScriptItemActParam(0);
+                    04=if(!RndObject(0, 1, Player())) exit;
+                    05=if(!RndObject(0, 3, Player())) dword nugget = CreateCustomCountableItem('NuggetAsteroid', RndObject(5, 30, Player()), 1);
+                    06=else nugget = CreateGoods(t_Minerals, RndObject(5, 30, Player()), 1);
+                    07=dword planet;
+                    08=int cost = 1;
+                    09=if(ItemType(nugget) != t_Minerals) cost=12 * RndObject(2, 6, Player());
+                    10=ItemCost(nugget, ItemSize(nugget) * cost);
+                    11=ship = ScriptItemActShip();
+                    12=DropItemInSystem(ShipStar(ship), nugget, CoordX(ship), CoordY(ship), 0.0 + CoordX(ship) + 100.0 * sin((pi * RndObject(0, 360, ship)) / 180.0), CoordY(ship) - 100.0 * cos((pi * RndObject(0, 360, ship)) / 180.0));
+                }
+                OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+            }
+        }
+    }
+}
+ShipType ^{
+    TypeName ^{
+        KillerAsteroid=Астероид
+    }
+}
+UselessItems ^{
+    BrokenPhysGun ^{
+        Cost=Small
+        Name=Сломанный физган
+        Owner=Any
+        Size=30
+        Text=Раньше этой штукой можно было перенаправлять астероиды, а теперь это просто куча бесполезного металлолома. Металлолома, который чуть не оторвал кусок вашего корабля при взрыве. Высказали бы вы этим инженерам пару ласковых...
+        Text=<color=255,0,0>(ремонту не подлежит)<color>
+    }
+}

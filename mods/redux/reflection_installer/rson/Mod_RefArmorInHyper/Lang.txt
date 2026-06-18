@@ -1,0 +1,31 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RefArmorInHyper ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnStartAB))
+                    02 ^{
+                        01=if(ShipArmor(ScriptItemActShip()) > 8)
+                        02 ^{
+                            01=ShipCustomShipInfoData(0,CurInfo(),1,max(ABShipModifiers(ScriptItemActShip(),'fragility') - ((ShipArmor(ScriptItemActShip())-8) * 2),10));
+                            02=ABShipModifiers(ScriptItemActShip(),'fragility',max(ABShipModifiers(ScriptItemActShip(),'fragility') - ((ShipArmor(ScriptItemActShip())-8) * 2),10));
+                        }
+                    }
+                    03=else
+                    04 ^{
+                        01=if(ShipCustomShipInfoData(0,CurInfo(),1))
+                        02 ^{
+                            01=ABShipModifiers(ScriptItemActShip(),'fragility',ABShipModifiers(ScriptItemActShip(),'fragility') + ((ShipArmor(ScriptItemActShip())-8) * 2));
+                            02=ShipCustomShipInfoData(0,CurInfo(),1,0);
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStartAB,t_OnStep
+                OnActStepTypes=0
+            }
+        }
+    }
+}

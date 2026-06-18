@@ -1,0 +1,636 @@
+Items ^{
+    CustomCountables ^{
+        mtcp_RefinerRes0 ^{
+            Name=Газы
+            Text=Различные типы газов, на любой цвет и вкус. Технологические центры предложат хорошую цену за этот ресурс.
+        }
+        mtcp_RefinerRes1 ^{
+            Name=Кислоты
+            Text=Различные типы кислот, на любой цвет и вкус. Технологические центры предложат хорошую цену за этот ресурс.
+        }
+        mtcp_RefinerRes2 ^{
+            Name=Металлы
+            Text=Различные типы металлов, на любой цвет и вкус. Технологические центры предложат хорошую цену за этот ресурс.
+        }
+    }
+}
+MicroModuls ^{
+    mod_exptcplus_droid ^{
+        CustomTag=mod_exptcplus_droid
+        Equipments=Any
+        ExText=<color=248,252,248>Совмещен с <TextData1> [энергия: <Data3>]: восстанавливает <Data1> единиц поврежденной обшивки.</color>
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    mod_exptcplus_enrg ^{
+        CustomTag=mod_exptcplus_enrg
+        Equipments=Any
+        ExText=<color=248,252,248>Совмещен с <TextData1>: энергогенерация +<Data1>.</color>
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+        mod_exptcplus_enrg_bonus=6
+    }
+    mod_exptcplus_frag_minus_30 ^{
+        CustomTag=mod_exptcplus_frag_minus_30
+        Equipments=Any
+        Fragility=143
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    mod_exptcplus_gzp ^{
+        CustomTag=mod_exptcplus_gzp
+        Equipments=Any
+        ExText=<color=248,252,248>Совмещен с <TextData1> [энергия: <Data3>]: блокирует <Data1>% наносимого ущерба.</color>
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    mod_exptcplus_wpn ^{
+        CustomTag=mod_exptcplus_wpn
+        Equipments=Any
+        ExText=<color=248,252,248>Совмещен с <TextData1> [энергия: <Data3>]: наносит урон совмещенным оружием.</color>
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+}
+Script ^{
+    mod_exptcplus ^{
+        1=Совмещение оборудование сложный и утомительный процесс, главное условие для его успеха -  состояние оборудования, как основного, так и совмещаемого, не приносите нам всякий хлам на грани поломки, мы не возьмёмся за такую работу.<br>На данный момент мы можем совместить дроида и генератор защитного поля почти с любым оборудованием, кроме оружия и двигателя.<br>А вот ремонтного дроида можно совместить с разными орудийными системами. Кроме ракетных, так как доступ к отсеку с боезапасом становится труднодоступным. <clr>Но такой дроид сможет выполнять ремонт лишь в случае отсутствии цели для стрельбы<clrEnd>, не забывайте об этом.<br><clr>Из-за сложности процесса совмещения надёжность основного оборудование будет уменьшена на 30%.<clrEnd><br>Не стоит забывать и о энергопотреблении, вы же не хотите отключения оружейных систем в разгар боя? Чтобы повысить выработку энергии устанавливайте <clr>Энергогенераторы<clrEnd>.<br>Куда вы хотите установить дополнительное оборудование?
+        10=% наносимого ущерба
+        13=Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем! Возможно, вы хотите что-то еще улучшить?
+        14=Я понимаю что даёт это улучшение и хочу его установить
+        16=Автоматизация оружия
+        17=Блокирует
+        18=Восстановление обшивки +
+        2=Воспользуюсь услугами других специалистов
+        24=</color><0> имеет показатели ниже минимальных.<br>
+        25=.<br>
+        26=</color>Надёжность <0>
+        3=Мы не смогли обнаружить подходящих предметов для совмещения с <0>.
+        30=</color>Хотите выбрать что-то другое? Давайте всё с начала.<br>Куда вы хотите установить дополнительное оборудование?<br>
+        31=</color>Размер <0> превышает размер <1>... не влезет.<br>
+        32=</color>Вес <0> имеет показатели ниже минимальных, как это вообще возможно?<br>
+        34=Энергогенератор
+        35=<clrEnd>
+        36=Энергогенерация +<clr>
+        37=[трюм]
+        38=[экп]
+        39=Это противоречит моим моральным принципам. Отказываюсь!
+        4=Выберите оборудование которое хотите совместить с <0> [<1> т].
+        40=Совмещение оборудования
+        42=Очистители широко используются для добычи ресурсов с поверхности незаселенных планет. Впрочем, подробности вы можете узнать, прослушав наш инструктаж. Поэтому перейдем прямо к делу.<br>---------------------------------<br>Сегодня мы предлагаем приобрести <0>.<br>Описание: <1><br>Стоимость: <2> cr.<br>Вес: <3><br>Надежность: <4><br>---------------------------------<br>Количество очистителей у вас: <5> шт.<br>Технический навык контроля: <6> шт.
+        43=<clr>Общая информация:<clrEnd> Уже много столетий очистители используются для добычи ресурсов с поверхности незаселенных и неразвитых планет. Каждый очиститель рассчитан на работу с определенными видами ресурсов, наличие которых зависит от планеты. Принято измерять продуктивность очистителя в условных единицах ресурса которые он добудет за определенный период с океанической поверхности, суши и гористой местности.<br><clr>Контроль очистителей:<clrEnd> Исследователь незаселенных планет может контролировать сразу несколько очистителей. Это определяется по его навыку владения техникой. Технологическим центрам запрещено продавать очистители тем, кто не в полной мере научился обращаться со столь нестандартным оборудованием. Причина этому - забота о безопасности иных форм жизни и стремление к невмешательству в естественный ход их развития. Нельзя допустить, чтобы на поверхности неразвитых планет лежали груды хлама.<br><clr>Правила эксплуатации:<clrEnd> Высадившись на незаселенную планету, следует открыть карту исследователя, выбрать место получше и установить очиститель. Обратите внимание что очистители добывают определенный тип ресурса, если на планете условия непригодны, то вам придётся выбрать другую планету или приобрести очиститель с нужным типом добычи. Информация о деятельности ваших очистителей будет регулярно обновляться на информационной панели. Вы можете спокойно лететь по своим делам, а очистители тем временем будут работать и присылать сообщения с важной информацией. Вернувшись назад на планету, вы сможете собрать добытые очистителем ресурсы, забрать очиститель с планеты и полететь в другое место.<br><clr>Права на добычу:<clrEnd> Все права на добытые вашими очистителями ресурсы принадлежат исключительно вам. Так как очистители это нестандартное оборудование, то и добываемый ими ресурс тоже нестандартный. Не думаю что вы найдете покупателя хорошо разбирающегося в этом. Однако, на <clr>технологических центрах<clrEnd> мы всегда готовы купить любой тип ресурса и хорошо за него заплатить. Кроме этого, ремонтировать столь необычное оборудование вы сможете тоже только у нас.<br>Настоятельно советуем сохранить эту информацию, <Player>.
+        44=Вы сделали отличное приобретение. Мы погрузили <0> на ваш корабль.<br>Теперь найдите неисследованную планету, совершите посадку и установите очиститель. После этого можете лететь по своим делам. Не забывайте приносить добытый ресурс нам на продажу.
+        45=Инструктаж по использованию очистителей
+        47=Плачу <0> cr за <1>
+        48=Приобрету в другой раз
+        49=Я запомню
+        5=Оборудование:<br><0>.<br>Совмещаемое оборудование:<br><1>.<br>Эффект совмещения:<br><2>.<br>Цена совмещения: <3> cr.<br><br>Улучшение устанавливать необязательно, мы вас не заставляем.
+        51=Продать ресурсы
+        52=В другой раз
+        53=Сегодня на ресурсы такие цены:<br>- <0>: <1> cr за тонну<br>- <2>: <3> cr за тонну<br>- <4>: <5> cr за тонну
+        54=Продать <0> т. <1> за <2> cr
+        55= за <0> cr
+        57=Почините <0> за <1> cr
+        58=Так, так... Есть некоторые поломки. Смотрите, вот наша калькуляция:<0>
+        59=Починить очистители
+        6=<0>
+        60=Меня интересуют очистители
+        61=<br> -
+        62=Почините всё за <0> cr
+        63=Приносите нам всё что сможете добыть. Да побольше, на ресурсы всегда есть спрос.
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            mod_exptcplus_infos ^{
+                Description=infos_Description
+                Icon=127
+                Name=Энергоснабжение
+                OnActCode ^{
+                    01=if((ScriptItemActionType(t_OnEnteringForm) && CurrentForm()=='Ship') || ScriptItemActionType(t_OnReEnteringForm) || ScriptItemActionType(t_OnNonStandartEqChange))
+                    02 ^{
+                        01=int curEnrg=0, useEnrg=0, bnsEnrg=0, a=0, bnsCnt=0, drdAdd=0, defAdd=0, artCnt=0, mxdEqp=0;
+                        02=dword item=0, wpnTrg=0, drdShot=0, drdBssy=0;
+                        03=for(a=1;a<ShipItems(Player());a=a+1)
+                        04 ^{
+                            01=item=ShipItems(Player(),a);
+                            02=if(!ItemIsInUse(item))continue;
+                            03=if(ItemIsBroken(item))continue;
+                            04=if(ItemType(item)>t_Hull && ItemType(item)<t_Weapon1)useEnrg=useEnrg+6;
+                            05=if(ItemType(item)>t_DefGenerator)useEnrg=useEnrg+8;
+                            06=bnsCnt=EqSpecial(item);
+                            07=if(bnsCnt>0)
+                            08 ^{
+                                01=bnsCnt=CT('MicroModuls.'+BonusNumInCfg(bnsCnt)+'.mod_exptcplus_enrg_bonus');
+                                02=if(bnsCnt!=0)bnsEnrg=bnsEnrg+bnsCnt;
+                            }
+                            09=if(ItemInScript(item))
+                            10 ^{
+                                01=if(ScriptItemTextData(item,3)=='mod_exptcplus')
+                                02 ^{
+                                    01=mxdEqp=1;
+                                    02=if(ScriptItemData(item,3)<0)useEnrg=useEnrg-ScriptItemData(item,3);
+                                    03=if(ScriptItemData(item,3)>0)bnsEnrg=bnsEnrg+ScriptItemData(item,3);
+                                    04=if(ScriptItemTextData(item,2)=='mod_exptcplus_droid')drdAdd=drdAdd+ScriptItemData(item,1);
+                                    05=if(ScriptItemTextData(item,2)=='mod_exptcplus_gzp')
+                                    06 ^{
+                                        01=defAdd=defAdd+ScriptItemData(item,1);
+                                        02=if(defAdd>99)defAdd=99;
+                                    }
+                                }
+                            }
+                        }
+                        05=for(a=1;a<5;a=a+1)
+                        06 ^{
+                            01=item=ShipEqInSlot(Player(), t_Artefact, a);
+                            02=if(!item)continue;
+                            03=artCnt=artCnt+1;
+                            04=if(ItemIsBroken(item))continue;
+                            05=useEnrg=useEnrg+4;
+                        }
+                        07=if(1)
+                        08 ^{
+                            01=item=ShipItems(Player(),0);
+                            02=curEnrg=curEnrg+2*6+ItemLevel(item);
+                            03=curEnrg=curEnrg+GetEquipmentStats(item, 1)*8;
+                            04=curEnrg=curEnrg+GetEquipmentStats(item, 2)*4;
+                            05=for(a=3;a<8;a=a+1)curEnrg=curEnrg+GetEquipmentStats(item, a)*6;
+                            06=if(ShipCntWeapon(Player())>GetEquipmentStats(item, 1))curEnrg=curEnrg+(ShipCntWeapon(Player())-GetEquipmentStats(item, 1))*8;
+                            07=if(artCnt>GetEquipmentStats(item, 2))curEnrg=curEnrg+(artCnt-GetEquipmentStats(item, 2))*4;
+                        }
+                        09=ShipCustomShipInfoData(0, CurInfo(), 1, curEnrg-useEnrg+bnsEnrg);
+                        10=if(mxdEqp)ShipCustomShipInfoDescription(0,CurInfo(),Format(CT('mod_exptcplus.Text.infDesc'), '<curEnrg>', curEnrg, '<useEnrg>', useEnrg,'<bnsEnrg>',bnsEnrg,'<totalEnrg>',curEnrg-useEnrg+bnsEnrg));
+                        11=else ShipCustomShipInfoDescription(0,CurInfo(),'NoShow');
+                    }
+                    03=if(mxdEqp)
+                    04 ^{
+                        01=if(ScriptItemActionType(t_OnStep, 0))
+                        02 ^{
+                            01=curEnrg=0; useEnrg=0; bnsEnrg=0; drdAdd=0; defAdd=0; wpnTrg=0; drdShot=0; drdBssy=0; artCnt=0;
+                            02=for(a=1;a<ShipItems(Player());a=a+1)
+                            03 ^{
+                                01=item=ShipItems(Player(),a);
+                                02=if(!ItemIsInUse(item))continue;
+                                02=if(ItemIsBroken(item))continue;
+                                03=if(ItemType(item)>t_Hull && ItemType(item)<t_Weapon1)useEnrg=useEnrg+6;
+                                04=if(ItemType(item)>t_DefGenerator)
+                                05 ^{
+                                    01=useEnrg=useEnrg+8;
+                                    02=if(WeaponTarget(item) && wpnTrg==0)
+                                    03 ^{
+                                        01=if(ObjectType(WeaponTarget(item))==4 || ObjectType(WeaponTarget(item))==5)wpnTrg=1;
+                                    }
+                                }
+                                07=bnsCnt=EqSpecial(item);
+                                08=if(bnsCnt>0)
+                                09 ^{
+                                    01=bnsCnt=CT('MicroModuls.'+BonusNumInCfg(bnsCnt)+'.mod_exptcplus_enrg_bonus');
+                                    02=if(bnsCnt!=0)bnsEnrg=bnsEnrg+bnsCnt;
+                                }
+                                10=if(ItemInScript(item))
+                                11 ^{
+                                    01=if(ScriptItemTextData(item,3)=='mod_exptcplus')
+                                    02 ^{
+                                        01=if(ScriptItemData(item,3)<0)useEnrg=useEnrg-ScriptItemData(item,3);
+                                        02=if(ScriptItemData(item,3)>0)bnsEnrg=bnsEnrg+ScriptItemData(item,3);
+                                        03=if(ScriptItemTextData(item,2)=='mod_exptcplus_droid')drdAdd=drdAdd+ScriptItemData(item,1);
+                                        04=if(ScriptItemTextData(item,2)=='mod_exptcplus_gzp')
+                                        05 ^{
+                                            01=defAdd=defAdd+ScriptItemData(item,1);
+                                            02=if(defAdd>99)defAdd=99;
+                                        }
+                                        06=if(ScriptItemData(item,2)>0)
+                                        07 ^{
+                                            01=drdShot=IdToItem(ScriptItemData(item,2));
+                                            02=drdBssy=item;
+                                        }
+                                    }
+                                }
+                            }
+                            04=for(a=1;a<5;a=a+1)
+                            05 ^{
+                                01=item=ShipEqInSlot(Player(), t_Artefact, a);
+                                02=if(!item)continue;
+                                03=artCnt=artCnt+1;
+                                04=if(ItemIsBroken(item))continue;
+                                05=useEnrg=useEnrg+4;
+                            }
+                            06=if(1)
+                            07 ^{
+                                01=item=ShipItems(Player(),0);
+                                02=curEnrg=curEnrg+2*6+ItemLevel(item);
+                                03=curEnrg=curEnrg+GetEquipmentStats(item, 1)*8;
+                                04=curEnrg=curEnrg+GetEquipmentStats(item, 2)*4;
+                                05=for(a=3;a<8;a=a+1)curEnrg=curEnrg+GetEquipmentStats(item, a)*6;
+                                06=if(ShipCntWeapon(Player())>GetEquipmentStats(item, 1))curEnrg=curEnrg+(ShipCntWeapon(Player())-GetEquipmentStats(item, 1))*8;
+                                07=if(artCnt>GetEquipmentStats(item, 2))curEnrg=curEnrg+(artCnt-GetEquipmentStats(item, 2))*4;
+                            }
+                            08=curEnrg=curEnrg-useEnrg+bnsEnrg;
+                            09=ShipCustomShipInfoData(0, CurInfo(), 1, curEnrg);
+                            10=int lowEnrg=0, radarOff=0, wpnOff=0;
+                            11=float backWay=0;
+                            12=if(curEnrg<0 && ShipInNormalSpace(Player()))
+                            13 ^{
+                                01=if(curEnrg>-5)lowEnrg=1;
+                                02=if(curEnrg>-10 && curEnrg<-4)lowEnrg=2;
+                                03=if(curEnrg<-9)lowEnrg=3;
+                                04=if(lowEnrg>0 && Rnd(0,100)<20)
+                                05 ^{
+                                    01=lowEnrg=lowEnrg-1;
+                                    02=if(ShipRadarRange(Player())>100)
+                                    03 ^{
+                                        01=radarOff=ShipRadarRange(Player());
+                                        02=ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)-radarOff);
+                                        03=Ether(8,'radar_off',CT('mod_exptcplus.Text.radOff'));
+                                    }
+                                }
+                                06=if(lowEnrg>0 && Rnd(0,100)<20)
+                                07 ^{
+                                    01=if(ShipSpeed(Player())>300)
+                                    02 ^{
+                                        00=backWay=ShipSpeed(Player())/2;
+                                        01=OrderMove(Player(),CoordX(Player())-backWay*sin((ShipAngle(Player())*pi)/180.0),CoordY(Player())+backWay*cos((ShipAngle(Player())*pi)/180.0),1);
+                                        02=Ether(8,'backWay',CT('mod_exptcplus.Text.trnBack'));
+                                    }
+                                    03=lowEnrg=lowEnrg-1;
+                                }
+                                08=if(lowEnrg>0 && Rnd(0,100)<20)
+                                09 ^{
+                                    02=for(a=1;a<6;a=a+1)
+                                    03 ^{
+                                        01=if(!ShipEqInSlot(Player(), t_Weapon1, a))continue;
+                                        01=if(!WeaponTarget(ShipEqInSlot(Player(), t_Weapon1, a)))continue;
+                                        02=wpnOff=1;
+                                        03=WeaponTarget(ShipEqInSlot(Player(), t_Weapon1, a), 0);
+                                    }
+                                    04=if(wpnOff)Ether(8,'wpnOff',CT('mod_exptcplus.Text.wpnOff'));
+                                    05=lowEnrg=lowEnrg-1;
+                                }
+                            }
+                        }
+                        05=if(ScriptItemActionType(t_OnStep, 5))
+                        06 ^{
+                            01=if(drdAdd>0)
+                            02 ^{
+                                01=if(HullDamage(ShipEqInSlot(Player(),t_Hull))>0)
+                                02 ^{
+                                    01=if(ItemSize(ShipEqInSlot(Player(),t_Hull))-Hitpoints(Player())>=drdAdd)
+                                    02 ^{
+                                        01=a=Hitpoints(Player())+drdAdd;
+                                        02=HullHP(Player(),a);
+                                        03=drdAdd=0;
+                                    }
+                                    03=else
+                                    04 ^{
+                                        01=a=ItemSize(ShipEqInSlot(Player(),t_Hull))-Hitpoints(Player());
+                                        02=HullHP(Player(),ItemSize(ShipEqInSlot(Player(),t_Hull)));
+                                        03=drdAdd=drdAdd - a;
+                                    }
+                                }
+                            }
+                            03=if(wpnTrg==1 && drdShot>0)
+                            04 ^{
+                                01=int range=GetEquipmentStats(drdShot,2);
+                                04=if(1)
+                                05 ^{
+                                    01=for(a=1;a<6;a=a+1)
+                                    02 ^{
+                                        01=item=ShipEqInSlot(Player(), t_Weapon1, a);
+                                        02=if(!item)continue;
+                                        03=if(!WeaponTarget(item))continue;
+                                        04=wpnTrg=WeaponTarget(item);
+                                        05=if(Dist(Player(),wpnTrg)>range)continue;
+                                        06=FireWeapon(Player(),wpnTrg,drdShot);
+                                        07=wpnTrg=2; drdShot=0;
+                                        08=break;
+                                    }
+                                }
+                                06=if(drdShot>0)
+                                08 ^{
+                                    06=for(a=0;a<StarShips(ShipStar(Player()));a=a+1)
+                                    07 ^{
+                                        01=wpnTrg=StarShips(ShipStar(Player()),a);
+                                        02=if(RelationToShip(wpnTrg, Player())>9)continue;
+                                        03=if(NoTargetToShip(wpnTrg))continue;
+                                        04=if(Dist(Player(),wpnTrg)>range)continue;
+                                        05=FireWeapon(Player(),wpnTrg,drdShot);
+                                        06=wpnTrg=2; drdShot=0;
+                                        07=break;
+                                    }
+                                }
+                            }
+                        }
+                        07=if(ScriptItemActionType(t_OnStep, 11))
+                        08 ^{
+                            01=if(radarOff>0)
+                            02 ^{
+                                01=ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)+radarOff);
+                                02=Ether(2,'radarOn',CT('mod_exptcplus.Text.radOn'));
+                            }
+                            05=if(wpnOff>0)Ether(2,'wpnOn',CT('mod_exptcplus.Text.wpnOn'));
+                            06=if(drdAdd>0)
+                            08 ^{
+                                01=if(HullDamage(Player())>0)
+                                02 ^{
+                                    01=if(ItemSize(ShipEqInSlot(Player(),t_Hull))-Hitpoints(Player())>=drdAdd)
+                                    02 ^{
+                                        01=a=Hitpoints(Player())+drdAdd;
+                                        02=HullHP(Player(),a);
+                                        03=drdAdd=0;
+                                    }
+                                    03=else
+                                    04 ^{
+                                        01=a=ItemSize(ShipEqInSlot(Player(),t_Hull))-Hitpoints(Player());
+                                        02=HullHP(Player(),ItemSize(ShipEqInSlot(Player(),t_Hull)));
+                                        03=drdAdd=drdAdd - a;
+                                    }
+                                }
+                            }
+                        }
+                        09=if(defAdd>0)
+                        10 ^{
+                            01=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
+                            02 ^{
+                                01=int dmg=ScriptItemActParam()*defAdd;
+                                02=dmg=dmg / 100;
+                                03=ScriptItemActParam(ScriptItemActParam()-dmg);
+                            }
+                        }
+                        11=if(ScriptItemActionType(t_OnDroidRepair))
+                        12 ^{
+                            01=if(wpnTrg==2)
+                            02 ^{
+                                01=if(ShipEqInSlot(Player(),t_RepairRobot)==drdBssy)ScriptItemActParam(0);
+                            }
+                        }
+                        13=if(ScriptItemActionType(t_OnLeavingForm) && CurrentForm()=='Ship')
+                        14 ^{
+                            01=if(ShipCustomShipInfoData(0, CurInfo(), 1)<0)Ether(8,'lowErg',CT('mod_exptcplus.Text.lowErg'));
+                        }
+                    }
+                    05=if(ScriptItemActionType(t_OnEnteringForm) && CurrentForm()=='PlanetNO')
+                    06 ^{
+                        01=int int0=0; dword pla=GetShipPlanet(Player()), sItem=0, uItem=0; str planet=Name(pla), str0='', str1='', ether='';
+                        02=InterfaceImage('PlanetNO','ref_btn1','GI,Img.ref_btn1');
+                        03=InterfaceImage('PlanetNO','ref_btn3','GI,Img.ref_btn3');
+                        04=InterfaceState('PlanetNO','RefAddToPlanet',1);
+                        05=InterfaceState('PlanetNO','RefGetFromPlanet',0);
+                        06=InterfaceState('PlanetNO','GetResButton',0);
+                        07=for(a=1;a<9;a=a+1)
+                        08 ^{
+                            01=sItem=GetValueFromScript('mod_exptcplus','mod_exptcplus_Refiner'+a);
+                            02=uItem=ScriptItemToItem(sItem);
+                            03=if(uItem==0)continue;
+                            03=if(ScriptItemTextData(sItem,1)=='')continue;
+                            04=str0=CT('mod_exptcplus.Refiner.ether_ref');
+                            05=int0=ItemDurability(uItem);
+                            06=if(ScriptItemData(sItem,1)>=UselessItemData(uItem,1))int0=-1;
+                            07=if(int0>0)str0=Format(str0,'[state]',CT('mod_exptcplus.Refiner.ref_wrk'));
+                            08=if(int0<=0)str0=Format(str0,'[state]',CT('mod_exptcplus.Refiner.ref_no_wrk'));
+                            09=str0=Format(str0,'[name]',Name(uItem));
+                            10=str0=Format(str0,'[planet]',ScriptItemTextData(sItem,1),'[star]',ScriptItemTextData(sItem,2));
+                            11=str0=Format(str0,'[res_type]',CT('mod_exptcplus.Refiner.res'+ScriptItemData(sItem,3)));
+                            12=str0=Format(str0,'[count]',ScriptItemData(sItem,1),'[max_count]',UselessItemData(uItem,1));
+                            13=str0=Format(str0,'[add_count]',UselessItemData(uItem,2),'[turns]',UselessItemData(uItem,3));
+                            14=str0=Format(str0,'[durab]',ItemDurability(uItem));
+                            15=str1=str1+str0;
+                            16=if(ScriptItemTextData(sItem,1)!=planet)continue;
+                            17=InterfaceImage('PlanetNO','ref_btn1','GI,Bm.ItemsUseless.2'+EquipmentImageName(sItem)+'_s');
+                            18=if(ScriptItemData(sItem,1)>0)
+                            19 ^{
+                                01=InterfaceImage('PlanetNO','ref_btn3','GI,Bm.Items.2mtcp_RefinerRes'+ScriptItemData(sItem,3)+'0_s');
+                                02=InterfaceState('PlanetNO','GetResButton',1);
+                            }
+                            20=InterfaceState('PlanetNO','RefAddToPlanet',0);
+                            21=InterfaceState('PlanetNO','RefGetFromPlanet',1);
+                        }
+                        10=if(str1!='')
+                        11 ^{
+                            01=ether=CT('mod_exptcplus.Refiner.ether')+str1;
+                            02=CustomEther('RefinerEther',3,'ref_ether', ether);
+                        }
+                        12=if(pla)
+                        13 ^{
+                            01=if(PlanetTerrain(pla,0)!=0)InterfaceText('PlanetNO','Planet_Res0',CT('mod_exptcplus.Refiner.res0')+': да');
+                            02=else InterfaceText('PlanetNO','Planet_Res0',CT('mod_exptcplus.Refiner.res0')+': нет');
+                            03=if(PlanetTerrain(pla,1)!=0)InterfaceText('PlanetNO','Planet_Res1',CT('mod_exptcplus.Refiner.res1')+': да');
+                            04=else InterfaceText('PlanetNO','Planet_Res1',CT('mod_exptcplus.Refiner.res1')+': нет');
+                            05=if(PlanetTerrain(pla,2)!=0)InterfaceText('PlanetNO','Planet_Res2',CT('mod_exptcplus.Refiner.res2')+': да');
+                            06=else InterfaceText('PlanetNO','Planet_Res2',CT('mod_exptcplus.Refiner.res2')+': нет');
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnEnteringForm,t_OnReEnteringForm,t_OnNonStandartEqChange,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnDroidRepair,t_OnLeavingForm
+                OnActStepTypes=0,5,11
+            }
+        }
+    }
+}
+UselessItems ^{
+    mtcp_RefinerT1A ^{
+        Cost=Huge
+        Cost_Add=100
+        GTU=1
+        Name=Очиститель Т1-100К
+        Owner=0
+        Production_Count=5
+        Production_Days=7
+        Res_Type=1
+        Size=10
+        Tank=100
+        Text=Производит поиск и добычу кислот на равнинных участках. Максимальная вместимость хранилища <Data1> ед. Скорость произодства: <Data2> ед. за <Data3> дней. Прочность: [durability]%
+        mod_exptcplus=1
+    }
+    mtcp_RefinerT1G ^{
+        Cost=Huge
+        Cost_Add=100
+        GTU=1
+        Name=Очиститель Т1-100Г
+        Owner=0
+        Production_Count=5
+        Production_Days=7
+        Res_Type=0
+        Size=10
+        Tank=100
+        Text=Производит поиск и добычу газа в глубоководных участках моря. Максимальная вместимость хранилища <Data1> ед. Скорость произодства: <Data2> ед. за <Data3> дней. Прочность: [durability]%
+        mod_exptcplus=1
+    }
+    mtcp_RefinerT1M ^{
+        Cost=Huge
+        Cost_Add=100
+        GTU=1
+        Name=Очиститель Т1-100М
+        Owner=0
+        Production_Count=5
+        Production_Days=7
+        Res_Type=2
+        Size=10
+        Tank=100
+        Text=Производит поиск и добычу металлов в горной местности. Максимальная вместимость хранилища <Data1> ед. Скорость произодства: <Data2> ед. за <Data3> дней. Прочность: [durability]%
+        mod_exptcplus=1
+    }
+    mtcp_RefinerT2A ^{
+        Cost=Huge
+        Cost_Add=125
+        GTU=3
+        Name=Очиститель Т2-300К
+        Owner=0
+        Production_Count=8
+        Production_Days=7
+        Res_Type=1
+        Size=30
+        Tank=300
+        Text=Производит поиск и добычу кислот на равнинных участках. Максимальная вместимость хранилища <Data1> ед. Скорость произодства: <Data2> ед. за <Data3> дней. Прочность: [durability]%
+        mod_exptcplus=1
+    }
+    mtcp_RefinerT2G ^{
+        Cost=Huge
+        Cost_Add=125
+        GTU=3
+        Name=Очиститель Т2-300Г
+        Owner=0
+        Production_Count=8
+        Production_Days=7
+        Res_Type=0
+        Size=30
+        Tank=300
+        Text=Производит поиск и добычу газа в глубоководных участках моря. Максимальная вместимость хранилища <Data1> ед. Скорость произодства: <Data2> ед. за <Data3> дней. Прочность: [durability]%
+        mod_exptcplus=1
+    }
+    mtcp_RefinerT2M ^{
+        Cost=Huge
+        Cost_Add=125
+        GTU=3
+        Name=Очиститель Т2-300М
+        Owner=0
+        Production_Count=8
+        Production_Days=7
+        Res_Type=2
+        Size=30
+        Tank=300
+        Text=Производит поиск и добычу металлов в горной местности. Максимальная вместимость хранилища <Data1> ед. Скорость произодства: <Data2> ед. за <Data3> дней. Прочность: [durability]%
+        mod_exptcplus=1
+    }
+    mtcp_RefinerT3A ^{
+        Cost=Huge
+        Cost_Add=160
+        GTU=5
+        Name=Очиститель Т3-500К
+        Owner=0
+        Production_Count=12
+        Production_Days=7
+        Res_Type=1
+        Size=60
+        Tank=500
+        Text=Производит поиск и добычу кислот на равнинных участках. Максимальная вместимость хранилища <Data1> ед. Скорость произодства: <Data2> ед. за <Data3> дней. Прочность: [durability]%
+        mod_exptcplus=1
+    }
+    mtcp_RefinerT3G ^{
+        Cost=Huge
+        Cost_Add=160
+        GTU=5
+        Name=Очиститель Т3-500Г
+        Owner=0
+        Production_Count=12
+        Production_Days=7
+        Res_Type=0
+        Size=60
+        Tank=500
+        Text=Производит поиск и добычу газа в глубоководных участках моря. Максимальная вместимость хранилища <Data1> ед. Скорость произодства: <Data2> ед. за <Data3> дней. Прочность: [durability]%
+        mod_exptcplus=1
+    }
+    mtcp_RefinerT3M ^{
+        Cost=Huge
+        Cost_Add=160
+        GTU=5
+        Name=Очиститель Т3-500М
+        Owner=0
+        Production_Count=12
+        Production_Days=7
+        Res_Type=2
+        Size=60
+        Tank=500
+        Text=Производит поиск и добычу металлов в горной местности. Максимальная вместимость хранилища <Data1> ед. Скорость произодства: <Data2> ед. за <Data3> дней. Прочность: [durability]%
+        mod_exptcplus=1
+    }
+    mtcp_RefinerT4A ^{
+        Cost=Huge
+        Cost_Add=200
+        GTU=7
+        Name=Очиститель Т4-800К
+        Owner=0
+        Production_Count=15
+        Production_Days=7
+        Res_Type=1
+        Size=100
+        Tank=800
+        Text=Производит поиск и добычу кислот на равнинных участках. Максимальная вместимость хранилища <Data1> ед. Скорость произодства: <Data2> ед. за <Data3> дней. Прочность: [durability]%
+        mod_exptcplus=1
+    }
+    mtcp_RefinerT4G ^{
+        Cost=Huge
+        Cost_Add=200
+        GTU=7
+        Name=Очиститель Т4-800Г
+        Owner=0
+        Production_Count=15
+        Production_Days=7
+        Res_Type=0
+        Size=100
+        Tank=800
+        Text=Производит поиск и добычу газа в глубоководных участках моря. Максимальная вместимость хранилища <Data1> ед. Скорость произодства: <Data2> ед. за <Data3> дней. Прочность: [durability]%
+        mod_exptcplus=1
+    }
+    mtcp_RefinerT4M ^{
+        Cost=Huge
+        Cost_Add=200
+        GTU=7
+        Name=Очиститель Т4-800М
+        Owner=0
+        Production_Count=15
+        Production_Days=7
+        Res_Type=2
+        Size=100
+        Tank=800
+        Text=Производит поиск и добычу металлов в горной местности. Максимальная вместимость хранилища <Data1> ед. Скорость произодства: <Data2> ед. за <Data3> дней. Прочность: [durability]%
+        mod_exptcplus=1
+    }
+}
+mod_exptcplus ^{
+    Refiner ^{
+        AddRefToPlanet=добавить очиститель на планету
+        BrokenInUse=Получен сигнал с планеты [planet]. Очиститель [name] вышел из строя и требует ремонта.
+        add_refiner_cant=Планета непригодна для добычи ресурса. Выберите другой очиститель или другую планету.
+        add_refiner_listbox=Выберите очиститель
+        ether=<color=0,252,0>Собственность вне корабля</color><br>--------------------------------------------------------------------------------------------------<br>
+        ether_ref=<color=248,236,96>Система [star]. Планета [planet].</color><br>- [name]<td=375>[state]<br>- [res_type]: [count] / [max_count] (+[add_count] ед / [turns] дней)<td=375>Прочность: [durab]%<br>--------------------------------------------------------------------------------------------------<br>
+        get_refiner=Забрать очиститель с планеты?
+        item_name=Очиститель
+        ref_full=Получен сигнал с планеты [planet]. Хранилище очистителя [name] заполненно.
+        ref_no_wrk=<color=248,0,0>(простаивает)</color>
+        ref_wrk=<color=0,252,0>(работает)</color>
+        res0=Газ
+        res1=Кислота
+        res2=Металл
+    }
+    Text ^{
+        infDesc=Базовая энергия: <curEnrg><br>Потребляемая энергия: <useEnrg><br>Дополнительная энергия: <bnsEnrg><br>Запас энергии: <totalEnrg>
+        lowErg=Недостаточно энергии!<br>Энергоснабжение корабля недостаточно для функционирования всех систем. Отключите лишнее оборудование или увеличьте выработку энергии.
+        radOff=Недостаточно энергии!<br>Энергоснабжение корабля недостаточно для функционирования всех систем. После очередного скачка напряжения отключились системы дальнего обнаружения.
+        radOn=Системы дальнего обнаружения перезагружены.<br>Но внезапные отключения буду продолжаться пока вы не решите проблему с энергоснабжением корабля. Отключите лишнее оборудование или увеличьте выработку энергии.
+        trnBack=Недостаточно энергии!<br>Энергоснабжение корабля недостаточно для функционирования всех систем. После очередного скачка напряжения навигатор неправильно рассчитал маршрут полета.
+        wpnOff=Недостаточно энергии!<br>Энергоснабжение корабля недостаточно для функционирования всех систем. После очередного скачка напряжения системы вооружения потеряли цель.
+        wpnOn=Системы вооружения перезагружены.<br>Но внезапные отключения буду продолжаться пока вы не решите проблему с энергоснабжением корабля. Отключите лишнее оборудование или увеличьте выработку энергии.
+    }
+}

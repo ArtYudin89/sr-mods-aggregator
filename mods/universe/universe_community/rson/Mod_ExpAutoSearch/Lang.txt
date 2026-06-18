@@ -1,0 +1,1606 @@
+FormInfo ^{
+    AutoSearchAcryn=Акрин:
+    AutoSearchAcrynAny=Не важен
+    AutoSearchAcrynLevel=Уровень акрина:
+    AutoSearchAcrynLevelNone=---
+    AutoSearchAcrynNone=Без акрина
+    AutoSearchConfirm=Оформить запрос
+    AutoSearchCustomisation=НАСТРОЙКА АВТОПОИСКА
+    AutoSearchDelete=Удалить запрос
+    AutoSearchHowOften=Как часто производить указанный запрос?
+    AutoSearchWeaponAcryn=Модификация:
+    AutoSearchWeaponAcrynAny=Не важна
+    AutoSearchWeaponAcrynLevel=Уровень модификации:
+    AutoSearchWeaponAcrynNone=Без модификации
+    CostShort=Цена:
+    DamageSusceptibility=Восприимчивость к Э/О/Р:
+    DoubleQuote="
+    Equipment ^{
+        EnergyType=энергетическое
+        Fuel=Ёмкость: <val>
+        MaxAmmo=Боезапас: <MaxCount>
+        MissileType=ракетное
+        QualityGrade0=непревзойдённая
+        QualityGrade1=очень высокая
+        QualityGrade2=высокая
+        QualityGrade3=средняя
+        QualityGrade4=низкая
+        QualityGrade5=очень низкая
+        QualityGrade6=ужасная
+        Reliability=Надёжность: <val>
+        SplinterType=осколочное
+        SusceptibilitySearch=Стойкость:  Э:#1#%  О:#2#%  Р:#3#%
+    }
+    M04Power=Мощность:
+    M05Power=Эффективность:
+    M07Block=Сила поля:
+    M11Def=Броня:
+    M11Size=Вместительность:
+    WordDroidLowercase=дроид
+    WordEngineLowercase=двигатель
+    WordFuelTankLowercase=топливный бак
+    WordGripperLowercase=захват
+    WordHullCapital=Корпус
+    WordHullLowercase=корпус
+    WordRadarLowercase=радар
+    WordScannerLowercase=сканер
+    WordShieldGeneratorLowercase=генератор защиты
+}
+Script ^{
+    Mod_ExpAutoSearch ^{
+        0=<br>
+        2=<0>
+        ChangeExistedRequest=Изменить существующий запрос
+        ChangeRequestConfirm=Вы уверены, что хотите переоформить поисковый запрос за #0# cr?
+        ChooseAcryn=Выберите акрин:
+        ChooseModification=Выберите модификацию:
+        ChooseWeaponName=Выберите желаемое орудие:
+        CreateNewRequest=Создать новый запрос
+        DeleteRequestConfirm=Вы уверены, что хотите удалить данный запрос?
+        DialogHeaderWithExpBK=Помимо этого, в рамках программы сотрудничества с единым галактическим <clr>Инфоцентром<clrEnd>, здесь вы можете оформить автоматический поисковый запрос, который поможет сэкономить ваше время в нахождении необходимого бортового оборудования.
+        DialogHeaderWithNoExpBK=В рамках программы сотрудничества с единым галактическим Инфоцентром, здесь вы можете оформить автоматический поисковый запрос, который поможет сэкономить ваше время в нахождении необходимого бортового оборудования.
+        Droids=дроида
+        Engines=двигателя
+        FuelTanks=топл. бака
+        GetBack=Назад
+        GreetingsNewRequestText=Новый поисковый запрос успешно <clr>создан<clrEnd>. Желаете сделать что-нибудь ещё?
+        GreetingsText=Создание автоматического поискового запроса - отличный способ сэкономить ваше время и нервы на поиске необходимого оборудования через единый галактический <clr>Инфоцентр<clrEnd>. Просто укажите желаемые параметры запроса и наши автоматические субквантовые сервера с удовольствием выполнят всю работу за вас!<br><clr><clrEnd><br>Одновременно вы можете оформить до #0# поисковых запросов, каждый из которых сможет вывести на вашу панель уведомлений до #1# успешных результатов поиска. Каждый оформленный поисковый запрос будет автоматически производить поиск через указанные вами промежутки времени до тех пор, пока вы не <clr>удалите<clrEnd> или не <clr>переоформите<clrEnd> его на поиск другого предмета. Также имейте ввиду, что первый поиск после оформления или переоформления запроса произойдёт на следующий же день после подтверждения операции.<br><clr><clrEnd><br>Стоимость оформления или переоформления поискового запроса на данный момент составляет #2# cr., а стоимость непосредственно осуществления поиска по данному запросу - #3# cr.
+        Grippers=захвата
+        HullTypeHasNotChosen=Для создания поискового запроса вы должны указать как минимум один подходящий тип корпуса.
+        Hulls=корпуса
+        MainDialogInject=Мои поисковые запросы
+        NewRequestConfirm=Вы уверены, что хотите оформить новый поисковый запрос за #0# cr?
+        NoBKLeft=Все бизнес-центры уничтожены. Ваши <color=255,240,100>поисковые запросы</color> временно заморожены.
+        NoMoneyForRequest=Уважаемый клиент, на вашем счету недостаточно средств для оплаты стоимости запланированного запроса автопоиска. Стандартная стоимость данной операции составляет #0# cr.
+        NoSuccessfulResults=Уважаемый клиент, по вашему запросу поиска #0# ничего не найдено. Однако не огорчайтесь, в другой раз вам непременно повезёт.
+        NotEnoughMoneyToChangeRequest=Извините, но на вашем счету недостаточно средств для переоформления поискового запроса.
+        NotEnoughMoneyToNewRequest=Извините, но на вашем счету недостаточно средств для оформления поискового запроса.
+        RaceHasNotChosen=Для создания поискового запроса вы должны указать как минимум одну подходящую расу производителя.
+        Radars=радара
+        RequestAnswer=Запрос на поиск #0#<br><clr> <clrEnd><clr> <clrEnd><clr> <clrEnd><clr> <clrEnd>(раз в #1# дн.)
+        RequestChangeList=Выберите запрос, который вы хотели бы <clr>просмотреть<clrEnd>, <clr>изменить<clrEnd> или <clr>удалить<clrEnd>.
+        RequestWasChanged=Выбранный поисковый запрос успешно <clr>изменён<clrEnd>. Желаете сделать что-нибудь ещё?
+        RequestWasDeleted=Выбранный поисковый запрос успешно <clr>удалён<clrEnd>. Желаете сделать что-нибудь ещё?
+        Scanners=сканера
+        ShieldGenerators=ГЗП
+        TheShop=Магазин:
+        WeaponTypeHasNotChosen=Для создания поискового запроса вы должны указать как минимум один подходящий тип оружия.
+        Weapons=оружия
+        function_AcrynListForAutoSearch ^{
+            01=int i;
+            02=arraychange(GAcrynListTempArr, 2);
+            03=if(type == 'WeaponNames')
+            04 ^{
+                01=GAcrynListTempArr[1] = 'WeaponNames';
+                02=ArrayAdd(GAcrynListTempArr, 0);
+                03=int c = 0;
+                04=int GTL = GalaxyTechLevel() + 1;
+                05=if(GTL > 8) GTL = 8;
+                06=for(i = 1; i <= 18; i = i + 1)
+                07 ^{
+                    01=if(i <= 12 || i >= 16)
+                    02 ^{
+                        01=if(GTL >= GetCustomWeaponData((t_Weapon1 - 1) + i, 'TechLevel'))
+                        02 ^{
+                            01=ArrayAdd(GAcrynListTempArr, i);
+                            02=c = c + 1;
+                        }
+                    }
+                }
+                08=GAcrynListTempArr[2] = c;
+                09=for(i = 0; i < CustomWeaponTypes(); i = i + 1)
+                10 ^{
+                    01=str CWtype = CustomWeaponTypes(i);
+                    02=if(GTL >= GetCustomWeaponData(CWtype, 'TechLevel'))
+                    03 ^{
+                        01=if(GetCustomWeaponData(CWtype, 'Availability') != 'NotSold' && GetCustomWeaponData(CWtype, 'Availability') != 'NotSoldAndNodeRepair')ArrayAdd(GAcrynListTempArr, CWtype);
+                    }
+                }
+            }
+            05=else if((type >= t_Hull && type <= t_CustomWeapon) || type == -1)
+            06 ^{
+                01=ArrayAdd(GAcrynListTempArr, -2);
+                02=ArrayAdd(GAcrynListTempArr, -1);
+                03=if(type != -1)
+                04 ^{
+                    01=str add_type;
+                    02=if(type == t_Hull)
+                    03 ^{
+                        01=GAcrynListTempArr[1] = type;
+                        02=type = 'Hull';
+                        03=add_type = 't_Hull';
+                    }
+                    04=else if(type >= t_Weapon1 && type <= t_Weapon18)
+                    05 ^{
+                        01=GAcrynListTempArr[1] = type;
+                        02=if(type <= t_Weapon9)
+                        03 ^{
+                            01=add_type = 't_Weapon' + (-t_Weapon1 + 1 + type);
+                            02=type = 'W0' + (-t_Weapon1 + 1 + type);
+                        }
+                        04=else
+                        05 ^{
+                            01=add_type = 't_Weapon' + (-t_Weapon1 + 1 + type);
+                            02=type = 'W' + (-t_Weapon1 + 1 + type);
+                        }
+                    }
+                    06=else if(type == t_CustomWeapon)
+                    07 ^{
+                        01=GAcrynListTempArr[1] = custom_type;
+                        02=type = custom_type;
+                        03=add_type = 't_CustomWeapon';
+                    }
+                    08=else if(type == t_Engine)
+                    09 ^{
+                        01=GAcrynListTempArr[1] = type;
+                        02=type = 'Engine';
+                        03=add_type = 't_Engine';
+                    }
+                    10=else if(type == t_FuelTanks)
+                    11 ^{
+                        01=GAcrynListTempArr[1] = type;
+                        02=type = 'FuelTank';
+                        03=add_type = 't_FuelTanks';
+                    }
+                    12=else if(type == t_Radar)
+                    13 ^{
+                        01=GAcrynListTempArr[1] = type;
+                        02=type = 'Radar';
+                        03=add_type = 't_Radar';
+                    }
+                    14=else if(type == t_Scaner)
+                    15 ^{
+                        01=GAcrynListTempArr[1] = type;
+                        02=type = 'Scaner';
+                        03=add_type = 't_Scaner';
+                    }
+                    16=else if(type == t_RepairRobot)
+                    17 ^{
+                        01=GAcrynListTempArr[1] = type;
+                        02=type = 'Droid';
+                        03=add_type = 't_RepairRobot';
+                    }
+                    18=else if(type == t_CargoHook)
+                    19 ^{
+                        01=GAcrynListTempArr[1] = type;
+                        02=type = 'Hook';
+                        03=add_type = 't_CargoHook';
+                    }
+                    20=else if(type == t_DefGenerator)
+                    21 ^{
+                        01=GAcrynListTempArr[1] = type;
+                        02=type = 'DefGenerator';
+                        03=add_type = 't_DefGenerator';
+                    }
+                    22=str series_in_list = '#';
+                    23=for(i = 0; i < BonusCount(); i = i + 1)
+                    24 ^{
+                        01=str numInCfg = BonusNumInCfg(i);
+                        02=if(!BonusIsSpecial(i)) continue;
+                        03=if(CT('MicroModuls.' + numInCfg + '.NonSearchable')) continue;
+                        04=str equipOn = CT('MicroModuls.' + numInCfg + '.Equipments');
+                        05=if(findsubstr(equipOn, type) == -1)
+                        06 ^{
+                            01=if(equipOn != 'Any' && equipOn != '')
+                            02 ^{
+                                01=str imit_type = CT('MicroModuls.' + numInCfg + '.ImitatedEquipType');
+                                02=if(imit_type == '') continue;
+                                03=if(findsubstr(imit_type, add_type)) continue;
+                                04=if(add_type == 't_CustomWeapon')
+                                05 ^{
+                                    01=unknown GetParFromString = ImportedFunction('UtilityFunctions', 'GetParFromString');
+                                    02=if(GetParFromString(imit_type, ',', 1, 1) != type) continue;
+                                }
+                            }
+                        }
+                        07=str serie_name = CT('MicroModuls.' + numInCfg + '.AcrynSerie');
+                        08=if(serie_name == '')
+                        09 ^{
+                            01=if(GalaxyTechLevel() < 8.0 * (0.01 * CT('MicroModuls.' + numInCfg + '.Priority'))) continue;
+                            02=ArrayAdd(GAcrynListTempArr, numInCfg);
+                        }
+                        10=else
+                        11 ^{
+                            01=if(findsubstr(series_in_list, '#' + serie_name + '#') > -1) continue;
+                            02=series_in_list = series_in_list + serie_name + '#';
+                            03=numInCfg = CT('MicroModuls.' + numInCfg + '.SerieLevel1');
+                            04=if(GalaxyTechLevel() < 8.0 * (0.01 * CT('MicroModuls.' + numInCfg + '.Priority'))) continue;
+                            05=ArrayAdd(GAcrynListTempArr, numInCfg);
+                        }
+                    }
+                }
+                05=else GAcrynListTempArr[1] = type;
+            }
+        }
+        function_RaceSetDefine ^{
+            01=int race_set = 0;
+            02=if(race_str == 'Any' || race_str == '')
+            03 ^{
+                01=race_set = 255;
+                02=exit;
+            }
+            04=int check_comma;
+            05=str t_str;
+            06=int end_while = 0;
+            07=while(!end_while)
+            08 ^{
+                01=check_comma = findsubstr(race_str, ',');
+                02=if(check_comma > -1)
+                03 ^{
+                    01=t_str = substr(race_str, 0, check_comma);
+                    02=if(t_str == 'Maloc')
+                    03 ^{
+                        01=if(!(race_set & 1)) race_set = race_set + 1;
+                    }
+                    04=else if(t_str == 'Peleng')
+                    05 ^{
+                        01=if(!(race_set & 2)) race_set = race_set + 2;
+                    }
+                    06=else if(t_str == 'People')
+                    07 ^{
+                        01=if(!(race_set & 4)) race_set = race_set + 4;
+                    }
+                    08=else if(t_str == 'Fei')
+                    09 ^{
+                        01=if(!(race_set & 8)) race_set = race_set + 8;
+                    }
+                    10=else if(t_str == 'Gaal')
+                    11 ^{
+                        01=if(!(race_set & 16)) race_set = race_set + 16;
+                    }
+                    12=else if(t_str == 'PirateClan')
+                    13 ^{
+                        01=if(!(race_set & 128)) race_set = race_set + 128;
+                    }
+                    14=race_str = substr(race_str, check_comma + 1);
+                }
+                04=else
+                05 ^{
+                    01=t_str = race_str;
+                    02=if(t_str == 'Maloc')
+                    03 ^{
+                        01=if(!(race_set & 1)) race_set = race_set + 1;
+                    }
+                    04=else if(t_str == 'Peleng')
+                    05 ^{
+                        01=if(!(race_set & 2)) race_set = race_set + 2;
+                    }
+                    06=else if(t_str == 'People')
+                    07 ^{
+                        01=if(!(race_set & 4)) race_set = race_set + 4;
+                    }
+                    08=else if(t_str == 'Fei')
+                    09 ^{
+                        01=if(!(race_set & 8)) race_set = race_set + 8;
+                    }
+                    10=else if(t_str == 'Gaal')
+                    11 ^{
+                        01=if(!(race_set & 16)) race_set = race_set + 16;
+                    }
+                    12=else if(t_str == 'PirateClan')
+                    13 ^{
+                        01=if(!(race_set & 128)) race_set = race_set + 128;
+                    }
+                    14=end_while = 1;
+                }
+            }
+        }
+    }
+}
+MicroModuls ^{
+    350 ^{
+        Name=Убийца
+        NonSearchable=1
+    }
+    351 ^{
+        Name=Скала
+        NonSearchable=1
+    }
+    352 ^{
+        Name=Болид
+        NonSearchable=1
+    }
+    353 ^{
+        AcrynLevel=1
+        AcrynSerie=Быстрый корпус I-IV
+        LevelsCount=4
+        Name=Быстрый корпус I
+        SerieLevel1=353
+        SerieLevel2=354
+        SerieLevel3=355
+        SerieLevel4=356
+    }
+    354 ^{
+        AcrynLevel=2
+        AcrynSerie=Быстрый корпус I-IV
+        LevelsCount=4
+        Name=Быстрый корпус II
+        SerieLevel1=353
+        SerieLevel2=354
+        SerieLevel3=355
+        SerieLevel4=356
+    }
+    355 ^{
+        AcrynLevel=3
+        AcrynSerie=Быстрый корпус I-IV
+        LevelsCount=4
+        Name=Быстрый корпус III
+        SerieLevel1=353
+        SerieLevel2=354
+        SerieLevel3=355
+        SerieLevel4=356
+    }
+    356 ^{
+        AcrynLevel=4
+        AcrynSerie=Быстрый корпус I-IV
+        LevelsCount=4
+        Name=Быстрый корпус IV
+        SerieLevel1=353
+        SerieLevel2=354
+        SerieLevel3=355
+        SerieLevel4=356
+    }
+    357 ^{
+        AcrynLevel=1
+        AcrynSerie=Неуязвимый корпус I-IV
+        LevelsCount=4
+        Name=Неуязвимый корпус I
+        SerieLevel1=357
+        SerieLevel2=358
+        SerieLevel3=359
+        SerieLevel4=360
+    }
+    358 ^{
+        AcrynLevel=2
+        AcrynSerie=Неуязвимый корпус I-IV
+        LevelsCount=4
+        Name=Неуязвимый корпус II
+        SerieLevel1=357
+        SerieLevel2=358
+        SerieLevel3=359
+        SerieLevel4=360
+    }
+    359 ^{
+        AcrynLevel=3
+        AcrynSerie=Неуязвимый корпус I-IV
+        LevelsCount=4
+        Name=Неуязвимый корпус III
+        SerieLevel1=357
+        SerieLevel2=358
+        SerieLevel3=359
+        SerieLevel4=360
+    }
+    360 ^{
+        AcrynLevel=4
+        AcrynSerie=Неуязвимый корпус I-IV
+        LevelsCount=4
+        Name=Неуязвимый корпус IV
+        SerieLevel1=357
+        SerieLevel2=358
+        SerieLevel3=359
+        SerieLevel4=360
+    }
+    361 ^{
+        AcrynLevel=1
+        AcrynSerie=Ремонтный корпус I-IV
+        LevelsCount=4
+        Name=Ремонтный корпус I
+        SerieLevel1=361
+        SerieLevel2=362
+        SerieLevel3=363
+        SerieLevel4=364
+    }
+    362 ^{
+        AcrynLevel=2
+        AcrynSerie=Ремонтный корпус I-IV
+        LevelsCount=4
+        Name=Ремонтный корпус II
+        SerieLevel1=361
+        SerieLevel2=362
+        SerieLevel3=363
+        SerieLevel4=364
+    }
+    363 ^{
+        AcrynLevel=3
+        AcrynSerie=Ремонтный корпус I-IV
+        LevelsCount=4
+        Name=Ремонтный корпус III
+        SerieLevel1=361
+        SerieLevel2=362
+        SerieLevel3=363
+        SerieLevel4=364
+    }
+    364 ^{
+        AcrynLevel=4
+        AcrynSerie=Ремонтный корпус I-IV
+        LevelsCount=4
+        Name=Ремонтный корпус IV
+        SerieLevel1=361
+        SerieLevel2=362
+        SerieLevel3=363
+        SerieLevel4=364
+    }
+    365 ^{
+        AcrynLevel=1
+        AcrynSerie=Миоплазменный корпус I-IV
+        LevelsCount=4
+        Name=Миоплазменный корпус I
+        SerieLevel1=365
+        SerieLevel2=366
+        SerieLevel3=368
+        SerieLevel4=368
+    }
+    366 ^{
+        AcrynLevel=2
+        AcrynSerie=Миоплазменный корпус I-IV
+        LevelsCount=4
+        Name=Миоплазменный корпус II
+        SerieLevel1=365
+        SerieLevel2=366
+        SerieLevel3=368
+        SerieLevel4=368
+    }
+    367 ^{
+        AcrynLevel=3
+        AcrynSerie=Миоплазменный корпус I-IV
+        LevelsCount=4
+        Name=Миоплазменный корпус III
+        SerieLevel1=365
+        SerieLevel2=366
+        SerieLevel3=368
+        SerieLevel4=368
+    }
+    368 ^{
+        AcrynLevel=4
+        AcrynSerie=Миоплазменный корпус I-IV
+        LevelsCount=4
+        Name=Миоплазменный корпус IV
+        SerieLevel1=365
+        SerieLevel2=366
+        SerieLevel3=368
+        SerieLevel4=368
+    }
+    369 ^{
+        AcrynLevel=1
+        AcrynSerie=Пигамарный корпус I-IV
+        LevelsCount=4
+        Name=Пигамарный корпус I
+        SerieLevel1=369
+        SerieLevel2=370
+        SerieLevel3=371
+        SerieLevel4=372
+    }
+    370 ^{
+        AcrynLevel=2
+        AcrynSerie=Пигамарный корпус I-IV
+        LevelsCount=4
+        Name=Пигамарный корпус II
+        SerieLevel1=369
+        SerieLevel2=370
+        SerieLevel3=371
+        SerieLevel4=372
+    }
+    371 ^{
+        AcrynLevel=3
+        AcrynSerie=Пигамарный корпус I-IV
+        LevelsCount=4
+        Name=Пигамарный корпус III
+        SerieLevel1=369
+        SerieLevel2=370
+        SerieLevel3=371
+        SerieLevel4=372
+    }
+    372 ^{
+        AcrynLevel=4
+        AcrynSerie=Пигамарный корпус I-IV
+        LevelsCount=4
+        Name=Пигамарный корпус IV
+        SerieLevel1=369
+        SerieLevel2=370
+        SerieLevel3=371
+        SerieLevel4=372
+    }
+    373 ^{
+        AcrynLevel=1
+        AcrynSerie=Миоплазменный топливный бак I-III
+        LevelsCount=3
+        Name=Миоплазменный топливный бак I
+        SerieLevel1=373
+        SerieLevel2=380
+        SerieLevel3=387
+    }
+    374 ^{
+        AcrynLevel=1
+        AcrynSerie=Миоплазменный двигатель I-III
+        LevelsCount=3
+        Name=Миоплазменный двигатель I
+        SerieLevel1=374
+        SerieLevel2=381
+        SerieLevel3=388
+    }
+    375 ^{
+        AcrynLevel=1
+        AcrynSerie=Миоплазменный радар I-III
+        LevelsCount=3
+        Name=Миоплазменный радар I
+        SerieLevel1=375
+        SerieLevel2=382
+        SerieLevel3=389
+    }
+    376 ^{
+        AcrynLevel=1
+        AcrynSerie=Миоплазменный сканер I-III
+        LevelsCount=3
+        Name=Миоплазменный сканер I
+        SerieLevel1=376
+        SerieLevel2=383
+        SerieLevel3=390
+    }
+    377 ^{
+        AcrynLevel=1
+        AcrynSerie=Миоплазменный дроид I-III
+        LevelsCount=3
+        Name=Миоплазменный дроид I
+        SerieLevel1=377
+        SerieLevel2=384
+        SerieLevel3=391
+    }
+    378 ^{
+        AcrynLevel=1
+        AcrynSerie=Миоплазменный захват I-III
+        LevelsCount=3
+        Name=Миоплазменный захват I
+        SerieLevel1=378
+        SerieLevel2=385
+        SerieLevel3=392
+    }
+    379 ^{
+        AcrynLevel=1
+        AcrynSerie=Миоплазменный генератор защиты I-III
+        LevelsCount=3
+        Name=Миоплазменный генератор защиты I
+        SerieLevel1=379
+        SerieLevel2=386
+        SerieLevel3=393
+    }
+    380 ^{
+        AcrynLevel=2
+        AcrynSerie=Миоплазменный топливный бак I-III
+        LevelsCount=3
+        Name=Миоплазменный топливный бак II
+        SerieLevel1=373
+        SerieLevel2=380
+        SerieLevel3=387
+    }
+    381 ^{
+        AcrynLevel=2
+        AcrynSerie=Миоплазменный двигатель I-III
+        LevelsCount=3
+        Name=Миоплазменный двигатель II
+        SerieLevel1=374
+        SerieLevel2=381
+        SerieLevel3=388
+    }
+    382 ^{
+        AcrynLevel=2
+        AcrynSerie=Миоплазменный радар I-III
+        LevelsCount=3
+        Name=Миоплазменный радар II
+        SerieLevel1=375
+        SerieLevel2=382
+        SerieLevel3=389
+    }
+    383 ^{
+        AcrynLevel=2
+        AcrynSerie=Миоплазменный сканер I-III
+        LevelsCount=3
+        Name=Миоплазменный сканер II
+        SerieLevel1=376
+        SerieLevel2=383
+        SerieLevel3=390
+    }
+    384 ^{
+        AcrynLevel=2
+        AcrynSerie=Миоплазменный дроид I-III
+        LevelsCount=3
+        Name=Миоплазменный дроид II
+        SerieLevel1=377
+        SerieLevel2=384
+        SerieLevel3=391
+    }
+    385 ^{
+        AcrynLevel=2
+        AcrynSerie=Миоплазменный захват I-III
+        LevelsCount=3
+        Name=Миоплазменный захват II
+        SerieLevel1=378
+        SerieLevel2=385
+        SerieLevel3=392
+    }
+    386 ^{
+        AcrynLevel=2
+        AcrynSerie=Миоплазменный генератор защиты I-III
+        LevelsCount=3
+        Name=Миоплазменный генератор защиты II
+        SerieLevel1=379
+        SerieLevel2=386
+        SerieLevel3=393
+    }
+    387 ^{
+        AcrynLevel=3
+        AcrynSerie=Миоплазменный топливный бак I-III
+        LevelsCount=3
+        Name=Миоплазменный топливный бак III
+        SerieLevel1=373
+        SerieLevel2=380
+        SerieLevel3=387
+    }
+    388 ^{
+        AcrynLevel=3
+        AcrynSerie=Миоплазменный двигатель I-III
+        LevelsCount=3
+        Name=Миоплазменный двигатель III
+        SerieLevel1=374
+        SerieLevel2=381
+        SerieLevel3=388
+    }
+    389 ^{
+        AcrynLevel=3
+        AcrynSerie=Миоплазменный радар I-III
+        LevelsCount=3
+        Name=Миоплазменный радар III
+        SerieLevel1=375
+        SerieLevel2=382
+        SerieLevel3=389
+    }
+    390 ^{
+        AcrynLevel=3
+        AcrynSerie=Миоплазменный сканер I-III
+        LevelsCount=3
+        Name=Миоплазменный сканер III
+        SerieLevel1=376
+        SerieLevel2=383
+        SerieLevel3=390
+    }
+    391 ^{
+        AcrynLevel=3
+        AcrynSerie=Миоплазменный дроид I-III
+        LevelsCount=3
+        Name=Миоплазменный дроид III
+        SerieLevel1=377
+        SerieLevel2=384
+        SerieLevel3=391
+    }
+    392 ^{
+        AcrynLevel=3
+        AcrynSerie=Миоплазменный захват I-III
+        LevelsCount=3
+        Name=Миоплазменный захват III
+        SerieLevel1=378
+        SerieLevel2=385
+        SerieLevel3=392
+    }
+    393 ^{
+        AcrynLevel=3
+        AcrynSerie=Миоплазменный генератор защиты I-III
+        LevelsCount=3
+        Name=Миоплазменный генератор защиты III
+        SerieLevel1=379
+        SerieLevel2=386
+        SerieLevel3=393
+    }
+    394 ^{
+        AcrynLevel=1
+        AcrynSerie=Пигамарный топливный бак I-III
+        LevelsCount=3
+        Name=Пигамарный топливный бак I
+        SerieLevel1=394
+        SerieLevel2=401
+        SerieLevel3=408
+    }
+    395 ^{
+        AcrynLevel=1
+        AcrynSerie=Пигамарный двигатель I-III
+        LevelsCount=3
+        Name=Пигамарный двигатель I
+        SerieLevel1=395
+        SerieLevel2=402
+        SerieLevel3=409
+    }
+    396 ^{
+        AcrynLevel=1
+        AcrynSerie=Пигамарный радар I-III
+        LevelsCount=3
+        Name=Пигамарный радар I
+        SerieLevel1=396
+        SerieLevel2=403
+        SerieLevel3=410
+    }
+    397 ^{
+        AcrynLevel=1
+        AcrynSerie=Пигамарный сканер I-III
+        LevelsCount=3
+        Name=Пигамарный сканер I
+        SerieLevel1=397
+        SerieLevel2=404
+        SerieLevel3=411
+    }
+    398 ^{
+        AcrynLevel=1
+        AcrynSerie=Пигамарный дроид I-III
+        LevelsCount=3
+        Name=Пигамарный дроид I
+        SerieLevel1=398
+        SerieLevel2=405
+        SerieLevel3=412
+    }
+    399 ^{
+        AcrynLevel=1
+        AcrynSerie=Пигамарный захват I-III
+        LevelsCount=3
+        Name=Пигамарный захват I
+        SerieLevel1=399
+        SerieLevel2=406
+        SerieLevel3=413
+    }
+    400 ^{
+        AcrynLevel=1
+        AcrynSerie=Пигамарный генератор защиты I-III
+        LevelsCount=3
+        Name=Пигамарный генератор защиты I
+        SerieLevel1=400
+        SerieLevel2=407
+        SerieLevel3=414
+    }
+    401 ^{
+        AcrynLevel=2
+        AcrynSerie=Пигамарный топливный бак I-III
+        LevelsCount=3
+        Name=Пигамарный топливный бак II
+        SerieLevel1=394
+        SerieLevel2=401
+        SerieLevel3=408
+    }
+    402 ^{
+        AcrynLevel=2
+        AcrynSerie=Пигамарный двигатель I-III
+        LevelsCount=3
+        Name=Пигамарный двигатель II
+        SerieLevel1=395
+        SerieLevel2=402
+        SerieLevel3=409
+    }
+    403 ^{
+        AcrynLevel=2
+        AcrynSerie=Пигамарный радар I-III
+        LevelsCount=3
+        Name=Пигамарный радар II
+        SerieLevel1=396
+        SerieLevel2=403
+        SerieLevel3=410
+    }
+    404 ^{
+        AcrynLevel=2
+        AcrynSerie=Пигамарный сканер I-III
+        LevelsCount=3
+        Name=Пигамарный сканер II
+        SerieLevel1=397
+        SerieLevel2=404
+        SerieLevel3=411
+    }
+    405 ^{
+        AcrynLevel=2
+        AcrynSerie=Пигамарный дроид I-III
+        LevelsCount=3
+        Name=Пигамарный дроид II
+        SerieLevel1=398
+        SerieLevel2=405
+        SerieLevel3=412
+    }
+    406 ^{
+        AcrynLevel=2
+        AcrynSerie=Пигамарный захват I-III
+        LevelsCount=3
+        Name=Пигамарный захват II
+        SerieLevel1=399
+        SerieLevel2=406
+        SerieLevel3=413
+    }
+    407 ^{
+        AcrynLevel=2
+        AcrynSerie=Пигамарный генератор защиты I-III
+        LevelsCount=3
+        Name=Пигамарный генератор защиты II
+        SerieLevel1=400
+        SerieLevel2=407
+        SerieLevel3=414
+    }
+    408 ^{
+        AcrynLevel=3
+        AcrynSerie=Пигамарный топливный бак I-III
+        LevelsCount=3
+        Name=Пигамарный топливный бак III
+        SerieLevel1=394
+        SerieLevel2=401
+        SerieLevel3=408
+    }
+    409 ^{
+        AcrynLevel=3
+        AcrynSerie=Пигамарный двигатель I-III
+        LevelsCount=3
+        Name=Пигамарный двигатель III
+        SerieLevel1=395
+        SerieLevel2=402
+        SerieLevel3=409
+    }
+    410 ^{
+        AcrynLevel=3
+        AcrynSerie=Пигамарный радар I-III
+        LevelsCount=3
+        Name=Пигамарный радар III
+        SerieLevel1=396
+        SerieLevel2=403
+        SerieLevel3=410
+    }
+    411 ^{
+        AcrynLevel=3
+        AcrynSerie=Пигамарный сканер I-III
+        LevelsCount=3
+        Name=Пигамарный сканер III
+        SerieLevel1=397
+        SerieLevel2=404
+        SerieLevel3=411
+    }
+    412 ^{
+        AcrynLevel=3
+        AcrynSerie=Пигамарный дроид I-III
+        LevelsCount=3
+        Name=Пигамарный дроид III
+        SerieLevel1=398
+        SerieLevel2=405
+        SerieLevel3=412
+    }
+    413 ^{
+        AcrynLevel=3
+        AcrynSerie=Пигамарный захват I-III
+        LevelsCount=3
+        Name=Пигамарный захват III
+        SerieLevel1=399
+        SerieLevel2=406
+        SerieLevel3=413
+    }
+    414 ^{
+        AcrynLevel=3
+        AcrynSerie=Пигамарный генератор защиты I-III
+        LevelsCount=3
+        Name=Пигамарный генератор защиты III
+        SerieLevel1=400
+        SerieLevel2=407
+        SerieLevel3=414
+    }
+    415 ^{
+        AcrynLevel=1
+        AcrynSerie=Трансцендентальный двигатель I-III
+        LevelsCount=3
+        Name=Трансцендентальный двигатель I
+        SerieLevel1=415
+        SerieLevel2=416
+        SerieLevel3=417
+    }
+    416 ^{
+        AcrynLevel=2
+        AcrynSerie=Трансцендентальный двигатель I-III
+        LevelsCount=3
+        Name=Трансцендентальный двигатель II
+        SerieLevel1=415
+        SerieLevel2=416
+        SerieLevel3=417
+    }
+    417 ^{
+        AcrynLevel=3
+        AcrynSerie=Трансцендентальный двигатель I-III
+        LevelsCount=3
+        Name=Трансцендентальный двигатель III
+        SerieLevel1=415
+        SerieLevel2=416
+        SerieLevel3=417
+    }
+    418 ^{
+        AcrynLevel=1
+        AcrynSerie=Апгрейтинговый захват I-III
+        LevelsCount=3
+        Name=Апгрейтинговый захват I
+        SerieLevel1=418
+        SerieLevel2=424
+        SerieLevel3=430
+    }
+    419 ^{
+        AcrynLevel=1
+        AcrynSerie=Апгрейтинговый генератор защиты I-III
+        LevelsCount=3
+        Name=Апгрейтинговый генератор защиты I
+        SerieLevel1=419
+        SerieLevel2=425
+        SerieLevel3=431
+    }
+    420 ^{
+        AcrynLevel=1
+        AcrynSerie=Апгрейтинговый двигатель I-III
+        LevelsCount=3
+        Name=Апгрейтинговый двигатель I
+        SerieLevel1=420
+        SerieLevel2=426
+        SerieLevel3=432
+    }
+    421 ^{
+        AcrynLevel=1
+        AcrynSerie=Апгрейтинговый топливный бак I-III
+        LevelsCount=3
+        Name=Апгрейтинговый топливный бак I
+        SerieLevel1=421
+        SerieLevel2=427
+        SerieLevel3=433
+    }
+    422 ^{
+        AcrynLevel=1
+        AcrynSerie=Апгрейтинговый радар I-III
+        LevelsCount=3
+        Name=Апгрейтинговый радар I
+        SerieLevel1=422
+        SerieLevel2=428
+        SerieLevel3=434
+    }
+    423 ^{
+        AcrynLevel=1
+        AcrynSerie=Апгрейтинговый сканер I-III
+        LevelsCount=3
+        Name=Апгрейтинговый сканер I
+        SerieLevel1=423
+        SerieLevel2=429
+        SerieLevel3=435
+    }
+    424 ^{
+        AcrynLevel=2
+        AcrynSerie=Апгрейтинговый захват I-III
+        LevelsCount=3
+        Name=Апгрейтинговый захват II
+        SerieLevel1=418
+        SerieLevel2=424
+        SerieLevel3=430
+    }
+    425 ^{
+        AcrynLevel=2
+        AcrynSerie=Апгрейтинговый генератор защиты I-III
+        LevelsCount=3
+        Name=Апгрейтинговый генератор защиты II
+        SerieLevel1=419
+        SerieLevel2=425
+        SerieLevel3=431
+    }
+    426 ^{
+        AcrynLevel=2
+        AcrynSerie=Апгрейтинговый двигатель I-III
+        LevelsCount=3
+        Name=Апгрейтинговый двигатель II
+        SerieLevel1=420
+        SerieLevel2=426
+        SerieLevel3=432
+    }
+    427 ^{
+        AcrynLevel=2
+        AcrynSerie=Апгрейтинговый топливный бак I-III
+        LevelsCount=3
+        Name=Апгрейтинговый топливный бак II
+        SerieLevel1=421
+        SerieLevel2=427
+        SerieLevel3=433
+    }
+    428 ^{
+        AcrynLevel=2
+        AcrynSerie=Апгрейтинговый радар I-III
+        LevelsCount=3
+        Name=Апгрейтинговый радар II
+        SerieLevel1=422
+        SerieLevel2=428
+        SerieLevel3=434
+    }
+    429 ^{
+        AcrynLevel=2
+        AcrynSerie=Апгрейтинговый сканер I-III
+        LevelsCount=3
+        Name=Апгрейтинговый сканер II
+        SerieLevel1=423
+        SerieLevel2=429
+        SerieLevel3=435
+    }
+    430 ^{
+        AcrynLevel=3
+        AcrynSerie=Апгрейтинговый захват I-III
+        LevelsCount=3
+        Name=Апгрейтинговый захват III
+        SerieLevel1=418
+        SerieLevel2=424
+        SerieLevel3=430
+    }
+    431 ^{
+        AcrynLevel=3
+        AcrynSerie=Апгрейтинговый генератор защиты I-III
+        LevelsCount=3
+        Name=Апгрейтинговый генератор защиты III
+        SerieLevel1=419
+        SerieLevel2=425
+        SerieLevel3=431
+    }
+    432 ^{
+        AcrynLevel=3
+        AcrynSerie=Апгрейтинговый двигатель I-III
+        LevelsCount=3
+        Name=Апгрейтинговый двигатель III
+        SerieLevel1=420
+        SerieLevel2=426
+        SerieLevel3=432
+    }
+    433 ^{
+        AcrynLevel=3
+        AcrynSerie=Апгрейтинговый топливный бак I-III
+        LevelsCount=3
+        Name=Апгрейтинговый топливный бак III
+        SerieLevel1=421
+        SerieLevel2=427
+        SerieLevel3=433
+    }
+    434 ^{
+        AcrynLevel=3
+        AcrynSerie=Апгрейтинговый радар I-III
+        LevelsCount=3
+        Name=Апгрейтинговый радар III
+        SerieLevel1=422
+        SerieLevel2=428
+        SerieLevel3=434
+    }
+    435 ^{
+        AcrynLevel=3
+        AcrynSerie=Апгрейтинговый сканер I-III
+        LevelsCount=3
+        Name=Апгрейтинговый сканер III
+        SerieLevel1=423
+        SerieLevel2=429
+        SerieLevel3=435
+    }
+    436 ^{
+        AcrynLevel=1
+        AcrynSerie=Биогенный дроид I-III
+        BioEquip=1
+        LevelsCount=3
+        Name=Биогенный дроид I
+        SerieLevel1=436
+        SerieLevel2=437
+        SerieLevel3=438
+    }
+    437 ^{
+        AcrynLevel=2
+        AcrynSerie=Биогенный дроид I-III
+        BioEquip=1
+        LevelsCount=3
+        Name=Биогенный дроид II
+        SerieLevel1=436
+        SerieLevel2=437
+        SerieLevel3=438
+    }
+    438 ^{
+        AcrynLevel=3
+        AcrynSerie=Биогенный дроид I-III
+        BioEquip=1
+        LevelsCount=3
+        Name=Биогенный дроид III
+        SerieLevel1=436
+        SerieLevel2=437
+        SerieLevel3=438
+    }
+    439 ^{
+        AcrynLevel=1
+        AcrynSerie=Нанобролитовый дроид I-III
+        LevelsCount=3
+        Name=Нанобролитовый дроид I
+        SerieLevel1=439
+        SerieLevel2=442
+        SerieLevel3=445
+    }
+    440 ^{
+        AcrynLevel=1
+        AcrynSerie=Нанобролитовый двигатель I-III
+        LevelsCount=3
+        Name=Нанобролитовый двигатель I
+        SerieLevel1=440
+        SerieLevel2=443
+        SerieLevel3=446
+    }
+    441 ^{
+        AcrynLevel=1
+        AcrynSerie=Нанобролитовый генератор защиты I-III
+        LevelsCount=3
+        Name=Нанобролитовый генератор защиты I
+        SerieLevel1=441
+        SerieLevel2=444
+        SerieLevel3=447
+    }
+    442 ^{
+        AcrynLevel=2
+        AcrynSerie=Нанобролитовый дроид I-III
+        LevelsCount=3
+        Name=Нанобролитовый дроид II
+        SerieLevel1=439
+        SerieLevel2=442
+        SerieLevel3=445
+    }
+    443 ^{
+        AcrynLevel=2
+        AcrynSerie=Нанобролитовый двигатель I-III
+        LevelsCount=3
+        Name=Нанобролитовый двигатель II
+        SerieLevel1=440
+        SerieLevel2=443
+        SerieLevel3=446
+    }
+    444 ^{
+        AcrynLevel=2
+        AcrynSerie=Нанобролитовый генератор защиты I-III
+        LevelsCount=3
+        Name=Нанобролитовый генератор защиты II
+        SerieLevel1=441
+        SerieLevel2=444
+        SerieLevel3=447
+    }
+    445 ^{
+        AcrynLevel=3
+        AcrynSerie=Нанобролитовый дроид I-III
+        LevelsCount=3
+        Name=Нанобролитовый дроид III
+        SerieLevel1=439
+        SerieLevel2=442
+        SerieLevel3=445
+    }
+    446 ^{
+        AcrynLevel=3
+        AcrynSerie=Нанобролитовый двигатель I-III
+        LevelsCount=3
+        Name=Нанобролитовый двигатель III
+        SerieLevel1=440
+        SerieLevel2=443
+        SerieLevel3=446
+    }
+    447 ^{
+        AcrynLevel=3
+        AcrynSerie=Нанобролитовый генератор защиты I-III
+        LevelsCount=3
+        Name=Нанобролитовый генератор защиты III
+        SerieLevel1=441
+        SerieLevel2=444
+        SerieLevel3=447
+    }
+    448 ^{
+        AcrynLevel=1
+        AcrynSerie=Ультрасплавный сканер I-III
+        LevelsCount=3
+        Name=Ультрасплавный сканер I
+        SerieLevel1=448
+        SerieLevel2=452
+        SerieLevel3=459
+    }
+    449 ^{
+        AcrynLevel=1
+        AcrynSerie=Ультрасплавный радар I-III
+        LevelsCount=3
+        Name=Ультрасплавный радар I
+        SerieLevel1=449
+        SerieLevel2=453
+        SerieLevel3=456
+    }
+    450 ^{
+        AcrynLevel=1
+        AcrynSerie=Ультрасплавный топливный бак I-III
+        LevelsCount=3
+        Name=Ультрасплавный топливный бак I
+        SerieLevel1=450
+        SerieLevel2=454
+        SerieLevel3=457
+    }
+    451 ^{
+        AcrynLevel=1
+        AcrynSerie=Ультрасплавный захват I-III
+        LevelsCount=3
+        Name=Ультрасплавный захват I
+        SerieLevel1=451
+        SerieLevel2=455
+        SerieLevel3=458
+    }
+    452 ^{
+        AcrynLevel=2
+        AcrynSerie=Ультрасплавный сканер I-III
+        LevelsCount=3
+        Name=Ультрасплавный сканер II
+        SerieLevel1=448
+        SerieLevel2=452
+        SerieLevel3=459
+    }
+    453 ^{
+        AcrynLevel=2
+        AcrynSerie=Ультрасплавный радар I-III
+        LevelsCount=3
+        Name=Ультрасплавный радар II
+        SerieLevel1=449
+        SerieLevel2=453
+        SerieLevel3=456
+    }
+    454 ^{
+        AcrynLevel=2
+        AcrynSerie=Ультрасплавный топливный бак I-III
+        LevelsCount=3
+        Name=Ультрасплавный топливный бак II
+        SerieLevel1=450
+        SerieLevel2=454
+        SerieLevel3=457
+    }
+    455 ^{
+        AcrynLevel=2
+        AcrynSerie=Ультрасплавный захват I-III
+        LevelsCount=3
+        Name=Ультрасплавный захват II
+        SerieLevel1=451
+        SerieLevel2=455
+        SerieLevel3=458
+    }
+    456 ^{
+        AcrynLevel=3
+        AcrynSerie=Ультрасплавный радар I-III
+        LevelsCount=3
+        Name=Ультрасплавный радар III
+        SerieLevel1=449
+        SerieLevel2=453
+        SerieLevel3=456
+    }
+    457 ^{
+        AcrynLevel=3
+        AcrynSerie=Ультрасплавный топливный бак I-III
+        LevelsCount=3
+        Name=Ультрасплавный топливный бак III
+        SerieLevel1=450
+        SerieLevel2=454
+        SerieLevel3=457
+    }
+    458 ^{
+        AcrynLevel=3
+        AcrynSerie=Ультрасплавный захват I-III
+        LevelsCount=3
+        Name=Ультрасплавный захват III
+        SerieLevel1=451
+        SerieLevel2=455
+        SerieLevel3=458
+    }
+    459 ^{
+        AcrynLevel=3
+        AcrynSerie=Ультрасплавный сканер I-III
+        LevelsCount=3
+        Name=Ультрасплавный сканер III
+        SerieLevel1=448
+        SerieLevel2=452
+        SerieLevel3=459
+    }
+    460 ^{
+        AcrynLevel=1
+        AcrynSerie=Добрый лякуша I-IV
+        LevelsCount=4
+        Name=Корпус "Добрый лякуша" I
+        SerieLevel1=460
+        SerieLevel2=461
+        SerieLevel3=462
+        SerieLevel4=463
+    }
+    461 ^{
+        AcrynLevel=2
+        AcrynSerie=Добрый лякуша I-IV
+        LevelsCount=4
+        Name=Корпус "Добрый лякуша" II
+        SerieLevel1=460
+        SerieLevel2=461
+        SerieLevel3=462
+        SerieLevel4=463
+    }
+    462 ^{
+        AcrynLevel=3
+        AcrynSerie=Добрый лякуша I-IV
+        LevelsCount=4
+        Name=Корпус "Добрый лякуша" III
+        SerieLevel1=460
+        SerieLevel2=461
+        SerieLevel3=462
+        SerieLevel4=463
+    }
+    463 ^{
+        AcrynLevel=4
+        AcrynSerie=Добрый лякуша I-IV
+        LevelsCount=4
+        Name=Корпус "Добрый лякуша" IV
+        SerieLevel1=460
+        SerieLevel2=461
+        SerieLevel3=462
+        SerieLevel4=463
+    }
+    464 ^{
+        AcrynLevel=1
+        AcrynSerie=Мирный корсар I-IV
+        LevelsCount=4
+        Name=Корпус "Мирный корсар" I
+        SerieLevel1=464
+        SerieLevel2=465
+        SerieLevel3=466
+        SerieLevel4=467
+    }
+    465 ^{
+        AcrynLevel=2
+        AcrynSerie=Мирный корсар I-IV
+        LevelsCount=4
+        Name=Корпус "Мирный корсар" II
+        SerieLevel1=464
+        SerieLevel2=465
+        SerieLevel3=466
+        SerieLevel4=467
+    }
+    466 ^{
+        AcrynLevel=3
+        AcrynSerie=Мирный корсар I-IV
+        LevelsCount=4
+        Name=Корпус "Мирный корсар" III
+        SerieLevel1=464
+        SerieLevel2=465
+        SerieLevel3=466
+        SerieLevel4=467
+    }
+    467 ^{
+        AcrynLevel=4
+        AcrynSerie=Мирный корсар I-IV
+        LevelsCount=4
+        Name=Корпус "Мирный корсар" IV
+        SerieLevel1=464
+        SerieLevel2=465
+        SerieLevel3=466
+        SerieLevel4=467
+    }
+    468 ^{
+        AcrynLevel=1
+        AcrynSerie=Честный ренегал I-IV
+        LevelsCount=4
+        Name=Корпус "Честный ренегал" I
+        SerieLevel1=468
+        SerieLevel2=469
+        SerieLevel3=470
+        SerieLevel4=471
+    }
+    469 ^{
+        AcrynLevel=2
+        AcrynSerie=Честный ренегал I-IV
+        LevelsCount=4
+        Name=Корпус "Честный ренегал" II
+        SerieLevel1=468
+        SerieLevel2=469
+        SerieLevel3=470
+        SerieLevel4=471
+    }
+    470 ^{
+        AcrynLevel=3
+        AcrynSerie=Честный ренегал I-IV
+        LevelsCount=4
+        Name=Корпус "Честный ренегал" III
+        SerieLevel1=468
+        SerieLevel2=469
+        SerieLevel3=470
+        SerieLevel4=471
+    }
+    471 ^{
+        AcrynLevel=4
+        AcrynSerie=Честный ренегал I-IV
+        LevelsCount=4
+        Name=Корпус "Честный ренегал" IV
+        SerieLevel1=468
+        SerieLevel2=469
+        SerieLevel3=470
+        SerieLevel4=471
+    }
+    472 ^{
+        AcrynLevel=1
+        AcrynSerie=Молния I-IV
+        LevelsCount=4
+        Name=Корпус "Молния" I
+        SerieLevel1=472
+        SerieLevel2=473
+        SerieLevel3=474
+        SerieLevel4=475
+    }
+    473 ^{
+        AcrynLevel=2
+        AcrynSerie=Молния I-IV
+        LevelsCount=4
+        Name=Корпус "Молния" II
+        SerieLevel1=472
+        SerieLevel2=473
+        SerieLevel3=474
+        SerieLevel4=475
+    }
+    474 ^{
+        AcrynLevel=3
+        AcrynSerie=Молния I-IV
+        LevelsCount=4
+        Name=Корпус "Молния" III
+        SerieLevel1=472
+        SerieLevel2=473
+        SerieLevel3=474
+        SerieLevel4=475
+    }
+    475 ^{
+        AcrynLevel=4
+        AcrynSerie=Молния I-IV
+        LevelsCount=4
+        Name=Корпус "Молния" IV
+        SerieLevel1=472
+        SerieLevel2=473
+        SerieLevel3=474
+        SerieLevel4=475
+    }
+    476 ^{
+        AcrynLevel=1
+        AcrynSerie=Броненосец I-IV
+        LevelsCount=4
+        Name=Корпус "Броненосец" I
+        SerieLevel1=476
+        SerieLevel2=477
+        SerieLevel3=478
+        SerieLevel4=479
+    }
+    477 ^{
+        AcrynLevel=2
+        AcrynSerie=Броненосец I-IV
+        LevelsCount=4
+        Name=Корпус "Броненосец" II
+        SerieLevel1=476
+        SerieLevel2=477
+        SerieLevel3=478
+        SerieLevel4=479
+    }
+    478 ^{
+        AcrynLevel=3
+        AcrynSerie=Броненосец I-IV
+        LevelsCount=4
+        Name=Корпус "Броненосец" III
+        SerieLevel1=476
+        SerieLevel2=477
+        SerieLevel3=478
+        SerieLevel4=479
+    }
+    479 ^{
+        AcrynLevel=4
+        AcrynSerie=Броненосец I-IV
+        LevelsCount=4
+        Name=Корпус "Броненосец" IV
+        SerieLevel1=476
+        SerieLevel2=477
+        SerieLevel3=478
+        SerieLevel4=479
+    }
+    480 ^{
+        AcrynLevel=1
+        AcrynSerie=Ушастик I-IV
+        LevelsCount=4
+        Name=Корпус "Ушастик" I
+        SerieLevel1=480
+        SerieLevel2=481
+        SerieLevel3=482
+        SerieLevel4=483
+    }
+    481 ^{
+        AcrynLevel=2
+        AcrynSerie=Ушастик I-IV
+        LevelsCount=4
+        Name=Корпус "Ушастик" II
+        SerieLevel1=480
+        SerieLevel2=481
+        SerieLevel3=482
+        SerieLevel4=483
+    }
+    482 ^{
+        AcrynLevel=3
+        AcrynSerie=Ушастик I-IV
+        LevelsCount=4
+        Name=Корпус "Ушастик" III
+        SerieLevel1=480
+        SerieLevel2=481
+        SerieLevel3=482
+        SerieLevel4=483
+    }
+    483 ^{
+        AcrynLevel=4
+        AcrynSerie=Ушастик I-IV
+        LevelsCount=4
+        Name=Корпус "Ушастик" IV
+        SerieLevel1=480
+        SerieLevel2=481
+        SerieLevel3=482
+        SerieLevel4=483
+    }
+    484 ^{
+        Name=Корпус "Добрейший лякуша"
+        NonSearchable=1
+    }
+    485 ^{
+        Name=Корпус "Безобиднейший корсар"
+        NonSearchable=1
+    }
+    486 ^{
+        Name=Корпус "Честнейший ренегал"
+        NonSearchable=1
+    }
+    487 ^{
+        NonSearchable=1
+    }
+    488 ^{
+        NonSearchable=1
+    }
+    489 ^{
+        NonSearchable=1
+    }
+    490 ^{
+        Name=Тень Империи
+        NonSearchable=1
+    }
+    491 ^{
+        Name=Гибридный дроид
+        NonSearchable=1
+    }
+    492 ^{
+        Name=Гибридный дроид
+        NonSearchable=1
+    }
+    493 ^{
+        Name=Гибридный дроид
+        NonSearchable=1
+    }
+    494 ^{
+        Name=Гибридный дроид
+        NonSearchable=1
+    }
+    495 ^{
+        Name=Гибридный дроид
+        NonSearchable=1
+    }
+    496 ^{
+        Name=Гибридный дроид
+        NonSearchable=1
+    }
+    497 ^{
+        Name=Гибридный дроид
+        NonSearchable=1
+    }
+    498 ^{
+        Name=Акринатор
+        NonSearchable=1
+    }
+}

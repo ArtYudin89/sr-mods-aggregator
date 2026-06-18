@@ -1,0 +1,268 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefTechnologiesDowngrade",
+    "ScriptFileOut": "D:\\Mod_RefTechnologiesDowngrade.scr",
+    "ScriptTextOut": "D:\\Mod_RefTechnologiesDowngrade.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [],
+            "DialogMessages": [],
+            "Dialogs": [],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 4
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 5,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 510
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "function DowngradeSys(dword sys) {",
+                        "    int k;",
+                        "    int con;",
+                        "    int t;",
+                        "    int v;",
+                        "    dword plan;",
+                        "",
+                        "    for(k=0;k<StarPlanets(sys);k=k+1) {",
+                        "        plan = StarPlanets(sys,k);",
+                        "        if(PlanetOwner(plan) == 6) continue;",
+                        "        if(Rnd(1,5) != 5) PlanetCurInventionPoints(plan,PlanetCurInvention(plan),0);",
+                        "        else PlanetCurInventionPoints(plan,PlanetCurInvention(plan),max(PlanetCurInventionPoints(plan,PlanetCurInvention(plan)) - Rnd(20,40),0));",
+                        "",
+                        "        if(Rnd(1,30) == 30) {",
+                        "            con = 0;",
+                        "            while(1) {",
+                        "                t = Rnd(0,19);",
+                        "                v = v + 1;",
+                        "                if(v > 100) break;",
+                        "                if(PlanetInventionLevel(plan,t) > 1) {",
+                        "                    PlanetInventionLevel(plan,t,PlanetInventionLevel(plan,t) - 1);",
+                        "                    break;",
+                        "                }",
+                        "                else continue;",
+                        "            }",
+                        "        }",
+                        "",
+                        "        //Население планет тоже бустит исследования",
+                        "        if(PlanetPopulation(plan) > 100000) {",
+                        "            if(Rnd(1,6) != 6) {",
+                        "                PlanetPopulation(plan,PlanetPopulation(plan) - 150);",
+                        "                if(Rnd(1,5) != 5) {",
+                        "                    PlanetPopulation(plan,PlanetPopulation(plan) - 250);",
+                        "                    if(Rnd(1,4) != 4) {",
+                        "                        PlanetPopulation(plan,PlanetPopulation(plan) - 450);",
+                        "                        if(Rnd(1,3) != 3) {",
+                        "                            PlanetPopulation(plan,PlanetPopulation(plan) - 600);",
+                        "                            if(Rnd(1,2) != 2) {",
+                        "                                PlanetPopulation(plan,PlanetPopulation(plan) - 1000);",
+                        "                            }",
+                        "                        }",
+                        "                    }",
+                        "                }",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 6,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 510
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i=0;GalaxyStars()>i;i=i+1) {",
+                        "    if(StarOwner(GalaxyStar(i)) == 1) DowngradeSys(GalaxyStar(i));",
+                        "    else if(StarOwner(GalaxyStar(i)) == 2) {",
+                        "        if(Rnd(1,15) == 15) DowngradeSys(GalaxyStar(i));",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 7,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 510
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 3
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 2
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 1,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 8
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 2,
+            "End": 1,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 3,
+            "End": 1,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 4,
+            "End": 3,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 4,
+            "End": 8,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

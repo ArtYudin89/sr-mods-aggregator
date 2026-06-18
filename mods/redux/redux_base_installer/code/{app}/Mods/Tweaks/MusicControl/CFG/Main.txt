@@ -1,0 +1,1004 @@
+Music ^{
+    MusicOff ^{
+    }
+    Other ^{
+        1=Music\intro.dat
+        1=Music\outro.dat
+        1=Music\special\triumph.dat
+        1=Music\special\hymn.dat
+    }
+}
+BV ^{
+    OnLoad ^{
+        MusicControl ^{
+            01=str playlist_name = InterfaceText('StarMap', 'MusicPlaylistOverride');
+            02=if(playlist_name != '')
+            02 ^{
+                01=MusicControls('SetPlayListOverride', playlist_name);
+                02=MusicControls('StopCurFile');
+            }
+        }
+    }
+    OnStart ^{
+        MusicControl ^{
+            01=str playlist_name = MusicControls('GetPlayListOverride');
+            02=if(playlist_name != '')
+            02 ^{
+                01=MusicControls('SetPlayListOverride', '');
+                02=MusicControls('StopCurFile');
+            }
+        }
+    }
+}
+ML ^{
+    AB ^{
+        Panel ^{
+            OnKey ^{
+                MusicControl ^{
+                    01=if(!KEYMOD)
+                    01 ^{
+                        01=if(KEY == 188)
+                        01 ^{
+                            01=if(MusicControls('GetPlayListOverride') != 'MusicOff')
+                            01 ^{
+                                01=ButtonClick('StarMap', 'MusicControlPause', 'ScriptCode');
+                                02=StarMapBlinkingMessage(CT('MusicControl.MusicPaused'));
+                            }
+                            02=else
+                            02 ^{
+                                01=ButtonClick('StarMap', 'MusicControlPlay', 'ScriptCode');
+                                02=StarMapBlinkingMessage(CT('MusicControl.MusicContinued'));
+                            }
+                        }
+                        02=else if(KEY == 190)
+                        02 ^{
+                            01=ButtonClick('StarMap', 'MusicControlNext', 'ScriptCode');
+                            02=StarMapBlinkingMessage(CT('MusicControl.NextTrackStarted'));
+                        }
+                    }
+                }
+            }
+        }
+    }
+    Gov ^{
+        Panel ^{
+            OnKey ^{
+                MusicControl ^{
+                    01=if(!KEYMOD)
+                    01 ^{
+                        01=if(KEY == 188)
+                        01 ^{
+                            01=if(MusicControls('GetPlayListOverride') != 'MusicOff')
+                            01 ^{
+                                01=ButtonClick('StarMap', 'MusicControlPause', 'ScriptCode');
+                                02=StarMapBlinkingMessage(CT('MusicControl.MusicPaused'));
+                            }
+                            02=else
+                            02 ^{
+                                01=ButtonClick('StarMap', 'MusicControlPlay', 'ScriptCode');
+                                02=StarMapBlinkingMessage(CT('MusicControl.MusicContinued'));
+                            }
+                        }
+                        02=else if(KEY == 190)
+                        02 ^{
+                            01=ButtonClick('StarMap', 'MusicControlNext', 'ScriptCode');
+                            02=StarMapBlinkingMessage(CT('MusicControl.NextTrackStarted'));
+                        }
+                    }
+                }
+            }
+            Panel ^{
+                MusicControl ^{
+                    GraphButton ^{
+                        Active=True
+                        Help=Help.MusicControlOpen
+                        ImageDown=Alpha,Bm.MusicControl.Open_D
+                        ImageNormal=Alpha,Bm.MusicControl.Open_N
+                        ImageNormalA=Alpha,Bm.MusicControl.Open_A
+                        Kind=Normal
+                        KindHit=Rect
+                        MouseBlocking=True
+                        Name=MusicControlOpen
+                        OnPressCode ^{
+                            01=ButtonClick('StarMap', 'MusicControlOpen', 'ScriptCode');
+                        }
+                        Pos=10,646,8.1
+                        PosAutoCorrection=True
+                        PosAutoCorrectionYCoef=0.5
+                        Size=35,36
+                        Style=Style.GB.SoundNormal
+                    }
+                    Image ^{
+                        Active=True
+                        Image=Alpha,Bm.MusicControl.ButtonBackground
+                        Name=MusicControlOpenBG
+                        Pos=9,645,8.5
+                        PosAutoCorrection=True
+                        PosAutoCorrectionYCoef=1.0
+                        Size=37,37
+                    }
+                    Panel ^{
+                        Active=False
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlClose
+                            ImageDown=Alpha,Bm.MusicControl.Open_D
+                            ImageNormal=Alpha,Bm.MusicControl.Open_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Open_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlClose
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlClose', 'ScriptCode');
+                            }
+                            Pos=12,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlList
+                            ImageDown=Alpha,Bm.MusicControl.List_D
+                            ImageNormal=Alpha,Bm.MusicControl.List_N
+                            ImageNormalA=Alpha,Bm.MusicControl.List_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlList
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlList', 'ScriptCode');
+                            }
+                            Pos=52,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=False
+                            Help=Help.MusicControlPlay
+                            ImageDown=Alpha,Bm.MusicControl.Play_D
+                            ImageNormal=Alpha,Bm.MusicControl.Play_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Play_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlPlay
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlPlay', 'ScriptCode');
+                            }
+                            Pos=92,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlPause
+                            ImageDown=Alpha,Bm.MusicControl.Pause_D
+                            ImageNormal=Alpha,Bm.MusicControl.Pause_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Pause_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlPause
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlPause', 'ScriptCode');
+                            }
+                            Pos=92,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlNext
+                            ImageDown=Alpha,Bm.MusicControl.Next_D
+                            ImageNormal=Alpha,Bm.MusicControl.Next_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Next_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlNext
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlNext', 'ScriptCode');
+                            }
+                            Pos=134,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        Image ^{
+                            Active=True
+                            Image=Alpha,Bm.MusicControl.Background
+                            Name=MusicControlBG
+                            Pos=0,0,1
+                            Size=181,65
+                        }
+                        Label ^{
+                            Active=True
+                            AlignX=Left
+                            AlignY=Center
+                            Font=Font.2Ranger
+                            Name=MusicCurPlaylist
+                            Pos=7,5,0
+                            Size=166,10
+                            TextColor=248,252,248
+                            TextShadow=1
+                            TextShadowColor=0,0,0
+                        }
+                        MouseBlocking=True
+                        Name=MusicControl
+                        Pos=2,624,8
+                        PosAutoCorrection=True
+                        PosAutoCorrectionYCoef=1.0
+                        Size=181,65
+                    }
+                }
+                Name=PanelMain
+            }
+        }
+    }
+    Planet ^{
+        Panel ^{
+            OnKey ^{
+                MusicControl ^{
+                    01=if(!KEYMOD)
+                    01 ^{
+                        01=if(KEY == 188)
+                        01 ^{
+                            01=if(MusicControls('GetPlayListOverride') != 'MusicOff')
+                            01 ^{
+                                01=ButtonClick('StarMap', 'MusicControlPause', 'ScriptCode');
+                                02=StarMapBlinkingMessage(CT('MusicControl.MusicPaused'));
+                            }
+                            02=else
+                            02 ^{
+                                01=ButtonClick('StarMap', 'MusicControlPlay', 'ScriptCode');
+                                02=StarMapBlinkingMessage(CT('MusicControl.MusicContinued'));
+                            }
+                        }
+                        02=else if(KEY == 190)
+                        02 ^{
+                            01=ButtonClick('StarMap', 'MusicControlNext', 'ScriptCode');
+                            02=StarMapBlinkingMessage(CT('MusicControl.NextTrackStarted'));
+                        }
+                    }
+                }
+            }
+            Panel ^{
+                MusicControl ^{
+                    GraphButton ^{
+                        Active=True
+                        Help=Help.MusicControlOpen
+                        ImageDown=Alpha,Bm.MusicControl.Open_D
+                        ImageNormal=Alpha,Bm.MusicControl.Open_N
+                        ImageNormalA=Alpha,Bm.MusicControl.Open_A
+                        Kind=Normal
+                        KindHit=Rect
+                        MouseBlocking=True
+                        Name=MusicControlOpen
+                        OnPressCode ^{
+                            01=ButtonClick('StarMap', 'MusicControlOpen', 'ScriptCode');
+                        }
+                        Pos=10,646,8.1
+                        PosAutoCorrection=True
+                        PosAutoCorrectionYCoef=0.5
+                        Size=35,36
+                        Style=Style.GB.SoundNormal
+                    }
+                    Image ^{
+                        Active=True
+                        Image=Alpha,Bm.MusicControl.ButtonBackground
+                        Name=MusicControlOpenBG
+                        Pos=9,645,8.5
+                        PosAutoCorrection=True
+                        PosAutoCorrectionYCoef=1.0
+                        Size=37,37
+                    }
+                    Panel ^{
+                        Active=False
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlClose
+                            ImageDown=Alpha,Bm.MusicControl.Open_D
+                            ImageNormal=Alpha,Bm.MusicControl.Open_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Open_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlClose
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlClose', 'ScriptCode');
+                            }
+                            Pos=12,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlList
+                            ImageDown=Alpha,Bm.MusicControl.List_D
+                            ImageNormal=Alpha,Bm.MusicControl.List_N
+                            ImageNormalA=Alpha,Bm.MusicControl.List_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlList
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlList', 'ScriptCode');
+                            }
+                            Pos=52,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=False
+                            Help=Help.MusicControlPlay
+                            ImageDown=Alpha,Bm.MusicControl.Play_D
+                            ImageNormal=Alpha,Bm.MusicControl.Play_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Play_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlPlay
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlPlay', 'ScriptCode');
+                            }
+                            Pos=92,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlPause
+                            ImageDown=Alpha,Bm.MusicControl.Pause_D
+                            ImageNormal=Alpha,Bm.MusicControl.Pause_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Pause_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlPause
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlPause', 'ScriptCode');
+                            }
+                            Pos=92,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlNext
+                            ImageDown=Alpha,Bm.MusicControl.Next_D
+                            ImageNormal=Alpha,Bm.MusicControl.Next_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Next_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlNext
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlNext', 'ScriptCode');
+                            }
+                            Pos=134,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        Image ^{
+                            Active=True
+                            Image=Alpha,Bm.MusicControl.Background
+                            Name=MusicControlBG
+                            Pos=0,0,1
+                            Size=181,65
+                        }
+                        Label ^{
+                            Active=True
+                            AlignX=Left
+                            AlignY=Center
+                            Font=Font.2Ranger
+                            Name=MusicCurPlaylist
+                            Pos=7,5,0
+                            Size=166,10
+                            TextColor=248,252,248
+                            TextShadow=1
+                            TextShadowColor=0,0,0
+                        }
+                        MouseBlocking=True
+                        Name=MusicControl
+                        Pos=2,624,8
+                        PosAutoCorrection=True
+                        PosAutoCorrectionYCoef=1.0
+                        Size=181,65
+                    }
+                }
+                Name=PanelMain
+            }
+        }
+    }
+    PlanetNO ^{
+        Panel ^{
+            OnKey ^{
+                MusicControl ^{
+                    01=if(!KEYMOD)
+                    01 ^{
+                        01=if(KEY == 188)
+                        01 ^{
+                            01=if(MusicControls('GetPlayListOverride') != 'MusicOff')
+                            01 ^{
+                                01=ButtonClick('StarMap', 'MusicControlPause', 'ScriptCode');
+                                02=StarMapBlinkingMessage(CT('MusicControl.MusicPaused'));
+                            }
+                            02=else
+                            02 ^{
+                                01=ButtonClick('StarMap', 'MusicControlPlay', 'ScriptCode');
+                                02=StarMapBlinkingMessage(CT('MusicControl.MusicContinued'));
+                            }
+                        }
+                        02=else if(KEY == 190)
+                        02 ^{
+                            01=ButtonClick('StarMap', 'MusicControlNext', 'ScriptCode');
+                            02=StarMapBlinkingMessage(CT('MusicControl.NextTrackStarted'));
+                        }
+                    }
+                }
+            }
+            Panel ^{
+                MusicControl ^{
+                    GraphButton ^{
+                        Active=True
+                        Help=Help.MusicControlOpen
+                        ImageDown=Alpha,Bm.MusicControl.Open_D
+                        ImageNormal=Alpha,Bm.MusicControl.Open_N
+                        ImageNormalA=Alpha,Bm.MusicControl.Open_A
+                        Kind=Normal
+                        KindHit=Rect
+                        MouseBlocking=True
+                        Name=MusicControlOpen
+                        OnPressCode ^{
+                            01=ButtonClick('StarMap', 'MusicControlOpen', 'ScriptCode');
+                        }
+                        Pos=10,646,8.1
+                        PosAutoCorrection=True
+                        PosAutoCorrectionYCoef=0.5
+                        Size=35,36
+                        Style=Style.GB.SoundNormal
+                    }
+                    Image ^{
+                        Active=True
+                        Image=Alpha,Bm.MusicControl.ButtonBackground
+                        Name=MusicControlOpenBG
+                        Pos=9,645,8.5
+                        PosAutoCorrection=True
+                        PosAutoCorrectionYCoef=1.0
+                        Size=37,37
+                    }
+                    Panel ^{
+                        Active=False
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlClose
+                            ImageDown=Alpha,Bm.MusicControl.Open_D
+                            ImageNormal=Alpha,Bm.MusicControl.Open_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Open_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlClose
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlClose', 'ScriptCode');
+                            }
+                            Pos=12,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlList
+                            ImageDown=Alpha,Bm.MusicControl.List_D
+                            ImageNormal=Alpha,Bm.MusicControl.List_N
+                            ImageNormalA=Alpha,Bm.MusicControl.List_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlList
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlList', 'ScriptCode');
+                            }
+                            Pos=52,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=False
+                            Help=Help.MusicControlPlay
+                            ImageDown=Alpha,Bm.MusicControl.Play_D
+                            ImageNormal=Alpha,Bm.MusicControl.Play_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Play_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlPlay
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlPlay', 'ScriptCode');
+                            }
+                            Pos=92,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlPause
+                            ImageDown=Alpha,Bm.MusicControl.Pause_D
+                            ImageNormal=Alpha,Bm.MusicControl.Pause_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Pause_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlPause
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlPause', 'ScriptCode');
+                            }
+                            Pos=92,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlNext
+                            ImageDown=Alpha,Bm.MusicControl.Next_D
+                            ImageNormal=Alpha,Bm.MusicControl.Next_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Next_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlNext
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlNext', 'ScriptCode');
+                            }
+                            Pos=134,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        Image ^{
+                            Active=True
+                            Image=Alpha,Bm.MusicControl.Background
+                            Name=MusicControlBG
+                            Pos=0,0,1
+                            Size=181,65
+                        }
+                        Label ^{
+                            Active=True
+                            AlignX=Left
+                            AlignY=Center
+                            Font=Font.2Ranger
+                            Name=MusicCurPlaylist
+                            Pos=7,5,0
+                            Size=166,10
+                            TextColor=248,252,248
+                            TextShadow=1
+                            TextShadowColor=0,0,0
+                        }
+                        MouseBlocking=True
+                        Name=MusicControl
+                        Pos=2,624,8
+                        PosAutoCorrection=True
+                        PosAutoCorrectionYCoef=1.0
+                        Size=181,65
+                    }
+                }
+                Name=PanelMain
+            }
+        }
+    }
+    RuinsTalk ^{
+        Panel ^{
+            OnKey ^{
+                MusicControl ^{
+                    01=if(!KEYMOD)
+                    01 ^{
+                        01=if(KEY == 188)
+                        01 ^{
+                            01=if(MusicControls('GetPlayListOverride') != 'MusicOff')
+                            01 ^{
+                                01=ButtonClick('StarMap', 'MusicControlPause', 'ScriptCode');
+                                02=StarMapBlinkingMessage(CT('MusicControl.MusicPaused'));
+                            }
+                            02=else
+                            02 ^{
+                                01=ButtonClick('StarMap', 'MusicControlPlay', 'ScriptCode');
+                                02=StarMapBlinkingMessage(CT('MusicControl.MusicContinued'));
+                            }
+                        }
+                        02=else if(KEY == 190)
+                        02 ^{
+                            01=ButtonClick('StarMap', 'MusicControlNext', 'ScriptCode');
+                            02=StarMapBlinkingMessage(CT('MusicControl.NextTrackStarted'));
+                        }
+                    }
+                }
+            }
+            Panel ^{
+                MusicControl ^{
+                    GraphButton ^{
+                        Active=True
+                        Help=Help.MusicControlOpen
+                        ImageDown=Alpha,Bm.MusicControl.Open_D
+                        ImageNormal=Alpha,Bm.MusicControl.Open_N
+                        ImageNormalA=Alpha,Bm.MusicControl.Open_A
+                        Kind=Normal
+                        KindHit=Rect
+                        MouseBlocking=True
+                        Name=MusicControlOpen
+                        OnPressCode ^{
+                            01=ButtonClick('StarMap', 'MusicControlOpen', 'ScriptCode');
+                        }
+                        Pos=10,646,8.1
+                        PosAutoCorrection=True
+                        PosAutoCorrectionYCoef=0.5
+                        Size=35,36
+                        Style=Style.GB.SoundNormal
+                    }
+                    Image ^{
+                        Active=True
+                        Image=Alpha,Bm.MusicControl.ButtonBackground
+                        Name=MusicControlOpenBG
+                        Pos=9,645,8.5
+                        PosAutoCorrection=True
+                        PosAutoCorrectionYCoef=1.0
+                        Size=37,37
+                    }
+                    Panel ^{
+                        Active=False
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlClose
+                            ImageDown=Alpha,Bm.MusicControl.Open_D
+                            ImageNormal=Alpha,Bm.MusicControl.Open_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Open_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlClose
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlClose', 'ScriptCode');
+                            }
+                            Pos=12,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlList
+                            ImageDown=Alpha,Bm.MusicControl.List_D
+                            ImageNormal=Alpha,Bm.MusicControl.List_N
+                            ImageNormalA=Alpha,Bm.MusicControl.List_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlList
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlList', 'ScriptCode');
+                            }
+                            Pos=52,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=False
+                            Help=Help.MusicControlPlay
+                            ImageDown=Alpha,Bm.MusicControl.Play_D
+                            ImageNormal=Alpha,Bm.MusicControl.Play_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Play_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlPlay
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlPlay', 'ScriptCode');
+                            }
+                            Pos=92,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlPause
+                            ImageDown=Alpha,Bm.MusicControl.Pause_D
+                            ImageNormal=Alpha,Bm.MusicControl.Pause_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Pause_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlPause
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlPause', 'ScriptCode');
+                            }
+                            Pos=92,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlNext
+                            ImageDown=Alpha,Bm.MusicControl.Next_D
+                            ImageNormal=Alpha,Bm.MusicControl.Next_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Next_A
+                            Kind=Normal
+                            KindHit=Rect
+                            Name=MusicControlNext
+                            OnPressCode ^{
+                                01=ButtonClick('StarMap', 'MusicControlNext', 'ScriptCode');
+                            }
+                            Pos=134,15,0
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        Image ^{
+                            Active=True
+                            Image=Alpha,Bm.MusicControl.Background
+                            Name=MusicControlBG
+                            Pos=0,0,1
+                            Size=181,65
+                        }
+                        Label ^{
+                            Active=True
+                            AlignX=Left
+                            AlignY=Center
+                            Font=Font.2Ranger
+                            Name=MusicCurPlaylist
+                            Pos=7,5,0
+                            Size=166,10
+                            TextColor=248,252,248
+                            TextShadow=1
+                            TextShadowColor=0,0,0
+                        }
+                        MouseBlocking=True
+                        Name=MusicControl
+                        Pos=2,624,8
+                        PosAutoCorrection=True
+                        PosAutoCorrectionYCoef=1.0
+                        Size=181,65
+                    }
+                }
+                Name=PanelMain
+            }
+        }
+    }
+    StarMap ^{
+        Panel ^{
+            Panel ^{
+                OnKey ^{
+                    MusicControl ^{
+                        01=if(!KEYMOD)
+                        01 ^{
+                            01=if(KEY == 188)
+                            01 ^{
+                                01=if(MusicControls('GetPlayListOverride') != 'MusicOff')
+                                01 ^{
+                                    01=ButtonClick('StarMap', 'MusicControlPause', 'ScriptCode');
+                                    02=StarMapBlinkingMessage(CT('MusicControl.MusicPaused'));
+                                }
+                                02=else
+                                02 ^{
+                                    01=ButtonClick('StarMap', 'MusicControlPlay', 'ScriptCode');
+                                    02=StarMapBlinkingMessage(CT('MusicControl.MusicContinued'));
+                                }
+                            }
+                            02=else if(KEY == 190)
+                            02 ^{
+                                01=ButtonClick('StarMap', 'MusicControlNext', 'ScriptCode');
+                                02=StarMapBlinkingMessage(CT('MusicControl.NextTrackStarted'));
+                            }
+                        }
+                    }
+                }
+                Panel ^{
+                    MusicControl ^{
+                        GraphButton ^{
+                            Active=True
+                            Help=Help.MusicControlOpen
+                            ImageDown=Alpha,Bm.MusicControl.Open_D
+                            ImageNormal=Alpha,Bm.MusicControl.Open_N
+                            ImageNormalA=Alpha,Bm.MusicControl.Open_A
+                            Kind=Normal
+                            KindHit=Rect
+                            MouseBlocking=True
+                            Name=MusicControlOpen
+                            OnPressCode ^{
+                                01=str playlist_name = MusicControls('GetPlayListOverride');
+                                02=if(playlist_name == '') playlist_name = 'Default';
+                                03=playlist_name = CT('MusicControl.NowPlayingPlaylist') + ' ' + CT('MusicControl.PlaylistNames.' + playlist_name);
+                                05=InterfaceState('StarMap', 'MusicControl', 1);
+                                06=InterfaceText('StarMap', 'MusicCurPlaylist', playlist_name);
+                                08=InterfaceState('Planet', 'MusicControl', 1);
+                                09=InterfaceText('Planet', 'MusicCurPlaylist', playlist_name);
+                                11=InterfaceState('Gov', 'MusicControl', 1);
+                                12=InterfaceText('Gov', 'MusicCurPlaylist', playlist_name);
+                                14=InterfaceState('PlanetNO', 'MusicControl', 1);
+                                15=InterfaceText('PlanetNO', 'MusicCurPlaylist', playlist_name);
+                                15=InterfaceState('RuinsTalk', 'MusicControl', 1);
+                                18=InterfaceText('RuinsTalk', 'MusicCurPlaylist', playlist_name);
+                                19=InterfaceText('StarMap', 'MusicControlState', 1);
+                            }
+                            Pos=55,671,8.1
+                            PosAutoCorrection=True
+                            PosAutoCorrectionYCoef=0.5
+                            Size=35,36
+                            Style=Style.GB.SoundNormal
+                        }
+                        Image ^{
+                            Active=True
+                            Image=Alpha,Bm.MusicControl.ButtonBackground
+                            Name=MusicControlOpenBG
+                            Pos=54,670,8.5
+                            PosAutoCorrection=True
+                            PosAutoCorrectionYCoef=1.0
+                            Size=37,37
+                        }
+                        Label ^{
+                            Active=False
+                            Font=Font.2Ranger
+                            Name=MusicControlState
+                            Pos=0,0,0
+                            Size=1,1
+                            Text=0
+                            TextColor=255,255,255
+                        }
+                        Label ^{
+                            Active=False
+                            Font=Font.2Ranger
+                            Name=MusicPlaylistOverride
+                            Pos=0,0,0
+                            Size=1,1
+                            TextColor=255,255,255
+                        }
+                        Panel ^{
+                            Active=False
+                            GraphButton ^{
+                                Active=True
+                                Help=Help.MusicControlClose
+                                ImageDown=Alpha,Bm.MusicControl.Open_D
+                                ImageNormal=Alpha,Bm.MusicControl.Open_N
+                                ImageNormalA=Alpha,Bm.MusicControl.Open_A
+                                Kind=Normal
+                                KindHit=Rect
+                                Name=MusicControlClose
+                                OnPressCode ^{
+                                    02=InterfaceState('StarMap', 'MusicControl', 0);
+                                    04=InterfaceState('Planet', 'MusicControl', 0);
+                                    06=InterfaceState('Gov', 'MusicControl', 0);
+                                    08=InterfaceState('PlanetNO', 'MusicControl', 0);
+                                    10=InterfaceState('RuinsTalk', 'MusicControl', 0);
+                                    11=InterfaceText('StarMap', 'MusicControlState', 0);
+                                }
+                                Pos=12,15,0
+                                Size=35,36
+                                Style=Style.GB.SoundNormal
+                            }
+                            GraphButton ^{
+                                Active=True
+                                Help=Help.MusicControlList
+                                ImageDown=Alpha,Bm.MusicControl.List_D
+                                ImageNormal=Alpha,Bm.MusicControl.List_N
+                                ImageNormalA=Alpha,Bm.MusicControl.List_A
+                                Kind=Normal
+                                KindHit=Rect
+                                Name=MusicControlList
+                                OnPressCode ^{
+                                    01=unknown names_arr = newarray(1);
+                                    02=ArrayDelete(names_arr, 0);
+                                    03=CT('MusicControl.PlaylistNames', names_arr);
+                                    04=ArrayDelete(names_arr, 0);
+                                    05=ArrayDelete(names_arr, 0);
+                                    06=if(MusicControls('GetPlayListOverride') == '')
+                                    06 ^{
+                                        01=names_arr[0] = '<color=0,132,15>' + names_arr[0] + '</color>';
+                                    }
+                                    07=for(int i = 1; i < ArrayDim(names_arr); i = i + 1)
+                                    07 ^{
+                                        01=str playlist_name = GetVariableName(names_arr[i]);
+                                        02=if(!BlockExist('Music.' + playlist_name, 'Main'))
+                                        02 ^{
+                                            01=ArrayDelete(names_arr, i);
+                                            02=continue;
+                                        }
+                                        03=if(playlist_name == MusicControls('GetPlayListOverride'))
+                                        03 ^{
+                                            01=names_arr[i] = '<color=0,132,15>' + names_arr[i] + '</color>';
+                                        }
+                                    }
+                                    08=int choosed_playlist = ListBox(CT('MusicControl.SelectPlaylist'), names_arr, -(GetGameOptions('ResolutionX') / 2) + 149, (GetGameOptions('ResolutionY') / 2) - 340);
+                                    09=if(~choosed_playlist)
+                                    09 ^{
+                                        01=playlist_name = '';
+                                        02=if(choosed_playlist)
+                                        02 ^{
+                                            01=playlist_name = GetVariableName(names_arr[choosed_playlist]);
+                                        }
+                                        03=InterfaceText('StarMap', 'MusicPlaylistOverride', playlist_name);
+                                        04=if(MusicControls('GetPlayListOverride') != 'MusicOff' && MusicControls('GetPlayListOverride') != playlist_name)
+                                        04 ^{
+                                            01=MusicControls('SetPlayListOverride', playlist_name);
+                                            02=MusicControls('StopCurFile');
+                                            03=if(playlist_name == '') playlist_name = 'Default';
+                                            04=playlist_name = CT('MusicControl.NowPlayingPlaylist') + ' ' + CT('MusicControl.PlaylistNames.' + playlist_name);
+                                            05=InterfaceText('StarMap', 'MusicCurPlaylist', playlist_name);
+                                            06=InterfaceText('Planet', 'MusicCurPlaylist', playlist_name);
+                                            07=InterfaceText('Gov', 'MusicCurPlaylist', playlist_name);
+                                            08=InterfaceText('PlanetNO', 'MusicCurPlaylist', playlist_name);
+                                            09=InterfaceText('RuinsTalk', 'MusicCurPlaylist', playlist_name);
+                                        }
+                                    }
+                                }
+                                Pos=52,15,0
+                                Size=35,36
+                                Style=Style.GB.SoundNormal
+                            }
+                            GraphButton ^{
+                                Active=False
+                                Help=Help.MusicControlPlay
+                                ImageDown=Alpha,Bm.MusicControl.Play_D
+                                ImageNormal=Alpha,Bm.MusicControl.Play_N
+                                ImageNormalA=Alpha,Bm.MusicControl.Play_A
+                                Kind=Normal
+                                KindHit=Rect
+                                Name=MusicControlPlay
+                                OnPressCode ^{
+                                    01=str playlist_name = InterfaceText('StarMap', 'MusicPlaylistOverride');
+                                    02=MusicControls('SetPlayListOverride', playlist_name);
+                                    03=MusicControls('StopCurFile');
+                                    04=InterfaceState(CurrentForm(), 'MusicControlPlay', 0);
+                                    05=InterfaceState(CurrentForm(), 'MusicControlPause', 1);
+                                    06=if(playlist_name == '') playlist_name = 'Default';
+                                    07=InterfaceText(CurrentForm(), 'MusicCurPlaylist', CT('MusicControl.NowPlayingPlaylist') + ' ' + CT('MusicControl.PlaylistNames.' + playlist_name));
+                                }
+                                Pos=92,15,0
+                                Size=35,36
+                                Style=Style.GB.SoundNormal
+                            }
+                            GraphButton ^{
+                                Active=True
+                                Help=Help.MusicControlPause
+                                ImageDown=Alpha,Bm.MusicControl.Pause_D
+                                ImageNormal=Alpha,Bm.MusicControl.Pause_N
+                                ImageNormalA=Alpha,Bm.MusicControl.Pause_A
+                                Kind=Normal
+                                KindHit=Rect
+                                Name=MusicControlPause
+                                OnPressCode ^{
+                                    01=InterfaceText('StarMap', 'MusicPlaylistOverride', MusicControls('GetPlayListOverride'));
+                                    02=MusicControls('SetPlayListOverride', 'MusicOff');
+                                    03=MusicControls('StopCurFile');
+                                    04=InterfaceState(CurrentForm(), 'MusicControlPlay', 1);
+                                    05=InterfaceState(CurrentForm(), 'MusicControlPause', 0);
+                                    06=InterfaceText(CurrentForm(), 'MusicCurPlaylist', CT('MusicControl.NowPlayingPlaylist') + ' ' + CT('MusicControl.PlaylistNames.MusicOff'));
+                                }
+                                Pos=92,15,0
+                                Size=35,36
+                                Style=Style.GB.SoundNormal
+                            }
+                            GraphButton ^{
+                                Active=True
+                                Help=Help.MusicControlNext
+                                ImageDown=Alpha,Bm.MusicControl.Next_D
+                                ImageNormal=Alpha,Bm.MusicControl.Next_N
+                                ImageNormalA=Alpha,Bm.MusicControl.Next_A
+                                Kind=Normal
+                                KindHit=Rect
+                                Name=MusicControlNext
+                                OnPressCode ^{
+                                    01=MusicControls('StopCurFile');
+                                }
+                                Pos=134,15,0
+                                Size=35,36
+                                Style=Style.GB.SoundNormal
+                            }
+                            Image ^{
+                                Active=True
+                                Image=Alpha,Bm.MusicControl.Background
+                                Name=MusicControlBG
+                                Pos=0,0,1
+                                Size=181,65
+                            }
+                            Label ^{
+                                Active=True
+                                AlignX=Left
+                                AlignY=Center
+                                Font=Font.2Ranger
+                                Name=MusicCurPlaylist
+                                Pos=7,5,0
+                                Size=166,10
+                                TextColor=248,252,248
+                                TextShadow=1
+                                TextShadowColor=0,0,0
+                            }
+                            MouseBlocking=True
+                            Name=MusicControl
+                            Pos=45,650,8
+                            PosAutoCorrection=True
+                            PosAutoCorrectionYCoef=1.0
+                            Size=181,65
+                        }
+                    }
+                    Name=PanelMain
+                }
+            }
+        }
+    }
+}

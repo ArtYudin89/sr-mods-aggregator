@@ -1,0 +1,46 @@
+консоль будет в диалоге на КБ, если есть членокарта.
+чтобы включить диалог консоли надо чтобы в ланге DesignDepartmentModList параметр TestDialog был равен 1.
+
+SpawnCustomShip(X, StarPlanets(GalaxyStar(S), P), GetShipRuins(Player()));
+пример:
+SpawnCustomShip(1, StarPlanets(GalaxyStar(0), 0), GetShipRuins(Player()));
+- заспавнит корабль в Тароне(0) на планете Арнарик Гаудад(0) и переместит его на станцию игрока в ангар
+SpawnCustomShip(1, StarPlanets(GalaxyStar(0), 0), 0);
+- заспавнит корабль в Тароне(0) на планете Арнарик Гаудад(0).
+X - номер кастомного корабля из DesignDepartmentModList/CustomShips
+S - номер системы(0-70). чтобы понять какая система под каким номером используй: MessageBox(Name(GalaxyStar(S)));
+P - номер планеты в системе. от 0 по возрастанию от звезды, включая незаселёнки
+
+AddItemToShip(Player(),MakeBlueprint(0, X, N));
+Х - тип чертежа который надо создать. для корпусов t_Hull, для остальных смотреть параметр Type в чертежах. например Type=t_FuelTanks для бака будет t_FuelTanks.
+N - номер чертежа в папке нужного типа чертежей. например AddItemToShip(Player(), MakeBlueprint(0, t_Hull, 25)); создаст чертеж Артемиды.
+
+AddItemToShip(Player(),CreateEquipmentFromBlockInLang('DesignDepartmentModList.BlueprintsList.RepairDroids.N.'));
+создать предмет по чертежу BlueprintsList/RepairDroids/N. RepairDroids - тип чертежа(в примере дроид), N - номер чертежа.
+для корпусов и артов такое не получится, там отдельные функции, напиши если надо пример.
+
+
+ShipMoney(Player(), X);
+изменить деньги игрока на Х.
+
+AddItemToShip(Player(), CreateCustomCountableItem('DesignDepartment_NoneItem', Х));
+создать Х Нанов.
+
+AddItemToShip(Player(), CreateCustomCountableItem('DesignDepartment_NirgendAzur', Х));
+создать Х Азур.
+
+AddItemToShip(Player(), CreateNodes(Х, S));
+создать Х нодов серии домиков S.
+
+GoodsAdd(Player(), T, N);
+добавить тип товара T(типы: t_Food, t_Medicine, t_Technics, t_Luxury, t_Minerals, t_Alcohol, t_Arms, t_Narcotics) количеством N в трюм игрока.
+
+
+AddItemToShip(Player(), CreateNodes(5000, 0));
+AddItemToShip(Player(), CreateNodes(5000, 1));
+AddItemToShip(Player(), CreateNodes(5000, 2));
+GoodsAdd(Player(), t_Technics, 10000);
+GoodsAdd(Player(), t_Luxury, 10000);
+GoodsAdd(Player(), t_Arms, 10000);
+AddItemToShip(Player(), CreateCustomCountableItem('DesignDepartment_NirgendAzur', 10000));
+AddItemToShip(Player(), CreateCustomCountableItem('DesignDepartment_NoneItem', 10000));

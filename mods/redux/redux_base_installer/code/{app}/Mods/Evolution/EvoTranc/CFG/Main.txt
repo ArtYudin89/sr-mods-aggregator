@@ -1,0 +1,1501 @@
+BV ^{
+    OnLoad ^{
+        EvoTranc ^{
+            01=if(InterfaceState('StarMap', 'Tranc_panel') > 0)
+            01 ^{
+                01=if(!ShipPartners(Player()) && !PlayerPirates())
+                01 ^{
+                    01=InterfacePos('StarMap', 'Tranc_panel', 0, 0 + GetMainData('Data.MiniMapPosOffsetY'), 0);
+                }
+                02=else
+                02 ^{
+                    01=InterfacePos('StarMap', 'Tranc_panel', 0, 35 + GetMainData('Data.MiniMapPosOffsetY'), 0);
+                }
+            }
+        }
+    }
+}
+Data ^{
+    NPCTrancOwners ^{
+        Enabled=False
+    }
+    SE ^{
+        Ship ^{
+            Tranclucator ^{
+                2ImageP=GI,Bm.ShipP.2Tranclucator
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.Tranclucator
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.Tranclucators
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorBlack ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorBlack
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorBlack
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorBlacks
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorBlack2 ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorBlack2
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorBlack2
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorBlack2s
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorBlue ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorBlue
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorBlue
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorBlues
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorCyan ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorCyan
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorCyan
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorCyans
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorCyan2 ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorCyan2
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorCyan2
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorCyan2s
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorGray ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorGray
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorGray
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorGrays
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorGreen ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorGreen
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorGreen
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorGreens
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorLightGreen ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorLightGreen
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorLightGreen
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorLightGreens
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorOrange ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorOrange
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorOrange
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorOranges
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorPink ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorPink
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorPink
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorPinks
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorPurple ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorPurple
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorPurple
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorPurples
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorRed ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorRed
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorRed
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorReds
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorViolet ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorViolet
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorViolet
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorViolets
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorWhite ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorWhite
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorWhite
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorWhites
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+            TranclucatorYellow ^{
+                2ImageP=GI,Bm.ShipP.2TranclucatorYellow
+                Anim ^{
+                    0=1,[30,150-299]
+                    1=1,[30,300-449]
+                    Normal=2,[30,0-149]
+                }
+                AnimS ^{
+                    Normal=2,[30,0-149]
+                }
+                Image=Bm.Ship.TranclucatorYellow
+                ImageMap=Bm.Container.MapTranc
+                ImageS=Bm.Ship.TranclucatorYellows
+                PosZ=Tranclucator
+                SizeImage=128,128
+                SmeCenterImage=64,64
+                SmeImage=64,64
+                SmeImageMap=1,1
+                StateTime=2000
+            }
+        }
+        Weapon ^{
+            8 ^{
+                Palettes ~{
+                    0 ^{
+                    }
+                    1 ^{
+                    }
+                    2 ^{
+                    }
+                    3 ^{
+                    }
+                    4 ^{
+                    }
+                    5 ^{
+                    }
+                    6 ^{
+                    }
+                    7 ^{
+                    }
+                    8 ^{
+                        Color0=0.95,0.83,0.5
+                        GAI=Bm.Weapon.MusashiGun
+                    }
+                }
+            }
+        }
+    }
+    Script ^{
+        Mod_EvoTranc=1,Script.Mod_EvoTranc
+    }
+}
+ML ^{
+    Scaner ^{
+        Panel ^{
+            Panel ^{
+                Panel ^{
+                    Panel ^{
+                        FakeIEmptyLabel ^{
+                            Label ^{
+                                Active=False
+                                AlignX=Center
+                                AlignY=CenterEx
+                                Name=IEmptyFake
+                                Pos=20,73,0
+                                Size=89,18
+                                Style=Style.Label.2Normal
+                                TextColor=0,0,0
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    Ship ^{
+        Panel ^{
+            Panel ^{
+            }
+            Panel ^{
+                Panel ^{
+                }
+                Panel ^{
+                    Panel ^{
+                        Panel ^{
+                            GraphButton ^{
+                                ImageDisable=GI,Bm.FormShip2.2ForsageH
+                                ImageDown=GI,Bm.FormShip2.2ForsageD
+                                ImageNormal=GI,Bm.FormShip2.2ForsageN
+                                ImageNormalA=GI,Bm.FormShip2.2ForsageA
+                                Kind=Disable
+                                KindHit=Rect
+                                Name=ForsageBut
+                                Pos=12,9,3
+                                Size=17,17
+                                Style=Style.GB.SoundNormal
+                            }
+                            Image ^{
+                                Image=GI,Bm.FormShip2.2Forsage
+                                Pos=0,0,5
+                                Size=53,56
+                            }
+                            Image ^{
+                                Image=GI,Bm.FormShip2.2ForsageLight
+                                Name=ForsageLight
+                                Pos=23,5,4
+                                Size=21,20
+                            }
+                            Image ^{
+                                Active=False
+                                Image=GI,Bm.FormShip2.2ForsageH
+                                Name=ForsageLock
+                                Pos=12,9,3
+                                Size=17,17
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    StarMap ^{
+        Panel ^{
+            Panel ^{
+                Panel ^{
+                }
+                Panel ^{
+                }
+                Panel ^{
+                }
+                Panel ^{
+                    Image ^{
+                    }
+                    Image ^{
+                        Image=Alpha,Bm.PanelSpace2.2zaglushka_tranc_ms_blk
+                        MouseBlocking=True
+                        Name=zaglushka_tranc_ms_blk
+                        OnTrancButtonEnterCode ^{
+                            01=if(IsFilm()) exit;
+                            02=dword tranc = curTrancActiveGlobal;
+                            03=str temp_str = ShipName(tranc);
+                            04=if(Dist(Player(), tranc) <= ShipRadarRange(Player()))
+                            04 ^{
+                                01=InterfaceState('StarMap', curTrancButActiveGlobal, 0);
+                                02=int checkS = 0;
+                                03=str addCache = '';
+                                04=if(ArtefactTypeInUse(Player(), t_ArtefactScaner))
+                                04 ^{
+                                    01=checkS = 1;
+                                    02=addCache = 'Cache';
+                                }
+                                05=InterfaceText('StarMap', 'InfoShipNameTranc' + addCache, temp_str);
+                                06=InterfaceText('StarMap', 'TrancType' + addCache, DeleteTags(CT('ShipType.TypeName.Tranclucator')));
+                                07=InterfaceText('StarMap', 'TrancSpeed' + addCache, ShipSpeed(tranc));
+                                08=temp_str = Hitpoints(tranc);
+                                09=temp_str = Format(temp_str, temp_str, temp_str + '/' + ItemSize(ShipItems(tranc, 0)));
+                                10=if(checkS) temp_str = temp_str + ' + ' + ShipDroidRepair(tranc);
+                                11=InterfaceText('StarMap', 'TrancSize' + addCache, DeleteTags(temp_str));
+                                12=temp_str = ShipProtectability(tranc);
+                                13=temp_str = temp_str + '% ';
+                                14=temp_str = Format(temp_str, temp_str,temp_str + '+ ' + ShipArmor(tranc));
+                                15=if(checkS) temp_str = '(' + ShipSkill(tranc, 'MobilityCur') + ') ' + temp_str;
+                                16=InterfaceText('StarMap', 'TrancDef' + addCache, DeleteTags(temp_str));
+                                17=if(checkS)
+                                17 ^{
+                                    01=if(ShipCntWeapon(tranc)) str attack_line = '(' + ShipSkill(tranc, 'AccuracyCur') + ') ' + ShipAverageDamage(tranc, 0) + '<color=127,127,127>-</color>' + ShipAverageDamage(tranc, 1);
+                                    02=else attack_line = '0';
+                                    03=InterfaceText('StarMap', 'TrancDamageCache', attack_line);
+                                }
+                                18=InterfaceText('StarMap', 'TrancFreeSpc' + addCache, ShipFreeSpace(tranc));
+                                19=if((ShipOwner(tranc) >= 0 && ShipOwner(tranc) <= 4) || ShipOwner(tranc) == 7) InterfaceImage('StarMap', 'TrancRaceEmblem' + addCache, 'Alpha,Bm.Race.Emblem.' + CT('Race.Emblem.' + ShipOwner(tranc)));
+                                20=else InterfaceImage('StarMap', 'TrancRaceEmblem' + addCache, 'Alpha,Bm.Race.Emblem.2None');
+                                21=if(!IsChameleon(tranc))InterfaceImage('StarMap', 'TrancImage' + addCache,'GI,Bm.ShipP.TranclucatorSm');
+                                22=else InterfaceImage('StarMap', 'TrancImage' + addCache, 'GI,Bm.ShipP.TranclucatorSm' + DeleteTags(Format(EquipmentImageName(tranc), 'ArtTranclucator', '', '')));
+                                23=if(checkS) InterfaceState('StarMap', 'InfoShipTrancCache', 1);
+                                24=else InterfaceState('StarMap', 'InfoShipTranc', 1);
+                            }
+                            05=else
+                            05 ^{
+                                01=InterfaceText('StarMap', 'InfoNameTrancOutOfRange', temp_str);
+                                02=if(!IsChameleon(tranc)) InterfaceImage('StarMap', 'TrancOutOfRangeImage', 'GI,Bm.ShipP.TranclucatorSm');
+                                03=else InterfaceImage('StarMap', 'TrancOutOfRangeImage', 'GI,Bm.ShipP.TranclucatorSm' + DeleteTags(Format(EquipmentImageName(tranc), 'ArtTranclucator', '', '')));
+                                04=InterfaceState('StarMap', 'InfoTrancOutOfRange', 1);
+                            }
+                        }
+                        OnTrancButtonLeaveCode ^{
+                            01=InterfaceState('StarMap', 'InfoShipTranc', 0);
+                            02=InterfaceState('StarMap', 'InfoShipTrancCache', 0);
+                            03=InterfaceState('StarMap', 'InfoTrancOutOfRange', 0);
+                            04=InterfaceState('StarMap', curTrancButActiveGlobal, 1);
+                            05=InterfaceState('StarMap', 'TrancActive_but', 0);
+                            06=Sound('Sound.ButtonLeave');
+                        }
+                        OnTrancButtonLeftClick ^{
+                            01=StarMapCenterView(CoordX(curTrancActiveGlobal), CoordY(curTrancActiveGlobal), 3);
+                        }
+                        OnTrancButtonRightClick ^{
+                            01=if(IsFilm()) exit;
+                            02=dword tranc = curTrancActiveGlobal;
+                            03=if(Dist(Player(), tranc) > ShipRadarRange(Player())) exit;
+                            04=if(!ShipInNormalSpace(tranc)) exit;
+                            05=InterfaceState('StarMap', 'InfoShipTranc', 0);
+                            06=InterfaceState('StarMap', 'InfoShipTrancCache', 0);
+                            07=Dialog(tranc);
+                        }
+                        OnTrancImageEnterCode ^{
+                            01=if(ShipStar(Player()) == ShipStar(PlayerTranclucators(tranc_num)) && !ShipInHyperSpace(PlayerTranclucators(tranc_num)))
+                            01 ^{
+                                01=curTrancActiveGlobal = PlayerTranclucators(tranc_num);
+                                02=if(!IsChameleon(curTrancActiveGlobal)) str buttonName = 'TrancActive_but';
+                                03=else buttonName = 'TrancActive_but' + DeleteTags(Format(EquipmentImageName(curTrancActiveGlobal), 'ArtTranclucator', ''));
+                                04=InterfaceState('StarMap', buttonName, 1);
+                                05=InterfacePos('StarMap', buttonName, but_coordX, 10, -1);
+                                06=curTrancButActiveGlobal = 'TP_but_' + (tranc_num + 1);
+                                07=Sound('Sound.ButtonEnter');
+                            }
+                            02=else
+                            02 ^{
+                                01=dword tranc = PlayerTranclucators(tranc_num);
+                                02=InterfaceText('StarMap', 'InfoNameTrancOutOfRange', Name(tranc));
+                                03=if(!IsChameleon(tranc)) InterfaceImage('StarMap', 'TrancOutOfRangeImage', 'GI,Bm.ShipP.TranclucatorSm');
+                                04=else InterfaceImage('StarMap', 'TrancOutOfRangeImage', 'GI,Bm.ShipP.TranclucatorSm' + DeleteTags(Format(EquipmentImageName(tranc), 'ArtTranclucator', '', '')));
+                                05=InterfaceState('StarMap', 'InfoTrancOutOfRange', 1);
+                            }
+                        }
+                        OnTrancImageLeaveCode ^{
+                            01=dword tranc = PlayerTranclucators(tranc_num);
+                            02=if(ShipStar(Player()) != ShipStar(tranc) || ShipInHyperSpace(tranc)) InterfaceState('StarMap', 'InfoTrancOutOfRange', 0);
+                        }
+                        Pos=0,0,99
+                        Size=153,40
+                    }
+                    Panel ^{
+                        MouseBlocking=False
+                    }
+                    Pos=349,-220,MapPartner
+                    Size=163,55
+                }
+                Panel ^{
+                }
+                Panel ^{
+                }
+                Panel ^{
+                }
+                Panel ^{
+                    Active=False
+                    Name=Tranc_panel
+                    Panel ^{
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_but
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorRedD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorRedN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorRedA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butRed
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorYellowD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorYellowN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorYellowA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butYellow
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorGreenD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorGreenN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorGreenA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butGreen
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorBlueD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorBlueN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorBlueA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butBlue
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorVioletD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorVioletN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorVioletA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butViolet
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorWhiteD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorWhiteN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorWhiteA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butWhite
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorCyanD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorCyanN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorCyanA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butCyan
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorCyanD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorCyanN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorCyanA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butCyan
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorBlack2D
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorBlack2N
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorBlack2A
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butBlack2
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorBlackD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorBlackN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorBlackA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butBlack
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorCyan2D
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorCyan2N
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorCyan2A
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butCyan2
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorLightGreenD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorLightGreenN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorLightGreenA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butLightGreen
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorOrangeD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorOrangeN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorOrangeA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butOrange
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorPinkD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorPinkN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorPinkA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butPink
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorPurpleD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorPurpleN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorPurpleA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butPurple
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        GraphButton ^{
+                            Active=False
+                            ImageDown=Alpha,Bm.PanelSpace2.2TranclucatorGrayD
+                            ImageNormal=Alpha,Bm.PanelSpace2.2TranclucatorGrayN
+                            ImageNormalA=Alpha,Bm.PanelSpace2.2TranclucatorGrayA
+                            Kind=Normal
+                            KindHit=Graph
+                            MouseBlocking=True
+                            MouseBlockingTest=False
+                            Name=TrancActive_butGray
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonEnterCode', 1));
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeaveCode', 1));
+                            }
+                            OnMouseRightClick ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonRightClick', 1));
+                            }
+                            OnPressCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancButtonLeftClick', 1));
+                            }
+                            Pos=0,0,-1
+                            Size=15,22
+                            Style=Style.GB.KnockKnock
+                        }
+                        Image ^{
+                            Active=False
+                            Image=Alpha,Bm.PanelSpace2.2TranclucatorN
+                            Name=TP_but_1
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancImageEnterCode', 1), 'tranc_num', 0, 'but_coordX', 123);
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancImageLeaveCode', 1), 'tranc_num', 0);
+                            }
+                            Pos=123,10,-1
+                            Size=15,22
+                        }
+                        Image ^{
+                            Active=False
+                            Image=Alpha,Bm.PanelSpace2.2TranclucatorN
+                            Name=TP_but_2
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancImageEnterCode', 1), 'tranc_num', 1, 'but_coordX', 105);
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancImageLeaveCode', 1), 'tranc_num', 1);
+                            }
+                            Pos=105,10,-1
+                            Size=15,22
+                        }
+                        Image ^{
+                            Active=False
+                            Image=Alpha,Bm.PanelSpace2.2TranclucatorN
+                            Name=TP_but_3
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancImageEnterCode', 1), 'tranc_num', 2, 'but_coordX', 87);
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancImageLeaveCode', 1), 'tranc_num', 2);
+                            }
+                            Pos=87,10,-1
+                            Size=15,22
+                        }
+                        Image ^{
+                            Active=False
+                            Image=Alpha,Bm.PanelSpace2.2TranclucatorN
+                            Name=TP_but_4
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancImageEnterCode', 1), 'tranc_num', 3, 'but_coordX', 69);
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancImageLeaveCode', 1), 'tranc_num', 3);
+                            }
+                            Pos=69,10,-1
+                            Size=15,22
+                        }
+                        Image ^{
+                            Active=False
+                            Image=Alpha,Bm.PanelSpace2.2TranclucatorN
+                            Name=TP_but_5
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancImageEnterCode', 1), 'tranc_num', 4, 'but_coordX', 51);
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancImageLeaveCode', 1), 'tranc_num', 4);
+                            }
+                            Pos=51,10,-1
+                            Size=15,22
+                        }
+                        Image ^{
+                            Active=False
+                            Image=Alpha,Bm.PanelSpace2.2TranclucatorN
+                            Name=TP_but_6
+                            OnMouseEnterCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancImageEnterCode', 1), 'tranc_num', 5, 'but_coordX', 33);
+                            }
+                            OnMouseLeaveCode ^{
+                                01=ExecuteCodeFromString(GenerateCodeStringFromBlock('ML.StarMap.Panel.Panel.Panel:3.Image:1.OnTrancImageLeaveCode', 1), 'tranc_num', 5);
+                            }
+                            Pos=33,10,-1
+                            Size=15,22
+                        }
+                        Name=Tranc_panel_but
+                        Panel ^{
+                            Name=Tranc_ActButsOff
+                            OnMouseLeaveCode ^{
+                                01=InterfaceState('StarMap', 'TrancActive_but', 0);
+                                02=InterfaceState('StarMap', 'TrancActive_butRed', 0);
+                                03=InterfaceState('StarMap', 'TrancActive_butYellow', 0);
+                                04=InterfaceState('StarMap', 'TrancActive_butGreen', 0);
+                                05=InterfaceState('StarMap', 'TrancActive_butBlue', 0);
+                                06=InterfaceState('StarMap', 'TrancActive_butViolet', 0);
+                                07=InterfaceState('StarMap', 'TrancActive_butWhite', 0);
+                                08=InterfaceState('StarMap', 'TrancActive_butCyan', 0);
+                            }
+                            Pos=33,10,-1
+                            Size=105,22
+                        }
+                        Pos=10,0,-1
+                        Size=163,55
+                    }
+                    Panel ^{
+                        Image ^{
+                            Image=Alpha,Bm.PanelSpace2.2TranclucatorPanelSingle
+                            KindX=Right
+                            MouseBlocking=False
+                            Name=Tranc_panel_sigment_1
+                            Pos=132,0,100
+                            Size=41,55
+                        }
+                        Image ^{
+                            Image=Alpha,Bm.PanelSpace2.2TranclucatorPanel
+                            MouseBlocking=True
+                            Name=Tranc_panel_sigment_2
+                            Pos=116,0,101
+                            Size=153,38
+                        }
+                        Name=Tranc_panel_Image
+                        Pos=0,0,0
+                        Size=190,55
+                    }
+                    Pos=339,-220,-1
+                    PosAutoCorrection=True
+                    PosAutoCorrectionXCoef=0.5
+                    PosAutoCorrectionYCoef=-0.5
+                    Size=190,110
+                }
+                Window ^{
+                }
+                Window ^{
+                }
+                Window ^{
+                }
+                Window ^{
+                }
+                Window ^{
+                }
+                Window ^{
+                }
+                Window ^{
+                    Active=False
+                    GraphBuf ^{
+                        Name=TrancImage2
+                        Pos=14,12,8
+                        Size=43,43
+                    }
+                    Image ^{
+                        Name=TrancRaceEmblem
+                        Pos=204,115,8
+                        Size=35,35
+                    }
+                    Image ^{
+                        Image=GI,Bm.ShipP.TranclucatorSm
+                        Name=TrancImage
+                        Pos=14,12,10
+                        Size=43,43
+                    }
+                    Label ^{
+                        AlignX=Center
+                        AlignY=CenterEx
+                        Font=Font.2SmallBold
+                        Name=InfoShipNameTranc
+                        Pos=60,10,8
+                        Size=165,43
+                        TextColor=57,240,255
+                        WordWrap=True
+                    }
+                    Label ^{
+                        AlignX=Right
+                        AlignY=CenterEx
+                        Font=Font.2Small
+                        Name=ISTypeTranc
+                        Pos=-2,66,8
+                        Size=125,15
+                        Text=FormInfo.ISType
+                        TextColor=140,140,140
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Right
+                        AlignY=CenterEx
+                        Font=Font.2Small
+                        Name=ISSpeedTranc
+                        Pos=-2,81,8
+                        Size=125,15
+                        Text=FormInfo.ISSpeed
+                        TextColor=140,140,140
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Right
+                        AlignY=CenterEx
+                        Font=Font.2Small
+                        Name=ISSizeTranc
+                        Pos=-2,96,8
+                        Size=125,15
+                        Text=FormInfo.ISSize
+                        TextColor=140,140,140
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Right
+                        AlignY=CenterEx
+                        Font=Font.2Small
+                        Name=ISDefTranc
+                        Pos=-2,111,8
+                        Size=125,15
+                        Text=FormInfo.ISDef
+                        TextColor=140,140,140
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Right
+                        AlignY=CenterEx
+                        Font=Font.2Small
+                        Name=ISFreeSpcTranc
+                        Pos=-2,126,8
+                        Size=125,15
+                        Text=FormInfo.ISFreeSpcTranc
+                        TextColor=140,140,140
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Left
+                        AlignY=CenterEx
+                        Font=Font.2Normal
+                        Name=TrancType
+                        Pos=123,66,8
+                        Size=130,15
+                        TextColor=255,255,255
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Left
+                        AlignY=CenterEx
+                        Font=Font.2Normal
+                        Name=TrancSpeed
+                        Pos=123,81,8
+                        Size=130,15
+                        TextColor=255,255,255
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Left
+                        AlignY=CenterEx
+                        Font=Font.2Normal
+                        Name=TrancSize
+                        Pos=123,96,8
+                        Size=130,15
+                        TextColor=255,255,255
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Left
+                        AlignY=CenterEx
+                        Font=Font.2Normal
+                        Name=TrancDef
+                        Pos=123,111,8
+                        Size=130,15
+                        TextColor=255,255,255
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Left
+                        AlignY=CenterEx
+                        Font=Font.2Normal
+                        Name=TrancFreeSpc
+                        Pos=123,126,8
+                        Size=130,15
+                        TextColor=255,255,255
+                        WordWrap=False
+                    }
+                    MVUpdate=True
+                    MouseBlocking=False
+                    Name=InfoShipTranc
+                    Pos=-126,-157
+                    Size=251,156
+                    Style=Style.Window.2Simple
+                }
+                Window ^{
+                    Active=False
+                    GraphBuf ^{
+                        Name=TrancImage2
+                        Pos=14,12,8
+                        Size=43,43
+                    }
+                    Image ^{
+                        Name=TrancRaceEmblemCache
+                        Pos=204,130,8
+                        Size=35,35
+                    }
+                    Image ^{
+                        Image=GI,Bm.ShipP.TranclucatorSm
+                        Name=TrancImageCache
+                        Pos=14,12,10
+                        Size=43,43
+                    }
+                    Label ^{
+                        AlignX=Center
+                        AlignY=CenterEx
+                        Font=Font.2SmallBold
+                        Name=InfoShipNameTrancCache
+                        Pos=60,10,8
+                        Size=165,43
+                        TextColor=57,240,255
+                        WordWrap=True
+                    }
+                    Label ^{
+                        AlignX=Right
+                        AlignY=CenterEx
+                        Font=Font.2Small
+                        Name=ISTypeTrancCache
+                        Pos=-13,66,8
+                        Size=125,15
+                        Text=FormInfo.ISType
+                        TextColor=140,140,140
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Right
+                        AlignY=CenterEx
+                        Font=Font.2Small
+                        Name=ISSpeedTrancCache
+                        Pos=-13,81,8
+                        Size=125,15
+                        Text=FormInfo.ISSpeed
+                        TextColor=140,140,140
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Right
+                        AlignY=CenterEx
+                        Font=Font.2Small
+                        Name=ISSizeTrancCache
+                        Pos=-13,96,8
+                        Size=125,15
+                        Text=FormInfo.ISSize
+                        TextColor=140,140,140
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Right
+                        AlignY=CenterEx
+                        Font=Font.2Small
+                        Name=ISDefTrancCache
+                        Pos=-13,111,8
+                        Size=125,15
+                        Text=FormInfo.ISDef
+                        TextColor=140,140,140
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Right
+                        AlignY=CenterEx
+                        Font=Font.2Small
+                        Name=ISDamageTrancCache
+                        Pos=-13,126,8
+                        Size=125,15
+                        Text=FormInfo.ISDamage
+                        TextColor=140,140,140
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Right
+                        AlignY=CenterEx
+                        Font=Font.2Small
+                        Name=ISFreeSpcTrancCache
+                        Pos=-13,141,8
+                        Size=125,15
+                        Text=FormInfo.ISFreeSpcTranc
+                        TextColor=140,140,140
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Left
+                        AlignY=CenterEx
+                        Font=Font.2Normal
+                        Name=TrancTypeCache
+                        Pos=112,66,8
+                        Size=130,15
+                        TextColor=255,255,255
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Left
+                        AlignY=CenterEx
+                        Font=Font.2Normal
+                        Name=TrancSpeedCache
+                        Pos=112,81,8
+                        Size=130,15
+                        TextColor=255,255,255
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Left
+                        AlignY=CenterEx
+                        Font=Font.2Normal
+                        Name=TrancSizeCache
+                        Pos=112,96,8
+                        Size=130,15
+                        TextColor=255,255,255
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Left
+                        AlignY=CenterEx
+                        Font=Font.2Normal
+                        Name=TrancDefCache
+                        Pos=112,111,8
+                        Size=130,15
+                        TextColor=255,255,255
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Left
+                        AlignY=CenterEx
+                        Font=Font.2Normal
+                        Name=TrancDamageCache
+                        Pos=112,126,8
+                        Size=130,15
+                        TextColor=255,255,255
+                        WordWrap=False
+                    }
+                    Label ^{
+                        AlignX=Left
+                        AlignY=CenterEx
+                        Font=Font.2Normal
+                        Name=TrancFreeSpcCache
+                        Pos=112,141,8
+                        Size=130,15
+                        TextColor=255,255,255
+                        WordWrap=False
+                    }
+                    MVUpdate=True
+                    MouseBlocking=False
+                    Name=InfoShipTrancCache
+                    Pos=-126,-172
+                    Size=251,171
+                    Style=Style.Window.2Simple
+                }
+                Window ^{
+                    Active=False
+                    GraphBuf ^{
+                        Name=TrancImage2
+                        Pos=14,12,8
+                        Size=43,43
+                    }
+                    Image ^{
+                        Image=GI,Bm.ShipP.TranclucatorSm
+                        Name=TrancOutOfRangeImage
+                        Pos=14,12,10
+                        Size=43,43
+                    }
+                    Label ^{
+                        AlignX=Center
+                        AlignY=CenterEx
+                        Font=Font.2SmallBold
+                        Name=InfoNameTrancOutOfRange
+                        Pos=60,10,8
+                        Size=165,43
+                        TextColor=57,240,255
+                        WordWrap=True
+                    }
+                    Label ^{
+                        AlignX=Center
+                        AlignY=CenterEx
+                        Font=Font.2Small
+                        Name=Tranc_d
+                        Pos=28,58,8
+                        Size=200,83
+                        Text=FormInfo.ObjOutOfRange
+                        TextColor=255,255,255
+                        WordWrap=True
+                    }
+                    MVUpdate=True
+                    MouseBlocking=False
+                    Name=InfoTrancOutOfRange
+                    Pos=-126,-148
+                    Size=251,147
+                    Style=Style.Window.2Simple
+                }
+            }
+        }
+    }
+    Style ^{
+        GB ^{
+            KnockKnock ^{
+                SoundClick=Sound.ButtonClick
+            }
+        }
+    }
+}

@@ -1,0 +1,943 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefEnergy",
+    "ScriptFileOut": "D:\\Mod_RefEnergy.scr",
+    "ScriptTextOut": "D:\\Mod_RefEnergy.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "restart",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 30,
+                    "Msg": "",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefEnergy.10\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 31,
+                    "Msg": "",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefEnergy.11\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 32,
+                    "Msg": "",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefEnergy.12\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 33,
+                    "Msg": "",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefEnergy.13\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 480,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 34,
+                    "Msg": "",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefEnergy.14\"))"
+                },
+                {
+                    "Name": "block",
+                    "Pos.x": 600,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 35,
+                    "Msg": "",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer('block~'+CT(\"Script.Mod_RefEnergy.15\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 720,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 36,
+                    "Msg": "",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefEnergy.15\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 840,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 37,
+                    "Msg": "",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefEnergy.16\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 960,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 38,
+                    "Msg": "",
+                    "AMsg.Num": "8",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefEnergy.17\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1080,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 39,
+                    "Msg": "",
+                    "AMsg.Num": "9",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefEnergy.18\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 23,
+                    "Msg": "",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefEnergy.3\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 24,
+                    "Msg": "",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefEnergy.4\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 25,
+                    "Msg": "",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefEnergy.5\"),\"<0>\",money,\"<1>\",size))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefEnergy.6\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefEnergy.7\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "",
+                    "DMsg.Num": "5",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefEnergy.8\"),\"<0>\",tstr))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 900,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "",
+                    "DMsg.Num": "6",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefEnergy.9\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "DialogCore",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 20
+                },
+                {
+                    "Name": "DialogBattery",
+                    "Type": "TDialog",
+                    "Pos.x": 150,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 21
+                },
+                {
+                    "Name": "DialogNew",
+                    "Type": "TDialog",
+                    "Pos.x": 360,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 22
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 14
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 15,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "ShipAddCustomShipInfo(Player(),'RefEnergyInfo');",
+                        "ShipAddCustomShipInfo(Player(),'RefEnergyBuffInfo','NoShow');",
+                        "//ShipAddCustomShipInfo(Player(),'RefEnergyTretonInfo','NoShow');",
+                        "",
+                        "//Первичный перебор Гагалактики",
+                        "for(i=0;GalaxyStars()>i;i=i+1) {",
+                        "    for(j=0;StarShips(GalaxyStar(i))>j;j=j+1) {",
+                        "        cur_ship = StarShips(GalaxyStar(i),j);",
+                        "        if(ShipOwner(cur_ship) == Kling) continue;",
+                        "        if(RndObject(1,100,cur_ship) < 5) {",
+                        "            //Раздаём энергоблоки, и определяем их заполненность в соответствии с тех уровнем корпуса непися",
+                        "            int rand = RndObject(1,100,cur_ship);",
+                        "            item = CreateQuestItem('RefEnergy_Battery',ShipOwner(cur_ship));",
+                        "            if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 1) UselessItemData(item,2,30);",
+                        "            if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 2) UselessItemData(item,2,45);",
+                        "            if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 3) UselessItemData(item,2,60);",
+                        "            if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 4) UselessItemData(item,2,70);",
+                        "            if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 5) UselessItemData(item,2,90);",
+                        "            if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 6) UselessItemData(item,2,110);",
+                        "            if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 7) UselessItemData(item,2,130);",
+                        "            if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 8) UselessItemData(item,2,150);",
+                        "",
+                        "            if(rand < 6) UselessItemData(item,1,round(UselessItemData(item,2) * Rnd(0,20) / 100));",
+                        "            else if(rand < 71) UselessItemData(item,1,round(UselessItemData(item,2) * Rnd(20,60) / 100));",
+                        "            else if(rand < 96) UselessItemData(item,1,round(UselessItemData(item,2) * Rnd(60,90) / 100));",
+                        "            else UselessItemData(item,1,round(UselessItemData(item,2) * Rnd(90,100) / 100));",
+                        "",
+                        "            ShipAddDropItem(cur_ship,item);",
+                        "        }",
+                        "",
+                        "        //Кроме того, даём им инфошки на третон и на энергоснабжение в целом",
+                        "        //Ладно, мне чот страшно такое давать в руки неписям",
+                        "        //ShipAddCustomShipInfo(cur_ship,'RefEnergyInfo');",
+                        "        //ShipAddCustomShipInfo(cur_ship,'RefEnergyBuffInfo');",
+                        "        ShipAddCustomShipInfo(cur_ship,'RefEnergyTretonInfo','NoShow');",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 16,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Раздаём кораблям энергоблоки и инфошки энергоснабжения",
+                        "if(GalaxyShipId() > lastShipId) {",
+                        "    int cnt=BuildListOfNewShips(tarr1,lastShipId,1+2+4+8+16+256+4096+8192,1+2+4+8+16+128,1,'');",
+                        "    if(cnt) {    //Если найден хотя бы один корабль",
+                        "        for(i=0;i<ArrayDim(tarr1);i=i+1) {",
+                        "            cnt=0;    //Обнуляем флаг",
+                        "            cur_ship=tarr1[i];    //Выбираем корабль",
+                        "            if(IsPlayer(cur_ship)) continue;",
+                        "            if(ShipOwner(cur_ship) == Kling) continue;",
+                        "            if(RndObject(1,100,cur_ship) < 5) {",
+                        "                //Раздаём энергоблоки, и определяем их заполненность в соответствии с тех уровнем корпуса непися",
+                        "                int rand = RndObject(1,100,cur_ship);",
+                        "                item = CreateQuestItem('RefEnergy_Battery',ShipOwner(cur_ship));",
+                        "                if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 1) UselessItemData(item,2,30);",
+                        "                if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 2) UselessItemData(item,2,45);",
+                        "                if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 3) UselessItemData(item,2,60);",
+                        "                if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 4) UselessItemData(item,2,70);",
+                        "                if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 5) UselessItemData(item,2,90);",
+                        "                if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 6) UselessItemData(item,2,110);",
+                        "                if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 7) UselessItemData(item,2,130);",
+                        "                if(ItemLevel(ShipEqInSlot(cur_ship,t_Hull)) == 8) UselessItemData(item,2,150);",
+                        "",
+                        "                if(rand < 6) UselessItemData(item,1,round(UselessItemData(item,2) * Rnd(0,20) / 100));",
+                        "                else if(rand < 71) UselessItemData(item,1,round(UselessItemData(item,2) * Rnd(20,60) / 100));",
+                        "                else if(rand < 96) UselessItemData(item,1,round(UselessItemData(item,2) * Rnd(60,90) / 100));",
+                        "                else UselessItemData(item,1,round(UselessItemData(item,2) * Rnd(90,100) / 100));",
+                        "",
+                        "                ShipAddDropItem(cur_ship,item);",
+                        "            }",
+                        "",
+                        "            //Кроме того, даём им инфошки на третон и на энергоснабжение в целом",
+                        "            //Ладно, мне чот страшно такое раздавать НПС",
+                        "            //ShipAddCustomShipInfo(cur_ship,'RefEnergyInfo');",
+                        "            //ShipAddCustomShipInfo(cur_ship,'RefEnergyBuffInfo');",
+                        "            ShipAddCustomShipInfo(cur_ship,'RefEnergyTretonInfo','NoShow');",
+                        "        }",
+                        "    }",
+                        "    //Обновляем Id последнего рождённого корабля",
+                        "    lastShipId = GalaxyShipId();",
+                        "}"
+                    ],
+                    "#": 17,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(GetShipRuins(Player())) {",
+                        "    if(!PlayerBridge()) {",
+                        "        if(ShipType(GetShipRuins(Player())) == 'TC') {",
+                        "            AddDialogInject('DialogCore','',CT(\"Script.Mod_RefEnergy.1\"),10);",
+                        "        }",
+                        "",
+                        "        if(ShipType(GetShipRuins(Player())) == 'TC' || ShipType(GetShipRuins(Player())) == 'SB') {",
+                        "            for(i = 0; i < ShipItems(Player()); i = i + 1)",
+                        "            {",
+                        "                cur_item = ShipItems(Player(), i);",
+                        "                if(ItemType(cur_item) != t_UselessItem) continue;",
+                        "                if(EquipmentImageName(cur_item) != 'RefEnergy_Battery') continue;",
+                        "                //Считаем количество батарей на борту",
+                        "                tint1 = tint1 + 1;",
+                        "            }",
+                        "            if(tint1) AddDialogInject('DialogBattery','',CT(\"Script.Mod_RefEnergy.0\"),5);",
+                        "        }",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 18,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 40,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tint1 = 0;",
+                        "for(i = 0; i < ShipItems(Player()); i = i + 1)",
+                        "{",
+                        "    cur_item = ShipItems(Player(), i);",
+                        "    if(ItemType(cur_item) != t_UselessItem) continue;",
+                        "    if(EquipmentImageName(cur_item) != 'RefEnergy_Battery') continue;",
+                        "    tint1 = tint1 + 1;",
+                        "    if((GalaxyMoney(2) * (UselessItemData(cur_item,2) - UselessItemData(cur_item,1))) > ShipMoney(Player())) tstr = 'block';",
+                        "    else tstr = 'snap';",
+                        "    InjectAnswer('DialogBattery2',Format(CT(\"Script.Mod_RefEnergy.2\"),'weight',ItemSize(cur_item),'on',UselessItemData(cur_item,1),'off',UselessItemData(cur_item,2),'mone',(GalaxyMoney(2) * (UselessItemData(cur_item,2) - UselessItemData(cur_item,1)))),cur_item,tstr);",
+                        "}",
+                        "DChange(5);",
+                        "exit;"
+                    ],
+                    "#": 41,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),ShipMoney(Player())-(GalaxyMoney(2) * (UselessItemData(GAnswerData,2) - UselessItemData(GAnswerData,1))));",
+                        "UselessItemData(GAnswerData,1,UselessItemData(GAnswerData,2));",
+                        "tint1 = tint1 - 1;",
+                        "DChange(6);",
+                        "exit;"
+                    ],
+                    "#": 42,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(0);",
+                        "DAdd(1);"
+                    ],
+                    "#": 43,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(2);"
+                    ],
+                    "#": 44,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player()) < money) {",
+                        "  DAdd(5);",
+                        "}",
+                        "if(ShipMoney(Player()) >= money) {",
+                        "  DAdd(6);",
+                        "}",
+                        "DAdd(4);"
+                    ],
+                    "#": 45,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);"
+                    ],
+                    "#": 46,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(7);"
+                    ],
+                    "#": 47,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(tint > 2) {",
+                        "  DAdd(9);",
+                        "}",
+                        "DAdd(8);"
+                    ],
+                    "#": 48,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ItemExtraSpecialsCountByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('RefEnergy_ExtraCore3'))) {",
+                        "  DChange(1);",
+                        "  exit;",
+                        "}",
+                        "if(!ItemExtraSpecialsCountByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('RefEnergy_ExtraCore3')) && ItemSize(ShipEqInSlot(Player(),t_Hull)) > 200) {",
+                        "  size = 200 - (GalaxyTechLevel() * 15);",
+                        "  money = GalaxyMoney(4) * GalaxyDiffLevels(4) / 50;",
+                        "  DChange(2);",
+                        "  exit;",
+                        "}",
+                        "if(ItemSize(ShipEqInSlot(Player(),t_Hull)) <= 200) {",
+                        "  DChange(3);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 49,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ItemExtraSpecialsCountByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('RefEnergy_ExtraCore1'))) {",
+                        "    ItemExtraSpecialsDeleteByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('RefEnergy_ExtraCore1'));",
+                        "    ItemExtraSpecialsAddByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('RefEnergy_ExtraCore2'));",
+                        "}",
+                        "else if(ItemExtraSpecialsCountByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('RefEnergy_ExtraCore2'))) {",
+                        "    ItemExtraSpecialsDeleteByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('RefEnergy_ExtraCore2'));",
+                        "    ItemExtraSpecialsAddByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('RefEnergy_ExtraCore3'));",
+                        "}",
+                        "else {",
+                        "    ItemExtraSpecialsAddByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('RefEnergy_ExtraCore1'));",
+                        "}",
+                        "",
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),ShipMoney(Player()) - money);",
+                        "ItemSize(ShipEqInSlot(Player(),t_Hull),ItemSize(ShipEqInSlot(Player(),t_Hull)) - size);",
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 50,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tint1 = 0;",
+                        "for(i = 0; i < ShipItems(Player()); i = i + 1)",
+                        "{",
+                        "    cur_item = ShipItems(Player(), i);",
+                        "    if(ItemType(cur_item) != t_UselessItem) continue;",
+                        "    if(EquipmentImageName(cur_item) != 'RefEnergy_Battery') continue;",
+                        "    tint1 = tint1 + 1;",
+                        "    if((GalaxyMoney(2) * (UselessItemData(cur_item,2) - UselessItemData(cur_item,1))) > ShipMoney(Player())) tstr = 'block';",
+                        "    else tstr = 'snap';",
+                        "    InjectAnswer('DialogBattery2',Format(CT(\"Script.Mod_RefEnergy.2\"),'weight',ItemSize(cur_item),'on',UselessItemData(cur_item,1),'off',UselessItemData(cur_item,2),'mone',(GalaxyMoney(2) * (UselessItemData(cur_item,2) - UselessItemData(cur_item,1)))),cur_item,tstr);",
+                        "}",
+                        "DChange(5);",
+                        "exit;"
+                    ],
+                    "#": 51,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1060,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 13
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 12
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 11,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 19
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "size",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "money",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tstr",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tint1",
+                    "Pos.x": 270,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cur_item",
+                    "Pos.x": 360,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "lastShipId",
+                    "Pos.x": 480,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tarr1",
+                    "Pos.x": 630,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cur_ship",
+                    "Pos.x": 720,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "item",
+                    "Pos.x": 840,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 930,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "j",
+                    "Pos.x": 1020,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 20,
+            "End": 40,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 21,
+            "End": 41,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 22,
+            "End": 42,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 23,
+            "End": 43,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 24,
+            "End": 44,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 45,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 46,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 28,
+            "End": 47,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 29,
+            "End": 48,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 31,
+            "End": 49,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 36,
+            "End": 50,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 39,
+            "End": 51,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 13,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 19,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

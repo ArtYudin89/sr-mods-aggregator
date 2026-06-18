@@ -1,0 +1,444 @@
+MicroModuls ^{
+    RevOldAcryns1 ^{
+        Cost=150
+        Equipments=FuelTank
+        KindGraph=10
+        Name=<color=48,236,248>Каталитический топливный бак</color>
+        Priority=10
+        Ruins=SB
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Обогащает топливо активными источниками нейтронов, которые, попадая в двигатель, вызывают увеличение скорости корабля на <clr>25<clrEnd> ед. и дальности прыжка на <clr>2<clrEnd> ед.</color>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        bonJump=2
+        bonSpeed=25
+    }
+    RevOldAcryns10 ^{
+        Cost=150
+        Equipments=Hook
+        KindGraph=11
+        Name=<color=48,236,248>Реверсивный захват</color>
+        Priority=20
+        Ruins=PB
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Способен работать в обратном режиме, придавая дополнительный разгон ракетам и снарядам осколочного вооружения. Урон первых увеличивает разгон на <clr>2<clrEnd> ед., а вторых  - на <clr>4<clrEnd> ед.</color>
+        Text=Мощность осколочного оружия: <bonWSplinter> ед.
+        Text=Мощность ракетного оружия: <bonWMissile> ед.
+        bonWMissile=2
+        bonWSplinter=4
+    }
+    RevOldAcryns11 ^{
+        Cost=150
+        Equipments=Radar
+        KindGraph=10
+        Name=<color=48,236,248>Интроверсионный радар</color>
+        Priority=10
+        Ruins=MC
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Тщательно анализируя полученные данные о состоянии вашего корабля, передает оптимизационные команды дроиду, позволяя ему восстанавливать дополнительно <clr>4<clrEnd> ед. обшивки в день.</color>
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=4
+    }
+    RevOldAcryns12 ^{
+        Cost=200
+        Equipments=Radar
+        KindGraph=11
+        Name=<color=48,236,248>Коллиматорный радар</color>
+        Priority=70
+        Ruins=RC
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Способен концентрироваться на одной цели, наводить на нее лазерную метку и передавать сверхточные координаты для стрельбы по самым слабым узлам. Соответственно возрастает урон всех видов оружия - энергетического на <clr>4<clrEnd> ед., осколочного на <clr>8<clrEnd>, ракетного - на <clr>4<clrEnd>.</color>
+        Text=Мощность энергетического оружия: <bonWEnergy> ед.
+        Text=Мощность осколочного оружия: <bonWSplinter> ед.
+        Text=Мощность ракетного оружия: <bonWMissile> ед.
+        bonWEnergy=4
+        bonWMissile=4
+        bonWSplinter=8
+    }
+    RevOldAcryns13 ^{
+        Cost=200
+        Equipments=Hull
+        KindGraph=A
+        Name=<color=48,236,248>Исследовательский корпус</color>
+        Priority=10
+        Ruins=SB
+        Size=70
+        Special=1
+        Text=<color=248,252,248>Быстрый корпус для исследователей космоса и курьеров. Идеален для оперативного выполнения правительственных заданий.</color>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн км
+        bonJump=2
+        bonRadar=300
+        bonSlotArt=3
+        bonSlotDef=-1
+        bonSlotForsage=1
+        bonSlotHook=-1
+        bonSlotWeapon=-3
+        bonSpeed=100
+    }
+    RevOldAcryns14 ^{
+        Cost=300
+        Equipments=Hull
+        KindGraph=B
+        Name=<color=48,236,248>Защитный корпус</color>
+        Priority=40
+        Ruins=RC
+        Size=130
+        Special=1
+        Text=<color=248,252,248>Разработан специально для военных кораблей острия атаки, подвергающихся самому сильному огню доминаторов. Имеет дополнительное усиление брони, усиленное питание генератора защитного поля и дроида, однако знаменит утечками мощности в двигательной системе.</color>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        bonDef=5
+        bonDroid=5
+        bonHull=3
+        bonJump=-3
+        bonSlotArt=-2
+        bonSlotWeapon=-1
+        bonSpeed=-90
+    }
+    RevOldAcryns15 ^{
+        Cost=200
+        Equipments=Hull
+        KindGraph=C
+        Name=<color=48,236,248>Торговый корпус</color>
+        Priority=10
+        Ruins=BK
+        Size=160
+        Special=1
+        Text=<color=248,252,248>Для истинных пацифистов и заядлых торговцев, чтящих древнее правило "время - деньги", и готовых ежедневно конвертировать первое во второе. Все ненужные для торговли узлы убраны для увеличения трюма. Отсутствие боевой системы позволяет увеличить скорость на <clr>50<clrEnd> ед., а дальность прыжка - на <clr>2<clrEnd> парсек.</color>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        bonJump=2
+        bonSlotDroid=-1
+        bonSlotForsage=1
+        bonSlotHook=-1
+        bonSlotWeapon=-3
+        bonSpeed=50
+    }
+    RevOldAcryns16 ^{
+        Cost=700
+        Equipments=Hull
+        KindGraph=D
+        Name=<color=48,236,248>ННП корпус</color>
+        Priority=10
+        Ruins=MC,RC
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Корпус с портативным генератором поля ННП (Не Наши Проблемы). Жизнь с таким корпусом становится намного счастливее и веселее, все оборудование работает без задержек, проблем и форс-мажоров, позволяя своему владельцу прожигать жизнь и наслаждаться полетом.</color>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн км
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=3
+        bonHull=2
+        bonJump=2
+        bonRadar=300
+        bonSlotArt=-2
+        bonSlotDef=-1
+        bonSlotForsage=1
+        bonSlotHook=1
+        bonSlotRadar=1
+        bonSlotScaner=-1
+        bonSlotWeapon=-2
+        bonSpeed=50
+    }
+    RevOldAcryns17 ^{
+        Cost=400
+        Equipments=Hull
+        KindGraph=E
+        Name=<color=48,236,248>Боевой корпус</color>
+        Priority=30
+        Ruins=WB
+        Size=80
+        Special=1
+        Text=<color=248,252,248>Оснащен усовершенствованными слотами под оружие, с большим быстродействием и точностью, а также меньшими потерями энергии. Увеличивает мощность осколочных орудий на <clr>9<clrEnd> ед., ракетных - на <clr>7<clrEnd>, и энергетических - на <clr>7<clrEnd>. Идеальный выбор для бойца.</color>
+        Text=Мощность энергетического оружия: <bonWEnergy> ед.
+        Text=Мощность осколочного оружия: <bonWSplinter> ед.
+        Text=Мощность ракетного оружия: <bonWMissile> ед.
+        bonSlotArt=-3
+        bonSlotHook=-1
+        bonSlotWeapon=-2
+        bonWEnergy=7
+        bonWMissile=9
+        bonWSplinter=9
+    }
+    RevOldAcryns18 ^{
+        Cost=800
+        Equipments=Hull
+        KindGraph=A
+        Name=<color=48,236,248>Планетарный корпус</color>
+        Priority=10
+        Ruins=PB
+        Size=80
+        Special=1
+        Text=<color=248,252,248>При проектировании учитывалось, что этот корабль должен быть предназначен для планетарных исследований, поэтому должен быть крепким, вмещать много зондов, и иметь слоты под нестандартное оборудование, найденное на планетах.</color>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=5
+        bonHull=2
+        bonSlotArt=3
+        bonSlotForsage=1
+        bonSlotWeapon=-2
+    }
+    RevOldAcryns19 ^{
+        Cost=700
+        Equipments=Hull
+        KindGraph=D
+        Name=<color=48,236,248>ННП корпус</color>
+        Priority=10
+        Ruins=MC,RC
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Корпус с портативным генератором поля ННП (Не Наши Проблемы). Жизнь с таким корпусом становится намного счастливее и веселее, все оборудование работает без задержек, проблем и форс-мажоров, позволяя своему владельцу прожигать жизнь и наслаждаться полетом.</color>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн км
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=3
+        bonHull=2
+        bonJump=5
+        bonRadar=300
+        bonSlotArt=-1
+        bonSlotDef=1
+        bonSlotHook=1
+        bonSlotRadar=1
+        bonSlotWeapon=2
+        bonSpeed=50
+    }
+    RevOldAcryns2 ^{
+        Cost=150
+        Equipments=FuelTank
+        KindGraph=11
+        Name=<color=48,236,248>Драконитовый топливный бак</color>
+        Priority=30
+        Ruins=WB
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Преобразует часть топлива, обычно используемого для работы двигателя в космосе, в мощную жидкую взрывчатку - драконит, которой и начиняет снаряды осколочного и ракетного оружия. Мощность этих орудий возрастает на <clr>2<clrEnd> ед., но из-за уменьшения притока топлива скорость корабля падает на <clr>70<clrEnd> ед.</color>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Мощность осколочного оружия: <bonWSplinter> ед.
+        Text=Мощность ракетного оружия: <bonWMissile> ед.
+        bonSpeed=-70
+        bonWMissile=2
+        bonWSplinter=2
+    }
+    RevOldAcryns20 ^{
+        Cost=700
+        Equipments=Hull
+        KindGraph=E
+        Name=<color=48,236,248>Боевой корпус</color>
+        Priority=30
+        Ruins=WB
+        Size=80
+        Special=1
+        Text=<color=248,252,248>Оснащен усовершенствованными слотами под оружие, с большим быстродействием и точностью, а также меньшими потерями энергии. Увеличивает мощность осколочных орудий на <clr>9<clrEnd> ед., ракетных на <clr>7<clrEnd>, и настолько же энергетических. Идеальный выбор для бойца.</color>
+        Text=Мощность энергетического оружия: <bonWEnergy> ед.
+        Text=Мощность осколочного оружия: <bonWSplinter> ед.
+        Text=Мощность ракетного оружия: <bonWMissile> ед.
+        bonSlotArt=-2
+        bonSlotForsage=-1
+        bonSlotWeapon=-1
+        bonWEnergy=7
+        bonWMissile=9
+        bonWSplinter=9
+    }
+    RevOldAcryns21 ^{
+        Cost=200
+        Equipments=Hull
+        KindGraph=A
+        Name=<color=48,236,248>Исследовательский корпус</color>
+        Priority=10
+        Ruins=SB
+        Size=70
+        Special=1
+        Text=<color=248,252,248>Быстрый корпус для исследователей космоса и курьеров. Идеален для оперативного выполнения правительственных заданий.</color>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн км
+        bonJump=2
+        bonRadar=300
+        bonSlotArt=3
+        bonSlotDef=-1
+        bonSlotForsage=1
+        bonSlotHook=-1
+        bonSlotWeapon=-3
+        bonSpeed=50
+    }
+    RevOldAcryns22 ^{
+        Cost=700
+        Equipments=Hull
+        KindGraph=D
+        Name=<color=48,236,248>ННП корпус</color>
+        Priority=50
+        Ruins=MC
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Корпус с портативным генератором поля ННП (Не Наши Проблемы). Жизнь с таким корпусом становится намного счастливее и веселее, все оборудование работает без задержек, проблем и форс-мажоров, позволяя своему владельцу прожигать жизнь и наслаждаться полетом.</color>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн км
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=3
+        bonHull=2
+        bonJump=2
+        bonRadar=300
+        bonSlotArt=-1
+        bonSlotDef=1
+        bonSlotHook=1
+        bonSlotRadar=1
+        bonSlotWeapon=-1
+        bonSpeed=50
+    }
+    RevOldAcryns23 ^{
+        Cost=700
+        Equipments=Hull
+        KindGraph=E
+        Name=<color=48,236,248>Боевой корпус</color>
+        Priority=50
+        Ruins=WB
+        Size=85
+        Special=1
+        Text=<color=248,252,248>Оснащен усовершенствованными слотами под оружие, с большим быстродействием и точностью, а также меньшими потерями энергии. Увеличивает мощность осколочных орудий на <clr>9<clrEnd> ед., ракетных - на <clr>7<clrEnd>, и энергетических - на <clr>7<clrEnd>. Идеальный выбор для бойца.</color>
+        Text=Мощность энергетического оружия: <bonWEnergy> ед.
+        Text=Мощность осколочного оружия: <bonWSplinter> ед.
+        Text=Мощность ракетного оружия: <bonWMissile> ед.
+        bonSlotArt=-1
+        bonWEnergy=7
+        bonWMissile=9
+        bonWSplinter=9
+    }
+    RevOldAcryns24 ^{
+        Cost=200
+        Equipments=Hull
+        KindGraph=A
+        Name=<color=48,236,248>Исследовательский корпус</color>
+        Priority=50
+        Ruins=SB
+        Size=70
+        Special=1
+        Text=<color=248,252,248>Быстрый корпус для исследователей космоса и курьеров. Идеален для оперативного выполнения правительственных заданий.</color>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн км
+        bonJump=5
+        bonRadar=300
+        bonSlotArt=3
+        bonSlotForsage=1
+        bonSlotWeapon=-2
+        bonSpeed=100
+    }
+    RevOldAcryns3 ^{
+        Cost=150
+        Equipments=DefGenerator
+        KindGraph=10
+        Name=<color=48,236,248>Импульсный генератор защитного поля</color>
+        Priority=10
+        Ruins=PB
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Создает скачкообразное усиление защитного поля во время прохождения через него луча или снаряда, увеличивая мощность выстрелов энергетического оружия на <clr>5<clrEnd> ед. Из-за неравномерной нагрузки между усиливающими импульсами работает с мощностью на <clr>2<clrEnd> ед. ниже базовой.</color>
+        Text=Мощность энергетического оружия: <bonWEnergy> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=-2
+        bonWEnergy=5
+    }
+    RevOldAcryns4 ^{
+        Cost=150
+        Equipments=DefGenerator
+        KindGraph=11
+        Name=<color=48,236,248>Гауссов генератор защитного поля</color>
+        Priority=10
+        Ruins=WB
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Создает с помощью защитного поля зону сильного магнитного потенциала, разгоняющую снаряды осколочного оружия, благодаря чему те наносят дополнительно <clr>3<clrEnd> ед. урона.</color>
+        Text=Мощность осколочного оружия: <bonWSplinter> ед.
+        bonWSplinter=3
+    }
+    RevOldAcryns5 ^{
+        Cost=150
+        Equipments=Engine
+        KindGraph=10
+        Name=<color=48,236,248>Таурный двигатель</color>
+        Priority=30
+        Ruins=RC
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Использует часть собственной мощности для подачи дополнительного питания в генератор защитного поля, усиливая щит на <clr>5<clrEnd>%, при этом скорость падает на <clr>100<clrEnd> ед.</color>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=5
+        bonSpeed=-100
+    }
+    RevOldAcryns6 ^{
+        Cost=150
+        Equipments=Engine
+        KindGraph=12
+        Name=<color=48,236,248>Энергонный двигатель</color>
+        Priority=50
+        Ruins=BK
+        Size=200
+        Special=1
+        Text=<color=248,252,248>Благодаря встроенному массивному генератору антиматерии способен значительно усиливать импульс входа в гиперпространство, позволяя увеличить дальность прыжка на <clr>4<clrEnd> парсек.</color>
+        Text=Дальность прыжка: <bonJump> пк.
+        bonJump=4
+    }
+    RevOldAcryns7 ^{
+        Cost=150
+        Equipments=Engine
+        KindGraph=13
+        Name=<color=48,236,248>Форосный двигатель</color>
+        Priority=70
+        Ruins=SB
+        Size=80
+        Special=1
+        Text=<color=248,252,248>Использует часть питания орудийных и защитных систем для увеличения скорости на <clr>175<clrEnd> ед. Компактная модель для любителей экстремальных скоростей. Из-за сильной вибрации, создаваемой камерой сгорания, эффективность дроида снижается на <clr>4<clrEnd> ед., а также энергетических и осколочных орудий  на <clr>9<clrEnd> и <clr>14<clrEnd> ед. соответственно.</color>
+        Text=Мощность энергетического оружия: <bonWEnergy> ед.
+        Text=Мощность осколочного оружия: <bonWSplinter> ед.
+        Text=Мощность ракетного оружия: <bonWMissile> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=-3
+        bonSpeed=175
+        bonWEnergy=-4
+        bonWMissile=-4
+        bonWSplinter=-7
+    }
+    RevOldAcryns8 ^{
+        Cost=150
+        Equipments=Droid
+        KindGraph=10
+        Name=<color=48,236,248>Стаханитовый дроид</color>
+        Priority=50
+        Ruins=MC
+        Size=100
+        Special=1
+        Text=<color=248,252,248>В отличии от обычных дроидов, этот практически не требует профилактических осмотров, поэтому допускается его нахождение в открытом космосе целыми неделями, без прекращения диагностики и своевременной починки обшивки.</color>
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=7
+    }
+    RevOldAcryns9 ^{
+        Cost=110
+        Equipments=Hook
+        KindGraph=10
+        Name=<color=48,236,248>Сопланаторный захват</color>
+        Priority=10
+        Ruins=BK
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Оборудован генератором высокотемпературной плазмы, которую тот подает непосредственно в сопла двигателей, увеличивая скорость корабля на <clr>25<clrEnd> ед.</color>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonSpeed=25
+    }
+}

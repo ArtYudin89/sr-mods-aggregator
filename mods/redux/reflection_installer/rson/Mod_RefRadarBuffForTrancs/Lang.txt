@@ -1,0 +1,32 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            PlayerTrancConnection ^{
+                Description=NoShow
+                Icon=0
+                Name=Инфошка с баффами за транков
+                OnActCode ^{
+                    01=int cnt1 = PlayerTranclucators();
+                    02=int i = 0;
+                    03=if(cnt1 > 0)
+                    04 ^{
+                        01=int buffik = 0;
+                        02=for(i = 0;PlayerTranclucators() > i;i=i+1)
+                        03 ^{
+                            01=if(Dist(Player(),PlayerTranclucators(i)) > ShipRadarRange(Player()) - ShipRadarRange(PlayerTranclucators(i))) buffik = buffik + 350;
+                            02=if(ShipRadarRange(PlayerTranclucators(i)) > 1500) buffik = buffik + round((ShipRadarRange(PlayerTranclucators(i)) - 1000) * 2 / 10);
+                        }
+                        04=if(PlayerTranclucators() == 2) buffik = round(buffik * 115 / 100);
+                        05=if(PlayerTranclucators() == 3) buffik = round(buffik * 135 / 100);
+                        06=if(PlayerTranclucators() == 4) buffik = round(buffik * 145 / 100);
+                        07=if(PlayerTranclucators() == 5) buffik = round(buffik * 165 / 100);
+                        08=if(PlayerTranclucators() >= 6) buffik = round(buffik * 195 / 100);
+                        09=ShipSpecialBonuses(Player(),bonRadar,buffik);
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+        }
+    }
+}

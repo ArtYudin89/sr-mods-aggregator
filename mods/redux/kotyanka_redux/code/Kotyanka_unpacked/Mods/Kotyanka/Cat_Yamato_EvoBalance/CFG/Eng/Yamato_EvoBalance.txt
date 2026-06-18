@@ -1,0 +1,122 @@
+MicroModuls ^{
+    Cat_Yamato_Rebuilt ^{
+        BlockMM=1
+		BlockImp=1
+        Cost=100
+        Equipments=Hull
+        FragilitySplinter=300
+		FragilityMissile=300
+		FragilityEnergy=300
+        HullGraphSize=250
+        KindGraph=YamatoRebuilt
+        Name=Space Battleship Yamato v2199
+        Owner=People
+        Priority=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Yamato is a battleship of the Japanese Imperial Navy during World War II on the planet <clr>Earth<clrEnd>, raised from the seabed and converted into a spaceship in <clr>2199<clrEnd>. It was hit after an unequal battle in 2875, collapsed on one of the uninhabited planets of an unknown system and was considered lost for a long time.. At the moment, it has been restored at one of the military bases according to ancient drawings.</color>
+        Text=<color=248,252,248>The military restored the building according to the drawings, but the equipment is extremely outdated. Without upgrading all the ship's systems, it's really just a museum exhibit...</color>
+		Text=Firing range: <bonWRadius>
+        Text=Jump range: <bonJump>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket armament does not work!
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        Text=Droid effectiveness: <bonDroid>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Power of Shield Generator: <bonDef>%
+        bonDef=-25
+        bonDroid=-80
+        bonHull=-20
+        bonJump=-20
+        bonMass=+25
+        bonRadar=1
+        bonScaner=1
+        bonSlotArt=-4
+        bonSlotHook=1
+        bonSlotWeapon=5
+        bonSpeed=-750
+        bonWEnergy=-30
+        bonWMissile=-1000
+        bonWRadius=-300
+        bonWSplinter=-80
+		bonSkill2=-2
+		bonSkill4=-3
+		bonResistAsteroid=-300
+    }
+    Cat_Yamato_Upgraded ^{
+        BlockMM=1
+		BlockImp=1
+        Cost=100
+        Equipments=Hull
+        FragilitySplinter=60
+		FragilityMissile=100
+		FragilityEnergy=80
+        HullGraphSize=250
+        KindGraph=YamatoUpgraded
+        Name=Yamato Space Battleship
+        Owner=People
+        Priority=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Yamato is a battleship of the Japanese Imperial Navy during World War II on the planet <clr>Earth<clrEnd>, raised from the seabed and converted into a spaceship in <clr>2199<clrEnd>. It was hit after an unequal battle in 2875, collapsed on one of the uninhabited planets of an unknown system and was considered lost for a long time. At the moment, it has been restored at one of the military bases according to ancient drawings, and also modified by the best minds of the coalition by order of the ranger who found the ship.</color>
+        Text=<color=248,252,248>Absolutely everyone wants to serve under the captain of this handsome man, and the governments of the planets are as supportive as possible and give out the most prestigious tasks.</color>
+        Text=Firing range: <bonWRadius>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Rocket weapon power: <bonWMissile>
+		Text=Gripper range: <bonHookRadius>
+		Text=Gripper power: <bonHook>
+		Text=Power of Shield Generator: <bonDef>%
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        Text=Droid effectiveness: <bonDroid>
+        Text=Engine speed: <bonSpeed>
+		Text=Jump range: <bonJump>
+		Text=Mobility skill: <bonSkill2>
+		Text=Commerce skill: <bonSkill4>
+		bonJump=-10
+        bonDroid=15
+		bonHook=-100
+		bonHookRadius=-40
+		bonDef=15
+        bonMass=+100
+        bonSlotArt=4
+        bonSlotHook=1
+        bonSlotRadar=1
+        bonSlotScaner=1
+        bonSlotWeapon=5
+		bonSlotForsage=-1
+        bonSpeed=-200
+        bonWEnergy=25
+        bonWMissile=35 
+        bonWRadius=20  
+		bonSkill2=-2
+		bonSkill4=-3
+		bonResistAsteroid=50
+        bonHull=0
+        bonWSplinter=0
+		bonSkill1=0
+		bonSkill3=0
+		bonSkill5=0
+		bonSkill6=0
+    }
+}
+Script ~{
+    Yamato ~{
+	    Settings ~{
+	        bad_special_name=Space Battleship Yamato v2199
+            good_special_name=Yamato Space Battleship
+            cost=1000000
+            upgrade_cost=2500000
+            cost_sponsor=650000
+            cost_museum=500000
+            hull_cost_1=165000
+            hull_cost_2=4200000
+            research_time_slow=1300
+            research_time_fast=550
+            item_size=800
+            hull_size_bad=2000
+            hull_size_good=2000
+	    }
+    }
+}

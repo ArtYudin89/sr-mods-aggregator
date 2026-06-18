@@ -1,0 +1,45 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RefVertixInfo ^{
+                Description=Настало время превратить вертикс в кое-что более интересное!
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(ItemType(ScriptItemActObject2()) != t_Weapon14) exit;
+                    02=if(ObjectType(ScriptItemActObject1()) == 6)
+                    03 ^{
+                        01=ScriptItemActParam(Rnd(10,30));
+                    }
+                    04=if(ObjectType(ScriptItemActObject1()) == 7)
+                    05 ^{
+                        01=ScriptItemActParam(0);
+                    }
+                    06=int i;
+                    07=for(i=0;StarMissiles(ShipStar(ScriptItemActShip()))>i;i=i+1)
+                    08 ^{
+                        01=if(Dist(StarMissiles(ShipStar(ScriptItemActShip()),i),ScriptItemActShip()) <= GetEquipmentStats(ScriptItemActObject2(),2))
+                        02 ^{
+                            01=if(Rnd(1,100) <= 95) MissileLive(StarMissiles(ShipStar(ScriptItemActShip()),i),1000);
+                        }
+                    }
+                    09=for(i=0;StarAsteroids(ShipStar(ScriptItemActShip()))>i;i=i+1)
+                    10 ^{
+                        01=if(Dist(StarAsteroids(ShipStar(ScriptItemActShip()),i),ScriptItemActShip()) <= GetEquipmentStats(ScriptItemActObject2(),2))
+                        02 ^{
+                            01=AsteroidRespawn(StarAsteroids(ShipStar(ScriptItemActShip()),i));
+                        }
+                    }
+                    11=for(i=0;StarItems(ShipStar(ScriptItemActShip()))>i;i=i+1)
+                    12 ^{
+                        01=if(Dist(StarItems(ShipStar(ScriptItemActShip()),i),ScriptItemActShip()) <= GetEquipmentStats(ScriptItemActObject2(),2))
+                        02 ^{
+                            01=if(Rnd(1,100) > 95) ItemDestroy(StarItems(ShipStar(ScriptItemActShip()),i),1);
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnWeaponShot
+            }
+        }
+    }
+}

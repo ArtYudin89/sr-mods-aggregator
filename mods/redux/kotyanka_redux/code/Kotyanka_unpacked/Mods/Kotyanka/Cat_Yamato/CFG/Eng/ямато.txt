@@ -1,0 +1,180 @@
+UselessItems ^{
+    Cat_Yamato_Destroyed ^{
+        Cost=Huge
+        Name=Remains of an ancient ship
+        Owner=None
+        Size=1
+        Text=The remains of an ancient ship look very impressive, although most of the skin and half of the frame are missing. From the weapons systems, only a reminder in the form of towers remained. It resembles human ships in some way, I wonder if it can be restored...
+    }
+}
+MicroModuls ^{
+    Cat_Yamato_Rebuilt ^{
+        BlockMM=1
+		BlockImp=1
+        Cost=9000
+        Equipments=Hull
+        FragilitySplinter=300
+		FragilityMissile=300
+		FragilityEnergy=300
+        HullGraphSize=250
+        KindGraph=YamatoRebuilt
+        Name=Space Battleship Yamato v2199
+        Owner=People
+        Priority=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Yamato is a battleship of the Japanese Imperial Navy during World War II on the planet <clr>Earth<clrEnd>, raised from the seabed and converted into a spaceship in <clr>2199<clrEnd>. It was hit after an unequal battle in 2875, collapsed on one of the uninhabited planets of an unknown system and was considered lost for a long time.. At the moment, it has been restored at one of the military bases according to ancient drawings.</color>
+        Text=<color=248,252,248>The military restored the building according to the drawings, but the equipment is extremely outdated. Without upgrading all the ship's systems, it's really just a museum exhibit...</color>
+		Text=Firing range: <bonWRadius>
+        Text=Jump range: <bonJump>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket armament does not work!
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        Text=Droid effectiveness: <bonDroid>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+        Text=Power of Shield Generator: <bonDef>%
+        bonDef=-25
+        bonDroid=-80
+        bonHull=-20
+        bonJump=-20
+        bonMass=+25
+        bonRadar=1
+        bonScaner=1
+        bonSlotArt=-4
+        bonSlotHook=1
+        bonSlotWeapon=5
+        bonSpeed=-750
+        bonWEnergy=-30
+        bonWMissile=-1000
+        bonWRadius=-300
+        bonWSplinter=-80
+		bonSkill2=-2
+		bonSkill4=-3
+		bonResistAsteroid=-300
+    }
+    Cat_Yamato_Upgraded ^{
+        BlockMM=1
+		BlockImp=1
+        Cost=9000
+        Equipments=Hull
+        FragilitySplinter=60
+		FragilityMissile=120
+		FragilityEnergy=90
+        HullGraphSize=250
+        KindGraph=YamatoUpgraded
+        Name=Yamato Space Battleship
+        Owner=People
+        Priority=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Yamato is a battleship of the Japanese Imperial Navy during World War II on the planet <clr>Earth<clrEnd>, raised from the seabed and converted into a spaceship in <clr>2199<clrEnd>. It was hit after an unequal battle in 2875, collapsed on one of the uninhabited planets of an unknown system and was considered lost for a long time. At the moment, it has been restored at one of the military bases according to ancient drawings, and also modified by the best minds of the coalition by order of the ranger who found the ship.</color>
+        Text=<color=248,252,248>Absolutely everyone wants to serve under the captain of this handsome man, and the governments of the planets are as supportive as possible and give out the most prestigious tasks.</color>
+        Text=<color=248,252,248>The engraving "Per Aspera Ad Astra" shines on the bridge</color>
+        Text=Firing range: <bonWRadius>
+        Text=Jump range: <bonJump>
+        Text=Power of energy weapons: <bonWEnergy>
+        Text=Power of fragmentation weapons: <bonWSplinter>
+        Text=Rocket weapon power: <bonWMissile>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        Text=Droid effectiveness: <bonDroid>
+        Text=Hull Armor: <bonHull>
+        Text=Engine speed: <bonSpeed>
+		Text=Attack skill: <bonSkill1>
+		Text=Mobility skill: <bonSkill2>
+		Text=Technology skill: <bonSkill3>
+        Text=Commerce skill: <bonSkill4>
+        Text=Charisma skill: <bonSkill5>
+		Text=Leadership skill - maximum
+        bonDroid=80
+        bonHull=20
+        bonJump=20
+        bonMass=+25
+        bonSlotArt=4
+        bonSlotHook=1
+        bonSlotRadar=1
+        bonSlotScaner=1
+        bonSlotWeapon=5
+        bonSpeed=750
+        bonWEnergy=80
+        bonWMissile=50
+        bonWRadius=300
+        bonWSplinter=45
+		bonSkill1=2
+		bonSkill2=-2
+		bonSkill3=4
+		bonSkill4=-3
+		bonSkill5=6
+		bonSkill6=24
+		bonResistAsteroid=90
+    }
+}
+Script ~{
+    Yamato ~{
+	    Settings ~{
+	        bad_special_name=Space Battleship Yamato v2199
+            good_special_name=Yamato Space Battleship
+            cost=10000000
+            upgrade_cost=25000000
+            cost_sponsor=6500000
+            cost_museum=5000000
+            hull_cost_1=165000
+            hull_cost_2=42000000
+            research_time_slow=1300
+            research_time_fast=550
+            item_size=800
+            hull_size_bad=7280
+            hull_size_good=7280
+	    }
+        159=The base <0> was destroyed, the Yamato corps was lost forever...
+		78=The base <0> explored the corps, you can fly in
+		122=I purchased a housing at a military base, but I am not satisfied with its technical characteristics, can you help me?
+		79=I've decided what I'm going to do with the ship!
+		80=I came back here to find out what's going on with the ship I brought?
+		161=I found a piece of a ship here on the planet, maybe you need it for research.
+		82=I have a piece of the ship here, they don't take it anywhere, I think maybe at least you need it...
+		162=A? Are you completely oborzel there <0>? The bespectacled guys already refuse to take the trash, so you decided to dump it on us, let's get out and take your trash!
+		163=What did you bring us? You should have collected more cans! Well, how much is possible, <0>? You Rangers bring hundreds of tons of junk to our base every day.<br>We don't have a dump here, by the way, take your "ship" and fly from here.
+		184=Yes, yes, we were waiting for you, we managed to restore it, but its technical characteristics leave much to be desired, after all, its technologies are more than a thousand years old... It is suitable now except for a museum, but if you want to buy it, we will not interfere with you. It's up to you, you can take your time with the answer.<br>The purchase price is <0> cr.<br>
+		165=The Museum community of all races, and human in particular, thank you. The hull will be immediately delivered to the nearest museum of spaceships. In gratitude to you, they translate <0> cr.
+		128=The case has been delivered to the warehouse.
+		166=What ship?
+		167=Well, there you go.
+		185=We rent the building to the museum or do you want to buy it?<br>I remind you that the purchase price is <0> cr.<br>
+		92=With which ship?
+		169=Never heard of such a thing.
+		157=The hull was in terrible condition, and the drawings according to which it was built were probably as difficult to find as the ship itself, so we haven't finished the repairs yet.
+		170=The work will end approximately <0>.
+		114=I don't know what you're talking about
+		171=Yes, this is standard procedure. Now we will estimate the cost and... What is this trough, where did you dig it up?
+		186=Yes?! Well, sorry, just such equipment... I can't even imagine how long it's been used. Okay, we can try, but I promise nothing and it will cost you very much not cheap. (<0>) cr.
+		173=We have done everything we could, these are the best mechanisms and technologies available to the coalition at the moment.
+		174=Agrhx! Keep quiet, private, they didn't give you a word! And you, <0>, show me your trash again, where did you say you found it?<br>I'll check the documents now... Oh, a Rabogama toad in my throat, and it's true, YAMATO was shot down in that sector!<br>Why didn't you say so earlier?! Dachshund, <1> now I'll estimate how much time it will take... Ahem, if you sponsor the reconstruction, then we can start right now and cope in about a year and a half, it will cost <2> cr. If you cannot sponsor us, then you will have to wait for help from the government, and this is not a quick matter. In this case, we will be able to complete all the work only in three or four years, not earlier. Well, decide which option we choose?
+		138=Starting the reconstruction
+		182=Stop captain! Take a closer look, it looks like a ship from human fairy tales. What's his, ahem.. Oh, yes, YAMATO!<br>
+		175=Okay, okay, I'm already taking off ...
+		176=Buy the case for <0> cr.
+		177=Leave in the museum.
+		98=I'll think ...
+		141=Eh, as a child I loved going to museums and looking at exhibits, such an impressive ship will definitely give motivation to teenagers to join the army or the ranks of rangers.
+		142=Great, I'll go look at it.
+		178=Yamato. I brought it to <0> recently.
+		179=Ok.
+		143=I need to think more.
+		144=Yamato, a battleship like this ...
+		145=Okay, apparently I made a mistake ...
+		180=Well, it remains only to wait until you finish the job.
+		147=And when can you finish?
+		112=Good
+		118=Goodbye
+		148=How dare you?! This is actually a restored legendary Yamato cruiser!
+		149=I changed my mind.
+		150=Global modernization of all ship systems (<0> cr.)
+		151=Excellent! Finally I got it, Battleship Yamato!
+		183=Listen on
+		153=Solved! I can't wait that long, I'll sponsor this project.
+		154=Well, no, I don't have that much money, so do it on your own.
+		155=I'll think about it
+    }
+}

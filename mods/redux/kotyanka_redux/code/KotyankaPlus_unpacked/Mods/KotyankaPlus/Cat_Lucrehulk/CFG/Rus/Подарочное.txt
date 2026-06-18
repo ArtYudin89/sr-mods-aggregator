@@ -1,0 +1,329 @@
+MicroModuls ^{
+    Cat_Ships_Daminikov ^{
+        BlockMM=0
+		BlockImp=1
+        Cost=1000
+        Equipments=Hull
+        Fragility=80
+        HullGraphSize=155
+        KindGraph=Daminikov
+        Name=Дамиников
+        OnPlanets=1
+        Owner=Gaal,Peleng
+        Priority=75
+        RacialRestriction=1
+        Ruins=WB,MC,SB,RC
+        Size=170
+        Special=1
+        Text=<color=248,252,248>Пеленгское правительство заказало у гаальцев лучший корпус по пожеланиям национального героя за выполнение сверхсложного задания по поиску информации, играющую гигантское стратегическое значение для военного флота. По выполнению задания гаальцами, пеленги просто выкрали корабль, ничего не заплатив. Гаальцы же просто передали чертежи на массовое производство частному предприятию.</color>
+        Text=Мощность ракетного оружия: <bonWMissile> ед.
+        Text=Масса корабля: <bonMass>%
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+		Text=Мощность ГЗП: <bonDef> ед.
+		Text=Эффективность дроида: <bonDroid> ед.
+		Text=Эффективность захвата: <bonHook> ед.
+        Text=<color=248,252,248>Дополнительные свойства корабля отказываются работать под управлением кого-либо кроме</color> гаальцев и пеленгов<color=248,252,248>.</color>
+        bonHull=7
+		bonDroid=30
+		bonMass=-35
+        bonSpeed=-150
+        bonWMissile=35
+		bonDef=-35
+		bonHook=-150
+        bonHookMaxSpeed=-5
+        bonHookMinSpeed=-5
+        bonHookRadius=-150
+		bonSlotDroid=1
+		bonSlotDef=1
+		bonSlotArt=4
+        bonSlotHook=1
+		bonSlotWeapon=5
+    }
+	Cat_Ships_StarShip ^{
+        BlockMM=0
+		BlockImp=1
+        Cost=1000
+        Equipments=Hull
+        Fragility=125
+        HullGraphSize=150
+        KindGraph=StarShip
+        Name=Звездный Странник
+        OnPlanets=0
+        Owner=People
+        Priority=35
+        RacialRestriction=0
+        Ruins=MC,BK
+        Size=150
+        Special=1
+        Text=<color=248,252,248>Некий Александр, ценитель древних технологий, неизвестно где раздобыл техническую документацию 2025 года о корабле под названием "Звездный Странник". Естественно, что технологии тех лет бесполезно и бессмысленно использовать сейчас, но благодаря акрину можно воссоздать конструкторские особенности даже очень древних кораблей, снабдив их современными технологиями. По не совсем понятным причинам акрин, наложенный на древний материал "Нержавейка", даёт очень сильную прибавку по шкале восприимчивости и бронированности. В итоге получился очень защищённый и быстрый транспортный корабль.</color>
+		Text=Масса корабля: <bonMass>%
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+		Text=Мощность ГЗП: <bonDef> ед.
+        bonHull=20
+		bonMass=-75
+        bonSpeed=250
+		bonSlotArt=4
+		bonSlotHook=-1
+		bonSlotDef=-1
+		bonSlotDroid=1
+		bonDef=-25
+		bonSlotWeapon=-3
+    }
+	Cat_Ships_Slave ^{
+        BlockMM=0
+		BlockImp=1
+        Cost=1000
+        Equipments=Hull
+        Fragility=50
+        HullGraphSize=150
+        KindGraph=Slave
+        Name=Раб I
+        OnPlanets=0
+        Owner=People
+        Priority=55
+        RacialRestriction=0
+        Ruins=BK
+        Size=150
+        Special=1
+        Text=<color=248,252,248>В одно время некий Ла'Ггет, ценитель всего необычного и неизвестного, выдал сети бизнес центров большой бюджет и заказ на постройку кораблей по неизвестному ранее чертежу. Этот корабль точно был спроектирован кем-то не из рас Коалиции. Где он нашёл данный чертёж он не рассказывал, да и никто не спрашивал особо, так как предложанная им сумма была непомерна высока.</color>
+        Text=Броня корпуса: <bonHull> ед.
+		Text=Мощность ГЗП: <bonDef> ед.
+		Text=Скорость двигателя: <bonSpeed> ед.
+		Text=Мощность энергетического оружия: <bonWEnergy> ед.
+		Text=Мощность ракетного оружия: <bonWMissile> ед.
+		Text=Мощность осколочного оружия: <bonWSplinter> ед.
+		Text=Эффективность дроида: <bonDroid> ед.
+        bonHull=10
+        bonSpeed=250
+		bonSlotArt=4
+		bonSlotHook=-1
+		bonDef=10
+		bonSlotWeapon=-3
+		bonWEnergy=40
+		bonDroid=-40
+		bonWMissile=-40
+		bonWSplinter=-20
+    }
+	Cat_Ships_Blazer ^{
+        BlockMM=0
+		BlockImp=1
+        Cost=5000
+        Equipments=Hull
+        FragilitySplinter=80
+		FragilityMissile=80
+		FragilityEnergy=80
+        HullGraphSize=200
+        KindGraph=Blazer
+        Name=Блазер - Копия
+        OnPlanets=0
+        Owner=PirateClan
+		RacialRestriction=1
+        Priority=100
+        Ruins=CB
+        Size=200
+        Special=1
+        Text=<color=248,252,248>Этот очень вызывающий корпус появился в связи с кражей сверхсекретных разработок Коалиции по новым типам камуфляжных систем. По изначальной задумке, военные планировали воссоздать образ главного центра управления Блазероидов - Блазера, однако, при первой же испытательной миссии было выявлено, что доминаторы моментально понимают - перед ними враг. Вероятно, что когда Блазероиды видят *второго* Блазера, настоящий отправляет сигнал на ликвидацию самозванца. По понятным причинам, разработку свернули и законсервировали все данные, но всезнающий и хитрый пиратский клан сразу же выкрал все наработки военных, и несмотря на бессмысленность использования камуфляжа, они смогли воссоздать примерную копию блазера, и с помощью акринизации получить очень сильный прирост мощностей любого оружия.</color>
+        Text=<color=248,252,248>По понятным причинам дополнительные оружейные мощности доступны только обладателям пиратской метки-ключа.</color>
+		Text=Мощность любого оружия: <clr>+50<clrEnd> ед.
+		Text=Скорость двигателя: <bonSpeed> ед.
+		Text=Броня корпуса: <bonHull> ед.
+        bonWEnergy=50
+        bonWMissile=50
+        bonWSplinter=50
+		bonHull=20
+		bonSpeed=400
+        bonMass=200		
+		bonSlotRadar=1
+		bonSlotScaner=1
+		bonSlotForsage=-1
+		bonSlotDroid=1
+		bonSlotDef=1
+		bonSlotArt=4
+        bonSlotHook=1
+		bonSlotWeapon=5
+    }
+	Cat_Ships_Keller ^{
+        BlockMM=0
+		BlockImp=1
+        Cost=5000
+        Equipments=Hull
+        FragilitySplinter=70
+		FragilityMissile=70
+		FragilityEnergy=70
+        HullGraphSize=200
+        KindGraph=Keller
+        Name=Келлер - Копия
+        OnPlanets=0
+        Owner=Fei
+		RacialRestriction=1
+        Priority=100
+        Ruins=RC
+        Size=200
+        Special=1
+        Text=<color=248,252,248>Данный эксперементальный передовой корпус является точной копией корпуса доминатора Келлера, естественно повторить все его функции также качественно как внешний вид механики и инженеры не смогли, однако получились весьма не плохие результаты.</color>
+        Text=<color=248,252,248>Из-за опасности доверить такой сверхтехнологичный агрегат представителям других рас, использовать 100% его силы могут лишь фэяне.</color>
+		Text=Мощность энергетического оружия: <bonWEnergy> ед.
+		Text=Дальность стрельбы:  <bonWRadius> ед.
+		Text=Дальность прыжка: <bonJump> ед.
+		Text=Мощность сканера: <bonScan> ед.
+		Text=Мощность радара: <bonRadar> ед.
+        bonWEnergy=50
+        bonMass=200		
+		bonJump=50
+		bonScan=40
+		bonRadar=5000
+		bonWRadius=400
+		bonSlotRadar=1
+		bonSlotScaner=1
+		bonSlotForsage=-1
+		bonSlotDroid=1
+		bonSlotDef=1
+		bonSlotArt=4
+        bonSlotHook=1
+		bonSlotWeapon=5
+    }
+	Cat_Ships_Lucrehulk ^{
+        BlockMM=0
+		BlockImp=1
+        Cost=800
+        Equipments=Hull
+        FragilitySplinter=100
+		FragilityMissile=90
+		FragilityEnergy=100
+        HullGraphSize=120
+        KindGraph=Lucrehulk
+        Name=Лукрехалк
+        OnPlanets=0
+        Owner=People,Fei
+		RacialRestriction=0
+        Priority=65
+        Ruins=RC,SB,CB
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Невероятный проект совместного труда двух рас, фэяне и люди долго разрабатывали корабль специализированный на глубоком и полноценным поиске, сканировании и анализе вражеских кораблей как доминаторов так и пиратского клана, для выявления слабых мест. В этом корабле установлена уникальная система катализаторов и разгона программных алгоритмов сканирующих элементов за счёт чего можно пробить информационную защиту практически любого корабля. Однако эта система потребляет огромное количество ресурсов энерго-ядра корабля и из-за этого страдает двигательная система снижая скорость передвижения в околозвездном пространстве.</color>		
+		Text=Броня корпуса: <bonHull> ед.
+		Text=Скорость двигателя: <bonSpeed> ед.
+		Text=Дальность радара: <bonRadar> ед.
+		Text=Мощность сканера: <bonScan> ед.
+		bonRadar=2000
+		bonScan=80
+		bonHull=11
+		bonSpeed=-800		
+		bonSlotRadar=1
+		bonSlotScaner=1
+		bonSlotForsage=-1
+		bonSlotArt=-2
+		bonSlotWeapon=-2
+    }
+	Cat_Ships_Ares ^{
+        BlockMM=0
+		BlockImp=1
+        Cost=800
+        Equipments=Hull
+        FragilitySplinter=100
+		FragilityMissile=100
+		FragilityEnergy=100
+        HullGraphSize=120
+        KindGraph=Ares
+        Name=Арес
+        OnPlanets=1
+        Owner=People,PirateClan
+		RacialRestriction=0
+        Priority=88
+        Ruins=RC,CB,BK
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Этот корабль носит гордое имя - Арес по древней мифологии человечества является богом войны. Спроектирован при сотрудничестве нечистых на руку людских учёных и пиратского клана. Необычные для истребителей эргономика и материалы позволяют достичь большого успеха в защитных функциях не ухудшая, но увеличивая атакующие качества. А добавление пиратского катализатора в топливо, даёт хороший прирост скорости вместе с насыщенным и устрашающим зелёным цветом пламени двигателя.</color>		
+		Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Дальность прыжка: <bonJump> ед.
+        Text=Мощность энергетического оружия: <bonWEnergy> ед.
+        Text=Мощность осколочного оружия: <bonWSplinter> ед.
+        Text=Мощность ракетного оружия: <bonWMissile> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+		Text=Дальность радара: <bonRadar> ед.
+		Text=Мощность сканера: <bonScan> ед.
+		Text=Мощность ГЗП: <bonDef> ед.
+		Text=Эффективность захвата: <bonHook> ед.
+        bonJump=30
+        bonSlotArt=4
+        bonSlotWeapon=5
+		bonSlotDroid=-1
+		bonSlotForsage=-1
+		bonScan=-10
+		bonRadar=-500
+		bonHook=-150
+		bonHookRadius=-150
+		bonDef=20
+        bonSpeed=500
+        bonWEnergy=50
+        bonWMissile=15
+        bonWRadius=-200
+        bonWSplinter=-45
+    }
+	Cat_Ships_Spectr ^{
+	    Cost=450
+        Equipments=Hull
+        FragilitySplinter=90
+		FragilityMissile=120
+		FragilityEnergy=90
+        HullGraphSize=150
+        KindGraph=Spectr
+        Name=Спектр
+        OnPlanets=1
+        Owner=People,PirateClan
+		RacialRestriction=0
+        Priority=70
+        Ruins=PB
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Знакомтесь, это Спектр. Многие называют этот корабль идеальным, и есть за что, ведь создан он специально чтобы угодить каждому в его начинаниях, чем бы он не занимался. А открытый патент данного корабля позволяет производить их любому желающему за счёт чего встретить его можно на любой человеческой планете или даже пиратской станции.</color>		
+        Text=Дальность прыжка: <bonJump> ед.
+        Text=Мощность энергетического оружия: <bonWEnergy> ед.
+        Text=Мощность осколочного оружия: <bonWSplinter> ед.
+        Text=Мощность ракетного оружия: <bonWMissile> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+		Text=Дальность радара: <bonRadar> ед.
+		Text=Мощность сканера: <bonScan> ед.
+		Text=Мощность ГЗП: <bonDef> ед.
+		Text=Дальность захвата: <bonHookRadius> ед.
+		Text=Мощность захвата: <bonHook> ед.
+        bonJump=5
+        bonSlotArt=-2
+        bonSlotWeapon=-2
+		bonSlotForsage=-1
+		bonScan=5
+		bonRadar=350
+		bonHook=20
+		bonHookRadius=30
+		bonDef=5
+        bonSpeed=100
+        bonWEnergy=5
+        bonWMissile=5
+        bonWSplinter=5
+	}
+}
+
+HullType ^{
+    Cat_Hulls_Pioner ^{
+        Artefact=4
+        Cost=120
+        Def=1
+        Droid=1
+        Forsage=1
+        FragilityEnergy=75
+		FragilitySplinter=75
+        FragilityMissile=110
+        Hook=1
+        Name=Пионер
+        Probability=6
+        Race=People,PirateClan
+        Radar=1
+        Scaner=1
+        ShipType=Warrior,Ranger,Pirate
+        Size=90
+        Text=Отличная серия для покорителей космоса, совмещает в себе как множественные отсеки для оборудования, так и защитные свойства. 
+        Weapon=-2
+        Year=8
+    }

@@ -1,0 +1,50 @@
+Artefacts ^{
+    CustomArtefacts ^{
+        ShootingStar ^{
+            CanBeABDrop=1
+            CanBeReward=1
+            CanBeTreasure=1
+            Cost=7500
+            CountsAs=ArtScaner
+            Description=Точный принцип действия данного артефакта современная наука объяснить не способна, однако практическое его действие заключается в значительном <clr>повышении скорострельности всех бортовых орудий<clrEnd>. После установки в корпус обратное извлечение представляется невозможным.
+            KellerExchange=2
+            KellerValue=125
+            Name=Звездопад
+            NoWear=1
+            OnActCode ^{
+                01=dword hull = ScriptItemActObject1();
+                02=if(ItemType(hull) != t_Hull) exit;
+                03=int bon_shots = FindBonusByNameInCfg('ShootingStar_ExtraShot');
+                04=if(ItemExtraSpecialsCountByType(hull, bon_shots)) exit;
+                05=if(ScriptItemActionType(t_OnCheckingUsability)) ScriptItemActParam(1);
+                06=else
+                06 ^{
+                    01=int shots = PortionInDiapason(ItemLevel(hull), 5, 8, 1, 4);
+                    02=ItemExtraSpecialsAddByType(hull, bon_shots, shots);
+                    03=ShipSpecialBonuses(FormCurShip(), bonAttacks, ShipSpecialBonuses(FormCurShip(), bonAttacks) + shots);
+                    04=ScriptItemActParam(1);
+                    05=Sound('Sound.Repair');
+                    06=MessageBox(CT('Artefacts.CustomArtefacts.ShootingStar.TextInstall'));
+                    07=UpdateFormShip();
+                }
+            }
+            OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+            SharedEffect=0
+            SharedUse=0
+            Size=45
+            Text=Точный принцип действия данного артефакта современная наука объяснить не способна, однако практическое его действие заключается в значительном <clr>повышении скорострельности всех бортовых орудий<clrEnd>. После установки в корпус обратное извлечение представляется невозможным.
+            TextInstall=Звездопад был успешно установлен в корпус
+        }
+    }
+}
+MicroModuls ^{
+    ShootingStar_ExtraShot ^{
+        ExText=<clr><clrEnd>
+        ExText=<color=255,167,84>Корпус оснащён <color=255,240,100>Звездопадом</color>.</color>
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonMass=5
+    }
+}

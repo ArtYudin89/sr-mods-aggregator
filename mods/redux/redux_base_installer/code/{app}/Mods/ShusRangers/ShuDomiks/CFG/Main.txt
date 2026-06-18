@@ -1,0 +1,563 @@
+BV ^{
+    OnStart ^{
+        0DayScripts ^{
+            08_ShuDomiks=ScriptRun(ShipStar(Player()), StarPlanets(ShipStar(Player()), 0), 'Mod_ShuDomiks');
+        }
+    }
+}
+ML ^{
+    Scaner ^{
+        Panel ^{
+            Panel ^{
+                Panel ^{
+                    Panel ^{
+                        BlockWeaponSlot1 ^{
+                            GraphButton ^{
+                                Active=False
+                                ImageDisable=GI,Bm.FormShip2.2W1H
+                                ImageDown=GI,Bm.FormShip2.2W1H
+                                ImageNormal=GI,Bm.FormShip2.2W1H
+                                ImageNormalA=GI,Bm.FormShip2.2W1H
+                                Kind=Disable
+                                KindHit=Graph
+                                MVUpdate=True
+                                MouseBlocking=True
+                                MouseBlockingTest=True
+                                Name=BlockWeaponSlot1
+                                Pos=83,107,-1.1
+                                Size=97,77
+                                Style=Style.GB.SoundNormal
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+Data ^{
+    SE ^{
+        CustomHoles ^{
+            CargoHole ^{
+                GalaxyImage=Alpha,Bm.Hole.CargoHoleMap
+                GalaxyPriority=-10
+                Image=Bm.Hole.CargoHole
+                ImageMap=Alpha,Bm.Hole.CargoHoleMap
+                NamePath=FormInfo.CargoHoleName
+                PosZ=Hole
+                Radius=40
+                TextPath=FormInfo.CargoHoleText
+            }
+        }
+        Effect ^{
+            KellerShipyardExplode ^{
+                GAI=Bm.Weapon.KellerShipyardExplode
+                PosZ=Weapon
+            }
+        }
+        Item ^{
+            InhibitorPlaceBeacon ^{
+                2Image=Bm.ItemsUseless.2InhibitorPlaceBeacon_c
+                ImageMap=Bm.Container.Map0
+                PosZ=50
+            }
+            ShuDomiks_BoardedRattor0 ^{
+                2Image=Bm.ItemsUseless.2ShuDomiks_BoardedRattor0_c
+                ImageMap=Bm.Container.Map0
+                PosZ=Item
+            }
+            ShuDomiks_BoardedRattor1 ^{
+                2Image=Bm.ItemsUseless.2ShuDomiks_BoardedRattor1_c
+                ImageMap=Bm.Container.Map0
+                PosZ=Item
+            }
+            ShuDomiks_BoardedRattor2 ^{
+                2Image=Bm.ItemsUseless.2ShuDomiks_BoardedRattor2_c
+                ImageMap=Bm.Container.Map0
+                PosZ=Item
+            }
+            ShuDomiks_FilledMaterialsContainer ^{
+                2Image=Bm.ItemsUseless.2ShuDomiks_FilledMaterialsContainer_c
+                ImageMap=Bm.Container.Map0
+                PosZ=Item
+            }
+            ShuDomiks_MaterialsContainer ^{
+                2Image=Bm.ItemsUseless.2ShuDomiks_MaterialsContainer_c
+                ImageMap=Bm.Container.Map0
+                PosZ=Item
+            }
+        }
+        Ruins ^{
+            BlazerShipyard ^{
+                HideOnStarInfo=1
+                Image=Bm.Ruins.BlazerShipyard
+                ImageI=GI,Bm.Ruins.BlazerShipyardi
+                ImageMap=GI,Bm.Ruins.MapBlazerShipyard
+                PosZ=Ruins
+            }
+            Inhibitor ^{
+                Image=Bm.Ruins.InhibitorOff
+                ImageI=GI,Bm.Ruins.Inhibitori
+                ImageMap=Alpha,Bm.Ruins.MapInhibitor
+                PosZ=Ruins
+            }
+            KellerShipyard ^{
+                HideOnStarInfo=1
+                Image=Bm.Ruins.KellerShipyard
+                ImageI=GI,Bm.Ruins.KellerShipyardi
+                ImageMap=GI,Bm.Ruins.MapKellerShipyard
+                PosZ=Ruins
+            }
+            TerronShipyard ^{
+                HideOnStarInfo=1
+                Image=Bm.Ruins.TerronShipyard
+                ImageI=GI,Bm.Ruins.TerronShipyardi
+                ImageMap=GI,Bm.Ruins.MapTerronShipyard
+                PosZ=Ruins
+            }
+        }
+        Ship ^{
+            Akrin ^{
+                DomFei ^{
+                    2ImageP=GI,Bm.ShipP.DomFei
+                    Anim ^{
+                        0=1,[80,50-99]
+                        Normal=2,[80,0-49]
+                    }
+                    AnimS ^{
+                        0=1,[80,50-99]
+                        Normal=2,[80,0-49]
+                    }
+                    Image=Bm.Ship.DomFei
+                    ImageMap=Bm.Ship.DominatorMap
+                    ImageS=Bm.Ship.DomFei
+                    PosZ=Ship
+                    SizeImage=128,128
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=2,2
+                    StateTime=2000
+                    Tail1=58,102
+                    Tail2=64,102
+                }
+                DomGaal ^{
+                    2ImageP=GI,Bm.ShipP.DomGaal
+                    Anim ^{
+                        Normal=2,[70,0-49]
+                    }
+                    AnimS ^{
+                        Normal=2,[70,0-49]
+                    }
+                    Image=Bm.Ship.DomGaal
+                    ImageMap=Bm.Ship.DominatorMap
+                    ImageS=Bm.Ship.DomGaal
+                    PosZ=Ship
+                    SizeImage=128,128
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=2,2
+                    StateTime=2000
+                    Tail1=28,104
+                    Tail2=100,104
+                }
+                DomMalok ^{
+                    2ImageP=GI,Bm.ShipP.DomMalok
+                    Anim ^{
+                        0=2,[70,0-0][70,50-98]
+                        1=1,[70,99-148]
+                        Normal=3,[70,0-49]
+                    }
+                    AnimS ^{
+                        0=2,[70,0-0][70,50-98]
+                        1=1,[70,99-148]
+                        Normal=3,[70,0-49]
+                    }
+                    Image=Bm.Ship.DomMalok
+                    ImageMap=Bm.Ship.DominatorMap
+                    ImageS=Bm.Ship.DomMalok
+                    PosZ=Ship
+                    SizeImage=128,128
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=2,2
+                    StateTime=2000
+                    Tail1=63,103
+                }
+                DomPeleng ^{
+                    2ImageP=GI,Bm.ShipP.DomPeleng
+                    Anim ^{
+                        0=1,[70,50-99]
+                        Normal=2,[50,0-49]
+                    }
+                    AnimS ^{
+                        0=1,[70,50-99]
+                        Normal=2,[50,0-49]
+                    }
+                    Image=Bm.Ship.DomPeleng
+                    ImageMap=Bm.Ship.DominatorMap
+                    ImageS=Bm.Ship.DomPeleng
+                    PosZ=Ship
+                    SizeImage=128,128
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=2,2
+                    StateTime=2000
+                    Tail1=58,111
+                    Tail2=71,111
+                }
+                DomPeople ^{
+                    2ImageP=GI,Bm.ShipP.DomPeople
+                    Anim ^{
+                        0=1,[70,50-99]
+                        Normal=2,[70,0-49]
+                    }
+                    AnimS ^{
+                        0=1,[70,50-99]
+                        Normal=2,[70,0-49]
+                    }
+                    Image=Bm.Ship.DomPeople
+                    ImageMap=Bm.Ship.DominatorMap
+                    ImageS=Bm.Ship.DomPeople
+                    PosZ=Ship
+                    SizeImage=128,128
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=2,2
+                    StateTime=2000
+                    Tail1=63,96
+                }
+                InhibitorOff ^{
+                    2ImageP=GI,Bm.Ruins.InhibitorImage
+                    AngleOverride=0
+                    Anim ^{
+                        0=0,[90,0-72]
+                        1=1,[90,73-145]
+                        Normal=1,[90,73-145]
+                    }
+                    AnimS ^{
+                        0=0,[90,0-72]
+                        1=1,[90,73-145]
+                        Normal=1,[90,73-145]
+                    }
+                    Image=Bm.Ruins.Inhibitor
+                    ImageI=GI,Bm.Ruins.InhibitorImage
+                    ImageMap=Bm.Ruins.MapInhibitor
+                    ImageS=Bm.Ruins.Inhibitor
+                    PosZ=Ruins
+                    SizeImage=128,128
+                    SizeLarge=70
+                    SizeSmall=70
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=5,5
+                    StateTime=2000
+                }
+                InhibitorOn ^{
+                    2ImageP=GI,Bm.Ruins.InhibitorImage
+                    AngleOverride=0
+                    Anim ^{
+                        0=1,[90,0-72]
+                        1=0,[90,73-145]
+                        Normal=1,[90,0-72]
+                    }
+                    AnimS ^{
+                        0=1,[90,0-72]
+                        1=0,[90,73-145]
+                        Normal=1,[90,0-72]
+                    }
+                    Image=Bm.Ruins.Inhibitor
+                    ImageI=GI,Bm.Ruins.InhibitorImage
+                    ImageMap=Bm.Ruins.MapInhibitor
+                    ImageS=Bm.Ruins.Inhibitor
+                    PosZ=Ruins
+                    SizeImage=128,128
+                    SizeLarge=70
+                    SizeSmall=70
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=5,5
+                    StateTime=2000
+                }
+            }
+            Blazer ^{
+                B1 ^{
+                }
+                B2 ^{
+                    TailPrefix=Domik
+                }
+                B3 ^{
+                }
+                B4 ^{
+                    TailPrefix=Domik
+                }
+                B5 ^{
+                    TailPrefix=Domik
+                }
+                B6 ^{
+                }
+                B7 ^{
+                    TailPrefix=Domik
+                }
+                Rattor ^{
+                    2ImageP=GI,Bm.ShipP.RattorBlazer
+                    Anim ^{
+                        0=1,[35,50-149]
+                        Normal=2,[35,0-49]
+                    }
+                    AnimS ^{
+                        Normal=1,[35,0-49]
+                    }
+                    Image=Bm.Ship.RattorBlazer
+                    ImageMap=Bm.Ship.DominatorMap
+                    ImageS=Bm.Ship.RattorBlazer
+                    PosZ=Tranclucator
+                    SizeImage=128,128
+                    SizeLarge=110
+                    SizeSmall=110
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=2,2
+                    StateTime=2000
+                    Tail1=64,71
+                    TailPrefix=Domik
+                    TargetSizeK=0.0
+                    WeaponPort1=64,64
+                }
+            }
+            Keller ^{
+                K1 ^{
+                }
+                K2 ^{
+                    TailPrefix=Domik
+                }
+                K3 ^{
+                }
+                K4 ^{
+                    TailPrefix=Domik
+                }
+                K5 ^{
+                    TailPrefix=Domik
+                }
+                K6 ^{
+                }
+                K7 ^{
+                    TailPrefix=Domik
+                }
+                Rattor ^{
+                    2ImageP=GI,Bm.ShipP.RattorKeller
+                    Anim ^{
+                        0=1,[35,50-149]
+                        Normal=2,[35,0-49]
+                    }
+                    AnimS ^{
+                        Normal=1,[35,0-49]
+                    }
+                    Image=Bm.Ship.RattorKeller
+                    ImageMap=Bm.Ship.DominatorMap
+                    ImageS=Bm.Ship.RattorKeller
+                    PosZ=Tranclucator
+                    SizeImage=128,128
+                    SizeLarge=110
+                    SizeSmall=110
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=2,2
+                    StateTime=2000
+                    Tail1=64,71
+                    TailPrefix=Domik
+                    TargetSizeK=0.0
+                    WeaponPort1=64,64
+                }
+            }
+            Terron ^{
+                Rattor ^{
+                    2ImageP=GI,Bm.ShipP.RattorTerron
+                    Anim ^{
+                        0=1,[35,50-149]
+                        Normal=2,[35,0-49]
+                    }
+                    AnimS ^{
+                        Normal=1,[35,0-49]
+                    }
+                    Image=Bm.Ship.RattorTerron
+                    ImageMap=Bm.Ship.DominatorMap
+                    ImageS=Bm.Ship.RattorTerron
+                    PosZ=Tranclucator
+                    SizeImage=128,128
+                    SizeLarge=110
+                    SizeSmall=110
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=2,2
+                    StateTime=2000
+                    Tail1=64,71
+                    TailPrefix=Domik
+                    TargetSizeK=0.0
+                    WeaponPort1=64,64
+                }
+                T1 ^{
+                }
+                T2 ^{
+                    TailPrefix=Domik
+                }
+                T3 ^{
+                }
+                T4 ^{
+                    TailPrefix=Domik
+                }
+                T5 ^{
+                    TailPrefix=Domik
+                }
+                T6 ^{
+                }
+                T7 ^{
+                    TailPrefix=Domik
+                }
+            }
+        }
+        Sound ^{
+            Loop ^{
+                Ruins ^{
+                    BlazerShipyard ^{
+                        10=3000,Sound.LoopRuins03
+                    }
+                    Inhibitor ^{
+                    }
+                    InhibitorOff ^{
+                    }
+                    InhibitorOn ^{
+                    }
+                    KellerShipyard ^{
+                        10=3000,Sound.LoopRuins03
+                    }
+                    TerronShipyard ^{
+                        10=3000,Sound.LoopRuins03
+                    }
+                    dom_ruins ^{
+                        10=3000,Sound.LoopRuins03
+                    }
+                }
+            }
+            Rnd ^{
+                Ruins ^{
+                    BlazerShipyard ^{
+                    }
+                    Inhibitor ^{
+                    }
+                    InhibitorOff ^{
+                    }
+                    InhibitorOn ^{
+                    }
+                    KellerShipyard ^{
+                    }
+                    TerronShipyard ^{
+                    }
+                    dom_ruins ^{
+                    }
+                }
+            }
+        }
+        Weapon ^{
+            10 ^{
+                Palettes ^{
+                    5 ^{
+                        Color0=0.3,1.0,0.3
+                        Color1=0.2,0.8,0.2
+                        Color2=0.1,1.0,0.3
+                        Color3=0.1,1.0,0.2
+                        Color4=0.0,1.0,0.0
+                        Color5=0.3,1.0,0.0
+                        SoundShot=Sound.Railgun
+                    }
+                }
+            }
+            12 ^{
+                Palettes ^{
+                    1 ^{
+                        Color0=0.50,1.00,0.33
+                        Color1=0.47,0.93,0.31
+                        Color2=0.43,0.87,0.29
+                        Color3=0.40,0.80,0.27
+                        Color4=0.37,0.73,0.24
+                        Color5=0.33,0.67,0.22
+                        Color6=0.30,0.60,0.20
+                        Color7=0.27,0.53,0.18
+                        SoundShot=Sound.shot12
+                    }
+                    2 ^{
+                        Color0=0.50,0.33,1.00
+                        Color1=0.47,0.31,0.93
+                        Color2=0.43,0.29,0.87
+                        Color3=0.40,0.27,0.80
+                        Color4=0.37,0.24,0.73
+                        Color5=0.33,0.22,0.67
+                        Color6=0.30,0.20,0.60
+                        Color7=0.27,0.18,0.53
+                        SoundShot=Sound.shot12
+                    }
+                    3 ^{
+                        Color0=0.33,0.70,0.70
+                        Color1=0.31,0.66,0.66
+                        Color2=0.29,0.63,0.63
+                        Color3=0.27,0.60,0.60
+                        Color4=0.24,0.56,0.56
+                        Color5=0.22,0.53,0.53
+                        Color6=0.20,0.50,0.50
+                        Color7=0.18,0.46,0.46
+                        SoundShot=Sound.shot12
+                    }
+                }
+            }
+            13 ^{
+                Palettes ^{
+                    1 ^{
+                        GAI=Bm.Weapon.VertixGreenEffect
+                        SoundShot=Sound.shot13
+                    }
+                    2 ^{
+                        GAI=Bm.Weapon.VertixVioletEffect
+                        SoundShot=Sound.shot13
+                    }
+                    3 ^{
+                        GAI=Bm.Weapon.VertixTurquoiseEffect
+                        SoundShot=Sound.shot13
+                    }
+                }
+            }
+            3 ^{
+                Palettes ~{
+                    10 ^{
+                        SoundShot=Sound.RattorImpulse
+                    }
+                }
+            }
+            9 ^{
+                Palettes ~{
+                    3 ^{
+                        Color0=0.94,0.27,0.20
+                        Color1=0.68,0.35,0.30
+                        Color2=0.4,0.4,0.4
+                        Color3=0.3,0.2,0.7
+                        GAI=Bm.Weapon.AtomicVisionRedEffect
+                    }
+                }
+            }
+            AuraEffect ^{
+                Palettes ^{
+                    13 ^{
+                        GAI=Bm.Hits.09
+                        SoundExpl=Sound.ShipItemInfo
+                    }
+                }
+            }
+        }
+    }
+    Script ^{
+        Mod_ShuDomiks=1,Script.Mod_ShuDomiks
+    }
+}
+Music ^{
+    ThinkingMaloq ^{
+        ThinkingMaloq1=Mods\ShusRangers\ShuDomiks\DATA\Sound\ThinkingMaloq.dat
+    }
+}

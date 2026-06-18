@@ -1,0 +1,2129 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_Casino",
+    "ScriptFileOut": "D:\\Mod_Casino.scr",
+    "ScriptTextOut": "D:\\Mod_Casino.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "restart",
+                    "Pos.x": 0,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 51,
+                    "Msg": "Эх, жаль.",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_Casino.89\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 52,
+                    "Msg": "Сделаю ставку!",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.9\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 53,
+                    "Msg": "Я передумал.",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.41\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 360,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 54,
+                    "Msg": "Ставлю свои <0> cr.!",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_Casino.58\"),\"<0>\",cur_bet))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 55,
+                    "Msg": "Назначить сумму ставки",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.12\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 56,
+                    "Msg": "Спасибо.",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.42\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 720,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 57,
+                    "Msg": "А что, нельзя просто посмотреть?..",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_Casino.90\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 840,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 58,
+                    "Msg": "Сегодня тут пахнет удачей! И ещё чем-то...",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.59\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 960,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 59,
+                    "Msg": "Это разводняк на бабки, отвечаю!",
+                    "AMsg.Num": "8",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.60\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1080,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 60,
+                    "Msg": "Надо установить ставку.",
+                    "AMsg.Num": "9",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.66\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 61,
+                    "Msg": "Вот мои <0> cr.!",
+                    "AMsg.Num": "10",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_Casino.67\"),\"<0>\",cur_bet))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1320,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 62,
+                    "Msg": "Ага, обязательно.",
+                    "AMsg.Num": "11",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.68\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1440,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 63,
+                    "Msg": "Да, да. Я это уже где-то слышал ранее.",
+                    "AMsg.Num": "12",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_Casino.91\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1560,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 64,
+                    "Msg": "Конечно смогу.",
+                    "AMsg.Num": "13",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_Casino.93\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1680,
+                    "Pos.y": 565,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 65,
+                    "Msg": "Я и так победитель по жизни.",
+                    "AMsg.Num": "14",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_Casino.94\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 66,
+                    "Msg": "Пойти к колесу Фортуны",
+                    "AMsg.Num": "15",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.106\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 67,
+                    "Msg": "Пойти к напёрсточнику",
+                    "AMsg.Num": "16",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.107\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 68,
+                    "Msg": "Ладно. Прийду в следующий раз.",
+                    "AMsg.Num": "17",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.108\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 69,
+                    "Msg": "Не буду тратить здесь своё время",
+                    "AMsg.Num": "18",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_Casino.119\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 70,
+                    "Msg": "Да",
+                    "AMsg.Num": "19",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.110\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 600,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 71,
+                    "Msg": "Нет",
+                    "AMsg.Num": "20",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_Casino.111\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 720,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 72,
+                    "Msg": "Держи мои <0> cr. и перемешивай.",
+                    "AMsg.Num": "21",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_Casino.129\"),\"<0>\",cur_bet))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 840,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 73,
+                    "Msg": "Ну и жлоб...",
+                    "AMsg.Num": "22",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_Casino.112\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 960,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 74,
+                    "Msg": "Изменить ставку",
+                    "AMsg.Num": "23",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.113\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1080,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 75,
+                    "Msg": "Я передумал и не буду в этом участвовать.",
+                    "AMsg.Num": "24",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_Casino.130\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 76,
+                    "Msg": "Давай ещё разок на <0> cr.",
+                    "AMsg.Num": "25",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_Casino.131\"),\"<0>\",cur_bet))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1320,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 77,
+                    "Msg": "Хочу изменить ставку",
+                    "AMsg.Num": "26",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_Casino.116\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1440,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 78,
+                    "Msg": "Достаточно на этот раз",
+                    "AMsg.Num": "27",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_Casino.117\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1560,
+                    "Pos.y": 590,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 79,
+                    "Msg": "Жадюги!",
+                    "AMsg.Num": "28",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_Casino.140\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 24,
+                    "Msg": "Сожелеем, <Player>, но у вас недостаточно денег на счету для того, чтобы сделать минимальную ставку. Напоминаем, что минимально допустимая ставка составляет <clr>5000<clrEnd> cr., а максимальная не более <clr>50000<clrEnd> cr. Как только накопите <clr>5000<clrEnd> cr., приходите к нам и вращайте колесо Фортуны.",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.44\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 25,
+                    "Msg": "О! У нас новый мешок с день.. то есть новый клиент! Вы хотите сделать ставку на нашем колесе Фортуны? Всегда рады! Но сначала ознакомьтесь с условиями для участников нашего аттракциона!\r\n---------------\r\nКазино \"<clr>Крупный куш<clrEnd>\" можно найти в любом Бизнес центре и там же покрутить колесо Фортуны.\r\n\r\nКолесо Фортуны можно крутить <clr>1<clrEnd> раз после <clr>1 января<clrEnd> или <clr>1 июля<clrEnd>. Если коротко, то <clr>раз в полгода<clrEnd>. Такое ограничение было установлено из-за того, что в нашем казино начали <clr>выигрывать чаще, чем обычно<clrEnd>.\r\n\r\nМинимально допустимая ставка в нашем казино составляет <clr>5000<clrEnd> cr., а максимальная - не более <clr>50000<clrEnd> cr.",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.84\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "Жаль, жаль. А мы-то уже подумали, что у нас новый победитель... Ну, что же, позовём другого участника, который <clr>уже<clrEnd> выиграл супер-приз!",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.3\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "Чудесно! Сейчас ваша ставка составляет <0> cr. Желаете сделать ставку или установить заново?\r\n\r\nНапоминаем, что ваша ставка может быть не больше <clr>50000<clrEnd> cr.",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_Casino.32\"),\"<0>\",cur_bet))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "Итак... вращаем!\r\n...\r\n<clr>колесо крутится<clrEnd>...\r\n...\r\n<clr>всё ещё крутится<clrEnd>...\r\n...\r\n<clr>обстановка накаляется<clrEnd>...\r\n...\r\n<clr>колесо остановилось<clrEnd>...\r\n...\r\nХмм. Похоже у нас <clr>очень редкий случай<clrEnd>. Стрелка Фортуны показывет на \"<clr>СУПЕР ДЖЕКПОТ<clrEnd>\" и это значит, что вы <clr>получаете 5-ти кратную ставку<clrEnd>! Вот ваши <0> cr. Так, что вас можно считать <clr>самым удачливым рейнджером в галактике<clrEnd>, ибо по подсчётам нашей статистики выигрышей \"<clr>СУПЕР ДЖЕКПОТ<clrEnd>\" выпадает с <clr>5<clrEnd>%-ным шансом!\r\n\r\nОбязательно приходите в следующий раз, <clr>когда у вас будет доступно вращение колеса Фортуны<clrEnd> и испытайте свою удачу ещё раз!",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_Casino.96\"),\"<0>\",cur_bet*5))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "Итак... вращаем!\r\n...\r\n<clr>колесо крутится<clrEnd>...\r\n...\r\n<clr>всё ещё крутится<clrEnd>...\r\n...\r\n<clr>обстановка накаляется<clrEnd>...\r\n...\r\n<clr>колесо остановилось<clrEnd>...\r\n...\r\nХмм. Похоже, что в этот раз вам <clr>не повезло<clrEnd> и вы проиграли <0> cr. Но вы не переживайте потому, что эти деньги пойдут на добрые дела... наверное...\r\n\r\nОбязательно приходите в следующий раз, <clr>когда у вас будет доступно вращение колеса Фортуны<clrEnd> и испытайте свою удачу ещё раз!",
+                    "DMsg.Num": "5",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_Casino.37\"),\"<0>\",lose_cash))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 900,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 30,
+                    "Msg": "Итак... вращаем!\r\n...\r\n<clr>колесо крутится<clrEnd>...\r\n...\r\n<clr>всё ещё крутится<clrEnd>...\r\n...\r\n<clr>обстановка накаляется<clrEnd>...\r\n...\r\n<clr>колесо остановилось<clrEnd>...\r\n...\r\nХмм. Похоже, что <clr>ВЫ ПОБЕДИТЕЛЬ<clrEnd>! Вы выиграли ещё <0> cr.! Честно говоря, то вы нас так и обанкротить можете.\r\n\r\nОбязательно приходите в следующий раз, <clr>когда у вас будет доступно вращение колеса Фортуны<clrEnd> и испытайте свою удачу ещё раз!",
+                    "DMsg.Num": "6",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_Casino.38\"),\"<0>\",win_cash))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1050,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 31,
+                    "Msg": "Конечно! Постарайтесь выиграть больше, чем проиграли. Если сможете, конечно.",
+                    "DMsg.Num": "7",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.72\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 32,
+                    "Msg": "Сожелеем, <Player>, но у вас закончились доступные вращения колеса Фортуны и недостаточно денег для минимальной ставки. Минимально допустимая ставка составляет <clr>5000<clrEnd> cr., а максимальная не более <clr>50000<clrEnd> cr. А за доступным вращением приходите после <clr>1 января<clrEnd> или <clr>1 июля<clrEnd>.",
+                    "DMsg.Num": "8",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.48\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1350,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 33,
+                    "Msg": "Сожелеем, <Player>, но у вас закончились доступные вращения колеса Фортуны. За доступным вращением приходите после <clr>1 января<clrEnd> или <clr>1 июля<clrEnd>.",
+                    "DMsg.Num": "9",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.46\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1500,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 34,
+                    "Msg": "О! У нас новая рыбка на крю... то есть новый клиент! Ты хочешь сделать ставку на нашем колесе Фортуны? Но сначала, как положено благородному джентльмену удачи, я обязан напомнить тебе правила игры:\r\n-----------\r\nСеть наших казино \"<clr>Козырный туз<clrEnd>\" распрастраняется только на все наши <clr>Пиратские базы<clrEnd> и <clr>Доминионы<clrEnd>. Так, что ты найдёшь казино в любом из них.\r\n\r\nНаше колёсико Фортуны можно крутить <clr>1<clrEnd> раз после <clr>1 января<clrEnd> или <clr>1 июля<clrEnd>. Если коротко, то <clr>раз в полгода<clrEnd>. Если бы каждый мог <clr>крутить его всегда<clrEnd>, то нам бы пришёл кирдык!\r\n\r\nМинимальная ставочка составляет <clr>10000<clrEnd> cr., а максимальная - не более <clr>80000<clrEnd> cr.",
+                    "DMsg.Num": "10",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.85\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1650,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 35,
+                    "Msg": "Сорян, <Player>, но у тебя больше нема доступных вращений колеса Фортуны. За доступным вращением приходи после <clr>1 января<clrEnd> или <clr>1 июля<clrEnd>.",
+                    "DMsg.Num": "11",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.53\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 36,
+                    "Msg": "Сорян, <Player>, но у тебя закончились доступные вращения колеса Фортуны и недостаточно бабла для минимальной ставки. Минимальная ставочка <clr>10000<clrEnd> cr., а максимальная не больше <clr>80000<clrEnd> cr. А за доступным вращением приходи после <clr>1 января<clrEnd> или <clr>1 июля<clrEnd>.",
+                    "DMsg.Num": "12",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.86\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 37,
+                    "Msg": "Сорян, <Player>, но у тебя недостаточно бабла для минимальной ставки. Минимальная ставочка <clr>10000<clrEnd> cr., а максимальная не больше <clr>80000<clrEnd> cr.",
+                    "DMsg.Num": "13",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.87\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 38,
+                    "Msg": "Ну тогда зачем ты сюда пришёл, <Player>?! По какому такому праву наше честное заведение позоришь? А ну, кыш отсюда!",
+                    "DMsg.Num": "14",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.56\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 39,
+                    "Msg": "Неплохо, <Player>! Сейчас твоя ставка составляет <0> cr. Хочешь сделать ставку или установить заново?\r\n\r\nНапомню тебе ещё раз, что твоя ставка может быть не больше <clr>80000<clrEnd> cr.",
+                    "DMsg.Num": "15",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_Casino.95\"),\"<0>\",cur_bet))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 40,
+                    "Msg": "Итак... вращаем!\r\n...\r\n<clr>колесо крутится<clrEnd>...\r\n...\r\n<clr>всё ещё крутится<clrEnd>...\r\n...\r\n<clr>обстановка накаляется<clrEnd>...\r\n...\r\n<clr>колесо остановилось<clrEnd>...\r\n...\r\nПосмотрим. Похоже, что <clr>ТЫ ПОБЕДИТЕЛЬ<clrEnd>! Ты выиграл ещё <0> cr.! Честно говоря, мне кажется, что ты жульничал...\r\n\r\nОбязательно приходи в следующий раз, <clr>когда у тебя будет доступно вращение колеса Фортуны<clrEnd> и испытай свою удачу или кошелёк ещё раз!",
+                    "DMsg.Num": "16",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_Casino.62\"),\"<0>\",win_cash))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 41,
+                    "Msg": "Итак... вращаем!\r\n...\r\n<clr>колесо крутится<clrEnd>...\r\n...\r\n<clr>всё ещё крутится<clrEnd>...\r\n...\r\n<clr>обстановка накаляется<clrEnd>...\r\n...\r\n<clr>колесо остановилось<clrEnd>...\r\n...\r\nПосмотрим. Похоже, что в этот раз тебе богиня Удача <clr>не помогла<clrEnd> и ты протрынькал <0> cr. Но ты не переживай, потому что эти деньги пойдут на наши тёмные делишки... Обещаю, что зря они точно не пропадут! По крайней мере, для нас уж точно.\r\n\r\nОбязательно приходи в следующий раз, <clr>когда у тебя будет доступно вращение колеса Фортуны<clrEnd> и испытай свою удачу или кошелёк ещё раз!",
+                    "DMsg.Num": "17",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_Casino.98\"),\"<0>\",lose_cash))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 900,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 42,
+                    "Msg": "Итак... вращаем!\r\n...\r\n<clr>колесо крутится<clrEnd>...\r\n...\r\n<clr>всё ещё крутится<clrEnd>...\r\n...\r\n<clr>обстановка накаляется<clrEnd>...\r\n...\r\n<clr>колесо остановилось<clrEnd>...\r\n...\r\nПосмотрим. Ох! Них! Фиг! Себе! Это же чёртов \"<clr>СУПЕР ДЖЕКПОТ<clrEnd>\" и это значит, что ты <clr>получаешь 5-ти кратную ставку<clrEnd>! Вот твои <0> cr. Прошу тебя, научи меня также выигрывать!!! <clr>5<clrEnd>% выпадения \"<clr>супер джекпота<clrEnd>\" очень и очень многое значит.\r\n\r\nОбязательно приходи в следующий раз, <clr>когда у тебя будет доступно вращение колеса Фортуны<clrEnd> и испытай свою удачу или кошелёк ещё раз!\r\n",
+                    "DMsg.Num": "18",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_Casino.97\"),\"<0>\",cur_bet*5))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1050,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 43,
+                    "Msg": "Посмотрим какой куш тебе выпадет в следующий раз. Если он конечно выпадет! Хи-хи.",
+                    "DMsg.Num": "19",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.65\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 44,
+                    "Msg": "О, <Player>, тебя заинтересовала возможность быстро и легко заработать, хе-хе?\r\n\r\nНу, что ж, можешь крутануть <clrEnd>колесо Фортуны<clrEnd> или сходить к нашему <clr>наперсточнику<clrEnd> и попытаться выиграть у него небольшую сумму.",
+                    "DMsg.Num": "20",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.118\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1350,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 45,
+                    "Msg": "Привет, <Player>, сыграешь? Правила игры очень просты: у меня есть <clr>3<clrEnd> бумажных стакана, я их перемешиваю, а в одном из них внутри шар. Тебе нужно выбрать в каком из стаканов находится шар. Если угадал, то забираешь свой выигрыш. Ставки принимаю от <clr>500<clrEnd> до <clr>2000<clrEnd> cr.",
+                    "DMsg.Num": "21",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.124\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1500,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 46,
+                    "Msg": "Без проблем. Сейчас твоя ставка составляет <0> cr.\r\nХочешь изменить свою ставку или выбрать, в каком из стаканов шар?",
+                    "DMsg.Num": "22",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_Casino.125\"),\"<0>\",cur_bet))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1650,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 47,
+                    "Msg": "У тебя недостаточно денег даже для <clr>минимальной ставки<clrEnd>. Приходи, когда разбогатеешь.",
+                    "DMsg.Num": "23",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.126\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 48,
+                    "Msg": "Хорошо, смотри внимательно под каким из стаканов шар.\r\n...\r\n<clr>напёрсточник берет небольшой шар в руку и ложит его под стакан<clrEnd>\r\n...\r\n<clr>перемешивает стаканы между собой<clrEnd>...\r\n...\r\n<clr>всё ещё перемешивает<clrEnd>...\r\n...\r\n<clr>вы пытаетесь удержать свой взор на правильном стакане<clrEnd>...\r\n...\r\n<clr>стаканы перемешаны<clrEnd>...\r\n...\r\n<clr>вы выбрали свой стакан<clrEnd>\r\n...\r\nПосмотрим. Это <color=20,255,20>правильный</color> выбор. Шар был под стаканом номер <0>. Эти <1> cr. я отдаю тебе. Хочешь ещё раз с той же ставкой в <2> cr. или изменить её?\r\n",
+                    "DMsg.Num": "24",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_Casino.127\"),\"<0>\",cup,\"<1>\",win_cash,\"<2>\",cur_bet))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 49,
+                    "Msg": "Хорошо, смотри внимательно под каким из стаканов шар.\r\n...\r\n<clr>напёрсточник берет небольшой шар в руку и ложит его под стакан<clrEnd>\r\n...\r\n<clr>перемешивает стаканы между собой<clrEnd>...\r\n...\r\n<clr>всё ещё перемешивает<clrEnd>...\r\n...\r\n<clr>вы пытаетесь удержать свой взор на правильном стакане<clrEnd>...\r\n...\r\n<clr>стаканы перемешаны<clrEnd>...\r\n...\r\n<clr>вы выбрали свой стакан<clrEnd>\r\n...\r\nПосмотрим. <color=255,20,20>Неправильный</color> выбор. Шар был под стаканом номер <0>. Эти <1> cr. я забираю себе. Хочешь ещё раз с той же ставкой в <2> cr. или изменить её?",
+                    "DMsg.Num": "25",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_Casino.128\"),\"<0>\",cup,\"<1>\",lose_cash,\"<2>\",cur_bet))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 495,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 50,
+                    "Msg": "У тебя недостаточно денег даже для <clr>минимальной ставки<clrEnd>. Приходи, когда разбогатеешь.",
+                    "DMsg.Num": "26",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_Casino.126\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "Casino_BK",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 22
+                },
+                {
+                    "Name": "Casino_Pirate",
+                    "Type": "TDialog",
+                    "Pos.x": 150,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 23
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 16
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 17,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 660
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "win_chance2=RndObject(1,100,Player());",
+                        "cup=RndObject(1,3,Player());"
+                    ],
+                    "#": 18,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 660
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(findsubstr(GameDateTxtByTurn(CurTurn()),CT(\"Script.Mod_Casino.135\"))==0 || findsubstr(GameDateTxtByTurn(CurTurn()),CT(\"Script.Mod_Casino.134\"))==0) {",
+                        "    count1=0;",
+                        "    count2=0;",
+                        "}",
+                        "if(k!=1) {",
+                        "    win_chance=RndObject(1,10000,Player());",
+                        "    k=1;",
+                        "}",
+                        "if(findsubstr(GameDateTxtByTurn(CurTurn()),CT(\"Script.Mod_Casino.133\"))==0 || findsubstr(GameDateTxtByTurn(CurTurn()),CT(\"Script.Mod_Casino.132\"))==0) {",
+                        "    count1=0;",
+                        "    count2=0;",
+                        "}",
+                        "",
+                        "//win_chance - шанс выигрыша в казике, он генерится раз в миллиард столетий",
+                        "//win_chance2 - шанс выигрыша у напёрсточника;"
+                    ],
+                    "#": 19,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 660
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(GetShipRuins(Player())) {",
+                        "    if(ShipType(GetShipRuins(Player()))=='BK') {",
+                        "        AddDialogInject('Casino_BK',Format(CT(\"Script.Mod_Casino.137\"),\"<0>\",casino_BK),CT(\"Script.Mod_Casino.83\"),0);",
+                        "    }",
+                        "    if(ShipType(GetShipRuins(Player()))=='PB' || ShipType(GetShipRuins(Player()))=='CB') {",
+                        "        AddDialogInject('Casino_Pirate',Format(CT(\"Script.Mod_Casino.136\"),\"<0>\",casino_Pirate),CT(\"Script.Mod_Casino.83\"),0);",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 20,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 660
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "cur_count1=1-count1;",
+                        "if(ShipMoney(Player())>=5000 && cur_count1==1) {",
+                        "  DChange(1);",
+                        "  exit;",
+                        "}",
+                        "if(ShipMoney(Player())>=5000 && cur_count1==0) {",
+                        "  DChange(9);",
+                        "  exit;",
+                        "}",
+                        "if(ShipMoney(Player())<5000 && cur_count1==1) {",
+                        "  DChange(0);",
+                        "  exit;",
+                        "}",
+                        "if(ShipMoney(Player())<5000 && cur_count1==0) {",
+                        "  DChange(8);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 80,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(20);",
+                        "exit;"
+                    ],
+                    "#": 81,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(0);"
+                    ],
+                    "#": 82,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(1);",
+                        "DAdd(2);"
+                    ],
+                    "#": 83,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(14);"
+                    ],
+                    "#": 84,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(2);",
+                        "DAdd(3);",
+                        "DAdd(4);"
+                    ],
+                    "#": 85,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(5);"
+                    ],
+                    "#": 86,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(5);"
+                    ],
+                    "#": 87,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(5);"
+                    ],
+                    "#": 88,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 880,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(13);"
+                    ],
+                    "#": 89,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1030,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(0);"
+                    ],
+                    "#": 90,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(0);"
+                    ],
+                    "#": 91,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1330,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(7);",
+                        "DAdd(8);"
+                    ],
+                    "#": 92,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1480,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(17);"
+                    ],
+                    "#": 93,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1630,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(17);"
+                    ],
+                    "#": 94,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(17);"
+                    ],
+                    "#": 95,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(6);"
+                    ],
+                    "#": 96,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(8);",
+                        "DAdd(9);",
+                        "DAdd(10);"
+                    ],
+                    "#": 97,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(11);"
+                    ],
+                    "#": 98,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(11);"
+                    ],
+                    "#": 99,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(11);"
+                    ],
+                    "#": 100,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 880,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(12);"
+                    ],
+                    "#": 101,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1030,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(15);",
+                        "DAdd(16);",
+                        "DAdd(18);"
+                    ],
+                    "#": 102,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(19);",
+                        "DAdd(20);"
+                    ],
+                    "#": 103,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1330,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(21);",
+                        "DAdd(23);",
+                        "DAdd(24);"
+                    ],
+                    "#": 104,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1480,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(22);"
+                    ],
+                    "#": 105,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1630,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(25);",
+                        "DAdd(26);",
+                        "DAdd(27);"
+                    ],
+                    "#": 106,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(25);",
+                        "DAdd(26);",
+                        "DAdd(27);"
+                    ],
+                    "#": 107,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(28);"
+                    ],
+                    "#": 108,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 495
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "cur_bet=5000; //заменяет ставку 0 на 5000;",
+                        "DChange(3);",
+                        "exit;"
+                    ],
+                    "#": 109,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 110,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(win_chance>=2000 && win_chance<=2500) {",
+                        "  //СУПЕР ДЖЕКПОТ!",
+                        "  win_cash=cur_bet*5; //5-ти кратная сумма выигрыша",
+                        "  ShipMoney(Player(),ShipMoney(Player())+cur_bet*5); //игрок получает 5-ти кратную ставку",
+                        "  Sound('Sound.Buy');",
+                        "  count1=count1+1; //игрок тратит своё доступное вращение у БЦ",
+                        "  ShipMoney(GetShipRuins(Player()),GetShipRuins(Player())-cur_bet*5); //у текущего БЦ забираются кредиты в сумме 5-ти кратной ставки игрока",
+                        "  k=0;",
+                        "  DChange(4);",
+                        "  exit;",
+                        "}",
+                        "if(win_chance<2000) {",
+                        "  //ВЫ ВЫИГРАЛИ!",
+                        "  win_cash=cur_bet; //сумма выигрыша",
+                        "  ShipMoney(Player(),ShipMoney(Player())+cur_bet); //игрок получает выигрышь",
+                        "  Sound('Sound.Buy');",
+                        "  count1=count1+1; //игрок тратит своё доступное вращение у БЦ",
+                        "  ShipMoney(GetShipRuins(Player()),GetShipRuins(Player())-cur_bet); //у текущего БЦ забираются кредиты в сумме выигрыша игрока",
+                        "  k=0;",
+                        "  DChange(6);",
+                        "  exit;",
+                        "}",
+                        "if(win_chance>2500) {",
+                        "  //ВЫ ПРОИГРАЛИ!",
+                        "  lose_cash=cur_bet; //сумма проиграной ставки",
+                        "  ShipMoney(Player(),ShipMoney(Player())-cur_bet); //игрок отдаёт свою ставку",
+                        "  Sound('Sound.Buy');",
+                        "  count1=count1+1; //игрок тратит своё доступное вращение у БЦ",
+                        "  ShipMoney(GetShipRuins(Player()),GetShipRuins(Player())+cur_bet); //текущий БЦ получает сумму проигранной ставки игрока",
+                        "  k=0;",
+                        "  DChange(5);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 111,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>50000) {",
+                        "  cur_bet=CountBox('Bm.Items.2Luxury',CT(\"Script.Mod_Casino.138\"),5000,50000);",
+                        "  if(cur_bet==0)cur_bet=5000;//заменяет 0 ставку на минимальную 5000, при нажатии X, когда игрок делает установку ставки;",
+                        "  DChange(3);",
+                        "  exit;",
+                        "}",
+                        "if(ShipMoney(Player())<=50000) {",
+                        "  cur_bet=CountBox('Bm.Items.2Luxury',CT(\"Script.Mod_Casino.138\"),5000,ShipMoney(Player()));",
+                        "  if(cur_bet==0)cur_bet=5000;//заменяет 0 ставку на минимальную 5000, при нажатии X, когда игрок делает установку ставки;",
+                        "  DChange(3);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 112,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(7);",
+                        "exit;"
+                    ],
+                    "#": 113,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "cur_bet=10000; //заменяет ставку 0 на 10000;",
+                        "DChange(15);",
+                        "exit;"
+                    ],
+                    "#": 114,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(14);",
+                        "exit;"
+                    ],
+                    "#": 115,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 940,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>80000) {",
+                        "  cur_bet=CountBox('Bm.Items.2Luxury',CT(\"Script.Mod_Casino.139\"),10000,80000);",
+                        "  if(cur_bet==0)cur_bet=10000; //заменяет 0 ставку на минимальную 10000, при нажатии X, когда игрок делает установку ставки;",
+                        "  DChange(15);",
+                        "  exit;",
+                        "}",
+                        "if(ShipMoney(Player())<=80000) {",
+                        "  cur_bet=CountBox('Bm.Items.2Luxury',CT(\"Script.Mod_Casino.139\"),10000,ShipMoney(Player()));",
+                        "  if(cur_bet==0)cur_bet=10000; //заменяет 0 ставку на минимальную 10000, при нажатии X, когда игрок делает установку ставки;",
+                        "  DChange(15);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 116,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1060,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(win_chance<2000) {",
+                        "  //ВЫ ВЫИГРАЛИ!",
+                        "  win_cash=cur_bet; //сумма выигрыша",
+                        "  ShipMoney(Player(),ShipMoney(Player())+cur_bet); //игрок получает выигрыш",
+                        "  Sound('Sound.Buy');",
+                        "  count2=count2+1; //игрок тратит своё доступное вращение у ПБ и Доминионов пиратов",
+                        "  ShipMoney(GetShipRuins(Player()),GetShipRuins(Player())-cur_bet); //у текущего Доминиона или ПБ забираются кредиты в сумме выигрыша игрока",
+                        "  k=0;",
+                        "  DChange(16);",
+                        "  exit;",
+                        "}",
+                        "if(win_chance>2500) {",
+                        "  //ВЫ ПРОИГРАЛИ!",
+                        "  lose_cash=cur_bet; //сумма проиграной ставки",
+                        "  ShipMoney(Player(),ShipMoney(Player())-cur_bet); //игрок отдаёт свою ставку",
+                        "  Sound('Sound.Buy');",
+                        "  count2=count2+1; //игрок тратит своё доступное вращение у ПБ и Доминионов пиратов",
+                        "  ShipMoney(GetShipRuins(Player()),GetShipRuins(Player())+cur_bet); //текущий Доминион или ПБ получает сумму проигранной ставки игрока",
+                        "  k=0;",
+                        "  DChange(17);",
+                        "  exit;",
+                        "}",
+                        "if(win_chance>=2000 && win_chance<=2500) {",
+                        "  //СУПЕР ДЖЕКПОТ!",
+                        "  win_cash=cur_bet*5; //5-ти кратная сумма выигрыша",
+                        "  ShipMoney(Player(),ShipMoney(Player())+cur_bet*5); //игрок получает 5-ти кратную ставку",
+                        "  Sound('Sound.Buy');",
+                        "  count2=count2+1; //игрок тратит своё доступное вращение у ПБ и Доминионов пиратов",
+                        "  ShipMoney(GetShipRuins(Player()),GetShipRuins(Player())-cur_bet*5); //у текущего Доминиона или ПБ забираются кредиты в сумме 5-ти кратной ставки игрока",
+                        "  k=0;",
+                        "  DChange(18);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 117,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(19);",
+                        "exit;"
+                    ],
+                    "#": 118,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1300,
+                    "Pos.y": 565
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "cur_count2=1-count2;",
+                        "if(ShipMoney(Player())>=10000 && cur_count2==1) {",
+                        "  DChange(10);",
+                        "  exit;",
+                        "}",
+                        "if(ShipMoney(Player())>=10000 && cur_count2==0) {",
+                        "  DChange(11);",
+                        "  exit;",
+                        "}",
+                        "if(ShipMoney(Player())<10000 && cur_count2==1) {",
+                        "  DChange(13);",
+                        "  exit;",
+                        "}",
+                        "if(ShipMoney(Player())<10000 && cur_count2==0) {",
+                        "  DChange(12);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 119,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(21);",
+                        "exit;"
+                    ],
+                    "#": 120,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(20);",
+                        "exit;"
+                    ],
+                    "#": 121,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=500) {",
+                        "  cur_bet=500;",
+                        "  DChange(22);",
+                        "  exit;",
+                        "}",
+                        "if(ShipMoney(Player())<500) {",
+                        "  DChange(23);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 122,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(win_chance2>=34) {",
+                        "  //ВЫ ПРОИГРАЛИ!",
+                        "  lose_cash=cur_bet; //сумма проиграной ставки",
+                        "  ShipMoney(Player(),ShipMoney(Player())-cur_bet); //игрок отдаёт свою ставку",
+                        "  ShipMoney(GetShipRuins(Player()),GetShipRuins(Player())+cur_bet); //текущий Доминион или ПБ получает сумму проигранной ставки игрока",
+                        "  cup=RndObject(1,3,Player());",
+                        "  win_chance2=RndObject(1,100,Player());",
+                        "  DChange(25);",
+                        "  exit;",
+                        "}",
+                        "if(win_chance2<=33) {",
+                        "  //ВЫ ВЫИГРАЛИ!",
+                        "  win_cash=cur_bet; //сумма выигрыша",
+                        "  ShipMoney(Player(),ShipMoney(Player())+cur_bet); //игрок получает выигрыш",
+                        "  Sound('Sound.Buy');",
+                        "  ShipMoney(GetShipRuins(Player()),GetShipRuins(Player())-cur_bet); //у текущего Доминиона или ПБ забираются кредиты в сумме выигрыша игрока",
+                        "  cup=RndObject(1,3,Player());",
+                        "  win_chance2=RndObject(1,100,Player());",
+                        "  DChange(24);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 123,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>5000) {",
+                        "  cur_bet=CountBox('Bm.Items.2Luxury',CT(\"Script.Mod_Casino.139\"),500,5000);",
+                        "  if(cur_bet==0)cur_bet=500;",
+                        "  DChange(22);",
+                        "  exit;",
+                        "}",
+                        "if(ShipMoney(Player())<=5000) {",
+                        "  cur_bet=CountBox('Bm.Items.2Luxury',CT(\"Script.Mod_Casino.139\"),500,ShipMoney(Player()));",
+                        "  if(cur_bet==0)cur_bet=500;",
+                        "  DChange(22);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 124,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 940,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(win_chance2>=34) {",
+                        "  //ВЫ ПРОИГРАЛИ!",
+                        "  lose_cash=cur_bet; //сумма проиграной ставки",
+                        "  ShipMoney(Player(),ShipMoney(Player())-cur_bet); //игрок отдаёт свою ставку",
+                        "  ShipMoney(GetShipRuins(Player()),GetShipRuins(Player())+cur_bet); //текущий Доминион или ПБ получает сумму проигранной ставки игрока",
+                        "  cup=RndObject(1,3,Player());",
+                        "  win_chance2=RndObject(1,100,Player());",
+                        "  DChange(25);",
+                        "  exit;",
+                        "}",
+                        "if(win_chance2<=33) {",
+                        "  //ВЫ ВЫИГРАЛИ!",
+                        "  win_cash=cur_bet; //сумма выигрыша",
+                        "  ShipMoney(Player(),ShipMoney(Player())+cur_bet); //игрок получает выигрыш",
+                        "  Sound('Sound.Buy');",
+                        "  ShipMoney(GetShipRuins(Player()),GetShipRuins(Player())-cur_bet); //у текущего Доминиона или ПБ забираются кредиты в сумме выигрыша игрока",
+                        "  cup=RndObject(1,3,Player());",
+                        "  win_chance2=RndObject(1,100,Player());",
+                        "  DChange(24);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 125,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 590
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())<500) {",
+                        "  DChange(26);",
+                        "  exit;",
+                        "}",
+                        "if(ShipMoney(Player())>5000) {",
+                        "  cur_bet=CountBox('Bm.Items.2Luxury',CT(\"Script.Mod_Casino.139\"),500,5000);",
+                        "  if(cur_bet==0)cur_bet=500;",
+                        "  DChange(22);",
+                        "  exit;",
+                        "}",
+                        "if(ShipMoney(Player())<=5000) {",
+                        "  cur_bet=CountBox('Bm.Items.2Luxury',CT(\"Script.Mod_Casino.139\"),500,ShipMoney(Player()));",
+                        "  if(cur_bet==0)cur_bet=500;",
+                        "  DChange(22);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 126,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1300,
+                    "Pos.y": 590
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 15
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 14
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 13,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 21
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "cur_bet",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "win_chance",
+                    "Pos.x": 120,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "lose_cash",
+                    "Pos.x": 270,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "win_cash",
+                    "Pos.x": 420,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cur_count1",
+                    "Pos.x": 540,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "count1",
+                    "Pos.x": 690,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "count2",
+                    "Pos.x": 780,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cur_count2",
+                    "Pos.x": 870,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "casino_Pirate",
+                    "Pos.x": 1020,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Str",
+                    "Init": "\"Козырный туз\"",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "casino_BK",
+                    "Pos.x": 1230,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Str",
+                    "Init": "\"Крупный куш\"",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "k",
+                    "Pos.x": 1380,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "win_chance2",
+                    "Pos.x": 1470,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 11,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "cup",
+                    "Pos.x": 1650,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 12,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 22,
+            "End": 80,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 23,
+            "End": 81,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 24,
+            "End": 82,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 83,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 84,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 27,
+            "End": 85,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 28,
+            "End": 86,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 29,
+            "End": 87,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 30,
+            "End": 88,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 31,
+            "End": 89,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 32,
+            "End": 90,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 33,
+            "End": 91,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 34,
+            "End": 92,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 35,
+            "End": 93,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 36,
+            "End": 94,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 37,
+            "End": 95,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 38,
+            "End": 96,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 39,
+            "End": 97,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 40,
+            "End": 98,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 41,
+            "End": 99,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 42,
+            "End": 100,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 43,
+            "End": 101,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 44,
+            "End": 102,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 45,
+            "End": 103,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 46,
+            "End": 104,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 47,
+            "End": 105,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 48,
+            "End": 106,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 49,
+            "End": 107,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 50,
+            "End": 108,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 52,
+            "End": 109,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 53,
+            "End": 110,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 54,
+            "End": 111,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 55,
+            "End": 112,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 56,
+            "End": 113,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 58,
+            "End": 114,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 59,
+            "End": 115,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 60,
+            "End": 116,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 61,
+            "End": 117,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 62,
+            "End": 118,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 66,
+            "End": 119,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 67,
+            "End": 120,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 68,
+            "End": 121,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 70,
+            "End": 122,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 72,
+            "End": 123,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 74,
+            "End": 124,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 76,
+            "End": 125,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 77,
+            "End": 126,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 13,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 15,
+            "End": 13,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 15,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 21,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

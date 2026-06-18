@@ -1,0 +1,76 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            MassPenalty ^{
+                Description=Текущий штраф скорости для вашего корабля <br>Скорость двигателя: <Data1> ед.
+                Icon=820
+                Name=Габариты корабля
+                OnActCode ^{
+                    01=dword cur_ship = ScriptItemActShip();
+                    02=float hull=ItemSize(ShipItems(cur_ship,0));
+                    03=float mass=max(ShipStatistic(Player(),12)-ShipCustomShipInfoData(Player(),CurInfo(),2)*100000,-500);
+                    04=float minus=-1.0;
+                    05=float buff=((max(mass-2000.0,0)/10.0)*(1.0+mass/20000.0))*minus+min(((2000.0-hull)/10.0)*min(abs(min(hull-700.0,1.0)),1.0),0);
+                    06=if(mass < 350) buff = ((min(mass-350.0,0)/5.0)*(1.0+mass/500.0))*minus+max(((400.0-hull)/10.0),0);
+                    07=ShipCustomShipInfoData(Player(),CurInfo(),1,int(buff));
+                    08=if(buff<=-1800)
+                    09 ^{
+                        01=if(ShipCustomShipInfoData(Player(),CurInfo(),2)!=1)
+                        02 ^{
+                            01=dword stop = CreateQuestItem('Usl_64');
+                            02=ItemSize(stop,1000000);
+                            03=AddItemToShip(Player(),stop);
+                            04=NoDropItem(stop,1);
+                            05=ItemIsInUse(stop,Player(),1);
+                            06=ShipCustomShipInfoData(Player(),CurInfo(),2,1);
+                            07=ShipCustomShipInfoData(Player(),CurInfo(),3,Id(stop));
+                            08=exit;
+                        }
+                        03=else
+                        04 ^{
+                            01=stop=ShipCustomShipInfoData(Player(),CurInfo(),3);
+                            02=ItemSize(IdToItem(stop),1000000);
+                            03=exit;
+                        }
+                    }
+                    10=else
+                    11 ^{
+                        01=if(ShipCustomShipInfoData(Player(),CurInfo(),2)==1)
+                        02 ^{
+                            01=stop=ShipCustomShipInfoData(Player(),CurInfo(),3);
+                            02=ItemIsInUse(IdToItem(stop),Player(),0);
+                            03=FreeItem(GetItemFromShip(Player(),IdToItem(stop)));
+                            04=ShipCustomShipInfoData(Player(),CurInfo(),2,0);
+                        }
+                        03=if(~ShipFindCustomShipInfoByType(Player(),'MassPenaltyExtra'))
+                        04 ^{
+                            01=ShipSpecialBonuses(cur_ship,bonSpeed,ShipSpecialBonuses(cur_ship,bonSpeed)-ShipCustomShipInfoData(Player(),'MassPenaltyExtra',1)*(ShipCustomShipInfoData(Player(),'MassPenaltyExtra',2)-1));
+                        }
+                        05=if(~ShipFindCustomShipInfoByType(Player(),'MassPenaltyExtra'))
+                        06 ^{
+                            01=ShipCustomShipInfoData(Player(),'MassPenaltyExtra',1,abs(buff));
+                            02=if(buff < 0) ShipCustomShipInfoData(Player(),'MassPenaltyExtra',2,0);
+                            03=else ShipCustomShipInfoData(Player(),'MassPenaltyExtra',2,2);
+                        }
+                        07=else
+                        08 ^{
+                            01=ShipAddCustomShipInfo(Player(),'MassPenaltyExtra','NoShow');
+                            01=ShipCustomShipInfoData(Player(),'MassPenaltyExtra',1,abs(buff));
+                            02=if(buff < 0) ShipCustomShipInfoData(Player(),'MassPenaltyExtra',2,0);
+                            03=else ShipCustomShipInfoData(Player(),'MassPenaltyExtra',2,2);
+                        }
+                        09=ShipSpecialBonuses(cur_ship,bonSpeed,ShipSpecialBonuses(cur_ship,bonSpeed)+buff);
+                        10=ShipCalcParam(cur_ship);
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReEnteringForm,t_OnItemPickUp
+                OnActStepTypes=0
+            }
+            MassPenaltyExtra ^{
+                Description=Вспомогательная штучка для хранения информации
+                Icon=0
+                Name=Инфошка
+            }
+        }
+    }
+}

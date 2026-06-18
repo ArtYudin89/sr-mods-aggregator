@@ -1,0 +1,237 @@
+ML ^{
+    Planet ^{
+        Panel ^{
+            Panel ^{
+                OnKey ^{
+                    CheatsInput ^{
+                        01=for(int single_pass = 0; single_pass == 0; single_pass = 1)
+                        01 ^{
+                            0UtilityFunctions ^{
+                                01=if(IsFilm()) break;
+                                02=if(KEYMOD != 3) break;
+                                03=if(KEY < 48) break;
+                                04=if(KEY > 90) break;
+                                05=str cheats_input = InterfaceText('StarMap', 'CheatsInputField');
+                                06=cheats_input = cheats_input + substr(KeyCodesToKeyVals, KEY - 48, 1);
+                                07=if(count(cheats_input) > 15) cheats_input = substr(cheats_input, 1);
+                                08=InterfaceText('StarMap', 'CheatsInputField', cheats_input);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    PlanetNO ^{
+        Panel ^{
+            Panel ^{
+                OnKey ^{
+                    CheatsInput ^{
+                        01=for(int single_pass = 0; single_pass == 0; single_pass = 1)
+                        01 ^{
+                            0UtilityFunctions ^{
+                                01=if(IsFilm()) break;
+                                02=if(KEYMOD != 3) break;
+                                03=if(KEY < 48) break;
+                                04=if(KEY > 90) break;
+                                05=str cheats_input = InterfaceText('StarMap', 'CheatsInputField');
+                                06=cheats_input = cheats_input + substr(KeyCodesToKeyVals, KEY - 48, 1);
+                                07=if(count(cheats_input) > 15) cheats_input = substr(cheats_input, 1);
+                                08=InterfaceText('StarMap', 'CheatsInputField', cheats_input);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    RuinsTalk ^{
+        Panel ^{
+            Panel ^{
+                OnKey ^{
+                    CheatsInput ^{
+                        01=for(int single_pass = 0; single_pass == 0; single_pass = 1)
+                        01 ^{
+                            0UtilityFunctions ^{
+                                01=if(IsFilm()) break;
+                                02=if(KEYMOD != 3) break;
+                                03=if(KEY < 48) break;
+                                04=if(KEY > 90) break;
+                                05=str cheats_input = InterfaceText('StarMap', 'CheatsInputField');
+                                06=cheats_input = cheats_input + substr(KeyCodesToKeyVals, KEY - 48, 1);
+                                07=if(count(cheats_input) > 15) cheats_input = substr(cheats_input, 1);
+                                08=InterfaceText('StarMap', 'CheatsInputField', cheats_input);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    Ship ^{
+        Panel ^{
+            Panel ^{
+                OnKey ^{
+                    CheatsInput ^{
+                        01=for(int single_pass = 0; single_pass == 0; single_pass = 1)
+                        01 ^{
+                            0UtilityFunctions ^{
+                                01=if(IsFilm()) break;
+                                02=if(KEYMOD != 3) break;
+                                03=if(KEY < 48) break;
+                                04=if(KEY > 90) break;
+                                05=str cheats_input = InterfaceText('StarMap', 'CheatsInputField');
+                                06=cheats_input = cheats_input + substr(KeyCodesToKeyVals, KEY - 48, 1);
+                                07=if(count(cheats_input) > 15) cheats_input = substr(cheats_input, 1);
+                                08=InterfaceText('StarMap', 'CheatsInputField', cheats_input);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    StarMap ^{
+        Panel ^{
+            CheatsInputField ^{
+                Label ^{
+                    Active=False
+                    AlignX=Center
+                    AlignY=Center
+                    Font=Font.2Normal
+                    Name=CheatsInputField
+                    Pos=0,0,0
+                    Size=1,1
+                }
+            }
+            Panel ^{
+                OnKey ^{
+                    CheatsInput ^{
+                        01=for(int single_pass = 0; single_pass == 0; single_pass = 1)
+                        01 ^{
+                            0UtilityFunctions ^{
+                                01=if(IsFilm()) break;
+                                02=if(KEYMOD != 3) break;
+                                03=if(KEY < 48) break;
+                                04=if(KEY > 90) break;
+                                05=str cheats_input = InterfaceText('StarMap', 'CheatsInputField');
+                                06=cheats_input = cheats_input + substr(KeyCodesToKeyVals, KEY - 48, 1);
+                                07=if(count(cheats_input) > 15) cheats_input = substr(cheats_input, 1);
+                                08=InterfaceText('StarMap', 'CheatsInputField', cheats_input);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+BV ^{
+    OnLoad ^{
+        0UtilityFunctionsLibInit ^{
+            0=UtilityFunctionsLibInit = ImportedFunction('UtilityFunctions', 'UtilityFunctionsLibInit');
+            0=UtilityFunctionsLibInit(GalaxyPtr());
+            0=GetObjectGenerationSeed = ImportedFunction('UtilityFunctions', 'GetObjectGenerationSeed');
+            0=GetSectorAdjacentToDicea = ImportedFunction('UtilityFunctions', 'GetSectorAdjacentToDicea');
+            0=AdvancedAdjustmentSet = ImportedFunction('UtilityFunctions', 'AdvancedAdjustmentSet');
+            0=SetRangersCapital = ImportedFunction('UtilityFunctions', 'SetRangersCapital');
+            0=RoundTo = ImportedFunction('UtilityFunctions', 'RoundTo');
+            0=Power = ImportedFunction('UtilityFunctions', 'Power');
+            0=TrimNumbers = ImportedFunction('UtilityFunctions', 'TrimNumbers');
+            0=DistCoords = ImportedFunction('UtilityFunctions', 'DistCoords');
+            0=PortionInDiapason = ImportedFunction('UtilityFunctions', 'PortionInDiapason');
+            0=FloatToString = ImportedFunction('UtilityFunctions', 'FloatToString');
+            0=ParsCountFromString = ImportedFunction('UtilityFunctions', 'ParsCountFromString');
+            0=GetParFromString = ImportedFunction('UtilityFunctions', 'GetParFromString');
+            0=SetParFromString = ImportedFunction('UtilityFunctions', 'SetParFromString');
+            0=GetParFromTxt = ImportedFunction('UtilityFunctions', 'GetParFromTxt');
+            0=SetParFromTxt = ImportedFunction('UtilityFunctions', 'SetParFromTxt');
+            0=GetStringFromClipboard = ImportedFunction('UtilityFunctions', 'GetStringFromClipboard');
+            0=SendStringToClipboard = ImportedFunction('UtilityFunctions', 'SendStringToClipboard');
+            0=OpenExternalLink = ImportedFunction('UtilityFunctions', 'OpenExternalLink');
+            0=IsShiftCtrlPressed = ImportedFunction('UtilityFunctions', 'IsShiftCtrlPressed');
+            0=RndObject = ImportedFunction('UtilityFunctions', 'RndObject');
+            0=RndFloat = ImportedFunction('UtilityFunctions', 'RndFloat');
+            0=IdToHole = ImportedFunction('UtilityFunctions', 'IdToHole');
+            0=HoleStatus = ImportedFunction('UtilityFunctions', 'HoleStatus');
+            0=ShipVisibility = ImportedFunction('UtilityFunctions', 'ShipVisibility');
+            0=ShipSubrace = ImportedFunction('UtilityFunctions', 'ShipSubrace');
+            0=ShipNearbyShips = ImportedFunction('UtilityFunctions', 'ShipNearbyShips');
+            0=ShipPrevStar = ImportedFunction('UtilityFunctions', 'ShipPrevStar');
+            0=GetShipPath = ImportedFunction('UtilityFunctions', 'GetShipPath');
+            0=SetShipPath = ImportedFunction('UtilityFunctions', 'SetShipPath');
+            0=SetShipExpByType = ImportedFunction('UtilityFunctions', 'SetShipExpByType');
+            0=ShipExchangeToShip = ImportedFunction('UtilityFunctions', 'ShipExchangeToShip');
+            0=GetShipScriptName = ImportedFunction('UtilityFunctions', 'GetShipScriptName');
+            0=ShipJoinToScript = ImportedFunction('UtilityFunctions', 'ShipJoinToScript');
+            0=GetScriptNoKlingMarksFromStar = ImportedFunction('UtilityFunctions', 'GetScriptNoKlingMarksFromStar');
+            0=AdjustRuinsGoodsPricesToStorage = ImportedFunction('UtilityFunctions', 'AdjustRuinsGoodsPricesToStorage');
+            0=GetPlanetOrbitProbe = ImportedFunction('UtilityFunctions', 'GetPlanetOrbitProbe');
+            0=SetPlanetOrbitProbe = ImportedFunction('UtilityFunctions', 'SetPlanetOrbitProbe');
+            0=PlanetItemsHiddency = ImportedFunction('UtilityFunctions', 'PlanetItemsHiddency');
+            0=HullExtraSettings = ImportedFunction('UtilityFunctions', 'HullExtraSettings');
+            0=CustomArtCostCalc = ImportedFunction('UtilityFunctions', 'CustomArtCostCalc');
+            0=CustomArtSizeCalc = ImportedFunction('UtilityFunctions', 'CustomArtSizeCalc');
+            0=SFT('Build version Redux 1.5.46');
+        }
+    }
+    OnStart ^{
+        0DayScripts ^{
+            00_UtilityFunctionsPack=ScriptRun(ShipStar(Player()), GetShipPlanet(Player()), 'Mod_UtilityFunctionsPack');
+            01_UtilityFunctionsPack=SFT('Build version Redux 1.5.46');
+        }
+    }
+}
+Data ^{
+    Script ^{
+        Mod_UtilityFunctionsPack=0,Script.Mod_UtilityFunctionsPack
+    }
+    ScriptLibs ^{
+        UtilityFunctions ^{
+            AdjustRuinsGoodsPricesToStorage=void,AdjustRuinsGoodsPricesToStorage,int,int,float,float
+            AdvancedAdjustmentSet=int,AdvancedAdjustmentSet,int,int
+            CustomArtCostCalc=int,CustomArtCostCalc,int
+            CustomArtSizeCalc=int,CustomArtSizeCalc,int
+            DistCoords=int,DistCoords,int,int,int,int
+            FloatToString=str,FloatToString,float,int
+            GetObjectGenerationSeed=int,GetObjectGenerationSeed,dword
+            GetParFromString=str,GetParFromString,str,str,int,int
+            GetParFromTxt=str,GetParFromTxt,str,str
+            GetPlanetOrbitProbe=dword,GetPlanetOrbitProbe,dword,int,int
+            GetScriptNoKlingMarksFromStar=str,GetScriptNoKlingMarksFromStar,dword
+            GetSectorAdjacentToDicea=dword,GetSectorAdjacentToDicea
+            GetShipPath=float,GetShipPath,dword,str
+            GetShipScriptName=str,GetShipScriptName,dword,int
+            GetStringFromClipboard=str,GetStringFromClipboard
+            HoleStatus=int,HoleStatus,dword,int
+            HullExtraSettings=dword,HullExtraSettings,dword,int,dword
+            IdToHole=dword,IdToHole,int
+            IsShiftCtrlPressed=int,IsShiftCtrlPressed
+            OpenExternalLink=int,OpenExternalLink,str
+            ParsCountFromString=int,ParsCountFromString,str,str
+            Path=Mods\Tweaks\UtilityFunctionsPack\DATA\UtilityFunctions.dll
+            PlanetItemsHiddency=int,PlanetItemsHiddency,dword,int,str,int
+            PortionInDiapason=float,PortionInDiapason,float,float,float,float,float
+            Power=float,Power,float,float
+            RndFloat=float,RndFloat,float,float,dword
+            RndObject=int,RndObject,int,int,dword
+            RoundTo=float,RoundTo,float,float,int
+            SendStringToClipboard=void,SendStringToClipboard,str
+            SetParFromString=str,SetParFromString,str,str,int,str
+            SetParFromTxt=str,SetParFromTxt,str,str,str
+            SetPlanetOrbitProbe=void,SetPlanetOrbitProbe,dword,int,dword
+            SetRangersCapital=int,SetRangersCapital,int,int
+            SetShipExpByType=void,SetShipExpByType,dword,int,int
+            SetShipPath=void,SetShipPath,dword,int,int
+            ShipExchangeToShip=void,ShipExchangeToShip,dword,dword,int
+            ShipJoinToScript=void,ShipJoinToScript,dword,str
+            ShipNearbyShips=dword,ShipNearbyShips,dword,int,int,int,str,str
+            ShipPrevStar=dword,ShipPrevStar,dword
+            ShipSubrace=int,ShipSubrace,dword,int
+            ShipVisibility=float,ShipVisibility,dword,int,float
+            TrimNumbers=str,TrimNumbers,str
+            UtilityFunctionsLibInit=void,UtilityFunctionsLibInit,dword
+        }
+    }
+}
+UR=1

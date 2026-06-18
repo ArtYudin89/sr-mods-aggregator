@@ -1,0 +1,528 @@
+ActCodeBlocksList ^{
+    CatGunsBsoActCode ^{
+        00=[t_OnItemDeEquip,t_OnStep|1]
+        01=dword item = CurItem();
+        02=dword ship = ScriptItemActShip();
+        03=if(ScriptItemActionType(t_OnStep, 1))
+        04 ^{
+            01=if(!ship || !item) exit;
+            02=if(!ItemIsInUse(item,ship)) exit;
+            03=if(ItemIsBroken(item)) exit;
+            04=if(ObjectType(ship) == 4) exit;
+            05=if(ShipType(ship) == 'DefPlatform') exit;
+            06=if(ItemSize(ShipItems(ship,0)) > int(CT('Items.Weapon.CustomWeapon.bso.SizeLimit')))
+            07 ^{
+                01=if(EqSpecial(item) == FindBonusByCustomTag('BSOMinus'))
+                02 ^{
+                    01=if(EqModule(item))
+                    02 ^{
+                        01=mod = EqModule(item);
+                        02=EqModule(item, -1);
+                        03=name = Name(item);
+                        04=EqModule(item, mod);
+                    }
+                    03=else name = Name(item);
+                    04=EqSpecial(item, -1);
+                    05=EqSpecial(item, FindBonusByCustomTag('BSONormal'));
+                    06=SetName(item, name);
+                }
+                03=exit;
+            }
+            08=for(int i = 1; i <= ShipCntWeapon(ship); i = i + 1) WeaponTarget(ShipWeapon(ship, i), 0);
+            09=if(EqSpecial(item) == FindBonusByCustomTag('BSOMinus')) exit;
+            10=else
+            11 ^{
+                01=if(EqModule(item))
+                02 ^{
+                    01=int mod = EqModule(item);
+                    02=EqModule(item, -1);
+                    03=str name = Name(item);
+                    04=EqModule(item, mod);
+                }
+                03=else name = Name(item);
+                04=EqSpecial(item, -1);
+                05=EqSpecial(item, FindBonusByCustomTag('BSOMinus'));
+                06=SetName(item, name);
+                07=if(ship == Player())
+                08 ^{
+                    01=Ether(8,'','БСО установлено на слишком маленький корабль и недополучает энергию! Большая часть корабельных систем была обесточена.');
+                    02=Sound('Sound.NewMsg');
+                }
+            }
+        }
+        05=else if(ScriptItemActionType(t_OnItemDeEquip))
+        06 ^{
+            01=if(EqModule(item))
+            02 ^{
+                01=mod = EqModule(item);
+                02=EqModule(item, -1);
+                03=name = Name(item);
+                04=EqModule(item, mod);
+            }
+            03=else name = Name(item);
+            04=EqSpecial(item, -1);
+            05=EqSpecial(item, FindBonusByCustomTag('BSONormal'));
+            06=SetName(item, name);
+        }
+    }
+    CatGunsRefixerActCode ^{
+        00=[t_OnStep|1]
+        01=dword item = CurItem();
+        02=dword ship = ScriptItemActShip();
+        03=if(WeaponTarget(item))
+        04 ^{
+            01=dword target = WeaponTarget(item);
+            02=if(RelationToShip(ship,target) > 9 && HullDamage(target))
+            03 ^{
+                01=WeaponTarget(item,0);
+                02=heal = Rnd(GetEquipmentStats(item,1),GetEquipmentStats(item,0));
+                03=ShowEffect('Weapon.7',6,target,ship,heal);
+                04=HullHP(target,HullHP(target)+heal);
+                05=HullHP(target,'DownTo100');
+            }
+            04=else
+            05 ^{
+                01=WeaponTarget(item,0);
+                02=unknown tarr = newarray(1);
+                03=cnt = ShipNearbyShips(ship,-1,0,0,'','');
+                04=for(int i = 1;i<cnt;i=i+1)
+                05 ^{
+                    01=target = ShipNearbyShips(ship,i,0,0,'','');
+                    02=if(!ShipInNormalSpace(target))
+                    03 ^{
+                        01=target = 0;
+                        02=continue;
+                    }
+                    04=else if(RelationToShip(ship,target) < 10)
+                    05 ^{
+                        01=target = 0;
+                        02=continue;
+                    }
+                    06=else if(Dist(target,ship) > GetEquipmentStats(item,2))
+                    07 ^{
+                        01=target = 0;
+                        02=break;
+                    }
+                    08=else if(!HullDamage(target))
+                    09 ^{
+                        01=target = 0;
+                        02=continue;
+                    }
+                    10=heal = Rnd(GetEquipmentStats(item,1),GetEquipmentStats(item,0));
+                    11=ShowEffect('Weapon.7',6,target,ship,heal);
+                    12=HullHP(target,HullHP(target)+heal);
+                    13=HullHP(target,'DownTo100');
+                }
+            }
+        }
+    }
+    CatGunsUberActCode ^{
+        00=[t_OnStep|2,3,9,10,11]
+        01=dword item = CurItem();
+        02=dword ship = ScriptItemActShip();
+        03=if(ship < 1 || item < 1) exit;
+        04=if(ItemIsBroken(item)) exit;
+        05=if(!ItemIsInUse(item)) exit;
+        06=int i;
+        07=int k = 0;
+        08=if(ScriptItemActParam()==11)
+        09 ^{
+            01=if(RndObject(0,1,Player()))
+            02 ^{
+                01=WeaponAmmunition(item,min(WeaponMaxAmmunition(item),WeaponAmmunition(item)+1));
+            }
+        }
+        10=for(i=0;ShipSlots(ship,1)>i;i=i+1)
+        11 ^{
+            01=if(CustomWeaponType(item) == CustomWeaponType(ShipEqInSlot(ship,t_Weapon1,i)))
+            02 ^{
+                01=k = k + 1;
+                02=if(k >= 2) WeaponTarget(item,0);
+                03=if(k >= 2) EqSpecial(item, -1);
+                04=if(k >= 2) EqSpecial(item, FindBonusByCustomTag('UberMinus'));
+                05=if(k >= 2) exit;
+            }
+        }
+        12=if(k=0) EqSpecial(item, -1);
+        13=if(ScriptItemActParam()==2 || ScriptItemActParam()==3)
+        14 ^{
+            01=i = 0;
+            02=for(i=1;i<StarShips(ShipStar(ship));i=i+1)
+            03 ^{
+                01=cur_ship = StarShips(ShipStar(ship),i);
+                02=if(!cur_ship) continue;
+                03=if(ship == cur_ship) continue;
+                04=if(Dist(ship,cur_ship) > CT('Items.Weapon.CustomWeapon.uber.AverageRadiusSplinter')+ShipSpecialBonuses(ship,bonWRadius)) continue;
+                05=if(RelationToShip(cur_ship,ship) > 9) continue;
+                06=if(ShipOwner(cur_ship) == 5 && ship == Player())
+                07 ^{
+                    01=if(ShipSubrace(ship,-1) == PlayerChameleonCurType())
+                    02 ^{
+                        01=if(!PlayerChameleonDetected(PlayerChameleonCurType())) continue;
+                    }
+                }
+                08=int dmg = RndObject(CT('Items.Weapon.CustomWeapon.uber.MinDamageSplinter')+ShipSpecialBonuses(ship,bonWMissile),CT('Items.Weapon.CustomWeapon.uber.MaxDamageSplinter')+ShipSpecialBonuses(ship,bonWMissile),ship)*(10+ShipSkill(ship,'AccuracyCur')-ShipSkill(WeaponTarget(item),'MobilityCur'))/10;
+                09=if(FilmFlags(0)) ShowEffect('Weapon.8',1,cur_ship,ship,dmg);
+                10=DealDamageToShip(cur_ship,WeaponTarget(item),dmg);
+                11=if(FilmFlags(0)) Sound('Sound.oskolYber');
+            }
+        }
+        15=if(ScriptItemActParam()==10 || ScriptItemActParam()==9)
+        16 ^{
+            01=if(WeaponAmmunition(item) > 1)
+            02 ^{
+                01=i = 0;
+                02=for(i=1;i<StarShips(ShipStar(ship));i=i+1)
+                03 ^{
+                    01=dword cur_ship = StarShips(ShipStar(ship),i);
+                    02=if(!cur_ship) continue;
+                    03=if(ship == cur_ship) continue;
+                    04=if(Dist(ship,cur_ship) > CT('Items.Weapon.CustomWeapon.uber.MissileRadius')+ShipSpecialBonuses(ship,bonWRadius)) continue;
+                    05=if(RelationToShip(cur_ship,ship) > 9) continue;
+                    06=if(ShipOwner(cur_ship) == 5 && ship == Player())
+                    07 ^{
+                        01=if(ShipSubrace(ship,-1) == PlayerChameleonCurType())
+                        02 ^{
+                            01=if(!PlayerChameleonDetected(PlayerChameleonCurType())) continue;
+                        }
+                    }
+                    08=WeaponAmmunition(item,WeaponAmmunition(item)-2);
+                    09=dword mis = SpawnMissile(ShipStar(ship),WeaponTarget(item),CoordX(ship),CoordY(ship),ShipAngle(ship),CT('Items.Weapon.CustomWeapon.uber.MinDamageMissile')+ShipSpecialBonuses(ship,bonWMissile),CT('Items.Weapon.CustomWeapon.uber.MaxDamageMissile')+ShipSpecialBonuses(ship,bonWMissile),1500+ShipSpecialBonuses(ship,bonWRadius),t_Weapon15);
+                    10=MissileOwner(mis,ship);
+                    11=if(FilmFlags(0)) Sound('Sound.torpedYber');
+                    12=exit;
+                }
+            }
+        }
+    }
+}
+Items ^{
+    Weapon ^{
+        CustomWeapon ~{
+            StatsVersion ^{
+                Cat_Guns=27.10.25
+            }
+            Guns ~{
+                1=bso
+                2=palach
+                3=tornado
+                4=plazma
+                5=uber
+                6=refixer
+                Count=6
+                Cooldown=30
+            }
+            bso ^{
+                ArcadeType=Vertix
+                AverageRadius=455
+                AverageSize=2050
+                BaseGun=Industrial_Laser
+                DamageSet=Energy,Destruct,Acid,Magnetic,Decelerate,DecelerateA,DecelerateAEx
+                InventTechLevel=Turbogravitron
+                MaxDamage=100
+                MinDamage=70
+                MiningFactor=9
+                MissileChanceToBeHit=0
+                MissileExplosionEffectPath=
+                MissileMaxSpeed=0
+                MissileMinSpeed=0
+                MissileRadius=0
+                SecondaryDamageRadius=420
+                ShotEffectPalette=45
+                ShotEffectPath=Weapon.8
+                ShotType=Splash
+                ShotsPerTurn=1
+                Speed=0
+                SplashEffectPath=Weapon.NoGraph
+                StoreAvailability=SystemOnly
+                TechLevel=7
+                SizeLimit=2500
+                kCost=500.0
+                mWeaponDamage=1.00,1.25,1.50,1.75,2.00,2.50,3.00,3.50
+            }
+            uber ^{
+                Ammo=240
+                ArcadeType=Torpedo_Tube
+                AverageRadius=400
+                AverageRadiusSplinter=350
+                AverageSize=750
+                BaseGun=Disintegrator
+                DamageSet=Energy,BlockWeapon,BlockDroid,ReduceEngine
+                InventTechLevel=Turbogravitron
+                MaxDamage=70
+                MaxDamageMissile=55
+                MaxDamageSplinter=50
+                MinDamage=30
+                MinDamageMissile=45
+                MinDamageSplinter=35
+                MiningFactor=5
+                MissileChanceToBeHit=0
+                MissileExplosionEffectPath=
+                MissileMaxSpeed=1500
+                MissileMinSpeed=1500
+                MissileRadius=1500
+                SecondaryDamageRadius=0
+                ShotEffectPalette=5
+                ShotEffectPath=Weapon.7
+                ShotType=
+                ShotsPerTurn=1
+                Speed=90
+                SplashEffectPath=Weapon.NoGraph
+                StoreAvailability=SystemOnly
+                TechLevel=8
+                kCost=600.0
+                mWeaponDamage=1.00,1.10,1.20,1.35,1.50,1.65,1.80,2.00
+            }
+            palach ^{
+                ArcadeType=IMHO-9000
+                AverageRadius=250
+                AverageSize=50
+                BaseGun=IMHO-9000
+                DamageSet=Splinter,Undefendable
+                InventTechLevel=Atomic_Vision
+                MaxDamage=25
+                MinDamage=15
+                MiningFactor=6
+                MissileChanceToBeHit=0
+                MissileExplosionEffectPath=
+                MissileMaxSpeed=0
+                MissileMinSpeed=0
+                MissileRadius=0
+                SecondaryDamageRadius=0
+                ShotEffectPalette=30
+                ShotEffectPath=Weapon.12
+                ShotType=AreaDamage
+                ShotsPerTurn=1
+                Speed=80
+                SplashEffectPath=Weapon.NoGraph
+                StoreAvailability=CoalitionOnly
+                TechLevel=6
+                kCost=50.0
+                mWeaponDamage=1.00,1.15,1.20,1.35,1.55,1.70,1.90,2.10
+            }
+            tornado ^{
+                ArcadeType=Missile_Launcher
+                AverageRadius=2000
+                AverageSize=70
+                BaseGun=Missile_Launcher
+                DamageSet=Missile
+                InventTechLevel=Disintegrator
+                MaxDamage=10
+                MinDamage=5
+                MiningFactor=9
+                MissileChanceToBeHit=10
+                MissileExplosionEffectPath=Weapon.MissileHit
+                MissileMaxSpeed=3000
+                MissileMinSpeed=1500
+                MissileRadius=2000
+                SecondaryDamageRadius=15
+                ShotEffectPalette=112
+                ShotEffectPath=Weapon.3
+                ShotType=Torpedo
+                ShotsPerTurn=8
+                Speed=90
+                SplashEffectPath=Weapon.NoGraph
+                StoreAvailability=CoalitionOnly
+                TechLevel=7
+                kCost=90.0
+                mWeaponDamage=1.00,1.20,1.35,1.50,1.75,2.10,2.35,2.50
+            }
+            plazma ^{
+                ArcadeType=Missile_Launcher
+                AverageRadius=380
+                AverageSize=100
+                BaseGun=Industrial_Laser
+                DamageSet=Energy,NoDelta
+                InventTechLevel=Disintegrator
+                MaxDamage=25
+                MinDamage=25
+                MiningFactor=15
+                MissileChanceToBeHit=0
+                MissileExplosionEffectPath=
+                MissileMaxSpeed=0
+                MissileMinSpeed=0
+                MissileRadius=0
+                SecondaryDamageRadius=420
+                ShotEffectPalette=5
+                ShotEffectPath=Weapon.5
+                ShotType=
+                ShotsPerTurn=3
+                Speed=0
+                SplashEffectPath=Weapon.NoGraph
+                StoreAvailability=CoalitionOnly
+                TechLevel=7
+                kCost=100.0
+                mWeaponDamage=1.00,1.25,1.50,1.70,2.10,2.50,2.60,2.80
+            }
+            refixer ^{
+                ArcadeType=Caphasitor
+                AverageRadius=340
+                AverageSize=45
+                BaseGun=Industrial_Laser
+                DamageSet=Energy
+                InventTechLevel=Electronic_Cutter
+                MaxDamage=65
+                MinDamage=35
+                MiningFactor=2
+                MissileChanceToBeHit=0
+                MissileExplosionEffectPath=
+                MissileMaxSpeed=0
+                MissileMinSpeed=0
+                MissileRadius=0
+                SecondaryDamageRadius=0
+                ShotEffectPalette=6
+                ShotEffectPath=Weapon.7
+                ShotType=
+                ShotsPerTurn=1
+                Speed=0
+                SplashEffectPath=Weapon.NoGraph
+                StoreAvailability=SystemOnly
+                TechLevel=5
+                kCost=300.0
+                mWeaponDamage=1.00,1.25,1.50,1.70,2.10,2.50,2.60,2.80
+            }
+        }
+        Missile ^{
+            tornado ^{
+                Name=Стандартизированная боеголовка 9М542
+                Text=Самоноводящийся снаряд СЗО Торнадо.
+            }
+            tornadob ^{
+                Name=Кассетная боеголовка 9М55К4
+                Text=Самоноводящийся касетно-разрывной снаряд СЗО Торнадо.
+            }
+            tornadoс ^{
+                Name=Высокоточная боеголовка 9М549
+                Text=Самоноводящийся бронебойный снаряд СЗО Торнадо.
+            }
+        }
+        Name ^{
+            bso=БСО
+            palach=Автопушка "Палач"
+            plazma=Плазменный коливратор
+            tornado=СЗО "Торнадо"
+            uber=У.Б.Е.Р.
+            refixer=Рефиксер
+        }
+        OriginalWeaponType ~{
+            Industrial_Laser=1
+            Fragmentation_Cannon=2
+            Flux=3
+            Missile_Launcher=4
+            Treton=5
+            Wave_Phaser=6
+            Flow_Blaster=7
+            Electronic_Cutter=8
+            Multiresonator=9
+            Atomic_Vision=10
+            Disintegrator=11
+            Turbogravitron=12
+            IMHO-9000=13
+            Vertix=14
+            Torpedo_Tube=15
+            Esodapher=16
+            Caphasitor=17
+            Lirecron=18
+        }
+        Text ^{
+            bso=БСО расшифровывается как Большое Станционарное Оружие.<br>Его разработка началась очень давно, и первоначально ей занимались только люди, но позже к проекту подключились малоки и фэяне, что позволило закончить проект к сроку, хоть и с некоторыми изменениями в дизайне и чертежах. <br>Главной задачей этих орудий является защита станций и прилегающего космического пространства от любых предполагаемых угроз. Установка на мобильные защитные установки, транклюкаторов или корабли возможна, однако только если структура корпуса соответствует классу S и превышает <color=255,240,100>2500</color> усл. ед. На меньших корпусах просто-напросто нету достаточно мощного источника внутренней гравитации и энергоядра для стабильной работы орудия. <br>Поражает цель сверхмассивными самонаводящимися сгустками заряженной плазмы, наносящими <MinDamage>-<MaxDamage><Bonus> ед. урона цели и окружающим её объектам на расстоянии <Radius> единиц.<color=255,240,100>Разрушает оборудование и броню цели</color>, а также создаёт <color=255,240,100>ЭМ-помехи</color> на её корпусе.
+            palach=Вскоре после начала войны с доминаторами, в КВСМК осознали важность использования оружия массового поражения. Применение <color=255,240,100>Вертиксов</color> и <color=255,240,100>ИМХО-9000</color> позволяло противнику практически безнаказанно уничтожать целые эскадры. Так как военная промышленность пяти рас не развивалась в этом направлении, гаальскому правительству пришлось предоставить доступ к некоторым наработкам из времен раннего освоения космоса. Всего через несколько лет, общими усилиями ведущих специалистов сети научных и военных баз, был представлен опытный образец, которому дали название "Палач". <br>Наносит <MinDamage>-<MaxDamage><Bonus> ед. ущерба в радиусе <Radius> единиц, <color=255,240,100>игнорируя ГЗП и броню цели</color>.
+            plazma=Это оружие было создано по инициативе весьма влиятельного политика, который находился на борту флагмана "Киофар Фалькон -32-" в тот ужасный момент, когда Алиот атаковали сразу две флотилии разных серий доминаторов. Бой довольно быстро превратился в бойню. Фэяне теряли корабль за кораблём, не наблюдая следов деятельности орудий их флотов на противнике, несмотря на массированность обстрела. Именно тогда политик и военный деятель Далани Раланни, находясь на краю гибели, осознал, чего именно не хватает флоту для победы над доминаторами. Подкрепление прибыло вовремя, и доминаторы были разбиты, а Раланни организовал отдельный НИИ для создания нового энергетического оружия, которое сможет эффективно разрушать оборудование даже у доминаторов, не позволяя им вести ответный огонь. <br>Наносит <CntAttacks>x<MinDamage><Bonus> ед. ущерба в радиусе <Radius> единиц.
+            tornado=Пеленгское правительство, как и рядовые пеленги, не особо любит воевать в открытую и ещё меньше - терпеть поражения на поле боя, в связи с чем многие разработки в сфере орудия дальнего и сверхдальнего действия были проспонсированы именно пеленгами. После долгих лет разработки в режиме полной "секретности", какую только можно было организовать среди пеленгов, был создан проект "Торнадо". Предназначен для максимально комфортного ведения боя в самых разных условиях, но что самое главное, - на большом удалении от врага. <br>Выпускает <color=255,240,100>8</color> торпед наносящих (<MinDamage>-<MaxDamage>)<Bonus> ед. урона. <br>Количество залпов: <Count>/<MaxCount> шт.
+            uber=У.Б.Е.Р. - наносит <MinDamage>-<MaxDamage><Bonus> единиц ущерба главным лазерным калибром на расстоянии <Radius> млн км. Два вспомогательных осколочных орудия наносят дополнительно <color=255,240,100>35</color> - <color=255,240,100>50</color> на расстоянии <color=255,240,100>350</color> млн км, а две пусковых шахты запускают по ракете каждая. Ракеты наносят <color=255,240,100>45</color> - <color=255,240,100>55</color> ущерба. У.Б.Е.Р. не может быть установлен на корабле в количестве более одной штуки. <br>Количество залпов: <color=255,240,100>240</color> шт.
+            refixer=Пока одни инженеры занимались наращиванием мощи уничтожения, другие решили пойти по обратному. Именно поэтому постоянно генерируемый поток нанитов запускается концентрированным потоком на расстояние до <Radius> млн км. По достижении цели наниты начинают залатывать и пересобирать корпус, восстанавливая примерно <MinDamage>-<MaxDamage><Bonus> ед. структуры.
+        }
+    }
+}
+MicroModuls ^{
+    BSOMinus ^{
+        BlockMM=1
+        Cost=300
+        CustomTag=BSOMinus
+        Equipments=bso
+        Fragility=400
+        LockedAcryn=3
+        NonSearchable=2
+        Priority=0
+        ScriptItemIgnore=1
+        Special=1
+        Text=Орудие недополучает энергию от слишком слабого реактора, что вызывает сбои в работе всех систем
+        bonAIValue=100000
+        bonDef=-100
+        bonDroid=-30
+        bonHook=-1000
+        bonHookRadius=-500
+        bonJump=-30
+        bonRadar=-1500
+        bonScan=-30
+        bonSpeed=-1200
+        bonWEnergy=-500000000
+        bonWMissile=-500000000
+        bonWRadius=-300
+        bonWSplinter=-500000000
+    }
+    BSONormal ^{
+        BlockMM=1
+        Cost=300
+        CustomTag=BSONormal
+        Equipments=bso
+        Fragility=100
+        LockedAcryn=3
+        NonSearchable=2
+        Priority=0
+        ScriptItemIgnore=1
+        Special=1
+        bonAIValue=100000
+    }
+    UberMinus ^{
+        BlockMM=1
+        CustomTag=UberMinus
+        Equipments=uber
+        LockedAcryn=3
+        NonSearchable=2
+        Priority=0
+        Special=1
+        Text=<color=255,20,20>Орудие не работает из-за наличия на борту подобных единиц оборудования</color>
+    }
+    UberNormal ^{
+        BlockImp=1
+        CustomTag=UberNormal
+        Equipments=uber
+        LockedAcryn=3
+        NonSearchable=3
+        Priority=0
+        ScriptItemIgnore=1
+        Special=1
+        bonAIValue=100000
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            CatGuns_HaveBSO ^{
+                Description=Костыль, чтобы не искать причины повторного запроса установки БСО
+                Icon=1
+                Name=-
+            }
+            CatGuns_HaveUber ^{
+                Description=Костыль, чтобы не искать причины повторного запроса установки Убера
+                Icon=1
+                Name=-
+            }
+            CatGuns_Update ^{
+                Description=Заказ на обновление кораблём своего эквипа в пользу БСО
+                Icon=1
+                Name=-
+                OnActCode ^{
+                    01=if(GetShipPlanet(ScriptItemActShip()) || GetShipRuins(ScriptItemActShip()))
+                    02 ^{
+                        01=RunFunctionFromScript('Mod_CatGuns','UpdateForBSO',ScriptItemActShip());
+                        02=ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+        }
+    }
+}

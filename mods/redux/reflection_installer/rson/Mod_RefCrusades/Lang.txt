@@ -1,0 +1,261 @@
+Script ^{
+    Mod_RefCrusades ^{
+        0=Августин
+        1=Валетт
+        10=Четвёртого
+        11=Третьего
+        12=Второго
+        13=Первого
+        2=Моле
+        5=Девятого
+        6=Восьмого
+        7=Седьмого
+        8=Шестого
+        9=Пятого
+        HospitalierLeader=Валетт
+        LazarLeader=Августин
+        RandomDialogs ^{
+            1=Аве Мария! Деус Вульт!
+            10=Вперёд, к сокрушению еретиков!
+            2=Смерть кибернетическим еретикам!
+            3=Вперёд, за гроб Дабов!
+            4=Освободим Гралгар от неверных!
+            5=Да освятит Господь наши деяния!
+            6=Кибереретиков покарает длань Господня!
+            7=Воля Господня превыше всего, а мы - его верные псы и воли Его исполнители.
+            8=Слава подвигу святых отцов!
+            9=К вящей славе нашего Пресвятого Ордена!
+            Count=10
+        }
+        Start=Во славу Коалиции! Три Высочайших Ордена Креста собрали силы и готовы нанести новый удар по кибернетическим еретикам! Великие Магистры снарядились в бой и объявили о начале нового Крестового похода - name! Войска Орденов выдвинутся из системы star.
+        TamplierLeader=Моле
+    }
+}
+ShipType ^{
+    Fei ^{
+        Crusader=Филамейя
+        CrusaderLeader=Великий Магистр
+    }
+    Gaal ^{
+        Crusader=Ро'гоон
+        CrusaderLeader=Великий Магистр
+    }
+    Maloc ^{
+        Crusader=Грамбарр
+        CrusaderLeader=Великий Магистр
+    }
+    Peleng ^{
+        Crusader=Шреккар
+        CrusaderLeader=Великий Магистр
+    }
+    People ^{
+        Crusader=Рыцарь
+        CrusaderLeader=Великий Магистр
+    }
+    TypeName ^{
+        Crusader=Крестоносец
+        CrusaderLeader=Крестоносец
+    }
+}
+MicroModuls ^{
+    RefCrusader_KnightHospitalier ^{
+        Cost=500
+        Equipments=Hull
+        FragilityEnergy=85
+        FragilityMissile=85
+        FragilitySplinter=85
+        HullGraphSize=100
+        KindGraph=KH
+        LockedAcryn=3
+        Name=Корпус Рыцаря
+        NonSearchable=1
+        OnPlanets=0
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Латные доспехи когда-то защищали рыцарей от ударов мечей. Когда потомки рыцарей покорили космос, на смену упрочнения личной экипировки пришли доспехи для космических кораблей. Хорошо бронированный корабль Рыцаря Ордена </color><color=60,60,60>Госпитальеров</color><color=248,252,248> защищён по последнему слову техники, и сдержит множество попаданий врагов Коалиции.</color>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Навык торговли: <bonSkill4>
+        bonDef=4
+        bonDroid=25
+        bonHull=8
+        bonSkill4=-6
+        bonSlotArt=-4
+        bonSlotWeapon=5
+        bonSpeed=-150
+        bonWEnergy=-20
+        bonWMissile=-20
+        bonWSplinter=-20
+    }
+    RefCrusader_KnightLazar ^{
+        Cost=500
+        Equipments=Hull
+        FragilityEnergy=105
+        FragilityMissile=115
+        FragilitySplinter=95
+        HullGraphSize=100
+        KindGraph=KL
+        LockedAcryn=3
+        Name=Корпус Рыцаря
+        NonSearchable=1
+        OnPlanets=0
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Латные доспехи когда-то защищали рыцарей от ударов мечей. Когда потомки рыцарей покорили космос, на смену упрочнения личной экипировки пришли доспехи для космических кораблей. Корабль Рыцаря Ордена.</color><color=100,250,100>Святого Лазаря</color><color=248,252,248> - яркий представитель их идей беспощадной атаки без обременяющих доспехов.</color>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Навык торговли: <bonSkill4>
+        bonDroid=-10
+        bonHull=-5
+        bonSkill4=-6
+        bonSlotArt=-4
+        bonSlotWeapon=5
+        bonSpeed=175
+        bonWEnergy=15
+        bonWRadius=20
+        bonWSplinter=15
+    }
+    RefCrusader_KnightTamplier ^{
+        Cost=500
+        Equipments=Hull
+        FragilityEnergy=75
+        FragilityMissile=140
+        FragilitySplinter=80
+        HullGraphSize=100
+        KindGraph=KT
+        LockedAcryn=3
+        Name=Корпус Рыцаря
+        NonSearchable=1
+        OnPlanets=0
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Латные доспехи когда-то защищали рыцарей от ударов мечей. Когда потомки рыцарей покорили космос, на смену упрочнения личной экипировки пришли доспехи для космических кораблей. Хорошо оснащённый корабль Рыцаря Ордена </color><color=250,20,20>Тамплиеров</color><color=248,252,248> - эталон воина, косящего вражеские порядки своим огнём.</color>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Навык торговли: <bonSkill4>
+        bonHull=-5
+        bonMissileSpeed=350
+        bonSkill4=-6
+        bonSlotArt=-4
+        bonSlotWeapon=5
+        bonSpeed=125
+        bonWMissile=10
+    }
+    RefCrusader_LeaderHospitalier ^{
+        Cost=1250
+        Equipments=Hull
+        FragilityEnergy=75
+        FragilityMissile=75
+        FragilitySplinter=75
+        HullGraphSize=100
+        KindGraph=LH
+        LockedAcryn=3
+        Name=Корпус Магистра
+        NonSearchable=1
+        OnPlanets=0
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Латные доспехи когда-то защищали рыцарей от ударов мечей. Когда потомки рыцарей покорили космос, на смену упрочнения личной экипировки пришли доспехи для космических кораблей. Могучий, хорошо бронированный корабль Великого Магистра Ордена </color><color=20,20,20>Госпитальеров</color><color=248,252,248> в каждом бою прикрывает младших братьев от ракет врагов.</color>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Навык торговли: <bonSkill4>
+        bonDef=7
+        bonDroid=45
+        bonHull=15
+        bonSkill4=-6
+        bonSlotArt=-4
+        bonSlotWeapon=5
+        bonSpeed=-175
+        bonWEnergy=-30
+        bonWMissile=-30
+        bonWSplinter=-30
+    }
+    RefCrusader_LeaderLazar ^{
+        Cost=1250
+        Equipments=Hull
+        FragilityEnergy=85
+        FragilityMissile=105
+        FragilitySplinter=90
+        HullGraphSize=100
+        KindGraph=LL
+        LockedAcryn=3
+        Name=Корпус Магистра
+        NonSearchable=1
+        OnPlanets=0
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Латные доспехи когда-то защищали рыцарей от ударов мечей. Когда потомки рыцарей покорили космос, на смену упрочнения личной экипировки пришли доспехи для космических кораблей. Корабль Великого Магистра Ордена.</color><color=100,250,100>Святого Лазаря</color><color=248,252,248> - яркий представитель их идей беспощадной атаки без обременяющих доспехов.</color>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Навык торговли: <bonSkill4>
+        bonDroid=-20
+        bonHull=-10
+        bonSkill4=-6
+        bonSlotArt=-4
+        bonSlotWeapon=5
+        bonSpeed=225
+        bonWEnergy=25
+        bonWRadius=35
+        bonWSplinter=25
+    }
+    RefCrusader_LeaderTamplier ^{
+        Cost=1250
+        Equipments=Hull
+        FragilityEnergy=65
+        FragilityMissile=130
+        FragilitySplinter=70
+        HullGraphSize=100
+        KindGraph=LT
+        LockedAcryn=3
+        Name=Корпус Магистра
+        NonSearchable=1
+        OnPlanets=0
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Латные доспехи когда-то защищали рыцарей от ударов мечей. Когда потомки рыцарей покорили космос, на смену упрочнения личной экипировки пришли доспехи для космических кораблей. Могучий, хорошо оснащённый корабль Великого Магистра Ордена </color><color=250,20,20>Тамплиеров</color><color=248,252,248> - гроза многих врагов Ордена.</color>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Навык торговли: <bonSkill4>
+        bonHull=-4
+        bonMissileSpeed=650
+        bonSkill4=-6
+        bonSlotArt=-4
+        bonSlotWeapon=5
+        bonSpeed=225
+        bonWMissile=15
+    }
+}

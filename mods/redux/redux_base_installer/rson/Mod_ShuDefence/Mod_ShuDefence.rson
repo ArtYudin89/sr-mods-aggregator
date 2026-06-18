@@ -1,0 +1,641 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_ShuDefence",
+    "ScriptFileOut": "D:\\Mod_ShuDefence.scr",
+    "ScriptTextOut": "D:\\Mod_ShuDefence.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "restart",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 24,
+                    "Msg": "Нет, в данный момент меня это не интересует",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuDefence.8\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 25,
+                    "Msg": "Пожалуй, как раз кстати - хоть иногда буду чувствовать себя в безопасности!",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuDefence.9\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "Слишком дорого и ненадёжно. Обойдусь",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuDefence.10\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "Добро, приступайте к установке",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ShuDefence.11\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 22,
+                    "Msg": "Итак, детище наших лучших инженеров - <clr>Абсорбер<clrEnd>.\r\nОн представляет из себя систему противодействия баллистическому огню, способную нейтрализовать 80% урона от попадания ядерной боеголовки или любой другой ракеты схожей силы взрыва (откуда бы ей только взяться?), рассеивая локализованную энергию в вакууме. Не действует на обычные ракеты из-за низкого для локализации энергетического потенциала. Перезарядка после каждой локализации будет занимать приблизительно <0> дней. Такая штучка обойдётся вам в добрые <1> cr., но, ставлю на кон свою репутацию управляющего, об этом выборе вы не пожалеете - уж поверьте!",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuDefence.6\"),\"<0>\",30,\"<1>\",sum))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 23,
+                    "Msg": "<clr>Точечный усилитель поля<clrEnd> - устройство, изобретенное нами прежде всего для защиты от внезапных нападений со стороны доминаторов. Наша разработка взаимодействует напрямую с ГЗП, значительно усиливая защитное поле в предполагаемом месте удара на короткий срок. Это позволяет в 50% случаев поглотить весь входящий урон, до пяти раз в день. \r\nОднако, усилитель способен предотвратить только малый и средний ущерб, а при получении значительного устройство перезапускается, чтобы не повредить генератор защитного поля.\r\n\r\nУстановка Точечного усилителя поля будет стоить вам <0> cr. Будем устанавливать?",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_ShuDefence.7\"),\"<0>\",sum))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "BuyECM",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 20
+                },
+                {
+                    "Name": "BuyAbsorber",
+                    "Type": "TDialog",
+                    "Pos.x": 120,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 21
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 14
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 15,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "if(Blazer()) {",
+                        "    if(ShipFindCustomShipInfoByType(Blazer(),'Absorber')==-1) ShipAddCustomShipInfo(Blazer(),'Absorber');",
+                        "}",
+                        "if(Terron()) {",
+                        "    if(ShipFindCustomShipInfoByType(Terron(),'Absorber')==-1) ShipAddCustomShipInfo(Terron(),'Absorber');",
+                        "}",
+                        "if(Keller()) {",
+                        "    if(ShipFindCustomShipInfoByType(Keller(),'Absorber')==-1) ShipAddCustomShipInfo(Keller(),'Absorber');",
+                        "}"
+                    ],
+                    "#": 16,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "GTL=GalaxyTechLevel();",
+                        "//Раздача абсорберов и генераторов помех",
+                        "//Перебираем все новые корабли в галактике по заданным фильтрам",
+                        "if(GalaxyShipId()>lastShipId) {",
+                        "    tdwd=BuildListOfNewShips(tempArr,lastShipId,1+2+4+8+16+256+4096+8192,1+2+4+8+16+128,1,'','Militiaman1,,Militiaman2,Militiaman3,Rebel,RangerPirate,RangerExplorer,RangerPirateExplorer,Smuggler,EliteWarrior,Merc,Freelancer,RedLeader,AtlantLeader,FeiLeader,Khan,Headhunter,Marauder,PirateCorvette,PirateFrigate,PirateGalleon,Dreadnought,Klissan5,Klissan4,Klissan3,Klissan2,Klissan1,Machpella');",
+                        "    if(tdwd) {    //Если найден хотя бы один корабль",
+                        "        for(i=0;i<ArrayDim(tempArr);i=i+1) {",
+                        "            tdwd=0;    //Обнуляем флаг",
+                        "            chance=0;    //Обнуляем шанс выдачи",
+                        "            tShip=tempArr[i];    //Выбираем корабль",
+                        "            //if(ShipInScript(tShip,0)) continue; //пропуск скриптовых кораблей?",
+                        "            if(IsPlayer(tShip)) continue;",
+                        "            if(ShipOwner(tShip)==Kling && ShipSubType(tShip)==7) continue;    //Пропуск клигов",
+                        "            if(ShipOwner(tShip)==Kling && !ShipSubType(tShip)) continue;    //Пропуск боссов",
+                        "            if(~ShipFindCustomShipInfoByType(tShip, 'ShuNukes_BlockNukes')) continue;",
+                        "            tStr=ShipType(tShip);",
+                        "            //Абсорбер",
+                        "            //Рейнджеры и производные от них",
+                        "            if(tStr=='Ranger' || tStr=='RangerPirate' || tStr=='Freelancer' || tStr=='Merc' || tStr=='PlayerMerc' || tStr=='RangerExplorer' || tStr=='RangerPirateExplorer') chance=8+GTL*2;",
+                        "            else if(tStr=='Smuggler') chance=4+GTL;",
+                        "            else if(tStr=='Diplomat') chance=4+GTL;",
+                        "            else if(tStr=='Transport' || tStr=='Liner') chance=GTL;",
+                        "            else if((tStr=='Pirate' && PirateType(tShip)) || tStr=='Rebel' || tStr=='Thug' || tStr=='PirateCorvette') chance=GTL+GetShipPirateRank(tShip)*5;",
+                        "            else if(tStr=='PirateFrigate') chance=GTL*4;",
+                        "            else if(tStr=='Pirate' && !PirateType(tShip)) chance=GTL*2;",
+                        "            else if((tStr=='Warrior' && ShipSubType(tShip)) || tStr=='Dreadnought' || tStr=='PirateGalleon') chance=GTL*10;    //Крупные корабли",
+                        "            else if((tStr=='Warrior' && !ShipSubType(tShip)) || tStr=='EliteWarrior' || tStr=='Militiaman1' || tStr=='Militiaman2' || tStr=='Militiaman3') chance=GTL+ShipRank(tShip)*5;",
+                        "            else if(tStr=='Khan' || tStr=='Marauder' || tStr=='Machpella' || tStr=='Handler'/* || tStr=='Klissan1' || tStr=='Klissan2' || tStr=='Klissan3' || tStr=='Klissan4' || tStr=='Klissan5'*/ || tStr=='KB' || tStr=='AtlantLeader' || tStr=='RedLeader' || tStr=='FeiLeader' || tStr=='MB' || tStr=='Inhibitor') chance=100;",
+                        "            else if(ShipOwner(tShip)==5 && ShipSubType(tShip)==6) chance=GTL*10;",
+                        "            else if(ShipOwner(tShip)==5 && ShipSubType(tShip)!=6) chance=11;",
+                        "            else if(ObjectType(tShip)==4) chance=100;",
+                        "            else chance=0;",
+                        "            if(Rnd(1,100)<=chance) ShipAddCustomShipInfo(tShip,'Absorber');",
+                        "            //Генератор помех",
+                        "            if(tStr=='Ranger' || tStr=='RangerPirate' || tStr=='Freelancer' || tStr=='Merc' || tStr=='PlayerMerc' || tStr=='RangerExplorer' || tStr=='RangerPirateExplorer') chance=4+GTL*2;",
+                        "            else if(tStr=='Smuggler') chance=8+GTL;",
+                        "            else if(tStr=='Transport' || tStr=='Liner' || tStr=='Diplomat') chance=4+GTL*80/100;",
+                        "            else if(tStr=='Pirate' || tStr=='Rebel' || tStr=='Thug' || tStr=='PirateCorvette' || tStr=='PirateFrigate') chance=GetShipPirateRank(tShip)*3;",
+                        "            else if((tStr=='Warrior' && ShipSubType(tShip)) || tStr=='Dreadnought' || tStr=='PirateGalleon') chance=GTL*9;",
+                        "            else if((tStr=='Warrior' && !ShipSubType(tShip)) || tStr=='EliteWarrior' || tStr=='Militiaman1' || tStr=='Militiaman2' || tStr=='Militiaman3') chance=ShipRank(tShip)*4;",
+                        "            else if(tStr=='Khan' || tStr=='Marauder' || tStr=='Handler' || tStr=='AtlantLeader' || tStr=='RedLeader' || tStr=='FeiLeader' || tStr=='MB' || tStr=='Inhibitor' || tStr=='Salvager') chance=100;",
+                        "            else if(ShipOwner(tShip)==5 && ShipSubType(tShip)==6) chance=40+GTL*5;",
+                        "            else if(ShipOwner(tShip)==5 && ShipSubType(tShip)) chance=6+GTL*90/100;",
+                        "            else if(ObjectType(tShip)==4) chance=100;",
+                        "            else chance=0;",
+                        "            if(!ShipProtectability(tShip)) chance=0;",
+                        "            if(Rnd(1,100)<=chance) ShipAddCustomShipInfo(tShip,'ECM');",
+                        "        }",
+                        "    }",
+                        "    lastShipId=GalaxyShipId();    //Обновляем Id последнего рожденного корабля",
+                        "}"
+                    ],
+                    "#": 17,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(GetShipRuins(Player())) {",
+                        "    if(!PlayerBridge()) {",
+                        "        tdwd = GetShipRuins(Player());",
+                        "        if(ShipType(tdwd) == 'TC') {",
+                        "            if(GalaxyTechLevel() >= 5) {",
+                        "                if(ShipFindCustomShipInfoByType(Player(),'ECM') == -1) {",
+                        "                    AddDialogInject('BuyECM', CT(\"Script.Mod_ShuDefence.5\"), CT(\"Script.Mod_ShuDefence.4\"), 1);",
+                        "                }",
+                        "            }",
+                        "        }",
+                        "        else if (ShipType(tdwd) == 'WB') {",
+                        "          if (!ShipOnSidePirateClan(Player())) {",
+                        "            if(ShipFindCustomShipInfoByType(Player(),'Absorber') == -1) {",
+                        "              if (ShipRank(Player()) >= 2) {",
+                        "                AddDialogInject('BuyAbsorber', CT(\"Script.Mod_ShuDefence.3\"), CT(\"Script.Mod_ShuDefence.2\"), 1);",
+                        "              }",
+                        "            }",
+                        "          }",
+                        "        }",
+                        "        else if(ShipType(tdwd) == 'CB') {",
+                        "          if (ShipOnSidePirateClan(Player())) {",
+                        "            if(ShipFindCustomShipInfoByType(Player(),'Absorber') == -1) {",
+                        "              if (GetShipPirateRank(Player()) >= 2) {",
+                        "                AddDialogInject('BuyAbsorber', CT(\"Script.Mod_ShuDefence.3\"), CT(\"Script.Mod_ShuDefence.2\"), 1);",
+                        "              }",
+                        "            }",
+                        "          }",
+                        "        }",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 18,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "sum=GalaxyMoney(4)*7*GalaxyDiffLevels(7)/100+GalaxyMoney(2);",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 28,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "sum=GalaxyMoney(4)*9.3+GalaxyMoney(1);",
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 29,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=sum) {",
+                        "  DAdd(1);",
+                        "}",
+                        "DAdd(0);"
+                    ],
+                    "#": 30,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=sum) {",
+                        "  DAdd(3);",
+                        "}",
+                        "DAdd(2);"
+                    ],
+                    "#": 31,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ShipAddCustomShipInfo(Player(),'Absorber');",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum);",
+                        "Sound('Sound.Buy');",
+                        "playerGotAbsorber=1;"
+                    ],
+                    "#": 32,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ShipAddCustomShipInfo(Player(),'ECM');",
+                        "ShipMoney(Player(),ShipMoney(Player())-sum);",
+                        "Sound('Sound.Buy');",
+                        "playerGotECM=1;"
+                    ],
+                    "#": 33,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 13
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 12
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 11,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 19
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "sum",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "playerGotAbsorber",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "playerGotECM",
+                    "Pos.x": 330,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tdwd",
+                    "Pos.x": 510,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "GTL",
+                    "Pos.x": 600,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "lastShipId",
+                    "Pos.x": 690,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tempArr",
+                    "Pos.x": 840,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 960,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "chance",
+                    "Pos.x": 1050,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tStr",
+                    "Pos.x": 1140,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tShip",
+                    "Pos.x": 1230,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 20,
+            "End": 28,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 21,
+            "End": 29,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 22,
+            "End": 30,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 23,
+            "End": 31,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 32,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 27,
+            "End": 33,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 13,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 19,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

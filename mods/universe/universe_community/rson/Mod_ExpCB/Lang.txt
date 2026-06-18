@@ -1,0 +1,300 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            CBSoldMMChainInfos ^{
+                Icon=1
+                Name=Инфошка для запоминания всех проданных игроку ММ из цепочек на доминионе
+                OnActCode ^{
+                    01=if(!(CurTurn() % 57))
+                    01 ^{
+                        01=dword cur_info = CurInfo();
+                        02=ShipCustomShipInfoData(0, cur_info, 1, 0);
+                        03=ShipCustomShipInfoData(0, cur_info, 2, 0);
+                        04=ShipCustomShipInfoData(0, cur_info, 3, 0);
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            ExpCB_AgentWithSecretPackage ^{
+                Description=NoShow
+                Icon=0
+                Name=Для агентки, перевозящей тайный пакет с гибридным дроидом
+                OnActCode ^{
+                    01=dword agent = ScriptItemActShip();
+                    02=if(!ShipCustomShipInfoData(0, CurInfo(), 1))
+                    02 ^{
+                        01=if(GetValueFromScript('Mod_ExpCB', 'HybridDroidQuestStatus') == 2)
+                        01 ^{
+                            01=if(!StarOwner(ShipStar(agent)))
+                            01 ^{
+                                01=if(ShipStar(Player()) == ShipStar(agent))
+                                01 ^{
+                                    01=if(ShipInNormalSpace(Player()) && ShipInNormalSpace(agent))
+                                    01 ^{
+                                        01=if(GetShipScriptName(agent, 2) == 'FemStateFree')
+                                        01 ^{
+                                            01=if(!RndObject(0, 4, agent))
+                                            01 ^{
+                                                01=OrderLock(agent, 1);
+                                                02=dword planet = NearCivilPlanet(agent);
+                                                03=ShipCustomShipInfoData(0, CurInfo(), 1, Id(planet));
+                                                04=OrderLanding(agent, planet);
+                                                05=NoComeKlingToStar(ShipStar(agent), 1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    03=else
+                    03 ^{
+                        01=if(ShipInNormalSpace(agent))
+                        01 ^{
+                            01=OrderLanding(agent, IdToPlanet(ShipCustomShipInfoData(0, CurInfo(), 1)));
+                        }
+                        02=else
+                        02 ^{
+                            01=OrderLock(agent, 0);
+                            02=ShipDeleteCustomShipInfo(agent, 'ShipImmortalInfo');
+                            03=ShipDeleteCustomShipInfo(agent, 'ExpCB_AgentWithSecretPackage');
+                            04=ShipSpecialBonuses(agent, bonDef, ShipSpecialBonuses(agent, bonDef) - 25);
+                            05=for(int i = ShipItems(agent) - 1; i >= 1; i = i - 1)
+                            05 ^{
+                                01=dword item = ShipItems(agent, i);
+                                02=if(ItemType(item) != t_UselessItem) continue;
+                                03=if(EquipmentImageName(item) != 'ExpCB_SecretPackage') continue;
+                                04=FreeItem(GetItemFromShip(agent, i));
+                                05=break;
+                            }
+                            06=planet = GetShipPlanet(agent);
+                            07=item = RunFunctionFromScript('PC_fem_rangers', 'CreateHybridDroid');
+                            08=dword ship = BuyTransport(planet, 2, 500);
+                            09=for(i = 0; i <= 7; i = i + 1) ShipRefit(ship);
+                            10=ShipImproveItems(ship, 7);
+                            11=if(ShipEqInSlot(ship, t_RepairRobot)) FreeItem(GetItemFromShip(ship, ShipEqInSlot(ship, t_RepairRobot)));
+                            12=AddItemToShip(ship, item);
+                            13=NoDropItem(item, 1);
+                            14=OrderLock(ship, 1);
+                            15=ShipJoinToScript(ship, 'Mod_ExpCB.MainQuestShip');
+                            16=Ether(3, 'HybridDroidQuestCB', '<color=255,240,100>' + CT('Quest.Info.CurQuests.NotAccepted') + Format('</color><br> <br>') + Format(CT('Script.Mod_ExpCB.HybridDroidQuestDialog.QuestNote2'), '<TargetShip'+'>', Name(ship), '255,240,100'));
+                            17=ship = BuyTranclucator(planet, 0);
+                            18=for(i = 0; i <= 3; i = i + 1) ShipRefit(ship);
+                            19=ShipImproveItems(ship, 3);
+                            20=for(i = 1; i <= ShipCntWeapon(ship); i = i + 1) FreeItem(GetItemFromShip(ship, ShipWeapon(ship, i)));
+                            21=OrderLock(ship, 1);
+                            22=ShipJoinToScript(ship, 'Mod_ExpCB.SupportQuestShip');
+                            23=ship = BuyBigWarrior(planet, 500);
+                            24=for(i = 0; i <= 7; i = i + 1) ShipRefit(ship);
+                            25=ShipImproveItems(ship, 12);
+                            26=ShipJoinToScript(ship, 'Mod_ExpCB.GuardQuestShips');
+                            27=for(i = 0; i <= 6; i = i + 1)
+                            28 ^{
+                                01=ship = BuyWarrior(planet, 500);
+                                02=for(int j = 0; j <= 3; j = j + 1) ShipRefit(ship);
+                                03=ShipImproveItems(ship, 7);
+                                04=ShipJoinToScript(ship, 'Mod_ExpCB.GuardQuestShips');
+                            }
+                            29=RelationToRanger(planet, Player(), max(RelationToRanger(planet, Player()), 20));
+                            30=RunFunctionFromScript('Mod_ExpCB', 'SetHybridDroidQuestStatus', 3);
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+            }
+            ShipImmortalInfo ^{
+                Description=NoShow
+                Icon=0
+                Name=Делает корабль полностью неуязвимым в бою, чтобы его здоровье не опускалось ниже 1, а маркеры ShipDestroy() на него не действовали
+                OnActCode ^{
+                    01=dword cur_ship = ScriptItemActShip();
+                    02=if(ScriptItemActionType(t_OnStep))
+                    02 ^{
+                        01=if(HullHP(cur_ship) < 1) HullHP(cur_ship, 1);
+                    }
+                    03=else
+                    03 ^{
+                        01=if(ScriptItemActParam() >= HullHP(cur_ship))
+                        01 ^{
+                            01=ScriptItemActParam(HullHP(cur_ship) - 1);
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+                OnActStepTypes=11
+            }
+        }
+    }
+}
+FormRuins ^{
+    CB ^{
+        ShuffleTeleport ^{
+            CBAfterConfirm=Отлично, врубаем генератор! Курс в систему <FlyToStar> проложен. А ты, <Player>, давай-ка топай в ангар и отправляйся навстречу звёздам.
+            CBAfterNoConfirm=Это не дело, браток. Мы тут уже всё подготовили, реактор завели, а ты взял и обломал всю малину. В следующий раз сам будешь на кнопки жать!
+            CBAfterRefuse=Ну извини, это всё что сейчас доступно. Мы тут сами не особо сечём, как эта штука системы выбирает. Нанотехнологии - это тебе не по торгашам пулять!
+            CBCancelTeleport=Ты уверен? Деньги мы тебе всё равно не вернём, так и знай.
+            CBChoseDestination=Прямо сейчас мы можем предложить тебе следующие маршруты:
+            CBConfirmation=Прокладываем курс в систему <ToStar> за <Cost> cr. Всё верно?
+            CBNoInHyper=Ты сдурел, что ли, <Player>? Дождись пока мы из гипера выйдем, а потом уже суйся к генератору. Если в нём ещё энергия останется, конечно.
+            CBNoPath=Извини, сейчас доступных маршрутов нет.
+            CancelNo=Я, пожалуй, ещё подумаю
+            ToList=Система <ToStar> (<Dist> пк.), <Cost> cr.
+            ToStar=В систему <ToStar>, <Cost> cr.
+        }
+        TakeNod ^{
+            BuyCashIn=Обменять <Cost> нодов на микромодуль <Name>
+            BuyCashInPlusCount=Обменять <Cost1> нодов из трюма и <Cost2> нодов c нод-счёта на микромодуль <Name>
+            BuyCount=Обменять <Cost> нодов c нод-счёта на микромодуль <Name>
+            CBAfterBuy=Отлично! Оплата успешно произведена, а микромодуль <Name> погружен в твой трюм.
+            CBAfterBuy=Можешь идти наслаждаться обновкой.
+            CBAfterPlayerNo=Ну смотри, не ной потом, мол, не предлагали...
+            CBAfterPlayerNo=У нас здесь, конечно, не центр рейнджеров, но вот микромодули самые что ни на есть настоящие.
+            CBAnswerEnd=Сейчас у тебя в наличке имеется <CurNod> нд. и ещё <BaseNod> нд. числятся на счету, а твоя пиратская скидка по нашим честным, но скромным подсчётам, составляет <Discount><clr>%<clrEnd>.
+            CBAnswerMM=. Микромодуль <Name>
+            CBAnswerMMCost1=Стоимость модуля: <Cost> нд.
+            CBAnswerMMCost2=При оплате с нод-счёта: <Cost> нд.
+            CBAnswerStart=Это можно. У нас имеются кое-какие каналы, по которым мы регулярно получаем новейшие и крутейшие микромодули, однако, как я уже сказал, бесплатно мы их не раздаём. Если не хватит нодов в трюме и на складе, то недостающее число "снимем" напрямую с твоего нод-счёта. С комиссией, разумеется.
+            CBAnswerStart=Кстати, скидки мы предоставляем только настоящим пиратам - здесь тебе не рынок какой-нибудь:<Text>
+            CBOffer=А ещё, если интересует, можем подогнать тебе чётенькие микромодули в обмен на пачку хрустящих нодов. Да, я знаю, что на самом деле они не хрустят, однако они всё равно нам нужны, а крутые микромодули для нормального пирата лишними точно не будут, верно?
+            PlayerNo=Да не, чёт передумал я
+            PlayerRequest=Мне нужны микромодули
+        }
+    }
+    PB ^{
+        Program ^{
+            NodCost=Стоимость: <Cost> нд.
+            PBStart=Все наши программы соответствуют закону <clr>CopyRight<clrEnd>, что означает "скопировано правильно". Мы готовы выдать тебе "правильную" копию любой программы в обмен на доминаторские ноды, с учётом твоей пиратской скидки в <Percent><clr>%<clrEnd>.
+            PBStart=Ноды будут взяты из твоего трюма (<NodTrum> нд.), а если их не хватит, то наши "специалисты" снимут недостающее количество с твоего нод-счёта (<NodAcc> нд.). Вот наш прайс-лист, выбирай:<br>
+            PlayerOk=Обменять <Nod> нодов на <Text>
+        }
+    }
+}
+Script ^{
+    Mod_ExpCB ^{
+        103=Я передумал
+        104=Снять ноды с нод-счёта
+        109=Сколько нодов снять?
+        123=Посмотреть список всех систем
+        128=Операция прошла успешно. Заказаные ноды уже погружены в твой трюм.
+        136=Ну, не хочешь как хочешь. Желаю удачи в "обналичивании" нодов у доминаторов.
+        141=</color>Узнать число военных кораблей, говоришь? Это можно.<br>Агентов и осведомителей у нас хватает на каждой подконтрольной Коалиции планете, так что о присутствии её вооружённых сил нам ежедневно докладывают, можно сказать, из первых уст. Но, сам понимаешь, бесплатно такую информацию предоставлять невыгодно.<br>С учётом твоего капитала и авторитета в нашем движении, скажем... <0> cr. за сегодняшнюю разведсводку. Число просмотров до конца дня неограничено.
+        143=<0>
+        144=Назад
+        149=На вылете
+        150=В ангаре
+        151=Статус:
+        152=Тип: <0>
+        16=<br>
+        163=Ополченец
+        174=<br>Ополченцев: <0>
+        179=<br>--- <clr>Отсутствует<clrEnd> ---
+        196=<br>Элитных военных: <0>
+        197=<br>Военных: <0>
+        198=Элитный военный
+        199=Военный
+        200=Флот планеты <0>
+        202=В системе
+        205=<0><1>
+        207=</color>От души! Ты только не переживай, деньги эти пойдут ну обеспечение работы агентурной сети. С коррупцией у нас строго.<br>
+        208=Подробнее о системе
+        209=Подробнее о системе <color=0,50,200>Витта Прай.</color>
+        210=Витта Прайонис
+        212=</color>Система: <0><br>Сектор: <1><br><br>
+        213=</color><br><br><color=255,0,0>Система беззащитна!</color>
+        214=Не, ну ты уж совсем не борзей, да?! За эти данные многие наши разведчики отдали свои жизни, между прочим! Наверное...
+        215=Нет, что-то дороговато
+        219=</color>Купить свежую разведсводку
+        222=<color=0,50,200>Сейчас в системе</color>
+        238=Вот полная сводка всех боеспособных военных кораблей Коалиции за сегодняшний день:<br> <br><0><br> <br>Всего в Галактике: <1>
+        239=Разумеется, ваше пиратейшество, вот полная сводка всех боеспособных военных кораблей Коалиции за сегодняшний день:<br> <br><0><br> <br>Всего в Галактике: <1>
+        243=Предоставьте мне полную информацию о численности коалиционного флота
+        244=Хочу заказать DDoS атаку сети центров рейнджеров
+        249=<br>Дредноутов: <0>
+        251=Дредноут
+        252=<br>Линкоров: <0>
+        253=Линкор
+        254=</color><clrEnd>Система: <0><br>Cектор: <1><br>Военных объектов: <color=255,0,0>0</color>
+        255=</color><clrEnd>Система: <0><br>Сектор: <1><br>Военных объектов: <2>
+        DDoS_Info=Во время DDoS атаки наши хакеры могут получить временный доступ к нод-счёту любого рейнджера, ноды с которого можно будет по-тихому перевести в другое место. Что мы потом будем делать с переведённой валютой и откуда берём реальные ноды, тебе знать ни к чему.<br>Что ты должен знать, так это то, что из соображений безопасности все переводы со счёта на счёт производятся в виде микротранзакций строго по <clr>1<clrEnd> ноду. Соответственно, чем больше нодов ты хочешь эм... "снять", тем дольше нам придётся додосить, а это, как понимаешь, дополнительные риски.<br>В общем, каждый снятый нод обойдётся тебе в <Cost> cr. Кстати, хакеры сообщают, что на твоём нод-счёте сейчас числится <NodeAccount> нд.
+        HostileStations=<br>Враждебных станций: <Count>
+        HybridDroidQuestDialog ^{
+            AddOfferCB=А ещё для тебя имеется некоторая весьма любопытная информация. Речь про <clr>новейшую разработку<clrEnd> Коалиции, которая может оказаться весьма полезной в правильных руках...
+            AgentRageOnAggression=Да что ты себе вообще позволяешь, <Player>! Я - уполномоченный правительственный агент, и не потерплю подобного обращения!
+            AgentRageOnApproach=Твоё приближение нарушило мои личные границы, <Player>. Теперь тебе придётся иметь дело с гневом обиженной девушки!
+            DiplomatAnswer=Я провожу секретную испытательную операцию и не намерен вести с вами праздные беседы. Не приближайтесь к моему судну, если не хотите быть признанным нарушителем закона.
+            DiplomatAnswerAfterAggression=Вы были признаны нарушителем закона и подлежите незамедлительной ликвидации!
+            DiplomatRageOnAggression=Я являюсь официальным представителем планеты <Planet> и не потерплю подобной агрессии в свой адрес! Готовься принять скорую смерть, пират!
+            DiplomatRageOnApproach=Рейнджер, <Player>! Согласно уголовному кодексу планеты <Planet>, вы нарушили закон путём вторжения в зону проведения секретной военной операции. Мой долг, как официального представителя, ликвидировать вас во благо галактической безопасности!
+            NextOfferCB=Ну, поскольку ты уже определённым образом зарекомендовал себя в клане, мы сделаем некоторую поблажку. Персональная скидка в <Discount>, а с её учётом эта информация тебе обойдётся в скажем... <Cost> cr.
+            NoOfferCB=От своего же успеха отказываешься, <Player>. Жалеть будешь, когда какой-нибудь резвый поц тебя опередит и подрежет разработку первым.
+            OfferCB=О весьма интересной... и чрезвычайно полезной. Однако информация эта стоила нам немалых денег, а потому отдавать её забесплатно каждому алчному до слухов пройдохе мы не станем.
+            PlayerAskNextOfferCB=Так-так... И сколько же вы хотите за подобную информацию?
+            PlayerAskOfferCB=О какой такой разработке идёт речь?
+            PlayerNoOfferCB=Нет уж, за такие деньжищи ваших уток в мешке мне в душе не надобно
+            PlayerYesOfferCB=Ладно, считайте, вы меня купили - вот мои кровные...
+            QuestNote1=Отследите корабль <clr>курьера<clrEnd> с помощью <clr>военного пеленгатора<clrEnd>, соблюдая дистанцию не менее <clr>500<clrEnd> млн. км. Определите место проведения военных испытаний и выясните, что за секретный груз тот перевозит в своём трюме.
+            QuestNote2=Уничтожьте <TargetShip> до завершения испытаний, и заберите своё по праву!
+            TranclucatorAnswer=Мои логические программы не предусматривают вести с вами коммуникацию.
+            WarriorAnswer=Держись от меня подальше, пират. Не то я нашинкую тебя плазмой по самые дюзы!
+            YesOfferCB=Приятно иметь дело со смекалистым гуманоидом. Итак, слушай внимательно:
+            YesOfferCB=Очень скоро в одной системе состоятся секретные <clr>военные испытания<clrEnd> нового бортового оборудования. В целях секретности груз к месту испытаний будет перевозить неизвестный нам <clr>курьер<clrEnd>. Помимо этого нам известно, что контейнер с грузом уже был погружен на корабль курьера и прямо сейчас тот движется к цели по непредсказуемому запутывающему маршруту. Погрузкой контейнера на промежуточном складе занимался один наш ловкий агент, который сумел незаметно установить на него скрытый гипертрекер военного образца. Но как-либо просканировать или взломать контейнер он не смог, так как на том стояла защита гамма-уровня - моментальная самоликвидация в случае любой потенциальной угрозы. Кроме того, контейнер оснащён <clr>усилителем защитного поля<clrEnd>, что наверняка создаст тебе проблемы при попытке сканирования корабля курьера.
+            YesOfferCB=Сами испытания должны состояться до <EndDate>, однако точная дата нам неизвестна. Если ты и правда хочешь узнать, что спрятано в том контейнере, тебе придётся отследить корабль курьера с помощью вот этого <clr>пеленгатора<clrEnd>, при этом, не приближаясь к нему ближе, чем на 500 млн. км., иначе система защиты контейнера зафиксирует сканирующий импульс пеленгатора и активирует самоуничтожение.
+            YesOfferCB=Большего я тебе сказать не могу, ибо сам не посвящён в детали. Желаю удачной охоты, пират.
+        }
+    }
+}
+UselessItems ^{
+    ExpCB_MilitaryFinder ^{
+        Cost=Huge
+        Name=Военный пеленгатор
+        OnUseCode ^{
+            01=dword cur_ship = FormCurShip();
+            02=if(!ShipInNormalSpace(cur_ship))
+            02 ^{
+                01=MessageBox(CT('FormShip.UseOnlyInSpace'));
+                02=exit;
+            }
+            03=if(!IdToItem(UselessItemData(CurItem(), 2)))
+            03 ^{
+                01=MessageBox(CT('UselessItems.ExpCB_MilitaryFinder.TextMsgNoPackageFound'));
+                02=exit;
+            }
+            04=dword agent = IdToShip(UselessItemData(CurItem(), 1));
+            05=if(!agent) throw 'No agent was found in ExpCB_MilitaryFinder UseCode!';
+            06=if(ShipStar(Player()) != ShipStar(agent))
+            06 ^{
+                01=int distance = round(sqrt(Dist2Star(ShipStar(Player()), ShipStar(agent))));
+                02=MessageBox(Format(CT('UselessItems.ExpCB_MilitaryFinder.TextMsgOtherStar'), '<Parsecs'+'>', distance + Rnd(-round(0.15 * distance), round(0.15 * distance), sqr(CurTurn() + 12))));
+                03=exit;
+            }
+            07=else if(!ShipInHyperSpace(agent))
+            07 ^{
+                01=RunFunctionFromScript('Mod_ExpCB', 'SetHybridDroidQuestStatus', 2);
+                02=distance = Dist(Player(), agent);
+                03=MessageBox(Format(CT('UselessItems.ExpCB_MilitaryFinder.TextMsgCurrentStar'), '<Distance'+'>', distance + Rnd(-round(0.15 * distance), round(0.15 * distance), sqr(CurTurn() + 13))));
+                04=exit;
+            }
+            08=else
+            08 ^{
+                01=MessageBox(CT('UselessItems.ExpCB_MilitaryFinder.TextMsgCurrentStarHyper'));
+                02=exit;
+            }
+        }
+        Owner=Peleng
+        Size=3
+        Text=Настроен на отслеживание приблизительного местоположения военного гипертрекера.
+        TextMsgCurrentStar=Сигнатура объекта зафиксирована в пределах <color=255,240,100>текущей системы</color> на расстоянии приблизительно в <Distance> млн. км.
+        TextMsgCurrentStarHyper=Сигнатура объекта зафиксирована в пределах <color=255,240,100>текущей системы</color> внутри гиперпространственного канала.
+        TextMsgNoPackageFound=В текущем рукаве Галактики сигнатура объекта не обнаружена.
+        TextMsgOtherStar=Сигнатура объекта зафиксирована на расстоянии приблизительно в <Parsecs> пк. от текущей системы.
+    }
+    ExpCB_SecretPackage ^{
+        Cost=Huge
+        Name=Секретный контейнер
+        Owner=None
+        Size=1
+        Text=А большего вам знать не положено!
+    }
+}

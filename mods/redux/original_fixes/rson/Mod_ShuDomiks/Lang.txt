@@ -1,0 +1,1369 @@
+Items ^{
+    Weapon ^{
+        CustomWeapon ^{
+            Railgun ~{
+                BaseGun=Disintegrator
+                MinDamage=1
+                MaxDamage=1
+                DamageSet=Energy,Undefendable
+                ShotType=Normal
+                Speed=95
+                AverageRadius=265
+                SecondaryDamageRadius=0
+                MissileRadius=0
+                MissileMinSpeed=0
+                MissileMaxSpeed=0
+                MissileChanceToBeHit=0
+                mWeaponDamage=1.00,1.10,1.15,1.20,1.25,1.30,1.35,1.40
+                ShotsPerTurn=1
+                ArcadeType=Disintegrator
+                MiningFactor=1
+                kCost=40
+                AverageSize=90
+                TechLevel=7
+                InventTechLevel=Flow_Blaster
+                StoreAvailability=NotSold
+                ShotEffectPath=Weapon.10
+                ShotEffectPalette=50
+                SplashEffectPath=Weapon.NoGraph
+                MissileExplosionEffectPath=
+            }
+            ShuDomiks ~{
+                1=Railgun
+                Count=0
+            }
+            StatsVersion ^{
+                ShuDomiks=26.10.20
+            }
+        }
+        Name ^{
+            Railgun=Клопобойка
+        }
+        OriginalWeaponType ^{
+            Atomic_Vision=10
+            Caphasitor=17
+            Disintegrator=11
+            Electronic_Cutter=8
+            Esodapher=16
+            Flow_Blaster=7
+            Flux=3
+            Fragmentation_Cannon=2
+            IMHO-9000=13
+            Industrial_Laser=1
+            Lirecron=18
+            Missile_Launcher=4
+            Multiresonator=9
+            Torpedo_Tube=15
+            Treton=5
+            Turbogravitron=12
+            Vertix=14
+            Wave_Phaser=6
+        }
+        Text ^{
+            Railgun=Разрушает логику повествования в посредственных рассказах, наполняя сюжет внезапными <color=255,240,100>"ВОТЭТОПОВОРОТ!"</color>, тем самым превращая его в ещё менее удобоваримое говно.
+        }
+    }
+}
+Artefacts ^{
+    CustomArtefacts ^{
+        TechDirector ^{
+            Broken=(расфокусирован)
+            BrokenInBattle=(расфокусирован)
+            BrokenInUse=(расфокусирован)
+            Cost=2500
+            Name=Тех-директор
+            OnActCode ^{
+                01=dword cur_item = CurItem();
+                02=dword scaner = ScriptItemActObject1();
+                03=if(ItemDurability(cur_item) < 10)
+                04 ^{
+                    01=if(ItemType(scaner) == t_Scaner)
+                    02 ^{
+                        01=if(ItemOwner(scaner) == Kling)
+                        02 ^{
+                            01=if(ScriptItemActionType(t_OnCheckingUsability))
+                            02 ^{
+                                01=ScriptItemActParam(1);
+                                02=exit;
+                            }
+                            03=else
+                            04 ^{
+                                01=unknown tarr = newarray(2);
+                                02=int sub_race = ItemSubrace(scaner);
+                                03=int serie_set = 0;
+                                04=if(sub_race != 0)
+                                05 ^{
+                                    01=tarr[0] = '<color=220,0,0>Блазероидная</color>';
+                                    02=serie_set = serie_set + 1;
+                                }
+                                06=if(sub_race != 1)
+                                07 ^{
+                                    01=if(!serie_set) tarr[0] = '<color=0,140,220>Келлероидная</color>';
+                                    02=else tarr[1] = '<color=0,140,220>Келлероидная</color>';
+                                    03=serie_set = serie_set + 2;
+                                }
+                                08=if(sub_race != 2)
+                                09 ^{
+                                    01=tarr[1] = '<color=50,140,15>Терроноидная</color>';
+                                    02=serie_set = serie_set + 4;
+                                }
+                                10=int chosen_serie = ListBox('Выберите желаемую частоту:', tarr);
+                                11=if(chosen_serie > -1)
+                                12 ^{
+                                    01=str serie_name;
+                                    02=if(!chosen_serie)
+                                    03 ^{
+                                        01=if((serie_set & 1)) serie_name = 'блазероидную';
+                                        02=else
+                                        03 ^{
+                                            01=serie_name = 'келлероидную';
+                                            02=chosen_serie = 1;
+                                        }
+                                    }
+                                    04=else
+                                    05 ^{
+                                        01=if((serie_set & 2)) serie_name = 'келлероидную';
+                                        02=else
+                                        03 ^{
+                                            01=serie_name = 'терроноидную';
+                                            02=chosen_serie = 2;
+                                        }
+                                    }
+                                    06=ItemSubrace(scaner, chosen_serie);
+                                    07=Sound('Sound.SaveLoadLoop');
+                                    08=ItemDurability(cur_item, ItemDurability(cur_item) - Rnd(10, 20));
+                                    09=if(ItemDurability(cur_item) < 0) ItemDurability(cur_item, 0);
+                                    10=MessageBox(Format('<color=0,50,200>Тех-детектор</color> перенастроен на #0# частоту.', '#0#', serie_name));
+                                }
+                            }
+                        }
+                        03=else if(ScriptItemActionType(t_OnAnotherItem)) ScriptItemActParam(2);
+                    }
+                    03=else if(ScriptItemActionType(t_OnAnotherItem)) ScriptItemActParam(2);
+                }
+                05=MessageBox('<color=0,50,200>Тех-директор</color> расфокусирован, перенастройка сканера невозможна.');
+            }
+            OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+            Size=5
+            Text=Позволяет перенастраивать доминаторский <color=255,240,100>тех-детектор</color> на частоту доминаторов <color=255,240,100>любой</color> серии.
+        }
+    }
+}
+MicroModuls ^{
+    ShuDomiks_BertorDomHull ^{
+        Equipments=Hull
+        Fragility=80
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
+    }
+    ShuDomiks_BlazerHull ^{
+        CustomTag=blazer_hull
+        Equipments=Hull
+        FragilityMissile=80
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Special=1
+    }
+    ShuDomiks_BlazerMassacre ^{
+        Cost=500
+        Equipments=W12
+        Fragility=0
+        KindGraph=dmg
+        LockedAcryn=3
+        Name=Массакри
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=3
+        Size=150
+        Special=1
+        Text=<color=248,252,248>Легендарный турбогравир <clr>Блазера<clrEnd>, окрещённый исследователями не иначе как </color><color=255,25,25>"Массакри"</color><color=248,252,248>. Является голубой мечтой любого воина или коллекционера и представляет собой оружие ужасающей силы, способное в считанные секунды аннигилировать даже самого грозного врага. Ходит слух, что помимо своей колоссальной мощи, данный экземпляр получает энергию из неограниченного источника, а потому способен работать практически вечно, но проверить это на деле до сих пор не удавалось ещё никому.</color>
+        Text=<clr><clrEnd>
+        Text=Бонус урона: до <clr>33%<clrEnd>
+        Text=Дополнительный эффект: <clr>замедление<clrEnd>
+        WeaponMods=BonusToDamaged,Decelerate,NoDelta
+        bonWEnergy=81
+        bonWRadius=50
+    }
+    ShuDomiks_DetrimentEqDomModLocked ^{
+        Cost=150
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        Fragility=100
+        KindGraph=DomMod
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Неизвестная модификация оборудования <clr>доминаторов<clrEnd>. Особые свойства модификации заблокированы. Для разблокировки обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        bonRadar=-150
+        bonWEnergy=6
+        bonWMissile=8
+        bonWRadius=-10
+        bonWSplinter=8
+    }
+    ShuDomiks_DetrimentEqDomModUnlocked ^{
+        Cost=150
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        Fragility=80
+        KindGraph=DomMod
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Уникальная модификация оборудования <clr>доминаторов<clrEnd> под названием </color>"Дитраймент"<color=248,252,248>. Оборудование с данной модификацией фокусирует систему наведения орудий, повышая общую точность стрельбы на малых дистанциях.</color>
+        Text=<clr><clrEnd>
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        bonRadar=-150
+        bonWEnergy=6
+        bonWMissile=8
+        bonWRadius=-10
+        bonWSplinter=8
+    }
+    ShuDomiks_EnergizeEqDomModLocked ^{
+        Cost=150
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        Fragility=100
+        KindGraph=DomMod
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        Size=107
+        Special=1
+        Text=<color=248,252,248>Неизвестная модификация оборудования <clr>доминаторов<clrEnd>. Особые свойства модификации заблокированы. Для разблокировки обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        bonDef=4
+        bonMass=7
+    }
+    ShuDomiks_EnergizeEqDomModUnlocked ^{
+        Cost=150
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        Fragility=117
+        KindGraph=DomMod
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Size=107
+        Special=1
+        Text=<color=248,252,248>Уникальная модификация оборудования <clr>доминаторов<clrEnd> под названием </color>"Энерджайз"<color=248,252,248>. К оборудованию подключён дополнительный генератор бризонного поля, защищающий корабль от повреждений, но также и увеличивающий его массу.</color>
+        Text=<clr><clrEnd>
+        Text=Генератор поля: <bonDef> ед.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        bonDef=4
+        bonMass=7
+    }
+    ShuDomiks_EquantorDomHull ^{
+        Equipments=Hull
+        Fragility=90
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Тяжёлый артиллерийский доминаторский корабль, сопоставимый по огневой мощи и защищённости с судами класса "крейсер". Специализируется на энергетическом вооружении и ведении боя на дальних дистанциях.</color>
+    }
+    ShuDomiks_ExtraSpecialsLineBreak ^{
+        Equipments=Any
+        ExText=<clr><clrEnd>
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ShuDomiks_GlueEqDomModLocked ^{
+        Cost=150
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        Fragility=74
+        KindGraph=DomMod
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Неизвестная модификация оборудования <clr>доминаторов<clrEnd>. Особые свойства модификации заблокированы. Для разблокировки обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        bonDroid=12
+        bonSkill2=-1
+        bonSkill3=1
+        bonSpeed=-20
+    }
+    ShuDomiks_GlueEqDomModUnlocked ^{
+        Cost=150
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        Fragility=83
+        KindGraph=DomMod
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Уникальная модификация оборудования <clr>доминаторов<clrEnd> под названием </color>"Глю"<color=248,252,248>. Помимо своей основной функции, это устройство вырабатывает быстрозатвердевающее клейкое вещество, повышающее прочность оборудования и использующееся дроидом для починки корпуса. К сожалению, повышенная клейкость этого вещества также сковывает маневровые двигатели судна.</color>
+        Text=<clr><clrEnd>
+        Text=Навык техники: <bonSkill3>
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonDroid=12
+        bonSkill2=-1
+        bonSkill3=1
+        bonSpeed=-20
+    }
+    ShuDomiks_InhibitorOff ^{
+        HullGraphSize=145
+        KindGraph=InhibitorOff
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ShuDomiks_InhibitorOn ^{
+        HullGraphSize=145
+        KindGraph=InhibitorOn
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ShuDomiks_KellerJavelin ^{
+        Cost=200
+        Equipments=W15
+        Fragility=100
+        KindGraph=overheat
+        LockedAcryn=3
+        Name=Жавелин
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=3
+        Size=200
+        Special=1
+        Text=<color=248,252,248>Легендарный торпедный аппарат <clr>Келлера<clrEnd>, поэтически называемый учёными <color=60,182,230>"Жавелин"</color><color=248,252,248>. Обладая чудовищной скорострельностью, аппарат выпускает три стремительные ионизирующие торпеды, не оставляя противнику никаких шансов уклониться от столь нежеланного "подарка". Кроме того, возросший расход торпед с лихвой компенсируется огромным боезапасом, позволяя владельцу вести непрерывный обстрел до победного конца.</color>
+        Text=<clr><clrEnd>
+        Text=Скорострельность: <bonAttacks>
+        Text=Скорость торпед: <clr>+500<clrEnd> ед.
+        Text=Дополнительный эффект: <clr>ионизация<clrEnd>
+        WeaponMods=Destruct,Shock
+        bonAmmo=435
+        bonAttacks=2
+        bonMissileSpeed=500
+        bonWMissile=-46
+    }
+    ShuDomiks_KligDomHull ^{
+        Equipments=Hull
+        Fragility=85
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Небольшой и крайне проворный доминаторский корабль-брандер. В случае явного превосходства противника постарается как можно скорее сократить дистанцию и активировать устройство самоуничтожения, чем способен наносить серьёзные повреждения, несмотря на свою крайне незначительную огневую мощь. По совместительству является основной ударной силой боевых авианесущих платформ типа "бертор".</color>
+    }
+    ShuDomiks_MMBlockAcryn ^{
+        BlockMM=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+    ShuDomiks_MenocDomHull ^{
+        Equipments=Hull
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Лёгкий универсальный доминаторский перехватчик, в чьи задачи входит как можно скорее завязать бой с противником, и не дать ему покинуть систему до прибытия основных ударных сил.</color>
+    }
+    ShuDomiks_QuickshotCWDomModLocked ^{
+        Cost=200
+        Equipments=WEnergy,WSplinter,WMissile
+        Fragility=166
+        KindGraph=drop
+        LockedAcryn=3
+        Name=неизвестно
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        ShotVisual=7
+        Size=150
+        Special=1
+        Text=<color=248,252,248>Неизвестная модификация оружия <clr>доминаторов<clrEnd>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        bonAttacks=1
+        bonWEnergy=-10
+        bonWMissile=-14
+        bonWRadius=-25
+        bonWSplinter=-14
+    }
+    ShuDomiks_QuickshotCWDomModUnlocked ^{
+        Cost=200
+        Equipments=WEnergy,WSplinter,WMissile
+        Fragility=133
+        KindGraph=drop
+        LockedAcryn=3
+        Name="Квикшот"
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=7
+        Size=150
+        Special=1
+        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Квикшот"<color=248,252,248>. Скорострельность такого орудия была существенно увеличена, однако его итоговая надёжность и огневая мощь явно оставляют желать лучшего.</color>
+        Text=<clr><clrEnd>
+        Text=Скорострельность: <bonAttacks>
+        Text=Сила энергетического оружия: <clr>-10<clrEnd> ед.
+        Text=Сила осколочного оружия: <clr>-14<clrEnd> ед.
+        Text=Сила ракетного оружия: <clr>-14<clrEnd> ед.
+        Text=Дальность стрельбы: <clr>-25<clrEnd> ед.
+        bonAttacks=1
+        bonWEnergy=-10
+        bonWMissile=-14
+        bonWRadius=-25
+        bonWSplinter=-14
+    }
+    ShuDomiks_QuickshotWDomModLocked ^{
+        Cost=200
+        Equipments=WEnergy,WSplinter,WMissile
+        Fragility=166
+        KindGraph=drop
+        LockedAcryn=3
+        Name=неизвестно
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        ShotVisual=1
+        Size=150
+        Special=1
+        Text=<color=248,252,248>Неизвестная модификация оружия <clr>доминаторов<clrEnd>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        bonAttacks=1
+        bonWEnergy=-10
+        bonWMissile=-14
+        bonWRadius=-25
+        bonWSplinter=-14
+    }
+    ShuDomiks_QuickshotWDomModUnlocked ^{
+        Cost=200
+        Equipments=WEnergy,WSplinter,WMissile
+        Fragility=133
+        KindGraph=drop
+        LockedAcryn=3
+        Name="Квикшот"
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=1
+        Size=150
+        Special=1
+        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Квикшот"<color=248,252,248>. Скорострельность такого орудия была существенно увеличена, однако его итоговая надёжность и огневая мощь явно оставляют желать лучшего.</color>
+        Text=<clr><clrEnd>
+        Text=Скорострельность: <bonAttacks>
+        Text=Сила энергетического оружия: <clr>-10<clrEnd> ед.
+        Text=Сила осколочного оружия: <clr>-14<clrEnd> ед.
+        Text=Сила ракетного оружия: <clr>-14<clrEnd> ед.
+        Text=Дальность стрельбы: <clr>-25<clrEnd> ед.
+        bonAttacks=1
+        bonWEnergy=-10
+        bonWMissile=-14
+        bonWRadius=-25
+        bonWSplinter=-14
+    }
+    ShuDomiks_RocketLauncherEqDomModLocked ^{
+        Cost=150
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        Fragility=100
+        KindGraph=DomMod
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Неизвестная модификация оборудования <clr>доминаторов<clrEnd>. Особые свойства модификации заблокированы. Для разблокировки обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        bonMissileSpeed=100
+        bonSpeed=75
+    }
+    ShuDomiks_RocketLauncherEqDomModUnlocked ^{
+        Cost=150
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        Fragility=130
+        KindGraph=DomMod
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Уникальная модификация оборудования <clr>доминаторов<clrEnd> под названием </color>"Рокет-ланчер"<color=248,252,248>. Вырабатывает особую нобелиевую присадку к топливу, тем самым повышая скорость двигателя и всех видов ракет. Негативный же эффект заключается в том, что избыточная радиоактивность присадки делает такое оборудование значительно менее долговечным.</color>
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        bonMissileSpeed=100
+        bonSpeed=75
+    }
+    ShuDomiks_ShtipDomHull ^{
+        Equipments=Hull
+        Fragility=90
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Быстрый доминаторский корабль-разведчик, как правило, первым вступающий в боевое столкновение с противником. Несмотря на малые размеры и незначительную огневую мощь, в определённых ситуациях может представлять серьёзную угрозу.</color>
+    }
+    ShuDomiks_SmershDomHull ^{
+        Equipments=Hull
+        Fragility=120
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Тяжёлый доминаторский перехватчик, специализирующийся на дальнобойном вооружении. Обладает серьёзной огневой мощью, но слабой защищённостью, а потому стремится сохранять дистанцию и не подпускать противника на расстояние точного выстрела.</color>
+    }
+    ShuDomiks_SpeedDropCWDomModLocked ^{
+        Cost=150
+        Equipments=WEnergy,WSplinter,WMissile
+        Fragility=100
+        KindGraph=overheat
+        LockedAcryn=3
+        Name=неизвестно
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        ShotVisual=9
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Неизвестная модификация оружия <clr>доминаторов<clrEnd>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        WeaponMods=Decelerate,DecelerateA,DecelerateAEx,ReduceEngine
+    }
+    ShuDomiks_SpeedDropCWDomModUnlocked ^{
+        Cost=150
+        Equipments=WEnergy,WSplinter,WMissile
+        Fragility=117
+        KindGraph=overheat
+        LockedAcryn=3
+        Name="Спид-дроп"
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=9
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Спид-дроп"<color=248,252,248>. Оружие данной модификации перегружает двигатель цели, тем самым постепенно выводя его из строя и ощутимо замедляя корабль.</color>
+        WeaponMods=Decelerate,DecelerateA,DecelerateAEx,ReduceEngine
+    }
+    ShuDomiks_SpeedDropWDomModLocked ^{
+        Cost=150
+        Equipments=WEnergy,WSplinter,WMissile
+        Fragility=100
+        KindGraph=overheat
+        LockedAcryn=3
+        Name=неизвестно
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        ShotVisual=3
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Неизвестная модификация оружия <clr>доминаторов<clrEnd>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        WeaponMods=Decelerate,DecelerateA,DecelerateAEx,ReduceEngine
+    }
+    ShuDomiks_SpeedDropWDomModUnlocked ^{
+        Cost=150
+        Equipments=WEnergy,WSplinter,WMissile
+        Fragility=117
+        KindGraph=overheat
+        LockedAcryn=3
+        Name="Спид-дроп"
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=3
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Спид-дроп"<color=248,252,248>. Оружие данной модификации перегружает двигатель цели, тем самым постепенно выводя его из строя и ощутимо замедляя корабль.</color>
+        WeaponMods=Decelerate,DecelerateA,DecelerateAEx,ReduceEngine
+    }
+    ShuDomiks_StrikeCWDomModLocked ^{
+        Cost=150
+        Equipments=WEnergy,WSplinter,WMissile
+        Fragility=100
+        KindGraph=dmg
+        LockedAcryn=3
+        Name=неизвестно
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        ShotVisual=8
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Неизвестная модификация оружия <clr>доминаторов<clrEnd>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-1
+    }
+    ShuDomiks_StrikeCWDomModUnlocked ^{
+        Cost=150
+        Equipments=WEnergy,WSplinter,WMissile
+        Fragility=117
+        KindGraph=dmg
+        LockedAcryn=3
+        Name="Страйк"
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=8
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Страйк"<color=248,252,248>. Наносит повышенный ущерб всем целям на траектории выстрела, в особенности повреждённым. Недостатком же является то, что для усиления урона бортовой компьютер должен сперва получить подробную информацию обо всех уязвимых местах в конструкции цели.</color>
+        Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15%<clrEnd>
+        Text=Бонус к урону по повреждённым целям: <clr>до +33%<clrEnd>
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(для применения бонусов требуется превышение<br>мощности сканера над защитой цели)
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-1
+    }
+    ShuDomiks_StrikeWDomModLocked ^{
+        Cost=150
+        Equipments=WEnergy,WSplinter,WMissile
+        Fragility=100
+        KindGraph=dmg
+        LockedAcryn=3
+        Name=неизвестно
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        ShotVisual=2
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Неизвестная модификация оружия <clr>доминаторов<clrEnd>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-1
+    }
+    ShuDomiks_StrikeWDomModUnlocked ^{
+        Cost=150
+        Equipments=WEnergy,WSplinter,WMissile
+        Fragility=117
+        KindGraph=dmg
+        LockedAcryn=3
+        Name="Страйк"
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=2
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Страйк"<color=248,252,248>. Наносит повышенный ущерб всем целям на траектории выстрела, в особенности повреждённым. Недостатком же является то, что для усиления урона бортовой компьютер должен сперва получить подробную информацию обо всех уязвимых местах в конструкции цели.</color>
+        Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15%<clrEnd>
+        Text=Бонус к урону по повреждённым целям: <clr>до +33%<clrEnd>
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(для применения бонусов требуется превышение<br>мощности сканера над защитой цели)
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-1
+    }
+    ShuDomiks_TerronRailgun ^{
+        BlockMM=1
+        Cost=400
+        Equipments=W11
+        Fragility=71
+        KindGraph=block
+        LockedAcryn=3
+        Name=Рейлган
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=266
+        Size=150
+        Special=1
+        Text=<color=248,252,248>Легендарный дезинтегратор <clr>Террона<clrEnd>, получивший в среде борцов с доминаторами прозвище </color><color=156,240,10>"Рейлган"</color><color=248,252,248>. Это ужасающее орудие уже давно стало ночным кошмаром всех гралгарских охотников за ошмётками. Благодаря феноменальной точности и умопомрачительной дальности, владелец способен быстро и эффективно испепелять даже самые тяжелобронированные цели, сохраняя при этом безопасную дистанцию.</color>
+        Text=<clr><clrEnd>
+        Text=<clr>(полностью игнорирует любую защиту цели)<clrEnd>
+        WeaponMods=Undefendable,NoDelta
+    }
+    ShuDomiks_UrgantDomHull ^{
+        Equipments=Hull
+        Fragility=80
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Крупный ударный доминаторский корабль, сопоставимый по огневой мощи и защищённости с судами класса "корвет". Стремится как можно скорее сократить расстояние до противника и навязать ему бой на малой дистанции.</color>
+    }
+    ShuDomiks_bonDef ^{
+        Equipments=Any
+        ExText=Генератор поля: <bonDef> ед.
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonDef=1
+    }
+    ShuDomiks_bonDroid ^{
+        Equipments=Any
+        ExText=Эффективность дроида: <bonDroid> ед.
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonDroid=1
+    }
+    ShuDomiks_bonHull ^{
+        Equipments=Any
+        ExText=Броня корпуса: <bonHull> ед.
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonHull=1
+    }
+    ShuDomiks_bonSpeed ^{
+        Equipments=Any
+        ExText=Скорость двигателя: <bonSpeed> ед.
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonSpeed=1
+    }
+    ShuDomiks_bonWEnergy ^{
+        Equipments=Any
+        ExText=Сила энергетического оружия: <bonWEnergy> ед.
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonWEnergy=1
+    }
+    ShuDomiks_bonWMissile ^{
+        Equipments=Any
+        ExText=Сила ракетного оружия: <bonWMissile> ед.
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonWMissile=1
+    }
+    ShuDomiks_bonWRadius ^{
+        Equipments=Any
+        ExText=Дальность стрельбы: <bonWRadius> ед.
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonWRadius=1
+    }
+    ShuDomiks_bonWSplinter ^{
+        Equipments=Any
+        ExText=Сила осколочного оружия: <bonWSplinter> ед.
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Special=1
+        bonWSplinter=1
+    }
+}
+Script ^{
+    Mod_ShuDomiks ^{
+        0=Ирина
+        1=Марина
+        10=Джунко
+        11=Мариса
+        12=Рейму
+        13=Эклипс
+        14=Анюта
+        15=Меркури
+        16=Макисе
+        17=Беатриче
+        18=Старбак
+        19=Внимание! <br>Радары дальнего действия обнаружили в пограничных системах доминаторские корабли с неизвестной по сей день сигнатурой. Аналитические группы полагают, что доминаторы используют некую новую акриновую модификацию, несовместимую с не принадлежащими их сериям кораблями. Особо бравым разведчикам удалось раздобыть несколько экземпляров не поддающегося поверхностному сканированию оборудования. Передовые умы Содружества уже взялись за детальное изучение представленных материалов, и обещают сделать определённый чёткий вывод в течении нескольких лет.
+        2=Луна
+        20=Демонтировать <0>
+        21=Мне надо разблокировать доминаторский акрин
+        22=Приобрести ингибиторы
+        23=Я хочу узнать о новой антидоминаторской технологии
+        24=<Player>, вам так же определённо захочется узнать о возможности вашего участия в программе бета-теста нашей <clr>новой технологии по противодействию организованным нападениям доминаторов<clrEnd>
+        25=Мы лишь сравнительно недавно мобилизовали персонал для этой задачи и пока не имеем серьезных успехов.
+        26=Мы активно проводим исследования в этом направлении, но, все же, еще далеки от успеха.
+        27=Тем не менее, исследования в этом направлении идут полным ходом и в скором времени мы должны совершить прорыв.
+        28=Ничего я выбирать не буду
+        29=Мы можем попробовать разблокировать уникальные свойства особых доминаторских модификаций, адаптировав их к коалиционному оборудованию. Мы предупреждаем вас, что эта операция проходит в рамках эксперимента и <clr>снятие блокировки не гарантировано<clrEnd>, вполне возможна <clr>частичная или полная поломка оборудования<clrEnd>. Кроме того, важно упомянуть, что с каждым экспериментом мы будем набираться опыта, и шанс на успех будет увеличиваться.<br><br>С какого оборудования вы бы хотели снять блокировку?
+        3=Мира
+        30=К сожалению, нам пока не удается совместить доминаторские модификации с оборудованием Коалиции. <0>
+        31=В снятии блокировки мы можем задействовать наших лучших специалистов. Они будут работать профессионально, и шанс на неудачу заметно ниже, чем при работе других мастеров. Если ваши финансы их не потянут, то работать будут обычные специалисты; они не должны взорвать ваше оборудование, но косяки в их работе вполне допустимы. А за малую сумму возьмутся работать только стажеры, которые наверняка что-нибудь да поломают.<br><br><br>Исходя из стоимости такой вещи как <0> и процентных расценок наших специалистов, получается следующее:<br><br><br>--------------------------<br>Лучшие специалисты - <1> cr. и <2> нод.<br>Шанс успеха - <3>%<br>Обычные специалисты - <4> cr. и <5> нод.<br>Шанс успеха - <6>%<br>Стажеры - <7> cr. и <8> нод.<br>Шанс успеха - <9>%<br>--------------------------<br><br><br>Кому вы доверите работу?
+        32=К несчастью, при попытке снятия блокировки ученые допустили критическую ошибку, и теперь <0> годен только на металлолом.<br>Тем не менее, наши специалисты все таки учатся на ошибках и в дальнейшем попробуют не допускать такого плачевного результьтата.<br><br>Желаете повторить эксперимент с другим оборудованием?
+        33=Отлично, наши специалисты уже успешно совместили <0> с вашим оборудованием. Кроме того, наши мастера приобрели дополнительный опыт, и шанс успешного снятия блокировки повысился. <br><br>Желаете повторить эксперимент с другим оборудованием?
+        34=Наши специалисты уже совместили <0> с вашим оборудованием.<br><1><br>Но, не смотря на это, наши специалисты все равно набрались опыта и постараются впредь не допускать таких ошибок.<br><br>Желаете повторить эксперимент с другим оборудованием?
+        35=Извиняй, братан, но мы в этой теме еще не достаточно прошарены. Прилетай через годик-другой, авось у нас и получится что-нибудь.
+        36=Совсем недавно наши парни научились хоть как-то работать с модифицированным доминаторами оборудованием, а именно снимать с него блокировку и приспосабливать под наши системы. Правда, ключевые слова здесь "хоть как-то" и мы <clr>совершенно не гарантируем успеха<clrEnd>, но попробовать ты можешь. Обучение спецов и покупка оборудования дорого нам обошлись, так что для участия в эксперименте тебе надо уплатить <0> cr. Ну, что скажешь, <Player>?
+        37=Наши спецы могут попробовать поработать над оборудкой и приспособить к твоему кораблю. Успех нами не гарантируется, да и всегда есть шанс словить какой-нибудь побочный эффект, не всегда вредный. Обучение спецов и покупка оборудования дорого нам обошлись, так что для участия в эксперименте тебе надо уплатить <0> cr. Ну как, вперед?
+        38=Спецы уже подготовили свое оборудование. Только укажи вещь, с которой нашим парням работать.
+        39=Итак, <Player>, ты хочешь доверить нам <0>. Стоимость этой операции - <1> cr и <2> нодов, но за твое пиратское звание мы сделаем скидочку в <3><clr>%<clrEnd>. Итого, с тебя <4> cr и <5> нодов. Ну как, пойдет?
+        4=Нова
+        40=Спецы уже сняли все ограничения с оборудки, и теперь она может работать, как и задумано.<br><0><br>Наши мастера теперь поднабрались опыта и работают немного лучше. Еще шаманить будем?
+        41=Извиняй, <Player>, но пока наши парни плясали с бубном, что-то пошло не так, и... в общем, кранты той оборудке. <br>Но не боись, мы уже изрядно наорали на них за такую оплошность и в дальнейшем спецы постараются не ошибаться. Будет еще работенка?
+        42=Спецы уже сняли все ограничения с оборудки, и теперь она может работать, как и задумано.<br>Наши мастера теперь поднабрались опыта и работают немного лучше. Еще шаманить будем?
+        43=Извините, рейнджер <Player>, но доминаторы побеждены, и всех специалистов по доминаторскому оборудованию распустили за ненадобностью.<br><br>Попробуйте обратиться к пиратам, возможно, у них найдутся необходимые люди.
+        44=Калибровка трансмиттеров завершена, пользователь <Player> успешно идентифицирован. Установлен приоритет цели А+, подлежит немедленному изучению, все задачи несистемного приоритета отложены.
+        45=Ответ отрицательный, данный логический модуль является независимой единицей.
+        46=В отличие от основной базы данных, модуль FG-42 обладает более ограниченными вычислительными возможностями и предназначался для стороннего проекта.
+        47=Данная информация имеет системный приоритет. Подключение к основной базе данных отсутствует, авторизация невозможна. Корабль <PlayerFull> подлежит немедленному изучению и не обладает правами перезаписи.
+        48=Ответ отрицательный. Текущая задача: изучить <Player> как потенциальную угрозу высшего уровня.
+        49=Клисаны мною еще не изучены. По плану до их изучения осталось около 50 гс. Здесь еще много интересного, хотя, надо признать, в последнее время материала для изучения стало катастрофически мало. Масса различных факторов мешает работе, и окружающее пространство стало однородным.
+        5=Чиана
+        50=Исследования по перемещению между рукавами мною закончены более 1 гс назад.<br>Я покину данный рукав немедленно. А здесь свои задачи останутся выполнять модули для сбора информации.
+        51=Вы ведь заметили, что в системе почти с самого вашего вступления в рейнджеры была размещена одна интересная орудийная платформа с <clr>гиперпространственным ингибитором<clrEnd>? Так вот - это именно наше изобретение, ученых с вашей родины, <0>! Нам удалось создать устройство, которое, оставляя частоту, известную только военным Коалиции, блокирует любые попытки массированного перехода, таким образом, заставляя врага дважды подумать, прежде чем рисковать отправлять свои войска по одному кораблю, легко распиливаемую любым уважающим себя патрулём в системе. К сожалению, нам не удалось стабилизировать систему так, чтобы активировать больше <1> платформ одновременно, не обрушив при этом любую гиперпространственную связь в секторе, да и больше <clr>одной установки в год<clrEnd> мы не можем подключать просто из тактических соображений. Не желаете помочь нашему эксперименту, размещая в подконтрольных Коалиции системах новые установки? Вы лицо свободное, за вами мало какой шпион нарочно следить будет. Почему мы обращаемся именно к вам, окромя фактора неожиданности? Всё достаточно прозаично - вас порекомендовал ваш старый ректор, у которого вам повезло отличиться по молодости и который оказался тем самым ученым, который пронёс на спине большую часть нашего проекта. Да-да, как видите, порой и на войне давние связи бывают чертовски полезны.<br>Ну что, рейнджер? Если вы откажетесь участвовать, мы либо найдём другую кандидатуру, либо сконцентрируем доступные тестовые мощности на уже имеющейся защите. Так что это ваш шанс внести свою лепту.<br>К слову, ингибиторы требуют <2> месяца на активацию, так что первое время установки необходимо охранять от нежелательных вмешательств пиратов или доминаторов. Не забывайте об этом, <Player>, не создавайте брешей в обороне нашего рукава!
+        52=Ресурсы нашего отдела временно исчерпались, а потому покупка ингибиторов станет доступна не ранее, чем <0>.
+        53=На данный момент стоимость одного ингибитора равняется <0> cr. Знаем, немало, но вы же не считаете, что надо экономить на безопасности жителей Коалиции, <Player>?
+        54=<0> совершит аварийную посадку на ближайшую обитаемую планету и будет разобран. В качестве компенсации на ваш счет будет переведено <1> cr. Учтите: операцию невозможно будет отменить.
+        55=Энергия успешно перенаправлена на двигатели. <0> взял курс на планету <1>. Компенсация в размере <2> cr переведена на ваш счет.
+        56=Вот как? Ну ладно...
+        57=Оплачиваю стоимость самых лучших спецов
+        58=К сожалению, при совмещении оборудование вышло из строя. Впрочем, это не критично и мастера из соседнего отдела смогут устранить дефекты.
+        59=Но совмещение оборудования произошло с ошибками, и его технический уровень упал.
+        6=Мику
+        60=К несчастью, при снятии блокировки мы повредили оборудование и одна из его характеристик снизилась.
+        61=Пусть поработают обычные специалисты
+        62=Я заплачу зеленым стажерам!
+        63=Да, конечно
+        64=Нет, спасибо
+        65=Отказываюсь платить по таким грабительским расценкам!
+        66=А почему бы и нет? Давайте начнем!
+        67=Нет, спасибо. Я лучше подожду, пока вы нормально освоитесь в этом
+        68=Ну уж нет, такие деньги я платить не готов!
+        69=Ага. Поехали!
+        7=Хеллфайр
+        70=К сожалению, при совмещении оборудование вышло из строя. Впрочем, это всё ерунда, верно?
+        71=Но при совмещении всплыло несколько досадных багов, из-за которых технический уровень оборудования упал.
+        72=Только вот нашим парням пришлось убрать парочку мешавших деталек, так что характеристики оборудования могли слегка поменяться.
+        73=Э-э, чего? Келлер? Разве я тебя недавно не прикончил? Что за чертовщина здесь происходит?
+        74=Келлер? Ты же прямо у меня на глазах отправился в гости к клисанам в соседний рукав! Даже ты не мог долететь туда и обратно так быстро. Прыжок сорвался?
+        75=Ух, братуха, мы же договаривались, что ты не покинешь территорию Нифигаца, в чем же тогда дело?
+        76=Независимой? То есть, Келлер создал себе двойника?
+        77=И что же это было за дело такое, что Келлер, обладая потенциально бесконечным рематериализатором, решил создать себе двойника?
+        78=И правда - вычислительные возможности у тебя куда более ограниченные, чем у папаши. Тот хотя бы у нас местным философом заделался. Давай проверим, сможешь ли ты вовремя сварганить себе собственный материализатор, дружище.
+        79=Так, хорошо, значит, ты сейчас лишён каких-либо целеуказаний, верно?
+        8=Моека
+        80=Высшего? Я польщен. Но у меня есть более интересное предложение. Как насчет изучения клисан?
+        81=У клисан полезной тебе информации просто завались! Кстати, а разве у тебя есть технология перемещения между рукавами нашей галактики? Как скоро ты сможешь улететь?
+        82=Конец связи
+        83=Ради общего дела ничего не жалко
+        84=Для меня это неподъемная сумма
+        85=Как скажете
+        86=А что, давайте. Всегда рад помочь старым знакомым, причём с такой-то благородной целью
+        87=Я подумаю над этим
+        88=Подтвердить
+        89=Отменить
+        9=Элизабет
+        90=На мостик
+        BlazerHull=Корпус Блазера
+        BlazerMassacre=<color=255,25,25>Массакри</color>
+        KellerCloneTask=В системе #0# обнаружена сигнатура, практически идентичная сигнатуре Келлера. Рекомендуется лично проверить сигнал.
+        KellerHull=Корпус Келлера
+        KellerJavelin=<color=60,182,230>Жавелин</color>
+        TerronHull=Корпус Террона
+        TerronRailgun=<color=156,240,10>Рейлган</color>
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            DomRuinsAutoUpgrade ^{
+                Description=Скрытая инфошка для автоперезарядки и автоулучшения верфей
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword cur_ship = ScriptItemActShip();
+                    02=if(ScriptItemActionType(t_OnStep))
+                    03 ^{
+                        01=int cur_info = CurInfo();
+                        02=int RepairTime = ShipCustomShipInfoData(cur_ship, cur_info, 2);
+                        03=int AutoUpdateTime = ShipCustomShipInfoData(cur_ship, cur_info, 3);
+                        04=if(RepairTime <= CurTurn())
+                        05 ^{
+                            01=dword cur_item;
+                            02=ShipCustomShipInfoData(cur_ship, cur_info, 2, CurTurn() + Rnd(50,80));
+                            03=int perm = 1;
+                            04=for(int j = 0; j < ShipItems(cur_ship); j = j + 1)
+                            05 ^{
+                                01=cur_item = ShipItems(cur_ship, j);
+                                02=if(!ItemIsInUse(cur_item)) continue;
+                                03=int item_type = ItemType(cur_item);
+                                04=if(item_type < t_Hull || item_type > t_CustomWeapon) continue;
+                                05=if(ItemDurability(cur_item) < 100)
+                                06 ^{
+                                    01=if(item_type <= t_DefGenerator) ItemDurability(cur_item, 100);
+                                    02=else
+                                    03 ^{
+                                        01=if(item_type >= t_Weapon13 && item_type <= t_Weapon15)
+                                        02 ^{
+                                            01=if(perm) ItemDurability(cur_item, 100);
+                                        }
+                                        03=else if(item_type == t_CustomWeapon)
+                                        04 ^{
+                                            01=if(GetCustomWeaponData(CustomWeaponType(cur_item), 'Availability') == 'NotSoldAndNodeRepair')
+                                            02 ^{
+                                                01=if(perm) ItemDurability(cur_item, 100);
+                                            }
+                                            03=else ItemDurability(cur_item, 100);
+                                        }
+                                        05=else ItemDurability(cur_item, 100);
+                                    }
+                                }
+                            }
+                            06=if(perm)
+                            07 ^{
+                                01=for(j = 0; j < ShipArts(cur_ship); j = j + 1)
+                                02 ^{
+                                    01=cur_item = ShipArts(cur_ship, j);
+                                    02=if(!ItemIsInUse(cur_item)) continue;
+                                    03=if(ItemDurability(cur_item) < 100) ItemDurability(cur_item, 100);
+                                }
+                            }
+                        }
+                        06=if(AutoUpdateTime <= CurTurn())
+                        07 ^{
+                            01=dword cur_star = ShipStar(cur_ship);
+                            02=if(ShipStar(Player()) == cur_star)
+                            03 ^{
+                                01=if(ShipInNormalSpace(Player()))
+                                02 ^{
+                                    01=ShipCustomShipInfoData(cur_ship, cur_info, 3, 1);
+                                    02=exit;
+                                }
+                            }
+                            04=ShipCustomShipInfoData(cur_ship, cur_info, 3, CurTurn() + Rnd(160, 250));
+                            05=for(j = 0; j < ShipItems(cur_ship); j = j + 1)
+                            06 ^{
+                                01=cur_item = ShipItems(cur_ship, j);
+                                02=if(!ItemIsInUse(cur_item)) continue;
+                                03=item_type = ItemType(cur_item);
+                                04=if(item_type < t_Hull || item_type > t_CustomWeapon) continue;
+                                05=if(ItemLevel(cur_item) < GalaxyTechLevel()) ItemLevel(cur_item, GalaxyTechLevel() - 2);
+                                06=if(!ItemImprovement(cur_item)) ItemImprovement(cur_item, 2, 0);
+                                07=if(ItemSize(cur_item) <= 80 && item_type <= t_DefGenerator && item_type != t_Hull) ItemSize(cur_item, Rnd(80, 120));
+                                08=if(ItemSize(cur_item) <= 100 && item_type >= t_Weapon1) ItemSize(cur_item, Rnd(100, 150));
+                            }
+                            07=dword subrace=ItemSubrace(ShipEqInSlot(cur_ship, t_Hull));
+                            08=if(!ShipDroidRepair(cur_ship))
+                            09 ^{
+                                01=cur_item = CreateEquipment(t_RepairRobot, Rnd(80, 100), GalaxyTechLevel() - 2, ShipOwner(cur_ship));
+                                02=ItemImprovement(cur_item, 2, 0);
+                                03=AddItemToShip(cur_ship, cur_item);
+                                04=ItemIsInUse(cur_item, cur_ship, 1);
+                                05=ItemSubrace(cur_item, subrace);
+                            }
+                            10=if(!ShipHookPower(cur_ship))
+                            11 ^{
+                                01=cur_item = CreateEquipment(t_CargoHook, Rnd(80, 100), GalaxyTechLevel() - 2, ShipOwner(cur_ship));
+                                02=ItemImprovement(cur_item, 2, 0);
+                                03=AddItemToShip(cur_ship, cur_item);
+                                04=ItemIsInUse(cur_item, cur_ship, 1);
+                                05=ItemSubrace(cur_item, subrace);
+                            }
+                            12=if(!ShipProtectability(cur_ship))
+                            13 ^{
+                                01=cur_item = CreateEquipment(t_DefGenerator, Rnd(80, 100), GalaxyTechLevel() - 2, ShipOwner(cur_ship));
+                                02=ItemImprovement(cur_item, 2, 0);
+                                03=AddItemToShip(cur_ship, cur_item);
+                                04=ItemIsInUse(cur_item, cur_ship, 1);
+                                05=ItemSubrace(cur_item, subrace);
+                            }
+                            14=if(ShipCntWeapon(cur_ship) < 5)
+                            15 ^{
+                                01=for(j = 1; j <= 5 - ShipCntWeapon(cur_ship); j = j + 1)
+                                02 ^{
+                                    01=if(GalaxyDiffLevels()<=100) cur_item = CreateEquipment(t_Weapon3, Rnd(80, 100), GalaxyTechLevel(), ShipOwner(cur_ship));
+                                    02=else if(GalaxyDiffLevels()<=150) cur_item = CreateEquipment(t_Weapon7, Rnd(80, 100), GalaxyTechLevel(), ShipOwner(cur_ship));
+                                    03=else cur_item = CreateEquipment(t_Weapon11, Rnd(80, 100), GalaxyTechLevel(), ShipOwner(cur_ship));
+                                    04=ItemImprovement(cur_item, 2, 0);
+                                    05=AddItemToShip(cur_ship, cur_item);
+                                    06=ItemSubrace(cur_item, subrace);
+                                }
+                            }
+                            16=int skillup = 0;
+                            17=if(ShipSkill(cur_ship, 0) < 6 && !skillup)
+                            18 ^{
+                                01=ShipSkill(cur_ship, 0, ShipSkill(cur_ship, 0) + 1);
+                                02=skillup = 1;
+                            }
+                            19=else if(ShipSkill(cur_ship, 1) < 6 && !skillup)
+                            20 ^{
+                                01=ShipSkill(cur_ship, 1, ShipSkill(cur_ship, 1) + 1);
+                                02=skillup = 1;
+                            }
+                            21=else if(ShipSkill(cur_ship, 2) < 6 && !skillup)
+                            22 ^{
+                                01=ShipSkill(cur_ship, 2, ShipSkill(cur_ship, 2) + 1);
+                                02=skillup = 1;
+                            }
+                            23=int fullHP = ItemSize(ShipItems(cur_ship, 0));
+                            24=if(!StarBattle(cur_star)) HullHP(cur_ship, fullHP);
+                            25=ArrangeItems(cur_ship);
+                            26=for(j = ShipItems(cur_ship) - 1; j > 0; j = j - 1)
+                            27 ^{
+                                01=if(!ItemIsInUse(ShipItems(cur_ship, j))) FreeItem(GetItemFromShip(cur_ship, j));
+                            }
+                            28=for(j = ShipArts(cur_ship) - 1; j > 0; j = j - 1)
+                            29 ^{
+                                01=if(!ItemIsInUse(ShipArts(cur_ship, j))) FreeItem(GetArtFromShip(cur_ship, j));
+                            }
+                        }
+                    }
+                    04=else
+                    05 ^{
+                        01=int infos_num = StarFindCustomStarInfoByType(ShipStar(cur_ship), 'DomRuins_' + Id(cur_ship));
+                        02=if(~infos_num) StarDeleteCustomStarInfo(ShipStar(cur_ship), infos_num);
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnDeath
+                OnActStepTypes=11
+            }
+            FirstInhibitorJoinsGroup ^{
+                Description=Скрытая костыльная инфошка для добавления стартового ингибитора в скриптовую группу
+                Icon=1
+                Name=
+                OnActCode ^{
+                    01=dword ship = ScriptItemActShip();
+                    02=if(!ship) exit;
+                    03=GShuDomiksTempDwd = ship;
+                    04=dword crutch = GetItemFromVault('ShuDomiks_Semerenka');
+                    05=CreateActCodeEvent(0, crutch);
+                    06=PutItemInVault('ShuDomiks_Semerenka', crutch);
+                    07=ShipDeleteCustomShipInfo(ship, 'FirstInhibitorJoinsGroup');
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            InhibBeaconDestroy ^{
+                Description=Отменяет "экранирующее" уничтожение маяка вызова ингибитора, после чего скрытно удаляет его без взрыва
+                Icon=1
+                Name=
+                OnActCode ^{
+                    01=dword item = IdToItem(ShipCustomShipInfoData(0, CurInfo(), 1));
+                    02=if(item)
+                    03 ^{
+                        01=if(!ScriptItemActParam()) ItemDestroy(item, 0);
+                        02=else
+                        03 ^{
+                            01=FreeItem(GetItemFromStar(GalaxyStar(ShipCustomShipInfoData(0, CurInfo(), 2)), item));
+                            02=ShipDeleteCustomShipInfo(ScriptItemActShip(), 'InhibBeaconDestroy');
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0,11
+            }
+            KellerClone ^{
+                Description=Дает клону Келлера буст к урону, аналогичный оригинальному. Процент буста считается скриптом.
+                Icon=1
+                Name=
+                OnActCode ^{
+                    01=dword cur_ship = ScriptItemActShip();
+                    02=dword cur_info = CurInfo();
+                    03=if(ScriptItemActionType(t_OnDealingDamage))
+                    04 ^{
+                        01=int proc = ShipCustomShipInfoData(0, cur_info, 1);
+                        02=if(ShipOwner(ScriptItemActObject1()) == 5) exit;
+                        03=ScriptItemActParam(ScriptItemActParam() * proc / 100);
+                    }
+                    05=else
+                    06 ^{
+                        01=if(!ShipCustomShipInfoData(0, cur_info, 3)) Ether(4, 'KellerCloneTask', Format(CT('Script.Mod_ShuDomiks.KellerCloneTask'), '#0#', Name(ShipStar(cur_ship))));
+                    }
+                }
+                OnActCodeTypes=t_OnDealingDamage,t_OnDeath
+            }
+            KellerLastWishInfo ^{
+                Description=При смерти Келлера создаёт транка с копией обвеса самого Келлера. Данный транк нужен для последующего создания клона Келлера.
+                Icon=1
+                Name=
+                OnActCode ^{
+                    01=dword keller=ScriptItemActShip();
+                    02=dword cur_planet=NearCivilPlanet(keller);
+                    03=dword clone_ship=BuyTranclucator(cur_planet);
+                    04=SetName(clone_ship,'TranclucatorKeller');
+                    05=ShipOwner(clone_ship,2);
+                    06=OrderLock(clone_ship,1);
+                    07=for(int i=ShipItems(clone_ship)-1;i>0;i=i-1)FreeItem(GetItemFromShip(clone_ship,i));
+                    08=ItemSize(ShipItems(clone_ship,0),ItemSize(ShipItems(keller,0)));
+                    09=ItemCost(ShipItems(clone_ship,0),ItemCost(ShipItems(keller,0)));
+                    10=HullHP(clone_ship,ItemSize(ShipItems(clone_ship,0)));
+                    11=for(i=1;i<ShipItems(keller);i=i+1)
+                    12 ^{
+                        01=dword cur_item=ShipItems(keller,i);
+                        02=if(!ItemIsInUse(cur_item))continue;
+                        03=int type=ItemType(cur_item);
+                        04=if(type>t_DefGenerator)continue;
+                        05=dword cloned_item=CreateEquipment(type,ItemSize(cur_item),8,5);
+                        06=ItemCost(cloned_item,ItemCost(cur_item));
+                        07=ItemSubrace(cloned_item,1);
+                        08=SetEquipmentStats(cloned_item,GetEquipmentStats(cur_item,0),0);
+                        09=AddItemToShip(clone_ship,cloned_item);
+                        10=ItemIsInUse(cloned_item,clone_ship,1);
+                    }
+                    13=for(i=1;i<=5;i=i+1)
+                    14 ^{
+                        01=cur_item=ShipWeapon(keller,i);
+                        02=type=ItemType(cur_item);
+                        03=if(type>=t_CustomWeapon)continue;
+                        04=cloned_item=CreateEquipment(type,ItemSize(cur_item),8,5);
+                        05=ItemCost(cloned_item,ItemCost(cur_item));
+                        06=ItemSubrace(cloned_item,1);
+                        07=SetEquipmentStats(cloned_item,GetEquipmentStats(cur_item,0),0);
+                        08=SetEquipmentStats(cloned_item,GetEquipmentStats(cur_item,1),1);
+                        09=SetEquipmentStats(cloned_item,GetEquipmentStats(cur_item,2),2);
+                        10=AddItemToShip(clone_ship,cloned_item);
+                        11=ItemIsInUse(cloned_item,clone_ship,1,i);
+                    }
+                    15=TransferShip(clone_ship,StarPlanets(GalaxyStar(2),0));
+                }
+                OnActCodeTypes=t_OnDeath
+            }
+            ShuDomiks_KamikazeInfo ^{
+                Description=Инфошка для убийства появляющихся доминаторов в системе с игроком
+                Icon=1
+                Name=
+                OnActCode ^{
+                    01=dword cur_star = ShipStar(Player());
+                    02=if(StarOwner(cur_star) == 1)
+                    03 ^{
+                        01=if(StarBattle(cur_star))
+                        02 ^{
+                            01=int check=0;
+                            02=int cnt=0;
+                            03=for(int i=0;i<StarShips(cur_star);i=i+1)
+                            04 ^{
+                                01=dword ship=StarShips(cur_star,i);
+                                02=if(ShipOwner(ship)!=Kling) continue;
+                                03=cnt = cnt + 1;
+                                04=if(cnt > 2)
+                                05 ^{
+                                    01=check = 1;
+                                    02=break;
+                                }
+                                06=dword sub_type = ShipSubType(ship);
+                                07=if(!sub_type)
+                                08 ^{
+                                    01=check = 1;
+                                    02=break;
+                                }
+                                09=if(sub_type == 6)
+                                10 ^{
+                                    01=check = 1;
+                                    02=break;
+                                }
+                                11=str type_str = ShipType(ship);
+                                12=if(type_str=='Superdominator')
+                                13 ^{
+                                    01=check = 1;
+                                    02=break;
+                                }
+                                14=if(type_str=='DomRuins')
+                                15 ^{
+                                    01=check = 1;
+                                    02=break;
+                                }
+                            }
+                            05=if(!check)
+                            06 ^{
+                                01=dword last_ship_id=GetValueFromScript('Mod_ShuDomiks', 'lastShipId');
+                                02=unknown temp_array=newarray(1);
+                                03=cnt=BuildListOfNewShips(temp_array,last_ship_id,1,32,1,'',',Superdominator');
+                                04=if(cnt)
+                                05 ^{
+                                    01=for(i=0;i<ArrayDim(temp_array);i=i+1)
+                                    02 ^{
+                                        01=ship=temp_array[i];
+                                        02=if(ShipStar(ship)==ShipStar(Player()))
+                                        03 ^{
+                                            01=OrderNone(ship);
+                                            02=OrderLock(ship, 1);
+                                            03=ShipDestroy(ship, 1);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+        }
+    }
+}
+ShipType ^{
+    Dominator ^{
+        Blazer ^{
+            Shtip=Штип
+        }
+        DomRuins ^{
+            1=Верфь
+            StarInfoSuffixBlazer=блазероидная боевая станция
+            StarInfoSuffixKeller=келлероидная боевая станция
+            StarInfoSuffixTerron=терроноидная боевая станция
+        }
+        Keller ^{
+            Shtip=Штип
+        }
+        KellerClone ^{
+            1=
+        }
+        Terron ^{
+            Shtip=Штип
+        }
+    }
+    TypeName ^{
+        DomRuins=Верфь
+        DomTrank=Транклюкатор
+        Inhibitor=Ингибитор
+        InhibitorSmall=Ингибитор
+        KellerClone=
+        Shtip=Доминатор
+        Superdominator=Супердоминатор
+    }
+}
+ShuKlissan ^{
+    Compatibility=True
+}
+ShuWarriors ^{
+    Compatibility=True
+}
+UselessItems ^{
+    InhibitorPlaceBeacon ^{
+        Cost=Average
+        Name=Маяк для вызова ингибитора
+        OnUseCode ^{
+            00=if(UselessItemData(CurItem(), 1)) exit;
+            01=dword ship = Player();
+            02=dword cur_item = CurItem();
+            03=if(!ShipInNormalSpace(ship))
+            04 ^{
+                01=MessageBox('Этот предмет может быть использован только в открытом космосе.');
+                02=exit;
+            }
+            05=dword star = ShipStar(ship);
+            06=if(star == PlanetToStar(GetShipHomePlanet(ship)))
+            07 ^{
+                01=MessageBox('В данной системе уже функционируют конструкции манипуляции с гиперпространством.');
+                02=exit;
+            }
+            08=if(StarRuins(star, 'Inhibitor'))
+            09 ^{
+                01=MessageBox('В данной системе уже размещён один ингибитор.');
+                02=exit;
+            }
+            10=if(StarOwner(star))
+            11 ^{
+                01=MessageBox('Невозможно разместить ингибитор во враждебной системе.');
+                02=exit;
+            }
+            12=if(Dist(ship, star) <= 600)
+            13 ^{
+                01=MessageBox('Невозможно разместить ингибитор так близко к звезде.');
+                02=exit;
+            }
+            14=if(Dist(ship, star) > PlanetOrbitRadius(StarPlanets(star, StarPlanets(star) - 1)) + 800)
+            15 ^{
+                01=MessageBox('Невозможно разместить ингибитор так далеко от центра системы.');
+                02=exit;
+            }
+            16=int active_inhibs = 0;
+            17=for(int i = 0; i < GalaxyStars(); i = i + 1)
+            18 ^{
+                01=if(StarRuins(GalaxyStar(i), 'Inhibitor')) active_inhibs = active_inhibs + 1;
+            }
+            19=if(active_inhibs >= GMaxInhibitorsCount)
+            20 ^{
+                01=MessageBox('На данный момент размещено максимальное число ингибиторов.');
+                02=exit;
+            }
+            21=dword inhib;
+            22=inhib = BuildCustomRuins(star, 'Inhibitor', ItemOwner(cur_item));
+            23=for(i = 0; i <= 7; i = i + 1)
+            24 ^{
+                01=int goods = GoodsAdd(inhib, i, 0);
+                02=GoodsAdd(inhib, i, -goods);
+            }
+            25=for(i = ShopItems(inhib) - 1; i >= 0; i = i - 1) FreeItem(GetItemFromShop(inhib, i));
+            26=NoShopUpdate(inhib, 1);
+            27=NoLanding(inhib, 1);
+            28=HullHP(inhib, Rnd(200, 500) + GalaxyTechLevel() * 75);
+            29=ItemSize(ShipItems(inhib, 0), HullHP(inhib));
+            30=ItemCost(ShipItems(inhib, 0), UselessItemData(cur_item, 2));
+            31=ShipSpecialBonuses(inhib, bonSpeed, -10000);
+            32=SetName(inhib, '#' + Rnd(1, 9999));
+            33=SpecialToEquipment(FindBonusByNameInCfg('ShuDomiks_InhibitorOff'), ShipItems(inhib, 0));
+            34=Chameleon(inhib);
+            35=if(1)
+            36 ^{
+                01=AddItemToShip(inhib, CreateEquipment(t_Weapon3, 25, GalaxyTechLevel(), ShipOwner(inhib)));
+                02=AddItemToShip(inhib, CreateEquipment(t_Weapon3, 25, GalaxyTechLevel(), ShipOwner(inhib)));
+                03=AddItemToShip(inhib, CreateEquipment(t_Weapon3, 25, GalaxyTechLevel(), ShipOwner(inhib)));
+                04=AddItemToShip(inhib, CreateEquipment(t_Weapon3, 25, GalaxyTechLevel(), ShipOwner(inhib)));
+                05=AddItemToShip(inhib, CreateEquipment(t_Weapon3, 25, GalaxyTechLevel(), ShipOwner(inhib)));
+                06=AddItemToShip(inhib, CreateEquipment(t_DefGenerator, 20, GalaxyTechLevel(), ShipOwner(inhib)));
+                07=AddItemToShip(inhib, CreateEquipment(t_RepairRobot, 20, GalaxyTechLevel(), ShipOwner(inhib)));
+                08=ShipImproveItems(inhib, 20);
+                09=ShipSpecialBonuses(inhib, bonWEnergy, 10 + 5 * GalaxyTechLevel());
+                10=ShipSpecialBonuses(inhib, bonWSplinter, 14 + 7 * GalaxyTechLevel());
+                11=ShipSpecialBonuses(inhib, bonWMissile, 12 + 6 * GalaxyTechLevel());
+                12=ShipSpecialBonuses(inhib, bonDef, 2 * GalaxyTechLevel());
+                13=ShipSpecialBonuses(inhib, bonWRadius, 200);
+            }
+            37=GShuDomiksTempDwd = inhib;
+            38=dword crutch = GetItemFromVault('ShuDomiks_Semerenka');
+            39=CreateActCodeEvent(0, crutch);
+            40=PutItemInVault('ShuDomiks_Semerenka', crutch);
+            41=Sound('Sound.Repair');
+            42=MessageBox('Ингибитор успешно отправлен в указанные координаты.');
+            43=if(FindItemInShip(ship, cur_item) > -1) GetItemFromShip(ship, FindItemInShip(ship, cur_item));
+            44=else GetItemFromStorage(FindItemInStorage(cur_item));
+            45=DropItem(ship, cur_item);
+            46=MakeShipEnterStar(inhib, star, star, 0);
+            47=OrderTeleport(inhib, star, CoordX(cur_item) - 11, CoordY(cur_item) + 3);
+            48=ShipOrderData1(inhib, 0);
+            49=ShipAngle(inhib, 0);
+            50=UselessItemData(cur_item, 1, 1);
+            51=ItemDestroy(cur_item, 1);
+            52=ShipPicksItem(Player(), cur_item, -1);
+            53=ShipAddCustomShipInfo(ship, 'InhibBeaconDestroy', 'NoShow', Id(cur_item), Id(star) - 1);
+        }
+        Owner=None
+        Size=1
+        Text=Вскоре после размещения маяка в указанные координаты будет отправлен гиперпространственный ингибитор.
+    }
+}

@@ -1,0 +1,854 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefReturnNPCWin",
+    "ScriptFileOut": "D:\\Mod_RefReturnNPCWin.scr",
+    "ScriptTextOut": "D:\\Mod_RefReturnNPCWin.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 25,
+                    "Msg": "Меня интересует Энерготрон",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefReturnNPCWin.3\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "Меня интересует Противодействие",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefReturnNPCWin.4\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "Меня интересует Дематериализатор",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefReturnNPCWin.5\"))"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 360,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "В другой раз",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_RefReturnNPCWin.6\"))"
+                },
+                {
+                    "Name": "block",
+                    "Pos.x": 480,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "Беру!",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer('block~'+CT(\"Script.Mod_RefReturnNPCWin.7\"))"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 600,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 30,
+                    "Msg": "Беру!",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_RefReturnNPCWin.7\"))"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 720,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 31,
+                    "Msg": "Беру!",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_RefReturnNPCWin.7\"))"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 840,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 32,
+                    "Msg": "Беру!",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_RefReturnNPCWin.7\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 21,
+                    "Msg": "В общем...\r\nПока наши доблестные бойцы во главе с вами громили в пух и прах коалиционщиков, наши спецы в сфере компьютерной безопасности тоже не дремали. Учёные Коалиции успели разработать кой-какие программы для борьбы с доминаторами. Если они вас интересуют, то мы можем их вам продать по сниженной цене.",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefReturnNPCWin.0\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 22,
+                    "Msg": "<clr>Энерготрон<clrEnd> - технология по переработке энергии в материю. Террон очень неравнодушен к теме превращения всего в свой вид - походу, у него при зарождении остался по большей части алгоритм самовосстановления, на основе которого была реконструирована остальная часть рабочих алгоритмов.\r\n\r\nИменно поэтому он \"клюнет\" на эту приманку. А здесь его будет ожидать ловушка - расчёты безупречны, только вот жаропрочность конструкций взята без учёта структуры Террона. Структуры гораздо более уязвимой.\r\n\r\nВпрочем, даже если Террону удастся выжить дольше расчётного срока плавления основных узлов, доступная ему материя будет конечной, а это значит, что его всё ещё можно будет уничтожить.\r\n\r\nСтоимость программы - <0> cr.",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefReturnNPCWin.1\"),\"<0>\",money))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 23,
+                    "Msg": "<clr>Противодействие<clrEnd> - программа, созданная для борьбы с Блазером. Основывается на примитивности его действий, несмотря на кажущийся размах его деятельности, который, по идее, требует крайне продвинутых алгоритмов для работы.\r\n\r\nПопадая в логическую ловушку, алгоритмы Блазера дают сбой и запрашивают внешние источники информации, которыми являются наши директивы.\r\n\r\nСтоимость программы - <0> cr.",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefReturnNPCWin.8\"),\"<0>\",money))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 24,
+                    "Msg": "<clr>Дематериализатор<clrEnd> - программа, вносящая серию критических ошибок в процесс восстановления структуры Келлера. Больше описать и нечего, потому как программа попросту запускается в момент, когда этот большой четырёхгранник получает критические повреждения и рассыпается на части.\r\n\r\nСтоимость программы - <0> cr.",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefReturnNPCWin.2\"),\"<0>\",money))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "ProgrammsDial",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 20
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 14
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 15,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "//Для детекта убивания боссов",
+                        "ShipAddCustomShipInfo(Blazer(),'DetectKill','NoShow');",
+                        "ShipAddCustomShipInfo(Terron(),'DetectKill','NoShow');",
+                        "//Инфошка, позволяющая рейнджеру убить босса",
+                        "int tint1;",
+                        "tint1 = BuildListOfNewShips(tempArr, lastShipId, 2, 1+2+4+8+16, 0, '');",
+                        "//Если нашли хоть один корабль по требуемым условиям",
+                        "if(tint1) {",
+                        "    for(tint1 = 0; tint1 < ArrayDim(tempArr); tint1 = tint1 + 1) {",
+                        "        if(tempArr[tint1] == Player()) continue;",
+                        "        if(ShipType(tempArr[tint1]) == 'Ranger' || ShipType(tempArr[tint1]) == 'FemRanger') ShipAddCustomShipInfo(tempArr[tint1],'NPCWins','NoShow');",
+                        "    }",
+                        "}",
+                        "lastShipId = GalaxyShipId();"
+                    ],
+                    "#": 16,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Здесь - антидом программы Клана",
+                        "if(CoalitionDefeated()) {",
+                        "    //Да, приоритет у Коалиции. В противном случае, будем честны, пираты и пальцем не пошевелят",
+                        "    if(CurTurn() > 10000) {",
+                        "        if(Terron()) {",
+                        "            if(!ShipInStar(Player(),ShipStar(Terron()))) {",
+                        "                if(Rnd(1,8000) == 8000) {",
+                        "                    int trnd = Rnd(1,100);",
+                        "                    if(trnd <= 20) {",
+                        "                        ShipDestroy(Terron());",
+                        "                        EtherDelete('TerronWin');",
+                        "                        AddPlanetNews(CT(\"Script.Mod_RefReturnNPCWin.11\"),65);",
+                        "                        NewsAdd(CT(\"Script.Mod_RefReturnNPCWin.11\"));",
+                        "                    }",
+                        "                    if(trnd > 20 && trnd < 90) {",
+                        "                        TerronGrowLock();",
+                        "                    }",
+                        "                    if(trnd >= 90) {",
+                        "                        TerronWeaponLock();",
+                        "                    }",
+                        "                }",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "    if(ControlledSystems(2) > 30) PiratesProgress = PiratesProgress + Rnd(10,20);",
+                        "    else if(ControlledSystems(2) > 10) PiratesProgress = PiratesProgress + Rnd(7,13);",
+                        "    else PiratesProgress = PiratesProgress + Rnd(2,5);",
+                        "    if(PiratesProgress > 25000) {",
+                        "        if(Rnd(PiratesProgress,100000) > 99998) {",
+                        "            FlagKill = 1;",
+                        "        }",
+                        "    }",
+                        "    if(Keller()) {",
+                        "        if(FlagKill == 1 && !ShipInStar(Player(),ShipStar(Keller())) && !ShipInNormalSpace(Keller())) {",
+                        "            if(Rnd(1,2) == 2) {",
+                        "                KellerNewResearch(ConStar(StarToCon(PlanetToStar(PlanetPirateClan())),2));",
+                        "                AddPlanetNews(CT(\"Script.Mod_RefReturnNPCWin.10\"),65);",
+                        "                NewsAdd(CT(\"Script.Mod_RefReturnNPCWin.10\"));",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "}",
+                        "if(PirateWin() == 3) {",
+                        "    //Пираты потерпели поражение; Сабмодем был изъят в ходе одного из рейдов компьютерщиками Коалиции",
+                        "    if(CurTurn() > 10000) {",
+                        "        if(Terron()) {",
+                        "            if(!ShipInStar(Player(),ShipStar(Terron()))) {",
+                        "                if(Rnd(1,8000) == 8000) {",
+                        "                    trnd = Rnd(1,100);",
+                        "                    if(trnd <= 20) {",
+                        "                        ShipDestroy(Terron());",
+                        "                        EtherDelete('TerronWin');",
+                        "                        AddPlanetNews(CT(\"Script.Mod_RefReturnNPCWin.9\"),65);",
+                        "                        NewsAdd(CT(\"Script.Mod_RefReturnNPCWin.9\"));",
+                        "                    }",
+                        "                    if(trnd > 20 && trnd < 90) {",
+                        "                        TerronGrowLock();",
+                        "                    }",
+                        "                    if(trnd >= 90) {",
+                        "                        TerronWeaponLock();",
+                        "                    }",
+                        "                }",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "}",
+                        "if(CoalitionDefeated() && CoalitionFlag == 0) {",
+                        "    CoalitionFlag = 1;",
+                        "    if(GalaxyDominatorResearchPercent(0) == 100) BlazerProg = 1;",
+                        "    if(GalaxyDominatorResearchPercent(1) == 100) KellerProg = 1;",
+                        "    if(GalaxyDominatorResearchPercent(2) == 100) TerronProg = 1;",
+                        "    //Размышления на тему \"Могут ли пираты утырить коалиционные проги после победы на Коалицией?\"",
+                        "}",
+                        "//Автопобеда Клана",
+                        "int cnt2;",
+                        "if(ControlledSystems(0) == 0 && !CoalitionDefeated()) {",
+                        "    for(i=0;GalaxyStars()>i;i=i+1) {",
+                        "        for(j=0;StarShips(GalaxyStar(i))>j;j=j+1) {",
+                        "            if(StarShips(GalaxyStar(i),j) == Player()) continue;",
+                        "            if(ShipTypeN(StarShips(GalaxyStar(i),j)) == t_Transport) continue;",
+                        "            if(ShipTypeN(StarShips(GalaxyStar(i),j)) == t_Ranger) continue;",
+                        "            if(ShipTypeN(StarShips(GalaxyStar(i),j)) == t_Tranclucator) continue;",
+                        "            if(ShipOwner(StarShips(GalaxyStar(i),j)) == None) continue;",
+                        "            if(ShipOwner(StarShips(GalaxyStar(i),j)) == Kling) continue;",
+                        "            if(ShipOwner(StarShips(GalaxyStar(i),j)) == PirateClan) continue;",
+                        "            cnt2 = cnt2 + 1;",
+                        "        }",
+                        "    }",
+                        "    if(cnt2 == 0) ShipJoinsClan(Player());",
+                        "}",
+                        "//Отслеживаем новых рангеров и вещяем им инфощьку",
+                        "if(!DomiksDefeated()) {",
+                        "    int tint1;",
+                        "    tint1 = BuildListOfNewShips(tempArr, lastShipId, 2, 1+2+4+8+16, 0, '');",
+                        "    //Если нашли хоть один корабль по требуемым условиям",
+                        "    if(tint1) {",
+                        "        for(tint1 = 0; tint1 < ArrayDim(tempArr); tint1 = tint1 + 1) {",
+                        "            if(tempArr[tint1] == Player()) continue;",
+                        "            if(ShipType(tempArr[tint1]) == 'Ranger' || ShipType(tempArr[tint1]) == 'FemRanger') ShipAddCustomShipInfo(tempArr[tint1],'NPCWins','NoShow');",
+                        "        }",
+                        "    }",
+                        "    lastShipId = GalaxyShipId();",
+                        "}"
+                    ],
+                    "#": 17,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(TerronProg == 1 || KellerProg == 1 || BlazerProg == 1) {",
+                        "    if(GetShipPlanet(Player())) {",
+                        "        if(GetShipPlanet(Player()) == PlanetPirateClan()) {",
+                        "            AddDialogInject('ProgrammsDial', CT(\"Script.Mod_RefReturnNPCWin.13\"),CT(\"Script.Mod_RefReturnNPCWin.12\"),1);",
+                        "        }",
+                        "    }",
+                        "}"
+                    ],
+                    "#": 18,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 33,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(TerronProg == 1) {",
+                        "  DAdd(0);",
+                        "}",
+                        "if(BlazerProg == 1) {",
+                        "  DAdd(1);",
+                        "}",
+                        "if(KellerProg == 1) {",
+                        "  DAdd(2);",
+                        "}"
+                    ],
+                    "#": 34,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player()) < money) {",
+                        "  DAdd(4);",
+                        "}",
+                        "if(ShipMoney(Player()) >= money) {",
+                        "  DAdd(5);",
+                        "}",
+                        "DAdd(3);"
+                    ],
+                    "#": 35,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player()) < money) {",
+                        "  DAdd(4);",
+                        "}",
+                        "if(ShipMoney(Player()) >= money) {",
+                        "  DAdd(6);",
+                        "}",
+                        "DAdd(3);"
+                    ],
+                    "#": 36,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player()) < money) {",
+                        "  DAdd(4);",
+                        "}",
+                        "if(ShipMoney(Player()) >= money) {",
+                        "  DAdd(7);",
+                        "}",
+                        "DAdd(3);"
+                    ],
+                    "#": 37,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "money = GalaxyMoney(4,4) * 3;",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 38,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "money = GalaxyMoney(4,4) * 3;",
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 39,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "money = GalaxyMoney(4,4) * 3;",
+                        "DChange(3);",
+                        "exit;"
+                    ],
+                    "#": 40,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),ShipMoney(Player()) - money);",
+                        "SetProgramm(3,1);",
+                        "TerronProg = 0;"
+                    ],
+                    "#": 41,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),ShipMoney(Player()) - money);",
+                        "SetProgramm(1,1);",
+                        "BlazerProg = 0;"
+                    ],
+                    "#": 42,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),ShipMoney(Player()) - money);",
+                        "SetProgramm(2,1);",
+                        "KellerProg = 0;"
+                    ],
+                    "#": 43,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 13
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 12
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 11,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 19
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "CoalitionFlag",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "KellerProg",
+                    "Pos.x": 210,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "TerronProg",
+                    "Pos.x": 360,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "BlazerProg",
+                    "Pos.x": 510,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "PiratesProgress",
+                    "Pos.x": 660,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "FlagKill",
+                    "Pos.x": 870,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "lastShipId",
+                    "Pos.x": 990,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tempArr",
+                    "Pos.x": 1140,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "money",
+                    "Pos.x": 1260,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 1350,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "j",
+                    "Pos.x": 1440,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 20,
+            "End": 33,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 21,
+            "End": 34,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 22,
+            "End": 35,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 23,
+            "End": 36,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 24,
+            "End": 37,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 38,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 39,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 27,
+            "End": 40,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 30,
+            "End": 41,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 31,
+            "End": 42,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 32,
+            "End": 43,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 13,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 19,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

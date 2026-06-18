@@ -1,0 +1,491 @@
+Artefacts ~{
+    CustomArtefacts ^{
+        Antirocket_CatArt ~{
+            CanBeTreasure=1
+            CanBeReward=0
+            CanBeABDrop=0
+            Broken=(закончился запас ловушек)
+            BrokenInBattle=Шальное попадание сожгло весь запас тепловых ловушек Антирокета. Неприятно.
+            BrokenInUse=Антирокет сбросил последнюю ловушку. Походу, дальше вам придётся самостоятельно бороться с ракетным оружием противника.
+            Description=--
+            Cost=2450
+            Name=Антирокет
+            OnUseCode ~{
+                01=if(ItemDurability(CurItem()) > 1)
+                02 ^{
+                    01=if(StarMissiles(ShipStar(Player())) > 0)
+                    02 ^{
+                        01=int j = 0;
+                        02=for(int i = 0; StarMissiles(ShipStar(Player())) > i; i = i + 1)
+                        03 ^{
+                            01=dword missile = StarMissiles(ShipStar(Player()),i);
+                            02=if(Dist(missile,Player()) > 150) continue;
+                            03=j=j+1;
+                            04=MissileLive(missile,1000);
+                        }
+                        04=if(!j) MessageBox('В зоне действия артефакта целей не найдено!');
+                        05=else
+                        06 ^{
+                            01=ItemDurability(CurItem(),max(ItemDurability(CurItem())-34,0));
+                            02=Sound('Sound.Repair');
+                        }
+                    }
+                    03=else MessageBox('В системе нет целей!');
+                }
+                03=else MessageBox('Антирокет остался без средств к защите вашего корабля, так что что-либо требовать от него бессмысленно и беспощадно жестоко.');
+            }
+            Size=15
+            Text=Выпускает множество мелких точечных тепловых ловушек, слишком малозаметных для любого <clr>радара<clrEnd>, но на близком расстоянии очень заметных для любой <clr>ракеты<clrEnd>, в радиусе <clr>150<clrEnd> млн км от корабля-носителя.
+        }
+        Asteroid_CatArt ~{
+            CanBeTreasure=1
+            CanBeReward=1
+            CanBeABDrop=0
+            Broken=(не функционирует)
+            BrokenInBattle=Враг решил создать вам помеху и нацелил свой огонь на уничтожитель астероидов. Теперь шанс столкновения с летающими камнями отнюдь не нулеой.
+            BrokenInUse=Аннигилятор астероидов исчерпал свои ресурсы по отстрелу космических камней. Пора что-то делать!
+            Description=Максимально простое в своей сути устройство - автоматически поражает все астероиды, оказывающиеся в зоне поражения. Нередко устанавливается на станции и прочие крупные малоподвижные или неподвижные объекты.
+            Cost=2750
+            Name=Астероидный аннигилятор
+            OnActCode ~{
+                01=dword ship = ScriptItemActShip();
+                02=if(ship < 1) exit;
+                07=if(ItemIsBroken(CurItem())) exit;
+                03=dword star = ShipStar(ship);
+                04=for(int i = 0; i < StarAsteroids(star);i = i + 1)
+                05 ^{
+                    01=dword asteroid = StarAsteroids(star,i);
+                    02=if(Dist(asteroid,ship) > 550) continue;
+                    03=dword item = CreateEquipment(t_Weapon11,1,1,None);
+                    04=FireWeapon(ship,asteroid,item);
+                    05=FreeItem(item);
+                }
+            }
+            OnActCodeTypes=t_OnStep
+            OnActStepTypes=1,3,5,7,9
+            Size=60
+            Text=Уничтожает астероиды в радуисе <clr>550<clrEnd> млн км. Сбоит при попытках атаки <clr>планетоидов<clrEnd> или иных сверхмассивных объектов.
+        }
+        Cactus_CatArt ~{
+            CanBeTreasure=1
+            CanBeReward=0
+            CanBeABDrop=1
+            Broken=(иссох)
+            BrokenInBattle=Жар вражеского огня спалил все контакты Кактуса. Требуется починка.
+            BrokenInUse=Система Кактуса слишком долго работала без увлажнения. Требуется консультация специалистов.
+            Description=--
+            Cost=2250
+            Name=Кактус
+            OnActCode ~{
+                01=dword cur_ship = ScriptItemActShip(), dd = ScriptItemActObject1(), item, cur_item = CurItem();
+                02=if(cur_ship < 1 || dd < 1) exit;
+                03=if(ScriptItemActionType(t_OnStep))
+                04 ^{
+                    01=item = ShipEqInSlot(cur_ship,t_Hull);
+                    02=if(ItemOwner(item) == 6)
+                    03 ^{
+                        01=CustomArtData(cur_item,1,1);
+                        02=CustomArtTextData(cur_item,1,Format('<br>')+Format('<br>')+'Артефакт эффективнее работает с оборудованием неизвестного производства.');
+                    }
+                    04=else
+                    05 ^{
+                        01=CustomArtData(cur_item,1,0);
+                        02=CustomArtTextData(cur_item,1,'');
+                    }
+                    06=if(~EqModule(CurItem()))
+                    07 ^{
+                        01=CustomArtData(CurItem(),2,CustomArtData(CurItem(),2)-1);
+                        02=if(CustomArtData(CurItem(),2) < 1)
+                        03 ^{
+                            01=EqModule(CurItem(), -1);
+                            02=CustomArtTextData(CurItem(),2,'Активный режим: <color=220,0,0>неактивен</color>');
+                        }
+                    }
+                    08=exit;
+                }
+                05=else if(ScriptItemActionType(t_OnPlayerChangeHull))
+                06 ^{
+                    01=item = ScriptItemActObject1();
+                    02=if(ItemOwner(item) == 6)
+                    03 ^{
+                        01=CustomArtData(cur_item,1,1);
+                        02=CustomArtTextData(cur_item,1,Format('<br>')+Format('<br>')+'Артефакт эффективнее работает с оборудованием неизвестного производства.');
+                    }
+                    04=else
+                    05 ^{
+                        01=CustomArtData(cur_item,1,0);
+                        02=CustomArtTextData(cur_item,1,'');
+                    }
+                    06=exit;
+                }
+                07=if(ObjectType(dd) < 4) exit;
+                08=else if(ObjectType(dd) == 8) exit;
+                09=else if(ObjectType(dd) == 6) dd = ScriptItemActObject2();
+                10=else if(ObjectType(dd) == 7)
+                11 ^{
+                    01=if(EqModule(cur_item) == -1) exit;
+                    02=dd = MissileOwner(dd);
+                }
+                12=if(!ScriptItemActionType(t_OnTakingDamageMi) || ObjectType(ScriptItemActObject1()) != 7)
+                13 ^{
+                    01=if(EqModule(cur_item) == -1 || !CustomArtData(cur_item,1))
+                    02 ^{
+                        01=if(Rnd(1,100) > 66) exit;
+                    }
+                    03=if(ItemIsBroken(CurItem())) exit;
+                    04=if(dd < 1) exit;
+                    05=int dmg = ScriptItemActParam();
+                    06=if(~EqModule(CurItem())) dmg = dmg + dmg;
+                    07=if(HullHP(dd) > dmg) ShowEffect('Weapon.10',2,dd,cur_ship,dmg);
+                    08=else ShowEffect('Weapon.10',2,dd,cur_ship,dmg,1);
+                    09=if(ScriptItemActionType(t_OnTakingDamageSp)) DealDamageToShip(dd,0,dmg,2);
+                    10=else DealDamageToShip(dd,0,dmg,1);
+                }
+                14=else
+                15 ^{
+                    01=if(EqModule(cur_item) == -1) exit;
+                    02=dword missile = ScriptItemActObject1();
+                    03=if(ItemIsBroken(item)) exit;
+                    04=if(MissileType(missile) != t_CustomWeapon)
+                    05 ^{
+                        01=item = CreateEquipment(MissileType(missile),1,GalaxyTechLevel(),None);
+                        02=LaunchMissile(cur_ship,dd,item);
+                        03=FreeItem(item);
+                    }
+                    06=else
+                    07 ^{
+                        01=item = CreateCustomWeapon(CustomMissileType(missile),1,GalaxyTechLevel(),None);
+                        02=LaunchMissile(cur_ship,dd,item);
+                        03=FreeItem(item);
+                    }
+                }
+            }
+            OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageMi,t_OnTakingDamageSp,t_OnPlayerChangeHull,t_OnStep
+            OnActStepTypes=0
+            OnUseCode ^{
+                01=if(EqModule(CurItem()) == -1)
+                02 ^{
+                    01=if(ItemDurability(CurItem()) >= 50 || (CustomArtData(CurItem(),1) && ItemDurability(CurItem()) >= 25))
+                    02 ^{
+                        01=EqModule(CurItem(), FindBonusByCustomTag('AkrinAmplifier'));
+                        02=Sound('Sound.Mod_Switch');
+                        03=ItemDurability(CurItem(),ItemDurability(CurItem()) - 25);
+                        04=if(!CustomArtData(CurItem(),1)) ItemDurability(CurItem(),ItemDurability(CurItem()) - 25);
+                        05=CustomArtData(CurItem(),2,4);
+                        06=CustomArtTextData(CurItem(),2,'Активный режим: <color=0,255,130>запущен</color>');
+                    }
+                    03=else MessageBox('Артефакт слишком сильно повреждён, чтобы использовать его активный режим');
+                }
+                03=else
+                04 ^{
+                    01=EqModule(CurItem(), -1);
+                    02=Sound('Sound.Mod_Switch');
+                    03=CustomArtData(CurItem(),2,0);
+                    04=CustomArtTextData(CurItem(),2,'Активный режим: <color=220,0,0>неактивен</color>');
+                }
+            }
+            Size=6
+            Text=Выосвобождает антивещество, имеющее импульс, прямо противоположный импульсу попадающих в корабль <clr>выстрелов<clrEnd> противника, но <clr>равный<clrEnd> им по модулю сравнительного урона. При активации сильно изнашивается, но в течение <clr>трёх<clrEnd> стандартных суток собирает антивещество ещё и из <clr>ракет<clrEnd>, а также увеличивает отражённый урон <clr>вдвое<clrEnd>.<TextData1><TextData2>
+        }
+        Catolisator_CatArt ~{
+            CanBeTreasure=1
+            CanBeReward=1
+            CanBeABDrop=0
+            Broken=(отключился)
+            BrokenInBattle=Скачок напряжения вывел из строя Котолизатор.
+            BrokenInUse=Котолизатор износил свой соединительный интерфейс. Требуется замена специалистами.
+            Description=Небольшой блок со вспомогательными мощностями, которые позволяют любому оборудованию на борту корабля переносить рутинные задачи на внешние ресурсы, и эффективнее выполнять прямую задачу. К сожалению, весь корабль такая штука не покроет, но к ближайшему к её разъёму артефакта оборудованию подключиться сможет.
+            Cost=2750
+            Name=Котолизатор
+            OnActCode ~{
+                01=dword item = CurItem();
+                02=if(ItemIsBroken(item)) exit;
+                03=if(ScriptItemActionType(t_OnStep))
+                04 ^{
+                    01=dword ship = ScriptItemActShip();
+                    02=if(ship < 1) exit;
+                    03=if(item == ShipEqInSlot(ship,t_Artefact,1) || item == ShipEqInSlot(ship,t_Artefact,5) || item == ShipEqInSlot(ship,t_Artefact,9) || item == ShipEqInSlot(ship,t_Artefact,13))
+                    04 ^{
+                        01=if(CustomArtData(item,1) != 1) CustomArtData(item,2,1);
+                    }
+                    05=if(item == ShipEqInSlot(ship,t_Artefact,2) || item == ShipEqInSlot(ship,t_Artefact,6) || item == ShipEqInSlot(ship,t_Artefact,10) || item == ShipEqInSlot(ship,t_Artefact,14))
+                    06 ^{
+                        01=if(CustomArtData(item,1) != 2) CustomArtData(item,2,2);
+                    }
+                    07=if(item == ShipEqInSlot(ship,t_Artefact,3) || item == ShipEqInSlot(ship,t_Artefact,7) || item == ShipEqInSlot(ship,t_Artefact,11) || item == ShipEqInSlot(ship,t_Artefact,15))
+                    08 ^{
+                        01=if(CustomArtData(item,1) != 3) CustomArtData(item,2,3);
+                    }
+                    09=if(item == ShipEqInSlot(ship,t_Artefact,4) || item == ShipEqInSlot(ship,t_Artefact,8) || item == ShipEqInSlot(ship,t_Artefact,12) || item == ShipEqInSlot(ship,t_Artefact,16))
+                    10 ^{
+                        01=if(CustomArtData(item,1) != 4) CustomArtData(item,2,4);
+                    }
+                    11=if(CustomArtData(item,2))
+                    12 ^{
+                        01=if(CustomArtData(item,1) == 1)
+                        02 ^{
+                            01=ShipSpecialBonuses(ship,bonSpeed,ShipSpecialBonuses(ship,bonSpeed) - 185);
+                            02=ShipSpecialBonuses(ship,bonMissileSpeed,ShipSpecialBonuses(ship,bonMissileSpeed) - 275);
+                        }
+                        03=else if(CustomArtData(item,1) == 2)
+                        04 ^{
+                            01=ShipSpecialBonuses(ship,bonDroid,ShipSpecialBonuses(ship,bonDroid) - 7);
+                            02=ShipSpecialBonuses(ship,bonDef,ShipSpecialBonuses(ship,bonDef) - 3);
+                            03=ShipSpecialBonuses(ship,bonHook,ShipSpecialBonuses(ship,bonHook) - 15);
+                            04=ShipSpecialBonuses(ship,bonHookRadius,ShipSpecialBonuses(ship,bonHookRadius) - 25);
+                        }
+                        05=else if(CustomArtData(item,1) == 3)
+                        06 ^{
+                            01=ShipSpecialBonuses(ship,bonScan,ShipSpecialBonuses(ship,bonScan) - 7);
+                            02=ShipSpecialBonuses(ship,bonRadar,ShipSpecialBonuses(ship,bonRadar) - 850);
+                        }
+                        07=else if(CustomArtData(item,1) == 4)
+                        08 ^{
+                            01=ShipSpecialBonuses(ship,bonWEnergy,ShipSpecialBonuses(ship,bonWEnergy) - 3);
+                            02=ShipSpecialBonuses(ship,bonWSplinter,ShipSpecialBonuses(ship,bonWSplinter) - 4);
+                            03=ShipSpecialBonuses(ship,bonWMissile,ShipSpecialBonuses(ship,bonWMissile) - 5);
+                            04=ShipSpecialBonuses(ship,bonWRadius,ShipSpecialBonuses(ship,bonWRadius) - 15);
+                        }
+                        09=CustomArtData(item,1,CustomArtData(item,2));
+                        10=CustomArtData(item,2,0);
+                        11=if(!ItemIsInUse(item,ship)) exit;
+                        12=if(CustomArtData(item,1) == 1)
+                        13 ^{
+                            01=ShipSpecialBonuses(ship,bonSpeed,ShipSpecialBonuses(ship,bonSpeed) + 185);
+                            02=ShipSpecialBonuses(ship,bonMissileSpeed,ShipSpecialBonuses(ship,bonMissileSpeed) + 275);
+                        }
+                        14=else if(CustomArtData(item,1) == 2)
+                        15 ^{
+                            01=ShipSpecialBonuses(ship,bonDroid,ShipSpecialBonuses(ship,bonDroid) + 7);
+                            02=ShipSpecialBonuses(ship,bonDef,ShipSpecialBonuses(ship,bonDef) + 3);
+                            03=ShipSpecialBonuses(ship,bonHook,ShipSpecialBonuses(ship,bonHook) + 15);
+                            04=ShipSpecialBonuses(ship,bonHookRadius,ShipSpecialBonuses(ship,bonHookRadius) + 25);
+                        }
+                        16=else if(CustomArtData(item,1) == 3)
+                        17 ^{
+                            01=ShipSpecialBonuses(ship,bonScan,ShipSpecialBonuses(ship,bonScan) + 7);
+                            02=ShipSpecialBonuses(ship,bonRadar,ShipSpecialBonuses(ship,bonRadar) + 850);
+                        }
+                        18=else if(CustomArtData(item,1) == 4)
+                        19 ^{
+                            01=ShipSpecialBonuses(ship,bonWEnergy,ShipSpecialBonuses(ship,bonWEnergy) + 3);
+                            02=ShipSpecialBonuses(ship,bonWSplinter,ShipSpecialBonuses(ship,bonWSplinter) + 4);
+                            03=ShipSpecialBonuses(ship,bonWMissile,ShipSpecialBonuses(ship,bonWMissile) + 5);
+                            04=ShipSpecialBonuses(ship,bonWRadius,ShipSpecialBonuses(ship,bonWRadius) + 15);
+                        }
+                        20=if(~ShipFindCustomShipInfoByType(ship,'ExtraCrutch_CatArts')) ShipCustomShipInfoData(ship,'ExtraCrutch_CatArts',1,CustomArtData(item,1));
+                        21=else ShipAddCustomShipInfo(ship,'ExtraCrutch_CatArts',1,CustomArtData(item,1));
+                    }
+                }
+                05=else
+                06 ^{
+                    01=dword ship = Player();
+                    02=if(item == ShipEqInSlot(Player(),t_Artefact,1) || item == ShipEqInSlot(Player(),t_Artefact,5) || item == ShipEqInSlot(Player(),t_Artefact,9) || item == ShipEqInSlot(Player(),t_Artefact,13))
+                    03 ^{
+                        01=if(CustomArtData(item,1) != 1) CustomArtData(item,2,1);
+                    }
+                    04=if(item == ShipEqInSlot(Player(),t_Artefact,2) || item == ShipEqInSlot(Player(),t_Artefact,6) || item == ShipEqInSlot(Player(),t_Artefact,10) || item == ShipEqInSlot(Player(),t_Artefact,14))
+                    05 ^{
+                        01=if(CustomArtData(item,1) != 2) CustomArtData(item,2,2);
+                    }
+                    06=if(item == ShipEqInSlot(Player(),t_Artefact,3) || item == ShipEqInSlot(Player(),t_Artefact,7) || item == ShipEqInSlot(Player(),t_Artefact,11) || item == ShipEqInSlot(Player(),t_Artefact,15))
+                    07 ^{
+                        01=if(CustomArtData(item,1) != 3) CustomArtData(item,2,3);
+                    }
+                    08=if(item == ShipEqInSlot(Player(),t_Artefact,4) || item == ShipEqInSlot(Player(),t_Artefact,8) || item == ShipEqInSlot(Player(),t_Artefact,12) || item == ShipEqInSlot(Player(),t_Artefact,16))
+                    09 ^{
+                        01=if(CustomArtData(item,1) != 4) CustomArtData(item,2,4);
+                    }
+                    10=if(CustomArtData(item,2))
+                    11 ^{
+                        01=if(CustomArtData(item,1) == 1)
+                        02 ^{
+                            01=ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed) - 185);
+                            02=ShipSpecialBonuses(Player(),bonMissileSpeed,ShipSpecialBonuses(Player(),bonMissileSpeed) - 275);
+                        }
+                        03=if(CustomArtData(item,1) == 2)
+                        04 ^{
+                            01=ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid) - 7);
+                            02=ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef) - 3);
+                            03=ShipSpecialBonuses(Player(),bonHook,ShipSpecialBonuses(Player(),bonHook) - 15);
+                            04=ShipSpecialBonuses(Player(),bonHookRadius,ShipSpecialBonuses(Player(),bonHookRadius) - 25);
+                        }
+                        05=if(CustomArtData(item,1) == 3)
+                        06 ^{
+                            01=ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan) - 7);
+                            02=ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar) - 850);
+                        }
+                        07=if(CustomArtData(item,1) == 4)
+                        08 ^{
+                            01=ShipSpecialBonuses(Player(),bonWEnergy,ShipSpecialBonuses(Player(),bonWEnergy) - 3);
+                            02=ShipSpecialBonuses(Player(),bonWSplinter,ShipSpecialBonuses(Player(),bonWSplinter) - 4);
+                            03=ShipSpecialBonuses(Player(),bonWMissile,ShipSpecialBonuses(Player(),bonWMissile) - 5);
+                            04=ShipSpecialBonuses(Player(),bonWRadius,ShipSpecialBonuses(Player(),bonWRadius) - 15);
+                        }
+                        09=CustomArtData(item,1,CustomArtData(item,2));
+                        10=CustomArtData(item,2,0);
+                        11=if(!ItemIsInUse(item,ship)) exit;
+                        12=if(CustomArtData(item,1) == 1)
+                        13 ^{
+                            01=ShipSpecialBonuses(ship,bonSpeed,ShipSpecialBonuses(ship,bonSpeed) + 185);
+                            02=ShipSpecialBonuses(ship,bonMissileSpeed,ShipSpecialBonuses(ship,bonMissileSpeed) + 275);
+                        }
+                        14=if(CustomArtData(item,1) == 2)
+                        15 ^{
+                            01=ShipSpecialBonuses(ship,bonDroid,ShipSpecialBonuses(ship,bonDroid) + 7);
+                            02=ShipSpecialBonuses(ship,bonDef,ShipSpecialBonuses(ship,bonDef) + 3);
+                            03=ShipSpecialBonuses(ship,bonHook,ShipSpecialBonuses(ship,bonHook) + 15);
+                            04=ShipSpecialBonuses(ship,bonHookRadius,ShipSpecialBonuses(ship,bonHookRadius) + 25);
+                        }
+                        16=if(CustomArtData(item,1) == 3)
+                        17 ^{
+                            01=ShipSpecialBonuses(ship,bonScan,ShipSpecialBonuses(ship,bonScan) + 7);
+                            02=ShipSpecialBonuses(ship,bonRadar,ShipSpecialBonuses(ship,bonRadar) + 850);
+                        }
+                        18=if(CustomArtData(item,1) == 4)
+                        19 ^{
+                            01=ShipSpecialBonuses(ship,bonWEnergy,ShipSpecialBonuses(ship,bonWEnergy) + 3);
+                            02=ShipSpecialBonuses(ship,bonWSplinter,ShipSpecialBonuses(ship,bonWSplinter) + 4);
+                            03=ShipSpecialBonuses(ship,bonWMissile,ShipSpecialBonuses(ship,bonWMissile) + 5);
+                            04=ShipSpecialBonuses(ship,bonWRadius,ShipSpecialBonuses(ship,bonWRadius) + 15);
+                        }
+                        20=if(~ShipFindCustomShipInfoByType(ship,'ExtraCrutch_CatArts')) ShipCustomShipInfoData(ship,'ExtraCrutch_CatArts',1,CustomArtData(item,1));
+                        21=else ShipAddCustomShipInfo(ship,'ExtraCrutch_CatArts',1,CustomArtData(item,1));
+                    }
+                }
+            }
+            OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnReEnteringForm,t_OnLeavingForm
+            OnActStepTypes=0
+            Size=7
+            Text=Блок дополнительных расчётных мощностей, которые оптимизируют и немного улучшают эффективность работы <clr>ближайшего<clrEnd> оборудования.
+        }
+        FifthElement_CatArt ~{
+            CanBeTreasure=1
+            CanBeReward=0
+            CanBeABDrop=0
+            NoWear=1
+            Cost=2750
+            Name=Пятый элемент
+            Size=3
+            Text=Бессмысленная жесткость может поставить на грань смерти и гибели всё.
+        }
+        Rocketfel_CatArt ~{
+            CanBeTreasure=1
+            CanBeReward=1
+            CanBeABDrop=0
+            Broken=(не функционирует)
+            BrokenInBattle=В ходе сражения в Ракетфеле произошла детонация снаряда, требуется ремонт!
+            BrokenInUse=Ракетфел исчерпал свой ресурс. Требуется пополнение.
+            Description=Ракетфел - автоматическая установка с независимым интеллектуальным и снабженческим блоком, позволяющая кораблю вести огонь по противнику даже в случае потери всего экипажа.
+            Cost=1850
+            Name=Ракетфел
+            OnActCode ~{
+                01=dword cur_ship = ScriptItemActShip();
+                02=if(cur_ship < 1) exit;
+                03=if(ItemIsBroken(CurItem())) exit;
+                04=dword item = CreateEquipment(t_Weapon4,1,GalaxyTechLevel(),ShipPilotRace(cur_ship));
+                05=dword star = ShipStar(cur_ship);
+                06=for(int i = 0; StarShips(star) > i; i = i + 1)
+                07 ^{
+                    01=dword ship = StarShips(star,i);
+                    02=if(RelationToShip(ship,cur_ship) > 9) continue;
+                    03=if(Dist(ship,cur_ship) > 700) continue;
+                    04=if(IsPlayer(cur_ship) && ~PlayerChameleonCurType()) continue;
+                    05=LaunchMissile(cur_ship,ship,item,Rnd(1,30));
+                    06=LaunchMissile(cur_ship,ship,item,Rnd(1,30));
+                    07=LaunchMissile(cur_ship,ship,item,Rnd(1,30));
+                    08=break;
+                }
+                08=FreeItem(item);
+            }
+            OnActCodeTypes=t_OnStep
+            OnActStepTypes=5
+            Size=9
+            Text=Выпускает <clr>три<clrEnd> самонаводящихся снаряда на дистанции <clr>700<clrEnd> млн км. Для шаблона генерации зарядов используется шаблон <clr>ракетомёта<clrEnd> последней модели.
+        }
+        Vanomit_CatArt ~{
+            CanBeTreasure=1
+            CanBeReward=0
+            CanBeABDrop=1
+            Broken=(исчерпал запасы)
+            BrokenInBattle=Генерация снарядов посредством подпространства Ваномита была сбита во время боя. Требуется сброс настроек поиска материи.
+            BrokenInUse=Ресурсы псевдослучайной генерации Ваномита совсем исчерпались. Может, кто-то из учёных или техников сможет помочь?
+            Description=--
+            Cost=2750
+            Name=Ваномит
+            OnActCode ~{
+                01=dword cur_ship = ScriptItemActShip();
+                02=if(cur_ship < 1) exit;
+                03=if(ItemIsBroken(CurItem())) exit;
+                04=for(int i = 0; ShipSlots(cur_ship,1) > i; i = i + 1)
+                05 ^{
+                    01=if(ShipEqInSlot(cur_ship,t_Weapon1,i) < 1) continue;
+                    02=dword item = ShipEqInSlot(cur_ship,t_Weapon1,i);
+                    03=if(GetEquipmentStats(item,3) != 2) continue;
+                    04=if(WeaponAmmunition(item) >= WeaponMaxAmmunition(item)) continue;
+                    05=if(Rnd(0,2)) continue;
+                    06=WeaponAmmunition(item,min(WeaponAmmunition(item)+Rnd(5,9),WeaponMaxAmmunition(item)));
+                    07=break;
+                }
+            }
+            OnActCodeTypes=t_OnStep
+            OnActStepTypes=0
+            Size=15
+            Text=Случайно генерирует боезапас в одно из установленных орудий, пока подключён к разъёму артефакта.
+        }
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            ExtraCrutch_CatArts ^{
+                Description=Просто костыльфошка
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnStep)) dword ship = ScriptItemActShip();
+                    02=else ship = Player();
+                    03=if(ship > 0)
+                    04 ^{
+                        01=if(!ArtefactTypeInUse(ship,'Catolisator_CatArt'))
+                        02 ^{
+                            01=if(ShipCustomShipInfoData(0,CurInfo(),1) == 1)
+                            02 ^{
+                                01=ShipSpecialBonuses(ship,bonSpeed,ShipSpecialBonuses(ship,bonSpeed) - 185);
+                                02=ShipSpecialBonuses(ship,bonMissileSpeed,ShipSpecialBonuses(ship,bonMissileSpeed) - 275);
+                            }
+                            03=if(ShipCustomShipInfoData(0,CurInfo(),1) == 2)
+                            04 ^{
+                                01=ShipSpecialBonuses(ship,bonDroid,ShipSpecialBonuses(ship,bonDroid) - 7);
+                                02=ShipSpecialBonuses(ship,bonDef,ShipSpecialBonuses(ship,bonDef) - 3);
+                                03=ShipSpecialBonuses(ship,bonHook,ShipSpecialBonuses(ship,bonHook) - 15);
+                                04=ShipSpecialBonuses(ship,bonHookRadius,ShipSpecialBonuses(ship,bonHookRadius) - 25);
+                            }
+                            05=if(ShipCustomShipInfoData(0,CurInfo(),1) == 3)
+                            06 ^{
+                                01=ShipSpecialBonuses(ship,bonScan,ShipSpecialBonuses(ship,bonScan) - 7);
+                                02=ShipSpecialBonuses(ship,bonRadar,ShipSpecialBonuses(ship,bonRadar) - 850);
+                            }
+                            07=if(ShipCustomShipInfoData(0,CurInfo(),1) == 4)
+                            08 ^{
+                                01=ShipSpecialBonuses(ship,bonWEnergy,ShipSpecialBonuses(ship,bonWEnergy) - 3);
+                                02=ShipSpecialBonuses(ship,bonWSplinter,ShipSpecialBonuses(ship,bonWSplinter) - 4);
+                                03=ShipSpecialBonuses(ship,bonWMissile,ShipSpecialBonuses(ship,bonWMissile) - 5);
+                                04=ShipSpecialBonuses(ship,bonWRadius,ShipSpecialBonuses(ship,bonWRadius) - 15);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnReEnteringForm,t_OnLeavingForm
+                OnActStepTypes=0
+            }
+        }
+    }
+}
+Script ^{
+    Cat_Arts ^{
+        0=Знаешь, к чёрту всех этих доминаторов - выходи за меня!
+        1=Это... И есть - счастливый конец?..
+        2=Главное в жизни - оказаться в нужном месте, в нужное время. Вот и вы оказались так, и ваше предложение было не только рассмотрено, но и одобрено. Зачем плодить жесткокость, когда можно творить и созидать? Премиальных вашей избранницы и долгов перед вами за выполнение правительственных заданий вполне хватило на небольшой участок на одном из тыловых аграрных миров Коалиции.
+    }
+}

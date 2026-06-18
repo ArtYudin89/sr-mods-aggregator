@@ -1,0 +1,182 @@
+MicroModuls ^{
+    Cat_StationSuperintendent_StarForse ^{
+        Cost=175
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Звёздная сила<clrEnd>
+        ExText=<color=248,252,248>Внутренняя архитектура корпуса станции многократно улучшена для усиления боевых аспектов корабельных систем</color>
+        ExText=Сила орудий: <clr>+45<clrEnd>
+        ExText=Дальнобойность орудий: <clr>+100<clrEnd>
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Size=125
+        Special=1
+        bonSlotDef=10
+        bonSlotDroid=10
+        bonSlotWeapon=10
+        bonWEnergy=45
+        bonWMissile=45
+        bonWRadius=100
+        bonWSplinter=45
+    }
+    Cat_StationSuperintendent_Stronghold ^{
+        Cost=300
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Цитадель<clrEnd>
+        ExText=<color=248,252,248>Внутренняя архитектура корпуса станции многократно улучшена для усиления защитных аспектов корабельных систем</color>
+        ExText=Размер корпуса: <clr>-50<clrEnd>%
+        ExText=Восприимчимость корпуса: <clr>-50<clrEnd>%
+        ExText=Генератор поля: <clr>+30<clrEnd>%
+        ExText=Ремонтный дроид: <clr>+100<clrEnd>
+        ExText=Дальнобойность орудий: <clr>+250<clrEnd>
+        Fragility=50
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Size=50
+        Special=1
+        bonDef=30
+        bonDroid=100
+        bonSlotDef=10
+        bonSlotDroid=10
+        bonSlotWeapon=4
+        bonWRadius=250
+    }
+    Cat_StationSuperintendent_Structure ^{
+        Cost=125
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Структурное расширение<clrEnd>
+        ExText=<color=248,252,248>Внутренняя архитектура корпуса станции многократно увеличена и расширена</color>
+        ExText=<clr>Открывает все слоты<clrEnd>
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        Size=175
+        Special=1
+        bonSlotArt=16
+        bonSlotDef=10
+        bonSlotDroid=10
+        bonSlotForsage=10
+        bonSlotHook=10
+        bonSlotRadar=10
+        bonSlotScaner=10
+        bonSlotWeapon=10
+    }
+}
+Script ^{
+    Cat_StationSuperintendent ^{
+        0=ДК
+        1=Б
+        10=Построить медицинский центр
+        11=Построить бизнес-центр
+        12=Построить научную базу
+        13=Построить центр рейнджеров
+        14=Построить военную базу
+        15=Выбранная система: <0><br>Стоимость постройки: <1> cr.<br><br><2>
+        16=При постройке станции может применяться один из наших уникальных концептов строительства. Приводим список наличных:<br>================<br><0><br>Стоимость: <1> cr.<br><br><2><br>Стоимость: <3> cr.<br><br><4><br>Стоимость: <5> cr.<br>================
+        17=В другой раз
+        18=Заказать постройку станции
+        19=Нет, мне ничего не надо
+        2=Строитель
+        20=Хочу установить улучшение "Звёздная сила"
+        21=Хочу установить улучшение "Структурное расширение"
+        22=Хочу установить улучшение "Цитадель"
+        23=Система захвачена пиратами, часть станций построить невозможно!
+        24=Система захвачена, постройка невозможна!
+        25=В системе слишком много станций! Постройка невозможна!
+        26= (Вы здесь)
+        27=Построить технологический центр
+        28=Нет, спасибо
+        3=Проект Станционный Смотритель
+        4=Приветствуем вас на сайте инициативы "Станционный смотритель".<br><br>В Галактике в последнее время слишком сильно повреждена инфраструктура ввиду продолжающейся войны, в первую очередь - система станций.<br><br>Мы же собираем пожертвования для оплаты работы нашей группы строителей, которая готова в короткие сроки обустроить любую космическую станцию в рамках актов, изданных <clr>Галактическим Советом<clrEnd>
+        5=Приветствуем вас на сайте инициативы "Станционный смотритель".<br><br>В Галактике в последнее время слишком сильно повреждена инфраструктура ввиду продолжающейся войны, в первую очередь - система станций.<br><br>Мы же собираем пожертвования для оплаты работы нашей группы строителей, которая готова в короткие сроки обустроить любую космическую станцию в рамках понятий, согласованных с <clr>Верховным Бароном<clrEnd>
+        6=Выберите сектор постройки
+        7=Выбранный сектор: <0><br><br>Выберите систему:
+        8=Построить доминион
+        9=Построить пиратскую базу
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            Builder ^{
+                Description=NoShow
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword ship = TranclucatorData(ScriptItemActShip(),'Proprietor');
+                    02=ShipDestroy(ship);
+                }
+                OnActCodeTypes=t_OnDeath
+            }
+            Cat_SAS_Build ^{
+                Description=Инфошка процесса постройки станцеи
+                Icon=1
+                Name=Строительство
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnStep))
+                    02 ^{
+                        01=if(ShipCustomShipInfoData(0,CurInfo(),1) <= 0)
+                        02 ^{
+                            01=NoLanding(ScriptItemActShip(),0);
+                        }
+                        03=ShipCustomShipInfoData(0,CurInfo(),1,ShipCustomShipInfoData(0,CurInfo(),1)-1);
+                        04=if(ShipCustomShipInfoData(0,CurInfo(),1) == 10) RunFunctionFromScript('Cat_StationSuperintendent','SpawnBuilder',ScriptItemActShip());
+                        05=else if(ShipCustomShipInfoData(0,CurInfo(),1) == 20) RunFunctionFromScript('Cat_StationSuperintendent','SpawnBuilder',ScriptItemActShip());
+                    }
+                    03=else
+                    04 ^{
+                        01=dword ship = ScriptItemActObject1();
+                        02=if(ObjectType(ship) == 4)
+                        03 ^{
+                            01=if(!IsPlayer(ship) && ShipTypeN(ship) != t_Ranger) exit;
+                            02=ChangeGlobalRelationsPlanets(ship,0,3,5,159);
+                            02=ChangeGlobalRelationsPlanets(ship,ShipStar(ship),3,25,159);
+                        }
+                        04=else
+                        05 ^{
+                            01=if(ObjectType(ship) == 7)
+                            02 ^{
+                                01=if(MissileOwner(ship))
+                                02 ^{
+                                    01=ship = MissileOwner(ship);
+                                    02=if(!IsPlayer(ship) && ShipTypeN(ship) != t_Ranger) exit;
+                                    03=ChangeGlobalRelationsPlanets(ship,0,3,5,159);
+                                    04=ChangeGlobalRelationsPlanets(ship,ShipStar(ship),3,25,159);
+                                }
+                            }
+                            03=else
+                            04 ^{
+                                01=if(ObjectType(ship) == 6)
+                                02 ^{
+                                    01=ship = ScriptItemActObject2();
+                                    02=if(ObjectType(ship) == 4)
+                                    03 ^{
+                                        01=if(!IsPlayer(ship) && ShipTypeN(ship) != t_Ranger) exit;
+                                        02=ChangeGlobalRelationsPlanets(ship,0,3,5,159);
+                                        03=ChangeGlobalRelationsPlanets(ship,ShipStar(ship),3,25,159);
+                                    }
+                                    04=else if(ObjectType(ship) == 7)
+                                    05 ^{
+                                        01=if(MissileOwner(ship))
+                                        02 ^{
+                                            01=ship = MissileOwner(ship);
+                                            02=if(!IsPlayer(ship) && ShipTypeN(ship) != t_Ranger) exit;
+                                            03=ChangeGlobalRelationsPlanets(ship,0,3,5,159);
+                                            04=ChangeGlobalRelationsPlanets(ship,ShipStar(ship),3,25,159);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnTakingDamage
+                OnActStepTypes=0
+            }
+        }
+    }
+}

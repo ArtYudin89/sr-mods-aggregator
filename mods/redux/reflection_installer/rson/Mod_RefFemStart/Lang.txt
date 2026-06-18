@@ -1,0 +1,49 @@
+Script ^{
+    Mod_RefFemStart ^{
+        0=Хотелось бы по-особенному улучшить свой корпус
+        1=Мы можем улучшить вас корпус спецагента до следующего уровня. Услуга обойдётся вам в каких-то
+        2=К сожалению, нам нечего сегодня вам предложить
+        3=О, корпус спецагента!<br>Да-да, знаем про такие, конечно. Ну и, безусловно, мы можем кое-что сделать с такими корпусами - уникальное!<br><br><0>
+        4=Отлично!<br>Техники уже выполнили все работы согласно контракту, так что можете принимать обновлённый корабль.
+        5=Вернуться к выбору услуг
+        6=Я согласен, обновите-ка мне корпус!
+        7=Спасибо!
+    }
+}
+MicroModuls ^{
+    RefFemStart_Crutch ^{
+        Equipments=Hull
+        LockedAcryn=3
+        Name=RefFemStart_Crutch
+        NonSearchable=1
+        Priority=0
+        Special=1
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RefFemStart ^{
+                Description=Просто костыльфошка
+                Icon=0
+                Name=-
+                OnActCode ^{
+                    01=if(CurrentForm() == 'Ship')
+                    02 ^{
+                        01=str tstr;
+                        02=if(GalaxyTechLevel() < 2) tstr = '480';
+                        03=else if(GalaxyTechLevel() < 4) tstr = '481';
+                        04=else if(GalaxyTechLevel() < 6) tstr = '482';
+                        05=else if(GalaxyTechLevel() < 8) tstr = '483';
+                        06=else if(GalaxyTechLevel() == 8) tstr = '489';
+                        07=ShipDeleteCustomShipInfo(0,CurInfo());
+                        08=HullSpecial(Player(),FindBonusByNameInCfg(tstr));
+                        09=ItemExtraSpecialsAddByType(ShipEqInSlot(Player(),t_Hull),'RefFemStart_Crutch');
+                        10=Chameleon(Player());
+                    }
+                }
+                OnActCodeTypes=t_OnEnteringForm
+            }
+        }
+    }
+}

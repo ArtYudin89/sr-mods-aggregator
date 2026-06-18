@@ -1,0 +1,759 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_UnionPart2",
+    "ScriptFileOut": "D:\\Mod_UnionPart2.scr",
+    "ScriptTextOut": "D:\\Mod_UnionPart2.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 22,
+                    "Msg": "Это тот корпус который я ищу! Держите <0> cr.",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_UnionPart2.30\"),\"<0>\",hull_cost))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 120,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 23,
+                    "Msg": "Погнал за товаром!",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_UnionPart2.16\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 24,
+                    "Msg": "Это же ведро с гайками!",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_UnionPart2.31\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 25,
+                    "Msg": "Сами летайте без орудий!",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_UnionPart2.18\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "Вы вскружили мою голову, вот ваши <0> cr.",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_UnionPart2.19\"),\"<0>\",hull_cost))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 600,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "Спасибо!",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_UnionPart2.20\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 720,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "Кто не рискует, тот не летает на суперкорпусах!",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_UnionPart2.21\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 840,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "Так точно!",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_UnionPart2.22\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 960,
+                    "Pos.y": 515,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 30,
+                    "Msg": "Пригласите меня когда закончите испытания.",
+                    "AMsg.Num": "8",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_UnionPart2.32\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 16,
+                    "Msg": "Есть одно предложение. Предлагаю тебе отличный корпус. Говорят на нём летал сам Рачехан. Но образцы корабля попали в руки к рейнджерам, которые, в свою очередь, сдали их на научную базу. В итоге те начали массовое производство этих корпусов, чтобы помочь рейнджерам. Система гиперпузырей на корабле у Рачехана была весьма уникальнаая, отчего корабль может прыгать настолько далеко, что после прыжка его можно даже не искать. Оформлен под названием <0>, потрясный корпус, сильно модифицирован и прокачан. Немаленькая вместимость <1> позволит провезти на планету партию консервированных малоков в собственном соку... ха-ха... мда, причем никто и не узнает что за фигню ты там везешь. Отдадим мы его тебе всего за <2> cr. Нечего даже думать, такие предложения бывают раз в жизни.",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_UnionPart2.40\"),\"<0>\",bonus_name,\"<1>\",hull_size,\"<2>\",hull_cost))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 17,
+                    "Msg": "Да точно, это тот корпус, который ты ищешь <PlayerFull>!\r\nТеперь ты стал настоящим контрабандистом. Благодаря таким как ты процветает черный рынок, а контрабанда выходит на новый уровень. Мои парни уже переписали корпус на твоё имя и доставили на твой склад. \r\nНе забудь закупиться, у нас тут много всякого хлама, как легального так и не очень.",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_UnionPart2.34\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 18,
+                    "Msg": "Вы ведь часто занимаетесь выполнением секретных правительственых заданий? Тогда мы готовы предложить вам элегантный корпус <0>. Он был изготовлен для максимально безопасной доставки высокопоставленных чиновников или сверхсекретных грузов в любую точку галактики. Корпус имеет усиленный блок вооружения, который повышает мощность всех орудий, оборудован новейшей установкой двигателя, усилителем захвата и мощным радарным блоком. Мы готовы предложить его вам всего за <1> cr, размер составит <2>. Соглашайтесь, <PlayerFull>.",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_UnionPart2.38\"),\"<0>\",bonus_name,\"<1>\",hull_cost,\"<2>\",hull_size))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 19,
+                    "Msg": "Отлично, <PlayerFull>!\r\nТеперь вы сможете более эффективно выполнять правительственные задания, не отвлекаясь на пытающихся сбить краску пиратов.",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_UnionPart2.12\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 20,
+                    "Msg": "Приветствую тебя, <PlayerFull>!\r\nУже довольно продолжительное время мы работаем над проектом уникального корпуса <0>. Его уникальность представлена особой конструкцией корпуса и встроенным ИИ, способным либо ускорять корпус, снижая его боевые возможности, либо наоборот замедлять, увеличивая боевой потенциал. Всё это достигается благодаря встроенному искусственному интеллекту, названному нами \"Сьюзи\". Пока корпус лишь проходит тестирование, вследствие чего доступны не все его возможности, среди которых его главная стелс-разведка. Если ты согласишься стать его первым летчиком испытателем и сейчас же примешься за его обкатку, мы отдадим его тебе, при условии внесения страхового взноса в размере <1> cr. Его размер составит <2>.\r\nСоглашайтесь! когда ещё вам выпадет шанс испытать столь уникальный корпус.",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_UnionPart2.41\"),\"<0>\",bonus_name,\"<1>\",hull_cost,\"<2>\",hull_size))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 445,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 21,
+                    "Msg": "Верно, <PlayerFull>! Так держать!\r\nКорпус уже доставлен на ваш склад. Мы уведомили ИИ \"Сьюзи\" о том, что вы теперь хозяин корпуса. Вперёд, к звездам!",
+                    "DMsg.Num": "5",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_UnionPart2.29\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "RBK_Dialog_PB",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 13
+                },
+                {
+                    "Name": "RBK_Dialog_BK",
+                    "Type": "TDialog",
+                    "Pos.x": 210,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 14
+                },
+                {
+                    "Name": "RBK_Dialog_RC",
+                    "Type": "TDialog",
+                    "Pos.x": 420,
+                    "Pos.y": 375,
+                    "Parent": -1,
+                    "#": 15
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 9
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 10,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(GetShipRuins(Player())>0) {",
+                        "  if(ShipType(GetShipRuins(Player()))=='PB') {",
+                        "    if(GetShipPirateRank(Player())>=6) {",
+                        "      bonus_name=CT(\"Script.Mod_UnionPart2.36\");",
+                        "      AddDialogInject('RBK_Dialog_PB',Format(CT(\"Script.Mod_UnionPart2.39\"),\"<0>\",bonus_name),CT(\"Script.Mod_UnionPart2.6\"),1);",
+                        "    }",
+                        "  }",
+                        "}",
+                        "if(GetShipRuins(Player())>0) {",
+                        "  if(ShipType(GetShipRuins(Player()))=='BK') {",
+                        "    if(ShipRank(Player())>=5) {",
+                        "      bonus_name=CT(\"Script.Mod_UnionPart2.35\");",
+                        "      AddDialogInject('RBK_Dialog_BK',Format(CT(\"Script.Mod_UnionPart2.4\"),\"<0>\",bonus_name),CT(\"Script.Mod_UnionPart2.3\"),1);",
+                        "    }",
+                        "  }",
+                        "}",
+                        "if(GetShipRuins(Player())>0) {",
+                        "  if(ShipType(GetShipRuins(Player()))=='RC') {",
+                        "    if(ShipRank(Player())>=4) {",
+                        "      if(PlayerDominatorStatistic(6)>=3) {",
+                        "        bonus_name=CT(\"Script.Mod_UnionPart2.2\");",
+                        "        AddDialogInject('RBK_Dialog_RC',Format(CT(\"Script.Mod_UnionPart2.1\"),\"<0>\",bonus_name),CT(\"Script.Mod_UnionPart2.0\"),1);",
+                        "      }",
+                        "    }",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 11,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 585
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "bonus_type=FindBonusByCustomTag('UnionRachehan');",
+                        "temp_hull=CreateHull(2,300+150*GalaxyTechLevel(),GalaxyTechLevel(),2);",
+                        "hull_size=ItemSize(temp_hull);",
+                        "SpecialToEquipment(bonus_type,temp_hull);",
+                        "ItemCost(temp_hull,ItemCost(temp_hull)/2);",
+                        "hull_cost=ItemCost(temp_hull);",
+                        "FreeItem(temp_hull);",
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 31,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "bonus_type=FindBonusByCustomTag('UnionNovaX3');",
+                        "temp_hull=CreateHull(2,120+110*GalaxyTechLevel(),GalaxyTechLevel(),2);",
+                        "hull_size=ItemSize(temp_hull);",
+                        "SpecialToEquipment(bonus_type,temp_hull);",
+                        "ItemCost(temp_hull,ItemCost(temp_hull)/2);",
+                        "hull_cost=ItemCost(temp_hull);",
+                        "FreeItem(temp_hull);",
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 32,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 190,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "bonus_type=FindBonusByCustomTag('NormandyRM');",
+                        "temp_hull=CreateHull(2,120+140*GalaxyTechLevel(),GalaxyTechLevel(),2);",
+                        "hull_size=ItemSize(temp_hull);",
+                        "SpecialToEquipment(bonus_type,temp_hull);",
+                        "ItemCost(temp_hull,ItemCost(temp_hull)/2);",
+                        "hull_cost=ItemCost(temp_hull);",
+                        "FreeItem(temp_hull);",
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 33,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 400,
+                    "Pos.y": 375
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=hull_cost) {",
+                        "  DAdd(0);",
+                        "}",
+                        "DAdd(2);"
+                    ],
+                    "#": 34,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Sound('Sound.Buy');",
+                        "hull_gift=CreateHull(2,300+150*GalaxyTechLevel(),GalaxyTechLevel(),2);",
+                        "SpecialToEquipment(bonus_type,hull_gift);",
+                        "ItemCost(hull_gift,ItemCost(hull_gift)/2);",
+                        "AddItemToStorage(GetShipRuins(Player()),hull_gift);",
+                        "ShipMoney(Player(),ShipMoney(Player())-hull_cost);",
+                        "DAdd(1);"
+                    ],
+                    "#": 35,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=hull_cost) {",
+                        "  DAdd(4);",
+                        "}",
+                        "DAdd(3);"
+                    ],
+                    "#": 36,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Sound('Sound.Buy');",
+                        "hull_gift=CreateHull(2,120+110*GalaxyTechLevel(),GalaxyTechLevel(),2);",
+                        "SpecialToEquipment(bonus_type,hull_gift);",
+                        "ItemCost(hull_gift,ItemCost(hull_gift)/2);",
+                        "AddItemToStorage(GetShipRuins(Player()),hull_gift);",
+                        "ShipMoney(Player(),ShipMoney(Player())-hull_cost);",
+                        "DAdd(5);"
+                    ],
+                    "#": 37,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=hull_cost) {",
+                        "  DAdd(6);",
+                        "}",
+                        "DAdd(8);"
+                    ],
+                    "#": 38,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Sound('Sound.Buy');",
+                        "hull_gift=CreateHull(2,80+140*GalaxyTechLevel(),GalaxyTechLevel(),2);",
+                        "SpecialToEquipment(bonus_type,hull_gift);",
+                        "ItemCost(hull_gift,ItemCost(hull_gift)/2);",
+                        "AddItemToStorage(GetShipRuins(Player()),hull_gift);",
+                        "ShipMoney(Player(),ShipMoney(Player())-hull_cost);",
+                        "DAdd(7);"
+                    ],
+                    "#": 39,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 445
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 40,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(3);",
+                        "exit;"
+                    ],
+                    "#": 41,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 515
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(5);",
+                        "exit;"
+                    ],
+                    "#": 42,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 515
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 8
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 7
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 115,
+                    "Parent": -1,
+                    "#": 6,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 12
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "hull_gift",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "hull_cost",
+                    "Pos.x": 150,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "bonus_name",
+                    "Pos.x": 300,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "hull_size",
+                    "Pos.x": 450,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "None",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "temp_hull",
+                    "Pos.x": 600,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "bonus_type",
+                    "Pos.x": 750,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 31,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 32,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 15,
+            "End": 33,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 34,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 17,
+            "End": 35,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 36,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 19,
+            "End": 37,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 20,
+            "End": 38,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 21,
+            "End": 39,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 22,
+            "End": 40,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 41,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 28,
+            "End": 42,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 7,
+            "End": 6,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 8,
+            "End": 6,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 9,
+            "End": 8,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 9,
+            "End": 12,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

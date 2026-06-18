@@ -1,0 +1,28 @@
+Script ^{
+    Mod_RefMoreBeautifulDrop ^{
+        0=Вернуть сброс к обычному состоянию
+        2=Как у NPC
+        3=Сделать сброс более плавным, как у NPC
+        4=Сброс предметов из трюма: <0>
+        5=Обычный
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RefDroppingInfo ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnDropItemFixed))
+                    02 ^{
+                        01=ScriptItemActParam(1);
+                        02=DropItemInSystem(ShipStar(Player()),ScriptItemActObject1(),CoordX(Player()),CoordY(Player()),CoordX(Player()) + Rnd(-80,80),CoordY(Player()) + Rnd(-80,80));
+                    }
+                }
+                OnActCodeTypes=t_OnDropItemFixed
+            }
+        }
+    }
+}

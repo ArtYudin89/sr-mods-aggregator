@@ -1,0 +1,2276 @@
+FormInfo ^{
+    br=<br>
+}
+Items ^{
+    Weapon ^{
+        Missile ^{
+            ArtiUniqueShipsPack_RailgunRound ^{
+                Name=Снаряд, выпущенный из реилгана
+                Text=Настолько быстр, что вы не должны были успеть это прочитать...
+            }
+        }
+    }
+}
+ActCodeBlocksList ^{
+    ArtiUniqueShipsPack_ArtimisHullActCode ^{
+        00=[t_OnPlayerChangeHull,t_OnMissileShot2,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnStep|5]
+        01=if(ScriptItemActionType(t_OnStep, 5))
+        02 ^{
+            01=dword cur_ship = ScriptItemActShip();
+            02=if(RailgunTargetSet)
+            03 ^{
+                01=dword star = ShipStar(cur_ship);
+                02=RailgunTargetSet = IdToShip(RailgunTargetSet);
+                03=if(RailgunTargetSet)
+                04 ^{
+                    01=if(star == ShipStar(RailgunTargetSet))
+                    02 ^{
+                        01=if(ShipInNormalSpace(cur_ship) && ShipInNormalSpace(RailgunTargetSet))
+                        02 ^{
+                            01=unknown RoundTo = ImportedFunction('UtilityFunctions', 'RoundTo');
+                            02=int shots_count = CT('Script.Mod_ArtiUniqueShipsPack.ArtimisParamsList.RailganShotCount');
+                            03=int step_dist = round(1.0 * CT('Script.Mod_ArtiUniqueShipsPack.ArtimisParamsList.RailganShotStep') / (1.0 * shots_count / 2));
+                            04=for(int i = 1; i <= shots_count; i = i + 1)
+                            05 ^{
+                                01=int angle = 0;
+                                02=if(i < shots_count || !(shots_count % 2))
+                                03 ^{
+                                    01=if(i % 2)
+                                    02 ^{
+                                        01=angle = Angle(RailgunTargetSet, cur_ship) - 90;
+                                        02=if(angle < 0) angle = angle + 360;
+                                    }
+                                    03=else
+                                    04 ^{
+                                        01=angle = Angle(RailgunTargetSet, cur_ship) + 90;
+                                        02=if(angle > 360) angle = angle - 360;
+                                    }
+                                    05=int old_coordX = CoordX(cur_ship);
+                                    06=int old_coordY = CoordY(cur_ship);
+                                    07=int old_angle = ShipAngle(cur_ship);
+                                    08=int radius = step_dist * RoundTo(1.0 * i / 2, 1, 1);
+                                    09=int coordX = round(sin(angle) * radius) + old_coordX;
+                                    10=int coordY = round(cos(angle) * radius) + old_coordY;
+                                    11=ShipSetCoords(cur_ship, coordX, coordY);
+                                    12=angle = Angle(RailgunTargetSet, cur_ship);
+                                    13=ShipAngle(cur_ship, angle);
+                                    14=dword missile = LaunchMissile(cur_ship, RailgunTargetSet, RailgunWeapon);
+                                    15=MissileLive(missile, 200);
+                                    16=MissileSpeed(missile, 4000);
+                                    17=ShipSetCoords(cur_ship, old_coordX, old_coordY);
+                                    18=ShipAngle(cur_ship, old_angle);
+                                }
+                                04=else
+                                05 ^{
+                                    01=old_angle = ShipAngle(cur_ship);
+                                    02=ShipAngle(cur_ship, Angle(RailgunTargetSet, cur_ship));
+                                    03=missile = LaunchMissile(cur_ship, RailgunTargetSet, RailgunWeapon);
+                                    04=MissileLive(missile, 200);
+                                    05=MissileSpeed(missile, 4000);
+                                    06=ShipAngle(cur_ship, old_angle);
+                                }
+                            }
+                            06=RailgunTargetSet = 0;
+                            07=RailgunShotReload = CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.ArtimisParamsList.RailgunShotReload') + 1;
+                        }
+                        03=else RailgunTargetSet = 0;
+                    }
+                    03=else RailgunTargetSet = 0;
+                }
+                05=else RailgunTargetSet = 0;
+            }
+        }
+        03=else if(ScriptItemActionType(t_OnMissileShot2))
+        04 ^{
+            01=missile = ScriptItemActObject2();
+            02=if(!missile) exit;
+            03=str acryn_name;
+            04=if(EqSpecial(missile)) acryn_name = BonusNumInCfg(EqSpecial(missile));
+            05=if(acryn_name != 'ArtiUniqueShipsPack_Railgun') exit;
+            06=star = MissileStar(missile);
+            07=dword target = ScriptItemActObject1();
+            08=int damage = CT('Script.Mod_ArtiUniqueShipsPack.ArtimisParamsList.RailganShotDamage');
+            09=if(ShipType(target) == 'KillerAsteroid') damage = 0;
+            10=if(ShipStar(Player()) == star && ShipInNormalSpace(Player())) ShowEffect('Weapon.NoGraph', 0, target, target, damage, 0, 0, 255, 0, 0);
+            11=if(HullHP(target) > damage)
+            12 ^{
+                01=HullHP(target, HullHP(target) - damage);
+                02=ShipSetBad(target, Player());
+            }
+            13=else
+            14 ^{
+                01=int targetInfo = ShipFindCustomShipInfoByType(target, 'LifeboatLaunchInfo');
+                02=if(~targetInfo)
+                03 ^{
+                    01=ShipCustomShipInfoTextData(target, targetInfo, 3, Player());
+                    02=DealDamageToShip(target, Player(), 1000000, 0);
+                }
+                04=else if(ShipFindCustomShipInfoByType(target, 'AbandonedShipInfo') == -1)
+                05 ^{
+                    01=DealDamageToShip(target, missile, 1000000, 0);
+                    02=if(HullHP(target) <= 0) ShipDestroy(target, 1);
+                }
+                06=OrderNone(target);
+            }
+            15=ShipAddCustomShipInfo(target, 'ArtiUniqueShipsPack_MissileDamageBlock');
+        }
+        05=else if(ScriptItemActionType(t_OnTakingDamage) || ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
+        06 ^{
+            01=if(ShieldRecharge == CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.ArtimisParamsList.ShieldRecharge') + 1)
+            02 ^{
+                01=ScriptItemActParam(0);
+            }
+        }
+        07=else if(ScriptItemActionType(t_OnPlayerChangeHull))
+        08 ^{
+            01=if(IsScriptActive('Mod_ExpImplants'))
+            02 ^{
+                01=bon = EqSpecial(ScriptItemActObject2());
+                02=if(~bon)
+                03 ^{
+                    01=if(BonusNumInCfg(bon) == 'ArtiUniqueShipsPack_ArtimisHull')
+                    02 ^{
+                        01=GlobalImplantsEnduranceBonus = GlobalImplantsEnduranceBonus + 1;
+                    }
+                }
+                04=int bon = EqSpecial(ScriptItemActObject1());
+                05=if(~bon)
+                06 ^{
+                    01=if(BonusNumInCfg(bon) == 'ArtiUniqueShipsPack_ArtimisHull')
+                    02 ^{
+                        01=GlobalImplantsEnduranceBonus = GlobalImplantsEnduranceBonus - 1;
+                    }
+                }
+            }
+            03=if(!findsubstr(BonusNumInCfg(HullSpecial(ScriptItemActObject1())), 'ArtiUniqueShipsPack_ArtimisHull'))
+            04 ^{
+                01=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'MainHullsModeSwitch', 1);
+                02=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'ArtimisButton', 1);
+            }
+            05=else
+            06 ^{
+                01=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'MainHullsModeSwitch', -1);
+                02=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'ArtimisButton', -1);
+            }
+        }
+    }
+    ArtiUniqueShipsPack_AscalonHullActCode ^{
+        00=[t_OnShowingShipInfo,t_OnEnteringForm,t_OnReEnteringForm,t_OnCheckingUsabilityGoods,t_OnAnotherGoods,t_OnPlayerChangeHull,t_OnStep|]
+        01=dword cur_item = CurItem();
+        02=if(ScriptItemActionType(t_OnCheckingUsabilityGoods))
+        03 ^{
+            01=if(ScriptItemActObject1() == t_Minerals)
+            02 ^{
+                01=int space_in_cradle = CT('Script.Mod_ArtiUniqueShipsPack.AscalonParamsList.MaxMaterialInCradle');
+                02=space_in_cradle = space_in_cradle - ScriptItemTextData(cur_item, 1);
+                03=if(space_in_cradle > 0) ScriptItemActParam(1);
+            }
+        }
+        04=else if(ScriptItemActionType(t_OnAnotherGoods))
+        05 ^{
+            01=if(ScriptItemActObject1() == t_Minerals)
+            02 ^{
+                01=space_in_cradle = CT('Script.Mod_ArtiUniqueShipsPack.AscalonParamsList.MaxMaterialInCradle');
+                02=space_in_cradle = space_in_cradle - ScriptItemTextData(cur_item, 1);
+                03=if(space_in_cradle > 0)
+                04 ^{
+                    01=mats_to_add = ScriptItemActObject2() - max(0, int(ScriptItemActObject2() - space_in_cradle));
+                    02=if(MessageBoxYesNo('Вы уверены, что хотите конвертировать <color=255,240,100>' + mats_to_add + '</color> ед. минералов в материал для колыбели нанитоидов?'))
+                    03 ^{
+                        01=ScriptItemActParam(mats_to_add);
+                        02=ScriptItemTextData(cur_item, 1, int(ScriptItemTextData(cur_item, 1)) + mats_to_add);
+                    }
+                }
+                05=else MessageBox('Колыбель нанитов заполнена, больше материала в неё не влезет');
+            }
+        }
+        06=else if(ScriptItemActionType(t_OnPlayerChangeHull))
+        07 ^{
+            01=if(!findsubstr(BonusNumInCfg(HullSpecial(ScriptItemActObject1())), 'ArtiUniqueShipsPack_AscalonHull'))
+            02 ^{
+                01=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'MainHullsModeSwitch', 1);
+                02=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'AscalonButton', 1);
+            }
+            03=else
+            04 ^{
+                01=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'MainHullsModeSwitch', -1);
+                02=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'AscalonButton', -1);
+            }
+            05=dword cur_ship = FormCurShip();
+            06=if(ScriptItemActObject1() == cur_item)
+            07 ^{
+                01=dword filler = CreateQuestItem('Usl_64');
+                02=ItemSize(filler, 0 - CT('Script.Mod_ArtiUniqueShipsPack.AscalonParamsList.HullVolume'));
+                03=AddItemToShip(cur_ship, filler);
+                04=NoDropItem(filler, 1);
+                05=ItemIsInUse(filler, cur_ship, 1);
+                06=ScriptItemData(cur_item, 2, Id(filler));
+                07=if(!ShipSpeed(cur_ship)) exit;
+                08=if(ShipHealthFactor(cur_ship, 17))
+                09 ^{
+                    01=ShipHealthFactor(cur_ship, 17, 0);
+                    02=Sound('Sound.DelMsg');
+                }
+                10=if(ArtefactTypeInUse(cur_ship, t_ArtefactSpeed))
+                11 ^{
+                    01=for(int i = 1; i <= 4; i = i + 1)
+                    02 ^{
+                        01=dword art = ShipEqInSlot(cur_ship, t_Artefact, i);
+                        02=if(ItemIsBroken(art)) continue;
+                        03=if(ItemType(art) != t_ArtefactSpeed) continue;
+                        04=ItemDurability(art, 0);
+                        05=Sound('Sound.ForsageOff');
+                    }
+                }
+                12=dword engine = ShipEqInSlot(cur_ship, t_Engine);
+                13=if(!engine) exit;
+                14=if(ItemIsBroken(engine)) exit;
+                15=if(!GetEquipmentStats(engine, 0)) exit;
+                16=int speed_limit = CT('Script.Mod_ArtiUniqueShipsPack.AscalonParamsList.HullSpeedLimit');
+                17=while(ShipSpeed(cur_ship) != speed_limit)
+                18 ^{
+                    01=int dif = abs(ShipSpeed(cur_ship) - speed_limit);
+                    02=if(dif > 99) dif = 100;
+                    03=else if(dif > 9) dif = 10;
+                    04=else dif = 1;
+                    05=if(ShipSpeed(cur_ship) > speed_limit)
+                    06 ^{
+                        01=ShipSpecialBonuses(cur_ship, bonSpeed, ShipSpecialBonuses(cur_ship, bonSpeed) - dif);
+                        02=ScriptItemData(cur_item, 1, ScriptItemData(cur_item, 1) + dif);
+                    }
+                    07=else
+                    08 ^{
+                        01=ShipSpecialBonuses(cur_ship, bonSpeed, ShipSpecialBonuses(cur_ship, bonSpeed) + dif);
+                        02=ScriptItemData(cur_item, 1, ScriptItemData(cur_item, 1) - dif);
+                    }
+                    09=ShipCalcParam(cur_ship);
+                }
+            }
+            08=else
+            09 ^{
+                01=filler = IdToItem(ScriptItemData(cur_item, 2));
+                02=FreeItem(GetItemFromShip(cur_ship, filler));
+                03=ScriptItemData(cur_item, 2, 0);
+                04=ShipSpecialBonuses(cur_ship, bonSpeed, ShipSpecialBonuses(cur_ship, bonSpeed) + ScriptItemData(cur_item, 1));
+                05=ScriptItemData(cur_item, 1, 0);
+                06=ShipCalcParam(cur_ship);
+            }
+        }
+        08=else
+        09 ^{
+            01=dword ship_form = FormCurShip();
+            02=if(ship_form == Player() || !ship_form)
+            03 ^{
+                01=cur_ship = ScriptItemActShip();
+                02=if(!ShipSpeed(cur_ship)) exit;
+                03=engine = ShipEqInSlot(cur_ship, t_Engine);
+                04=if(!engine) exit;
+                05=if(ItemIsBroken(engine)) exit;
+                06=if(!GetEquipmentStats(engine, 0)) exit;
+                07=if(ShipHealthFactor(cur_ship, 17))
+                08 ^{
+                    01=ShipHealthFactor(cur_ship, 17, 0);
+                    02=Sound('Sound.DelMsg');
+                }
+                09=if(ScriptItemActionType(t_OnReEnteringForm))
+                10 ^{
+                    01=if(ArtefactTypeInUse(cur_ship, t_ArtefactSpeed))
+                    02 ^{
+                        01=for(i = 1; i <= 4; i = i + 1)
+                        02 ^{
+                            01=art = ShipEqInSlot(cur_ship, t_Artefact, i);
+                            02=if(ItemIsBroken(art)) continue;
+                            03=if(ItemType(art) != t_ArtefactSpeed) continue;
+                            04=ItemDurability(art, 0);
+                            05=Sound('Sound.ForsageOff');
+                        }
+                    }
+                }
+                11=speed_limit = CT('Script.Mod_ArtiUniqueShipsPack.AscalonParamsList.HullSpeedLimit');
+                12=while(ShipSpeed(cur_ship) != speed_limit)
+                13 ^{
+                    01=dif = abs(ShipSpeed(cur_ship) - speed_limit);
+                    02=if(dif > 99) dif = 100;
+                    03=else if(dif > 9) dif = 10;
+                    04=else dif = 1;
+                    05=if(ShipSpeed(cur_ship) > speed_limit)
+                    06 ^{
+                        01=ShipSpecialBonuses(cur_ship, bonSpeed, ShipSpecialBonuses(cur_ship, bonSpeed) - dif);
+                        02=ScriptItemData(cur_item, 1, ScriptItemData(cur_item, 1) + dif);
+                    }
+                    07=else
+                    08 ^{
+                        01=ShipSpecialBonuses(cur_ship, bonSpeed, ShipSpecialBonuses(cur_ship, bonSpeed) + dif);
+                        02=ScriptItemData(cur_item, 1, ScriptItemData(cur_item, 1) - dif);
+                    }
+                    09=ShipCalcParam(cur_ship);
+                }
+                14=if(ScriptItemActionType(t_OnStep, 11))
+                15 ^{
+                    01=int to_launch = CT('Script.Mod_ArtiUniqueShipsPack.AscalonParamsList.MaterialPerNanitoidsLaunch');
+                    02=to_launch = to_launch - ScriptItemTextData(cur_item, 2);
+                    03=if(to_launch > 0)
+                    04 ^{
+                        01=if(int(ScriptItemTextData(cur_item, 1)) > 0)
+                        02 ^{
+                            01=int mats_to_add = to_launch - max(0, to_launch - min(int(ScriptItemTextData(cur_item, 1)), CT('Script.Mod_ArtiUniqueShipsPack.AscalonParamsList.MaxMaterialConvertPerDay')));
+                            02=ScriptItemTextData(cur_item, 1, int(ScriptItemTextData(cur_item, 1)) - mats_to_add);
+                            03=ScriptItemTextData(cur_item, 2, int(ScriptItemTextData(cur_item, 2)) + mats_to_add);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ArtiUniqueShipsPack_BulwarkHullAMLModActCode ^{
+        00=[t_OnPlayerChangeHull]
+        01=if(FindBonusByNameInCfg(HullSpecial(ScriptItemActObject1())) == 'ArtiUniqueShipsPack_BulwarkHull' && ShipOnSidePirateClan(Player()))
+        02 ^{
+            01=ShipAddCustomShipInfo(Player(), 'ArtiUniqueShipsPack_kPDTurretInfos', 'NoShow', 5, CT('Script.Mod_ArtiUniqueShipsPack.BulwarkParamsList.ModPDTurretRange'));
+            02=if((BulwarkWasBought & 8))
+            03 ^{
+                01=int add_shots = CT('Script.Mod_ArtiUniqueShipsPack.BulwarkParamsList.ModAddShotsSecondUpgrade');
+                02=ShipSpecialBonuses(Player(), bonAttacks, add_shots - 1);
+                03=ShipAddCustomShipInfo(Player(), 'EvoArmada_CapitalShipInfos', 'NoShow', add_shots - 1);
+            }
+            04=else if((BulwarkWasBought & 4))
+            05 ^{
+                01=add_shots = CT('Script.Mod_ArtiUniqueShipsPack.BulwarkParamsList.ModAddShotsFirstUpgrade');
+                02=ShipSpecialBonuses(Player(), bonAttacks, add_shots - 1);
+                03=ShipAddCustomShipInfo(Player(), 'EvoArmada_CapitalShipInfos', 'NoShow', add_shots - 1);
+            }
+        }
+        03=else
+        04 ^{
+            01=ShipDeleteCustomShipInfo(Player(), 'ArtiUniqueShipsPack_kPDTurretInfos');
+            02=if((BulwarkWasBought & 4) || (BulwarkWasBought & 8))
+            03 ^{
+                01=add_shots = ShipCustomShipInfoData(Player(), 'EvoArmada_CapitalShipInfos', 1);
+                02=ShipSpecialBonuses(Player(), bonAttacks, ShipSpecialBonuses(Player(), bonAttacks) - add_shots);
+                03=ShipDeleteCustomShipInfo(Player(), 'EvoArmada_CapitalShipInfos');
+            }
+        }
+    }
+    ArtiUniqueShipsPack_BulwarkHullExtraShotsActCode ^{
+        00=[t_OnPlayerChangeHull]
+        01=if(FindBonusByNameInCfg(HullSpecial(ScriptItemActObject1())) == 'ArtiUniqueShipsPack_BulwarkHull' && ShipOnSidePirateClan(Player()))
+        02 ^{
+            01=if((BulwarkWasBought & 8))
+            02 ^{
+                01=int add_shots = CT('Script.Mod_ArtiUniqueShipsPack.BulwarkParamsList.ModAddShotsSecondUpgrade');
+                02=ShipSpecialBonuses(Player(), bonAttacks, add_shots - 1);
+                03=ShipAddCustomShipInfo(Player(), 'EvoArmada_CapitalShipInfos', 'NoShow', add_shots - 1);
+            }
+            03=else if((BulwarkWasBought & 4))
+            04 ^{
+                01=add_shots = CT('Script.Mod_ArtiUniqueShipsPack.BulwarkParamsList.ModAddShotsFirstUpgrade');
+                02=ShipSpecialBonuses(Player(), bonAttacks, add_shots - 1);
+                03=ShipAddCustomShipInfo(Player(), 'EvoArmada_CapitalShipInfos', 'NoShow', add_shots - 1);
+            }
+        }
+        03=else
+        04 ^{
+            01=if((BulwarkWasBought & 4) || (BulwarkWasBought & 8))
+            02 ^{
+                01=add_shots = ShipCustomShipInfoData(Player(), 'EvoArmada_CapitalShipInfos', 1);
+                02=ShipSpecialBonuses(Player(), bonAttacks, ShipSpecialBonuses(Player(), bonAttacks) - add_shots);
+                03=ShipDeleteCustomShipInfo(Player(), 'EvoArmada_CapitalShipInfos');
+            }
+        }
+    }
+    ArtiUniqueShipsPack_FistOfBroggHullActCode ^{
+        00=[t_OnWeaponShot,t_OnPlayerChangeHull,t_OnWeaponShot2,t_OnMissileShot,t_OnMissileShot2,t_OnStep|11]
+        01=if(ScriptItemActionType(t_OnStep, 11))
+        02 ^{
+            01=dword cur_ship2 = ScriptItemActShip();
+            02=dword cur_item2 = ShipItems(cur_ship2, 0);
+            03=int timer2 = ScriptItemData(cur_item2, 1) - (0 + CT('Script.Mod_ArtiUniqueShipsPack.FistOfBroggParamsList.MaxDamageReload') - CT('Script.Mod_ArtiUniqueShipsPack.FistOfBroggParamsList.MaxDamageDuration'));
+            04=if(timer2 == (CurTurn() - 1))
+            05 ^{
+                01=ShipSpecialBonuses(cur_ship2, bonDef, ShipSpecialBonuses(cur_ship2, bonDef) + 10000);
+            }
+        }
+        03=else if(ScriptItemActionType(t_OnWeaponShot) || ScriptItemActionType(t_OnMissileShot))
+        04 ^{
+            01=dword cur_ship = ScriptItemActShip();
+            02=dword cur_item = ShipItems(cur_ship, 0);
+            03=int timer = ScriptItemData(cur_item, 1) - (0 + CT('Script.Mod_ArtiUniqueShipsPack.FistOfBroggParamsList.MaxDamageReload') - CT('Script.Mod_ArtiUniqueShipsPack.FistOfBroggParamsList.MaxDamageDuration'));
+            04=if(timer >= CurTurn())
+            05 ^{
+                01=dword gun = ScriptItemActObject2();
+                02=if(gun)
+                03 ^{
+                    01=int shot_type = ObjectType(ScriptItemActObject1());
+                    02=if(shot_type == 4 || shot_type == 5)
+                    03 ^{
+                        01=if(ObjectType(ScriptItemActObject2()) != 7)
+                        02 ^{
+                            01=if(!GetEquipmentStats(gun, 3)) ScriptItemActParam(GetEquipmentStats(gun, 0) + ShipSpecialBonuses(cur_ship, bonWEnergy, 'Total'));
+                            02=else ScriptItemActParam(GetEquipmentStats(gun, 0) + ShipSpecialBonuses(cur_ship, bonWSplinter, 'Total'));
+                        }
+                    }
+                    04=else if(shot_type == 7)
+                    05 ^{
+                        01=int max_damage = GetEquipmentStats(gun, 0) + ShipSpecialBonuses(cur_ship, bonWMissile, 'Total');
+                        02=MissileMinDamage(ScriptItemActObject1(), max_damage);
+                        03=MissileMaxDamage(ScriptItemActObject1(), max_damage);
+                    }
+                }
+            }
+        }
+        05=else if(ScriptItemActionType(t_OnWeaponShot2) || ScriptItemActionType(t_OnMissileShot2))
+        06 ^{
+            01=if(Rnd(1, 100) <= CT('Script.Mod_ArtiUniqueShipsPack.FistOfBroggParamsList.DefenceIgnoreChance'))
+            02 ^{
+                01=if(!(ScriptItemActParam() & 2048))
+                02 ^{
+                    01=ScriptItemActParam(ScriptItemActParam() + 2048);
+                }
+            }
+        }
+        07=else if(ScriptItemActionType(t_OnPlayerChangeHull))
+        08 ^{
+            01=if(!findsubstr(BonusNumInCfg(HullSpecial(ScriptItemActObject1())), 'ArtiUniqueShipsPack_FistOfBroggHull'))
+            02 ^{
+                01=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'MainHullsModeSwitch', 1);
+                02=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'FistOfBroggButton', 1);
+            }
+            03=else
+            04 ^{
+                01=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'MainHullsModeSwitch', -1);
+                02=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'FistOfBroggButton', -1);
+            }
+        }
+    }
+    ArtiUniqueShipsPack_FriendHullActCode ^{
+        00=[t_OnLeavingForm,t_OnPlayerChangeHull,t_OnMissileShot2,t_OnStep|0,4]
+        01=if(ScriptItemActionType(t_OnStep))
+        02 ^{
+            01=dword cur_ship = ScriptItemActShip();
+            02=if(!ScriptItemActParam())
+            03 ^{
+                01=dword cur_item = CurItem();
+                02=if(cur_ship == Player())
+                03 ^{
+                    01=if(!CoalitionDefeated())
+                    02 ^{
+                        01=if(ScriptItemData(cur_item, 3) <= CurTurn())
+                        02 ^{
+                            01=for(int i = 0; i < GalaxyStars(); i = i + 1)
+                            02 ^{
+                                01=dword cur_star = GalaxyStar(i);
+                                02=if(StarOwner(cur_star)) continue;
+                                03=for(int j = 0; j < StarPlanets(cur_star); j = j + 1)
+                                04 ^{
+                                    01=dword cur_planet = StarPlanets(cur_star, j);
+                                    02=if(PlanetOwner(cur_planet) == 6) continue;
+                                    03=RelationToRanger(cur_planet, Player(), 0);
+                                }
+                                05=for(j = 0; j < StarRuins(cur_star); j = j + 1)
+                                06 ^{
+                                    01=dword cur_ruin = StarRuins(cur_star, j);
+                                    02=if(ShipOwner(cur_ruin) > 4) continue;
+                                    03=RelationToRanger(cur_ruin, Player(), 0);
+                                }
+                            }
+                            03=ScriptItemData(cur_item, 3, CurTurn() + 10);
+                        }
+                    }
+                }
+                04=if(PirateSpawnIsActive)
+                05 ^{
+                    01=if(ShipInNormalSpace(cur_ship))
+                    02 ^{
+                        01=if(ShipOnSidePirateClan(cur_ship))
+                        02 ^{
+                            01=if(PirateSpawnTimer <= CurTurn())
+                            02 ^{
+                                01=int pirate_min_count = CT('Script.Mod_ArtiUniqueShipsPack.FriendParamsList.PirateSpawnMinCount');
+                                02=int pirate_max_count = CT('Script.Mod_ArtiUniqueShipsPack.FriendParamsList.PirateSpawnMaxCount');
+                                03=int pirates_count = 1;
+                                04=int h = Rnd(0,9);
+                                05=if(h > 2 || (h && !CurrentMods('ShusRangers\ShuPirates')) || (!h && !CurrentMods('Evolution\EvoDreadnought'))) pirates_count = 7;
+                                06=else if(h && CurrentMods('ShusRangers\ShuPirates')) pirates_count = 3;
+                                07=else if(!h && CurrentMods('Evolution\EvoDreadnought')) pirates_count = 1;
+                                08=cur_planet = StarPlanets(ShipStar(cur_ship), 0);
+                                09=unknown PortionInDiapason = ImportedFunction('UtilityFunctions', 'PortionInDiapason');
+                                10=int diff = PortionInDiapason(GalaxyDiffLevels(), 50, 500, 5 + (pirate_max_count - pirates_count), 1 +  (pirate_max_count - pirates_count));
+                                11=if(diff > 12) diff = 12;
+                                12=int summ = GetValueFromScript('Mod_ArtiUniqueShipsPack','TotalPBCount')+ GetValueFromScript('Mod_ArtiUniqueShipsPack','TotalCBCount') + diff;
+                                13=for(i = 1; i <= pirates_count; i = i + 1)
+                                14 ^{
+                                    01=if(pirates_count == 7) dword pirate = RunFunctionFromScript('Mod_ArtiUniqueShipsPack','SpawnFriendPirate',summ);
+                                    02=else if(pirates_count == 3) pirate = RunFunctionFromScript('Mod_ShuPirates','BuyThug',cur_planet);
+                                    03=else if(pirates_count == 1) pirate = RunFunctionFromScript('Mod_EvoDreadnought','SpawnCorvette',0,cur_planet,200 + 50 * summ);
+                                    04=ShipSpecialBonuses(pirate, bonFuel, ShipSpecialBonuses(pirate, bonFuel) - 10000);
+                                    05=ShipAddCustomShipInfo(pirate, 'ArtiUniqueShipsPack_JumpRestriction', 'NoShow', CurTurn() + 30);
+                                    06=TransferShip(pirate, cur_planet);
+                                    07=Chameleon(pirate);
+                                    08=OrderTakeOff(pirate);
+                                    09=ShipSetCoords(pirate, CoordX(cur_ship), CoordY(cur_ship));
+                                }
+                                15=PirateSpawnTimer = CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.FriendParamsList.PirateSpawnTimer');
+                            }
+                        }
+                    }
+                }
+            }
+            04=else
+            05 ^{
+                01=if(MissileCloakActivated == CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.FriendParamsList.MissileCloakRecharge') + 1)
+                02 ^{
+                    01=cur_star = ShipStar(cur_ship);
+                    02=dword missiles_count = CT('Script.Mod_ArtiUniqueShipsPack.FriendParamsList.MissileCloakCount');
+                    03=if(missiles_count)
+                    04 ^{
+                        01=if(missiles_count > 360) missiles_count = 360;
+                        02=int missiles_min_damage = CT('Script.Mod_ArtiUniqueShipsPack.FriendParamsList.MissileCloakMinDamage');
+                        03=int missiles_max_damage = CT('Script.Mod_ArtiUniqueShipsPack.FriendParamsList.MissileCloakMaxDamage');
+                        04=int missiles_speed = CT('Script.Mod_ArtiUniqueShipsPack.FriendParamsList.MissileCloakSpeed');
+                        05=int missiles_acryn = FindBonusByNameInCfg('ArtiUniqueShipsPack_FriendHullMissileCloak');
+                        06=dword missiles_fast_launch = CT('Script.Mod_ArtiUniqueShipsPack.FriendParamsList.MissileCloakFastLaunch');
+                        07=int missiles_angle_step = round(360.0 / missiles_count);
+                        08=int coordX = CoordX(cur_ship);
+                        09=int coordY = CoordY(cur_ship);
+                        10=for(i = 1; i <= missiles_count; i = i + 1)
+                        11 ^{
+                            01=int angle = ShipAngle(cur_ship) + missiles_angle_step * i;
+                            02=dword missile = SpawnMissile(cur_star, 0, coordX, coordY, angle, missiles_min_damage, missiles_max_damage, missiles_speed, t_Weapon18, -1, missiles_acryn);
+                            03=if(missiles_fast_launch) MissileLive(missile, 200);
+                            04=MissileOwner(missile, cur_ship);
+                        }
+                    }
+                }
+            }
+        }
+        03=else if(ScriptItemActionType(t_OnLeavingForm))
+        04 ^{
+            01=if(CurrentForm() == 'Ship')
+            02 ^{
+                01=if(~PlayerChameleonCurType())
+                02 ^{
+                    01=PlayerChameleonCurType(-1);
+                    02=Chameleon(Player());
+                    03=Ether(8, '', 'Программная несовместимость камуфляжного устройства с подсистемами корпуса привела к тому, что ваш камуфляж был <color=255,240,100>автоматически сброшен</color>.');
+                    04=Sound('Sound.NewMsg');
+                }
+            }
+        }
+        05=else if(ScriptItemActionType(t_OnMissileShot2))
+        06 ^{
+            01=if(ScriptItemActObject1() > 0)
+            02 ^{
+                01=ShipStatusEffect(ScriptItemActObject1(),2,Rnd(30,50));
+            }
+        }
+        07=else if(ScriptItemActionType(t_OnPlayerChangeHull))
+        08 ^{
+            01=if(!findsubstr(BonusNumInCfg(HullSpecial(ScriptItemActObject1())), 'ArtiUniqueShipsPack_FriendHull'))
+            02 ^{
+                01=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'MainHullsModeSwitch', 1);
+                02=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'FriendButton', 1);
+            }
+            03=else
+            04 ^{
+                01=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'MainHullsModeSwitch', -1);
+                02=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'FriendButton', -1);
+            }
+        }
+        09=else
+        10 ^{
+            01=if(ShipFindCustomShipInfoByType(Player(),'ArtiUniqueShipsPack_FriendHullDeflectorShield') == -1)
+            02 ^{
+                01=ShipAddCustomShipInfo(Player(), 'ArtiUniqueShipsPack_FriendHullDeflectorShield');
+            }
+        }
+    }
+    ArtiUniqueShipsPack_TornadoHullActCode ^{
+        00=[t_OnPlayerChangeHull,t_OnWeaponShot2,t_OnMissileShot2,t_OnLeavingForm,t_OnStep|0]
+        01=if(ScriptItemActionType(t_OnStep, 0))
+        02 ^{
+            01=dword cur_ship = ScriptItemActShip();
+            02=dword cur_item = CurItem();
+            03=if(ShipInNormalSpace(cur_ship))
+            04 ^{
+                01=if(TornadoTeleportActivated == CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.TornadoParamsList.TeleportRecharge') + 1)
+                02 ^{
+                    01=int angle = ShipAngle(cur_ship);
+                    02=int range = CT('Script.Mod_ArtiUniqueShipsPack.TornadoParamsList.TeleportRange');
+                    03=int new_X = CoordX(cur_ship) + sin(pi * angle / 180.0) * range;
+                    04=int new_Y = CoordY(cur_ship) - cos(pi * angle / 180.0) * range;
+                    05=ShipOrder(cur_ship,0);
+                    06=ShowStaticEffect('TornadoHullTeleportIn', CoordX(cur_ship), CoordY(cur_ship));
+                    07=ShowStaticEffect('TornadoHullTeleportOut', new_X, new_Y);
+                    08=ShipSetCoords(cur_ship, new_X, new_Y);
+                    09=StarMapCenterView(new_X, new_Y, 0);
+                }
+            }
+        }
+        03=else if(ScriptItemActionType(t_OnLeavingForm))
+        04 ^{
+            01=if(CurrentForm() == 'StarMap')
+            02 ^{
+                01=if(!GTornadoModeSelected)
+                02 ^{
+                    01=UICheckElement('StarMap', 'TornadoHullEnergyModeButton', 'IsDown', 0);
+                    02=UICheckElement('StarMap', 'TornadoHullSplinterModeButton', 'IsDown', 0);
+                    03=UICheckElement('StarMap', 'TornadoHullMissileModeButton', 'IsDown', 0);
+                }
+                03=else if(GTornadoModeSelected == 1)
+                04 ^{
+                    01=UICheckElement('StarMap', 'TornadoHullEnergyModeButton', 'IsDown', 1);
+                    02=UICheckElement('StarMap', 'TornadoHullSplinterModeButton', 'IsDown', 0);
+                    03=UICheckElement('StarMap', 'TornadoHullMissileModeButton', 'IsDown', 0);
+                }
+                05=else if(GTornadoModeSelected == 2)
+                06 ^{
+                    01=UICheckElement('StarMap', 'TornadoHullEnergyModeButton', 'IsDown', 0);
+                    02=UICheckElement('StarMap', 'TornadoHullSplinterModeButton', 'IsDown', 1);
+                    03=UICheckElement('StarMap', 'TornadoHullMissileModeButton', 'IsDown', 0);
+                }
+                07=else
+                08 ^{
+                    01=UICheckElement('StarMap', 'TornadoHullEnergyModeButton', 'IsDown', 0);
+                    02=UICheckElement('StarMap', 'TornadoHullSplinterModeButton', 'IsDown', 0);
+                    03=UICheckElement('StarMap', 'TornadoHullMissileModeButton', 'IsDown', 1);
+                }
+            }
+            03=else if(CurrentForm() == 'Ship')
+            04 ^{
+                01=if(~PlayerChameleonCurType())
+                02 ^{
+                    01=PlayerChameleonCurType(-1);
+                    02=Chameleon(Player());
+                    03=Ether(8, '', 'Программная несовместимость камуфляжного устройства с подсистемами корпуса привела к тому, что ваш камуфляж был <color=255,240,100>автоматически сброшен</color>.');
+                }
+            }
+        }
+        07=else if(ScriptItemActionType(t_OnWeaponShot2) || ScriptItemActionType(t_OnMissileShot2))
+        08 ^{
+            01=if(GTornadoModeSelected)
+            02 ^{
+                01=cur_ship = ScriptItemActShip();
+                02=if(ShipOnSidePirateClan(cur_ship))
+                03 ^{
+                    01=if(GetShipPirateRank(cur_ship) >= 7)
+                    02 ^{
+                        01=int damage_set = ScriptItemActParam();
+                        02=if(GTornadoModeSelected == 1)
+                        03 ^{
+                            01=if(!(damage_set & 1))
+                            02 ^{
+                                01=if((damage_set & 2)) damage_set = damage_set - 2 + 1;
+                                02=else damage_set = damage_set - 4 + 1;
+                            }
+                        }
+                        04=else if(GTornadoModeSelected == 2)
+                        05 ^{
+                            01=if(!(damage_set & 2))
+                            02 ^{
+                                01=if((damage_set & 1)) damage_set = damage_set - 1 + 2;
+                                02=else damage_set = damage_set - 4 + 2;
+                            }
+                        }
+                        06=else
+                        07 ^{
+                            01=if(!(damage_set & 4))
+                            02 ^{
+                                01=if((damage_set & 1)) damage_set = damage_set - 1 + 4;
+                                02=else damage_set = damage_set - 2 + 4;
+                            }
+                        }
+                        08=ScriptItemActParam(damage_set);
+                    }
+                }
+            }
+        }
+        09=else if(ScriptItemActionType(t_OnPlayerChangeHull))
+        10 ^{
+            01=if(!findsubstr(BonusNumInCfg(HullSpecial(ScriptItemActObject1())), 'ArtiUniqueShipsPack_TornadoHull'))
+            02 ^{
+                01=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'TornadoHullModeSwitchPanel', 1);
+                02=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'MainHullsModeSwitch', 1);
+                03=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'TornadoAbilityButton', 1);
+            }
+            03=else
+            04 ^{
+                01=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'TornadoHullModeSwitchPanel', -1);
+                02=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'MainHullsModeSwitch', -1);
+                03=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'TornadoAbilityButton', -1);
+            }
+        }
+    }
+    ArtiUniqueShipsPack_ZionHullActCode ^{
+        00=[t_OnWeaponShot2,t_OnCustomTargetting,t_OnPlayerChangeHull,t_OnStep|0,4,11]
+        01=if(ScriptItemActionType(t_OnStep, 4))
+        02 ^{
+            01=dword cur_ship = ScriptItemActShip();
+            02=dword cur_item = CurItem();
+            03=if(ScriptItemActParam() == 4)
+            04 ^{
+                01=if(ScriptItemData(cur_item, 2))
+                02 ^{
+                    01=dword star = ShipStar(cur_ship);
+                    02=dword target = IdToShip(ScriptItemData(cur_item, 2));
+                    03=if(target)
+                    04 ^{
+                        01=if(star == ShipStar(target))
+                        02 ^{
+                            01=if(ShipInNormalSpace(cur_ship) && ShipInNormalSpace(target))
+                            02 ^{
+                                01=int debuff = 0;
+                                02=while(ShipArmor(target))
+                                03 ^{
+                                    01=ShipSpecialBonuses(target, bonHull, ShipSpecialBonuses(target, bonHull) - 1);
+                                    02=debuff = debuff + 1;
+                                }
+                                04=ShipAddCustomShipInfo(target, 'ArtiUniqueShipsPack_AntimaterialDebuff', 'NoShow', debuff, Rnd(CT('Script.Mod_ArtiUniqueShipsPack.ZionParamsList.AntimaterialGunDurationMin'), CT('Script.Mod_ArtiUniqueShipsPack.ZionParamsList.AntimaterialGunDurationMax')));
+                                05=ShowEffect('Weapon.0', 300, target, cur_ship);
+                                06=ScriptItemData(cur_item, 2, 0);
+                            }
+                            03=else
+                            04 ^{
+                                01=ScriptItemData(cur_item, 1, 0);
+                                02=ScriptItemData(cur_item, 2, 0);
+                            }
+                        }
+                        03=else
+                        04 ^{
+                            01=ScriptItemData(cur_item, 1, 0);
+                            02=ScriptItemData(cur_item, 2, 0);
+                        }
+                    }
+                    05=else
+                    06 ^{
+                        01=ScriptItemData(cur_item, 1, 0);
+                        02=ScriptItemData(cur_item, 2, 0);
+                    }
+                }
+            }
+        }
+        03=else if(ScriptItemActionType(t_OnPlayerChangeHull))
+        04 ^{
+            01=if(!findsubstr(BonusNumInCfg(HullSpecial(ScriptItemActObject1())), 'ArtiUniqueShipsPack_ZionHull'))
+            02 ^{
+                01=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'MainHullsModeSwitch', -1);
+                02=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'ZionButton', -1);
+            }
+            03=else
+            04 ^{
+                01=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'MainHullsModeSwitch', -1);
+                02=if(GetMainData('Data.Script.Mod_ExpPanel')) InterfaceState('StarMap', 'ZionButton', -1);
+            }
+        }
+        05=else if(ScriptItemActionType(t_OnCustomTargetting) || ScriptItemActionType(t_OnCustomTargettingCheck))
+        06 ^{
+            01=cur_ship = ScriptItemActShip();
+            02=target = ScriptItemActObject1();
+            03=if(Dist(cur_ship,target) > int(CT('Script.Mod_ArtiUniqueShipsPack.ZionParamsList.AntimaterialGunShotRange'))) ScriptItemActParam(0);
+            04=else ScriptItemData(ShipEqInSlot(cur_ship,t_Hull),2,Id(target));
+        }
+        07=if(ZionWasBought < 0)
+        08 ^{
+            01=if(ScriptItemActionType(t_OnStep, 0) || ScriptItemActionType(t_OnStep, 11))
+            02 ^{
+                01=if(ZionWasBought == -1)
+                02 ^{
+                    01=cur_ship = ScriptItemActShip();
+                    02=if(ShipPilotRace(cur_ship) == Peleng)
+                    03 ^{
+                        01=if(ScriptItemActionType(t_OnStep, 0))
+                        02 ^{
+                            01=for(int i = 1; i <= ShipCntWeapon(cur_ship); i = i + 1)
+                            02 ^{
+                                01=dword gun = ShipWeapon(cur_ship, i);
+                                02=if(GetEquipmentStats(gun, 3) < 2) continue;
+                                03=ItemExtraSpecialsAddByType(gun, FindBonusByNameInCfg('ArtiUniqueShipsPack_ZionHullMissileBuff'));
+                            }
+                        }
+                        03=else
+                        04 ^{
+                            01=for(i = 1; i <= ShipCntWeapon(cur_ship); i = i + 1)
+                            02 ^{
+                                01=gun = ShipWeapon(cur_ship, i);
+                                02=if(GetEquipmentStats(gun, 3) < 2) continue;
+                                03=ItemExtraSpecialsDeleteByType(gun, FindBonusByNameInCfg('ArtiUniqueShipsPack_ZionHullMissileBuff'));
+                            }
+                        }
+                    }
+                }
+            }
+            03=else
+            04 ^{
+                01=if(ZionWasBought == -2)
+                02 ^{
+                    01=cur_ship = ScriptItemActShip();
+                    02=if(ShipPilotRace(cur_ship) == Peleng)
+                    03 ^{
+                        01=gun = ScriptItemActObject2();
+                        02=if(GetEquipmentStats(gun, 3) == 1)
+                        03 ^{
+                            01=if(!(ScriptItemActParam() & 128))
+                            02 ^{
+                                01=ScriptItemActParam(ScriptItemActParam() + 128);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+Help ^{
+    ButtonTornadoMissile=Активация противоракетной защиты
+    ButtonTornadoSplinter=Активация гашения осколков
+    ButtonTornadoEnergy=Активация поглощения энергии
+    ButtonAscalon=Активация "Всплеска нанитов"
+    ButtonArtimis=Управление рейлганом и щитами
+    ButtonZion=Управление антиматериальной пушкой
+    ButtonFistOfBrogg=Активация атакующего режима
+    ButtonTornadoAbility=Управление фазовым прыжком
+    ButtonFriend=Управление ангаром и ракетной завесой
+}
+UseCodeBlocksList ^{
+    ArtiUniqueShipsPack_ArtimisHullUseCode ^{
+        01=unknown action_arr = newarray(2);
+        02=if(RailgunTargetSet) action_arr[0] = 'Отменить выстрел из реилгана';
+        03=else action_arr[0] = 'Выстрел из реилгана';
+        04=if(ShieldRecharge == CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.ArtimisParamsList.ShieldRecharge') + 1) action_arr[1] = 'Деактивация защиты';
+        05=else action_arr[1] = 'Активация защиты';
+        06=int i = ListBox('Выберите действие:', action_arr);
+        07=if(~i)
+        08 ^{
+            01=if(!i)
+            02 ^{
+                01=if(ShipInNormalSpace(Player()))
+                02 ^{
+                    01=while(1)
+                    02 ^{
+                        01=if(CurTurn() >= RailgunShotReload)
+                        02 ^{
+                            01=if(!RailgunTargetSet)
+                            02 ^{
+                                01=dword star = ShipStar(Player());
+                                02=unknown ships_arr = newarray(1);
+                                03=unknown ships_names_arr = newarray(1);
+                                04=int check = 0;
+                                05=for(i = 0; i < StarShips(star); i = i + 1)
+                                06 ^{
+                                    01=dword ship = StarShips(star, i);
+                                    02=if(IsPlayer(ship)) continue;
+                                    03=if(!ShipInNormalSpace(ship)) continue;
+                                    04=int dist = Dist(Player(), ship);
+                                    05=if(dist > ShipRadarRange(Player())) continue;
+                                    06=if(dist > CT('Script.Mod_ArtiUniqueShipsPack.ArtimisParamsList.RailganShotRange')) continue;
+                                    07=if(!check)
+                                    08 ^{
+                                        01=ships_arr[0] = ship;
+                                        02=ships_names_arr[0] = Name(ship);
+                                        03=check = 1;
+                                    }
+                                    09=else
+                                    10 ^{
+                                        01=ArrayAdd(ships_arr, ship);
+                                        02=ArrayAdd(ships_names_arr, Name(ship));
+                                    }
+                                }
+                                07=if(check)
+                                08 ^{
+                                    01=i = ListBox('Укажите цель:', ships_names_arr);
+                                    02=if(~i)
+                                    03 ^{
+                                        01=RailgunTargetSet = Id(ships_arr[i]);
+                                        02=MessageBox('Цель установлена, запущен процесс конденсации импульса');
+                                    }
+                                }
+                                09=else MessageBox('В радиусе действия реилгана подходящих целей не обнаружено');
+                            }
+                            03=else
+                            04 ^{
+                                01=if(MessageBoxYesNo('Вы уверены, что хотите сбросить текущую цель?'))
+                                02 ^{
+                                    01=RailgunTargetSet = 0;
+                                    02=continue;
+                                }
+                            }
+                        }
+                        03=else MessageBox('В настоящий момент реилган перезаряжается, следующий выстрел можно будет произвести через <color=0,50,200>' + (RailgunShotReload - CurTurn()) + '</color> дн.');
+                        04=break;
+                    }
+                }
+                03=else MessageBox('Выстрел из реилгана может быть произведён только в открытом космосе');
+            }
+            03=else
+            04 ^{
+                01=if(CurTurn() >= ShieldRecharge)
+                02 ^{
+                    01=ShieldRecharge = CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.ArtimisParamsList.ShieldRecharge') + 1;
+                    02=MessageBox('Защитный экран активирован, режим максимальной безопасности симбионта запущен');
+                }
+                03=else if(ShieldRecharge == CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.ArtimisParamsList.ShieldRecharge') + 1)
+                04 ^{
+                    01=if(MessageBoxYesNo('Вы уверены, что хотите деактивировать защиту?'))
+                    02 ^{
+                        01=ShieldRecharge = 0;
+                    }
+                }
+                05=else MessageBox('Защитный экран перезаряжается, следующая активация будет возможна не ранее, чем через <color=0,50,200>' + (ShieldRecharge - CurTurn()) + '</color> дн.');
+            }
+        }
+    }
+    ArtiUniqueShipsPack_AscalonHullUseCode ^{
+        01=if(ShipInNormalSpace(Player()))
+        02 ^{
+            01=if(ShipPilotRace(Player()) == Fei)
+            02 ^{
+                01=int left_to_launch = int(CT('Script.Mod_ArtiUniqueShipsPack.AscalonParamsList.MaterialPerNanitoidsLaunch')) - ScriptItemTextData(CurItem(), 2);
+                02=if(left_to_launch <= 0)
+                03 ^{
+                    01=if(MessageBoxYesNo('Вы уверены, что хотите активировать <color=255,240,100>прилив нанитоидов</color> и полностью восстановить целостность вашего корпуса и корпусов ближайших союзников? Восстановление необходимого объёма нанитоидов потребует не менее <color=255,240,100>' + (int(CT('Script.Mod_ArtiUniqueShipsPack.AscalonParamsList.MaterialPerNanitoidsLaunch')) / CT('Script.Mod_ArtiUniqueShipsPack.AscalonParamsList.MaxMaterialConvertPerDay')) + '</color> дн. и затраты <color=255,240,100>' + CT('Script.Mod_ArtiUniqueShipsPack.AscalonParamsList.MaterialPerNanitoidsLaunch') + '</color> т. материала.'))
+                    02 ^{
+                        01=ScriptItemTextData(CurItem(), 2, 0);
+                        02=HullHP(Player(), ItemSize(ShipEqInSlot(Player(),t_Hull)));
+                        03=dword star = ShipStar(Player());
+                        04=int max_range = 0;
+                        05=for(int i = 0; i < StarShips(star); i = i + 1)
+                        06 ^{
+                            01=dword ship = StarShips(star, i);
+                            02=if(IsPlayer(ship)) continue;
+                            03=if(!ShipInNormalSpace(ship)) continue;
+                            04=if(!RelationToShip(ship, Player())) continue;
+                            05=if(Dist(Player(), ship) > ShipHookRange(Player())) continue;
+                            06=HullHP(ship, ItemSize(ShipItems(ship, 0)));
+                        }
+                        07=Sound('Sound.Repair');
+                        08=MessageBox('Целостность вашего корпуса и корпусов всех дружественных кораблей в радиусе действия <color=255,240,100>захвата</color> успешно восстановлена');
+                    }
+                }
+                04=else
+                05 ^{
+                    01=Sound('Sound.NoSize');
+                    02=MessageBox('<color=255,240,100>Прилив нанитоидов</color> ещё не готов к активации. Необходимо преобразовать ещё <color=255,240,100>' + left_to_launch + '</color> ед. материала из колыбели нанитоидов. Текущий запас материала в колыбели <color=255,240,100>' + int(ScriptItemTextData(CurItem(), 1)) + '</color> ед.');
+                }
+            }
+            03=else MessageBox('Только <color=255,240,100>фэяне</color> могут использовать <color=255,240,100>прилив нанитоидов</color>.');
+        }
+        03=else MessageBox('Использовать спец-способность корпуса можно только в открытом космосе.');
+    }
+    ArtiUniqueShipsPack_FistOfBroggHullUseCode ^{
+        01=if(ShipInNormalSpace(Player()))
+        02 ^{
+            01=if(ShipPilotRace(Player()) == Maloc)
+            02 ^{
+                01=dword cur_item = CurItem();
+                02=if(CurTurn() >= ScriptItemData(cur_item, 1))
+                03 ^{
+                    01=if(MessageBoxYesNo('Вы точно хотите активировать максимальный урон для всех орудий на <color=0,50,200>' + CT('Script.Mod_ArtiUniqueShipsPack.FistOfBroggParamsList.MaxDamageDuration') + '</color> дня?'))
+                    02 ^{
+                        01=ScriptItemData(cur_item, 1, CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.FistOfBroggParamsList.MaxDamageReload'));
+                        02=ShipSpecialBonuses(Player(), bonDef, ShipSpecialBonuses(Player(), bonDef) - 10000);
+                        03=Sound('Sound.Repair');
+                    }
+                }
+                04=else MessageBox('Способность перезаряжается и будет готова к повторному использованию только через <color=0,50,200>' + (ScriptItemData(cur_item, 1) - CurTurn()) + '</color> дн.');
+            }
+            03=else MessageBox('Ваша рожа слишком бледна, потрите её посильнее, чтобы вас распознала система доступа.');
+        }
+        03=else MessageBox('Использовать спец-способность корпуса возможно только в открытом космосе.');
+    }
+    ArtiUniqueShipsPack_FriendHullUseCode ^{
+        01=if(ShipOnSidePirateClan(Player()))
+        02 ^{
+            01=unknown action_arr = newarray(2);
+            02=if(PirateSpawnIsActive) action_arr[0] = 'Закрыть створки ангара';
+            03=else action_arr[0] = 'Открыть створки ангара';
+            04=if(TornadoTeleportActivated == CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.FriendParamsList.MissileCloakRecharge') + 1) action_arr[1] = 'Отменить запуск ракетной завесы';
+            05=else action_arr[1] = 'Выпустить ракетную завесу';
+            06=int i = ListBox('Выберите действие:', action_arr);
+            07=if(~i)
+            08 ^{
+                01=if(!i)
+                02 ^{
+                    01=if(PirateSpawnIsActive)
+                    02 ^{
+                        01=PirateSpawnIsActive = 0;
+                        02=ItemExtraSpecialsDeleteByType(CurItem(), FindBonusByNameInCfg('ArtiUniqueShipsPack_FriendHullPirateSpawnIsOn'));
+                        03=ItemExtraSpecialsAddByType(CurItem(), FindBonusByNameInCfg('ArtiUniqueShipsPack_FriendHullPirateSpawnIsOff'));
+                        04=MessageBox('Створки ангара <color=0,50,200>закрываются</color>, истребительные группы больше не будут вылетать.');
+                    }
+                    03=else
+                    04 ^{
+                        01=PirateSpawnIsActive = 1;
+                        02=ItemExtraSpecialsDeleteByType(CurItem(), FindBonusByNameInCfg('ArtiUniqueShipsPack_FriendHullPirateSpawnIsOff'));
+                        03=ItemExtraSpecialsAddByType(CurItem(), FindBonusByNameInCfg('ArtiUniqueShipsPack_FriendHullPirateSpawnIsOn'));
+                        04=MessageBox('Створки ангара <color=0,50,200>открываются</color>, скоро начнут вылетать истребительные группы.');
+                    }
+                }
+                03=else
+                04 ^{
+                    01=if(ShipInNormalSpace(Player()))
+                    02 ^{
+                        01=if(CurTurn() >= MissileCloakActivated)
+                        02 ^{
+                            01=MissileCloakActivated = CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.FriendParamsList.MissileCloakRecharge') + 1;
+                            02=MessageBox('Запущена подготовка к запуску <color=0,50,200>ракетной завесы</color>');
+                        }
+                        03=else if(MissileCloakActivated == CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.FriendParamsList.MissileCloakRecharge') + 1)
+                        04 ^{
+                            01=if(MessageBoxYesNo('Вы уверены, что хотите отменить запуск <color=0,50,200>ракетной завесы</color>?'))
+                            02 ^{
+                                01=MissileCloakActivated = 0;
+                            }
+                        }
+                        05=else MessageBox('Ракетные установки в настоящий момент перезаряжаются, следующий запуск завесы можно будет совершить не ранее, чем через <color=0,50,200>' + (MissileCloakActivated - CurTurn()) + '</color> дн.');
+                    }
+                    03=else MessageBox('Запуск ракетной завесы возможен только в открытом космосе');
+                }
+            }
+        }
+        03=else MessageBox('Авианосец работает только с кодами пиратского клана, ваши уже устарели');
+    }
+    ArtiUniqueShipsPack_TornadoHullUseCode ^{
+        01=if(ShipOnSidePirateClan(Player()))
+        02 ^{
+            01=unknown action_arr = newarray(2);
+            02=action_arr[0] = 'Изменить режим стрельбы';
+            03=if(TornadoTeleportActivated == CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.TornadoParamsList.TeleportRecharge') + 1) action_arr[1] = 'Отменить фазовый скачок';
+            04=else action_arr[1] = 'Совершить фазовый скачок';
+            05=int i = ListBox('Выберите действие:', action_arr);
+            06=if(~i)
+            07 ^{
+                01=if(!i)
+                02 ^{
+                    01=arraychange(action_arr, 4);
+                    02=action_arr[0] = 'Установить стандартный режим';
+                    03=action_arr[1] = 'Установить энергетический режим';
+                    04=action_arr[2] = 'Установить осколочный режим';
+                    05=action_arr[3] = 'Установить ракетный режим';
+                    06=i = ListBox('Выберите режим стрельбы:', action_arr);
+                    07=if(~i)
+                    08 ^{
+                        01=GTornadoModeSelected = i;
+                        02=int acryn_num = -1;
+                        03=if(!i)
+                        04 ^{
+                            01=acryn_num = FindBonusByNameInCfg('ArtiUniqueShipsPack_TornadoHullNormal');
+                            02=MessageBox('Стандартный режим стрельбы успешно установлен, все бортовые орудия теперь наносят свой базовый урон');
+                        }
+                        05=else if(i == 1)
+                        06 ^{
+                            01=acryn_num = FindBonusByNameInCfg('ArtiUniqueShipsPack_TornadoHullEnergy');
+                            02=MessageBox('Энергетический режим стрельбы успешно установлен, все бортовые орудия теперь наносят только энергетический урон');
+                        }
+                        07=else if(i == 2)
+                        08 ^{
+                            01=acryn_num = FindBonusByNameInCfg('ArtiUniqueShipsPack_TornadoHullSplinter');
+                            02=MessageBox('Осколочный режим стрельбы успешно установлен, все бортовые орудия теперь наносят только осколочный урон');
+                        }
+                        09=else
+                        10 ^{
+                            01=acryn_num = FindBonusByNameInCfg('ArtiUniqueShipsPack_TornadoHullMissile');
+                            02=MessageBox('Ракетный режим стрельбы успешно установлен, все бортовые орудия теперь наносят только ракетный урон');
+                        }
+                        11=SwitchToMirrorImage(Player(), acryn_num);
+                    }
+                }
+                03=else
+                04 ^{
+                    01=if(ShipInNormalSpace(Player()))
+                    02 ^{
+                        01=if(CurTurn() >= TornadoTeleportActivated)
+                        02 ^{
+                            01=TornadoTeleportActivated = CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.TornadoParamsList.TeleportRecharge') + 1;
+                            02=MessageBox('Запущена процедура подготовки к совершению фазового скачка');
+                        }
+                        03=else if(TornadoTeleportActivated == CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.TornadoParamsList.TeleportRecharge') + 1)
+                        04 ^{
+                            01=if(MessageBoxYesNo('Вы уверены, что хотите отменить совершение фазового скачка?'))
+                            02 ^{
+                                01=TornadoTeleportActivated = 0;
+                            }
+                        }
+                        05=else MessageBox('Генератор фазового сдвига перезаряжается, следующий скачок можно будет совершить не ранее, чем через <color=0,50,200>' + (TornadoTeleportActivated - CurTurn()) + '</color> дн.');
+                    }
+                    03=else MessageBox('Совершение фазового скачка возможно только в открытом космосе');
+                }
+            }
+        }
+        03=else MessageBox('Использовать возможности корабля могут лишь текущие члены пиратского клана.');
+    }
+    ArtiUniqueShipsPack_ZionHullUseCode ^{
+        01=if(ShipInNormalSpace(Player()))
+        02 ^{
+            01=if(ShipPilotRace(Player()) == Peleng)
+            02 ^{
+                01=dword cur_item = CurItem();
+                02=if(CurTurn() >= ScriptItemData(cur_item, 1))
+                03 ^{
+                    01=while(1)
+                    02 ^{
+                        01=dword star = ShipStar(Player());
+                        02=unknown ships_arr = newarray(1);
+                        03=unknown ships_names_arr = newarray(1);
+                        04=int check = 0;
+                        05=for(int i = 0; i < StarShips(star); i = i + 1)
+                        06 ^{
+                            01=dword ship = StarShips(star, i);
+                            02=if(IsPlayer(ship)) continue;
+                            03=if(!ShipInNormalSpace(ship)) continue;
+                            04=if(ShipOwner(ship) == Kling && !ShipSubType(ship)) continue;
+                            05=if(ShipType(ship) == 'Machpella') continue;
+                            06=int dist = Dist(Player(), ship);
+                            07=if(dist > ShipRadarRange(Player())) continue;
+                            08=if(dist > CT('Script.Mod_ArtiUniqueShipsPack.ZionParamsList.AntimaterialGunShotRange')) continue;
+                            09=if(!check)
+                            10 ^{
+                                01=ships_arr[0] = ship;
+                                02=ships_names_arr[0] = Name(ship);
+                                03=check = 1;
+                            }
+                            11=else
+                            12 ^{
+                                01=ArrayAdd(ships_arr, ship);
+                                02=ArrayAdd(ships_names_arr, Name(ship));
+                            }
+                        }
+                        07=if(check)
+                        08 ^{
+                            01=i = ListBox('Укажите цель:', ships_names_arr);
+                            02=if(~i)
+                            03 ^{
+                                01=ScriptItemData(cur_item, 1, CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.ZionParamsList.AntimaterialGunReload'));
+                                02=ScriptItemData(cur_item, 2, Id(ships_arr[i]));
+                                03=MessageBox('Цель установлена, запущена подготовка к выстрелу.');
+                            }
+                        }
+                        09=else MessageBox('В радиусе действия катапульты подходящих целей не обнаружено.');
+                        10=break;
+                    }
+                }
+                04=else if(CurTurn() + CT('Script.Mod_ArtiUniqueShipsPack.ZionParamsList.AntimaterialGunReload') == ScriptItemData(cur_item, 1))
+                05 ^{
+                    01=if(MessageBoxYesNo('Вы уверены, что хотите отменить залп из антиматериальной пушки?'))
+                    02 ^{
+                        01=ScriptItemData(cur_item, 1, 0);
+                        02=ScriptItemData(cur_item, 2, 0);
+                        03=MessageBox('Залп успешно отменён.');
+                    }
+                }
+                06=else MessageBox('Антиматериальная пушка перезаряжается и будет готова к следующему залпу только через <color=0,50,200>' + (ScriptItemData(cur_item, 1) - CurTurn()) + '</color> дн.');
+            }
+            03=else MessageBox('Только <color=255,240,100>пеленги</color> могут использовать антиматериальную пушку.');
+        }
+        03=else MessageBox('Активировать антиматериальную пушку можно только в открытом космосе.');
+    }
+}
+Script ^{
+    Mod_ArtiUniqueShipsPack ^{
+        0=<0>
+        2=<br>
+        Artimis ^{
+            ArtimisBuy=О да, готов. И он великолепен!
+            ArtimisBuy=Без лишней скромности замечу - это была наша лучшая работа за всю жизнь. Ребята немного увлеклись, правда, но на итоговой цене это почти не отразилось. Кстати, с вас <Cost> cr.
+            ArtimisBuyNo=Ну уж извините, вы сами согласились на наши условия! И, поверьте, по сравнению с его реальной стоимостью это вообще сущие копейки!
+            ArtimisBuyNo=Если всё же передумаете - возвращайтесь. Однако не слишком задерживайтесь, ведь в следующий раз инфляция может сделать цену ещё более высокой...
+            ArtimisBuyPlayerNo=Совсем с дуба рухнули!? Откуда ж я вам такие деньги возьму? А ещё говорили дешёво, дёшево!
+            ArtimisBuyPlayerYes=В таком случае вот ваши деньги, а теперь посмотрим, стоило ли оно того...
+            ArtimisBuyStart=Я получил ваше сообщение. Ну как, готов уже мой новый корпус?
+            ArtimisBuyYes=Тут скорее разумно было бы спросить, стоило ли большому взрыву создавать нашу вселенную? Подсказка - это была всепоглощающая неизбежность.
+            ArtimisBuyYes=Очень надеюсь, что <clr>"Артимида"<clrEnd> станет вашим любимым корпусом. Кстати да, название мы не придумали, а обнаружили среди чертежей. И не забудьте испробовать все его особые свойства. Мы все очень старались...
+            ArtimisHullReadyEther=Рейнджер <Player>, уведомляем вас, что заказанное вами <color=255,240,100>изделие</color> было успешно собрано и готово к выдаче. Ждём вас на технологическом центре <Base> (система <Star>) для обсуждения вопроса оплаты.
+            SphereFound=Так, дайте-ка сюда и подождите. Исследования не терпят спешки, знаете ли...
+            SphereFound=...
+            SphereFound=Да, определённо так и есть. Хм-м...
+            SphereFound=В общем, вот вам мой вердикт, <Player>. На этом устройстве записаны чертежи для пошагового воспроизведения межзвёздного корабля неизвестной конструкции. В связи с их редкостью чертежи эти, по сути, бесценны, однако вам, как нашедшему, мы предлагаем следующее: сферу мы у вас забираем без какой-либо денежной компенсации и далее будем использовать по своему усмотрению, но взамен построим вам то, что записано в базе данных этого устройства.
+            SphereFound=Естественно, полностью бесплатно предоставить вам подобный корабль мы не сможем. Как минимум, придется оплатить стоимость материалов и минимальную цену работ, однако будьте уверены - на галактическом рынке такое судно обошлось бы в миллиарды кредитов просто за право полетать на нём хотя бы пару недель! Вам же мы готовы предоставить уникальный шанс стать его полноправным владельцем. Что скажете, рейнджер? Подходят вам такие условия?
+            SphereFoundNo=Лучше одумайтесь, <Player>. Мы годы потратили на изучение подобных устройств, а к кому вы ещё пойдёте с этим? К научникам? Да им глубоко плевать на ксено-технологии, у них все силы сейчас уходят на войну! А может, вы хотите сдать эту сферу военным? Ну так, доложу вам, лучшее, что они смогут с ней придумать - это зарядят в пушку и шмальнут в сторону противника в надежде на возможную победу!
+            SphereFoundNo=Нет, <Player>, в настоящий момент никто, кроме нас не станет разбираться в этой "головоломке", да и уникальный корабль смог бы помочь вам куда больше, чем мешок стремительно дешевеющих кредитов.
+            SphereFoundPlayerNo=Ха! Решили себе всё самое интересное заграбастать? Фига с два! Я найду на неё покупателя с условиями и получше, вот увидите!
+            SphereFoundPlayerYes=Хм, ну что ж, пожалуй, соглашусь на ваши условия. Да и других вариантов у меня всё равно особо нет.
+            SphereFoundStart=Я нашёл странную сферу на одной планете, мне нужна ваша...
+            SphereFoundYes=Вы не пожалеете о своём решении! Возвращайтесь в наш центр через <clr>пару-тройку<clrEnd> месяцев. К тому времени наши учёные и механики уже смогут понять, что к чему, а вы получите в свои руку по-настоящему уникальную машину.
+        }
+        ArtimisParamsList ^{
+            HullArmor=5
+            HullCost=2500000
+            HullRace=None
+            HullSize=2042
+            PirateClanAssembly=0
+            RailganShotCount=2
+            RailganShotDamage=500
+            RailganShotRange=1000
+            RailganShotStep=14
+            RailgunShotReload=15
+            ShieldRecharge=30
+        }
+        Ascalon ^{
+            Buy=Всем необходимым требованиям, согласно имеющейся информации, вы уже соответствуете. Но есть одна загвоздка.
+            Buy=Этот корабль мы случайно нашли в космосе и однозначно определили, кому он принадлежал. Да, именно, вы не ослышались. Самого владельца, к сожалению, мы так и не нашли. Семья же отказалась от этой "многотонной горы металла", но представители галактической торговой сети совместно с нашими техниками обнаружили возможность восстановить корабль, но для этого понадобилось бы баснословное количество минералов, а потому проект погрузился в забвение. И теперь появляетесь вы с необходимым количеством тех самых минералов.
+            BuyNo=Что ж, очень жаль слышать, <Player>, однако навязать вам этот корабль силой мы, к сожалению, не можем. Всего доброго.
+            BuyOffer=Я смотрю, у вас на складе скопилось огромное количество <clr>полезных ископаемых<clrEnd>. Галактическая сеть бизнес-центров дала мне право предложить лучшему торговцу особый корабль, способный перевозить огромное количество товаров. Вы заинтересованы?
+            BuyPlayerNo=А знаете, пожалуй, я лучше приберегу свои минералы себе, а проект пусть и дальше прозябает в забвении...
+            BuyPlayerYes=И вы его мне просто отдадите?
+            BuyStart=Да, разумеется заинтересован. Что от меня требуется?
+            BuyYes=Увы все не так просто. Чтобы соблюсти все формальности, вам нужно подписать эти бумаги, а также дождаться полного восстановления обшивки корабля, используя все ваши запасы минералов. И не смотрите на меня так. Корабль будет как новый уже к концу дня, а я смогу рассказать побольше о его изобретателе и первом капитане.
+            BuyYes=...
+            BuyYes=Будучи единственным сыном в семье, Фелен Мен сразу разочаровал своих родителей - он тяготел к дипломатии и торговле. Все свое время после выпуска из академии в числе отличников он тратил на свою мечту - собственный торговый центр. Его великолепный ум позволил привлечь внимание торговой федерации и с их помощью, и помощью своих бывших однокурсников он, потратив всё своё немалое состояние, смог реализовать свои грёзы. Единственный в своем роде "корабль-торговая станция" увидел свет звёзд. На корабле практически отсутствовало вооружение, как и возможность проводить какие-либо серьёзные манёвры. Однако была заметна усилить обшивка, обустроены невиданных размеров ангары для торговых кораблей и установлены невероятно мощные реакторные установки. Многие ветераны войн готовы были уйти на пенсию на этот корабль, чтобы охранять его. Техники, не стесненные ограничениями в размерах и энергозатратах, установили мощнейшие радары и сканеры. Корабль получил настолько мощный захват, что мог бы хватать даже малые космические суда. Используя своё состояние, Фелен Мен скупал все доступные в галактике артефакты, чтобы усилить корпус корабля. Венцом его творения стала особая область на корабле рядом с трюмами, где, поглощая огромное количество минералов, в аналогичном объёме самовоспроизводились нанитоиды. При активации наномашин, они вырывались в ближайший космос и, управляемые специальными гравитонными модулями, восстанавливали корпуса ближайших союзных кораблей в течении дня.
+            BuyYes=...
+            BuyYes=О! Я так увлекся, рассказывая вам об этом удивительном корабле, что не заметил сообщения о его готовности. Надеюсь, вы не уснули? Корабль ждёт вас в ангаре! Вы можете взойти на мостик в любое время. Удачи!
+        }
+        AscalonParamsList ^{
+            HowMuchToHoldTradeRating=365
+            HullArmor=50
+            HullCost=15000000
+            HullRace=Fei
+            HullSize=3000
+            HullSpeedLimit=700
+            HullVolume=10000
+            MaterialPerNanitoidsLaunch=9000
+            MaxMaterialConvertPerDay=300
+            MaxMaterialInCradle=9000
+            MineralsOnStock=10000
+            PirateClanAssembly=0
+            TradeRatingToHold=90
+        }
+        BulwarkParamsList ^{
+            BulwarkBuy=Ох, это, можно сказать, реликт прошлой эпохи. Настоящий пиратский дредноут <color=0,50,200>"Оплот"</color>! Сейчас такие уже не делают.
+            BulwarkBuy=Выглядит он неказисто, зато по своей структуре это настоящая летающая крепость. К тому же, не исключена возможность дальнейшей модернизации, но о ней я расскажу только если заплатишь за корпус. К слову, обойдётся он тебе всего в <Cost> cr.
+            BulwarkBuyNo=Выкинуть бы тебя в шлюз без скафандра за такие слова! Не уважаешь классику, так хоть имей совесть держать язык за зубами!
+            BulwarkBuyOffer=Ты вроде парень свой, так что могу сказать по секрету... Есть у нас один крутой корпус, который мы можем доверить лишь настоящему "чёткому" пирату вроде тебя. Корпус недешёвый, но зато надёжный как таронская скала!
+            BulwarkBuyPlayerNo=ВСЕГО?! А-ХА-ХАХ-А-ХАХ! Что, решил мне старый хлам спихнуть по цене новенькой "Бугай-ТЫ"? Нет уж, ищи дурака!
+            BulwarkBuyPlayerYes=Честно сказать, само по себе предложение звучит так себе, но раз ты лично говоришь, что штука годная - надо брать. По рукам!
+            BulwarkBuyStart="Чёткий" пират - это я. Так что там у вас за <color=0,50,200>скалоподобный</color> корпус?
+            BulwarkBuyYes=А вот за это тебе уважуха, брат! За огневую мощь точно не пожалеешь. Ступай в ангар, там найдёшь свой грозный "карманный" дредноут.
+            BulwarkModsBuy=Можем сделать его ещё "оплотнее", разумеется! Правда, встанет тебе такая "прокачка" в копеечку.
+            BulwarkModsBuyAcryn=Ну и сразу хочу предупредить - дополнительный <color=0,50,200>модуль</color> выбирай с умом, потому как заменить его потом мы <color=0,50,200>не сможем</color>.
+            BulwarkModsBuyAcrynInstall=Установить модуль <Acryn> (<Cost> cr.)
+            BulwarkModsBuyNo=Ну, как знаешь тогда. Но если передумаешь - возвращайся. Второго такого корпуса, пригодного к подобной модернизации, у нас в Клане всё равно нет.
+            BulwarkModsBuyPlayerNo=Чёт дорого у вас тут всё, ну его на фиг!
+            BulwarkModsBuyShotsInstall=Повысить число ежедневных залпов до <Count> (<Cost> cr.)
+            BulwarkModsBuyYes=Отличный выбор! Так, ага... Получил сигнал от пацанов - всё уже установлено и готово к работе. Иди наслаждайся обновкой, брат.
+            BulwarkModsOffer=Смотрю, понравился тебе наш <color=0,50,200>"Оплот"</color>, а? Если хочешь, можем его ещё немного "прокачать", ну чтоб вот прям совсем ништяк был.
+            BulwarkModsStart=А что ещё в <color=0,50,200>моём "Оплоте"</color> вы могли бы такого "прокачать"?
+        }
+        BulwarkParamsList ^{
+            HullArmor=15
+            HullCost=20000000
+            HullRace=PirateClan
+            HullSize=2500
+            ModAcrynsCost=15000000
+            ModAddShotsFirstUpgrade=2
+            ModAddShotsFirstUpgradeCost=25000000
+            ModAddShotsSecondUpgrade=3
+            ModAddShotsSecondUpgradeCost=50000000
+            ModPDTurretRange=250
+            PirateClanAssembly=1
+        }
+        FistOfBrogg ^{
+            Buy=О! Это новейший боевой корабль, спроектированный малоком для малоков - <HullName>!
+            Buy=Всего <Cost> cr. и нанобролитовая гордость нашей расы появится в твоём ангаре уже сегодня! Подумай хорошенько, <Player>, ведь немногим пилотам до тебя выпадала такая честь!
+            BuyNo=Твоя правда, брат. Но ежели всё-таки голыми руками рвать врага подустанешь, то предложение всё ещё в силе.
+            BuyOffer=Эй, <Player>, в твоей красной широкой морде я отчётливо различаю очертания великого галактического воина. Так и хочется по ней врезать в знак глубокого уважения, однако вместо этого я хочу предложить тебе кое-что по-настоящему малокское и потому прекрасное...
+            BuyPlayerNo=Э, нет, братец. Настоящий малок рвёт вражеские истребители голыми гордыми руками, а если ты так не умеешь, то позор тебе до сорок второго колена!
+            BuyPlayerYes=Ну ладно - уговорил, вот тебе мои деньги
+            BuyStart=И что же такого дико "прекрасного" может предложить ваша пещерная военная технология?
+            BuyYes=Уважение за деньги не купишь, <Player>, а вот превосходную боевую машину запросто! Наши парни уже прибивают на место новейшую приборную панель из знаменитого таронского дуба. Ступай на склад - принимай корабль.
+        }
+        FistOfBroggParamsList ^{
+            DefenceIgnoreChance=20
+            HullArmor=8
+            HullCost=2000000
+            HullRace=Maloc
+            HullSize=1337
+            MaxDamageDuration=3
+            MaxDamageReload=30
+            PirateClanAssembly=0
+        }
+        Friend ^{
+            FriendBuy=Чего "а как"? Брать, говорю, будешь? Нам для него пилот-экспериментатор нужен, полевых испытаний ещё не проходил. Но только предупреждаю сразу - корпус этот почти что настоящий авианосец, телепортирует братков из других систем прямо к тебе в ангары. То есть ты, по сути, превращаешься в летающий "завод" по производству пиратов, хе-хе. Только прикинь как вояки охренеют!
+            FriendBuy=Но и стоить такая махина будет, прямо скажем, недёшево - <Cost> cr.
+            FriendBuyNo=Ну, как знаешь, "друг". Только учти, что другого шанса поводить такую штуку может уже и не быть.
+            FriendBuyOffer=Нам тут недавно ребята маякнули, появился один интересный корпус <color=0,50,200>"Друг"</color> на продажу. Ты тогда скажи, если заинтересовался.
+            FriendBuyPlayerNo=Чего, блин?!! Да за такие бабки я лучше себе сразу целую армию куплю! Всего наихорошего!
+            FriendBuyPlayerYes=Просто заткнись и бери мои деньги!!!
+            FriendBuyStart=Если <color=0,50,200>"Друг"</color> оказался вдруг, и не друг и не враг, а как?
+            FriendBuyYes=Ну, вот и ладушки! 
+            FriendBuyYes=<SplitLine>
+            FriendBuyYes=Эй, Лохматый, заводи генератор!
+            FriendBuyYes=<SplitLine>
+            FriendBuyYes=Сейчас, одну минуту. У нас этот корпус уже как бы собран был, но припрятан на планетке от греха подальше. Сейчас мы его на склад телепортируем и... А, ну всё, уже готово. Можешь идти радоваться покупке, хе-хе. Ждём теперь от тебя больших свершений, "друг".
+        }
+        FriendParamsList ^{
+            HullArmor=7
+            HullCost=10000000
+            HullRace=PirateClan
+            HullSize=2000
+            MissileCloakCount=360
+            MissileCloakFastLaunch=1
+            MissileCloakMaxDamage=1
+            MissileCloakMinDamage=1
+            MissileCloakRecharge=30
+            MissileCloakSpeed=1000
+            PirateClanAssembly=1
+            PirateSpawnMaxCount=6
+            PirateSpawnMinCount=4
+            PirateSpawnTimer=14
+        }
+        Tornado ^{
+            TornadoBuy=Что вы, что вы! Такого короткого рассказа наши специалисты не достойны! Мы зарезервировали вам каюту на неделю, но сможем продлить... Ха! Да шучу я! Рассказ не займёт много времени! 
+            TornadoBuy=Ну, так вот! Наш прототип: еще не "остывшая" разработка подпольных ученых с <color=0,50,200>Земли</color> и в последствии... к-хм, крайне добровольно переданная на доработку коалиционным экспертам - <color=0,50,200>"Торнадо"</color>. Изначально "Торнадо" зародилось в нелегальных лабораториях так называемого «Синдиката свободных умов» — коллектива гениальных, но не слишком желающих иметь дело с бюрократией учёных, чей интеллект без труда мог бы поспорить с аналитическими мощностями целого Далани. Их амбициозной целью было создание не просто нового корпуса, а технологии, которая полностью перевернула бы существующую систему ракетного и кинетического вооружения, что вызвало крайний интерес пиратского клана, и в частности, самого барона. Взаимодействие с Кланом подарило бы им финансовую независимость для дальнейших, ещё более смелых разработок. Именно в этот момент, когда сделка была почти заключена, на пороге их убежища появились вежливые представители «Отдела по Убедительному Сотрудничеству с Коалицией». Отряд ОПУСК опустил с небес на землю всю эту шоблу, пообещав не опускать им почки в замен на сотрудничество. Ребята из спецотряда, примерно в это же время сменивший специфику и переименованный в ныне печально известный «Отдел по Борьбе с Пиратами», в то время были людьми вежливыми, по лицу ногами били без замаха, так что господа синдикатовцы прониклись и от чистого сердца согласились отдать все наработки, и даже помочь с их внедрением в технологические системы Коалиции. Так уникальный корпус оказался у нас, а его создатели отправились на заслуженный отдых — консультировать инженеров Коалиции из комфортабельного санатория закрытого типа класса "Колыма".
+            TornadoBuy=К сожалению, «переквалификация» ОПУСК в ОБП, скажем так, прошла с некоторыми эксцессами бюрократического характера. Определённые технологии, пусть и в сыром виде, начали попадать в руки Клана - знаете о работе их упрощенной версии пузырей? Вот благодаря ОПУСК это и произошло -, финансовые потери, бардак в документах... Ужасная сложилась ситуация, в общем. Что касается нашего прототипа... Один из командиров ОПУСК ушёл в отпуск, получил хорошие премиальные, на радостях выжрал "ёрш" из втыкилы, янвелба и топливной жидкости, зашёл в ангар с "Торнадо", и там помер, вызвав биологическую тревогу! Гермоворота захлопнулись на карантин, автоматика дала приказ о эвакуации, в панике все забыли о том, что какой-то там корабль недавно прибыл на станцию, а когда всё устаканилось, и экипаж с сотрудниками вернулись, о корабле никто не вспомнил из-за полного отсутствия документов о нём! Мы узнали о его существовании на складе совсем уж недавно, так что вам чертовски повезло. 
+            TornadoBuy=Теперь о самом корабле. Сердцем системы является инновационный вихревой реионизатор выхлопа. В отличие от стандартных орудийных систем, в которых недожжённое реактивное вещество и химические газы, испускаемые при выстреле, просто выбрасываются в космос с компенсацией, на <color=0,50,200>"Торнадо"</color> происходит реионизация всего этого дела с последующим досылом обратно в оружейный ствол или пусковую шахту в комплексе вихревых магнитных полей. Если проще, вещество превращается в мощнейшую плазменную трубу, которая обволакивает снаряды, не только придавая им чудовищное ускорение, но и увеличивая пробивную способность за счёт оболочки из сверхгорячего вещества. Система отнюдь не проста в освоении, но полагаю, для рейнджера вашего калибра пол дня упражнений с настройщиком полевых вихрей не доставит трудностей. Так же стоит сказать, что из-за как крайне специфических систем управления, так и специализированного интерфейса, адаптировать корабль под управление кого-то, кроме <color=0,50,200>человека</color>, задача высшего уровня сложности.
+            TornadoBuy=Как видите, сопоставимых по уникальности разработок в области старого-доброго громко бахающего вооружения в настоящее просто не найти. Поэтому <Cost> cr. будет более чем справедливой суммой. Что скажете?
+            TornadoBuyNo=Не хотите реинвестировать в антидоминаторский отдел, который вас же и кормит? Что ж, нужно будет пересмотреть уровень неоценимости вашего вклада в наше дело.
+            TornadoBuyOffer=В связи с вашими достижениями мы готовы предложить вам корпус, которому по уникальности позавидует только что спущенный с верфи бертор - корабль <color=0,50,200>"Торнадо"</color>. Этот прототип создан лучшими человеческими умами, и лишь вам, за неоценимый вклад в защиту как от угроз внешних, так и внутренних, мы готовы предоставить практические результаты нашего инженерно-технического эксперимента!
+            TornadoBuyPlayerNo=Рекомендую использовать настройщик полевых вихрей для настройки ваших мозгов. Только последний кретин за такие деньги купит этот пыльный тостер!
+            TornadoBuyPlayerYes=Ладно, уговорили, пакуйте в чемодан этот ваш <color=0,50,200>"Торнадо"</color>.
+            TornadoBuyStart=Ладно, рассказывайте об этом эксперименте. Надеюсь, что это будет не получасовая лекция о гениях Коалиции.
+            TornadoBuyYes=Сию минуту, мы как раз закончили вырезание двери ангара.
+            TornadoBuyYes=...
+            TornadoBuyYes=Ну, вот и всё, корпус <clr>"Торнадо"<clrEnd> готов и снаряжен к вылету. Найти его вы сможете на нашем складе.
+        }
+        TornadoParamsList ^{
+            HullArmor=10
+            HullCost=15000000
+            HullRace=People
+            HullSize=1984
+            PirateClanAssembly=0
+            TeleportRange=2500
+            TeleportRecharge=15
+        }
+        Zion ^{
+            TargetOkay=Установлена цель для антиматериального орудия
+            TargetCentralControlUnit=Цель некорректна
+            TargetOutOfBounds=Цель за зоной наведения антиматериального орудия!
+            Buy=За новейший пеленгский бомбардировщик <HullName> с учётом скидки, как активному помощнику в разработке - всего <Cost> cr. По рукам?
+            BuyNo=Ну, если ещё передумаете - мы всегда здесь.
+            BuyOffer=Так, кстати, что насчёт нашего нового корпуса, <Player>? Он вас ещё интересует?
+            BuyPlayerNo=Да не, чёт не хочется
+            BuyPlayerYes=По рукам!
+            BuyStart=С удовольствием приобрету у вас новый корпус - почём?
+            BuyYes=Вот это правильно! Наслаждайтесь обновкой.
+            ModsBuy=На выбор мы могли бы установить в него одну из трёх уникальных модификаций:
+            ModsBuyNo=Ну, как знаете.
+            ModsBuyPlayerInstall=Установить <ModName> апгрейд (<Cost> cr.)
+            ModsBuyPlayerNo=Да не - сегодня я чёт не в духе
+            ModsBuyYes=Отличное решение, <Player> - вы точно не пожалеете!
+            ModsOffer=Кажется, вам пришёлся по душе наш <HullName>? А не хотите его улучшить?
+            ModsStart=А что вы могли бы улучшить в моём корпусе?
+            PlayerAskUnlock=А о каком таком исследовательском проекте речь?
+            PlayerMaterialsGive=Вот, возьмите <GunName> за <Cost> cr. (<clr>x1.5<clrEnd>)
+            PlayerMaterialsNone=Увы, подходящих вам материалов у меня с собой нет
+            Unlock=Прямо сейчас мы активно работаем над одним новым корпусом, но нам отчаянно не хватает материалов для завершения всех исследовательских работ.
+            Unlock=Для завершения нам необходимо собрать ещё <PirateGunsCount> пиратских и <DomiksGunsCount> доминаторских образцов <clr>осколочного<clrEnd> или <clr>ракетного<clrEnd> вооружения. Если у вас есть подходящие материалы, мы были бы очень признательны за их сдачу.
+            UnlockDone=Великолепно, <Player>! Мы получили все необходимые материалы для нашего исследования и теперь можем с гордостью предложить вам его плоды - новейший пеленгский бомбардировщик <HullName>!
+            UnlockNone=Ну лады :C
+            UnlockOffer=Я гляжу, вы уже бывалый воин, <Player>. Быть может, вам будет интересно поучаствовать в одном независимом исследовательском проекте?
+        }
+        ZionParamsList ^{
+            AntimaterialGunDurationMax=5
+            AntimaterialGunDurationMin=3
+            AntimaterialGunReload=30
+            AntimaterialGunShotRange=500
+            AntimaterialModCost=1500000
+            HullArmor=3
+            HullCost=1500000
+            HullRace=Peleng
+            HullSize=1453
+            MissileModCost=1000000
+            PirateClanAssembly=0
+            UnifiedModCost=1000000
+        }
+    }
+    Mod_ShuMercs ^{
+        PlayerHQShipyardDialog ^{
+            GreetingIntro=Блин, видать <clr>Грорбаб<clrEnd> опять на звукоизоляции сэкономил. Ну это ничего, босс, если он через пару деньков не залатает дыру в переборках, то залатывать придётся уже его череп. А, ты имел ввиду, откуда шум? Так из верфи нашей. Я разве тебе не говорил?
+            GreetingIntro=В общем, с гордостью представляю тебе нашу собственную судостроительную верфь! По размерам и мощностям она, конечно, не сравнится с планетарной, но на покрытие нашей скромной потребности в новых специализированных корпусах её производительности вполне хватит.
+            GreetingIntro=К слову, в самое ближайшее время планируется замена всех устаревших моделей корпусов на новый, уникальный в своём роде, корабль нашей собственной конструкции - <clr>"Звездный скат"<clrEnd>. Отличительной чертой нового корпуса станет повышенная манёвренность и длительное сохранение инерционной тяги, благодаря чему он сможет развивать впечатляющую скорость, на фэянскую голову превосходящую возможности всех прочих судов аналогичного класса. Кстати, опытный образец уже был доставлен к тебе на склад, так что можешь в любой момент самостоятельно опробовать эту птичку.
+            GreetingIntro=Ах да, и чуть не забыл! Если мы докажем свою ярую приверженность делу <clr>Коалиции<clrEnd> или <clr>пиратскому клану<clrEnd>, то сможем заполучить ограниченную лицензию на производство собственных <clr>транклюкаторов<clrEnd>. Удовольствие, конечно, будет не из дешёвых, но лишних роботов в хозяйстве не бывает, верно? Если, конечно, они не доминаторы, хе-хе.
+            GreetingIntro=Ещё до меня также доходили слухи об уникальных разработках обеих сторон. Если мы приложим усилия, можно будет попробовать выкупить лицензии на сверхсекретные прототипы и собрать их на нашей собственной верфи. Правда, сколько это будет стоить, я даже представить боюсь.
+        }
+    }
+    Mod_ShuMercsHQ ^{
+        193=<br>
+        195=<0>
+        PlayerHQShipyardProjects ^{
+            Coalition ^{
+                FistOfBroggHull ^{
+                    ConstructionDoneCode ^{
+                        01=PlayerMBHullsGiveAwaySet = PlayerMBHullsGiveAwaySet | 4;
+                    }
+                    ConstructionDoneMsg=<color=255,240,100>Донесение из штаба:</color>
+                    ConstructionDoneMsg=Мы закончили сборку <color=255,240,100>Малокского корабля "Кулак Брогга"</color>, босс. Он будет ожидать тебя на складе сразу по возвращении в штаб.
+                    Cost=-1
+                    CostCalc ^{
+                        01=int result_cost = CT('Script.Mod_ArtiUniqueShipsPack.FistOfBroggParamsList.HullCost');
+                    }
+                    Description=Проект: <clr>Малокский корабль "Кулак Брогга"<clrEnd>
+                    Description=Описание: Новейший малокский боевой корабль, имеющий шанс проигнорировать защиту цели, а также на короткий промежуток времени делающий урон орудий максимальным.
+                    Description=<clr><clrEnd>
+                    Description=Репутация у Коалиции: <RequiredReputation>
+                    Description=Стоимость: <Cost> cr.
+                    Description=Время производства: <ProductionTime> дн.
+                    ExcludingShips=Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.AscalonHull., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.ZionHull., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.TornadoHullNormal., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.FistOfBroggHull.
+                    LimitedProduction=1
+                    Name=Малокский корабль "Кулак Брогга"
+                    ProductionTime=90
+                    RequiredReputation=750
+                }
+                ZionHull ^{
+                    ConstructionDoneCode ^{
+                        01=PlayerMBHullsGiveAwaySet = PlayerMBHullsGiveAwaySet | 2;
+                    }
+                    ConstructionDoneMsg=<color=255,240,100>Донесение из штаба:</color>
+                    ConstructionDoneMsg=Мы закончили сборку <color=255,240,100>Бомбардировщика "Зион"</color>, босс. Он будет ожидать тебя на складе сразу по возвращении в штаб.
+                    Cost=-1
+                    CostCalc ^{
+                        01=int result_cost = CT('Script.Mod_ArtiUniqueShipsPack.ZionParamsList.HullCost');
+                    }
+                    Description=Проект: <clr>Бомбардировщик "Зион"<clrEnd>
+                    Description=Описание: Специально адаптированный для пеленгов - ракетонесущий корабль, предоставляющий возможность игнорировать броню врага в определённом радиусе.
+                    Description=<clr><clrEnd>
+                    Description=Репутация у Коалиции: <RequiredReputation>
+                    Description=Стоимость: <Cost> cr.
+                    Description=Время производства: <ProductionTime> дн.
+                    ExcludingShips=Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.AscalonHull., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.TornadoHullNormal., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.ZionHull., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.FistOfBroggHull.
+                    LimitedProduction=1
+                    Name=Бомбардировщик "Зион"
+                    ProductionTime=90
+                    RequiredReputation=750
+                }
+                AscalonHull ^{
+                    ConstructionDoneCode ^{
+                        01=PlayerMBHullsGiveAwaySet = PlayerMBHullsGiveAwaySet | 1;
+                    }
+                    ConstructionDoneMsg=<color=255,240,100>Донесение из штаба:</color>
+                    ConstructionDoneMsg=Мы закончили сборку <color=255,240,100>Торгового корабля "Аскалон"</color>, босс. Он будет ожидать тебя на складе сразу по возвращении в штаб.
+                    Cost=-1
+                    CostCalc ^{
+                        01=int result_cost = CT('Script.Mod_ArtiUniqueShipsPack.AscalonParamsList.HullCost');
+                    }
+                    Description=Проект: <clr>Торговый корабль "Аскалон"<clrEnd>
+                    Description=Описание: Уникальный фэянский торговый корабль, в основе принципов действия которого лежит мощный генератор антигравитации.
+                    Description=<clr><clrEnd>
+                    Description=Репутация у Коалиции: <RequiredReputation>
+                    Description=Стоимость: <Cost> cr.
+                    Description=Время производства: <ProductionTime> дн.
+                    ExcludingShips=Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.AscalonHull., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.TornadoHullNormal., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.ZionHull., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.FistOfBroggHull.
+                    LimitedProduction=1
+                    Name=Торговый корабль "Аскалон"
+                    ProductionTime=90
+                    RequiredReputation=750
+                }
+                TornadoHullNormal ^{
+                    ConstructionDoneCode ^{
+                        01=PlayerMBHullsGiveAwaySet = PlayerMBHullsGiveAwaySet | 8;
+                    }
+                    ConstructionDoneMsg=<color=255,240,100>Донесение из штаба:</color>
+                    ConstructionDoneMsg=Мы закончили сборку <color=255,240,100>Корпуса "Торнадо"</color>, босс. Он будет ожидать тебя на складе сразу по возвращении в штаб.
+                    Cost=-1
+                    CostCalc ^{
+                        01=int result_cost = CT('Script.Mod_ArtiUniqueShipsPack.TornadoParamsList.HullCost');
+                    }
+                    Description=Проект: <clr>Корпус "Торнадо"<clrEnd>
+                    Description=Описание: Уникальная человеческая разработка, имеющая адаптивный генератор субзащитного поля, работающий отдельно от основных защитных систем.
+                    Description=<clr><clrEnd>
+                    Description=Репутация у Коалиции: <RequiredReputation>
+                    Description=Стоимость: <Cost> cr.
+                    Description=Время производства: <ProductionTime> дн.
+                    ExcludingShips=Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.AscalonHull., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.ZionHull., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.Coalition.FistOfBroggHull.
+                    LimitedProduction=1
+                    Name=Корпус "Торнадо"
+                    ProductionTime=90
+                    RequiredReputation=750
+                }
+            }
+            PirateClan ^{
+                BulwarkHull ^{
+                    ConstructionDoneCode ^{
+                        01=PlayerMBHullsGiveAwaySet = PlayerMBHullsGiveAwaySet | 32;
+                    }
+                    ConstructionDoneMsg=<color=255,240,100>Донесение из штаба:</color>
+                    ConstructionDoneMsg=Мы закончили сборку <color=255,240,100>Дредноута "Оплот"</color>, босс. Он будет ожидать тебя на складе сразу по возвращении в штаб.
+                    Cost=-1
+                    CostCalc ^{
+                        01=int result_cost = CT('Script.Mod_ArtiUniqueShipsPack.BulwarkParamsList.HullCost');
+                    }
+                    Description=Проект: <clr>Дредноут "Оплот"<clrEnd>
+                    Description=Описание: Огромный, большой и неповоротливый. С кучей пушек на борту. Но если захочешь его прокачать - придётся обращаться к пиратам на доминион.
+                    Description=<clr><clrEnd>
+                    Description=Репутация у пиратов: <RequiredReputation>
+                    Description=Стоимость: <Cost> cr.
+                    Description=Время производства: <ProductionTime> дн.
+                    ExcludingShips=Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.PirateClan.FriendHull., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.PirateClan.TechnotronHull., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.PirateClan.BulwarkHull.
+                    LimitedProduction=1
+                    Name=Дредноут "Оплот"
+                    ProductionTime=90
+                    RequiredReputation=750
+                }
+                FriendHull ^{
+                    ConstructionDoneCode ^{
+                        01=PlayerMBHullsGiveAwaySet = PlayerMBHullsGiveAwaySet | 8;
+                    }
+                    ConstructionDoneMsg=<color=255,240,100>Донесение из штаба:</color>
+                    ConstructionDoneMsg=Мы закончили сборку <color=255,240,100>Авианосца "Друг"</color>, босс. Он будет ожидать тебя на складе сразу по возвращении в штаб.
+                    Cost=-1
+                    CostCalc ^{
+                        01=int result_cost = CT('Script.Mod_ArtiUniqueShipsPack.FriendParamsList.HullCost');
+                    }
+                    Description=Проект: <clr>Авианосец "Друг"<clrEnd>
+                    Description=Описание: Пиратский авианосец, способный выпускать пиратов и особый ракетный заслон (хотя и пираты в некотором роде тоже заслон, хе-хе).
+                    Description=<clr><clrEnd>
+                    Description=Репутация у пиратов: <RequiredReputation>
+                    Description=Стоимость: <Cost> cr.
+                    Description=Время производства: <ProductionTime> дн.
+                    ExcludingShips=Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.PirateClan.FriendHull., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.PirateClan.TechnotronHull., Script.Mod_ShuMercsHQ.PlayerHQShipyardProjects.PirateClan.BulwarkHull.
+                    LimitedProduction=1
+                    Name=Авианосец "Друг"
+                    ProductionTime=90
+                    RequiredReputation=750
+                }
+            }
+        }
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            ArtiUniqueShipsPack_AntimaterialDebuff ^{
+                Description=NoShow
+                Icon=1
+                Name=
+                OnActCode ^{
+                    01=dword ship = ScriptItemActShip();
+                    02=dword cur_info = CurInfo();
+                    03=ShipCustomShipInfoData(0, cur_info, 2, ShipCustomShipInfoData(0, cur_info, 2) - 1);
+                    04=if(ShipCustomShipInfoData(0, cur_info, 2) < 1)
+                    05 ^{
+                        01=ShipSpecialBonuses(ship, bonHull, ShipSpecialBonuses(ship, bonHull) + ShipCustomShipInfoData(0, cur_info, 1));
+                        02=ShipDeleteCustomShipInfo(ship, 'ArtiUniqueShipsPack_AntimaterialDebuff');
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
+                StatusEffect=Дематериализация брони
+            }
+            ArtiUniqueShipsPack_FriendHullDeflectorShield ^{
+                Description=Создаёт особое дефлекторное поле, частично отклоняющее любые волны и частицы, стремящиеся по направлению к обшивке. Обеспечивает кораблю стабильную <color=255,240,100>15%</color> защиту от внешнего урона любого типа.
+                Icon=502
+                Name=Бортовой дефлекторный щит
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnStep))
+                    02 ^{
+                        01=dword ship = ScriptItemActShip();
+                        02=if(~HullSpecial(ship))
+                        03 ^{
+                            01=if(HullSpecial(ship) == FindBonusByNameInCfg('FriendHull'))
+                            02 ^{
+                                01=int dab;
+                            }
+                            03=else ShipDeleteCustomShipInfo(0,CurInfo());
+                        }
+                        04=else ShipDeleteCustomShipInfo(0,CurInfo());
+                    }
+                    03=else ScriptItemActParam(round(0.85 * ScriptItemActParam()));
+                }
+                OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnStep
+                OnActStepTypes=0
+            }
+            ArtiUniqueShipsPack_JumpRestriction ^{
+                Description=NoShow
+                Icon=1
+                Name=Снимает с пиратов "запрет на прыжки" по истечении таймера (скрытая)
+                OnActCode ^{
+                    01=if(ShipCustomShipInfoData(0, CurInfo(), 1) <= CurTurn())
+                    02 ^{
+                        01=ShipSpecialBonuses(ScriptItemActShip(), bonJump, ShipSpecialBonuses(ScriptItemActShip(), bonJump) + 1000);
+                        02=ShipDeleteCustomShipInfo(ScriptItemActShip(), 'ArtiUniqueShipsPack_JumpRestriction');
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            ArtiUniqueShipsPack_Crutch ^{
+                Description=NoShow
+                Icon=1
+                Name=-
+            }
+            ArtiUniqueShipsPack_MissileDamageBlock ^{
+                Description=NoShow
+                Icon=1
+                Name=
+                OnActCode ^{
+                    01=dword missile = ScriptItemActObject1();
+                    02=if(!missile) exit;
+                    03=if(ObjectType(missile) != 7) exit;
+                    04=str acryn_name;
+                    05=if(EqSpecial(missile)) acryn_name = BonusNumInCfg(EqSpecial(missile));
+                    06=else exit;
+                    07=if(acryn_name != 'ArtiUniqueShipsPack_Railgun') exit;
+                    08=ScriptItemActParam(0);
+                    09=ShipDeleteCustomShipInfo(ScriptItemActShip(), 'ArtiUniqueShipsPack_MissileDamageBlock');
+                }
+                OnActCodeTypes=t_OnTakingDamageMi
+            }
+            ArtiUniqueShipsPack_kPDTurretInfos ^{
+                Description=NoShow
+                Icon=1
+                Name=Примерно имитирует работу аЭгиса
+                OnActCode ^{
+                    01=dword cur_ship = ScriptItemActShip();
+                    02=if(ShipInNormalSpace(cur_ship))
+                    03 ^{
+                        01=dword cur_star = ShipStar(cur_ship);
+                        02=int range = ShipCustomShipInfoData(0, CurInfo(), 2);
+                        03=dword closest_missile = 0;
+                        04=dword closest_range = 50000;
+                        05=for(int i = 0; i < StarMissiles(cur_star); i = i + 1)
+                        06 ^{
+                            01=dword missile = StarMissiles(cur_star, i);
+                            02=int dist = Dist(cur_ship, missile);
+                            03=if(dist > range) continue;
+                            04=if(MissileTarget(missile) != cur_ship) continue;
+                            05=if(MissileOwner(missile) == cur_ship) continue;
+                            06=if(dist < closest_range)
+                            07 ^{
+                                01=closest_range = dist;
+                                02=closest_missile = missile;
+                            }
+                        }
+                        07=if(closest_missile)
+                        08 ^{
+                            01=ShowEffect('Weapon.PDTurret', 0, closest_missile, cur_ship);
+                            02=MissileLive(closest_missile, 5000);
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=1,3,5,7,9
+            }
+        }
+    }
+}
+UselessItems ^{
+    ArtiUniqueShipsPack_UnknownSphere ^{
+        Cost=Huge
+        Name=Неизвестная инопланетная сфера
+        Owner=None
+        Size=30
+        Text=Инопланетная сфера неизвестного происхождения. Сигнатура излучения указывает на содержание большого объёма закодированных технических данных. Возможно, инженеры из <color=255,240,100>технологического центра</color> смогут сказать больше?
+    }
+}
+MicroModuls ^{
+    ArtiUniqueShipsPack_ArtimisHull ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=Hull
+        FragilityEnergy=76
+        FragilityMissile=59
+        FragilitySplinter=62
+        KindGraph=ArtimisHull
+        LockedAcryn=3
+        Name=Исследовательский кеч "Артемида"
+        NonSearchable=1
+        Owner=None,NonKling
+        Priority=100
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Доселе неизвестно, кто был изначальным автором данного проекта, но созданный по подробным чертежам в информационных сферах прототип открыл невиданные просторы для исследования ближнего, а в будущем, возможно, и дальнего космоса. Сфера неизвестного происхождения взаимодействует с владельцем путём симбиоза, что отрицательно сказывается на его здоровье. Структура корабля образует с пилотом единое целое, и позволяет задействовать встроенные в корпус <clr>реилганы<clrEnd>, созданные, вероятнее всего, не для нападения, но для защиты таинственной сферы. В случае возникновения внешней угрозы корпус корабля способен отразить любую атаку для поддержания жизнедеятельности симбионта.</color>
+        Text=<clr><clrEnd>
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Навык техники: <bonSkill3>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Генератор поля: <bonDef> ед.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Навык точности: <bonSkill1>
+        Text=Навык обаяния: <bonSkill5>
+        Text=Навык лидерства: <bonSkill6>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        bonDef=5
+        bonMass=-25
+        bonSkill1=-2
+        bonSkill2=2
+        bonSkill3=3
+        bonSkill5=-4
+        bonSkill6=-6
+        bonSlotWeapon=-2
+        bonSpeed=500
+        bonWRadius=-40
+    }
+    ArtiUniqueShipsPack_AscalonHull ^{
+        BlockImp=1
+        Cost=100
+        Equipments=Hull
+        FragilityEnergy=131
+        FragilityMissile=65
+        FragilitySplinter=91
+        KindGraph=AscalonHull
+        LockedAcryn=3
+        Name=Торговая станция "Аскалон"
+        NonSearchable=1
+        Owner=Fei,NonKling
+        Priority=100
+        RacialRestriction=1
+        ShortName="Аскалон"
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Корабль-станция, созданная по заказу Гандейской гильдии фэянином Феленом Меном, собрал в себе лучшие технологии для создания головного корабля любого торгового каравана. Неимоверных размеров трюм, создание которого стало возможным только благодаря нескольким мощным антигравитаторам, позволяет хранить и перевозить огромное количество товаров, часть из которых необходимы для репопуляции огромной колонии нанитов, используемых капитаном для почти моментального восстановления обшивки своего корабля, а также всех близлежащих из числа караванных. Защитный и разведывательный потенциал корабля превосходит любые известные аналоги за счёт крепчайшей обшивки, построенной несколькими колониями Железных жупей, но, к сожалению, орудийным портам места на столь вместительном корабле не нашлось, разве что за исключением ракет, которые могут конструироваться из бесчиленных нанитов.</color>
+        Text=<clr><clrEnd>
+        Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Навык техники: <bonSkill3>
+        Text=Навык торговли: <bonSkill4>
+        Text=Навык лидерства: <bonSkill6>
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Мощность захвата: <bonHook> ед.
+        Text=Скорость захвата: <bonHookMaxSpeed>
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Поглощение урона астероидов: <bonResistAsteroid>%
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Ограничение скорости двигателя: <clr>800<clrEnd> ед.
+        Text=(только для <color=220,140,245>фэян</color>)
+        bonDroid=50
+        bonHook=150
+        bonHookMaxSpeed=2
+        bonHookMinSpeed=2
+        bonRadar=1500
+        bonScan=14
+        bonSkill1=-5
+        bonSkill2=-5
+        bonSkill3=1
+        bonSkill4=1
+        bonSkill6=2
+        bonSlotArt=-2000000000
+        bonSlotForsage=-2000000000
+        bonSlotWeapon=-2000000000
+        bonWEnergy=-50
+        bonWMissile=150
+        bonWSplinter=-50
+        bonWRadius=-150
+        bonResistAsteroid=25
+    }
+    ArtiUniqueShipsPack_BulwarkHull ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=Hull
+        FragilityEnergy=91
+        FragilityMissile=71
+        FragilitySplinter=55
+        KindGraph=BulwarkHull
+        LockedAcryn=3
+        Name=Пиратский дредноут "Оплот"
+        NonSearchable=1
+        Owner=PirateClan,NonKling
+        Priority=100
+        RacialRestriction=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Ещё со времён первой клисанской войны пираты, оставшиеся без руководства хитрого и мудрого <clr>Рачехана<clrEnd>, действовали из тени и разрабатывали технологии для грабежа и захвата. Одной из таких стал аналог первых моделей дредноутов, который, к сожалению, был потерян в ожесточённом сражении с малокским резервным флотом, защищавшим небольшую колонию на Дальних Рубежах. В тени победного парада пираты отбуксировали свой прототип. И истратили все доступные им ресурсы, чтобы превратить его в настоящую боевую машину, готовую сразиться с флотом Коалиции и не только за каждую систему Рукава.</color>
+        Text=<clr><clrEnd>
+        Text=Навык лидерства: <bonSkill6>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Корабль непригоден для <clr>маневрирования<clrEnd>
+        Text=На корабле установлена дополнительная <clr>орудийная палуба<clrEnd>
+        bonMass=100
+        bonSkill2=-410
+        bonSkill3=-3
+        bonSkill6=6
+        bonSlotArt=-2000000000
+        bonSlotForsage=-2000000000
+    }
+    ArtiUniqueShipsPack_BulwarkHullAMLMod ^{
+        AddName=<color=0,125,25> "ПРК"</color>
+        Cost=100
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<clr>Модуль "ПРК":<clrEnd>
+        ExText=Броня корпуса: <bonHull> ед.
+        ExText=Дальность радара: <bonRadar> млн. км.
+        ExText=Мощность сканера: <bonScan> ед.
+        ExText=Интегрированный <clr>а'Эгис<clrEnd>
+        FragilityEnergy=114
+        FragilityMissile=71
+        FragilitySplinter=114
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=PirateClan,NonKling
+        Priority=100
+        RacialRestriction=1
+        Size=100
+        Special=1
+        Text=<clr>Модуль "ПРК":<clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Интегрированный <clr>а'Эгис<clrEnd>
+        bonHull=10
+        bonRadar=1500
+        bonScan=15
+    }
+    ArtiUniqueShipsPack_BulwarkHullFearlessMod ^{
+        AddName=<color=165,35,0> "Бесстрашный"</color>
+        Cost=100
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<clr>Модуль "Бесстрашный":<clrEnd>
+        ExText=Часть бронепластин с дредноута была снята в обмен на улучшенный доступ орудий к портам.
+        ExText=Навык точности: <bonSkill1>
+        ExText=Сила энергетического оружия: <bonWEnergy> ед.
+        ExText=Сила осколочного оружия: <bonWSplinter> ед.
+        ExText=Сила ракетного оружия: <bonWMissile> ед.
+        ExText=Дальность стрельбы: <bonWRadius> ед.
+        ExText=Генератор поля: <bonDef> ед.
+        FragilityEnergy=136
+        FragilityMissile=156
+        FragilitySplinter=136
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=PirateClan,NonKling
+        Priority=100
+        RacialRestriction=1
+        Size=100
+        Special=1
+        Text=<clr>Модуль "Бесстрашный":<clrEnd>
+        Text=Часть бронепластин с дредноута была снята в обмен на улучшенный доступ орудий к портам.
+        Text=Навык точности: <bonSkill1>
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Генератор поля: <bonDef> ед.
+        bonDef=-10
+        bonSkill1=2
+        bonWEnergy=30
+        bonWMissile=30
+        bonWRadius=50
+        bonWSplinter=30
+    }
+    ArtiUniqueShipsPack_BulwarkHullProtectiveMod ^{
+        AddName=<color=15,45,115> "Защитный"</color>
+        Cost=100
+        Equipments=Hull
+        ExText=<clr><clrEnd>
+        ExText=<clr>Модуль "Защитный":<clrEnd>
+        ExText=Эффективность дроида: <bonDroid> ед.
+        ExText=Генератор поля: <bonDef> ед.
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=PirateClan,NonKling
+        Priority=100
+        RacialRestriction=1
+        Size=100
+        Special=1
+        Text=<clr>Модуль "Защитный":<clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Генератор поля: <bonDef> ед.
+        Text=Поглощение урона астероидов: <bonResistAsteroid>%
+        bonDef=15
+        bonDroid=30
+        bonResistAsteroid=33
+    }
+    ArtiUniqueShipsPack_FistOfBroggHull ^{
+        Cost=100
+        Equipments=Hull
+        FragilityEnergy=78
+        FragilityMissile=91
+        FragilitySplinter=73
+        KindGraph=FistOfBroggHull
+        LockedAcryn=3
+        Name=Боевой корабль "Кулак Брогга"
+        NonSearchable=1
+        Owner=Maloc,NonKling
+        Priority=100
+        RacialRestriction=1
+        ShortName="Кулак Брогга"
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Будучи лучшим воином и прекрасным тактиком, Ганнибал Брогг (вместе с небольшим творческим коллективом, внёсшим исключительно корректировки по внешнему виду) смог создать совершенно новый тип боевого судна, успешно прошедшего все полевые испытания. Малоки восхищались мощью и красотой корабля, символизирующего силу и победу! Каждый хотел стать его пилотом, но не всем это было по карману. Девизом же корабля великий Брогг решил сделать известную малокскую присказку: <clr>"Мой кулак пробьёт дно пространства!!!"<clrEnd></color>
+        Text=<clr><clrEnd>
+        Text=Навык точности: <bonSkill1>
+        Text=Навык обаяния: <bonSkill5>
+        Text=Навык лидерства: <bonSkill6>
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Генератор поля: <bonDef> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Мощность захвата: <bonHook> ед.
+        Text=(только для <color=255,70,0>малоков</color>)
+        bonDef=10
+        bonHook=-50
+        bonRadar=-500
+        bonScan=-5
+        bonSkill1=3
+        bonSkill5=2
+        bonSkill6=2
+        bonSpeed=300
+        bonWEnergy=20
+        bonWMissile=20
+        bonWSplinter=20
+    }
+    ArtiUniqueShipsPack_FriendHull ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=Hull
+        FragilityEnergy=98
+        FragilityMissile=126
+        FragilitySplinter=59
+        KindGraph=FriendHull
+        LockedAcryn=3
+        Name=Авианосец "Друг"
+        NonSearchable=1
+        Owner=PirateClan,NonKling
+        Priority=100
+        RacialRestriction=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Данный прототип был создан пиратским кланом для противодействия новейшим дредноутам Коалиции. Система малых портальных генераторов и вместительный ангар позволяют с некоторой периодичностью осаждать атакованную систему новой группой пиратских штурмовиков, а для побега и отражения атаки слишком приблизившегося противника инженеры Клана встроили возможность выпуска ракетной завесы.</color>
+        Text=<clr><clrEnd>
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Генератор поля: <bonDef> ед.
+        Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=(только для <color=198,128,80>пиратов</color>)
+        bonDef=5
+        bonDroid=25
+        bonJump=-20
+        bonRadar=1500
+        bonScan=15
+        bonSkill1=-3
+        bonSkill2=-3
+        bonSlotForsage=-2000000000
+    }
+    ArtiUniqueShipsPack_FriendHullMissileCloak ^{
+        Equipments=W4
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=PirateClan
+        Priority=0
+        Special=1
+        WeaponMods=Shock,Acid
+    }
+    ArtiUniqueShipsPack_FriendHullPirateSpawnIsOff ^{
+        Equipments=Hull
+        ExText=Ангар: <color=220,20,20>закрыт</color>
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=PirateClan
+        Priority=0
+        Special=1
+    }
+    ArtiUniqueShipsPack_FriendHullPirateSpawnIsOn ^{
+        Equipments=Hull
+        ExText=Ангар: <color=20,220,20>открыт</color>
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=PirateClan
+        Priority=0
+        Special=1
+    }
+    ArtiUniqueShipsPack_Railgun ^{
+        Equipments=W04
+        LockedAcryn=3
+        MissileGraph=ArtiUniqueShipsPack_RailgunRound
+        NonSearchable=1
+        Owner=Any
+        Priority=0
+        ShotVisual=200
+        Special=1
+        bonMissileSpeed=10000
+    }
+    ArtiUniqueShipsPack_TornadoHullEnergy ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=Hull
+        FragilityEnergy=65
+        FragilityMissile=96
+        FragilitySplinter=75
+        KindGraph=TornadoHullEnergy
+        LockedAcryn=3
+        Name=Корпус "Торнадо"
+        NonSearchable=1
+        Owner=People,NonKling
+        Priority=100
+        RacialRestriction=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Легендарный в высших номенкланутрных кругах корпус "Торнадо" воплощаеет в себе уникальные в своем роде технологии, дарующие невероятную вариативность пилота в бою. Ввиду делеко не интуитивного интерфейса и так негативно влияющие на некоторые системы корабля приблуды еще и мешают рациональному пилотированию.</color>
+        Text=<clr><clrEnd>
+        Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Навык обаяния: <bonSkill5>
+        Text=Навык лидерства: <bonSkill6>
+        Text=Навык техники: <bonSkill3>
+        Text=Навык торговли: <bonSkill4>
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=(только для <color=50,150,230>людей</color>)
+        bonDroid=-25
+        bonJump=-10
+        bonSkill1=2
+        bonSkill2=2
+        bonSkill3=-3
+        bonSkill4=-6
+        bonSkill5=3
+        bonSkill6=3
+    }
+    ArtiUniqueShipsPack_TornadoHullMissile ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=Hull
+        FragilityEnergy=124
+        FragilityMissile=50
+        FragilitySplinter=75
+        KindGraph=TornadoHullMissile
+        LockedAcryn=3
+        Name=Корпус "Торнадо"
+        NonSearchable=1
+        Owner=People,NonKling
+        Priority=100
+        RacialRestriction=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Легендарный в высших номенкланутрных кругах корпус "Торнадо" воплощаеет в себе уникальные в своем роде технологии, дарующие невероятную вариативность пилота в бою. Ввиду делеко не интуитивного интерфейса и так негативно влияющие на некоторые системы корабля приблуды еще и мешают рациональному пилотированию.</color>
+        Text=<clr><clrEnd>
+        Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Навык обаяния: <bonSkill5>
+        Text=Навык лидерства: <bonSkill6>
+        Text=Навык техники: <bonSkill3>
+        Text=Навык торговли: <bonSkill4>
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=(только для <color=50,150,230>людей</color>)
+        bonDroid=-25
+        bonJump=-10
+        bonSkill1=2
+        bonSkill2=2
+        bonSkill3=-3
+        bonSkill4=-6
+        bonSkill5=3
+        bonSkill6=3
+    }
+    ArtiUniqueShipsPack_TornadoHullNormal ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=Hull
+        FragilityEnergy=91
+        FragilityMissile=71
+        FragilitySplinter=55
+        KindGraph=TornadoHullNormal
+        LockedAcryn=3
+        Name=Корпус "Торнадо"
+        NonSearchable=1
+        Owner=People,NonKling
+        Priority=100
+        RacialRestriction=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Легендарный в высших номенкланутрных кругах корпус "Торнадо" воплощаеет в себе уникальные в своем роде технологии, дарующие невероятную вариативность пилота в бою. Ввиду делеко не интуитивного интерфейса и так негативно влияющие на некоторые системы корабля приблуды еще и мешают рациональному пилотированию.</color>
+        Text=<clr><clrEnd>
+        Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Навык обаяния: <bonSkill5>
+        Text=Навык лидерства: <bonSkill6>
+        Text=Навык техники: <bonSkill3>
+        Text=Навык торговли: <bonSkill4>
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=(только для <color=50,150,230>людей</color>)
+        bonDroid=-25
+        bonJump=-10
+        bonSkill1=2
+        bonSkill2=2
+        bonSkill3=-3
+        bonSkill4=-6
+        bonSkill5=3
+        bonSkill6=3
+    }
+    ArtiUniqueShipsPack_TornadoHullSplinter ^{
+        BlockImp=1
+        BlockMM=1
+        Cost=100
+        Equipments=Hull
+        FragilityEnergy=124
+        FragilityMissile=96
+        FragilitySplinter=39
+        KindGraph=TornadoHullSplinter
+        LockedAcryn=3
+        Name=Корпус "Торнадо"
+        NonSearchable=1
+        Owner=PirateClan,NonKling
+        Priority=100
+        RacialRestriction=1
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Легендарный в высших номенкланутрных кругах корпус "Торнадо" воплощаеет в себе уникальные в своем роде технологии, дарующие невероятную вариативность пилота в бою. Ввиду делеко не интуитивного интерфейса и так негативно влияющие на некоторые системы корабля приблуды еще и мешают рациональному пилотированию.</color>
+        Text=<clr><clrEnd>
+        Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Навык обаяния: <bonSkill5>
+        Text=Навык лидерства: <bonSkill6>
+        Text=Навык техники: <bonSkill3>
+        Text=Навык торговли: <bonSkill4>
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=(только для <color=50,150,230>людей</color>)
+        bonDroid=-25
+        bonJump=-10
+        bonSkill1=2
+        bonSkill2=2
+        bonSkill3=-3
+        bonSkill4=-6
+        bonSkill5=3
+        bonSkill6=3
+    }
+    ArtiUniqueShipsPack_ZionHull ^{
+        Cost=100
+        Equipments=Hull
+        FragilityEnergy=90
+        FragilityMissile=78
+        FragilitySplinter=101
+        KindGraph=ZionHull
+        LockedAcryn=3
+        Name=Тяжёлый штурмовик "Зион"
+        NonSearchable=1
+        Owner=Peleng,NonKling
+        Priority=100
+        RacialRestriction=1
+        ShortName="Зион"
+        Size=100
+        Special=1
+        Text=<color=248,252,248>В связи с технологическим превосходством противника, а также появлении слухов и сообщений о возможности вторжений с других направлений, Совет Коалиции поставил на повестку дня вопрос создания корабля, который сможет стать ударным кулаком, в теории сокрушающим противника любой категории. Разработку поручили сети Технологических центров, чьи конструктора ответили новым тяжёлым штурмовиком.</color>
+        Text=<clr><clrEnd>
+        Text=<color=248,252,248>Конструкция данного корабля устроена таким образом, что при установке <clr>ракетного<clrEnd> или <clr>осколочного<clrEnd> оружия часть энергии конвертируется в кинетическую, которая импульсом передаётся в снаряды первых типов оружия, что позволяет избежать перегрева систем при получении <clr>энергетического<clrEnd> урона. Как следствие, возрастает и скорость движения ракет, а также дальность и степень пробития осколочного оружия. Также был изобретён принципиально новый модуль по сбору античастиц прямо в космосе для заряжания антиматериальной пушки и использования первых в качестве оружия против тяжелобронированных кораблей противника. Залп из антиматериальной пушки буквально разрывает межатомные связи в защитных элементах цели, превращая её структуру в максимально хрупкую. Однако, такое разрушение недолговременно ввиду постепенного самовосстановления связей. Серийное производство позволило снабжать этими кораблями рейнджеров за вклад в исследования и ведение боевых действий. Единственный минус корабля — это его революционность и новизна, из-за чего новичкам трудно ориентироваться в его начинке.</color>
+        Text=<clr><clrEnd>
+        Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Генератор поля: <bonDef> ед.
+        bonDef=3
+        bonHull=3
+        bonMissileSpeed=200
+        bonSkill1=2
+        bonSkill2=1
+        bonSlotWeapon=-1
+        bonSpeed=100
+        bonWMissile=20
+        bonWRadius=70
+        bonWSplinter=30
+    }
+    ArtiUniqueShipsPack_ZionHullAntimaterialMod ^{
+        AnswerModName=антиматериальный
+        DialogText=<clr>Антиматериальный:<clrEnd>
+        DialogText=Увеличивает максимальный радиус стрельбы, усиливает осколочное оружие и придаёт любым выстрелам разрушающий броню эффект.
+        Equipments=Hull
+        ExText=Навык техники: <bonSkill3>
+        ExText=Сила энергетического оружия: <bonWEnergy> ед.
+        ExText=Дальность радара: <bonRadar> млн. км.
+        ExText=Мощность сканера: <bonScan> ед.
+        ExText=Эффективность дроида: <bonDroid> ед.
+        ExText=Дополнительный эффект: <clr>ослабление брони<clrEnd>
+        ExText=(только для <color=130,200,40>пеленгов</color>)
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Peleng,NonKling
+        RacialRestriction=1
+        Special=1
+        bonDroid=-10
+        bonRadar=-700
+        bonScan=-7
+        bonSkill3=-2
+        bonSlotWeapon=-1
+        bonWEnergy=-35
+        bonWRadius=30
+        bonWSplinter=20
+    }
+    ArtiUniqueShipsPack_ZionHullMissileBuff ^{
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Peleng,NonKling
+        RacialRestriction=1
+        Special=1
+        bonAttacks=1
+    }
+    ArtiUniqueShipsPack_ZionHullMissileMod ^{
+        AnswerModName=ракетный
+        DialogText=<clr>Ракетный:<clrEnd>
+        DialogText=Повышает скорострельность ракетных (но не торпедных) установок, а также заметно усиливает любое ракетное оружие ценой блокировки одного орудийного отсека.
+        Equipments=Hull
+        ExText=Навык техники: <bonSkill3>
+        ExText=Сила энергетического оружия: <bonWEnergy> ед.
+        ExText=Дальность радара: <bonRadar> млн. км.
+        ExText=Мощность сканера: <bonScan> ед.
+        ExText=Эффективность дроида: <bonDroid> ед.
+        ExText=Дополнительный эффект: <clr>двойной ракетный залп<clrEnd>
+        ExText=(только для <color=130,200,40>пеленгов</color>)
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Peleng,NonKling
+        RacialRestriction=1
+        Special=1
+        bonDroid=-10
+        bonRadar=-700
+        bonScan=-7
+        bonSkill3=-2
+        bonSlotWeapon=-1
+        bonWEnergy=-35
+        bonWMissile=20
+    }
+    ArtiUniqueShipsPack_ZionHullNoMods ^{
+        Equipments=Hull
+        ExText=Навык техники: <bonSkill3>
+        ExText=Сила энергетического оружия: <bonWEnergy> ед.
+        ExText=Дальность радара: <bonRadar> млн. км.
+        ExText=Мощность сканера: <bonScan> ед.
+        ExText=Эффективность дроида: <bonDroid> ед.
+        ExText=(только для <color=130,200,40>пеленгов</color>)
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Peleng,NonKling
+        RacialRestriction=1
+        Special=1
+        bonDroid=-10
+        bonRadar=-700
+        bonScan=-7
+        bonSkill3=-2
+        bonWEnergy=-35
+    }
+    ArtiUniqueShipsPack_ZionHullUnifiedMod ^{
+        AnswerModName=комплексно-унифицированный
+        DialogText=<clr>Комплексно-унифицированный:<clrEnd>
+        DialogText=Снимает почти все отрицательные стороны корпуса, а также повышает его общую защищённость.
+        Equipments=Hull
+        ExText=Сила энергетического оружия: <bonWEnergy> ед.
+        ExText=(только для <color=130,200,40>пеленгов</color>)
+        LockedAcryn=3
+        NonSearchable=1
+        Owner=Peleng,NonKling
+        RacialRestriction=1
+        Special=1
+        bonDef=5
+        bonHull=3
+        bonSlotWeapon=-1
+        bonWEnergy=-35
+    }
+}

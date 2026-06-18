@@ -1,0 +1,393 @@
+ML ^{
+    About ^{
+        Panel ^{
+            Image ^{
+            }
+            Image ^{
+            }
+            Image ^{
+            }
+            Image ^{
+            }
+            Image ^{
+            }
+            Image ^{
+                Active=False
+                Image=GAI,Bm.FormMain3.2Caption
+                Name=CaptionOff
+                Pos=198,10,200
+                Size=627,166
+            }
+            NewCaption ^{
+                GAI ^{
+                    Frame=[1,0-0],[19999,0-0],[50,0-59],[10000,0-0],[50,0-59]
+                    Image=Bm.FormMain3.2Caption
+                    Name=Caption
+                    Pos=198,10,20
+                    Size=627,166
+                }
+            }
+        }
+    }
+    GameMenu ^{
+        Panel ^{
+            Panel ^{
+                GraphButton ^{
+                }
+                GraphButton ^{
+                }
+                GraphButton ^{
+                }
+                GraphButton ^{
+                }
+                GraphButton ^{
+                }
+                GraphButton ^{
+                }
+                GraphButton ^{
+                }
+                GraphButton ^{
+                    ImageDisable=Alpha,Bm.FormMenu2.AchievementsN
+                    ImageDown=Alpha,Bm.FormMenu2.AchievementsD
+                    ImageNormal=Alpha,Bm.FormMenu2.AchievementsN
+                    ImageNormalA=Alpha,Bm.FormMenu2.AchievementsA
+                    Kind=Normal
+                    KindHit=Rect
+                    Name=Achievements
+                    Pos=160,141,-3
+                    Size=146,133
+                    Style=Style.GB.SoundNormal
+                }
+            }
+        }
+    }
+    MainForm ^{
+        Border=0,0,1024,768
+        Panel ^{
+            GAI ^{
+                Active=False
+                Auto=Size
+                Image=Bm.FormMain2.logo_elemental
+                Name=LogoElemental_off
+                Pos=700,679,200
+            }
+            GAI ^{
+                Active=False
+                Auto=Size
+                Image=Bm.FormMain2.logo_1c
+                Name=Logo1C_off
+                Pos=757,689,200
+            }
+            GAI ^{
+                Name=
+            }
+            GAI ^{
+                Name=AnimGaalShipDisabled
+            }
+            GAI ^{
+                Auto=Size
+                Frame=[50,0-29],[35000,30-30],[50,0-29],[18000,30-30],[50,0-29],[22000,30-30],[50,0-29],[16000,30-30],[50,0-29],[26000,30-30]
+                Image=Bm.FormMain2.2AnimShip
+                Name=AnimShip
+                Pos=24,100,47
+                PosAutoCorrection=True
+                PosAutoCorrectionYCoef=0.7
+                Size=1925,716
+            }
+            GraphButton ^{
+                Auto=Size
+                ImageDown=Alpha,Bm.FormMain2.2ButNewD
+                ImageNormal=Alpha,Bm.FormMain2.2ButNewN
+                ImageNormalA=Alpha,Bm.FormMain2.2ButNewA
+                Kind=Normal
+                KindHit=Rect
+                Name=New
+                Pos=611,275,20
+                Style=Style.GB.SoundNormal
+            }
+            GraphButton ^{
+                Auto=Size
+                ImageDown=Alpha,Bm.FormMain2.2ButRecordsD
+                ImageNormal=Alpha,Bm.FormMain2.2ButRecordsN
+                ImageNormalA=Alpha,Bm.FormMain2.2ButRecordsA
+                Kind=Normal
+                KindHit=Rect
+                Name=Score
+                Pos=611,425,20
+                Style=Style.GB.SoundNormal
+            }
+            GraphButton ^{
+                Auto=Size
+                ImageDown=Alpha,Bm.FormMain3.2ButAchD
+                ImageNormal=Alpha,Bm.FormMain3.2ButAchN
+                ImageNormalA=Alpha,Bm.FormMain3.2ButAchA
+                Kind=Normal
+                KindHit=Rect
+                Name=Achievements
+                Pos=611,475,20
+                Style=Style.GB.SoundNormal
+            }
+            GraphButton ^{
+                Auto=Size
+                ImageDown=Alpha,Bm.FormMain2.2ButLoadD
+                ImageNormal=Alpha,Bm.FormMain2.2ButLoadN
+                ImageNormalA=Alpha,Bm.FormMain2.2ButLoadA
+                Kind=Normal
+                KindHit=Rect
+                Name=Load
+                Pos=611,325,20
+                Style=Style.GB.SoundNormal
+            }
+            GraphButton ^{
+                Auto=Size
+                ImageDown=Alpha,Bm.FormMain2.2ButSettingsD
+                ImageNormal=Alpha,Bm.FormMain2.2ButSettingsN
+                ImageNormalA=Alpha,Bm.FormMain2.2ButSettingsA
+                Kind=Normal
+                KindHit=Rect
+                Name=Settings
+                Pos=611,375,20
+                Style=Style.GB.SoundNormal
+            }
+            GraphButton ^{
+                Auto=Size
+                ImageDown=Alpha,Bm.FormMain2.2ButAboutD
+                ImageNormal=Alpha,Bm.FormMain2.2ButAboutN
+                ImageNormalA=Alpha,Bm.FormMain2.2ButAboutA
+                Kind=Normal
+                KindHit=Rect
+                Name=About
+                Pos=611,525,20
+                Style=Style.GB.SoundNormal
+            }
+            GraphButton ^{
+                Auto=Size
+                ImageDown=Alpha,Bm.FormMain2.2ButExitD
+                ImageNormal=Alpha,Bm.FormMain2.2ButExitN
+                ImageNormalA=Alpha,Bm.FormMain2.2ButExitA
+                Kind=Normal
+                KindHit=Rect
+                Name=Exit
+                Pos=611,575,20
+                Style=Style.GB.SoundNormal
+            }
+            GraphButton ^{
+                Auto=Size
+                ImageDown=Alpha,Bm.FormLoadRobot.2LoadRobotD
+                ImageNormal=Alpha,Bm.FormLoadRobot.2LoadRobotN
+                ImageNormalA=Alpha,Bm.FormLoadRobot.2LoadRobotA
+                Kind=Normal
+                KindHit=Rect
+                Name=LoadRobot
+                Pos=80,636,20
+                Style=Style.GB.SoundNormal
+            }
+            GraphButton ^{
+                Auto=Size
+                ImageDown=Alpha,Bm.FormLoadRobot.2LoadQuestD
+                ImageNormal=Alpha,Bm.FormLoadRobot.2LoadQuestN
+                ImageNormalA=Alpha,Bm.FormLoadRobot.2LoadQuestA
+                Kind=Normal
+                KindHit=Rect
+                Name=LoadQuest
+                Pos=228,636,20
+                Style=Style.GB.SoundNormal
+            }
+            GraphButton ^{
+                Auto=Size
+                ImageDown=Alpha,Bm.FormLoadAB.LoadHyperD
+                ImageNormal=Alpha,Bm.FormLoadAB.LoadHyperN
+                ImageNormalA=Alpha,Bm.FormLoadAB.LoadHyperA
+                Kind=Normal
+                KindHit=Rect
+                Name=LoadAB
+                Pos=376,636,20
+                Style=Style.GB.SoundNormal
+            }
+            GraphButton ^{
+                Auto=Size
+                ImageDown=Alpha,Bm.FormMods.ModsD
+                ImageNormal=Alpha,Bm.FormMods.ModsN
+                ImageNormalA=Alpha,Bm.FormMods.ModsA
+                Kind=Normal
+                KindHit=Rect
+                Name=Mods
+                Pos=524,636,20
+                Style=Style.GB.SoundNormal
+            }
+            Image ^{
+                Image=Bm.FormMain3.2BG
+                Name=ImageFon1
+                Pos=0,0,1000
+                Size=4200,1600
+            }
+            Image ^{
+                Image=Bm.FormMain3.2BG
+                Name=ImageFon2
+                Pos=4200,0,1001
+                Size=4200,1600
+            }
+            Image ^{
+                Image=GI,Bm.FormMain2.2AnimMain
+                Name=AnimMain
+                Pos=0,0,50
+                Size=1024,768
+            }
+            Image ^{
+                Auto=Size
+                Image=Alpha,Bm.FormMain3.MicroText
+                Name=MicroText
+                Pos=71,50,51
+            }
+            Image ^{
+                Image=
+                Name=
+            }
+            Image ^{
+                Active=False
+                Auto=Size
+                Image=GAI,Bm.FormMain3.2Caption
+                Name=CaptionOff
+                Pos=399,30,200
+            }
+            Image ^{
+                Auto=Size
+                Image=GI,Bm.FormMain3.Sub
+                Name=SubName
+                Pos=268,190,47
+            }
+            Image ^{
+                Image=Alpha,Bm.FormMain3.CaptionBlur
+                Name=CaptionBlur
+                Pos=-103,-85,49
+                Size=1618,396
+            }
+            Image ^{
+                Auto=Size
+                Image=Alpha,Bm.FormMain3.2Planet
+                Name=Planet
+                Pos=0,121
+                PosZ=999
+            }
+            Image ^{
+                Auto=Size
+                Image=GI,Bm.FormMain3.2Katauri
+                Name=LogoKatauri
+                Pos=835,687
+            }
+            Image ^{
+                Auto=Size
+                Image=GI,Bm.FormMain3.2snk
+                Name=LogoSNK
+                Pos=943,681
+            }
+            Label ^{
+                Name=LoadRobotCnt
+                TextColor=20,208,230
+            }
+            Label ^{
+                Name=LoadQuestCnt
+                TextColor=20,208,230
+            }
+            Label ^{
+                Name=LoadABCnt
+                TextColor=20,208,230
+            }
+            Label ^{
+                Name=ModsCnt
+                TextColor=20,208,230
+            }
+            Label ^{
+                Name=LRobot
+                TextColor=110,180,190
+            }
+            Label ^{
+                Name=LQuest
+                TextColor=110,180,190
+            }
+            Label ^{
+                Name=LAB
+                TextColor=110,180,180
+            }
+            Label ^{
+                Name=LMods
+                TextColor=110,180,190
+            }
+            Label ^{
+                Name=LVersion
+                TextColor=123,170,181
+            }
+            NewCaption ^{
+                GAI ^{
+                    Auto=Size
+                    Frame=[1,0-0],[19999,0-0],[50,0-59],[10000,0-0],[50,0-59]
+                    Image=Bm.FormMain3.2Caption
+                    Name=Caption
+                    Pos=399,30,48
+                }
+            }
+            NewCircle ^{
+                Panel ^{
+                    GAI ^{
+                        Frame=[1,25-25],[8430,25-25],[50,0-24],[46370,25-25],[50,0-24],[10520,25-25],[50,0-24],[31750,25-25],[50,0-24],[22190,25-25],[50,0-24]
+                        Image=Bm.FormMain2.2AnimStar
+                        Name=AnimStar
+                        Pos=534,169,0
+                        Size=492,599
+                    }
+                    Image ^{
+                        Auto=Size
+                        Image=Alpha,Bm.FormMain3.Circle
+                        Name=CircleOriginal
+                        Pos=652,227,1
+                    }
+                    Name=Circle
+                    Pos=0,0,57
+                    Size=9000,9000
+                }
+            }
+            NewLogos ^{
+                Panel ^{
+                    GAI ^{
+                        Frame=[1,0-0],[12500,0-0],[60,0-33],[7000,0-0],[60,0-33],[10000,0-0],[60,0-33]
+                        Image=Bm.FormMain2.logo_elemental
+                        Name=LogoElemental_anim
+                        Pos=0,0,-1
+                        Size=63,63
+                    }
+                    Name=LogoElemental
+                    Pos=700,679,48
+                    Size=63,63
+                }
+                Panel ^{
+                    GAI ^{
+                        Frame=[1,0-0],[6000,0-0],[60,0-23],[12000,0-0],[60,0-23],[8000,0-0],[60,0-23]
+                        Image=Bm.FormMain2.logo_1c
+                        Name=Logo1C
+                        Pos=0,0,-1
+                        Size=80,39
+                    }
+                    Name=Logo1C
+                    Pos=757,689,48
+                    Size=80,39
+                }
+            }
+            PosCorrection ^{
+                Panel ^{
+                    GAI ^{
+                        AlignX=Left
+                        AlignY=Bottom
+                        Name=AnimAddonShip
+                        PBuf=True
+                        Size=1000,1055
+                        SkipImageUpdateRect=True
+                    }
+                    Pos=-370,10,29
+                    PosAutoCorrection=True
+                    PosAutoCorrectionXCoef=0.2
+                    Size=1000,1200
+                }
+            }
+        }
+    }
+}

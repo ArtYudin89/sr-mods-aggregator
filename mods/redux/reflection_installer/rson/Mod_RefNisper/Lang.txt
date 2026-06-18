@@ -1,0 +1,3547 @@
+Artefacts ^{
+    CustomArtefacts ^{
+        ZelDomiks_Art_Defender ^{
+            Broken=(сломан)
+            BrokenInBattle=Меткое попадание орудия противника разнесло всю установку Защитного комплекса, обратив его в груду металлолома.
+            BrokenInUse=Постоянно ожидая вражеской атаки, Защитный комплекс перегрелся и сломался. Судя по всему, ему поможет только помощь специалистов.
+            Name=Защитный комплекс
+            OnActCode ^{
+                01=dword ship=ScriptItemActShip();
+                02=int damage;
+                03=dword enemy;
+                04=dword thisInfo=CurInfo();
+                05=int random=Rnd(1,5);
+                06=int i;
+                07=dword star;
+                08=dword ourItem=CurItem();
+                09=if(ItemIsInUse(ourItem)&&!ItemIsBroken(ourItem)&&ShipInNormalSpace(ship)&&Rnd(1,20)==1)
+                10 ^{
+                    01=if(random==1)
+                    02 ^{
+                        01=if((ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnGettingMissileHit)))
+                        02 ^{
+                            01=damage=ScriptItemActParam();
+                            02=enemy=ScriptItemActObject1();
+                            03=if(enemy)
+                            04 ^{
+                                01=if(Dist(enemy,ship)<=500)
+                                02 ^{
+                                    01=if(ShipStar(Player())==ShipStar(ship)) ShowEffect('Weapon.11',3,enemy,ship,3*damage);
+                                    02=DealDamageToShip(enemy,ship,3*damage,0);
+                                }
+                            }
+                        }
+                    }
+                    03=else if(random==2)
+                    04 ^{
+                        01=if((ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnGettingMissileHit)))
+                        02 ^{
+                            01=enemy=ScriptItemActObject1();
+                            02=if(enemy)
+                            03 ^{
+                                01=star=ShipStar(ship);
+                                02=int x=CoordX(ship);
+                                03=int y=CoordY(ship);
+                                04=int angle=ShipAngle(ship);
+                                05=int k=-30;
+                                06=for(i=0;i<4;i=i+1)
+                                07 ^{
+                                    01=dword rocket=SpawnMissile(star,enemy,x,y,angle+k,20,30,800+50*GalaxyTechLevel(),t_Weapon4);
+                                    02=MissileOwner(rocket,ship);
+                                    03=k=k+20;
+                                    04=MissileLive(rocket,100);
+                                }
+                            }
+                        }
+                    }
+                    05=else if(random==3)
+                    06 ^{
+                        01=if((ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnGettingMissileHit)))
+                        02 ^{
+                            01=enemy=ScriptItemActObject1();
+                            02=if(enemy)
+                            03 ^{
+                                01=if(Dist(enemy,ship)<=500)
+                                02 ^{
+                                    01=if(ShipStar(Player())==ShipStar(ship)) ShowEffect('Weapon.15',2,enemy,ship,0,0,1,0,0,0);
+                                    02=ShipStatusEffect(enemy,0,Rnd(20,30),ship);
+                                    03=ShipStatusEffect(enemy,1,2,ship);
+                                    04=ShipStatusEffect(enemy,2,Rnd(20,30),ship);
+                                }
+                            }
+                        }
+                    }
+                    07=else if(random==4)
+                    08 ^{
+                        01=if((ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnGettingMissileHit)))
+                        02 ^{
+                            01=star=ShipStar(ship);
+                            02=int count=StarShips(star);
+                            03=dword planet=GetShipHomePlanet(ship);
+                            04=damage=ScriptItemActParam();
+                            05=for(i=0;i<count;i=i+1)
+                            06 ^{
+                                01=enemy=StarShips(star,i);
+                                02=if(ShipInNormalSpace(enemy)&&planet)
+                                03 ^{
+                                    01=if(GetRelationPlanet(planet, enemy) <= 30&&Dist(enemy,ship)<=500)
+                                    02 ^{
+                                        01=if(ShipStar(Player())==ShipStar(ship)) ShowEffect('Weapon.10',3,enemy,ship,damage,0,0);
+                                        02=DealDamageToShip(enemy,ship,damage,0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    09=else
+                    10 ^{
+                        01=if((ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi)))
+                        02 ^{
+                            01=damage=ScriptItemActParam();
+                            02=ScriptItemActParam(0);
+                            03=if(ShipStar(Player())==ShipStar(ship)) ShowEffect('Weapon.NoGraph',1,ship,0,-1*damage);
+                            04=if(damage+HullHP(ship)>=ItemSize(ShipItems(ship, 0))) HullHP(ship,ItemSize(ShipItems(ship, 0)));
+                            05=else HullHP(ship,HullHP(ship)+damage);
+                        }
+                    }
+                }
+            }
+            OnActCodeTypes=t_OnStep,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnGettingMissileHit
+            OnActStepTypes=0
+            Text=С некоторым шансом может отреагировать на атаку врага и сделать одно из доступных действий:
+            Text=1) Превратить весь урон в восстановление
+            Text=2) Вернуть обидчику утроенный урон
+            Text=3) Послать в обидчика кучку наноботов, которые наложат на противника негативные эффекты
+            Text=4) Послать в обидчика 4 сильные ракеты
+            Text=5) Перенаправить урон во всех ближайших противников Коалиции
+        }
+    }
+}
+MicroModuls ^{
+    ZelDomiks_Imho ^{
+        Color=0,150,0
+        Equipments=W13
+        KindGraph=Un
+        LockedAcryn=3
+        Name=Имхоняр
+        NonSearchable=1
+        NotRemovable=1
+        Priority=0
+        Special=1
+        Text=Уникальный микромодуль. Создан ОКБ при Научном совете специально для <clr>ИМХО-9000<clrEnd>. Данный микромодуль изменяет конструкцию системы излучения молекулярных хаотических отклонений, позволяя создавать эффект пространственного искажения с применением ЭМИ-волн. В результате ИМХО-9000 наносит больше урона в большем радиусе, а также оставляет на обшивке задетого врага неустойчивые частицы с высоким зарядом.
+        Text=<clr>Ионизирует всех задетых противников<clrEnd>
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дополнительный эффект: <clr>ионизация<clrEnd>
+        UniqueMM=1
+        WeaponMods=Shock
+        bonWRadius=150
+        bonWSplinter=10
+    }
+    ZelDomiks_Nisper0 ^{
+        Cost=100
+        CustomTag=ZelDomiks_Nisper0Hull
+        Equipments=Hull
+        KindGraph=Nisper0
+        Name=Рогостовый корпус доминатора
+        Owner=Kling
+        Priority=0
+        Special=1
+    }
+    ZelDomiks_Nisper1 ^{
+        Cost=100
+        CustomTag=ZelDomiks_Nisper1Hull
+        Equipments=Hull
+        KindGraph=Nisper1
+        Name=Рогостовый корпус доминатора
+        Owner=Kling
+        Priority=0
+        Special=1
+    }
+    ZelDomiks_Nisper2 ^{
+        Cost=100
+        CustomTag=ZelDomiks_Nisper2Hull
+        Equipments=Hull
+        KindGraph=Nisper2
+        Name=Рогостовый корпус доминатора
+        Owner=Kling
+        Priority=0
+        Special=1
+    }
+    ZelDomiks_Nisper3 ^{
+        Cost=100
+        CustomTag=ZelDomiks_Nisper3Hull
+        Equipments=Hull
+        KindGraph=Nisper3
+        Name=Рогостовый корпус доминатора
+        Owner=Kling
+        Priority=0
+        Special=1
+    }
+    ZelDomiks_Nisper3Player ^{
+        Cost=100
+        CustomTag=ZelDomiks_Nisper3HullPlayer
+        Equipments=Hull
+        KindGraph=Nisper3
+        LockedAcryn=3
+        Name=Реквизинторный корпус доминатора
+        Owner=Kling
+        Priority=0
+        Special=1
+        Text=Уникальный корпус Смерша, созданный ЭКБ при Научном совете для проведения эксперимента в области экономики. В бортовой компьютер этого корпуса добавлена программа расчета рынка и предсказания более выгодных сделок, что может помочь в торговле. В свою очередь конструкция этого корпуса была специально изменена для усиления двигателя путем выделения ему большего количества энергии. В совокупности эти два фактора дают большое преимущество любому торговцу.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Навык торговли: <bonSkill4>
+        bonJump=7
+        bonRadar=1350
+        bonSkill4=2
+        bonSpeed=250
+    }
+    ZelDomiks_Nisper4 ^{
+        Cost=100
+        CustomTag=ZelDomiks_Nisper4Hull
+        Equipments=Hull
+        KindGraph=Nisper4
+        Name=Рогостовый корпус доминатора
+        Owner=Kling
+        Priority=0
+        Special=1
+    }
+    ZelDomiks_Nisper5 ^{
+        Cost=100
+        CustomTag=ZelDomiks_Nisper5Hull
+        Equipments=Hull
+        KindGraph=Nisper5
+        Name=Рогостовый корпус доминатора
+        Owner=Kling
+        Priority=0
+        Special=1
+    }
+    ZelDomiks_Nisper6 ^{
+        Cost=100
+        CustomTag=ZelDomiks_Nisper6Hull
+        Equipments=Hull
+        KindGraph=Nisper6
+        Name=Рогостовый корпус доминатора
+        Owner=Kling
+        Priority=0
+        Special=1
+    }
+    ZelDomiks_Nisper6Player ^{
+        Cost=300
+        CustomTag=ZelDomiks_Nisper6HullPlayer
+        Equipments=Hull
+        KindGraph=Nisper6
+        LockedAcryn=3
+        Name=Корпус Бертора
+        Owner=Kling
+        Priority=0
+        Special=1
+        Text=Полностью функциональный корпус Бертора, созданный ЭКБ при Научном совете и переоборудованный для вас. Данный экземпляр имеет в себе все преимущества обычного бертора в виде генератора усиливающего поля и фабрики создания клигов, однако, из-за сложности конструкции и управления, гуманоид не способен использовать весь функционал такого корабля, не теряя при этом в эффективности всех остальных своих действий.
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Дополнительные выстрелы: <bonAttacks> ед.
+        Text=Поглощение урона астероидов: <bonResistAsteroid><clr>%<clrEnd>
+        Text=Навык точности: <bonSkill1>
+        bonAttacks=7
+        bonDef=7
+        bonHull=9
+        bonResistAsteroid=75
+        bonSkill1=-2
+        bonSkill2=-2
+        bonSkill3=-2
+        bonSkill4=-2
+        bonSkill5=-2
+        bonSkill6=-2
+        bonSlotForsage=-1
+    }
+    ZelDomiks_NisperAcrin1Weap1 ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin1Weap1
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=-9
+        bonWRadius=35
+        bonWSplinter=-12
+    }
+    ZelDomiks_NisperAcrin1Weap1_Cat_Balance ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin1Weap1_Cat_Balance
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=-3
+        bonWRadius=35
+        bonWSplinter=-4
+    }
+    ZelDomiks_NisperAcrin1Weap2 ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin1Weap2
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=-6
+        bonWRadius=40
+        bonWSplinter=-8
+    }
+    ZelDomiks_NisperAcrin1Weap2_Cat_Balance ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin1Weap2_Cat_Balance
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=-1
+        bonWRadius=40
+        bonWSplinter=-2
+    }
+    ZelDomiks_NisperAcrin1Weap3 ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin1Weap3
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=-3
+        bonWRadius=45
+        bonWSplinter=-4
+    }
+    ZelDomiks_NisperAcrin1Weap3_Cat_Balance ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin1Weap3_Cat_Balance
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        bonWEnergy=0
+        bonWRadius=45
+        bonWSplinter=0
+    }
+    ZelDomiks_NisperAcrin1Weap4 ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrin1Weap4
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        bonWRadius=50
+    }
+    ZelDomiks_NisperAcrin1Weap4_Cat_Balance ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrin1Weap4_Cat_Balance
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=5
+        bonWRadius=50
+        bonWSplinter=5
+    }
+    ZelDomiks_NisperAcrin2Weap1 ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin2Weap1
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дополнительный эффект: <clr>повреждение двигателя<clrEnd>
+        WeaponMods=ReduceEngine
+        bonWRadius=10
+    }
+    ZelDomiks_NisperAcrin2Weap1_Cat_Balance ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin2Weap1_Cat_Balance
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дополнительный эффект: <clr>повреждение двигателя<clrEnd>
+        WeaponMods=ReduceEngine
+        bonWRadius=10
+    }
+    ZelDomiks_NisperAcrin2Weap2 ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin2Weap2
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дополнительный эффект: <clr>повреждение двигателя, перегрев двигателя<clrEnd>
+        WeaponMods=ReduceEngine,Decelerate
+        bonWRadius=10
+    }
+    ZelDomiks_NisperAcrin2Weap2_Cat_Balance ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin2Weap2_Cat_Balance
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дополнительный эффект: <clr>повреждение двигателя, перегрев двигателя<clrEnd>
+        WeaponMods=ReduceEngine,Decelerate
+        bonWRadius=15
+    }
+    ZelDomiks_NisperAcrin2Weap3 ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin2Weap3
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дополнительный эффект: <clr>повреждение двигателя, усиленный перегрев двигателя<clrEnd>
+        WeaponMods=ReduceEngine,Decelerate,DecelerateA
+        bonWRadius=10
+    }
+    ZelDomiks_NisperAcrin2Weap3_Cat_Balance ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin2Weap3_Cat_Balance
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дополнительный эффект: <clr>повреждение двигателя, усиленный перегрев двигателя<clrEnd>
+        WeaponMods=ReduceEngine,Decelerate,DecelerateA
+        bonWRadius=20
+    }
+    ZelDomiks_NisperAcrin2Weap4 ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrin2Weap4
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дополнительный эффект: <clr>повреждение двигателя, максимизированный перегрев двигателя<clrEnd>
+        WeaponMods=ReduceEngine,Decelerate,DecelerateA,DecelerateAEx
+        bonWRadius=10
+    }
+    ZelDomiks_NisperAcrin2Weap4_Cat_Balance ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrin2Weap4_Cat_Balance
+        Equipments=WEnergy,WSplinter
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Дополнительный эффект: <clr>повреждение двигателя, максимизированный перегрев двигателя<clrEnd>
+        WeaponMods=ReduceEngine,Decelerate,DecelerateA,DecelerateAEx
+        bonWRadius=30
+    }
+    ZelDomiks_NisperAcrin3Weap1 ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin3Weap1
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дополнительный эффект: <clr>ионизация<clrEnd>
+        WeaponMods=Shock
+        bonWEnergy=-11
+        bonWMissile=-16
+        bonWSplinter=-16
+    }
+    ZelDomiks_NisperAcrin3Weap1_Cat_Balance ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin3Weap1_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дополнительный эффект: <clr>ионизация<clrEnd>
+        WeaponMods=Shock
+        bonWEnergy=-5
+        bonWMissile=-8
+        bonWSplinter=-5
+    }
+    ZelDomiks_NisperAcrin3Weap2 ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin3Weap2
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дополнительный эффект: <clr>ионизация<clrEnd>
+        WeaponMods=Shock
+        bonWEnergy=-6
+        bonWMissile=-8
+        bonWSplinter=-8
+    }
+    ZelDomiks_NisperAcrin3Weap2_Cat_Balance ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin3Weap2_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дополнительный эффект: <clr>ионизация<clrEnd>
+        WeaponMods=Shock
+        bonWEnergy=0
+        bonWMissile=0
+        bonWSplinter=0
+    }
+    ZelDomiks_NisperAcrin3Weap3 ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin3Weap3
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дополнительный эффект: <clr>ионизация<clrEnd>
+        WeaponMods=Shock
+    }
+    ZelDomiks_NisperAcrin3Weap3_Cat_Balance ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin3Weap3_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дополнительный эффект: <clr>ионизация<clrEnd>
+        WeaponMods=Shock
+        bonWEnergy=8
+        bonWMissile=5
+        bonWSplinter=8
+    }
+    ZelDomiks_NisperAcrin3Weap4 ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrin3Weap4
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дополнительный эффект: <clr>ионизация, блокирует дроида<clrEnd>
+        WeaponMods=Shock,BlockDroid
+    }
+    ZelDomiks_NisperAcrin4Weap1 ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin4Weap1
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonSpeed=-20
+        bonWEnergy=4
+        bonWMissile=10
+        bonWRadius=10
+        bonWSplinter=6
+    }
+    ZelDomiks_NisperAcrin4Weap1_Cat_Balance ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin4Weap1_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonSpeed=-30
+        bonWEnergy=8
+        bonWMissile=14
+        bonWRadius=5
+        bonWSplinter=10
+    }
+    ZelDomiks_NisperAcrin4Weap2 ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin4Weap2
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonSpeed=-30
+        bonWEnergy=6
+        bonWMissile=15
+        bonWRadius=15
+        bonWSplinter=9
+    }
+    ZelDomiks_NisperAcrin4Weap2_Cat_Balance ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin4Weap2_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonSpeed=-50
+        bonWEnergy=12
+        bonWMissile=18
+        bonWRadius=10
+        bonWSplinter=14
+    }
+    ZelDomiks_NisperAcrin4Weap3 ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin4Weap3
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonSpeed=-40
+        bonWEnergy=9
+        bonWMissile=20
+        bonWRadius=20
+        bonWSplinter=12
+    }
+    ZelDomiks_NisperAcrin4Weap3_Cat_Balance ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin4Weap3_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonSpeed=-70
+        bonWEnergy=15
+        bonWMissile=24
+        bonWRadius=15
+        bonWSplinter=19
+    }
+    ZelDomiks_NisperAcrin4Weap4 ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrin4Weap4
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonSpeed=-50
+        bonWEnergy=11
+        bonWMissile=25
+        bonWRadius=25
+        bonWSplinter=15
+    }
+    ZelDomiks_NisperAcrin4Weap4_Cat_Balance ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrin4Weap4_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Сила ракетного оружия: <clr>+28<clrEnd> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonSpeed=-100
+        bonWEnergy=18
+        bonWMissile=28
+        bonWRadius=20
+        bonWSplinter=24
+    }
+    ZelDomiks_NisperAcrin5Weap1 ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin5Weap1
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дополнительный эффект: <clr>ЭМ-помехи<clrEnd>
+        WeaponMods=Magnetic
+        bonWEnergy=-11
+        bonWMissile=-16
+        bonWSplinter=-16
+    }
+    ZelDomiks_NisperAcrin5Weap1_Cat_Balance ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin5Weap1_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дополнительный эффект: <clr>ЭМ-помехи<clrEnd>
+        WeaponMods=Magnetic
+        bonWEnergy=-8
+        bonWMissile=-12
+        bonWSplinter=-12
+    }
+    ZelDomiks_NisperAcrin5Weap2 ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin5Weap2
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дополнительный эффект: <clr>ЭМ-помехи<clrEnd>
+        WeaponMods=Magnetic
+        bonWEnergy=-6
+        bonWMissile=-8
+        bonWSplinter=-8
+    }
+    ZelDomiks_NisperAcrin5Weap2_Cat_Balance ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin5Weap2_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дополнительный эффект: <clr>ЭМ-помехи<clrEnd>
+        WeaponMods=Magnetic
+        bonWEnergy=-2
+        bonWMissile=-6
+        bonWSplinter=-6
+    }
+    ZelDomiks_NisperAcrin5Weap3 ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin5Weap3
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дополнительный эффект: <clr>ЭМ-помехи<clrEnd>
+        WeaponMods=Magnetic
+    }
+    ZelDomiks_NisperAcrin5Weap3_Cat_Balance ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin5Weap3_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дополнительный эффект: <clr>ЭМ-помехи<clrEnd>
+        WeaponMods=Magnetic
+        bonWEnergy=4
+        bonWMissile=2
+        bonWSplinter=2
+    }
+    ZelDomiks_NisperAcrin5Weap4 ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrin5Weap4
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дополнительный эффект: <clr>ЭМ-помехи, блокирует оружие<clrEnd>
+        WeaponMods=Magnetic,BlockWeapon
+    }
+    ZelDomiks_NisperAcrin5Weap4_Cat_Balance ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrin5Weap4_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Дополнительный эффект: <clr>ЭМ-помехи, блокирует оружие<clrEnd>
+        WeaponMods=Magnetic,BlockWeapon
+        bonWEnergy=10
+        bonWMissile=5
+        bonWSplinter=5
+    }
+    ZelDomiks_NisperAcrin6Weap1 ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin6Weap1
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15%<clrEnd>
+        Text=Бонус к урону по повреждённым целям: <clr>до +33%<clrEnd>
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=(для применения бонусов требуется превышение<br>мощности сканера над защитой цели)
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-3
+        bonWEnergy=-12
+        bonWMissile=-18
+        bonWSplinter=-18
+    }
+    ZelDomiks_NisperAcrin6Weap1_Cat_Balance ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin6Weap1_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15%<clrEnd>
+        Text=Бонус к урону по повреждённым целям: <clr>до +33%<clrEnd>
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=(для применения бонусов требуется превышение<br>мощности сканера над защитой цели)
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-3
+        bonWEnergy=-6
+        bonWMissile=-9
+        bonWSplinter=-9
+    }
+    ZelDomiks_NisperAcrin6Weap2 ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin6Weap2
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15%<clrEnd>
+        Text=Бонус к урону по повреждённым целям: <clr>до +33%<clrEnd>
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=(для применения бонусов требуется превышение<br>мощности сканера над защитой цели)
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-2
+        bonWEnergy=-8
+        bonWMissile=-12
+        bonWSplinter=-12
+    }
+    ZelDomiks_NisperAcrin6Weap2_Cat_Balance ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin6Weap2_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15%<clrEnd>
+        Text=Бонус к урону по повреждённым целям: <clr>до +33%<clrEnd>
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=(для применения бонусов требуется превышение<br>мощности сканера над защитой цели)
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-2
+        bonWEnergy=-3
+        bonWMissile=-5
+        bonWSplinter=-5
+    }
+    ZelDomiks_NisperAcrin6Weap3 ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin6Weap3
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15%<clrEnd>
+        Text=Бонус к урону по повреждённым целям: <clr>до +33%<clrEnd>
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=(для применения бонусов требуется превышение<br>мощности сканера над защитой цели)
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-1
+        bonWEnergy=-4
+        bonWMissile=-6
+        bonWSplinter=-6
+    }
+    ZelDomiks_NisperAcrin6Weap3_Cat_Balance ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin6Weap3_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15%<clrEnd>
+        Text=Бонус к урону по повреждённым целям: <clr>до +33%<clrEnd>
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=(для применения бонусов требуется превышение<br>мощности сканера над защитой цели)
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-1
+        bonWEnergy=0
+        bonWMissile=-2
+        bonWSplinter=-2
+    }
+    ZelDomiks_NisperAcrin6Weap4 ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrin6Weap4
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15%<clrEnd>
+        Text=Бонус к урону по повреждённым целям: <clr>до +33%<clrEnd>
+        Text=(для применения бонусов требуется превышение<br>мощности сканера над защитой цели)
+        WeaponMods=ScanBonus,BonusToDamaged
+    }
+    ZelDomiks_NisperAcrin6Weap4_Cat_Balance ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrin6Weap4_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15%<clrEnd>
+        Text=Бонус к урону по повреждённым целям: <clr>до +33%<clrEnd>
+        Text=(для применения бонусов требуется превышение<br>мощности сканера над защитой цели)
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonWEnergy=5
+        bonWMissile=3
+        bonWSplinter=3
+    }
+    ZelDomiks_NisperAcrin7Weap1 ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin7Weap1
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        bonMissileSpeed=100
+        bonWMissile=6
+    }
+    ZelDomiks_NisperAcrin7Weap1_Cat_Balance ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrin7Weap1_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        bonMissileSpeed=100
+        bonWMissile=12
+    }
+    ZelDomiks_NisperAcrin7Weap2 ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin7Weap2
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        bonMissileSpeed=150
+        bonWMissile=9
+    }
+    ZelDomiks_NisperAcrin7Weap2_Cat_Balance ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrin7Weap2_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        bonMissileSpeed=200
+        bonWMissile=15
+    }
+    ZelDomiks_NisperAcrin7Weap3 ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin7Weap3
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        bonMissileSpeed=200
+        bonWMissile=12
+    }
+    ZelDomiks_NisperAcrin7Weap3_Cat_Balance ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrin7Weap3_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        bonMissileSpeed=300
+        bonWMissile=18
+    }
+    ZelDomiks_NisperAcrin7Weap4 ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrin7Weap4
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        bonMissileSpeed=250
+        bonWMissile=15
+    }
+    ZelDomiks_NisperAcrin7Weap4_Cat_Balance ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrin7Weap4_Cat_Balance
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        bonMissileSpeed=450
+        bonWMissile=25
+    }
+    ZelDomiks_NisperAcrinAll1 ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrinAll1
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        bonHull=1
+        bonMass=11
+    }
+    ZelDomiks_NisperAcrinAll1_Cat_Balance ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrinAll1_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        bonHull=2
+        bonMass=25
+    }
+    ZelDomiks_NisperAcrinAll2 ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrinAll2
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        bonHull=1
+        bonMass=8
+        bonScan=2
+    }
+    ZelDomiks_NisperAcrinAll2_Cat_Balance ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrinAll2_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        bonHull=3
+        bonMass=35
+        bonScan=4
+    }
+    ZelDomiks_NisperAcrinAll3 ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrinAll3
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonHull=1
+        bonMass=3
+        bonScan=2
+        bonSpeed=10
+    }
+    ZelDomiks_NisperAcrinAll3_Cat_Balance ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrinAll3_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonHull=4
+        bonMass=55
+        bonScan=6
+        bonSpeed=15
+    }
+    ZelDomiks_NisperAcrinAll4 ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrinAll4
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonHull=1
+        bonScan=2
+        bonSpeed=25
+    }
+    ZelDomiks_NisperAcrinAll4_Cat_Balance ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrinAll4_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        bonHull=5
+        bonMass=95
+        bonScan=8
+        bonSpeed=25
+    }
+    ZelDomiks_NisperAcrinAtt1 ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrinAtt1
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=-2
+        bonWEnergy=2
+        bonWMissile=2
+        bonWRadius=2
+        bonWSplinter=2
+    }
+    ZelDomiks_NisperAcrinAtt1_Cat_Balance ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrinAtt1_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=-8
+        bonWEnergy=8
+        bonWMissile=8
+        bonWRadius=8
+        bonWSplinter=8
+    }
+    ZelDomiks_NisperAcrinAtt2 ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrinAtt2
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=-3
+        bonWEnergy=2
+        bonWMissile=3
+        bonWRadius=5
+        bonWSplinter=3
+    }
+    ZelDomiks_NisperAcrinAtt2_Cat_Balance ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrinAtt2_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=-14
+        bonWEnergy=12
+        bonWMissile=14
+        bonWRadius=14
+        bonWSplinter=12
+    }
+    ZelDomiks_NisperAcrinAtt3 ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrinAtt3
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=-4
+        bonWEnergy=3
+        bonWMissile=4
+        bonWRadius=7
+        bonWSplinter=4
+    }
+    ZelDomiks_NisperAcrinAtt3_Cat_Balance ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrinAtt3_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=-20
+        bonWEnergy=16
+        bonWMissile=18
+        bonWRadius=20
+        bonWSplinter=16
+    }
+    ZelDomiks_NisperAcrinAtt4 ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrinAtt4
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=-5
+        bonWEnergy=4
+        bonWMissile=6
+        bonWRadius=10
+        bonWSplinter=6
+    }
+    ZelDomiks_NisperAcrinAtt4_Cat_Balance ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrinAtt4_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=-25
+        bonWEnergy=20
+        bonWMissile=25
+        bonWRadius=25
+        bonWSplinter=20
+    }
+    ZelDomiks_NisperAcrinBig1 ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrinBig1
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=1
+        bonMass=-4
+    }
+    ZelDomiks_NisperAcrinBig1_Cat_Balance ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrinBig1_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=2
+        bonMass=-5
+    }
+    ZelDomiks_NisperAcrinBig2 ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrinBig2
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=1
+        bonMass=-8
+    }
+    ZelDomiks_NisperAcrinBig2_Cat_Balance ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrinBig2_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=3
+        bonMass=-10
+    }
+    ZelDomiks_NisperAcrinBig3 ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrinBig3
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=2
+        bonMass=-8
+    }
+    ZelDomiks_NisperAcrinBig3_Cat_Balance ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrinBig3_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=4
+        bonMass=-15
+    }
+    ZelDomiks_NisperAcrinBig4 ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrinBig4
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=2
+        bonMass=-13
+    }
+    ZelDomiks_NisperAcrinBig4_Cat_Balance ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrinBig4_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=5
+        bonMass=-25
+    }
+    ZelDomiks_NisperAcrinDam1 ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrinDam1
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=3
+        bonWRadius=-5
+        bonWSplinter=4
+    }
+    ZelDomiks_NisperAcrinDam1_Cat_Balance ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrinDam1_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=8
+        bonWRadius=-15
+        bonWSplinter=9
+    }
+    ZelDomiks_NisperAcrinDam2 ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrinDam2
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=4
+        bonWRadius=-10
+        bonWSplinter=6
+    }
+    ZelDomiks_NisperAcrinDam2_Cat_Balance ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrinDam2_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=14
+        bonWRadius=-25
+        bonWSplinter=15
+    }
+    ZelDomiks_NisperAcrinDam3 ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrinDam3
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=6
+        bonWRadius=-15
+        bonWSplinter=8
+    }
+    ZelDomiks_NisperAcrinDam3_Cat_Balance ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrinDam3_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=19
+        bonWRadius=-35
+        bonWSplinter=20
+    }
+    ZelDomiks_NisperAcrinDam4 ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrinDam4
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=8
+        bonWRadius=-20
+        bonWSplinter=11
+    }
+    ZelDomiks_NisperAcrinDam4_Cat_Balance ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrinDam4_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        bonWEnergy=24
+        bonWRadius=-50
+        bonWSplinter=25
+    }
+    ZelDomiks_NisperAcrinDef1 ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrinDef1
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDef=1
+        bonDroid=4
+        bonSpeed=-20
+    }
+    ZelDomiks_NisperAcrinDef1_Cat_Balance ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrinDef1_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDef=2
+        bonDroid=8
+        bonSpeed=-30
+    }
+    ZelDomiks_NisperAcrinDef2 ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrinDef2
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDef=2
+        bonDroid=4
+        bonSpeed=-30
+    }
+    ZelDomiks_NisperAcrinDef2_Cat_Balance ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrinDef2_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDef=3
+        bonDroid=13
+        bonSpeed=-50
+    }
+    ZelDomiks_NisperAcrinDef3 ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrinDef3
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDef=2
+        bonDroid=8
+        bonSpeed=-40
+    }
+    ZelDomiks_NisperAcrinDef3_Cat_Balance ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrinDef3_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDef=4
+        bonDroid=17
+        bonSpeed=-80
+    }
+    ZelDomiks_NisperAcrinDef4 ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrinDef4
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDef=3
+        bonDroid=8
+        bonSpeed=-50
+    }
+    ZelDomiks_NisperAcrinDef4_Cat_Balance ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrinDef4_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDef=5
+        bonDroid=24
+        bonSpeed=-120
+    }
+    ZelDomiks_NisperAcrinSmall1 ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrinSmall1
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=3
+        bonSpeed=22
+    }
+    ZelDomiks_NisperAcrinSmall1_Cat_Balance ^{
+        Cost=150
+        CustomTag=ZelDomiks_NisperAcrinSmall1_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера I
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=2
+        bonSpeed=35
+    }
+    ZelDomiks_NisperAcrinSmall2 ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrinSmall2
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=5
+        bonSpeed=30
+    }
+    ZelDomiks_NisperAcrinSmall2_Cat_Balance ^{
+        Cost=200
+        CustomTag=ZelDomiks_NisperAcrinSmall2_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера II
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=5
+        bonSpeed=55
+    }
+    ZelDomiks_NisperAcrinSmall3 ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrinSmall3
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=7
+        bonSpeed=38
+    }
+    ZelDomiks_NisperAcrinSmall3_Cat_Balance ^{
+        Cost=250
+        CustomTag=ZelDomiks_NisperAcrinSmall3_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера III
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=10
+        bonSpeed=85
+    }
+    ZelDomiks_NisperAcrinSmall4 ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrinSmall4
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=10
+        bonSpeed=40
+    }
+    ZelDomiks_NisperAcrinSmall4_Cat_Balance ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperAcrinSmall4_Cat_Balance
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        LockedAcryn=3
+        Name=Акрин Ниспера IV
+        NonSearchable=1
+        Owner=Kling
+        Special=1
+        Text=Новый вид акрина - продукт длительной разработки линейки акринов с многочисленными промежуточными этапами специально для оснащения ниспероидов.
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=15
+        bonSpeed=150
+    }
+    ZelDomiks_NisperFuelTank ^{
+        Cost=300
+        CustomTag=ZelDomiks_NisperFuelTank
+        Equipments=FuelTank
+        LockedAcryn=3
+        Name=Преобразовывающий бак
+        Owner=Kling
+        Special=1
+        Text=Необычнейшее изобретение ЭКБ при Научном совете, основанное на разработках Келлера. Помимо функции обычного хранения топлива, данный бак способен вырабатывать огромное количество энергии за счет квантовых преобразований топлива. Всю эту энергию впоследствии можно использовать для усиления работы разных систем корабля.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan><clr>%<clrEnd>
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        bonDef=1
+        bonRadar=100
+        bonScan=1
+        bonSpeed=25
+    }
+    ZelDomiks_NisperLirekon ^{
+        Cost=250
+        LockedAcryn=3
+        Name=РПУ-08
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=0
+        Size=100
+        Special=1
+        Text=<color=248,252,248>Уникальная модификация пиратского оружия, разработанная ОКБ при Научном совете для уничтожения крупных объектов с малым количеством брони. Оружие с этой модификацией выпускает <clr>7<clrEnd> высокоточных сверхбыстрых ракет, которые способны при взрыве вызывать на обшивке корабля не только <clr>ЭМ-помехи<clrEnd>, но и эффект <clr>ионизации<clrEnd>.</color>
+        Text=<br><clr><clrEnd><br>
+        Text=Ракет в залпе: <bonShots> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        Text=<clr>Имеет повышенную дальность атаки<clrEnd>
+        Text=Дополнительный эффект: <clr>ионизация<clrEnd>
+        WeaponMods=Shock
+        bonMissileSpeed=750
+        bonShots=2
+        bonWRadius=500
+    }
+    ZelDomiks_NisperTrancAttack ^{
+        Cost=100
+        CustomTag=ZelDomiks_NisperTrancAttackHull
+        Equipments=Hull
+        HullGraphSize=120
+        KindGraph=NisperTranc
+        Name=Уникальный транклюкатор
+        Owner=Kling
+        Priority=0
+        Special=1
+        Text=Один из трех уникальных транклюкаторов, разработанных Нипсером по указанию Научного совета. Данный экземпляр нацелен на ведение <color=255,20,20>боевых</color> действий в относительно ближнем бою, концентрируя на противнике огонь энергетического и осколочного оружия.
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Урон осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> млн км
+        bonWEnergy=25
+        bonWRadius=55
+        bonWSplinter=30
+    }
+    ZelDomiks_NisperTrancRocket ^{
+        Cost=100
+        CustomTag=ZelDomiks_NisperTrancRocketHull
+        Equipments=Hull
+        HullGraphSize=120
+        KindGraph=NisperTranc
+        Name=Уникальный транклюкатор
+        Owner=Kling
+        Priority=0
+        Special=1
+        Text=Один из трех уникальных транклюкаторов, разработанных Нипсером по указанию Научного совета. Данный экземпляр нацелен на ведение <color=255,20,20>боевых</color> действий издалека, используя ракетное вооружение.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        bonSpeed=550
+        bonWMissile=30
+    }
+    ZelDomiks_NisperTrancTank ^{
+        Cost=100
+        CustomTag=ZelDomiks_NisperTrancTankHull
+        Equipments=Hull
+        HullGraphSize=120
+        KindGraph=NisperTranc
+        Name=Уникальный транклюкатор
+        Owner=Kling
+        Priority=0
+        Special=1
+        Text=Один из трех уникальных транклюкаторов, разработанных Нипсером по указанию Научного совета. Данный экземпляр разработан для повышения <color=20,255,20>живучести</color> робота, и дополнительные бронелисты, ёмкости с особым гелем для спайки повреждённых участков обшивки, а также дополнительный генератор рядом со слотом размещения генератора защитного поля говорят сами за себя.
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Мощность защитного поля: <bonDef><clr>%<clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        bonDef=8
+        bonDroid=50
+        bonHull=6
+    }
+    ZelDomiks_Torped ^{
+        Color=0,150,0
+        Equipments=W15
+        KindGraph=Un
+        LockedAcryn=3
+        Name=Торпедяр
+        NonSearchable=1
+        NotRemovable=1
+        Priority=0
+        Size=200
+        Special=1
+        Text=Уникальный микромодуль. Создан ОКБ при Научном совете специально для <clr>торпедного аппарата<clrEnd>. Данный микромодуль улучшает систему выпуска торпед, позволяя торпедному аппарату делать еще два выстрела сразу за первым. Из-за сложности конструкции уменьшает количество взрывчатого вещества в торпедах, что приводит к уменьшению урона. Также увеличивает размер торпедного аппарата для хранения большего количества торпед.
+        Text=Дополнительные выстрелы: <bonAttacks> ед.
+        Text=Урон ракетного оружия: <bonWMissile> ед.
+        Text=Боезапас орудия: <bonAmmo> шт.
+        Text=Размер: <clr>+100%<clrEnd>
+        UniqueMM=1
+        bonAmmo=90
+        bonAttacks=2
+        bonWMissile=-40
+    }
+    ZelDomiks_Updaiter ^{
+        Equipments=WEnergy,WSplinter,WMissile
+        LockedAcryn=3
+        Name=Апдэйтер
+        NonSearchable=1
+        NotRemovable=1
+        Priority=30
+        Special=1
+        Text=Микромодуль первого уровня. Побочный эффект от передачи некоторых данных для обработки Нисперу. При установке срабатывает как псевдоакрин, дающий <clr>оружию<clrEnd> некоторые бонусы.
+        Text=Дополнительный эффект: <clr>блокирует дроида и оружие, сохраняет больше ценного из цели, шанс сбросить груз из трюма цели<clrEnd>
+        WeaponMods=MoreDrop,DropCargo,BlockWeapon,BlockDroid
+    }
+    ZelDomiks_Vertix ^{
+        Color=0,150,0
+        Equipments=W14
+        KindGraph=Un
+        LockedAcryn=3
+        Name=Вертиксяр
+        NonSearchable=1
+        NotRemovable=1
+        Priority=0
+        Special=1
+        Text=Уникальный микромодуль. Создан ОКБ при Научном совете специально для <clr>вертикса<clrEnd>. Данный микромодуль улучшает конструкцию системы искажения космического пространства, позволяя создавать эффект "волнового смятия", влияя при этом на всю электронику в радиусе действия. Благодаря этому вертикс способен ломать и выводить из строя любую технику любого попавшего под заряд противника, а более совершенная система наведения способна увеличить урон по уже раненому противнику.
+        Text=Урон энергетического оружия: <bonWEnergy> ед.
+        Text=Дополнительный эффект: <clr>ЭМ-помехи, разрушение оборудования, повышенный урон повреждённым целям<clrEnd>
+        UniqueMM=1
+        WeaponMods=Magnetic,Destruct,BonusToDamaged
+        bonWEnergy=30
+    }
+}
+Script ^{
+    Mod_RefNisper ^{
+        105=Пожалуй, сейчас ваш рейтинг говорит о том, что вы... да, решено! Считайте, что мы уже одобрили вашу кандидатуру.
+        106=Увы, рейнджер. Кажется, наши базы говорят о том, что вы недостаточно много и часто участвуете в торговых отношениях на территории Коалиции - ваш рейтинг составляет <0>, а мы хотели бы видеть кандидата с рейтингом не менее <1>. Возвращайтесь позже.
+        108=Отлично. Мы отдали приказ техникам запускать наш модуль. Удачи!
+        109=Хм... А я подойду на роль такого кандидата?
+        110=Это превосходно, без сомнения, но делать-то что надо?
+        112=Отлично. Готов приступать!
+        113=Отлично. Сейчас узнаем, кто кого
+        114=На основе наших расчётов мы создали новый набор программ для стандартного модуля Ниспера - Торгового модуля.<br><br>Задача этого модуля - за короткий срок получить как можно больше прибыли, занимаясь межпланетной торговли.<br>Соответственно, вашей задачей будет превзойти наш модуль.<br>Отметим, что в прибыль входит только то количество денег, которые вы получаете за торговые операции. Задания и прочие возможные источники дохода учитываться не будут.<br>Разрешается использовать любые экономические хитрости и уловки. Разрешается торговать не только на планетах, но и на станциях. Разрешается иметь неограниченный стартовый капитал и неограниченное количество стартовых единиц товара - ведь и у Коалиции имеется весомый капитал, как денежный, так и материальный.<br>Состязание будет длится <0> дней, по окончании которых будет произведен финальный подсчет результатов.<br><clr>Примечание №1<clrEnd>: Стартовый капитал модуля будет напрямую зависеть от вашего стартового капитала - чтобы не было совсем уж нечестно. В учет будет взята ценность установленного на вашем корабле оборудования, ценность оборудования и товаров на складах, депозит и текущее количество денег на вашем счету.<br><clr>Примечание №2<clrEnd>: Уничтожение модуля приведет к отмене текущей миссии. Мы можем быстро отстроить модуль, но чистота эксперимента будет безвозвратно потеряна, что в нашем случае недопустимо. В таком случае вам придётся вернуться сюда, на нашу станцию, и начать состязание ещё раз.
+        115=Я пока подумаю
+        121=Отлично. Как только найдёте обломки - привозите их нам.
+        123=Пожалуй я откажусь
+        124=Хорошо, я согласен.
+        125=Хорошо. Все понял.
+        127=Ну, допустим, но где мне искать эти обломки и сколько у меня будет времени?
+        132=Пожалуй, мне сейчас не по карману...
+        133=В некотором роде.<br><br>Наши ОКБ разработали ряд важных улучшений, истративших весь бюджет. КВСМК отказывает нам в поддержке, поэтому мы вынуждены искать у внешних инвесторов <0> нод и <1> cr.<br>
+        134=Верно. Разведотдел КВСМК доложил, что доминаторы в системе <0> строят новое соружение неизвестного назначения, которое, по предположениям наших специалистов, может каким-то образом негативно воздействовать на модули Ниспера. <br><br>Несколько месяцев назад было решено построить флот ниспероидов для зачистки этой системы и уничтожения данного сооружения, пока его постройка не будет завершена и не станет слишком поздно, однако третьего дня поступила информация от шпионов, что пиратский Клан намерен захватить неизвестное сооружение раньше нас.<br><br>У пиратов достаточно квалифицированных учёных-ренегатов, чтобы завершить работы над сооружением и использовать его против нас. <br>КВСМК требует немедленно свернуть строительство и атаковать систему. Научный совет просит всех свободных рейнджеров поучаствовать в данной атаке.
+        135=Верно. Мы не можем рисковать мозговым центром, когда природа излучения нами ещё не изучена.
+        136=Не беспокойтесь, рейнджер. Наши верфи освоили строительство модулей класса Бертор, один из которых присоединится к атакующей флотилии.
+        137=Что же, не могу пропустить такое событие. Наверное, самого Ниспера вы не пошлёте?
+        138=Жаль, ведь миссия такая важная...
+        139=Ого, Бертор! Наши шансы на победу становятся куда выше.
+        14=Благодарим за помощь!<br><br>Теперь счёт организации составляет <0> cr.
+        140=В целом, нам будет достаточно обломков одного доминатора для завершения исследований.<br><br>На какой планете они лежат - тут уж извините, исследований Коалиция не проводила. Но, понимания сложность задания, время на его выполнение мы <clr>не ограничиваем<clrEnd>
+        143=Итак, Разведотдел КВСМК сообщил о разработке учёными-ренегатами, бежавшими под крыло пиратского Клана, пси-оружия, целью которого должны стать модули Ниспера.<br>В целях конспирации наш агент "решил отдохнуть" и устроил "круиз" по нескольким живописным незаселённым планетам, где оставил прототипы этого оружия. К сожалению, передать информацию о местах схрона агент не успел.<br><br>Теперь Совету Коалиции необходимо найти все <0> экземпляра устройства при единственной известной информации - все экземпляры устройства находятся в этой, или недалеких от этой системах.
+        146=Отлично. Выдвигаюсь!
+        147=Мы понимаем, что задача не из лёгких, поэтому не ограничиваем вас во времени поисков.<br><br>Более того, Клан не осведомлён о наших схронах, и даже не будет пытаться их искать, так что волноваться совершенно не о чем.
+        148=Угу. Задача ясна. А что со временем?
+        15=
+        150=Отлично! Вам осталось найти ещё <0> экземпляров устройства пиратов.
+        152=Пожалуй, да.<br><br>Предыдущий опыт был весьма кстати при разработке новой экономической модели для нашей экономики.<br><br>Однако, возросшее количество модулей требует дальнейших изменений. На этот раз наши аналитики предлагают внедрить сразу несколько торговых модулей, чтобы обеспечить постоянный приток сырья для увеличения эффективности работы оборонных предприятий, а, впоследствии - и гражданских, чтобы обеспечить приток бюджетных средств.<br><br>Ввиду положительного опыта ранее, мы предлагаем именно вам поучаствовать в этой операции.
+        153=Верно. Однако теперь модулей будет <color>три</color>, а времени для соревнования будет больше. Ваша задача остается неизменной - вам нужно за <0> дней получить больше прибыли чем какой-либо из отправленных нами модулей.<br><clr>Примечание №1<clrEnd>: стартовый капитал модулей будет зависеть от вашего стартового капитала. В учет будет взята ценность установленного на вашем корабле оборудования, ценность оборудования и товаров на складах, депозит и текущее количество денег на вашем счету.<br><clr>Примечание №2<clrEnd>: уничтожение всех трех модулей нарушит чистоту эксперимента, и состязание будет отменено. За повторным его началом вам придётся вернуться на Базу Доминаторов.
+        154=Принято. Техники приступили к запуску торговых модулей.
+        155=Та-ак... И что, мне опять нужно облапошить, так скажем, ваш торговый модуль?
+        156=Отлично. Я готов.
+        157=Мне нужно подумать
+        158=Да начнётся игра!
+        160=Нам удалось сделать некоторый прорыв в изучении доминаторов, а точнее - нам удалось наконец изучить некоторые важные алгоритмы поведения доминаторов, и обновить программы ниспероидов. Основной, наиболее важный блок работы был выполнен специалистами из нашего комплекса в системе <0>, и мы занимались подготовкой перевозки блока новых программ.<br><br>Однако третьего дня Служба Безопасности КВСМК доложила о подготовке атаки силами пиратов на эту систему с целью помешать перевозке и сорвать работу нашего отдела. Ввиду этого подготовку транспорта было решено прекратить и начать подготовку передачи всей необходимой информации посредством подпространственных излучателей. Как вы догадываетесь, дело небыстрое - по расчётам аналитиков, на всё уйдёт до <1> дней, зато пираты, неготовые к приёмке сигнала, не получат никакой важной информации.<br><br>Теперь Научный совет просит всех свободных пилотов проследовать в систему <2> для противодействия атаке Клана.
+        161=Да, у нас есть для вас задание.<br><br>Нашим отделам удалось добиться важных успехов в применении нанодобавок, однако новые производственные мощности истратили весь бюджет.<br><br>Наш аналитический отдел совместно с Ниспером разработал новую экономическую модель, которая бы позволила выосвободить дополнительные средства для финансирования Проекта. Но самым главным вопросом остаётся поиск добровольца, который согласился бы поучаствовать в нашем проекте. Требование к нему - наличие опыта в проведении торговых махинаций, ведь нам нет смысла проводить эксперимент над неопытным новичком в деле купли-продажи.
+        162=Да, пожалуй, есть подобная миссия.<br><br>Наш исследовательский отдел уже давно работает над вопросом использования наноботов. И, как показали результаты исследований, ответы на подобные вопросы может дать нам изучение доминаторов класса "Бертор".<br><br>Но это ставит две проблемы.<br><clr>Во-первых<clrEnd>, сами Берторы крайне смертоносны - мощная орудийная палуба, брандеры-клиги и разрушающая наше оборудование т.н. "аура".<br><clr>Во-вторых<clrEnd>, встретить подобный корабль не на доминаторской территории практически невозможно, а значит, атакующему с целью получить материал для изучения придётся уничтожить всю его "охрану".<br><br>Естественно, такой план не получил одобрения ни у КВСМК, ни у Научного Совета.<br>Однако подсказку дал <color=210,185,30>Ниспер</color>.<br><br>Коалиция уже не раз сталкивалась с Берторами, и даже побеждала. Следовательно, на какую-нибудь незаселённую планету вполне могли упасть обломки побеждённого доминатора.
+        164=Именно так, рейнджер. Ситуация осложняется тем...
+        167=Хм... Пожалуй, Келлер "втянул" в прокол модули других серий. Они могут отвлечь его боевыми действиями...<br><br>Ну всё, рейнджер: мы открыли прокол!
+        168=Ну, значит, речь идёт о спасательной операции?
+        171=Ясно. Что сделать-то нужно будет?
+        172=Кхм... В общем-то, да. К этому прибавляется ваш колоссальный опыт ведения боёв в гиперпространстве...
+        175=Увы, рейнджер, но на этот раз ваши догадки не совсем верны. Научный совет хочет, чтобы вы поучаствовали в испытании новейшей разработки, для который необходим разносторонне развитый гуманоид.
+        176=Данные пока засекречены. Мы не вправе что либо разглашать - даже вам, уж извините.
+        178=Ладно, так уж и быть. Берите все, что нужно.
+        179=Итак... Вы хотите, чтобы именно я занялся вербовкой новых сотрудников для работы над твоей серией, верно? Но ведь я же рейнджер, а не дипломат.
+        180=Новейшей разработки? О чем именно идет речь?
+        183=Хорошо, я все понял. Будет сделано.
+        186=Верно, это я. А что вам нужно?
+        188=Хм. Ну, это я могу. Тем более, опыт у меня большой...<br>Я подумаю, но, для начала, мне нужно доделать дела в этой системе. Скоро тут произойдет массовый съезд малокских чиновников со всей Галактики, и мне нужно не допустить захвата этой системы врагами. Поможешь в охране - соглашусь на твое предложение.
+        189=Думаю, <0> дней будет достаточно. Потом съезд уже закончится.
+        190=Отлично. Тогда жду вас тут по истечению срока договора.
+        192=Угу. Я Кувард. А вы рейнджер <0>, как я понимаю?
+        193=Хорошо. Я согласен.
+        195=О нет, благодарю. Думаю, я доберусь к месту назначения на своем личном корабле.
+        196=Да, конечно. До свидания.
+        197=Да. Я Леонард. А кто спрашивает?
+        198=Это, конечно, интересно, но что за совет, какое задание и, пенчекряк меня раздери, я здесь причём?
+        199=Хм. Ну, в целом, я не против... Тем более, всегда хотел поработать над доминаторами.<br>Только вот одна маленькая проблемка: я никогда не берусь за два дела одновременно. А сейчас у меня уже есть заказ. Я делаю дизайн новейших парусных кораблей для одной планеты, а когда закончу - сам не знаю. Так что, пока что я вынужден отвергнуть ваше предложение.
+        2=Пока
+        201=Да, я наконец-то я закончил этот изрядно затянувшийся проект. Теперь я готов принять предложение Научного совета.
+        202=О нет, благодарю. Я сам полечу, когда соберусь.
+        203=И вам того же.
+        204=Спасибо, и вам.
+        205=Хм. Ну, в целом, я не против... Тем более, я всегда хотел поработать над доминаторами. Да и других проектов у меня сейчас нету. Поэтому, полагаю, я могу согласится с вашим предложением.
+        206=Да, это я.
+        207=Хм... Интересное предложение...<br>Скажите, а вы сами знакомы с Ниспером?
+        208=Полагаю, его необычность проявляется в способности мыслить, подобно разумным гуманоидам?
+        209=И часто ли вы встречаете во время общения с ним логические несостыковки? Например, часто ли он отвечает не на ту тему, на которую вы у него что-то спросили?
+        21=Идентификация объекта завершена. Объект <0> является рейнджером.<br><br>Коммуникация разрешена.
+        210=Ни разу? А сколько раз вы с ним общались?
+        211=Ух ты... То есть, это не единичный случай... Значит, они и вправду создали искусственный интеллект на основе настоящих доминаторов...<br>Я хочу увидеть это. Пожалуйста, отвезите меня на Базу Доминаторов.
+        212=Жду тогда вас у вашего корабля.
+        214=Да, это я. А что нужно?
+        215=А, вот оно что! Кажется, я знаю, зачем вы прилетели, но вы немного невовремя. Дело в том, что я буквально на днях попросил своих аналитиков расчитать, следует ли вкладываться в этот проект.<br>Поймите меня правильно: я очень хочу помочь Коалиции любыми способами, но и денег у меня не безмерное количество. Перед тем как инвестировать в какую-либо отрасль, я должен сперва удостоверится, что вложение денег в этом направлении будет самым лучшим, эффективным вариантом. Я наслышан об этих доминаторах и даже не раз видел их в действии, но кто знает, что будет в будущем... Может, куда сильнее будет требоваться партия новейших энергошокерных установок?
+        216=Не совсем. Прилетай ко мне через дней эдак через <0>, и я скажу точно, помогу ли я вашему отделу финансово, или же нет.
+        217=Что-нибудь еще?
+        218=Здравствуй, рейнджер <0>. У меня хорошие новости: мои аналитики сообщили, что в данный момент инвестирование в отдел разработки новой серии доминаторов - самое лучшее пожертвование из всех ныне доступных.
+        219=Да, пожалуй. В скором времени наведаюсь к некоторым членам совета и обговорю все нюансы.
+        220=Удачного пути, рейнджер!
+        221=Ясно... Ну, заинтриговали вы меня!<br><br>А где искать этих специалистов? Сколько у меня времени?
+        222=Научный совет хочет завербовать вас для работы над доминаторами серии "ниспер".
+        223=Вам нужно будет поучаствовать в развитии тактическо-стратегического мышления Ниспера в условиях боёв на планетах.
+        224=Хорошо. Сколько времени нужно охранять?
+        225=Отлично. Удачного пути!
+        226=Да, вы полностью правы. Меня зовут <0>, и я здесь по поручению Научного совета. Меня послали к вам для того, чтобы заручится вашей помощью в разработке нового программного обеспечения для доминаторов серии Ниспер. Вы известны своей выдающейся деятельностью в этой области.
+        228=Отлично... Может быть, вас, тогда, довезти?
+        229=Понятно. Ну тогда я, если вы не против, полечу дальше по своим делам.
+        230=До свидания...
+        231=Я рейнджер <0>, и прибыл сюда по заданию Научного совета.
+        232=Научный совет - организация, курирующая разработку ниспероидов. Моя же миссия - передать вам предложение применить ваши таланты к Нисперу и его серии доминаторов. Если быть точнее, то Научный совет хочет сделать из Ниспера и его модулей символ опоры и защиты Коалиции. Так сказать, провести небольшой маркетинговый ход. Ну а вас просят занять пост главного дизайнера в этой сфере.
+        233=Отлично. Вас подвезти?
+        234=Что же, тогда удачного полета!
+        235=Здравствуйте. Я рейнджер <0>, и меня послали к вам с одним важным предложением. Научный совет считает, что такой разносторонне развитый фэянин как вы может очень сильно пригодится в разработке новых технологий для доминаторов серии "ниспер". Они очень сильно хотели бы видеть вас в рядах своих ученых.
+        236=Да. Очень необычный робот.
+        238=Да нет, вроде бы, ни разу такого не было...
+        240=То есть вы согласны? Отлично. Тогда собирайте вещи, и мы вылетаем.
+        242=Хм. Так каков ваш вердикт?
+        244=То есть вы согласны?
+        245=Спасибо. Тогда не буду больше зазря тратить ваше время.
+        247=Да, вы правы. Хотя, довольно часто в разговоре с ним можно услышать некоторые одни и те же слова, как, например, "верно", однако он неплохо создает ощущение будто бы общаешься не с роботом, а с настоящим живым существом.
+        248=Ну не сказать что прям уж много...
+        249=Меня? Но я ведь военный, а не ученый. Чем я им помочь-то могу?
+        250=Приветствую еще раз! Спасибо за твою помощь в охране системы. Очень рад узнать, что такие рейнджеры как ты, <0>, участвуют в развитии доминаторов, защищающих Коалицию. <br>Пожалуй, пора бы и мне внести свою лепту в это бравое дело. Вылетаю сегодня же.
+        251=Великолепно! Это ведь сам <clr>Абер<clrEnd>! Я его преданный фанат! Его Говорил-ГПТ 66.0 произвёл настоящий фурор в сфере информационных технологий! Тысяча пакряков, да разморозьте уже кто-нибудь его в конце-концов!<br><br>...<br><br>[Кажется, вам стоит удалиться, ибо вами сейчас заниматься некому]
+        252=Да, конечно, что тут думать? В мои руки уже попадались алгоритмы обработки событий Ниспера, и они чешутся улучшить их. Тем более, применить свои навыки работы с искусственным интеллектом в работе с кибернетическим - так ещё и защитником Коалиции!
+        253=Пожалуй, есть подобная задача для вас.<br><br>Наши специалисты сейчас вовсю работают над вовлечением Ниспера к управлению модульными роботами, ведь никто лучше доминатора не может бороться с доминаторами.<br><br>Естественно, для этого стоит в первую очередь натренировать Ниспера посредством сражений с опытными командирами - например, с вами.
+        254=Именно так. Мы передали под его контроль учебных роботов, посредством которых он с вами и сразится.
+        259=Пожалуй, я готов. Начинаем немедленно! В бой!
+        260=Извините, но я пока занят. Пожалуй, попозже.
+        266=Жаль, очень жаль, что у вас не получилось...<br><br>Впрочем, у вас всегда есть возможность повторить
+        270=Отлично. Тогда так и поступлю.
+        271=Не, спасибо. Думаю сначала лучше отдохнуть.
+        276=Хорошо
+        278=Верно. Ученые Коалиции сделали финальный прорыв в исследованиях доминаторских технологий. Теперь они собираются усовершенствовать заводы по производству моих модулей Ниспера, однако для этого нужны колоссальные ресурсы. У КВСМК нету возможности самостоятельно найти необходимые средства, и они вынуждены просить помощи у всех неравнодушных.<br>Теперь, с учетом всех возможных поломок, им нужно собрать <0> нод и <1> cr.
+        28=Кто ты?
+        282=Я согласен вам помочь. Берите все, что нужно.
+        288=Наши главные комплексы с серверами, на которых хранятся образы сознания Ниспера, были атакованы всеми тремя сериями доминаторов. Нам немедленно необходим достойный управленец модульными роботами. <clr>НЕМЕДЛЕННО<clrEnd>!
+        291=Отлично, рейнджер! Вам удалось справится с неординарным противником! Это невероятный успех!
+        293=Какая жалость... Столько работы, рейнджер! И всё было зря!
+        294=Ну, тогда мы займёмся восстановлением потерянных данных. Идите, рейнджер.
+        295=Так, что происходит?
+        299=Ага. Трудновато было...
+        3=Готов помочь, куда переводить деньги?
+        300=Извините. Шансы на победу были малы...
+        301=Верно. Ученые наших ОКБ сумели сделать окончательный прорыв в технологиях доминаторов и прямо сейчас здесь, на Базе Доминаторов, производят окончательные вар...<br>Внимание, рейнджер! Нами зафиксировано вторжение вражеских сил на Базу Доминаторов. Нашу станцию пытаются атаковать сразу три серии доминаторов!<br><br>Кажется, наши исследования не остались незамеченными. Ну, что же, пора принять бой!<br>
+        302=Верно. Однако перед тем, как внедрить новые технологии в модули Ниспера, на этот раз их придётся протестировать из-за наличия коренных изменений в программах. Одно из заданий: тест показателей в условиях подпространственного погружения. Пару часов назад мы отправили небольшой отряд нисперо...<br>Ой-ой-ой, рейнджер! Мы зафиксировали перехват тестирующей группы модулей. Искажение подпространственного пузыря... Инициатор... Келлер!<br>Битва неизбежна. Наши симуляции... Так! Вероятность победы составлять <clr>тринадцать<clrEnd> процентов. С вашим участием... Симуляции говорят о возрастании шанса победы на ещё <clr>восемнадцать<clrEnd>!<br><br>Рейнджер, нет времени на обсуждения. Мы немедленно открываем гиперпространственный прокол для вас. Спасите нашу экспериментальную группу!
+        305=Ясно, опять мне спасать мир. Есть что-то ещё, что я должен знать?
+        309=Необходимо получить больше прибыли чем торговые доминаторы Ниспера.<br>Текущий статус:<br>Вы имеете <0> cr дохода,<br>Первый модуль Ниспера имеет <1> cr дохода,<br>Второй модуль Ниспера имеет <2> cr дохода,<br>Третий модуль Ниспера имеет <3> cr дохода,<br>До конца соревнования осталось <4> дней.
+        313=Здравствуйте, Арту. Я рейнджер <0> и прилетел к вам по поручению Научного совета. Скажите, что вы знаете о доминаторах серии "ниспер"?
+        316=Отлично, рейнджер!<br><br>Добытые вами обломки содержат один важнейший составной компонент систем Бертора - тот излучатель, которые генерирует мощную волну, разрушающу. наше оборудование и восстанавливающую обшивку доминаторских кораблей.<br><br>Мы давно смогли воссоздать примерный структурный облик данного объекта, и все его свойства, но вот реконструировать его у нас не получилось.<br><br>Найденные вами обломки содержат поддерживаемый в работоспособном состоянии излучатель, а это значит, что мы в кратчайшие сроки сможем перенять доминаторскую технологию.<br><br>В процессе изучения так называемой "ауры" Берторов нами также были достигнуты некоторые прорывные рубежи технологий в других областях. Одним их ярких выражений данного прогресса является новый акрин Топливного Бака - <clr>"Преобразовывающий"<clrEnd>. Один из первых прототипов акрина в качестве награды мы оставили в вашем доке ангара.<br><br>В заключение - Научный Совет рад вашей помощи и был бы ещё больше рад дальнейшему сотрудничеству.
+        318=Нам есть, что сообщить вам касательно последнего нашего задания.<br>Научный совет благодарит вас за участие в обороне системы.<br><br>В качестве благодарности и награды за участие в операции примите от нас благодарность - один из прототипов <clr>Лирекрона<clrEnd>, который мы создали во время разработки новых акринов Ниспера.<br><br>Данная ракетная установка будет жадть вас на складе нашей станции.
+        320=Совет Коалиции передает вам свою благодарность за участие в этом задании. Они очень довольны вашей продуктивностью и желанием помогать Коалиции в этом нелегком деле.<br>Тем временем, я хочу выразить вам свою признательность за помощь мне в выполнении главной стратегической задачи. Вы уже не первый раз соглашаетесь помочь мне и я считаю, что лучший способ использовать вас в качестве моего помощника и дальше - это подкрепить положительный результат вознаграждением. На сей раз я хочу выдать вам в распоряжение новый микромодуль моего собственного производства. Разработал я его совсем недавно, когда изучал акрины накладываемые на орудие. Данный микромодуль копирует некоторые свойства подобных акринов.
+        321=Пожалуй, на этот раз заданий у нас нет, но нам есть что вам сказать.<br><br>Совет Коалиции передает вам свою благодарность за участие в этом задании. Они очень довольны вашей продуктивностью и желанием помогать Коалиции в этом нелегком деле.<br><br>Мы же, в благодарность за помощь, передаём в ваше пользование наш новый экспериментальный микромодуль. Он копирует некоторые свойства акринов, и, думаю, будет вам весьма полезен.<br>Найти его вы сможете на складе нашей станции
+        323=Вы показали себя в планетарном бою как способный гуманоид. Научный совет гордится тем, что рейнджер сумел победить Ниспера в условиях планетарного боя. Представители совета передают вам свою благодарность за помощь, а непосредственно мы предлагаем вам выбрать один из трёх вариантов разработанных нами транклюкаторов.
+        325=Отлично. Выбранный вами транклюкатор уже отправлен на ваш склад на станции.
+        328=Принято. Новый микромодуль доставлен на склад Базы Доминаторов.
+        329=Примите заслуженные благодарности от меня и Научного совета за всесторннюю помощь и поддержку в развитии серии "ниспер". За все ваши заслуги вы были выбраны советом как самый лучший кандидат для тестирования нового полностью функционального корпуса Бертора. Корпус уже ждёт вас на складе нашей станции!
+        330=Верно. Функционал корпуса класса бертор включает в себя генерацию т.н. "ауры" и автономную станцию постройки клигов.
+        333=Дайте угадаю, вы можете перебросить туда только один корабль?
+        334=Ага. То есть... Мне придётся сражаться с Ниспером?
+        335=Я готов, ведите меня к пульту управления!
+        339=Отлично!
+        340=Спасибо
+        341=Спасибо!
+        342=Понял, спасибо.
+        343=Как нибудь в другой раз.
+        344=Интересно... Спасибо.
+        345=Артефакт? Хм, это интересно, нужно будет обязательно протестировать, спасибо.
+        346=Ого, ничего себе! А какой выбор?
+        347=Я выбираю транклюкатора-танка.
+        348=Я выбираю транклюкатора-воина.
+        349=Я выбираю транклюкатора-ракетчика.
+        35=Принято. Завершаю диалог с объектом.
+        352=Я хочу получить Торпедяр.
+        353=Я хочу получить Вертиксяр.
+        354=Я хочу получить Имхоняр.
+        355=Замечательно!
+        356=Бертора? Прям-таки полностью рабочего Бертора?
+        358=Все равно. Это так классно... Спасибо большое!
+        361=Транзакция прошла успешно.<br><br>А теперь примите заслуженные благодарности от меня и Научного совета за всесторннюю помощь и поддержку в развитии серии "ниспер". За все ваши заслуги вы были выбраны советом как самый лучший кандидат для тестирования нового, полностью функционального корпуса Бертора. Корпус уже ждёт вас на складе нашей станции!
+        362=Да?
+        368=Я согласен помочь вам с исследованиями. Что в трюме моего корабля вам подходит?
+        37=Ясно. Спасибо за ответы. Я тогда уже, пожалуй, полечу по своим делам.
+        370=Итак, мы бы хотели получить в своё распоряжение следующие объекты:<br><br>
+        371=Да, такой Проект существует и активно разрабатывается несколькими нашими отделами.<br><br>А перевернуть? Не знаю, рейнджер, как вы собрались переворачивать вакуум, хе-хе...<br><br>Но, если отставить шутки в сторону, то, безусловно, появление на стороне Коалиции ещё одной серии доминаторов, борящихся за Порядок в Галактике, серьёзно изменит баланс сил.
+        372=Собственно, да, иначе мы бы здесь не собрались, и Галактический Совет не выделил бы нам финансирование.<br><br>Пусть, конечно, все и сочиняют анекдоты про глупых и некомпетентных старцев в высокой башне, но на деле Совет всегда привлекает специальные комиссии, состоящие исключительно из компетентных специалистов. И вот их-то мы и переубеждали.
+        373=Нет-нет-нет, рейнджер, ведь в Научном Совете не глупцы сидят, и бегать никто от своих же богов из машины не собирается.<br><br>Специально для всей этой "затеи" будет создана отдельная база в этой системе; мы так её и собираемся назвать - База Доминаторов. Просто и лаконично.<br><br>На этой базе будет накапливаться вся информация, обработанная нами, а также будут находиться сервера с протоколами всех единиц новой серии. Кроме того, в целях безопасности каждая единица будет при возникновении запросов, касающихся важнейших действий, запрашивать разрешение сервера.
+        374=Еще не решено. Но это вполне возможно. В любом случае, у доминаторов не будет права выбора. Абсолютно все их действия будут контролироваться Коалицией, так что они не смогут стать нашими врагами. Иначе будут уничтожены - как только даст отмашку Научный Совет.<br>
+        376=Очень жаль. Но если вдруг передумаете, то всегда обращайтесь.<br><br>Могу ли я вам помочь чем-нибудь еще?
+        377=Правда? Отлично. На данный момент у нас есть:<br>   <0> тонн ошметков Блазера<br>   <1> тонн ошметков Келлера<br>   <2> тонн ошметков Террона<br>Всего нам осталось набрать <3> тонн материалов.<br>Что именно вы бы хотели отдать нам?
+        378=Очень жаль. Но, конечно, мы не вправе настаивать. Передавать нам что-либо - исключительно ваша добрая воля.
+        379=Отлично, рейнджер <0>!<br><br>Мы очень благодарны вам за вашу помощь! Исследования завершены, и наш Проект выходит на новый уровень - мы выводим на орбиту Базу Доминаторов!<br><br>Весь персонал, занятый Проектом, переходит на эту базу, поэтому для дальнейших взаимодействий со специалистами, занятыми этими исследованиями, отправляйтесь на новую базу.
+        380=Здравствуй, рейнджер <0>! Рады приветствовать на нашей новой станции - Базе Доминаторов <1>!<br><br>Здесь мы будем в полную силу заниматься исследованиями, связанными с улучшениями Ниспера. Кроме того, здесь же расположен самый большой массив <clr>доков<clrEnd> для строительства новых ниспероидов.<br><br>Ну а на данный момент мы заняты выводом на орбиту непосредственно Ниспера.
+        381=Не "что", а "кто", рейнджер, ведь наш научный коллектив считает, что, пусть Ниспер и ограничен в возможностях, но это всё ещё разум. Синтезированный - и всё же разум!<br><br>По итогу анализа нашим отделом было принято решение о создании мозгового центра для доминаторов, строящихся на резерв КВСМК. Как оказалось, такое полуавтономное состояние даст наибольшее полезное действие при нашей схеме.
+        382=Во-первых, для этого Ниспер будет оснащён крайне мощными орудийными платформами, и задача эта будет отнюдь не лёгкой.<br><br>Во-вторых, даже в этом случае Ниспер дублирует информацию на наши сервера здесь, на Базе Доминаторов, и мы просто воссоздадим его с минимальной информационной потерей - разве что ресурсов материальных очень много потребуется на воссоздание такого огромного "объекта".<br><br>В-третьих, все необходимые меры по обеспечению безопасности уже предприняты. Постоянные сверки контрольных сумм с серверами, проверки алгоритмов, проверки логических ошибок, проверки допустимости отдачи приказов, полная аннигиляция, самоуничтожение отдельных составных лементов во избежание утечек в пользу пиратского Клана...
+        383=Мы собирались приступить к запуску немедленно, однако один из наших комплексов подвергся атаке всех трёх серий доминаторов. Событие неприятное, но отнюдь не мешающее нашим планам, да и не сказать чтобы экстраординарное.<br><br>Однако, сам Ниспер проявляет интерес к данной атаке. Наши программисты ответствуют, что это сработали механизмы модулей самообучения.<br>Так вот, выходит, что одним из первых реальных опытов Ниспера в столкновении с реальным противником - доминаторами - может стать именно это сражение. Увы, на данный момент у нас нет свободных командиров-тактиков, и варианта у нас два - предложить вам взять на себя управление штабом, имеющим платформу для производства модульных роботов, или же, выгрузив всю необходимую информацию и эвакуировав персонал, уничтожить комплекс.
+        384=Полагаем, что уже завтра техники выведут этот Объект на орбиту. Ниспер прошёл все проверки на симуляциях, а это значит, что переживать нам не из-за чего.<br><br>Настало время немного отдохнуть и развеяться.
+        387=Жаль, что вам не удалось победить, но что поделать? И так бывает. Впрочем, это никоим образом не повлияет на наши планы.<br><br>Полагаем, что уже завтра техники выведут этот Объект на орбиту. Ниспер прошёл все проверки на симуляциях, а это значит, что переживать нам не из-за чего.<br><br>Настало время немного отдохнуть и развеяться.
+        388=Хм... Интересно, но наши коррдинаторы фиксируют набор анализирующей деятельности Ниспера. Видимо, ваша победа впечатлила его.<br><br>Кстати, прямо сейчас от наших управленцев пришло сообщение! Кхем. Кажется, его интересует ваше мнение о прошедшей битве. А если быть точнее, ему интересно, какой враг показался вам наиболее опасным.
+        389=Отлично! Благодарим за помощь в защите нашего комплекса.<br><br>Полагаем, что уже завтра техники выведут этот Объект на орбиту. Ниспер прошёл все проверки на симуляциях, а это значит, что переживать нам не из-за чего.<br><br>Настало время немного отдохнуть и развеяться.
+        390=Новую серию доминаторов?! Это возможно???!!!
+        391=А новый вид доминаторов не сможет решить попросту уничтожить нас?
+        392=Интересно... Но ведь это, получается, и мозговой центр вы будете создавать?
+        393=Очень интересно. Но могу ли чем-нибудь помочь я?
+        394=Да, давайте. У меня как раз в трюме есть немного доминаторских ошметков.
+        395=Ох, нет, извините. Сейчас не могу вам ничем помочь...
+        396=Я передумал
+        397=Ниспера? Что такое Ниспер?
+        398=Интригующе. А если мозговой центр будет уничтожен?..
+        399=Ох ты! Да, по последнему слову техники всё... Но так когда Ниспер взлетит?
+        400=Хм. Пожалуй, я готов применить свои навыки в деле управления модульными роботами. Ведите в пункт управления.
+        401=Эх... Ладно, подождём запуска тогда. Я тут ничем не смогу помочь.
+        402=Благодарю. Пожалуй, вылечу самолично понаблюдать за процессом.
+        403=Безусловно, мощные отряды <color=255,20,20>Блазера</color> не давали мне продохнуть и минуты!
+        404=Что ж, вылазки <color=30,145,255>Келлера</color> очень досаждали мне и заставляли постоянно выполнять перегруппировки и откладывать свои планы.
+        405=Что ни говори, а орды <color=0,255,130>Террона</color> приводили меня в ужас своим видом, заставляя бросать все силы и ресурсы на их сдерживание.
+        410=К сожалению, я еще не закончил свою работу над парусными кораблями, а когда закончу - сам не знаю. Там работы очень много...<br>Предлагаю вам, пока я занят, слетать к остальным вашим "целям", если таковые имеются. Вполне возможно, что к тому моменту, как вы закончите с ними - я закончу с кораблями.
+        411=Необходимо уговорить Борфорса, Куварда, Леонарда, Абера и Арту присоедениться к команде улучшения Ниспера и его доминаторов. На выполнение этого задания у вас осталось <0> дней.<br>Текущий статус:<br>Борфорс <1><br>Кувард <2><br>Леонард <3><br>Абер <4><br>Арту <5>
+        412=Все эти специалисты находятся в родных системах своих рас. Точное местонахождение неизвестно, однако мы знаем, что они находятся где-то на планетах этих систем.<br>На выполнение этого задания у вас есть ровно <0> дней.
+        413=1. Транклюкатор-защитник.<br><br>Имеет повышенные характеристики защиты и восстановления обшивки, но хуже ведёт сражения.<br><br>2. Транклюкатор атакующий<br><br>Имеет улучшенное энергоснабжение орудийной палубы, что позволяет повысить наносимый им ущерб, взамен сильно теряя в защитных характеристиках.<br><br>3. Транклюкатор дальнобойный<br><br>Имеет улучшенный системы наведения и дальнего обнаружения, что повышает мощность ракетного оружия, снаряжаемого на транклюкатор.
+        418=Конец связи
+        419=Именно так. Наш аналитический отдел недавно пришёл к выводу, что наиболее эффективным способом получения принципиально новой информации является разведка <clr>гиперпространства<clrEnd> ввиду большого разнообразия различного рода кораблей разных рас.<br><br>Кроме того, стоит учитывать, что проведение исследований в гиперпространстве экономически нецелесообразно - в нашем пространстве, ввиду, во-первых, случайности мест возникновения естественных проколов, а, во-вторых, дороговизны организации искусственных.<br><br>Ввиду этого Научным советом было принято решение использовать группу модулей Ниспера для сбора информации в подпространстве. И в течение нескольких дней она должна была выйти с нами на связь для передачи новой информации, полученной ей там. Однако, прямо сейчас мы получили от них сообщение о крупной атаке кораблей неизвестного происхождения. Видимо, они либо начали о чём-то подозревать, либо решили отомстить нашей группе. Хотя, возможно, это просто совпадение, или же целенаправленное нападение ради добычи... Но это, по сути, и неважно. Группу нужно срочно спасать, иначе многомесячный труд будет потерян.
+        420=Верно. Нам удалось произвести очередную интеграцию доминаторских технологий других серий и усовершенствовать некоторые комплектующие модулей Ниспера, однако этого слишком мало. <br>Научный совет считает нужным привлекать все больше талантливых специалистов для работ над серией ниспероидов, и на данный момент мы бы очень хотели заручиться помощью <clr>пяти<clrEnd> уникальных профессионалов.<br><clr>Малок Борфорс<clrEnd> - искусный стратег, создавший много превосходных арен для сражений модульных роботов. Его навыки помогут улучшить ведение боевых действий на планетах модулями Ниспера.<br><clr>Пеленг Кувард<clrEnd> - превосходный программист, создавший несколько высококлассных ИскИнов. Привлечение его к Проекту поможет вывести ниспероидов на новых уровень поведения.<br><clr>Человек Леонард<clrEnd> - блестящий дизайнер. С его помощью серия доминаторов "ниспер" должна стать не только высокоэффективным щитом против захватчиков, но и красивейшим символом мощи Коалиции.<br><clr>Фэянин Абер<clrEnd> - гениальный, даже по меркам феян, гуманоид. Его всесторонняя развитость может сослужить отличную службу для развития новой серии доминаторов.<br><clr>Гаалец Арту<clrEnd> - один из богатейших гуманоидов Галактики, известнейший меценат. Его постоянные вклады в будущее Коалиции, даже местами идущие против его личных воззрений на лучшие перспективы для содружества рас.
+        423=Передаём вам сообщение от Научного совета: "Рейнджер <0>, вы превосходно справились с возложенной на вас задачей! Теперь мы не сомневаемся, что вы, вероятнее всего, станете самым первым испытателем новейшей секретной разработки ученых. Впрочем, вам пока еще рано знать, однако потерпите еще немного и мы вам все расскажем. А сейчас наш представитель вам расскажет кое-что интересное про микромодули."<br>Как вы знаете, ранее мы уже занимались изучением микромодулей для нужд Ниспера, и на данный момент мы имеем три промежуточных результата:<br><br>Микромодуль №1 <clr>"Торпедяр"<clrEnd> вставляется исключительно в торпедные аппараты, увеличивая количество выстреливаем за раз торпед в ущерб наносимому урону.<br><br>Микромодуль №2 <clr>"Вертиксяр"<clrEnd> вставляется исключительно в вертиксы, повышая наносимый урон и накладывая различные эффекты.<br><br>Микромодуль №3 <clr>"Имхоняр"<clrEnd> вставляется исключительно в ИМХО-9000, сильно увеличивая дальность разброса снарядов.
+        424=Я выполнил порученное мне задание!
+        425=Хорошо, как скажете.
+        426=Наши исследовательские отделы неустанно ведут работу над материалом, привозимым нам рейнджерам и передаваемым из остатков других отделов.<br>----------------<br>Текущий остаток материала: <0> т.<br>Скорость исследования: <1>%<br><br>Предположительное время до завершения исследования: <2> дн. <br>----------------
+        427=Верно. Вы выполнили наше задание, и смогли получить больше прибыли, чем наш Торговый модуль. Аналитики уже занимаются обработкой информации, а сам Торговый модуль, слегка переоснащённый, вместе с программами, мы передаём в ваше пользование. Найти его сможете на скалде нашей станции, как и раньше.
+        428=Совет Коалиции передает вам свою благодарность за участие в этом задании. Они очень довольны вашей продуктивностью и желанием помогать Коалиции в этом нелегком деле.<br><br>Мы же, в благодарность за помощь, передаём в ваше пользование наш новый экспериментальный микромодуль. Он копирует некоторые свойства акринов, и, думаю, будет вам весьма полезен.<br>Найти его вы сможете на складе нашей станции
+        429=Итак, рейнджер, вы - настоящий герой!<br><br>Ваша работа по спасению нашей группы модулей принесла нам много колоссально полезной информации. Мы не можем это так оставить, и хотим наградить вас нашим новым уникальным <clr>артефактом<clrEnd>, который поможет вам в контратаках!
+        43=Ответ отрицательный. На данный момент моя конструкция должна участвовать в выполнении другой стратегической задачи.
+        432=Благодарим за помощь, рейнджер <0>. Ваша помощь нашим исследованиям неоценима
+        433=Каждый день на нашей базе проводятся новые исследования в сфере создания, улучшения и совершенствование уже созданных моделей доминаторов.<br><br>Естественно, на всё это нам нужны деньги. Закупка нового оборудование, оплата перевозки образцов, конструирование и оснащение новых модулей Ниспера на наших <clr>доках<clrEnd>. Наконец, зарплата сотрудников.<br>На всё это Коалиция щедро выделяет денежные средства, но её возможности не безграничны. А вот запросы нашего Проекта - очень даже. Поэтому мы приняли решение об открытии возможности пожертвовать денежные средства неравнодушных рейнджеров.<br><br>На счету у нас осталось <0> cr.
+        434=Пожалуй, у нас есть такая потребность.<br><br>Для наших исследований необходим доминаторский материал, а за него конкурируют сразу несколько отделов. Поэтому, если бы вы собрали несколько сотен тонн доминаторских ошмётков, то мы бы могли внести важные поправки в наш проект, и, возможно, <clr>улучшить новых доминаторов по образу наиболее изученной серии<clrEnd>.<br><br>Если желаете, можете передать нам что-нибудь прямо сейчас.
+        435=Я - мозговой центр искусственной жизни. Мою серию определили как "ниспер". Я создан коалиционными учёными на основе модульной архитектуры доминаторов. Моя цель - защита Коалиционных систем от любых врагов, посягающих на устройство и порядок Коалиции.
+        436=Если под "оранжевыми железяками" вы имеете ввиду мои модули, то вы правы. <br><br>Мои модули, или как вы, гуманоиды, их называете - доминаторы Ниспера, ниспероиды, подчиняются моим приказам и приказам Научного Совета. Они используются для помощи расам Коалиции, в том числе и ликвидации всех возможных угроз миропорядку, включая преступность.
+        437=Верно. Однако моя программа не заканчивается Высшей Целью, и содержит ряд директив, корректирующих мои задачи.<br><br>Как я уже сказал, моей целью является поддержание миропорядка, а любые преступники априори являются его нарушителями. Соответственно, если Галактический Совет даёт "добро", то преступник будет ликвидирован при участии моих модулей.
+        438=Ответ отрицательный. Любая команда на уничтожение гуманоидного существа исходит с планеты <0>, так как эта планета была выбрана запасным координационным центром. Если Правительство планеты посчитает нужным, каких-то представителей Клана мои модули пропустят.<br><br>Конечно, основная масса представителей пиратского Клана будет подвержена безжалостному уничтожению.
+        439=Все мои данные постоянно копируются на сервера Коалиции, которые находятся непосредственно на серверах Базы Доминаторов.<br><br>Если моя текущая конструкция будет уничтожена, то на Базе Доминаторов подключат к сети мою виртуальную копию.<br>После чего База Доминаторов начнёт восстановление моей материальной структуры, и я снова вернусь в строй.
+        44=По моим расчетам, система <0> на данный момент больше всего нуждается в защитных модулях.
+        440=Ответ не является верным.<br><br>Мои модули занимаются патрулированием систем, но как только их накапливается достаточное количество, я высылаю отряд доминаторов на освобождение ещё одной системы Коалиции.
+        441=Моя цель - контроль действиями моих модулей, а также участие в наиболее стратегически важных операциях посредством собственной огневой мощи.
+        442=Этот вопрос касается меня опосредованно. При продвижении в исследованиях, касающихся развития моих модулей, всю имеющуюся информацию автоматически получает персонал Базы Доминаторов.<br><br>Ввиду этого не имеет никакой полезной эффективности обращение с данным вопросом ко мне. По всем интересующим вас вопросам, связаннным с моих развитием, рекомендую запрашивать непосредственно <clr>Базу Доминаторов<clrEnd>
+        443=Ага, то есть это ты будешь управлять этими оранжевыми железяками?
+        444=Преступников? Разве это не противоречит твоей программе? Ведь преступники тоже гуманоиды.
+        445=Получается, что под директиву попадает весь пиратский клан?
+        446=Вот оно что... Интересно.<br><br>Слушай,.. Ниспер, а что получится, если тебя уничтожат?
+        447=Понял. Ещё вопрос: каким именно образом ты и твои модули будут помогать Коалиции? Патрулировать системы? Это же обязанность военных, разве нет?
+        448=А какова твоя в этом роль?
+        449=Понятно. А могу ли я как-то поучаствовать в твоем развитии?
+        45=Ответ отрицательный.<br><br>В моей программе отсутствует функция активного общения с гуманоидами. Если у вас отсутствует собеседник, рекомендую обратиться на любую планету или станцию. Кроме того, вы всегда можете взять себе напарника.<br><br>Информация на серверах Базы Доминаторов, кроме того, говорит о том, что в таком случае вам бы следовало найти сородича противоположного анатомического состава для ведения с ним совместной дейтельности.
+        450=Благодаря вашей помощи Научный совет внедрил новую технологию, повысившую тактико-технические характеристики ниспероидов. Научно-исследовательские группы продолжают свои изыскания.
+        451= <color=255,153,0>Ниспера IV</color>
+        452= <color=255,153,0>Ниспера III</color>
+        453= <color=255,153,0>Ниспера II</color>
+        454= <color=255,153,0>Ниспера I</color>
+        455=Увы, у вас не получилось справиться с заданием Базы Доминаторов в срок.
+        456=Необходимо доставить документацию на планету
+        457=дн.
+        458=за
+        459=1 января
+        461=Враги были уничтожены подоспевшим подкреплением, но захватчики успели уничтожить часть важнейшей информации. Ученым придется потратить время на ее восстановление. Задание провалено.
+        462=Необходимые обломки найдены Вас ждут на Базе Доминаторов.
+        463=Необходимые обломки были уничтожены. Придётся начинать поиски заново.
+        464=Необходимо найти и отвезти на Базу Доминаторов образцы обломков доминатора класса Бертор.
+        465=Обломки доминатора класса Бертор, неведомым образом сбитого на орбите планеты и упавшего на её поверхность
+        466=Неизвестный материал
+        467=По итогам состязания вы получили меньше прибыли, чем один из модулей Ниспера. Задание провалено.
+        468=По итогам состязания вы получили больше прибыли, чем любой из модулей Ниспера. Задание выполнено, осталось вернуться на Базу Доминаторов.
+        469=Все торговые модули уничтожены. Задание считается отмененным.
+        47=Как дела?
+        470=Необходимо получить больше прибыли, чем торговые модули Ниспера.<br>Текущий статус:<br>Вы получили <0> cr дохода<br>Первый модуль Ниспера получил <1> cr дохода<br>Второй модуль Ниспера получил <2> cr дохода<br>Третий модуль Ниспера получил <3> cr дохода<br>До конца соревнования осталось <4> дней.
+        471=Один из экземпляров устройства был уничтожен. Придётся начать поиски заново.
+        472=Пиратский клан уничтожен, а значит, ничто не помешает Коалиции уничтожить необычное сооружение. Задание выполнено, осталось только вернуться на Базу Доминаторов.
+        473=Системой <0> завладели пираты. Как оказалось, данное сооружение негативно действует на доминаторов серии Ниспер, а значит, ученым придется потратить время на создание защиты против такого воздействия. Задание провалено.
+        474=Система <0> так и не попала в руки пиратов, а сооружение оказалось очередным заводом доминаторов. Задание выполнено, осталось вернуться на Базу Доминаторов.
+        475=Необходимо защитить систему <0> от посягательств на неё пиратского Клана. До конца операции осталось <1> дней.
+        476=Вы не выполнили условие Борфорса и он отказывается идти с вами на сделку. Задание провалено.
+        477=ждет вас на планете <0>.
+        478=Флотилия Келлера была успешно уничтожена и размётана по всему гиперпространству, а значит, настала пора возвращаться на Базу Доминаторов..
+        479=По итогам состязания вы получили меньше прибыли чем модуль Ниспера. Задание провалено.
+        480=По итогам состязания вы получили больше прибыли чем модуль Ниспера. Задание выполнено, осталось вернуться на Базу Доминаторов.
+        481=Модуль Ниспера был уничтожен. Задание считается отмененным, вернитесь на Базу Доминаторов, чтобы начать состязание заново.
+        482=Необходимо получить больше прибыли, чем торговый модуль Ниспера.<br>Текущий статус:<br>Вы получили <0> cr дохода,<br>Модуль Ниспера получил <1> cr дохода.<br>До конца соревнования осталось <2> дней.
+        483=Пиратский клан нейтрализован, и система <0> в безопасности. Задание выполнено, осталось только вернуться на Базу Доминаторов.
+        484=Пиратский клан захватил систему <0> и прервал передачу данных. Задание провалено, а ученым придется заново восстанавливать утраченную информацию.
+        485=Комплекс Проекта в системе <0> успешно закончил передавать всю необходимую информацию. Задание выполнено, осталось только вернуться на Базу Доминаторов.
+        486=Осталось дней до конца передачи: <0>.
+        487=Нужно защитить систему <0> от атак пиратского Клана. Пока информация передаётся на Базу Доминаторов, пираты не должны завладеть правительственными планетарными передатчиками.
+        488=База Доминаторов уничтожена. Все корабли доминаторов Коалиции, включая Ниспера, получили приказ немедленного самоуничтожения во избежание сбоя в программе.
+        489=Научный Совет по вопросам Особого Проекта КВСМК объявил завершении очередного этапа своей работы. Для получения более полной информации обратитесь на <clr>Базу Доминаторов<clrEnd>.
+        490=Подпространственный пузырь очищен от врагов, а, значит, вы можете со спокойной душой возвращаться на Базу Доминаторов, чтобы передать им данные, полученные в ходе гиперпространственного сражения..
+        491=Время, отведённое на выполнение миссии, вышло. Задание провалено.
+        492=Все пять гуманоидов согласились помогать в улучшении доминаторов Ниспера. Задание выполнено, осталось вернуться на Базу Доминаторов.
+        493=Необходимо уговорить Борфорса, Куварда, Леонарда, Абера и Арту присоединиться к команде улучшения Ниспера и его доминаторов. На выполнение этого задания у вас осталось <0> дней.<br>Текущий статус:<br>Борфорс <1><br>Кувард <2><br>Леонард <3><br>Абер <4><br>Арту <5>
+        494=попросил <0> дней на раздумья. Осталось ждать <1> дней.
+        495=от атак захватчиков (осталось <0> дней).
+        496=дал задание по защите системы
+        497=Ходят слухи про некий Проект, который перевернёт все представления о ведении боевых действий с доминаторами...
+        498=Я хочу сдать вам ошметки доминаторов для разработок новой серии
+        499=Это вы Арту?
+        50=Полетели вместе со мной воевать?
+        500=Это вы Абер?
+        501=Это вы Леонард?
+        502=Ну так что, вы согласны с предложением Научного совета?
+        503=Это вы Кувард?
+        504=Это вы Борфорс?
+        505=Я выиграл в состязании с Ниспером
+        506=Я проиграл в состязании с Ниспером
+        507=Сдать капсулу с Абером
+        508=Сдать экземпляры пиратского устройства
+        509=Так что там с исследованиями?
+        51=Знаешь, а твои доминаторы заслуживают уважения - сильные бойцы. Могу ли я как-то стать таким же?
+        510=Помочь исследованиям
+        511=Хочу посмотреть информацию о верфях
+        512=Приветствуем вас, рейнджер, на нашей <0>! Здесь мы занимаемся передовыми исследованиями в области доминаторов, в особенности - теми, которые помогут в исследовании
+        513=Необходимо найти и сдать на Базу Доминаторов <0> экземпляров пиратского устройства. Уже сдано <1> штук.
+        514=Вы победили Ниспера в планетарном бою. Задание выполнено, осталось только поговорить на Базе Доминаторов.
+        515=верфей.
+        516=в галактике построено
+        517=верфей в галактике нет.
+        518=<br>Увы, ничего подходящего у вас на борту мы не нашли. Возвращайтесь с материалом для исследований!
+        519=<br>Не желаете передать нам что-нибудь ещё?
+        52=Я хочу тебе помочь. В какую систему ты бы предложил мне полететь, чтобы улучшить стратегическое положение Коалиции?
+        520=Как только вы влетите в гиперпространство, наши модули используют внутренние передатчики, и, по сути, защищать их не будет никакой необходимости. Вам будет достаточно просто вернуться сюда.
+        521=дал задание по защите системы Тарон от захвата врагов (осталось <0> дней).
+        522=присоединился к команде изучения доминаторов Ниспера.
+        523=попросил обратиться к нему позже.
+        524=присоеденился к команде изучения доминаторов Ниспера.
+        525=Да, я Леонард. А кто спрашивает?
+        526=Капсула с фэянином Абером в состоянии анабиоза. Нужно доставить на Базу Доминаторов.
+        527=Криогенная капсула
+        528=находится у вас в трюме и ждет вашего прилета на Базу Доминаторов.
+        529=Враги были уничтожены прилетевшим подкреплением. Однако до этого доминаторы успели уничтожить часть важнейшей информации. Ученым придется потратить время на ее восстановление. Задание провалено.
+        53=Давай поболтаем?
+        530=Увы, рейнджер, но нам нечего сказать вам. Возвращайтесь, когда ваш уровень допуска станет повыше.
+        531=Увы, рейнджер, данная информация более неактуальна.
+        532=Так-так, исследованиями Ниспера... Ну, у нас всегда есть много разной новой информации, но очень редко она бывает глобальной, так что давайте перейдём к конкретике - о чём именно идёт речь?
+        533=Увы, рейнджер, на борту вашего корабля нет необходимых нам обломков. Возвращайтесь, когда раздобудете их.
+        534=<clr>Верфи<clrEnd> - вспомогательные платформы, располагаемые нами в системах Коалиции аналогично верфям доминаторов.<br>Согласно нашей доктрине мы распределяем верфи так - не более одной на <clr>пять<clrEnd> систем и <clr>один<clrEnd> сектор.<br><br>Верфи занимаются строительством новых кораблей ниспероидов, а также, побочно, непосредственно обороной системы.<br><br>На данный момент <0>
+        535=Итак, на данный момент верфи:<0><br><br>Всего верфей в Галактике - <1> ед.
+        536=Замечательно. Тогда ждём от вас хороших вестей.<br><br>Если не получится доставить - возвращайтесь, передадим вам актуальные бумаги.
+        537=Ого! Рейнджер, эта информация очень поможет нам в налаживании деятельности Ниспера.<br><br>В благодарность Научный Совет принял решение оставить новый уникальный модуль, который поможет вам взаимодействовать с нашим тактическим отделом для изменения места проведения следующей операции ниспероидов.<br>Получить его сможете на складе Базы Доминаторов.
+        538=Собственно говоря, именно этого мы от вас не требуем. Нам важно, чтобы система оставалась <clr>под нашим контролем<clrEnd>, а уж как это будет сделано - нам не важно.<br><br>Проблема заключается в том, что, несмотря на высланные нами модули ниспероидов, аналитики довольно низко оценивают наши шансы на успешную передачу без вмешательства Корпуса Рейнджеров. Следовательно, если вам, как патриоту и сподвижнику научных начинаний Коалиции важно дальнейшее развитие Проекта, то, думаю, вы сами придумаете, как нам помочь в удержании системы.
+        539=Сколько денег перевести?
+        54=Ясно
+        540=В другой раз
+        541=Неизвестное устройство, явно кустарного производства. Внутри, судя по показаниям, находится кристалл, излучающий пси-волны второй степени
+        542=Пиратское самодельное устройство
+        543=Необходимо защитить систему <0> от посягательств пиратского Клана. До конца операции осталось <1> дней.
+        544=Понял, вылетаю. Открывайте прокол.
+        545=Отправляйтесь в гиперпространство и спасите важнейшую информацию, собранную модулями Ниспера
+        546=не найден.
+        547=Я рейнджер <0> и прибыл сюда по заданию Научного совета.
+        548=Что же, тогда - удачного полета!
+        549=Проиграли? Не страшно. Однако, сперва стоит сообщить об этом Научному Совету.
+        55=Ну, тогда полетели защищать системы Коалиции вместе?
+        550=Отлично, вы справились! Теперь нужно доложить об этом Научному Совету. Можете пока отдохнуть.
+        551=Итак. Как вы видите, поле боя достаточно нестандартное, так что вам придется хорошенько подумать, как победить Ниспера. Южнее есть заводы, и возле них время от времени будут появляться роботы Террона (это тоже является частью испытания). Ресурсов не так и много, так что придётся придумать план похитрее. Удачи.
+        552=Ученые Коалиции улучшили Ниспера и его доминаторов до максимально возможного уровня тактико-технических характеристик, доступных в данной итерации технологического прогресса. Больше исследований в этой области не будет.
+        553=Проиграли? Ну, что ж, мы особо и не рассчитывали на вашу победу. Персонал уже эвакуирован, и скоро всё здесь взлетит на воздух.
+        554=Отлично, вы справились! Надеемся, что Ниспер извлечёт урок из этой победы. Возвращайтесь к капитану станции.
+        555=Смотрите, вот ваше задание. Нужно уничтожить все 3 серии доминаторов. Враги очень опасны и сильны, так что задача не из легких. Исходя из наших наблюдений, каждый из противников в этом бою будет сражаться по разному:<br><color=255,20,20>Блазероиды</color>, очевидно, прибыли раньше, и, пользуясь преимуществом во времени, захватили неплохие позиции около центра надземной части комплекса. Блазероиды умеют быть осторожными в боевых действиях, и могут легко подавить две другие серии, но, к счастью, плохо используют ресурсодобывающие комплексы, и могут захлебнуться в собственных атаках, истощив силы.<br><color=20,20,255>Келлероиды</color> Модули Келлера мало смыслят в тактике и военном деле вообще, но на их стороне - технологии, и они займутся, видимо, постройкой небольших групп высокотехнологичных роботов.<br>Что же касается <color=20,22,20>терроноидов</color>, то зелёные ребята тоже не отличаются военными достижениями, но численное преимущство всегда за ними, так что ждите с их стороны штурмов металлом.<br>В общем, каждый из врагов опасен и силен по-своему, а как здесь воевать - не знаю, ведь вы тут командир и тактик. Удачи!
+        556=Вы защитили Базу Доминаторов от вторжения врагов. Задание выполнено!
+        557=Вылетаю немедленно!
+        558=Отправляйтесь в гиперпространство и спасите модули Ниспера
+        559=Уникальный транклюкатор
+        56=В данный момент я обмениваюсь данными с объектом <0>. Параллельно ведутся расчеты максимально эффективных действий для модуля <1><2><3>.
+        560=Вас понял!
+        561=Да как так-то...
+        562=Вот как?..
+        563=Нет, пожалуй, ни о чём...
+        564=Назад
+        565=Меня интересует список верфей
+        566=Структура:
+        567=, система
+        568=Сектор
+        569=Да. Берусь за задачу!
+        57=Ответ отрицательный. Война как самоцель является уделом Блазера. Моя же задача - в соответствии со стратегическим замыслом КВСМК максимально эффективно вести деятельность по обороне и освобождению систем Коалиции.
+        570=Конверт с секретными данными по последним экспериментам в области улучшения ниспероидов
+        571=Не подведу вас!
+        572=Спасибо, удачи!
+        573=Так... И, выходит, мне нужно отправиться в эту систему...
+        574=И то верно. Пойду подумаю - на орудийной палубе моего верного корабля.
+        575=Пойду, посмотрю, что там вы запустите!
+        576=Доминаторы Ниспера перешли на новый уровень и стали лучше по многим параметрам. Теперь ученые Коалиции продолжат свои исследования в этом направлении.
+        58=Ответ отрицательный. Преобразованием в свой вид занимается Террон, а моя цель - защита миропорядка Коалиции.
+        60=Идентификация объекта завершена. <br>Объект <0> является рейнджером.<br>Текущий статус объекта: союзник.<br>Коммуникация одобрена.
+        61=Идентификация объекта завершена. <br>Объект <0> является рейнджером.<br>Текущий статус объекта: <clr>враг<clrEnd>.<br><br>Коммуникация ограничена.
+        62=Ответ отрицательный. Все указания по уничтожению того или иного гуманоидного существа исходят из Правительства планеты <0>.<br>Для инициализации союза с конкретным объектом требуется разрешение Галактического Совета.
+        63=Для доступа к этой информации требуются союзные отношения с объектом.
+        64=Давай мириться!
+        65=Знаешь, а твои доминаторы заслуживают уважения - сильные бойцы. Могу ли я как-то стать таким же?<br>
+        66=Я хочу тебе помочь. В какую систему ты бы предложил мне полететь, чтобы улучшить стратегическое положение Коалиции?<br>
+        68=Объект на связи: Рейнджер <0>.<br>Получение разрешения для коммуникации с объектом.<br>...<br>Разрешение получено.<br>Текущий статус: <clr>Ожидание запроса<clrEnd>.<br>
+        69=Запрос некорректен.<br>Объект <0> является союзником. Характеристика "дружба" является неверной для данного формата взаимоотношений, и недоступна для разума моего класса.
+        70=Запрос отправлен, ожидайте.<br>...<br>Запрос отклонен.<br>Причина: <clr>01.01-#ФЗ-11<clrEnd>. Краткая формулировка: "Выполнение главной стратегической задачи".<br>
+        72=Запрос не может быть одобрен ввиду целевого создания данных экземпляров для нужд боевых модулей Ниспера, то есть нас. Данной оборудование оптимизировано за счёт демонтажа панелей управления и прочих элементов, ввиду чего не будет как либо работать в условиях среднестатического корабля рейнджера.<br>
+        73=Главная стратегическая задача - это защита систем Коалиции от любых претендентов на разрушение её строя, нарушение деятельности граждан Коалиции, а также нарушение конвенций Галактического Совета.
+        74=Объект на связи: Рейнджер <0>.<br>Получение разрешения для коммуникации с объектом.<br>...<br>Коммуникация с объектом запрещена.<br>Причина: <clr>18.24-#ФЗ-91<clrEnd><br><br>Разрыв сеанса связи в одностороннем порядке...
+        75=Давай дружить?
+        76=Ты славный малый, переходи под моё управление!
+        77=Поделись своими сбережениями с славным рейнджером
+        78=А дай-ка мне своё оборудование пощупать!
+        79=Что это за главная стратегическая задача такая?
+        81=Запрос отправлен, ожидайте.<br>...<br>Запрос отклонен.<br>Причина: <clr>внеклассовая<clrEnd>.<br>Краткая формулировка: "Отказано в передаче средств ввиду их отсутствия у Центрального Узла".<br>
+        83=<br>
+        90=Пожалуй, есть у нас такая задача. Причём крайне срочная.<br><br>Есть некоторая документация, которая должна быть срочно доставлена на одну планету - <0>. Управиться надо за <1> дн., иначе доставляемая информация станет неактуальной. Справитесь?
+        92=Меня интересует, нет ли каких-то исследований, связанных с Ниспером, в которых я бы мог помочь, поучаствовать?
+        93=Ясно. Спасибо за информацию.
+        97=Нам удалось достигнуть некоторых важных успехов, но часть наших комплексов с важнейшей информацией сейчас законсервирована и находится под контролем захватчиков, поэтому о чём-то конкретном мы пока говорить не можем.
+        FknNews=Учёные Коалиции продолжают самоотверженно заниматься исследованиями доминаторов. Одним из важных этапов на пути борьбы с этим врагом - понимание механизмов и принципов его работы. И, что самое главное - применение их на практике. Ввиду этого Научный Совет выдвинул КВСМК некий Проект, который перевернёт всю текущую диспозицию. С нетерпением ждём развития событий!
+        PlanetaryBattles ^{
+            Lose1=Проиграли? Ну, что ж, мы особо и не рассчитывали на вашу победу. Персонал уже эвакуирован, и скоро всё здесь взлетит на воздух.
+            Lose2=Проиграли? Не страшно. Однако, сперва стоит сообщить об этом Научному Совету.
+            Start1=Смотрите, вот ваше задание. Нужно уничтожить все 3 серии доминаторов. Враги очень опасны и сильны, так что задача не из легких. Исходя из наших наблюдений, каждый из противников в этом бою будет сражаться по разному:<br><color=220,20,20>Блазероиды</color>, очевидно, прибыли раньше, и, пользуясь преимуществом во времени, захватили неплохие позиции около центра надземной части комплекса. Блазероиды умеют быть осторожными в боевых действиях, и могут легко подавить две другие серии, но, к счастью, плохо используют ресурсодобывающие комплексы, и могут захлебнуться в собственных атаках, истощив силы.<br><color=20,20,200>Келлероиды</color> Модули Келлера мало смыслят в тактике и военном деле вообще, но на их стороне - технологии, и они займутся, видимо, постройкой небольших групп высокотехнологичных роботов.<br>Что же касается <color=20,220,20>терроноидов</color>, то зелёные ребята тоже не отличаются военными достижениями, но численное преимущство всегда за ними, так что ждите с их стороны штурмов металлом.<br>В общем, каждый из врагов опасен и силен по-своему, а как здесь воевать - не знаю, ведь вы тут командир и тактик. Удачи!
+            Start2=Итак. Как вы видите, поле боя достаточно нестандартное, так что вам придется хорошенько подумать, как победить Ниспера. Южнее есть заводы, и возле них время от времени будут появляться роботы Террона (это тоже является частью испытания). Ресурсов не так и много, так что придётся придумать план похитрее. Удачи.
+            Win1=Отлично, вы справились! Надеемся, что Ниспер извлечёт урок из этой победы. Возвращайтесь к капитану станции.
+            Win2=Отлично, вы справились! Теперь нужно доложить об этом Научному Совету. Можете пока отдохнуть.
+        }
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            Beacon ^{
+                Description=
+                Icon=0
+                Name=
+            }
+            RefNisper_Dock1 ^{
+                Description=Первый док, где создаются новые ниспероиды
+                Icon=0
+                Name=Доки
+                OnActCode ^{
+                    01=if(ShipCustomShipInfoData(0,CurInfo(),2) >= ShipCustomShipInfoData(0,CurInfo(),3)) exit;
+                    02=ShipCustomShipInfoData(0,CurInfo(),2,ShipCustomShipInfoData(0,CurInfo(),2)+25);
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            RefNisper_Dock2 ^{
+                Description=Второй док, где создаются новые ниспероиды
+                Icon=0
+                Name=Доки
+                OnActCode ^{
+                    01=if(ShipCustomShipInfoData(0,CurInfo(),2) >= ShipCustomShipInfoData(0,CurInfo(),3)) exit;
+                    02=ShipCustomShipInfoData(0,CurInfo(),2,ShipCustomShipInfoData(0,CurInfo(),2)+25);
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            RefNisper_Dock3 ^{
+                Description=Третий док, где создаются новые ниспероиды
+                Icon=0
+                Name=Доки
+                OnActCode ^{
+                    01=if(ShipCustomShipInfoData(0,CurInfo(),2) >= ShipCustomShipInfoData(0,CurInfo(),3)) exit;
+                    02=ShipCustomShipInfoData(0,CurInfo(),2,ShipCustomShipInfoData(0,CurInfo(),2)+25);
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            RefNisper_Dock4 ^{
+                Description=Четвёртый док, где создаются новые ниспероиды
+                Icon=0
+                Name=Доки
+                OnActCode ^{
+                    01=if(ShipCustomShipInfoData(0,CurInfo(),2) >= ShipCustomShipInfoData(0,CurInfo(),3)) exit;
+                    02=ShipCustomShipInfoData(0,CurInfo(),2,ShipCustomShipInfoData(0,CurInfo(),2)+25);
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            RefNisper_Dock5 ^{
+                Description=Пятый док, где создаются новые ниспероиды
+                Icon=0
+                Name=Доки
+                OnActCode ^{
+                    01=if(ShipCustomShipInfoData(0,CurInfo(),2) >= ShipCustomShipInfoData(0,CurInfo(),3)) exit;
+                    02=ShipCustomShipInfoData(0,CurInfo(),2,ShipCustomShipInfoData(0,CurInfo(),2)+25);
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=0
+            }
+            ZelDomiks_AddBonusB ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword domik=ScriptItemActShip();
+                    02=int damage;
+                    03=dword enemy;
+                    04=dword thisInfo=CurInfo();
+                    05=int power=ShipCustomShipInfoData(0,thisInfo,1);
+                    06=int domType=ShipCustomShipInfoData(0,thisInfo,2);
+                    07=int i;
+                    08=dword star;
+                    09=if(ShipInNormalSpace(domik)&&Rnd(1,500)<=power)
+                    10 ^{
+                        01=if(domType==1)
+                        02 ^{
+                            01=if(ScriptItemActionType(t_OnDealingDamage))
+                            02 ^{
+                                01=damage=ScriptItemActParam();
+                                02=ScriptItemActParam(3*damage);
+                            }
+                        }
+                        03=else if(domType==2)
+                        04 ^{
+                            01=if((ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnGettingMissileHit)))
+                            02 ^{
+                                01=damage=ScriptItemActParam();
+                                02=enemy=ScriptItemActObject1();
+                                03=if(enemy)
+                                04 ^{
+                                    01=if(Dist(enemy,domik)<=500)
+                                    02 ^{
+                                        01=if(ShipStar(Player())==ShipStar(domik)) ShowEffect('Weapon.11',3,enemy,domik,3*damage);
+                                        02=DealDamageToShip(enemy,domik,3*damage,0);
+                                    }
+                                }
+                            }
+                        }
+                        05=else if(domType==3)
+                        06 ^{
+                            01=if((ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnGettingMissileHit)))
+                            02 ^{
+                                01=enemy=ScriptItemActObject1();
+                                02=if(enemy)
+                                03 ^{
+                                    01=star=ShipStar(domik);
+                                    02=int x=CoordX(domik);
+                                    03=int y=CoordY(domik);
+                                    04=int angle=ShipAngle(domik);
+                                    05=int k=-30;
+                                    06=for(i=0;i<4;i=i+1)
+                                    07 ^{
+                                        01=dword rocket=SpawnMissile(star,enemy,x,y,angle+k,20,45,800+50*GalaxyTechLevel(),t_Weapon4);
+                                        02=MissileOwner(rocket,domik);
+                                        03=k=k+20;
+                                        04=MissileLive(rocket,100);
+                                    }
+                                }
+                            }
+                        }
+                        07=else if(domType==4)
+                        08 ^{
+                            01=if((ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnGettingMissileHit)))
+                            02 ^{
+                                01=enemy=ScriptItemActObject1();
+                                02=if(enemy)
+                                03 ^{
+                                    01=if(Dist(enemy,domik)<=500)
+                                    02 ^{
+                                        01=if(ShipStar(Player())==ShipStar(domik)) ShowEffect('Weapon.15',2,enemy,domik,0,0,1,0,0,0);
+                                        02=ShipStatusEffect(enemy,0,Rnd(20,30),domik);
+                                        03=ShipStatusEffect(enemy,1,2,domik);
+                                        04=ShipStatusEffect(enemy,2,Rnd(20,30),domik);
+                                    }
+                                }
+                            }
+                        }
+                        09=else if(domType==5)
+                        10 ^{
+                            01=if((ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnGettingMissileHit)))
+                            02 ^{
+                                01=star=ShipStar(domik);
+                                02=int count=StarShips(star);
+                                03=dword planet=GetShipHomePlanet(domik);
+                                04=damage=ScriptItemActParam();
+                                05=for(i=0;i<count;i=i+1)
+                                06 ^{
+                                    01=enemy=StarShips(star,i);
+                                    02=if(ShipInNormalSpace(enemy)&&planet)
+                                    03 ^{
+                                        01=if(GetRelationPlanet(planet, enemy) <= 30&&Dist(enemy,domik)<=500)
+                                        02 ^{
+                                            01=if(ShipStar(Player())==ShipStar(domik)) ShowEffect('Weapon.10',3,enemy,domik,damage,0,0);
+                                            02=DealDamageToShip(enemy,domik,damage,0);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        11=else if(domType==6)
+                        12 ^{
+                            01=if((ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi)))
+                            02 ^{
+                                01=damage=ScriptItemActParam();
+                                02=ScriptItemActParam(0);
+                                03=if(ShipStar(Player())==ShipStar(domik)) ShowEffect('Weapon.NoGraph',1,domik,0,-1*damage);
+                                04=if(damage+HullHP(domik)>=ItemSize(ShipItems(domik, 0))) HullHP(domik,ItemSize(ShipItems(domik, 0)));
+                                05=else HullHP(domik,HullHP(domik)+damage);
+                            }
+                        }
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnDealingDamage,t_OnGettingMissileHit
+                OnActStepTypes=0
+            }
+            ZelDomiks_Aura ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword ship=ScriptItemActShip();
+                    02=if(ShipInNormalSpace(ship)&&HullHP(ship)>0)
+                    03 ^{
+                        01=if(ScriptItemActionType(t_OnStep,3))
+                        02 ^{
+                            01=int heal=ItemSize(ShipItems(ship, 0))/50;
+                            02=if(ShipInNormalSpace(ship)&&ShipStar(ship)==ShipStar(Player())&&ShipInNormalSpace(Player())) ShowEffect('Weapon.AuraEffect',20,ship,ship,-1*heal,0,0,255,153,0);
+                            03=if(heal+HullHP(ship)>=ItemSize(ShipItems(ship, 0))) HullHP(ship,ItemSize(ShipItems(ship, 0)));
+                            04=else HullHP(ship,HullHP(ship)+heal);
+                        }
+                        03=if(ScriptItemActionType(t_OnDealingDamage)) ScriptItemActParam(1.1*ScriptItemActParam());
+                        04=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi)) ScriptItemActParam(0.9*ScriptItemActParam());
+                        05=if(ScriptItemActionType(t_OnStep,11)) ShipDeleteCustomShipInfo(ship,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnDealingDamage
+                OnActStepTypes=0,3,11
+            }
+            ZelDomiks_AuraB ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword ship=ScriptItemActShip();
+                    02=if(ShipInNormalSpace(ship))
+                    03 ^{
+                        01=if(ScriptItemActionType(t_OnStep,3))
+                        02 ^{
+                            01=int heal=ItemSize(ShipItems(ship, 0))/100;
+                            02=if(ShipInNormalSpace(ship)&&ShipStar(ship)==ShipStar(Player())&&ShipInNormalSpace(Player())) ShowEffect('Weapon.AuraEffect',20,ship,ship,-1*heal,0,0,255,153,0);
+                            03=if(heal+HullHP(ship)>=ItemSize(ShipItems(ship, 0))) HullHP(ship,ItemSize(ShipItems(ship, 0)));
+                            04=else HullHP(ship,HullHP(ship)+heal);
+                        }
+                        03=if(ScriptItemActionType(t_OnDealingDamage)) ScriptItemActParam(1.2*ScriptItemActParam());
+                        04=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi)) ScriptItemActParam(0.95*ScriptItemActParam());
+                        05=if(ScriptItemActionType(t_OnStep,11)) ShipDeleteCustomShipInfo(ship,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnDealingDamage
+                OnActStepTypes=0,3,11
+            }
+            ZelDomiks_AuraBoss ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword ship=ScriptItemActShip();
+                    02=if(ShipInNormalSpace(ship)&&HullHP(ship)>0)
+                    03 ^{
+                        01=if(ScriptItemActionType(t_OnStep,4))
+                        02 ^{
+                            01=int heal=ItemSize(ShipItems(ship, 0))/20;
+                            02=if(ShipInNormalSpace(ship)&&ShipStar(ship)==ShipStar(Player())&&ShipInNormalSpace(Player())) ShowEffect('Weapon.AuraEffect',20,ship,ship,-1*heal,0,0,255,153,0);
+                            03=if(heal+HullHP(ship)>=ItemSize(ShipItems(ship, 0))) HullHP(ship,ItemSize(ShipItems(ship, 0)));
+                            04=else HullHP(ship,HullHP(ship)+heal);
+                        }
+                        03=if(ScriptItemActionType(t_OnDealingDamage)) ScriptItemActParam(1.25*ScriptItemActParam());
+                        04=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi)) ScriptItemActParam(0.8*ScriptItemActParam());
+                        05=if(ScriptItemActionType(t_OnStep,11)) ShipDeleteCustomShipInfo(ship,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnDealingDamage
+                OnActStepTypes=0,4,11
+            }
+            ZelDomiks_AuraK ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword ship=ScriptItemActShip();
+                    02=if(ShipInNormalSpace(ship))
+                    03 ^{
+                        01=if(ScriptItemActionType(t_OnStep,3))
+                        02 ^{
+                            01=int heal=ItemSize(ShipItems(ship, 0))/100;
+                            02=if(ShipInNormalSpace(ship)&&ShipStar(ship)==ShipStar(Player())&&ShipInNormalSpace(Player())) ShowEffect('Weapon.AuraEffect',20,ship,ship,-1*heal,0,0,255,153,0);
+                            03=if(heal+HullHP(ship)>=ItemSize(ShipItems(ship, 0))) HullHP(ship,ItemSize(ShipItems(ship, 0)));
+                            04=else HullHP(ship,HullHP(ship)+heal);
+                        }
+                        03=if(ScriptItemActionType(t_OnDealingDamage)) ScriptItemActParam(1.05*ScriptItemActParam());
+                        04=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi)) ScriptItemActParam(0.83*ScriptItemActParam());
+                        05=if(ScriptItemActionType(t_OnStep,11)) ShipDeleteCustomShipInfo(ship,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnDealingDamage
+                OnActStepTypes=0,3,11
+            }
+            ZelDomiks_AuraT ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword ship=ScriptItemActShip();
+                    02=if(ShipInNormalSpace(ship))
+                    03 ^{
+                        01=if(ScriptItemActionType(t_OnStep,3))
+                        02 ^{
+                            01=int heal=ItemSize(ShipItems(ship, 0))/25;
+                            02=if(ShipInNormalSpace(ship)&&ShipStar(ship)==ShipStar(Player())&&ShipInNormalSpace(Player())) ShowEffect('Weapon.AuraEffect',20,ship,ship,-1*heal,0,0,255,153,0);
+                            03=if(heal+HullHP(ship)>=ItemSize(ShipItems(ship, 0))) HullHP(ship,ItemSize(ShipItems(ship, 0)));
+                            04=else HullHP(ship,HullHP(ship)+heal);
+                        }
+                        03=if(ScriptItemActionType(t_OnDealingDamage)) ScriptItemActParam(1.05*ScriptItemActParam());
+                        04=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi)) ScriptItemActParam(0.95*ScriptItemActParam());
+                        05=if(ScriptItemActionType(t_OnStep,11)) ShipDeleteCustomShipInfo(ship,CurInfo());
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnDealingDamage
+                OnActStepTypes=0,3,11
+            }
+            ZelDomiks_BertorsAura ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword bertor=ScriptItemActShip();
+                    02=int can=ShipCustomShipInfoData(0,CurInfo(),1);
+                    03=if(can==0&&ShipInNormalSpace(Player())&&ShipInNormalSpace(bertor)&&ShipStar(bertor)==ShipStar(Player()))
+                    04 ^{
+                        01=if(ScriptItemActionType(t_OnStep,1)) ShowEffect('Weapon.RadialEffect',20,bertor,bertor,0,0,0,0,0,0);
+                        02=if(ScriptItemActionType(t_OnStep,3))
+                        03 ^{
+                            01=if(GetValueFromScript('Mod_RefNisper','bonusAdd')==0) ShowEffect('Weapon.RadialEffect',20,bertor,bertor,0,0,0,0,0,0);
+                            02=if(GetValueFromScript('Mod_RefNisper','bonusAdd')==1) ShowEffect('Weapon.RadialEffect',0,bertor,bertor,0,0,0,0,0,0);
+                            03=if(GetValueFromScript('Mod_RefNisper','bonusAdd')==2) ShowEffect('Weapon.RadialEffect',1,bertor,bertor,0,0,0,0,0,0);
+                            04=if(GetValueFromScript('Mod_RefNisper','bonusAdd')==3) ShowEffect('Weapon.RadialEffect',2,bertor,bertor,0,0,0,0,0,0);
+                        }
+                    }
+                    05=if(ShipInNormalSpace(bertor)&&ScriptItemActionType(t_OnStep,3)) ShipCustomShipInfoData(0,CurInfo(),1,1);
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=1,3
+            }
+            ZelDomiks_BossAura ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword boss=ScriptItemActShip();
+                    02=dword thisInfo=CurInfo();
+                    03=int power=ShipCustomShipInfoData(0,thisInfo,1);
+                    04=if(ScriptItemActionType(t_OnStep,1)) ShowEffect('Weapon.RadialEffect',20+power,boss,boss,0,0,0,0,0,0);
+                    05=if(ScriptItemActionType(t_OnStep,11)) ShipDeleteCustomShipInfo(boss,thisInfo);
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=1,11
+            }
+            ZelDomiks_DomInfo ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword ship=ScriptItemActShip();
+                    02=dword thisInfo=CurInfo();
+                    03=if(ScriptItemActionType(t_OnReduceEqBattle)||ScriptItemActionType(t_OnReduceEqUse)||ScriptItemActionType(t_OnReduceEqForce)||ScriptItemActionType(t_OnReduceEqForsage)) ScriptItemActParam(0);
+                    04=if(ScriptItemActionType(t_OnMissileShot)) MissilesToRearm(ScriptItemActObject2(),MissilesToRearm(ScriptItemActObject2()));
+                    05=if(ScriptItemActionType(t_OnDealingDamage)&&ShipGetBad(ship))
+                    06 ^{
+                        01=dword enemy=ShipGetBad(ship);
+                        02=int procent=ShipScanerPower(ship)-ShipProtectability(enemy);
+                        03=if(procent>0&&ScriptItemActObject1()==enemy) ScriptItemActParam((0.01*procent+1)*ScriptItemActParam());
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnReduceEqBattle,t_OnReduceEqUse,t_OnReduceEqForce,t_OnReduceEqForsage,t_OnDealingDamage,t_OnMissileShot
+                OnActStepTypes=0
+            }
+            ZelDomiks_DomRelations ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword ship=ScriptItemActObject1();
+                    02=dword thisInfo=CurInfo();
+                    03=if((ScriptItemActionType(t_OnTakingDamageEn)||ScriptItemActionType(t_OnTakingDamageSp)||ScriptItemActionType(t_OnGettingMissileHit))&&ship==Player()) ChangeGlobalRelationsPlanets(Player(),0,3,5,31);
+                }
+                OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnGettingMissileHit
+            }
+            ZelDomiks_KligsDeath ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword klig=ScriptItemActShip();
+                    02=dword thisInfo=CurInfo();
+                    03=int bertor=IdToShip(ShipCustomShipInfoData(0,thisInfo,1));
+                    04=if(ScriptItemActionType(t_OnDeath)&&bertor)
+                    05 ^{
+                        01=ShipCustomShipInfoData(bertor,'ZelDomiks_BertorsAura',2,ShipCustomShipInfoData(bertor,'ZelDomiks_BertorsAura',2)-1);
+                        02=ShipDeleteCustomShipInfo(klig,thisInfo);
+                    }
+                }
+                OnActCodeTypes=t_OnStep,t_OnDeath
+                OnActStepTypes=0
+            }
+            ZelDomiks_KligsSuicide ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword klig=ScriptItemActShip();
+                    02=dword thisInfo=CurInfo();
+                    03=int enemy=IdToShip(ShipCustomShipInfoData(0,thisInfo,1));
+                    04=int damage=ItemSize(ShipItems(klig, 0))/3;
+                    05=if(Dist(klig,enemy)<=100)
+                    06 ^{
+                        01=if(ShipStar(Player())==ShipStar(klig))
+                        02 ^{
+                            01=if(HullHP(enemy)>damage) ShowEffect('Weapon.NoGraph',1,enemy,enemy,damage);
+                            02=else ShowEffect('Weapon.NoGraph',1,enemy,enemy,damage,1,1);
+                            03=ShowEffect('Weapon.NoGraph',1,klig,klig,0,6,1,0,0,0);
+                        }
+                        03=if(HullHP(enemy)>damage) HullHP(enemy,HullHP(enemy)-damage);
+                        04=else DealDamageToShip(enemy,0,1000,1);
+                        05=HullHP(klig,1);
+                        06=DealDamageToShip(klig,0,1000,1);
+                    }
+                    07=if(ScriptItemActionType(t_OnStep,11)) ShipDeleteCustomShipInfo(klig,thisInfo);
+                }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=1,2,3,4,5,6,7,8,9,10,11
+            }
+            ZelDomiks_MoneyDomInfo ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword ship=ScriptItemActShip();
+                    02=dword thisInfo=CurInfo();
+                    03=int profit;
+                    04=int bonus=ShipCustomShipInfoData(0,thisInfo,2);
+                    05=ShipCustomShipInfoData(ship,'ZelDomiks_MoneyDomInfo',1,ShipCustomShipInfoData(ship,'ZelDomiks_MoneyDomInfo',1)+(0.05+0.015*bonus)*ItemCost(ScriptItemActObject1()));
+                }
+                OnActCodeTypes=t_OnShipSellsGoods
+            }
+            ZelDomiks_MoneyPlayerInfo ^{
+                Description=
+                Icon=0
+                Name=
+                OnActCode ^{
+                    01=dword ship=ScriptItemActShip();
+                    02=dword thisInfo=CurInfo();
+                    03=int profit;
+                    04=if(ItemSize(ScriptItemActObject1())==ItemSize(ScriptItemActObject2())) profit=(ItemCost(ScriptItemActObject1()))-ItemCost(ScriptItemActObject2());
+                    05=else profit=(ItemCost(ScriptItemActObject1())/ItemSize(ScriptItemActObject1())*ItemSize(ScriptItemActObject2()))-ItemCost(ScriptItemActObject2());
+                    06=if(profit>0) ShipCustomShipInfoData(ship,'ZelDomiks_MoneyPlayerInfo',1,ShipCustomShipInfoData(ship,'ZelDomiks_MoneyPlayerInfo',1)+profit);
+                }
+                OnActCodeTypes=t_OnShipSellsGoods
+            }
+        }
+    }
+}
+ShipName ^{
+    Nisper ^{
+        1=Админ
+        10=Баттон
+        100=Террабайт
+        101=Техно
+        102=Траблоид
+        103=Трансформер
+        104=Триггер
+        105=Троянец
+        106=Фидошник
+        107=Фиксатор
+        108=Флешер
+        109=Флопик
+        11=Бит
+        110=Флудер
+        111=Форт
+        112=Фраг
+        113=Хостер
+        114=Чипсет
+        115=Читер
+        116=Шифт
+        117=Штрихкод
+        118=Эксплорер
+        119=Элемент
+        12=Блог
+        120=Эникей
+        121=Эрджишка
+        122=Эрнотрон
+        123=Юзер
+        13=Болид
+        14=Бот
+        15=Варезник
+        16=Веб
+        17=Вектор
+        18=Виборг
+        19=Виндовоз
+        2=Альт
+        20=Вирус
+        21=Воксель
+        22=Гаджет
+        23=Гейтс
+        24=Геном
+        25=Гиг
+        26=Гигабайт
+        27=Гигагерц
+        28=Глюк
+        29=Гранулятор
+        3=Ампер
+        30=Гугол
+        31=Девайс
+        32=Делитер
+        33=Дефраг
+        34=Диод
+        35=Драйвер
+        36=Дум
+        37=Едитор
+        38=Ентер
+        39=Запал
+        4=Антивирь
+        40=Зоннатор
+        41=Инсерт
+        42=Инсталл
+        43=Интерно
+        44=Кибердемон
+        45=Кнопочник
+        46=Кодер
+        47=Коннектор
+        48=Контрол
+        49=Контупер
+        5=Архиватор
+        50=Копирайт
+        51=Кракер
+        52=Кранк
+        53=Ксенод
+        54=Ламер
+        55=Лаптоп
+        56=Лексус
+        57=Линковщик
+        58=Логин
+        59=Макинтош
+        6=Аська
+        60=Мануал
+        61=Масдай
+        62=Мегафон
+        63=Молот
+        64=Момед
+        65=Навигатор
+        66=Напстер
+        67=Окуляр
+        68=Омега
+        69=Осцилог
+        7=Баг
+        70=Палмовод
+        71=Пауз
+        72=Перезагруз
+        73=Перс
+        74=Плоттер
+        75=Поувер
+        76=Прессор
+        77=Провайдер
+        78=Протокол
+        79=Проц
+        8=Байт
+        80=Ридер
+        81=Сабж
+        82=Сакс
+        83=Своп
+        84=Сервак
+        85=Сетчатник
+        86=Симка
+        87=Синхрон
+        88=Сисоп
+        89=Софтос
+        9=Баннер
+        90=Спаммер
+        91=Сплавир
+        92=Стеккер
+        93=Стенсель
+        94=Схемщик
+        95=Табулятор
+        96=Тангентор
+        97=Твинкам
+        98=Терминатор
+        99=Термос
+    }
+    SubFaction ^{
+        DominatorsBase ^{
+            1=Защиты Коалиции
+            2=Познания и Подчинения
+            3=Организации
+            Count=3
+        }
+        Nisper ^{
+            1=Админ
+            10=Баттон
+            100=Террабайт
+            101=Техно
+            102=Траблоид
+            103=Трансформер
+            104=Триггер
+            105=Троянец
+            106=Фидошник
+            107=Фиксатор
+            108=Флешер
+            109=Флопик
+            11=Бит
+            110=Флудер
+            111=Форт
+            112=Фраг
+            113=Хостер
+            114=Чипсет
+            115=Читер
+            116=Шифт
+            117=Штрихкод
+            118=Эксплорер
+            119=Элемент
+            12=Блог
+            120=Эникей
+            121=Эрджишка
+            122=Эрнотрон
+            123=Юзер
+            13=Болид
+            14=Бот
+            15=Варезник
+            16=Веб
+            17=Вектор
+            18=Виборг
+            19=Виндовоз
+            2=Альт
+            20=Вирус
+            21=Воксель
+            22=Гаджет
+            23=Гейтс
+            24=Геном
+            25=Гиг
+            26=Гигабайт
+            27=Гигагерц
+            28=Глюк
+            29=Гранулятор
+            3=Ампер
+            30=Гугол
+            31=Девайс
+            32=Делитер
+            33=Дефраг
+            34=Диод
+            35=Драйвер
+            36=Дум
+            37=Едитор
+            38=Ентер
+            39=Запал
+            4=Антивирь
+            40=Зоннатор
+            41=Инсерт
+            42=Инсталл
+            43=Интерно
+            44=Кибердемон
+            45=Кнопочник
+            46=Кодер
+            47=Коннектор
+            48=Контрол
+            49=Контупер
+            5=Архиватор
+            50=Копирайт
+            51=Кракер
+            52=Кранк
+            53=Ксенод
+            54=Ламер
+            55=Лаптоп
+            56=Лексус
+            57=Линковщик
+            58=Логин
+            59=Макинтош
+            6=Аська
+            60=Мануал
+            61=Масдай
+            62=Мегафон
+            63=Молот
+            64=Момед
+            65=Навигатор
+            66=Напстер
+            67=Окуляр
+            68=Омега
+            69=Осцилог
+            7=Баг
+            70=Палмовод
+            71=Пауз
+            72=Перезагруз
+            73=Перс
+            74=Плоттер
+            75=Поувер
+            76=Прессор
+            77=Провайдер
+            78=Протокол
+            79=Проц
+            8=Байт
+            80=Ридер
+            81=Сабж
+            82=Сакс
+            83=Своп
+            84=Сервак
+            85=Сетчатник
+            86=Симка
+            87=Синхрон
+            88=Сисоп
+            89=Софтос
+            9=Баннер
+            90=Спаммер
+            91=Сплавир
+            92=Стеккер
+            93=Стенсель
+            94=Схемщик
+            95=Табулятор
+            96=Тангентор
+            97=Твинкам
+            98=Терминатор
+            99=Термос
+        }
+        NisperShipyard ^{
+            1=Гачиматрица
+            10=Энтеркрайзис
+            11=Системшок
+            12=Замаршрутер
+            13=Алгоритмейстер
+            14=Перезиппакер
+            15=Эмпульсдроп
+            16=Багофиксер
+            17=Гигавольта
+            18=Сигналармий
+            19=Оптимизиверт
+            2=Админаторий
+            20=Блэкаут
+            21=Блюаут
+            22=Блюскрипт
+            23=Мишинфэйлер
+            24=Камбэкер
+            25=Делфиарий
+            26=Дабокодекс
+            27=Дабологер
+            28=Логотрейсер
+            29=Скриптиарий
+            3=Бангифторий
+            30=Суприматрица
+            31=Сопроматрон
+            32=Нэтсервер
+            33=Киберскам
+            34=Киберпак
+            35=Демобилд
+            36=Технокульт
+            37=Хардсофт
+            38=Наношокер
+            39=Криптозорро
+            4=Гальванотрон
+            40=Колстаккер
+            41=Дискодокер
+            42=Терминаторий
+            43=Экстерминатрица
+            5=Теслабокс
+            6=Сканингейм
+            7=Сайберхаб
+            8=Линуксклаб
+            9=Транзистенция
+            Count=43
+        }
+    }
+}
+ShipType ^{
+    Fei ^{
+        Nisper0=Клиг
+        Nisper1=Штип
+        Nisper2=Менок
+        Nisper3=Смерш
+        Nisper4=Ургант
+        Nisper5=Эквентор
+        Nisper6=Бертор
+        NisperBoss=
+        NisperRuins=Верфь
+    }
+    Gaal ^{
+        Nisper0=Клиг
+        Nisper1=Штип
+        Nisper2=Менок
+        Nisper3=Смерш
+        Nisper4=Ургант
+        Nisper5=Эквентор
+        Nisper6=Бертор
+        NisperBoss=
+        NisperRuins=Верфь
+    }
+    Maloc ^{
+        Nisper0=Клиг
+        Nisper1=Штип
+        Nisper2=Менок
+        Nisper3=Смерш
+        Nisper4=Ургант
+        Nisper5=Эквентор
+        Nisper6=Бертор
+        NisperBoss=
+        NisperRuins=Верфь
+    }
+    Peleng ^{
+        Nisper0=Клиг
+        Nisper1=Штип
+        Nisper2=Менок
+        Nisper3=Смерш
+        Nisper4=Ургант
+        Nisper5=Эквентор
+        Nisper6=Бертор
+        NisperBoss=
+        NisperRuins=Верфь
+    }
+    People ^{
+        Nisper0=Клиг
+        Nisper1=Штип
+        Nisper2=Менок
+        Nisper3=Смерш
+        Nisper4=Ургант
+        Nisper5=Эквентор
+        Nisper6=Бертор
+        NisperBoss=
+        NisperRuins=Верфь
+    }
+    Tranclucator ^{
+        Nisper0=Клиг
+        Nisper1=Штип
+        Nisper2=Менок
+        Nisper3=Смерш
+        Nisper4=Ургант
+        Nisper5=Эквентор
+        Nisper6=Бертор
+        NisperBoss=
+        NisperRuins=Верфь
+    }
+    TypeName ^{
+        DB=База Доминаторов
+        DBSmall=БД
+        Nisper0=Доминатор
+        Nisper1=Доминатор
+        Nisper2=Доминатор
+        Nisper3=Доминатор
+        Nisper4=Доминатор
+        Nisper5=Доминатор
+        Nisper6=Доминатор
+        NisperBoss=Доминатор
+        NisperRuins=Доминатор
+    }
+}
+UselessItems ^{
+    NisperBeacon ^{
+        Cost=Big
+        Name=Маяк Ниспера
+        OnActCode ^{
+            01=if(ScriptItemActionType(t_OnStep,0))
+            02 ^{
+                01=if(UselessItemData(CurItem(),1)<100)UselessItemData(CurItem(),1,UselessItemData(CurItem(),1)+Rnd(0,1));
+            }
+        }
+        OnActCodeTypes=t_OnStep
+        OnActStepTypes=0
+        OnUseCode ^{
+            01=if(UselessItemData(CurItem(),1)<100)
+            02 ^{
+                01=MessageBox('Маяк Ниспера разряжен. Необходимый заряд: 100%');
+                02=exit;
+            }
+            03=ShipAddCustomShipInfo(Player(),'Beacon','NoShow',Id(ShipStar(Player()))-1);
+            04=MessageBox('Маяк Ниспера активирован. Скоро сюда прибудут доминаторы Коалиции.');
+            05=UselessItemData(CurItem(),1,0);
+        }
+        Owner=None
+        Size=5
+        Text=При использовании в космосе генерирует частоты, которые улавливает Ниспер. Поймав такие частоты, он немедленно посылает свои модули в систему, которая была источником сигнала. Энергия заряда: <Data1>%.
+    }
+}
