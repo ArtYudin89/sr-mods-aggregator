@@ -795,6 +795,9 @@ def main():
                     help='режим ассет-трека: упаковать новые блобы в чанки <2ГБ и залить')
     ap.add_argument('--no-upload', action='store_true',
                     help='с --assets: только собрать чанки локально, без Release')
+    ap.add_argument('--lean', action='store_true',
+                    help='удалять скачанный архив из cache/ после обработки юнита '
+                         '(экономит диск; --assets потом потребует пере-скачивания)')
     a = ap.parse_args()
 
     cfg = load_json(a.config, None)
@@ -892,6 +895,16 @@ def main():
         finally:
             shutil.rmtree(EXTRACT / name, ignore_errors=True)
             shutil.rmtree(RSON_TMP / name, ignore_errors=True)
+            if a.lean:                       # освободить диск: убрать скачанное
+                if isinstance(archive, Path) and archive.is_dir():
+                    shutil.rmtree(archive, ignore_errors=True)
+                elif isinstance(archive, Path) and archive.exists():
+                    archive.unlink()
+                for p in CACHE.glob(f'{name}.*'):
+                    if p.is_dir():
+                        shutil.rmtree(p, ignore_errors=True)
+                    else:
+                        p.unlink()
 
     save_json(LOCK, lock)
 

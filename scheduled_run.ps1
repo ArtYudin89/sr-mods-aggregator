@@ -1,6 +1,7 @@
-# Полный прогон агрегатора (для планировщика).
+# Полный прогон агрегатора.
 # Включает ВСЕ юниты -> скачивание/декомпиляция/укладка -> код-трек релизы -> git push.
-# НЕ заливает ассет-байты (--assets ~20ГБ) — это тяжёлое внешнее действие, запускается вручную.
+# --lean: удалять скачанное из cache/ после каждого юнита (экономия диска).
+# НЕ заливает ассет-байты (--assets, десятки ГБ) — отдельное действие, вручную.
 $ErrorActionPreference = 'Continue'
 $repo = 'C:\claude_sandbox\sr-mods-aggregator'
 Set-Location $repo
@@ -18,8 +19,8 @@ $log = Join-Path $repo "state\scheduled_run_$ts.log"
 # 1) включить все юниты
 & $py -c "import json; p='mods.config.json'; c=json.load(open(p,encoding='utf-8')); [u.__setitem__('enabled',True) for u in c['units']]; json.dump(c,open(p,'w',encoding='utf-8'),ensure_ascii=False,indent=2); print('enabled', sum(1 for u in c['units'] if u.get('enabled')))" *>> $log
 
-# 2) полный прогон + код-трек релизы (commit внутри pipeline)
-& $py pipeline\aggregate.py --release *>> $log
+# 2) полный прогон + код-трек релизы (commit внутри pipeline), --lean для диска
+& $py pipeline\aggregate.py --release --lean *>> $log
 
 # 3) push
 & git push origin master *>> $log
