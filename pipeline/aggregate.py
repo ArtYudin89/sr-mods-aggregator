@@ -780,6 +780,9 @@ def build_asset_track(cfg, units, do_upload, repo_slug):
 
 def _hf_upload(repo_id, paths, token, public):
     """Залить чанки в HF dataset-репозиторий. Возвращает {имя_чанка: resolve-URL}."""
+    # Xet-бэкенд (cas-bridge.xethub.hf.co) недоступен из РФ (403) и вешает аплоад —
+    # форсим классический LFS-путь.
+    os.environ['HF_HUB_DISABLE_XET'] = '1'
     from huggingface_hub import HfApi
     api = HfApi(token=token)
     api.create_repo(repo_id, repo_type='dataset', private=not public, exist_ok=True)
