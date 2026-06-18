@@ -244,10 +244,10 @@ def download_rclone(unit, remote, no_download):
         if not exe:
             raise RuntimeError('rclone не найден (winget install Rclone.Rclone)')
         res = subprocess.run([exe, 'copy', f'{remote}:', str(out),
-                              '--drive-root-folder-id', gid],
+                              '--drive-root-folder-id', gid, '--ignore-errors'],
                              capture_output=True, text=True, encoding='utf-8',
                              errors='replace', timeout=RCLONE_TIMEOUT)
-        if res.returncode != 0 or not any(out.rglob('*')):
+        if not any(out.rglob('*')):
             raise RuntimeError(f'rclone copy папки не удался: {(res.stderr or "")[:200]}')
         return out, dir_hash(out)
 
@@ -285,10 +285,12 @@ def download_rclone(unit, remote, no_download):
 
 
 def download(unit, no_download, rclone_remote='gdrive'):
-    """Скачать юнит в cache/. Возвращает (path, digest). path = файл или каталог."""
+    """Скачать юнит в cache/. Возвращает (path, digest). path = файл или каталог.
+    Папки и 'shared'-юниты — через rclone (надёжно для сотен файлов и для приватных);
+    одиночные публичные файлы — через gdown."""
     name = unit['name']
     is_folder = unit.get('kind') == 'folder'
-    if unit.get('access') == 'shared':
+    if is_folder or unit.get('access') == 'shared':
         return download_rclone(unit, rclone_remote, no_download)
 
     if no_download:
@@ -887,6 +889,7 @@ def main():
             lock[name] = {'sha256': digest, 'remote_sig': sig or digest,
                           'camp': camp, 'rson_count': n_rson,
                           'code_files': cn, 'asset_files': an, 'updated_at': now_iso()}
+            save_json(LOCK, lock)            # инкрементально — crash-safe прогресс
             changed_by_camp.setdefault(camp, []).append(name)
             print(f'  код: {cn} файлов / {human(cb)} (+{n_rson} .rson)  |  '
                   f'ассеты: {an} / {human(ab)} (в манифесте)')
