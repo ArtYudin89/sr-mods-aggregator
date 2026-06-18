@@ -196,6 +196,33 @@ def _sniff_ext(path):
 # Шаг 1: Скачивание (file / folder)
 # ---------------------------------------------------------------------------
 
+DL_TIMEOUT = 2400        # сек на одну загрузку файла/папки (анти-зависание)
+RCLONE_TIMEOUT = 2400    # сек на rclone copy/copyid
+LIST_TIMEOUT = 300       # сек на листинг/метаданные
+
+
+def _gdown_file(gid, out, timeout=DL_TIMEOUT):
+    """Скачать один файл gdown ЧЕРЕЗ subprocess с таймаутом (сам gdown таймаута не имеет).
+    Бросает subprocess.TimeoutExpired при зависании (процесс убивается)."""
+    url = f'https://drive.google.com/uc?id={gid}'
+    res = subprocess.run([sys.executable, '-m', 'gdown', url, '-O', str(out)],
+                         timeout=timeout, capture_output=True, text=True,
+                         encoding='utf-8', errors='replace')
+    return res
+
+
+def _call_timeout(fn, timeout):
+    """Выполнить fn() с жёстким таймаутом (фоновый поток зависшей операции
+    отбрасывается — это backstop против бесконечного листинга gdown)."""
+    import concurrent.futures as cf
+    ex = cf.ThreadPoolExecutor(max_workers=1)
+    fut = ex.submit(fn)
+    try:
+        return fut.result(timeout=timeout)
+    finally:
+        ex.shutdown(wait=False)
+
+
 def download_rclone(unit, remote, no_download):
     """Скачать 'расшаренный мне' юнит через rclone (OAuth). path = файл/каталог."""
     name = unit['name']
@@ -219,7 +246,7 @@ def download_rclone(unit, remote, no_download):
         res = subprocess.run([exe, 'copy', f'{remote}:', str(out),
                               '--drive-root-folder-id', gid],
                              capture_output=True, text=True, encoding='utf-8',
-                             errors='replace')
+                             errors='replace', timeout=RCLONE_TIMEOUT)
         if res.returncode != 0 or not any(out.rglob('*')):
             raise RuntimeError(f'rclone copy папки не удался: {(res.stderr or "")[:200]}')
         return out, dir_hash(out)
@@ -240,7 +267,7 @@ def download_rclone(unit, remote, no_download):
     tmp.mkdir(parents=True)
     res = subprocess.run([exe, 'backend', 'copyid', f'{remote}:', gid, str(tmp)],
                          capture_output=True, text=True, encoding='utf-8',
-                         errors='replace')
+                         errors='replace', timeout=RCLONE_TIMEOUT)
     got = [p for p in tmp.iterdir() if p.is_file()]
     if res.returncode != 0 or not got:
         shutil.rmtree(tmp, ignore_errors=True)
@@ -283,8 +310,11 @@ def download(unit, no_download, rclone_remote='gdrive'):
         out = CACHE / f'{name}.folder'
         out.mkdir(parents=True, exist_ok=True)
         # Пофайлово: один приватный файл не должен ронять всю папку.
-        files = gdown.download_folder(url=unit['gdrive'], skip_download=True,
-                                      quiet=True, use_cookies=False, remaining_ok=True)
+        files = _call_timeout(
+            lambda: gdown.download_folder(url=unit['gdrive'], skip_download=True,
+                                          quiet=True, use_cookies=False,
+                                          remaining_ok=True),
+            LIST_TIMEOUT)
         if not files:
             raise RuntimeError(f'папка {name} пуста или недоступна')
         got, skipped = 0, []
@@ -295,9 +325,12 @@ def download(unit, no_download, rclone_remote='gdrive'):
                 got += 1
                 continue                      # уже скачан (грубая идемпотентность)
             try:
-                gdown.download(id=f.id, output=str(target), quiet=True)
-                got += 1
-            except Exception as e:
+                r = _gdown_file(f.id, target)         # subprocess + таймаут
+                if target.exists() and target.stat().st_size > 0:
+                    got += 1
+                else:
+                    skipped.append(f.path)
+            except Exception:
                 skipped.append(f.path)
         if skipped:
             print(f'    ПРОПУЩЕНО {len(skipped)} приватных/недоступных файлов:')
@@ -315,7 +348,9 @@ def download(unit, no_download, rclone_remote='gdrive'):
     tmp = CACHE / f'{name}.part'
     if tmp.exists():
         tmp.unlink()
-    gdown.download(id=gid, output=str(tmp), quiet=True)
+    res = _gdown_file(gid, tmp)
+    if not tmp.exists() or tmp.stat().st_size == 0:
+        raise RuntimeError(f'gdown не скачал {name}: {(res.stderr or res.stdout or "")[:200]}')
     ext = _sniff_ext(tmp)
     final = CACHE / f'{name}{ext}'
     digest = sha256_file(tmp)
@@ -336,6 +371,50 @@ def download(unit, no_download, rclone_remote='gdrive'):
 ARCHIVE_EXT = ('.zip', '.rar', '.7z')
 
 
+def _find_innounp():
+    """innounp для распаковки Inno Setup (в т.ч. 6.4.x)."""
+    p = REPO / 'tools' / 'innounp' / 'innounp.exe'
+    if p.exists():
+        return str(p)
+    return shutil.which('innounp')
+
+
+def _inno_exe(path):
+    """Если path (файл/папка) — это Inno Setup установщик, вернуть путь к .exe.
+    Иначе None. Использует innounp для распознавания версии."""
+    iu = _find_innounp()
+    if not iu:
+        return None
+    cands = []
+    p = Path(path)
+    if p.is_dir():
+        cands = sorted(p.glob('*.exe')) + sorted(p.glob('*.[0-9]'))  # exe или setup.0
+    elif p.suffix.lower() == '.exe' or _sniff_ext(p) == '.bin':
+        cands = [p]
+    for c in cands:
+        try:
+            r = subprocess.run([iu, '-v', str(c)], capture_output=True, text=True,
+                               encoding='utf-8', errors='replace', timeout=LIST_TIMEOUT)
+            if 'Inno Setup version detected' in (r.stdout or ''):
+                return c
+        except Exception:
+            continue
+    return None
+
+
+def _innounp_extract(exe, dest):
+    """Извлечь Inno-установщик через innounp в dest (создаёт dest/{app}/...)."""
+    iu = _find_innounp()
+    if not iu:
+        raise RuntimeError('innounp не найден (tools/innounp/innounp.exe)')
+    dest.mkdir(parents=True, exist_ok=True)
+    r = subprocess.run([iu, '-x', '-y', f'-d{dest}', str(exe)],
+                       capture_output=True, text=True, encoding='utf-8',
+                       errors='replace', timeout=RCLONE_TIMEOUT)
+    if not any(dest.rglob('*')):
+        raise RuntimeError(f'innounp ничего не извлёк: {(r.stderr or r.stdout or "")[:200]}')
+
+
 def _unpack_one(arc, into):
     suf = arc.suffix.lower()
     if suf == '.zip':
@@ -353,6 +432,12 @@ def extract(archive, dest):
     if dest.exists():
         shutil.rmtree(dest)
     dest.mkdir(parents=True)
+    # Inno Setup установщик (в т.ч. split .bin-слайсы, 6.4.x) -> innounp
+    inno = _inno_exe(archive)
+    if inno is not None:
+        print(f'    Inno Setup -> innounp: {Path(inno).name}')
+        _innounp_extract(inno, dest)
+        return dest
     if Path(archive).is_dir():
         shutil.copytree(archive, dest, dirs_exist_ok=True)
     else:
@@ -771,38 +856,42 @@ def main():
             print('  без изменений — пропуск')
             continue
 
-        extracted = extract(archive, EXTRACT / name)
+        # Изоляция: сбой/таймаут на одном юните не должен ронять весь прогон.
+        try:
+            extracted = extract(archive, EXTRACT / name)
 
-        rson_tmp = RSON_TMP / name
-        decompile(extracted, rson_tmp, run_py, a.check)
+            rson_tmp = RSON_TMP / name
+            decompile(extracted, rson_tmp, run_py, a.check)
 
-        unit_dir = MODS / camp / name
-        n_rson = collect_rson(rson_tmp, unit_dir / 'rson')
-        manifest, (cn, cb), (an, ab) = classify(extracted, unit_dir / 'code', policy)
-        save_json(unit_dir / 'assets.manifest.json',
-                  {'asset_count': an, 'asset_bytes': ab, 'files': manifest})
-        save_json(unit_dir / 'meta.json', {
-            'name': name, 'camp': camp, 'role': unit.get('role'),
-            'display_name': unit.get('display_name', name),
-            'load_order': unit.get('load_order'),
-            'known_version': unit.get('known_version') or None,
-            'source_url': unit['gdrive'], 'kind': unit.get('kind'),
-            'sha256': digest,
-            'rson_count': n_rson,
-            'code_files': cn, 'code_bytes': cb,
-            'asset_files': an, 'asset_bytes': ab,
-            'updated_at': now_iso(),
-        })
+            unit_dir = MODS / camp / name
+            n_rson = collect_rson(rson_tmp, unit_dir / 'rson')
+            manifest, (cn, cb), (an, ab) = classify(extracted, unit_dir / 'code', policy)
+            save_json(unit_dir / 'assets.manifest.json',
+                      {'asset_count': an, 'asset_bytes': ab, 'files': manifest})
+            save_json(unit_dir / 'meta.json', {
+                'name': name, 'camp': camp, 'role': unit.get('role'),
+                'display_name': unit.get('display_name', name),
+                'load_order': unit.get('load_order'),
+                'known_version': unit.get('known_version') or None,
+                'source_url': unit['gdrive'], 'kind': unit.get('kind'),
+                'sha256': digest,
+                'rson_count': n_rson,
+                'code_files': cn, 'code_bytes': cb,
+                'asset_files': an, 'asset_bytes': ab,
+                'updated_at': now_iso(),
+            })
 
-        lock[name] = {'sha256': digest, 'remote_sig': sig or digest,
-                      'camp': camp, 'rson_count': n_rson,
-                      'code_files': cn, 'asset_files': an, 'updated_at': now_iso()}
-        changed_by_camp.setdefault(camp, []).append(name)
-        print(f'  код: {cn} файлов / {human(cb)} (+{n_rson} .rson)  |  '
-              f'ассеты: {an} / {human(ab)} (в манифесте)')
-
-        shutil.rmtree(extracted, ignore_errors=True)
-        shutil.rmtree(rson_tmp, ignore_errors=True)
+            lock[name] = {'sha256': digest, 'remote_sig': sig or digest,
+                          'camp': camp, 'rson_count': n_rson,
+                          'code_files': cn, 'asset_files': an, 'updated_at': now_iso()}
+            changed_by_camp.setdefault(camp, []).append(name)
+            print(f'  код: {cn} файлов / {human(cb)} (+{n_rson} .rson)  |  '
+                  f'ассеты: {an} / {human(ab)} (в манифесте)')
+        except Exception as e:
+            print(f'  FAIL обработка {name}: {e}')
+        finally:
+            shutil.rmtree(EXTRACT / name, ignore_errors=True)
+            shutil.rmtree(RSON_TMP / name, ignore_errors=True)
 
     save_json(LOCK, lock)
 

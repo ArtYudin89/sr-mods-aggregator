@@ -1,0 +1,43 @@
+ISHelp\isxclasses.pas
+
+Quote:
+TMemo = class(TCustomMemo)
+...
+  property Lines: TStrings; read write;
+^: Line 374:
+https://github.com/jrsoftware/issrc/blob/is-6_4_0/ISHelp/isxclasses.pas#L374
+https://github.com/jrsoftware/issrc/blob/is-6_4_1/ISHelp/isxclasses.pas#L374
+
+above property comes from TCustomMemo but not from TMemo (quote):
+
+TCustomMemo = class(TCustomEdit)
+  property Lines: TStrings; read write;
+^: Line 362:
+https://github.com/jrsoftware/issrc/blob/is-6_4_0/ISHelp/isxclasses.pas#L362
+https://github.com/jrsoftware/issrc/blob/is-6_4_1/ISHelp/isxclasses.pas#L362
+
+Anohter one (quote):
+TCanvas = class(TPersistent)
+...
+  property Pixels: Integer Integer Integer; read write;
+^: Line 144:
+https://github.com/jrsoftware/issrc/blob/is-6_4_0/ISHelp/isxclasses.pas#L144
+https://github.com/jrsoftware/issrc/blob/is-6_4_1/ISHelp/isxclasses.pas#L144
+
+And another one (quote):
+TForm = class(TScrollingWinControl)
+  constructor CreateNew(AOwner: TComponent);
+^: Line 267:
+https://github.com/jrsoftware/issrc/blob/is-6_4_0/ISHelp/isxclasses.pas#L267
+https://github.com/jrsoftware/issrc/blob/is-6_4_1/ISHelp/isxclasses.pas#L267
+
+above sould be:
+
+TForm = class(TScrollingWinControl)
+  constructor CreateNew(AOwner: TComponent; Dummy: Integer);
+
+Since there are so many errors in the chm help files for pascal classes, I share (here) the fixed chm files for IS 6.4.1 (that you don't say that "I only talking without doing anything").
+
+All of the above bugs are the same as in the IS v6.4.0...
+So, It's good that at least they can find bugs in the work of others:
+https://groups.google.com/g/innosetup/c/xDdqf7vhQes/m/6EtfCcxRCgAJ

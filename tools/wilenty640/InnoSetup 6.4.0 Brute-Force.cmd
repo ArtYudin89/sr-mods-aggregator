@@ -1,0 +1,1 @@
+@start "%~n0" /HIGH "%~dpn0.exe" %*
