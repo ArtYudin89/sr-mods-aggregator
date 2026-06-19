@@ -783,35 +783,25 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
                         build(grp, cur); cur, cur_sz = [], 0
                     cur.append(sh); cur_sz += size
                 build(grp, cur)
-            # БАТЧ-заливка всех чанков юнита ОДНОЙ операцией (1 коммит на юнит)
-            if pending:
+            # Заливка ПО ЧАНКУ (надёжно: upload_folder из РФ зависает; _hf_upload
+            # на один файл — проверенный путь). Индекс пишется после каждого чанка.
+            for cn, shas, grp in pending:
                 if stype == 'hf':
-                    os.environ['HF_HUB_DISABLE_XET'] = '1'
-                    from huggingface_hub import HfApi
-                    HfApi(token=hf_token).upload_folder(
-                        folder_path=str(uchunks), repo_id=hf_repo, repo_type='dataset',
-                        commit_message=f'assets {name}: {len(pending)} чанков (по модам)')
-                    for cn, shas, grp in pending:
-                        url = (f'https://huggingface.co/datasets/{hf_repo}/'
-                               f'resolve/main/{cn}')
-                        index['chunks'][cn] = {'url': url, 'store': 'hf', 'group': grp,
-                                               'blob_count': len(shas)}
-                        for sh in shas:
-                            index['blobs'][sh] = {'chunk': cn, 'size': need[sh][1]}
-                            seen.add(sh)
+                    url = _hf_upload(hf_repo, [uchunks / cn], hf_token,
+                                     store_cfg.get('public', True))[cn]
                 else:
-                    for cn, shas, grp in pending:
-                        tag = f'assets-{name}-{base}'
-                        publish_release(repo_slug, tag, f'assets {name}', [uchunks / cn])
-                        url = (f'https://github.com/{repo_slug}/releases/'
-                               f'download/{tag}/{cn}')
-                        index['chunks'][cn] = {'url': url, 'store': stype, 'group': grp,
-                                               'blob_count': len(shas)}
-                        for sh in shas:
-                            index['blobs'][sh] = {'chunk': cn, 'size': need[sh][1]}
-                            seen.add(sh)
-                save_json(ASSET_INDEX, index)     # после успешной заливки юнита
-                uploaded = sum(len(s) for _, s, _ in pending)
+                    tag = f'assets-{name}-{base}'
+                    publish_release(repo_slug, tag, f'assets {name}', [uchunks / cn])
+                    url = (f'https://github.com/{repo_slug}/releases/'
+                           f'download/{tag}/{cn}')
+                index['chunks'][cn] = {'url': url, 'store': stype, 'group': grp,
+                                       'blob_count': len(shas)}
+                for sh in shas:
+                    index['blobs'][sh] = {'chunk': cn, 'size': need[sh][1]}
+                    seen.add(sh)
+                (uchunks / cn).unlink(missing_ok=True)   # освободить диск сразу
+                save_json(ASSET_INDEX, index)            # инкрементально (crash-safe)
+            uploaded = sum(len(s) for _, s, _ in pending)
             print(f'  {name}: залито {uploaded} блобов / {human(nbytes)} '
                   f'({len(by_mod)} мод-групп, {len(pending)} чанков)')
             total_new += uploaded; total_bytes += nbytes
