@@ -783,30 +783,39 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
                         build(grp, cur); cur, cur_sz = [], 0
                     cur.append(sh); cur_sz += size
                 build(grp, cur)
-            # Заливка ПО ЧАНКУ (надёжно: upload_folder из РФ зависает; _hf_upload
-            # на один файл — проверенный путь). Индекс пишется после каждого чанка.
+            # Заливка ВСЕЙ папки чанков юнита ОДНИМ коммитом (мало коммитов —
+            # обходит rate-limit HF; subprocess+таймаут — не зависает; резюмируемо).
             uploaded = 0
-            for cn, shas, grp in pending:
+            if pending:
                 if stype == 'hf':
-                    if not _hf_put(hf_repo, uchunks / cn, hf_token):
-                        print(f'    [skip] {cn}: не залился после ретраев — '
-                              f'блобы переедут в следующий прогон')
-                        continue                          # блобы НЕ в seen -> повтор позже
-                    url = (f'https://huggingface.co/datasets/{hf_repo}/'
-                           f'resolve/main/{cn}')
+                    ok = _hf_put_folder(hf_repo, uchunks, hf_token)
+                    if not ok:
+                        print(f'  {name}: FAIL upload папки после ретраев — '
+                              f'юнит переедет в следующий прогон')
+                    else:
+                        for cn, shas, grp in pending:
+                            url = (f'https://huggingface.co/datasets/{hf_repo}/'
+                                   f'resolve/main/{cn}')
+                            index['chunks'][cn] = {'url': url, 'store': stype,
+                                                   'group': grp, 'blob_count': len(shas)}
+                            for sh in shas:
+                                index['blobs'][sh] = {'chunk': cn, 'size': need[sh][1]}
+                                seen.add(sh)
+                            uploaded += len(shas)
+                        save_json(ASSET_INDEX, index)
                 else:
-                    tag = f'assets-{name}-{base}'
-                    publish_release(repo_slug, tag, f'assets {name}', [uchunks / cn])
-                    url = (f'https://github.com/{repo_slug}/releases/'
-                           f'download/{tag}/{cn}')
-                index['chunks'][cn] = {'url': url, 'store': stype, 'group': grp,
-                                       'blob_count': len(shas)}
-                for sh in shas:
-                    index['blobs'][sh] = {'chunk': cn, 'size': need[sh][1]}
-                    seen.add(sh)
-                uploaded += len(shas)
-                (uchunks / cn).unlink(missing_ok=True)   # освободить диск сразу
-                save_json(ASSET_INDEX, index)            # инкрементально (crash-safe)
+                    for cn, shas, grp in pending:
+                        tag = f'assets-{name}-{base}'
+                        publish_release(repo_slug, tag, f'assets {name}', [uchunks / cn])
+                        url = (f'https://github.com/{repo_slug}/releases/'
+                               f'download/{tag}/{cn}')
+                        index['chunks'][cn] = {'url': url, 'store': stype, 'group': grp,
+                                               'blob_count': len(shas)}
+                        for sh in shas:
+                            index['blobs'][sh] = {'chunk': cn, 'size': need[sh][1]}
+                            seen.add(sh)
+                        uploaded += len(shas)
+                    save_json(ASSET_INDEX, index)
             print(f'  {name}: залито {uploaded} блобов / {human(nbytes)} '
                   f'({len(by_mod)} мод-групп, {len(pending)} чанков)')
             total_new += uploaded; total_bytes += nbytes
@@ -975,6 +984,33 @@ def _hf_put(repo_id, path, token, timeout=600, retries=4):
         except subprocess.TimeoutExpired:
             err = f'timeout {timeout}s'
         print(f'    [upload retry {attempt}/{retries}] {path.name}: {err}')
+    return False
+
+
+def _hf_put_folder(repo_id, folder, token, timeout=1800, retries=8):
+    """Залить ВСЮ папку чанков ОДНИМ коммитом (upload_folder) в subprocess с
+    таймаутом+ретраями. Мало коммитов (обходит rate-limit HF) + не зависает
+    (subprocess убивается по таймауту). upload_folder резюмируемый — пропускает
+    уже залитое, поэтому ретрай продолжает с места. Возвращает True при успехе."""
+    folder = Path(folder)
+    code = ('import sys,os;'
+            'os.environ["HF_HUB_DISABLE_XET"]="1";'
+            'from huggingface_hub import HfApi;'
+            'HfApi(token=os.environ["HF_TOKEN"]).upload_folder('
+            'folder_path=sys.argv[1],repo_id=sys.argv[2],repo_type="dataset",'
+            'commit_message="assets batch")')
+    env = dict(os.environ, HF_TOKEN=token, HF_HUB_DISABLE_XET='1')
+    for attempt in range(1, retries + 1):
+        try:
+            r = subprocess.run([sys.executable, '-c', code, str(folder), repo_id],
+                               env=env, capture_output=True, text=True,
+                               encoding='utf-8', errors='replace', timeout=timeout)
+            if r.returncode == 0:
+                return True
+            err = (r.stderr or r.stdout or '')[:160]
+        except subprocess.TimeoutExpired:
+            err = f'timeout {timeout}s (резюмируемо, повтор)'
+        print(f'    [folder upload retry {attempt}/{retries}]: {err}')
     return False
 
 
