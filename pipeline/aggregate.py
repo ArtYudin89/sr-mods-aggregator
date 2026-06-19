@@ -636,6 +636,28 @@ def _scan_blob_usage():
     return usage, blob_unit
 
 
+def mod_key(relpath):
+    """Ключ группировки ассета по МОДУ из пути.
+    'Mods/<Категория>/<Имя>/DATA/...' -> 'Категория/Имя'; всё вне Mods/ -> '_base'.
+    Глубина переменная: берём сегменты после последнего 'Mods' до DATA/CFG."""
+    parts = relpath.replace('\\', '/').split('/')
+    idxs = [i for i, p in enumerate(parts) if p.lower() == 'mods']
+    if not idxs:
+        return '_base'
+    key = []
+    for seg in parts[idxs[-1] + 1:]:
+        if seg.lower() in ('data', 'cfg'):
+            break
+        key.append(seg)
+    return '/'.join(key) if key else '_base'
+
+
+def _sanitize_group(g):
+    """Имя группы -> безопасный фрагмент имени файла чанка."""
+    import re
+    return re.sub(r'[^0-9A-Za-z._-]+', '_', g).strip('_') or 'misc'
+
+
 def _drop_cache(name):
     """Удалить скачанное из cache/ (для --lean)."""
     for p in CACHE.glob(f'{name}.*'):
@@ -713,13 +735,20 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
             continue
 
         base = stamp()
-        cur, cur_sz, seq, uploaded = [], 0, 0, 0
+        from collections import defaultdict
+        by_mod = defaultdict(list)               # mod_key -> [sha,...]
+        for sh, (rel, size) in need.items():
+            if (ext / rel).exists():
+                by_mod[mod_key(rel)].append(sh)
+        uploaded = 0
 
-        def flush():
-            nonlocal cur, cur_sz, seq, uploaded
+        def flush(grp, cur):
+            """Упаковать список блобов группы grp в чанк, залить, записать в индекс."""
             if not cur:
-                return
-            cp = DIST / f'assets-{name}-{base}-{seq:03d}.zip'
+                return 0
+            san = _sanitize_group(grp)
+            cp = DIST / f'assets-{san}-{base}-{flush.seq:03d}.zip'
+            flush.seq += 1
             with zipfile.ZipFile(cp, 'w', zipfile.ZIP_STORED, allowZip64=True) as z:
                 for sh in cur:
                     z.write(ext / need[sh][0], sh)
@@ -727,33 +756,33 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
                 url = _hf_upload(hf_repo, [cp], hf_token,
                                  store_cfg.get('public', True))[cp.name]
             else:
-                tag = f'assets-{name}-{base}'
-                publish_release(repo_slug, tag, f'assets {name}', [cp])
+                tag = f'assets-{san}-{base}'
+                publish_release(repo_slug, tag, f'assets {grp}', [cp])
                 url = (f'https://github.com/{repo_slug}/releases/'
                        f'download/{tag}/{cp.name}')
-            index['chunks'][cp.name] = {'url': url, 'store': stype, 'group': name,
+            index['chunks'][cp.name] = {'url': url, 'store': stype, 'group': grp,
                                         'blob_count': len(cur)}
             for sh in cur:
                 index['blobs'][sh] = {'chunk': cp.name, 'size': need[sh][1]}
                 seen.add(sh)
             save_json(ASSET_INDEX, index)        # инкрементально (crash-safe)
             cp.unlink(missing_ok=True)
-            uploaded += len(cur)
-            seq += 1
-            cur, cur_sz = [], 0
+            return len(cur)
+        flush.seq = 0
 
         try:
-            for sh in sorted(need):
-                rel, size = need[sh]
-                if not (ext / rel).exists():
-                    continue
-                if size > chunk_max:             # «гигант» — отдельный чанк
-                    cur.append(sh); flush(); continue
-                if cur_sz + size > chunk_max and cur:
-                    flush()
-                cur.append(sh); cur_sz += size
-            flush()
-            print(f'  {name}: залито {uploaded} блобов / {human(nbytes)}')
+            for grp in sorted(by_mod):           # чанки группируются ПО МОДУ
+                cur, cur_sz = [], 0
+                for sh in sorted(by_mod[grp]):
+                    size = need[sh][1]
+                    if size > chunk_max:         # «гигант» — отдельный чанк
+                        uploaded += flush(grp, [sh]); continue
+                    if cur_sz + size > chunk_max and cur:
+                        uploaded += flush(grp, cur); cur, cur_sz = [], 0
+                    cur.append(sh); cur_sz += size
+                uploaded += flush(grp, cur)
+            print(f'  {name}: залито {uploaded} блобов / {human(nbytes)} '
+                  f'({len(by_mod)} групп-модов)')
             total_new += uploaded; total_bytes += nbytes
         except Exception as e:
             print(f'  {name}: FAIL upload: {e}')
@@ -765,6 +794,127 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
     print(f'Ассет-трек: новых блобов {total_new} / {human(total_bytes)}; '
           f'в индексе {len(index["blobs"])} блобов, {len(index["chunks"])} чанков')
     return total_new
+
+
+def regroup_assets(cfg):
+    """Перегруппировать уже залитые на HF ассеты ПО МОДАМ (без GDrive).
+    Скачивает блобы из текущих HF-чанков -> локальный store -> переупаковывает
+    по mod_key (mod-unique -> 'Категория/Имя', cross-mod -> 'shared', вне Mods -> '_base')
+    -> заливает новые чанки -> удаляет старые с HF. Индекс перезаписывается."""
+    from collections import defaultdict
+    index = load_json(ASSET_INDEX, {'blobs': {}, 'chunks': {}})
+    store_cfg = cfg.get('asset_store', {})
+    if store_cfg.get('type') != 'hf':
+        print('regroup: поддержан только asset_store type=hf'); return
+    repo_id = store_cfg.get('hf_repo')
+    token = os.environ.get('HF_TOKEN') or store_cfg.get('token')
+    if not repo_id or not token:
+        print('regroup: нет hf_repo/HF_TOKEN'); return
+    os.environ['HF_HUB_DISABLE_XET'] = '1'
+    chunk_max = cfg.get('asset_policy', {}).get('chunk_max_mb', 512) * 1024 * 1024
+    from huggingface_hub import HfApi
+    api = HfApi(token=token)
+
+    # 1. sha -> множество mod_key (по всем манифестам)
+    sha_keys = defaultdict(set)
+    for man in MODS.rglob('assets.manifest.json'):
+        for rel, m in load_json(man, {}).get('files', {}).items():
+            sha_keys[m['sha256']].add(mod_key(rel))
+
+    def group_of(sha):
+        nb = {k for k in sha_keys.get(sha, ()) if k != '_base'}
+        if not nb:
+            return '_base'
+        return next(iter(nb)) if len(nb) == 1 else 'shared'
+
+    # 2. материализуем все блобы из текущих HF-чанков
+    store = REPO / '_regroup_store'
+    if store.exists():
+        shutil.rmtree(store)
+    store.mkdir(parents=True)
+    old_chunks = list(index['chunks'].items())
+    tmpz = REPO / '_regroup_tmp.zip'
+    print(f'Скачиваю {len(old_chunks)} старых чанков с HF -> store ...')
+    for ci, (cname, cmeta) in enumerate(old_chunks, 1):
+        url = cmeta.get('url')
+        if not url:
+            continue
+        try:
+            download_url(url, None, tmpz)
+            with zipfile.ZipFile(tmpz) as z:
+                for sh in z.namelist():
+                    tgt = store / sh
+                    if not tgt.exists():
+                        with z.open(sh) as s, open(tgt, 'wb') as o:
+                            shutil.copyfileobj(s, o)
+        except Exception as e:
+            print(f'  [warn] чанк {cname}: {e}')
+        finally:
+            tmpz.unlink(missing_ok=True)
+        if ci % 10 == 0:
+            print(f'  ...{ci}/{len(old_chunks)} чанков')
+    have = [p.name for p in store.iterdir() if p.is_file()]
+    print(f'материализовано блобов: {len(have)}')
+
+    # 3. группируем по модам, СОБИРАЕМ все чанки локально (без заливки)
+    groups = defaultdict(list)
+    for sh in have:
+        groups[group_of(sh)].append(sh)
+    print(f'групп: {len(groups)} (примеры: {sorted(groups)[:5]})')
+    new_index = {'blobs': {}, 'chunks': {}}
+    base = stamp()
+    out = REPO / '_regroup_out'
+    if out.exists():
+        shutil.rmtree(out)
+    out.mkdir(parents=True)
+    counter = {'seq': 0}
+
+    def build_chunk(grp, shas):
+        san = _sanitize_group(grp)
+        name = f'assets-{san}-{base}-{counter["seq"]:03d}.zip'
+        counter['seq'] += 1
+        with zipfile.ZipFile(out / name, 'w', zipfile.ZIP_STORED, allowZip64=True) as z:
+            for sh in shas:
+                z.write(store / sh, sh)
+        new_index['chunks'][name] = {
+            'url': f'https://huggingface.co/datasets/{repo_id}/resolve/main/{name}',
+            'store': 'hf', 'group': grp, 'blob_count': len(shas)}
+        for sh in shas:
+            new_index['blobs'][sh] = {'chunk': name, 'size': (store / sh).stat().st_size}
+
+    for grp in sorted(groups):
+        cur, cur_sz = [], 0
+        for sh in sorted(groups[grp]):
+            sz = (store / sh).stat().st_size
+            if sz > chunk_max:
+                build_chunk(grp, [sh]); continue
+            if cur_sz + sz > chunk_max and cur:
+                build_chunk(grp, cur); cur, cur_sz = [], 0
+            cur.append(sh); cur_sz += sz
+        if cur:
+            build_chunk(grp, cur)
+    nchunks = len(new_index['chunks'])
+    print(f'собрано {nchunks} чанков локально, заливаю одним upload_folder ...')
+
+    # 4. батч-заливка всех чанков ОДНОЙ операцией (не коммит-на-чанк)
+    api.upload_folder(folder_path=str(out), repo_id=repo_id, repo_type='dataset',
+                      commit_message=f'regroup по модам: {nchunks} чанков, {len(groups)} групп')
+    save_json(ASSET_INDEX, new_index)
+
+    # 5. удалить старые чанки с HF (имена новые -> старые не пересекаются)
+    print('удаляю старые чанки с HF ...')
+    new_names = set(new_index['chunks'])
+    for cname, _ in old_chunks:
+        if cname in new_names:
+            continue
+        try:
+            api.delete_file(path_in_repo=cname, repo_id=repo_id, repo_type='dataset')
+        except Exception as e:
+            print(f'  del {cname}: {e}')
+    shutil.rmtree(store, ignore_errors=True)
+    shutil.rmtree(out, ignore_errors=True)
+    print(f'REGROUP готово: блобов {len(new_index["blobs"])}, '
+          f'чанков {nchunks}, групп {len(groups)}')
 
 
 def _hf_upload(repo_id, paths, token, public):
@@ -831,6 +981,9 @@ def main():
                          '(не только изменившимся) и опубликовать')
     ap.add_argument('--fetch', action='store_true',
                     help='с --assets: докачивать юнит, если его нет в cache/')
+    ap.add_argument('--regroup', action='store_true',
+                    help='перегруппировать уже залитые на HF ассеты ПО МОДАМ '
+                         '(скачать с HF -> переупаковать -> залить -> удалить старые)')
     a = ap.parse_args()
 
     cfg = load_json(a.config, None)
@@ -859,6 +1012,11 @@ def main():
             units = [u for u in units if u['camp'] == a.camp]
     if not units:
         print('Нет включённых юнитов под выбранные фильтры.')
+        return
+
+    if a.regroup:
+        print('=== Перегруппировка ассетов по модам (из HF) ===')
+        regroup_assets(cfg)
         return
 
     if a.code_release:
