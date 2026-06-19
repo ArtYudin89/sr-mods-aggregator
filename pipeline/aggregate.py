@@ -785,10 +785,15 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
                 build(grp, cur)
             # Заливка ПО ЧАНКУ (надёжно: upload_folder из РФ зависает; _hf_upload
             # на один файл — проверенный путь). Индекс пишется после каждого чанка.
+            uploaded = 0
             for cn, shas, grp in pending:
                 if stype == 'hf':
-                    url = _hf_upload(hf_repo, [uchunks / cn], hf_token,
-                                     store_cfg.get('public', True))[cn]
+                    if not _hf_put(hf_repo, uchunks / cn, hf_token):
+                        print(f'    [skip] {cn}: не залился после ретраев — '
+                              f'блобы переедут в следующий прогон')
+                        continue                          # блобы НЕ в seen -> повтор позже
+                    url = (f'https://huggingface.co/datasets/{hf_repo}/'
+                           f'resolve/main/{cn}')
                 else:
                     tag = f'assets-{name}-{base}'
                     publish_release(repo_slug, tag, f'assets {name}', [uchunks / cn])
@@ -799,9 +804,9 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
                 for sh in shas:
                     index['blobs'][sh] = {'chunk': cn, 'size': need[sh][1]}
                     seen.add(sh)
+                uploaded += len(shas)
                 (uchunks / cn).unlink(missing_ok=True)   # освободить диск сразу
                 save_json(ASSET_INDEX, index)            # инкрементально (crash-safe)
-            uploaded = sum(len(s) for _, s, _ in pending)
             print(f'  {name}: залито {uploaded} блобов / {human(nbytes)} '
                   f'({len(by_mod)} мод-групп, {len(pending)} чанков)')
             total_new += uploaded; total_bytes += nbytes
@@ -945,6 +950,32 @@ def regroup_assets(cfg):
     shutil.rmtree(out, ignore_errors=True)
     print(f'REGROUP готово: блобов {len(new_index["blobs"])}, '
           f'чанков {nchunks}, групп {len(groups)}')
+
+
+def _hf_put(repo_id, path, token, timeout=600, retries=4):
+    """Залить ОДИН файл в HF dataset через subprocess с таймаутом+ретраями.
+    upload из РФ иногда виснет навсегда (нет таймаута) — subprocess убивается по
+    таймауту и попытка повторяется. Возвращает True при успехе."""
+    path = Path(path)
+    code = ('import sys,os;'
+            'os.environ["HF_HUB_DISABLE_XET"]="1";'
+            'from huggingface_hub import HfApi;'
+            'HfApi(token=os.environ["HF_TOKEN"]).upload_file('
+            'path_or_fileobj=sys.argv[2],path_in_repo=os.path.basename(sys.argv[2]),'
+            'repo_id=sys.argv[1],repo_type="dataset")')
+    env = dict(os.environ, HF_TOKEN=token, HF_HUB_DISABLE_XET='1')
+    for attempt in range(1, retries + 1):
+        try:
+            r = subprocess.run([sys.executable, '-c', code, repo_id, str(path)],
+                               env=env, capture_output=True, text=True,
+                               encoding='utf-8', errors='replace', timeout=timeout)
+            if r.returncode == 0:
+                return True
+            err = (r.stderr or r.stdout or '')[:160]
+        except subprocess.TimeoutExpired:
+            err = f'timeout {timeout}s'
+        print(f'    [upload retry {attempt}/{retries}] {path.name}: {err}')
+    return False
 
 
 def _hf_upload(repo_id, paths, token, public):
