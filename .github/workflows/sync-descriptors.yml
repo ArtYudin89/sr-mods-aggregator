@@ -1,0 +1,58 @@
+name: sync-descriptors
+
+# Надёжная часть автообновления (Фаза 5-A): при изменении манифестов/модов в репозитории
+# пересобирает дескрипторы (descriptors/<id>.json + catalog.json) и публикует индекс
+# чанков на HF. НЕ требует GDrive — работает только с уже закоммиченным содержимым.
+# Нужен только секрет HF_TOKEN. Запускается в облаке Anthropic GitHub Actions — ПК не нужен.
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'mods/**/code.manifest.json'
+      - 'mods/**/assets.manifest.json'
+      - 'state/asset_index.json'
+      - 'pipeline/aggregate.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-descriptors
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install deps
+        run: pip install huggingface_hub requests
+
+      - name: Rebuild descriptors
+        run: python pipeline/aggregate.py --descriptors
+
+      - name: Publish chunk index to HF
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_HUB_DISABLE_XET: '1'
+        run: python pipeline/aggregate.py --publish-index
+
+      - name: Commit descriptors
+        run: |
+          git config user.name  "sr-mods-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add descriptors
+          if git diff --cached --quiet; then
+            echo "Дескрипторы не изменились."
+          else
+            git commit -m "auto: пересборка дескрипторов (sync-descriptors)"
+            git push
+          fi

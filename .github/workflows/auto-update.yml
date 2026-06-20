@@ -1,0 +1,104 @@
+name: auto-update
+
+# КАРКАС (Фаза 5-B): плановый полный инкрементальный прогон — тянет изменённые юниты
+# с Google Drive, декомпилирует, обновляет манифесты/ассеты/код на HF, пересобирает
+# дескрипторы и пушит изменения. ПК не нужен — выполняется в облаке по расписанию.
+#
+# ВНИМАНИЕ — не протестировано в облаке, перед боевым использованием проверьте вручную
+# (workflow_dispatch) и учтите ОГРАНИЧЕНИЯ:
+#   * Диск GitHub-раннера ~14 ГБ: юнит крупнее (redux_base ~12 ГБ) может НЕ влезть даже
+#     с --lean. Для таких юнитов используйте self-hosted runner на своём VPS.
+#   * Лимит задания 6 ч: инкрементальный прогон без изменений — минуты; крупное изменение
+#     может не уложиться.
+#   * gdown (публичный GDrive) иногда требует confirm-cookie headless; access:shared юниты
+#     идут через rclone (нужен RCLONE_CONF секрет с OAuth refresh-token).
+#
+# СЕКРЕТЫ (Settings -> Secrets and variables -> Actions):
+#   REPO_PAT    — Personal Access Token (scope: repo) для checkout приватного декомпилятора
+#                 и push. Если оба репозитория и push под одним аккаунтом — один PAT.
+#   HF_TOKEN    — write-токен Hugging Face (заливка ассетов/кода/индекса).
+#   RCLONE_CONF — содержимое rclone.conf с remote 'gdrive' (для access:shared юнитов).
+
+on:
+  schedule:
+    - cron: '0 3 * * *'        # ежедневно 03:00 UTC
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'Только юнит (name); пусто = все включённые'
+        required: false
+      force:
+        description: 'Игнорировать lock (true/false)'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: windows-latest        # innounp.exe (Inno Setup 6.4) — Windows
+    timeout-minutes: 350
+    steps:
+      - name: Checkout aggregator
+        uses: actions/checkout@v4
+        with:
+          path: sr-mods-aggregator
+          token: ${{ secrets.REPO_PAT }}
+
+      - name: Checkout decompiler (sibling ../rson_decompiler)
+        uses: actions/checkout@v4
+        with:
+          repository: ArtYudin89/rson-decompiler
+          path: rson_decompiler
+          token: ${{ secrets.REPO_PAT }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install deps
+        run: pip install gdown requests huggingface_hub
+
+      - name: Setup rclone
+        uses: AnimMouse/setup-rclone@v1
+        with:
+          rclone_config: ${{ secrets.RCLONE_CONF }}
+
+      - name: Incremental update (download changed -> decompile -> manifests)
+        working-directory: sr-mods-aggregator
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_HUB_DISABLE_XET: '1'
+        shell: bash
+        run: |
+          ONLY='${{ github.event.inputs.only }}'
+          FORCE='${{ github.event.inputs.force }}'
+          ARGS="--commit --lean"
+          [ -n "$ONLY" ] && ARGS="$ARGS --only $ONLY"
+          [ "$FORCE" = "true" ] && ARGS="$ARGS --force"
+          python pipeline/aggregate.py $ARGS
+          # ассеты и код изменённых юнитов -> HF (skip-if-unchanged по индексу)
+          python pipeline/aggregate.py --assets --fetch --lean
+          python pipeline/aggregate.py --code-track
+          # дескрипторы + индекс
+          python pipeline/aggregate.py --descriptors
+          python pipeline/aggregate.py --publish-index
+
+      - name: Commit & push
+        working-directory: sr-mods-aggregator
+        shell: bash
+        run: |
+          git config user.name  "sr-mods-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Изменений нет."
+          else
+            git commit -m "auto-update: $(date -u +%Y-%m-%d) (изменённые юниты + дескрипторы)"
+            git push
+          fi
