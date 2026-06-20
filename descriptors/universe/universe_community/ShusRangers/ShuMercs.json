@@ -1,0 +1,544 @@
+{
+  "schema": "srmod/1",
+  "id": "ShusRangers/ShuMercs",
+  "source": "universe/universe_community",
+  "name": "ShuMercs",
+  "title": "ShuMercs",
+  "author": "Mr Shu, Klaxons, Elemental Games",
+  "section": "Shu's Rangers",
+  "priority": "5",
+  "description": "Добавляет в игру новый отдельный вид NPC - наёмников",
+  "version": "6944ca34712f8211",
+  "depends": [
+    "ExpPanel",
+    "UtilityFunctionsPack"
+  ],
+  "conflicts": [],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "files": {
+    "code": {
+      "{app}/Mods/ShusRangers/ShuMercs/ModuleInfo.txt": {
+        "sha256": "fee1ffe78c4e43a213dd5275c69ed6c489462cb336ebddf969b5ea72cdaeb36c",
+        "size": 832
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/CFG/CacheData.dat": {
+        "sha256": "06057a07320060b96c04fac08d8d827b003d3a385b6d0a35ca121aefb80a689e",
+        "size": 1448
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/CFG/Main.dat": {
+        "sha256": "928d351c6d9adc0c707cf272a238439f47df0657566bec8a3240dcd7a0ec014a",
+        "size": 1387
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/CFG/Rus/Lang.dat": {
+        "sha256": "7285178f38b3e88f80ae52dd40c1e76c69483ed5fbd8c2b08a214ee1b2cef1f5",
+        "size": 13480
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Script/Mod_ShuMercs.scr": {
+        "sha256": "0dac8c5db2ff0bc7c1f35a98285e0ffa0316d08059d7bf56c7985b7f4ce1255a",
+        "size": 776169
+      }
+    },
+    "assets": {
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Backgrounds/empty_table.gi": {
+        "sha256": "f06078e793151a3ef4b515f162f836f4d9f8fc97be54b4a5ed8f8e63d87962b3",
+        "size": 96
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Backgrounds/MBbg.gi": {
+        "sha256": "f194d7f8c4220c0a64ef04937619035488357ae727ea1d8cd010085df99734bb",
+        "size": 4147296
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/FormShip2/EMP_torpedo.gi": {
+        "sha256": "54dff76f446e74c1c66cf6a1054b33035d4f4666f7cc1ad40da935b9071b871c",
+        "size": 1668
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/FormShip2/EMP_torpedo_s.gi": {
+        "sha256": "b2de53a9449405e32c3d943eb03523345c8c6ea9b5bb6eeed3d44f9766370755",
+        "size": 742
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/AtlantPeleng_item.gi": {
+        "sha256": "a3fe053ea94b6902b6671e70f4c011e693c286e88f86da63f418752dc9d2f927",
+        "size": 1935
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/AtlantPeleng_shop.gai": {
+        "sha256": "8d397e169e9a947f246588e20051a44dbf11b34dca252657af233ff2f835b2de",
+        "size": 193834
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/AtlantPeleng_shop.gi": {
+        "sha256": "e937b2b542c66ef085bb97ab855793e4b3b3440f5e2bd8e2e20e65321773f455",
+        "size": 4111
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/AtlantPeople_item.gi": {
+        "sha256": "5c417df368f3e3b5640f6a34d65109175b24a21a9a8fdd634a6dc57f798b4bb2",
+        "size": 2345
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/AtlantPeople_shop.gai": {
+        "sha256": "034b59e9d7e0e8cbdfc4b4731f13cd97f7a742fe164a330f788f64b3c5a32488",
+        "size": 262987
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/AtlantPeople_shop.gi": {
+        "sha256": "a7d04afd158b4212fab2998bdd15448cc58ce3f518c11e5a80c1e87a4ba58adb",
+        "size": 5583
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/FaeyangelionFei_item.gi": {
+        "sha256": "7c4a3bc3cbcc511410b5be34e2f252d333eeb6d57c7021ee8cb0ee4a4e7d37ab",
+        "size": 1894
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/FaeyangelionFei_shop.gai": {
+        "sha256": "50758de5844f1184581731c102ef9991c7848c9652be2c2146fa601388daf062",
+        "size": 203322
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/FaeyangelionFei_shop.gi": {
+        "sha256": "ab281b09b45b7accbf5c1469635cb0eb7565b0465474b5041a15b3458bbb0ccf",
+        "size": 4355
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/MerzenaryHull_a.gai": {
+        "sha256": "a3fda59c496ee1f5c83b62a901bf998f91c32ebae40ec76ed589fb526ddb7ae4",
+        "size": 378762
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/MerzenaryHull_i.gi": {
+        "sha256": "6d7ecea3d79c971a7330aca4ace4bc5a8bcfde643fc6cea64525b175b94c1597",
+        "size": 5499
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/MerzenaryHull_s.gi": {
+        "sha256": "93c998f3f7b2ef02bbc1fff79e36f4997d599b133acd0544b8e5bd473524e99c",
+        "size": 1409
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/RedAxesMaloc_item.gi": {
+        "sha256": "02ebf3248b1a447497f052dd181f6d56d65e4c78150b74fbfd54b8b6bdff37ba",
+        "size": 2038
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/RedAxesMaloc_shop.gai": {
+        "sha256": "74a38b07dfc67445f8efc80db7f2e63fb43a198fab7b830adb95d4d3ab64156c",
+        "size": 213191
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Items/Hull/RedAxesMaloc_shop.gi": {
+        "sha256": "b5de54a8b22b00262603a4cb13f7d4b34a63685a17f3b1aab001a6c0fab739b2",
+        "size": 4516
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Msg/PlayerMercsOrg_A.gi": {
+        "sha256": "3d5b16d384d4b0a6a24e049d801b199cd3b6b4b2f1698dd36288d70dfb5183dd",
+        "size": 1212
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Msg/PlayerMercsOrg_D.gi": {
+        "sha256": "b3c72616f6a4c0644d197d12889ecd962787e047a0c91fa68283d4b4456547cd",
+        "size": 1198
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Msg/PlayerMercsOrg_N.gi": {
+        "sha256": "a318253a5681bff12529eb0fe2eb266fe1dd3581670a1e81767ebef9c2857e36",
+        "size": 1212
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Msg/QuestComplete_PlayerMercsOrg_A.gi": {
+        "sha256": "6c61187da5932d26853ee9597f39a2f9a7b35d1377ba500a4a2974068f11e9b6",
+        "size": 1212
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Msg/QuestComplete_PlayerMercsOrg_D.gi": {
+        "sha256": "f8cb15b274c2d61ee1b2562947e87824594ddec1e9d05c74a21fdc5191e46c0a",
+        "size": 1198
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Msg/QuestComplete_PlayerMercsOrg_N.gi": {
+        "sha256": "8cbb4717fc7b0197ce7e65e20e2c5365354942d8c9c0b53d2f278580dced0219",
+        "size": 1212
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Msg/QuestFailed_PlayerMercsOrg_A.gi": {
+        "sha256": "e89822fb909f114228d1c2ccc3f39ae50fdf761635d37e0642423bef05d56d22",
+        "size": 1215
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Msg/QuestFailed_PlayerMercsOrg_D.gi": {
+        "sha256": "3e45fd43b8fb6e4741f72db10c30d9f9c5a0bd9f3ab736c5d8bf7ff30631a1d1",
+        "size": 1198
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Msg/QuestFailed_PlayerMercsOrg_N.gi": {
+        "sha256": "031ef486448a116bc65a146feda172acbce366ff8e3a3da9ab33a05f3afd3d64",
+        "size": 1212
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Msg/QuestInProcess_PlayerMercsOrg_A.gi": {
+        "sha256": "f4e44ae5d96ca547796a4404d88aa36c2d0ceecd35b806298d7a9335ebc2bb33",
+        "size": 1212
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Msg/QuestInProcess_PlayerMercsOrg_D.gi": {
+        "sha256": "1a487ab29e5e3f49688bbda7ccf7b4550e12ab0b44878f17aa646b186db098a6",
+        "size": 1198
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Msg/QuestInProcess_PlayerMercsOrg_N.gi": {
+        "sha256": "774ac26de6f36c4b832342080033a4e4d030eea3aee8c6a14b18041611daf6f6",
+        "size": 1212
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Music/Craftor-Night_Courage.dat": {
+        "sha256": "5cda74d031649fc6c960d4a6c32857af866de4ffeefb8f48d9db949b860e4fd6",
+        "size": 4310039
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/NumberBox/BGCredits.gi": {
+        "sha256": "5ca5bc4b327bfa74476d1daefb310768461702ea9551af2d138cb3bfdf88dc65",
+        "size": 10629
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/AtlantPeleng_A.gi": {
+        "sha256": "2df9b7d77b4c52583566aef4a25ff74562465155b8f2dbe18782649675b4fe1a",
+        "size": 1339
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/AtlantPeleng_D.gi": {
+        "sha256": "06a366778ba8794ba5d839dfa5b1a5b5c11de653d890a93db68bfe3ae26e9007",
+        "size": 930
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/AtlantPeleng_H.gi": {
+        "sha256": "45a7e68c7ec23b265b41565671552e3e68504373b023213b406046af33e29600",
+        "size": 1061
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/AtlantPeleng_N.gi": {
+        "sha256": "92030f94ed103817bb5c6118db16cb12754956becd45e745fd58243aff675f54",
+        "size": 1061
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/AtlantPeople_A.gi": {
+        "sha256": "9821ad9a3c3f6d4677cc9b6cfc2f24b70593f956f60744131c1bcd8b4e5b8bf5",
+        "size": 1466
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/AtlantPeople_D.gi": {
+        "sha256": "482b519391a9622f4f1919befd40581f26aa263a70133a09454480a57587249f",
+        "size": 1034
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/AtlantPeople_H.gi": {
+        "sha256": "4acc4fa556766893cd1ab5f5c09c048bcb9330e9e6ee149c39cb9cd9527e4e6e",
+        "size": 1227
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/AtlantPeople_N.gi": {
+        "sha256": "f4913e29701c4404215b48f0358cf8854d9b7d45cddf0b4ca55b08569fc580c3",
+        "size": 1227
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FaeyangelionFei_A.gi": {
+        "sha256": "1b89cc5f02e77bee2ce44e9f3f2eff3513754008143468dd343cab7f388da0f6",
+        "size": 1472
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FaeyangelionFei_D.gi": {
+        "sha256": "5724d303e5a69a91d25969bbdde8dcbb112c32d2b4b073513b5eb1b0adee7f6b",
+        "size": 981
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FaeyangelionFei_H.gi": {
+        "sha256": "870ca916a45995b8c815d87fd9e2bd1d0061ae60d6cd7e5b2b4beb77b4180146",
+        "size": 1163
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FaeyangelionFei_N.gi": {
+        "sha256": "7912a2b91a9035c566c2c52a9d841e7674b312fa3c85e0de4f51d3bf085a4a9e",
+        "size": 1163
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercFeiA.gi": {
+        "sha256": "0a7f9dc276be51b0b85d7f7018fdc5aa42f08efafed27f75f253d86e54a0e40a",
+        "size": 1576
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercFeiD.gi": {
+        "sha256": "5469745061330420acb17bf9790ecd5eafb1e2aa1931446b3adcba57c9c47c90",
+        "size": 947
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercFeiH.gi": {
+        "sha256": "399d9c57e27198931273d02be7fe21474bff04cbfd84846eca2d2e4e6bb63408",
+        "size": 1114
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercFeiN.gi": {
+        "sha256": "a3d8063f925805943021142d5a6ed1fe6f035c970ad7051a69621c8d7a234c20",
+        "size": 1114
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercGaalA.gi": {
+        "sha256": "bfe42d80fa2e98009baa289c5bf60b83daf74d7749217102ffd186a6aa0e970f",
+        "size": 1501
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercGaalD.gi": {
+        "sha256": "0a9746328b1d2a72b2664e2727645075d1c7039c36f176232ab589fdcc2a4963",
+        "size": 1066
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercGaalH.gi": {
+        "sha256": "bb796aa78f892fa13ca2c90517937f915c26de8c45e6e81b3780d85d9e4284ec",
+        "size": 1271
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercGaalN.gi": {
+        "sha256": "756274d568cad532095e3fddd17770af8a5d6d5248f2d3418b8fd36a92c8fcc4",
+        "size": 1271
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercMalocA.gi": {
+        "sha256": "b41548b774f30177f94fe30b611d4f35bc7a89a8089c181fcbe5bd296337b092",
+        "size": 1214
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercMalocD.gi": {
+        "sha256": "7afc49b445d6cd3548bae9609e0e229d67e05878b3a9f551c4c9597cc7796bc6",
+        "size": 783
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercMalocH.gi": {
+        "sha256": "a268d5ca20c52ca7a7ca4b081d583f6add756dc6d92de5fb1c16ac1dee4b7c30",
+        "size": 903
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercMalocN.gi": {
+        "sha256": "5f6c03f4c6e89f1254951fc8ac35829239aa7a4a7bdf6580b7799864c2bfc577",
+        "size": 903
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercPelengA.gi": {
+        "sha256": "5dc425c3ad48ffba5c56603b96694f697bf93cb75c6cb12812642609fe1bfaa9",
+        "size": 1389
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercPelengD.gi": {
+        "sha256": "c2314564465df333f7e930647f6ec3dd6a2d6d4b1571021ffba6cfe2fc02a137",
+        "size": 931
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercPelengH.gi": {
+        "sha256": "2e2c90cc5b152842849774a9006c2e2a0d4daaf5ace48e2d621e1f5c9f20d6bc",
+        "size": 1097
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercPelengN.gi": {
+        "sha256": "f9fe4c5206683c56b618d470e14c4654a2c39c7000535014bd957879dc837ecd",
+        "size": 1097
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercPeopleA.gi": {
+        "sha256": "a4d747cb1dac7315afcbb1008c01aed56b5c232c8d55e4090ec34a26912fee2e",
+        "size": 1472
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercPeopleD.gi": {
+        "sha256": "07585526528c9bfe6ddc8c27a5e550a76b14c3eab7c7381ebf39d2af91874e72",
+        "size": 909
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercPeopleH.gi": {
+        "sha256": "2c8adc798a77b80dec730e7c5e70da89308b6b22fa06c02f4e362ab48177bda7",
+        "size": 1075
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/FreeMercPeopleN.gi": {
+        "sha256": "d66b3c6d75e9bcaf85cf71060eaeecc73f863071bf263466f10d03b2d0d171c3",
+        "size": 1075
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/MerzenaryHullA.gi": {
+        "sha256": "c6020455b42383912bbfdd3a77c63a49473c0db4e9571dbc6344b152df4d3d52",
+        "size": 1589
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/MerzenaryHullD.gi": {
+        "sha256": "46f8577f93eec461e537c0e43280e713c22e790438cd6a89dee9b4fb7aa0c596",
+        "size": 1029
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/MerzenaryHullH.gi": {
+        "sha256": "b6493d560753a3a949b9238fe73cd4347a725ba46c363c7b373bbeaa1aa5cb39",
+        "size": 1237
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/MerzenaryHullN.gi": {
+        "sha256": "4c3e2987d3ea93e54ee26e33d1c890ac9fd76c8342c328478475491c914a9e21",
+        "size": 1237
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/RedAxesMaloc_A.gi": {
+        "sha256": "922240283ae30e0537296d0e35c274a55a0e2ea0662955e2535c692c897b7a4b",
+        "size": 1407
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/RedAxesMaloc_D.gi": {
+        "sha256": "def58567e8481f7a864f7ec4e9fecbfee05ab2c48f178453380fd67c043627cc",
+        "size": 891
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/RedAxesMaloc_H.gi": {
+        "sha256": "5e79c89232425eaf73b5db86b5b8e945aed3ebc41042fa587b3630f953231988",
+        "size": 1046
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/PanelSpace2/RedAxesMaloc_N.gi": {
+        "sha256": "1aa12c17b295b6b1635f6dddf1cbf45787c4e8a053ab8edfa68fc4eec5db691b",
+        "size": 1047
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Race/PlayerMercsEmblem.png": {
+        "sha256": "87dda762267d6d2706a7cc41ff0e2597a4c2e0216239058ee6df013028ec69ac",
+        "size": 1578
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Race/PlayerMercsEmblem_big.png": {
+        "sha256": "95f2dfeb88e5e249cedee0fde9bc6e9c3015555018147f13ebdcb8f415582365",
+        "size": 42930
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Race/StarCockerelsEmblem.png": {
+        "sha256": "1f3d3b1908274a3af5403e0097696df4a0af505bba2885ede48e840a03062b8d",
+        "size": 1657
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Race/StarCockerelsEmblem_big.png": {
+        "sha256": "c49d55b23807d4a643e7ac773895d064354796be57a7aaba27044b42dd1fdccb",
+        "size": 836660
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/RaceEmblems/Atlant.png": {
+        "sha256": "88c8b1ed790213b09a2dca78cb403149b285bd6645dc15c606e5c141a2783d7a",
+        "size": 741
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/RaceEmblems/Faeyangelion.png": {
+        "sha256": "9f854f3447a2d9798449d698e68e071b52d404d7be5f54ceb57fba2d5c48a15f",
+        "size": 1028
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/RaceEmblems/RedAxes.png": {
+        "sha256": "62399875544fa834e52ef40fb8f65e387b03e332e8f55c6ed6543ef2acd0308c",
+        "size": 1434
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ruins/AtlantHQ.gai": {
+        "sha256": "3ffe59e99b856928dcc8134f1b7503b79c65a33628aafe6e17c034ee6dba9e10",
+        "size": 10274821
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ruins/AtlantHQ.gi": {
+        "sha256": "43ed793f0656c9112b4c816db01db6d8c1d90f52f2108a641034f3de2df1b749",
+        "size": 26424
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ruins/FaeyangelionHQ.gai": {
+        "sha256": "5b44921d2edfe782650cc9d928ff15c6ccaffc0102107ff9ca9e7ce289bc4df9",
+        "size": 10274821
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ruins/FaeyangelionHQ.gi": {
+        "sha256": "1b9170dcdb2ff623ff470e1836b8af0b27d45940f6fa0c3d2a6ba6f19d7e0cb5",
+        "size": 26424
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ruins/MapAtlantHQ.png": {
+        "sha256": "86e7809f171904a86992a8d031b010de8276a0ec672b902f14605f197abacabf",
+        "size": 304
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ruins/MapFaeyangelionHQ.png": {
+        "sha256": "26ce84b932fe916e20083014638e19d14f494e5f28856533453517142349a2c7",
+        "size": 296
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ruins/MapMB.png": {
+        "sha256": "fc9a5d8189b206c28d93e492ea29f2f9a601ee9e0c0bf77f0ee885f7c69ee76b",
+        "size": 281
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ruins/MapRedAxesHQ.png": {
+        "sha256": "44e9e54abff59dc140c444cb45ca6bff254541d60bd8b7561553e61546b43acc",
+        "size": 296
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ruins/MB.gai": {
+        "sha256": "3997bdbeae27a703f799525ebbd2bd9c2f50a7967254ca1b271f926e81cabf72",
+        "size": 110007
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ruins/MB.gi": {
+        "sha256": "3405d3068f9d32476d1c802c56fdfdeed70adddba69f44873b1c6535b561a1c0",
+        "size": 52129
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ruins/RedAxesHQ.gai": {
+        "sha256": "8563ce47194c53c4f8b402d7e21d4ca6551bacb8533ab44fa1d232b66ec293eb",
+        "size": 10274821
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ruins/RedAxesHQ.gi": {
+        "sha256": "211f634313f47f1295e4d2ba0ac77da0c7f260b9cc48eed6be84d844f47d62fb",
+        "size": 26424
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/AtlantPeleng.hai": {
+        "sha256": "20fbd4d366c65cc7f397dcc6afb7c0be2552b650bf2eba98ff491b14a4183a2e",
+        "size": 2611252
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/AtlantPeleng_img.gi": {
+        "sha256": "c7900479565bb81fb1c279b0f550c9dc86c79ea48ff44f52b08afc2f85f4cc51",
+        "size": 20929
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/AtlantPeleng_short.hai": {
+        "sha256": "869e8df75d2d44282071380496cbc5b3f6fe25f74c15b470d0a250d1c57fa501",
+        "size": 870452
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/AtlantPeople.hai": {
+        "sha256": "59263699c4a20a1962a4f4aeb3c8acd4a5bfe7f8148f582e10506eb7e331370e",
+        "size": 1740852
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/AtlantPeople_img.gi": {
+        "sha256": "70b6953770a53745d77e04cee113c4cd251fd20c89f038ce878dec21153c74d3",
+        "size": 22265
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/AtlantPeople_short.hai": {
+        "sha256": "3133f08877b551d3e77a746176a9cc28941c41d4d5bc6d8647ad504f08e04831",
+        "size": 870452
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FaeyangelionFei.hai": {
+        "sha256": "015b78e6dae4b0aabeedf7ae39d5f1ad2257a994752bb5cc41f156deeebbae8b",
+        "size": 1688628
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FaeyangelionFei_img.gi": {
+        "sha256": "fc6fd807978d2649df165ab03d00e0c41e3f2342d15666fd825b18775285b223",
+        "size": 25015
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FaeyangelionFei_short.hai": {
+        "sha256": "ac7a559736eb6b5e9d02bfb8c9211585cd07b2c481dcfaf1088144618679d4c4",
+        "size": 870452
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercFei.gi": {
+        "sha256": "b930bad238d6dc278ffb401bcc9fe3c1533a10a898ac65ab0579301eed56bc75",
+        "size": 20464
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercFei.hai": {
+        "sha256": "d2ad6cacaa8ac42b2c0a3f6f7e4d90347cea20d5655885fc97744fb19e892e99",
+        "size": 1218612
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercFei_s.hai": {
+        "sha256": "696d7c43315cfb87ff590aa599b7ede3d97426b7f76e8877c132a9328787cdcf",
+        "size": 348212
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercGaal.gi": {
+        "sha256": "12710e58e056bb921f6bd591a80c587b758ae30d045a0cf483458f1095bc1ac9",
+        "size": 55277
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercGaal.hai": {
+        "sha256": "82517ccf9ac26ee1405333f2d1d321c67d63678626cb7d140f7c1da86d3febde",
+        "size": 1044532
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercGaal_s.hai": {
+        "sha256": "b2d5d5aafbcdedd3d5e0c7fb97eaa951926ce8bd3211a5e44faffc576852e014",
+        "size": 348212
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercMaloc.gi": {
+        "sha256": "6b5791788628cdd9c94976d47f5da7a59770f6a133760fae7f7708fe490ae0d6",
+        "size": 26747
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercMaloc.hai": {
+        "sha256": "e5c2f3aa633dccab22346ebac05d338b086b48f7b2f46ce5888a27e7d4b5580e",
+        "size": 887860
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercMaloc_s.hai": {
+        "sha256": "b04cfba1f08c074762c7796f5422fa974605f0b1dbf2312acedc3a2645cde752",
+        "size": 539700
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercPeleng.gi": {
+        "sha256": "352893dff2a7977e8fdb4d51d59690b1389eac73f3eb6bf1bb814d7d305a5b09",
+        "size": 26583
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercPeleng.hai": {
+        "sha256": "52b115727920444fac4cafcb9a48435fc6c9e2c38cbe695d50c2ae88bef5cd4f",
+        "size": 1392692
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercPeleng_s.hai": {
+        "sha256": "2f96ee0b79f63a6d0e711c0d107c1f8cd689683b6c45f81c26edcfa1306bb3e0",
+        "size": 348212
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercPeople.gi": {
+        "sha256": "71b58d8d19414c0efb3362ecbd5cdf62653d294feb5b7a616777877b8463c241",
+        "size": 14396
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercPeople.hai": {
+        "sha256": "80461869625db6f6b4e8703273895135d6999eca828d5a114116eba6cf068fee",
+        "size": 1148980
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/FreeMercPeople_s.hai": {
+        "sha256": "d3f691535d72e4a04cb4844972e56868d2529045d5a6287f8ac153536beb472f",
+        "size": 574516
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/MapMercAtlant.png": {
+        "sha256": "23eb90aef75b4e95b7b2a61267a3b76447bd07b4d7feb138c104421138acfe02",
+        "size": 2643
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/MapMercFaeyangelion.png": {
+        "sha256": "91700bedafa2897b87d93ee8d956ee4debb54811e0b2e0188de31c9ae9799196",
+        "size": 2635
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/MapMercRedAxes.png": {
+        "sha256": "791e9fe2bb30d3bb02034de64590c983c8ffefd5b1f7ccbb5021fedf44730f10",
+        "size": 2648
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/MerzenaryHull.gi": {
+        "sha256": "66d4689bdb754d271955b7c8dce786be5921595b7c7879241fc39f73c9097c11",
+        "size": 27189
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/MerzenaryHull.hai": {
+        "sha256": "8c64c1e932bd366801a36026f99c3c3ac63e79dda5ec99510703d5ce9a4781d0",
+        "size": 365620
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/RedAxesMaloc.hai": {
+        "sha256": "d7dc0ca99367debdd985dfcf31e23276139298fa57e925ffabd5c4c6f1b23682",
+        "size": 2593844
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/RedAxesMaloc_img.gi": {
+        "sha256": "187b7e0ccf59925341d4e97e149122b9078ba565a820d595e24f3095c74b66da",
+        "size": 21867
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Ship/RedAxesMaloc_short.hai": {
+        "sha256": "c42cdcee99603bafdfee159b178af3007832e049adeba5a1a6f0cbbadd58176e",
+        "size": 870452
+      },
+      "{app}/Mods/ShusRangers/ShuMercs/DATA/Sound/EMP_torpedo_launch.wav": {
+        "sha256": "ae5c3f258b340b7f59ed2041f20164ea76acc685f45af2cbfd9682240a2c7232",
+        "size": 417780
+      }
+    }
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "schema": "srmod/1",
+  "id": "Reflection/RefEnergy",
+  "source": "redux/reflection_installer",
+  "name": "RefEnergy",
+  "title": "RefEnergy",
+  "author": "Marshalska Rokossovsky,Coloron,MLGCat",
+  "section": "Reflection",
+  "priority": "5",
+  "description": "Энергопотребление кораблей <color=220,20,20>(небольшое усложнение)</color>",
+  "version": "aec248302f0b2e08",
+  "depends": [
+    "ExpTC",
+    "PolMM"
+  ],
+  "conflicts": [],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "files": {
+    "code": {
+      "{app}/Mods/Reflection/RefEnergy/ModuleInfo.txt": {
+        "sha256": "249b0fabff47821b4ed531217982972cdd75ac2a06f3ad34362131712b92bb92",
+        "size": 2018
+      },
+      "{app}/Mods/Reflection/RefEnergy/CFG/CacheData.dat": {
+        "sha256": "1d22c2aba471bcb027bedb86eda5b98e62a2d237b39b5fc2bb8338389462fdf7",
+        "size": 553
+      },
+      "{app}/Mods/Reflection/RefEnergy/CFG/Main.dat": {
+        "sha256": "8b519f5cfafe50d2ea3082ed912c9a434da3be1398382297c6debfea6c879e28",
+        "size": 356
+      },
+      "{app}/Mods/Reflection/RefEnergy/CFG/Rus/Lang.dat": {
+        "sha256": "4a31dbe0c646e7857b149dfe99332966832b3e83cf11776285170df558edfa3f",
+        "size": 12001
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Script/Mod_RefEnergy.scr": {
+        "sha256": "1633a079aa3b5a502ae4a5182ebef56ff4149707119c82ec7784b6b7a28acc0e",
+        "size": 21455
+      }
+    },
+    "assets": {
+      "{app}/Mods/Reflection/RefEnergy/DATA/FormShip2/ChargeY_N.gi": {
+        "sha256": "7eef6a30d4a3d9a4bf04d0d53e3c067bd90fa62aa81ba157a70c43bac7dfd9ac",
+        "size": 2640
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/FormShip2/ChargeY_Ns.gi": {
+        "sha256": "191aa42c73977f65dbda46385bd3f596c19baaf9ade0e73ed4a13f2418555673",
+        "size": 1235
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2A_a.gai": {
+        "sha256": "1e9f193a859dc027daa4f83ffde5c540823ebb840d621484fde22d434f3d7f5e",
+        "size": 10372
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2A_i.gi": {
+        "sha256": "93d6d79037a2b5bb6afa900e9d1e6e70898092e115c9c86f3d77f467bbd7fe42",
+        "size": 6776
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2A_s.gi": {
+        "sha256": "6228225d360ce68d589919173c90ae9157cf75563d8c5b8cd77db4043e2012ba",
+        "size": 2119
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2ArtReverser.gi": {
+        "sha256": "92748bad8dd09df8cb714d2ef95a104b51959f18586382d7663740fa3050f415",
+        "size": 2476
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2ArtReverser_ab.gi": {
+        "sha256": "b6f78b480f86ae3bbd4be39f4c54194cb5d5e68fd09b8f8f31d63c31dd24596b",
+        "size": 986
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2ArtUlovitel.gi": {
+        "sha256": "60316fca2b2631c2f4be710d0b228babd47f4fe4ec6d22ac7107f5ebf5c66608",
+        "size": 2120
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2ArtUlovitel_ab.gi": {
+        "sha256": "5815442b14c1ce201d16961ca3905f70d0f39d239338a31215783c8894dc26c4",
+        "size": 924
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2ArtUpyrik.gi": {
+        "sha256": "fbab54e87bea9f70734dcca2b9bd1a1269bce02792310ebe9f984cefdb9c03fa",
+        "size": 2445
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2ArtUpyrik_ab.gi": {
+        "sha256": "bf6d9aaa49788291fc2d317f71f6f12332114958001fb6947840fdae35c98e58",
+        "size": 928
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2CargoHookErga.gai": {
+        "sha256": "fffc06a2e1528d4beb658d64adf98ca76570fafaf8f07d71692de46043460ed9",
+        "size": 415551
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2CargoHookErgi.gi": {
+        "sha256": "11a099891427e08ea1cb9bb06b44003e57829ad5cf40cf0be96e1a68c1523845",
+        "size": 7695
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2CargoHookErgs.gi": {
+        "sha256": "0f0b236d9be242eea52c4e28fe8e21e55963aa49218292afd1b4b812a3194c48",
+        "size": 2074
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2FuelTanksErga.gai": {
+        "sha256": "51e48160019f2e15d12db3c6dd830b572371d0631a6355df4ef94f2e802dd2b0",
+        "size": 602439
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2FuelTanksErgi.gi": {
+        "sha256": "cc38fabcdd8dcaf0229756dd0728bd97acd5772949d24eaee5899222a054a5fd",
+        "size": 9101
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2FuelTanksErgs.gi": {
+        "sha256": "a5a4403ec51f19690a89973765ae72c58e435bd84f5ebeeba08385a87e1710b0",
+        "size": 2421
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2RadarErga.gai": {
+        "sha256": "0d9316df46a8fd8355f755cb468922c73a1a3fafd171ac37fb08206ea1bce238",
+        "size": 587667
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2RadarErgi.gi": {
+        "sha256": "31a463d94677d3950597cef601199be5b19df3bbfbf46fdb0bea2a8334f43a28",
+        "size": 8366
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2RadarErgs.gi": {
+        "sha256": "72c380617e0d667a335ff402e7e9045467c18bda675fa6d7bb3574c97a917599",
+        "size": 2476
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2RefEnergy_Battery.gi": {
+        "sha256": "9c4df0ff742c26534b110bf72236b153573e53623bca321808718e4f6242ad98",
+        "size": 2692
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2RepairRobotErga.gai": {
+        "sha256": "af2d515e4ae83b2bddee5ef2c5d5192639f34ed189581dcac5445ba23fbe3659",
+        "size": 475901
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2RepairRobotErgi.gi": {
+        "sha256": "ced2e769389de1e4a0078b645ca1243da278b284fde5b9ebfc781c2440c887da",
+        "size": 7562
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/2RepairRobotErgs.gi": {
+        "sha256": "e978b8f7caa8725a58556b683b5382d8110e05246386b38101507e83fed472d7",
+        "size": 2214
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/ArtReverser.png": {
+        "sha256": "396d6cca7c15f022c9ab5e802ed5375466398da787027b6b87e70d0f6ffde5af",
+        "size": 1184
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/ArtReverser_ab.png": {
+        "sha256": "2730348abf8f8263fe8409d69b27acb7f15cbcd278758583f263ac1161adcc7d",
+        "size": 512
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/ArtUlovitel.gi": {
+        "sha256": "2c4937ff12a4a8473f4360ef05483fbde78713e943a2c6aff966939c6b31af3b",
+        "size": 2264
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/ArtUlovitel.png": {
+        "sha256": "e1d0e6cf09d3016bc3034e2120ed618d2c442b2a9314f47c450a375024cefd77",
+        "size": 1191
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/ArtUlovitel_ab.png": {
+        "sha256": "3a3712270ff12d2ea09f8e2eb080c05c2aedaf490c28fc964251945ca555581e",
+        "size": 527
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/ArtUpyrik.gi": {
+        "sha256": "5428ccae2549df743ca427ebb7407c8fd1ad98d2487cba56538837a04b603dc6",
+        "size": 2439
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/ArtUpyrik.png": {
+        "sha256": "8879f0449ef42c74d23094614a526af46f772d62a969a6bd5d6459310e9cd8b1",
+        "size": 1158
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/ArtUpyrik_ab.gi": {
+        "sha256": "1a109aad8949fcc8be0a80daf7ca8f3d4fcdaf149548314ffa63763383e0e516",
+        "size": 947
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/ArtUpyrik_ab.png": {
+        "sha256": "fc37728c9fae75a1a08ea4b5d87c02aaceb1da5c513d695dbb494d0ba2b1a1ed",
+        "size": 545
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Items/Hull/2A_a.gai": {
+        "sha256": "1e9f193a859dc027daa4f83ffde5c540823ebb840d621484fde22d434f3d7f5e",
+        "size": 10372
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/MsgPlayer/ChargeG_A.gi": {
+        "sha256": "c86408eb20bd1dfc7dc0f38a2df34f9f16e81efa688851b074cbfaee99ca8e1c",
+        "size": 1235
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/MsgPlayer/ChargeG_D.gi": {
+        "sha256": "a126e52e276b1a8f604622156b094abc00cbbeed0c23bfeb145e41ab776edc5f",
+        "size": 1221
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/MsgPlayer/ChargeG_N.gi": {
+        "sha256": "4d2282518f468bcd598d9712ab3c0d68e719ee08caf02f1b7a30d2ee532feaa3",
+        "size": 1235
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/MsgPlayer/ChargeR_A.gi": {
+        "sha256": "a35c2a7acf2cb3dffd9683c26df9fe23bc18fc4930b6ea59e72dc6e1776dbc03",
+        "size": 1235
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/MsgPlayer/ChargeR_D.gi": {
+        "sha256": "2e7b259268257440b343cc810dcbf08a2309eac51fba91afc5728401f1431967",
+        "size": 1221
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/MsgPlayer/ChargeR_N.gi": {
+        "sha256": "2b553dbe0fb32c95d69964bfc9e5079530dc3e1ef4cbbb97a071134e74f9586e",
+        "size": 1235
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Ship/As.hai": {
+        "sha256": "b9428e61d2254fe475c67fe881ac896975de95d45bede5a8924aa07933c02893",
+        "size": 870452
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/Ship/img.hai": {
+        "sha256": "8c13275fa42dcb470f5913627b58264548bd570283cdcaa42d3b952c72d9559a",
+        "size": 2489396
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/ShipP/2A.gi": {
+        "sha256": "bfedc754eaf23322fea09d2fdabbde2169c158aef5386cc69eadbcccd3c981fb",
+        "size": 18237
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/ShipP/2A_i.gi": {
+        "sha256": "93d6d79037a2b5bb6afa900e9d1e6e70898092e115c9c86f3d77f467bbd7fe42",
+        "size": 6776
+      },
+      "{app}/Mods/Reflection/RefEnergy/DATA/ShipP/2A_s.gi": {
+        "sha256": "6228225d360ce68d589919173c90ae9157cf75563d8c5b8cd77db4043e2012ba",
+        "size": 2119
+      }
+    }
+  }
+}

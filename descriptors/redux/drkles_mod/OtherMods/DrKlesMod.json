@@ -1,0 +1,978 @@
+{
+  "schema": "srmod/1",
+  "id": "OtherMods/DrKlesMod",
+  "source": "redux/drkles_mod",
+  "name": "Dr_Kles_Mod (альфа-версия)",
+  "title": "<color=97,167,190>Dr_Kles_Mod (альфа-версия)</color>",
+  "author": "Dr_Kles, <color=255,0,0>Marshalska Rokossovsky</color>.",
+  "section": "",
+  "priority": "7",
+  "description": "Интересный мод, который вносит разнообразие в ванильную игру!",
+  "version": "7980dfbe6cd07117",
+  "depends": [
+    "UtilityFunctionsPack",
+    "EvoArmada"
+  ],
+  "conflicts": [
+    "BlockPirates",
+    "FlagmanForAllMaloc",
+    "ImperialFlagshipPeople",
+    "FlagmanForAllPeleng",
+    "FlagmanForAllPeople",
+    "FlagmanForAllhipGaal",
+    "FlagmanForAllFei",
+    "ImperialFlagshipMaloc",
+    "ImperialFlagshipPeleng",
+    "ImperialFlagshipFei",
+    "ImperialFlagshipGaal",
+    "LEODestroyerUpdate",
+    "Cat_Pizza"
+  ],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "files": {
+    "code": {
+      "Клесс мод/Mods/OtherMods/DrKlesMod/ModuleInfo.txt": {
+        "sha256": "12d18dfd00b7fb2a954a6b80e26f20842f88df60d88a4c147bdcd3c25e405544",
+        "size": 15190
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/CFG/CacheData.dat": {
+        "sha256": "b9111b9e07f0d96b2fe257ba7c290b23b243c1901ef51a38fa2a9f3714c11cf1",
+        "size": 2585
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/CFG/Main.dat": {
+        "sha256": "b6af0bb85e8f7173556eb659c2b82c20284d8128450f1f5fd167cf348ab559d6",
+        "size": 1862
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/CFG/Rus/Lang.dat": {
+        "sha256": "db89a2073dfb25019371c434d2e5b56ae74e72e9fe0ea20a0b4262b45dd4e075",
+        "size": 101382
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Script/DrKles_Blazer.scr": {
+        "sha256": "c02bebde430bfdeacb1a97f9831da5b5af17496b752e100f58541c3f0b6a4a27",
+        "size": 448086
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Script/DrKles_Blazer.txt": {
+        "sha256": "e40dad1cf73706be72319d639a4980ccdd8a502bc43aaf525b6237b95de7e1b6",
+        "size": 114224
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Script/DrKles_Mod.scr": {
+        "sha256": "861e96789ecf359de984eb9358ddf09dcb9b06a8cf78fa8ebf4ba4ceeb11ca1d",
+        "size": 17070
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Script/DrKles_Mod.txt": {
+        "sha256": "de126492858c4353f8c6ffd6d4091276a5d877ae1b67b2c7c46cf3ef09663f60",
+        "size": 12176
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Script/MS_Keller.scr": {
+        "sha256": "a5442016d050b55f047ad487333e2a52f5e027eeaf2fa4b0405d3104d21185d4",
+        "size": 73842
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Script/MS_Keller.txt": {
+        "sha256": "085d65a80f03a78f161ac326beed9727ea62733a2a9ba1185f14379a73c4bc5c",
+        "size": 131572
+      }
+    },
+    "assets": {
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/2KellerB.gai": {
+        "sha256": "34fb058ee62f7918f4ebdb13c3155c3dc4ee187beef83e662778815cc8467172",
+        "size": 1965122
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/2KellerB.gi": {
+        "sha256": "99f384395146e0f3abd2f832d4aca13ad3c138f00910093b73473c2be4adfea1",
+        "size": 19440
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/2KellerN.gai": {
+        "sha256": "27589e754ed7f6e72e66ab4ba351fac067db994261cd2966a0a3b37c5b05dcc5",
+        "size": 1965122
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/2KellerN.gi": {
+        "sha256": "0cf1772b2f18e5df6fd7f790733ad7dc7e6b541e93e8c873fbf049aad2727717",
+        "size": 19440
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/Blazer0.gai": {
+        "sha256": "6a5db8684c879c23f4bb313923cc2e98895af644a64db166ae5a81ab2940f4eb",
+        "size": 1945666
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/Blazer0.gi": {
+        "sha256": "07186c1cc8a7660a98f4b18238dac2b9f043e5b20062e419d5e744e6019e0a03",
+        "size": 19440
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/Blazer1.gai": {
+        "sha256": "6a5db8684c879c23f4bb313923cc2e98895af644a64db166ae5a81ab2940f4eb",
+        "size": 1945666
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/Blazer1.gi": {
+        "sha256": "07186c1cc8a7660a98f4b18238dac2b9f043e5b20062e419d5e744e6019e0a03",
+        "size": 19440
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/Blazer2.gai": {
+        "sha256": "6a5db8684c879c23f4bb313923cc2e98895af644a64db166ae5a81ab2940f4eb",
+        "size": 1945666
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/Blazer2.gi": {
+        "sha256": "07186c1cc8a7660a98f4b18238dac2b9f043e5b20062e419d5e744e6019e0a03",
+        "size": 19440
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/Blazer3.gai": {
+        "sha256": "6a5db8684c879c23f4bb313923cc2e98895af644a64db166ae5a81ab2940f4eb",
+        "size": 1945666
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/Blazer3.gi": {
+        "sha256": "07186c1cc8a7660a98f4b18238dac2b9f043e5b20062e419d5e744e6019e0a03",
+        "size": 19440
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/Blazer4.gai": {
+        "sha256": "3eda767f9501c1eeaceb9317c5611fbd32953a241c3c9eadf4c196e4c4fde1c3",
+        "size": 1965122
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Captain/Blazer4.gi": {
+        "sha256": "156da6b1057651d9f31a4e9c9650dc1de972e9355b119d41f32e8441725406b9",
+        "size": 19440
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Container/Blazer0.gai": {
+        "sha256": "b627e7dfe50c50aedb30221fbb8d47424a547cebd55fdb597dd408e060e09cd7",
+        "size": 70917
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Container/Blazer1.gai": {
+        "sha256": "1428f058c0b3abcfc84c18a9a1aca4cf976c783339c8dc578700fad86f9acd30",
+        "size": 92606
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Container/Blazer2.gai": {
+        "sha256": "752a5de9029c91b6dbc587c873e5aec572c1712cb9c3453c457fdb8f79837036",
+        "size": 122500
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Container/Blazer3.gai": {
+        "sha256": "058d6bbd1346855d59abde3dc7d02dd051938eab984aeddbfb0d4e95291ee345",
+        "size": 171955
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Container/Blazer4.gai": {
+        "sha256": "cbaa637120ed3a660ebf51763b5349a0ac6da56d3fe737bafec18ad0b19d9af8",
+        "size": 221315
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Cursor/InterceptorsFull.gai": {
+        "sha256": "86eab71649dc89a016b219c96893bba57816dadefa2e290488fa0cfbdd10641a",
+        "size": 30924
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Cursor/InterceptorsSmall.gai": {
+        "sha256": "3e3696d9be84a05d497367be9a2b25ef584383312e7b706d71306cd230933723",
+        "size": 30199
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/FormRuinsBG/2DBBbg.gi": {
+        "sha256": "82b152f93f8379bf8c7f982141baabef537700f5863884808fe76ae6061facc1",
+        "size": 4147296
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/FormRuinsBG/2DestroyerBridgebg.gi": {
+        "sha256": "d0a9dc26f1e495732758291a4b5f9e40e03524285c59ddc3cb0dfb08b2177c09",
+        "size": 4608096
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookFlamea.gai": {
+        "sha256": "99157ac8e86c1ce3cd737285ec990e97152f12d7f07d3f73781880869b9c2f22",
+        "size": 18424
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookFlamei.gi": {
+        "sha256": "1d68ea735c89f10117e07171b1eaad900955e06ca8420658014805c4f1fc2eee",
+        "size": 9163
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookFlames.gi": {
+        "sha256": "347114b7ac019353155fa27e5eb4233e57c65cb794e07766ebf92982424fcbac",
+        "size": 2596
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookMonoa.gai": {
+        "sha256": "4aa37a1dc1377c755c7af56070f4cf4f9523e1ff3ba165f537ec66e0cc3218e9",
+        "size": 17474
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookMonoi.gi": {
+        "sha256": "840f4196e270dea71a3165c45f0190f12258a8ba3d0a3ee3ff6511bc97386d4b",
+        "size": 8688
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookMonos.gi": {
+        "sha256": "64f818248c2fc42d225262f89b8d52befdb0519bdea708aa0c1b017eb6b94f3e",
+        "size": 2606
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookNanobrolita.gai": {
+        "sha256": "9f5cffada9ef7e621056a195301f481af55345b00e717c3aff0d5f9b6f1df9d0",
+        "size": 599847
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookNanobroliti.gi": {
+        "sha256": "69de37795ac5c806d74880ff823a7bcc82031d417621cd9b89b31bcf543e9d29",
+        "size": 7473
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookNanobrolits.gi": {
+        "sha256": "04c2c117b8910ed7556226acf10b69c81e12bb0b2b704c29650469bf412a3ab7",
+        "size": 2050
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookSastera.gai": {
+        "sha256": "1938cc60f85931aeac43934dff1c8bb5949ead1b2fc1c597d5aa9cc7c567520f",
+        "size": 16800
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookSasteri.gi": {
+        "sha256": "470a7892f4e2787621ae2796516c961ce76b762d836fb28728150e7396bbbd27",
+        "size": 8351
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookSasters.gi": {
+        "sha256": "bda0d19eebc02f87908de2bb7aec9e28d2495d30ba6e25d695b99174176cf430",
+        "size": 1887
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookTranza.gai": {
+        "sha256": "befbf10865b66c8a0df48e15646d9040dde05fb4d9587c997d5ced9433130cdf",
+        "size": 21172
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookTranzi.gi": {
+        "sha256": "0e55f903e1a373066faddeeab050f26109b7cc1442e47d8df66cd1d24b5962b9",
+        "size": 10537
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2CargoHookTranzs.gi": {
+        "sha256": "8796406d3111057800801b57525b60b9e6fbca27dfa8f5c6143d50e93c08245f",
+        "size": 2018
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2DefGeneratorFlamea.gai": {
+        "sha256": "99157ac8e86c1ce3cd737285ec990e97152f12d7f07d3f73781880869b9c2f22",
+        "size": 18424
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2DefGeneratorFlamei.gi": {
+        "sha256": "1d68ea735c89f10117e07171b1eaad900955e06ca8420658014805c4f1fc2eee",
+        "size": 9163
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2DefGeneratorFlames.gi": {
+        "sha256": "347114b7ac019353155fa27e5eb4233e57c65cb794e07766ebf92982424fcbac",
+        "size": 2596
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2DefGeneratorMonoa.gai": {
+        "sha256": "4aa37a1dc1377c755c7af56070f4cf4f9523e1ff3ba165f537ec66e0cc3218e9",
+        "size": 17474
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2DefGeneratorMonoi.gi": {
+        "sha256": "840f4196e270dea71a3165c45f0190f12258a8ba3d0a3ee3ff6511bc97386d4b",
+        "size": 8688
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2DefGeneratorMonos.gi": {
+        "sha256": "64f818248c2fc42d225262f89b8d52befdb0519bdea708aa0c1b017eb6b94f3e",
+        "size": 2606
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2DefGeneratorSastera.gai": {
+        "sha256": "1938cc60f85931aeac43934dff1c8bb5949ead1b2fc1c597d5aa9cc7c567520f",
+        "size": 16800
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2DefGeneratorSasteri.gi": {
+        "sha256": "470a7892f4e2787621ae2796516c961ce76b762d836fb28728150e7396bbbd27",
+        "size": 8351
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2DefGeneratorSasters.gi": {
+        "sha256": "bda0d19eebc02f87908de2bb7aec9e28d2495d30ba6e25d695b99174176cf430",
+        "size": 1887
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2DefGeneratorTranza.gai": {
+        "sha256": "befbf10865b66c8a0df48e15646d9040dde05fb4d9587c997d5ced9433130cdf",
+        "size": 21172
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2DefGeneratorTranzi.gi": {
+        "sha256": "0e55f903e1a373066faddeeab050f26109b7cc1442e47d8df66cd1d24b5962b9",
+        "size": 10537
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2DefGeneratorTranzs.gi": {
+        "sha256": "8796406d3111057800801b57525b60b9e6fbca27dfa8f5c6143d50e93c08245f",
+        "size": 2018
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2EngineFlamea.gai": {
+        "sha256": "99157ac8e86c1ce3cd737285ec990e97152f12d7f07d3f73781880869b9c2f22",
+        "size": 18424
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2EngineFlamei.gi": {
+        "sha256": "1d68ea735c89f10117e07171b1eaad900955e06ca8420658014805c4f1fc2eee",
+        "size": 9163
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2EngineFlames.gi": {
+        "sha256": "347114b7ac019353155fa27e5eb4233e57c65cb794e07766ebf92982424fcbac",
+        "size": 2596
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2EngineMonoa.gai": {
+        "sha256": "a2601ed92d57738ce716b8324f88ef0c0173425116147409a1cd32300eee8b48",
+        "size": 16928
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2EngineMonoi.gi": {
+        "sha256": "a7549a504d0ee11aa21f3e4122f81e75ac026202bc69c34a48ca47d9bc1255af",
+        "size": 8415
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2EngineMonos.gi": {
+        "sha256": "08fc5a0e3e3380aaf09fecd6b21eb4a4a339422446c59ec1fad8b200b7e14249",
+        "size": 2485
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2EngineSastera.gai": {
+        "sha256": "1938cc60f85931aeac43934dff1c8bb5949ead1b2fc1c597d5aa9cc7c567520f",
+        "size": 16800
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2EngineSasteri.gi": {
+        "sha256": "470a7892f4e2787621ae2796516c961ce76b762d836fb28728150e7396bbbd27",
+        "size": 8351
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2EngineSasters.gi": {
+        "sha256": "bda0d19eebc02f87908de2bb7aec9e28d2495d30ba6e25d695b99174176cf430",
+        "size": 1887
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksFlamea.gai": {
+        "sha256": "99157ac8e86c1ce3cd737285ec990e97152f12d7f07d3f73781880869b9c2f22",
+        "size": 18424
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksFlamei.gi": {
+        "sha256": "1d68ea735c89f10117e07171b1eaad900955e06ca8420658014805c4f1fc2eee",
+        "size": 9163
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksFlames.gi": {
+        "sha256": "347114b7ac019353155fa27e5eb4233e57c65cb794e07766ebf92982424fcbac",
+        "size": 2596
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksMonoa.gai": {
+        "sha256": "4aa37a1dc1377c755c7af56070f4cf4f9523e1ff3ba165f537ec66e0cc3218e9",
+        "size": 17474
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksMonoi.gi": {
+        "sha256": "840f4196e270dea71a3165c45f0190f12258a8ba3d0a3ee3ff6511bc97386d4b",
+        "size": 8688
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksMonos.gi": {
+        "sha256": "64f818248c2fc42d225262f89b8d52befdb0519bdea708aa0c1b017eb6b94f3e",
+        "size": 2606
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksNanobrolita.gai": {
+        "sha256": "9f5cffada9ef7e621056a195301f481af55345b00e717c3aff0d5f9b6f1df9d0",
+        "size": 599847
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksNanobroliti.gi": {
+        "sha256": "69de37795ac5c806d74880ff823a7bcc82031d417621cd9b89b31bcf543e9d29",
+        "size": 7473
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksNanobrolits.gi": {
+        "sha256": "04c2c117b8910ed7556226acf10b69c81e12bb0b2b704c29650469bf412a3ab7",
+        "size": 2050
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksSastera.gai": {
+        "sha256": "1938cc60f85931aeac43934dff1c8bb5949ead1b2fc1c597d5aa9cc7c567520f",
+        "size": 16800
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksSasteri.gi": {
+        "sha256": "470a7892f4e2787621ae2796516c961ce76b762d836fb28728150e7396bbbd27",
+        "size": 8351
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksSasters.gi": {
+        "sha256": "bda0d19eebc02f87908de2bb7aec9e28d2495d30ba6e25d695b99174176cf430",
+        "size": 1887
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksTranza.gai": {
+        "sha256": "befbf10865b66c8a0df48e15646d9040dde05fb4d9587c997d5ced9433130cdf",
+        "size": 21172
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksTranzi.gi": {
+        "sha256": "0e55f903e1a373066faddeeab050f26109b7cc1442e47d8df66cd1d24b5962b9",
+        "size": 10537
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2FuelTanksTranzs.gi": {
+        "sha256": "8796406d3111057800801b57525b60b9e6fbca27dfa8f5c6143d50e93c08245f",
+        "size": 2018
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2Interceptors_s.gi": {
+        "sha256": "6a323565eefcf0777c2daa83b00d3d20b4386265679c75b375b9aafc1742de6f",
+        "size": 2277
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarFlamea.gai": {
+        "sha256": "99157ac8e86c1ce3cd737285ec990e97152f12d7f07d3f73781880869b9c2f22",
+        "size": 18424
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarFlamei.gi": {
+        "sha256": "1d68ea735c89f10117e07171b1eaad900955e06ca8420658014805c4f1fc2eee",
+        "size": 9163
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarFlames.gi": {
+        "sha256": "347114b7ac019353155fa27e5eb4233e57c65cb794e07766ebf92982424fcbac",
+        "size": 2596
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarMonoa.gai": {
+        "sha256": "4aa37a1dc1377c755c7af56070f4cf4f9523e1ff3ba165f537ec66e0cc3218e9",
+        "size": 17474
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarMonoi.gi": {
+        "sha256": "840f4196e270dea71a3165c45f0190f12258a8ba3d0a3ee3ff6511bc97386d4b",
+        "size": 8688
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarMonos.gi": {
+        "sha256": "64f818248c2fc42d225262f89b8d52befdb0519bdea708aa0c1b017eb6b94f3e",
+        "size": 2606
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarNanobrolita.gai": {
+        "sha256": "9f5cffada9ef7e621056a195301f481af55345b00e717c3aff0d5f9b6f1df9d0",
+        "size": 599847
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarNanobroliti.gi": {
+        "sha256": "69de37795ac5c806d74880ff823a7bcc82031d417621cd9b89b31bcf543e9d29",
+        "size": 7473
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarNanobrolits.gi": {
+        "sha256": "04c2c117b8910ed7556226acf10b69c81e12bb0b2b704c29650469bf412a3ab7",
+        "size": 2050
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarSastera.gai": {
+        "sha256": "1938cc60f85931aeac43934dff1c8bb5949ead1b2fc1c597d5aa9cc7c567520f",
+        "size": 16800
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarSasteri.gi": {
+        "sha256": "470a7892f4e2787621ae2796516c961ce76b762d836fb28728150e7396bbbd27",
+        "size": 8351
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarSasters.gi": {
+        "sha256": "bda0d19eebc02f87908de2bb7aec9e28d2495d30ba6e25d695b99174176cf430",
+        "size": 1887
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarTranza.gai": {
+        "sha256": "befbf10865b66c8a0df48e15646d9040dde05fb4d9587c997d5ced9433130cdf",
+        "size": 21172
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarTranzi.gi": {
+        "sha256": "0e55f903e1a373066faddeeab050f26109b7cc1442e47d8df66cd1d24b5962b9",
+        "size": 10537
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RadarTranzs.gi": {
+        "sha256": "8796406d3111057800801b57525b60b9e6fbca27dfa8f5c6143d50e93c08245f",
+        "size": 2018
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RepairRobotFlamea.gai": {
+        "sha256": "99157ac8e86c1ce3cd737285ec990e97152f12d7f07d3f73781880869b9c2f22",
+        "size": 18424
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RepairRobotFlamei.gi": {
+        "sha256": "1d68ea735c89f10117e07171b1eaad900955e06ca8420658014805c4f1fc2eee",
+        "size": 9163
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RepairRobotFlames.gi": {
+        "sha256": "347114b7ac019353155fa27e5eb4233e57c65cb794e07766ebf92982424fcbac",
+        "size": 2596
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RepairRobotMonoa.gai": {
+        "sha256": "4aa37a1dc1377c755c7af56070f4cf4f9523e1ff3ba165f537ec66e0cc3218e9",
+        "size": 17474
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RepairRobotMonoi.gi": {
+        "sha256": "840f4196e270dea71a3165c45f0190f12258a8ba3d0a3ee3ff6511bc97386d4b",
+        "size": 8688
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RepairRobotMonos.gi": {
+        "sha256": "64f818248c2fc42d225262f89b8d52befdb0519bdea708aa0c1b017eb6b94f3e",
+        "size": 2606
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RepairRobotTranza.gai": {
+        "sha256": "befbf10865b66c8a0df48e15646d9040dde05fb4d9587c997d5ced9433130cdf",
+        "size": 21172
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RepairRobotTranzi.gi": {
+        "sha256": "0e55f903e1a373066faddeeab050f26109b7cc1442e47d8df66cd1d24b5962b9",
+        "size": 10537
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2RepairRobotTranzs.gi": {
+        "sha256": "8796406d3111057800801b57525b60b9e6fbca27dfa8f5c6143d50e93c08245f",
+        "size": 2018
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerFlamea.gai": {
+        "sha256": "99157ac8e86c1ce3cd737285ec990e97152f12d7f07d3f73781880869b9c2f22",
+        "size": 18424
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerFlamei.gi": {
+        "sha256": "1d68ea735c89f10117e07171b1eaad900955e06ca8420658014805c4f1fc2eee",
+        "size": 9163
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerFlames.gi": {
+        "sha256": "347114b7ac019353155fa27e5eb4233e57c65cb794e07766ebf92982424fcbac",
+        "size": 2596
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerMonoa.gai": {
+        "sha256": "4aa37a1dc1377c755c7af56070f4cf4f9523e1ff3ba165f537ec66e0cc3218e9",
+        "size": 17474
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerMonoi.gi": {
+        "sha256": "840f4196e270dea71a3165c45f0190f12258a8ba3d0a3ee3ff6511bc97386d4b",
+        "size": 8688
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerMonos.gi": {
+        "sha256": "64f818248c2fc42d225262f89b8d52befdb0519bdea708aa0c1b017eb6b94f3e",
+        "size": 2606
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerNanobrolita.gai": {
+        "sha256": "9f5cffada9ef7e621056a195301f481af55345b00e717c3aff0d5f9b6f1df9d0",
+        "size": 599847
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerNanobroliti.gi": {
+        "sha256": "69de37795ac5c806d74880ff823a7bcc82031d417621cd9b89b31bcf543e9d29",
+        "size": 7473
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerNanobrolits.gi": {
+        "sha256": "04c2c117b8910ed7556226acf10b69c81e12bb0b2b704c29650469bf412a3ab7",
+        "size": 2050
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerSastera.gai": {
+        "sha256": "1938cc60f85931aeac43934dff1c8bb5949ead1b2fc1c597d5aa9cc7c567520f",
+        "size": 16800
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerSasteri.gi": {
+        "sha256": "470a7892f4e2787621ae2796516c961ce76b762d836fb28728150e7396bbbd27",
+        "size": 8351
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerSasters.gi": {
+        "sha256": "bda0d19eebc02f87908de2bb7aec9e28d2495d30ba6e25d695b99174176cf430",
+        "size": 1887
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerTranza.gai": {
+        "sha256": "befbf10865b66c8a0df48e15646d9040dde05fb4d9587c997d5ced9433130cdf",
+        "size": 21172
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerTranzi.gi": {
+        "sha256": "0e55f903e1a373066faddeeab050f26109b7cc1442e47d8df66cd1d24b5962b9",
+        "size": 10537
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/2ScanerTranzs.gi": {
+        "sha256": "8796406d3111057800801b57525b60b9e6fbca27dfa8f5c6143d50e93c08245f",
+        "size": 2018
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Container/2mm_BlazerMM.gai": {
+        "sha256": "b4621e4921808b97cb587ff82c7cdbf755402441dff89b3b7276a58ca4920d85",
+        "size": 41236
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Container/2mm_BotMM.gai": {
+        "sha256": "596895419f933b98ea24caf304b7fed57f9884787e72609d901bf229083a397c",
+        "size": 41274
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Container/2mm_DrKlesMM.gai": {
+        "sha256": "20e6934e9483a1cb3798ec56626d73623d4695178872d1232e1f49367bf1eedf",
+        "size": 64801
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Container/2mm_EltanMM.gai": {
+        "sha256": "1d39f3a05c43883dbee67b54925e816cbc270d58f278a94b0a701a1c81735251",
+        "size": 45198
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Container/2mm_KellerKrinatorMM.gai": {
+        "sha256": "aba122bc45ac54d11cfa27c6adda5fc5929b01530733a81c4471d7a867a00610",
+        "size": 41708
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Container/2mm_KellerKrinatorupgradeMM.gai": {
+        "sha256": "27682920f4d52adbe10847729e569ae357002d8ac914a08b0f6a98ed93882aef",
+        "size": 46867
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Container/2mm_KellerMM.gai": {
+        "sha256": "1c95521038b498ae8d460d99dae6b90f1862a24952cf9eb5387eae11b4570096",
+        "size": 41236
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Container/2mm_MartaDeathMM.gai": {
+        "sha256": "0bd56fa26a4420b05e7b8c1f6189fec19647827e23edcd4b537898fded1e29cc",
+        "size": 44416
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Container/2mm_MartaMM.gai": {
+        "sha256": "a1cc91746085f4f0ea876fab2f2aebc6d45f34a08db03aa4e238baa9b7452f5e",
+        "size": 44416
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Container/2mm_SpaceFaunaMM.gai": {
+        "sha256": "6148d3d4f6cbbe287f4aa2927fc0624e31ae119ee6183445e3a9ba4ab50ae4f5",
+        "size": 46076
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Container/2mm_TerronMM.gai": {
+        "sha256": "795de57452c26c8153ed104ca34b8d064355dcff8ff5e559ad24f746fe1f8db0",
+        "size": 41236
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Hull/2Hull_StarDestroyer_i.gi": {
+        "sha256": "687fafb8f885c8d37362be209ead71635287e9c57082688e6b7c56c19c6b63d3",
+        "size": 9558
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Hull/2Hull_StarDestroyer_s.gi": {
+        "sha256": "e322599b1c845c6b87c8eda0774cacb0857cd66643072d3fe81ce45567602d58",
+        "size": 2631
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Hull/2Hull_Thefugitive_a.gai": {
+        "sha256": "92405a110d769820a871e54e85715291d2fefd13c252fa905bc13b4daf4f3bfb",
+        "size": 446718
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Hull/2Hull_Thefugitive_i.gi": {
+        "sha256": "c8739f4c8c729cc1ac6c40894965797f23a8873c6613b34571f86c03b69a1541",
+        "size": 7475
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/Hull/2Hull_Thefugitive_s.gi": {
+        "sha256": "218ae3f78986700e4200d27649bbbc789e0a3918c27652edcc1d1d7804bd7ca5",
+        "size": 1701
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun15a.gai": {
+        "sha256": "10bfa139c9f1bdfac08d10e0900af56f190ef650c0bf63adecab46fb38b749dc",
+        "size": 13998
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun15i.gi": {
+        "sha256": "48606a1005bd010d1cf06ff0aa08e6a0ae7458c2bb550f0b367587763fee43ab",
+        "size": 6950
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun15s.gi": {
+        "sha256": "b21773c115e6c9f1e26f548c6a0c534a4fc33571159dd021f622867cb5e243be",
+        "size": 2409
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun16a.gai": {
+        "sha256": "dec3ab58a52edc279f70af3ecb9c3f24a151f0bc1935373f21d5f84e37a38bef",
+        "size": 13998
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun16i.gi": {
+        "sha256": "83a406fb5f35f86d40d97d2b404de8bd14b1b652b2a6cdc28ee9cda1fd42ab39",
+        "size": 6950
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun16s.gi": {
+        "sha256": "4faf6bd07c07613348c9316dcdcf392a8c0ef2e4bd2666ee3f861ca3efeaddc3",
+        "size": 2409
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun17a.gai": {
+        "sha256": "15dab916dd19383346b5626f651f8adaabf2c168d5f304cfd4e4abdff839f4c2",
+        "size": 13998
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun17i.gi": {
+        "sha256": "c09f5b3ca17e30a3a26920762188715b5d8e7d5a0c07d258246316d9a61743ad",
+        "size": 6950
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun17s.gi": {
+        "sha256": "ac3f44f61d831afeefcced9e8181c79fee8da8b6ecda01229d59d7f240d4a99f",
+        "size": 2409
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun18a.gai": {
+        "sha256": "b4b19dc42ce25058e362aa57f1c6dc741ec806511798bd798bb115ed949d07b6",
+        "size": 13998
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun18i.gi": {
+        "sha256": "89c2e6a5950b569c481d21b35fe2b874aba7adb531d4ff86fbf50127ce29bccc",
+        "size": 6950
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun18s.gi": {
+        "sha256": "c895de24f9e1ae8eaacd776655f05c617abbd1c627ddc190a00e611b32471c95",
+        "size": 2409
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun19a.gai": {
+        "sha256": "4b0da4dcdf00c4b7b66b79974f63106b02cf9d45d1f5b32926a32860a98de375",
+        "size": 13998
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun19i.gi": {
+        "sha256": "e1ca10a3c953628fa61b4b4ca3e3242b7d29c0291df00e221e6da9ef40beb9e6",
+        "size": 6950
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun19s.gi": {
+        "sha256": "0251841b1197d1d5e0d5df5268788bb229a7103b3dd2d582ec416a94d3d2d198",
+        "size": 2409
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun20a.gai": {
+        "sha256": "d7ba4c9f01d9e6b1022d11f75a29ecddb45467b4255d46eeafb9eb3529f48112",
+        "size": 13998
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun20i.gi": {
+        "sha256": "1fd428f65640db7a37629941a76c73348c37ef0998e8fb5886e4941ae509c24f",
+        "size": 6950
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Items/manual_gun20s.gi": {
+        "sha256": "3d91156d5e5ea7c72a0c334667c27443d5b8343cdc0d56bf901d3523d5a2ee61",
+        "size": 2409
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/ItemsUseless/2BlazerBeacon.gi": {
+        "sha256": "0105110c186ad7c161b2a9821f05f238810bac28178861bdc5105fe7cc90a916",
+        "size": 4106
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/ItemsUseless/BlazerGift.gi": {
+        "sha256": "f1a7e81774b0cca1182e03ea40af9e328e2b2696f82a6f28c63de98567c9c2bf",
+        "size": 4013
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMBlazerMM.gi": {
+        "sha256": "04d848b2585c0d2ad24c757215a5662e0721df27c4284f05cba3648189b68603",
+        "size": 2022
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMBlazerMMSet.gi": {
+        "sha256": "60116e29c6d5b50e4fdfa80c97d33fa3fa909a1643a2799f0197353d6f50ecc6",
+        "size": 2528
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMBotMM.gi": {
+        "sha256": "023a65e9a2b98707b179bb35a7df15cb958e9f1f7529e68b2f79b52488c84b6c",
+        "size": 2081
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMBotMMSet.gi": {
+        "sha256": "1e00e6b9d53280f3f3494a2770aab414c2b7c50e80523ce41a16a69b8708132e",
+        "size": 2525
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMDrKlesMM.gi": {
+        "sha256": "35f592d416a7c28299300344143b79fcc58611007cde8e345ad605d3749ff942",
+        "size": 2286
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMDrKlesMMSet.gi": {
+        "sha256": "b5ff4856c53ea7aa86964159234408977f8eeaca1713fd6e797d3d0ec6fe64c5",
+        "size": 2535
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMEltanMM.gi": {
+        "sha256": "4117ca21a91aa8c15f4290f8434dba9c1c1be21bd2ca4017f1d8d57d6df917c9",
+        "size": 2022
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMEltanMMSet.gi": {
+        "sha256": "2896696fd98ffa2f8eb1db7b5c6995e66dfcc58a6566b7bb540d598a92f0fa90",
+        "size": 2519
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMKellerKrinatorMM.gi": {
+        "sha256": "4fa144533c3a7837c321b24e362c75ab96f1c187ee45723a1da48446b755d5f1",
+        "size": 2071
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMKellerKrinatorMMSet.gi": {
+        "sha256": "1b611ef6e758431c634debd52045b0d3fa5e743b13d2c6053d208ca84cdc06dc",
+        "size": 2549
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMKellerKrinatorupgradeMM.gi": {
+        "sha256": "2456e81e322496f210e12aaa4c6e14c84188b71da1ce8775e12591a72ddba9cf",
+        "size": 2165
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMKellerKrinatorupgradeMMSet.gi": {
+        "sha256": "80b2ae464f08e7edda1e63efd9458051a1512430d3ed99c13a79fab32876d787",
+        "size": 2517
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMKellerMM.gi": {
+        "sha256": "c912398aaf1bb3e0a17806f72d4aef1cfb2eac5f5a71a0054d66ffb2d756e7f6",
+        "size": 1884
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMKellerMMSet.gi": {
+        "sha256": "8617a3be2b5631edc4e3fff5adfce9f3a96307da169489e108152879b4e06b12",
+        "size": 2519
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMMartaDeathMM.gi": {
+        "sha256": "09c04aad992cc18be86a4ec995f0e583103c03221f246d8fcaef4241aa6b9ee9",
+        "size": 1866
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMMartaDeathMMSet.gi": {
+        "sha256": "c32b3bb49125c648e264b69f2ca37a248af5898045c0472fbaae70661b6e5f16",
+        "size": 2525
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMMartaMM.gi": {
+        "sha256": "7384e156a0cc4544d884b28287a65e74dfe413d778cc4c1cf2e0070edf27de66",
+        "size": 2055
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMMartaMMSet.gi": {
+        "sha256": "05be4d0a93d590296b12206cd173d1d31e726e7c20d09fef6c0182f99714190a",
+        "size": 2804
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMSpaceFaunaMM.gi": {
+        "sha256": "01c2140fc526fe14accd989d811b8e10b8cd5fb5c10043d484436a4f1e9a06c4",
+        "size": 2030
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMSpaceFaunaMMSet.gi": {
+        "sha256": "3810945c605afb0f131718eaffa2b8d36ce8482836a1ee5047e3cd20bed648ca",
+        "size": 2797
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMTerronMM.gi": {
+        "sha256": "c691bd0ce9e018f7744c8c64c1f2e94adbdde27fa5d1c528d37981ba4dbad84f",
+        "size": 2022
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Micromoduls/2MMTerronMMSet.gi": {
+        "sha256": "ef1583f8930d286e3b08ab93fb19a55d42337adcd38c7136bcbb24be71f1eede",
+        "size": 2519
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Msg/2BlazerEtherA.gi": {
+        "sha256": "b7526363376f7e9516b27ecad579e7f0c390c628f49857b95624b0c7c67b3403",
+        "size": 1468
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Msg/2BlazerEtherD.gi": {
+        "sha256": "68e977ff1abc225b4eadadffbdc1eacac8a1ddba16fbf8028fde297f7d8aa327",
+        "size": 1469
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Msg/2BlazerEtherN.gi": {
+        "sha256": "9f9559c9eb0c90343eb079fc902b922e926d39a26e4e65bc66bd1024e7537513",
+        "size": 1469
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Music/nikinit_imperial.dat": {
+        "sha256": "278a866defbb773f066700b5ff2f238c0e58510b764607a198a7b318c8c192b3",
+        "size": 2347232
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/PanelSpace2/ThefugitiveA.gi": {
+        "sha256": "587b19d176826a3df8b2a4859fc6959e8635db52dca4297c3e1f4a0732e128a4",
+        "size": 1433
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/PanelSpace2/ThefugitiveD.gi": {
+        "sha256": "3959fdb77c900496e25f9f966cb8204fe12cf4aec6d1c49523e1a1643315aa0b",
+        "size": 942
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/PanelSpace2/ThefugitiveH.gi": {
+        "sha256": "05550ac8e1e3a018873751a88bd6b7be61e15d5bb3f618b4d7312550ec818474",
+        "size": 1138
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/PanelSpace2/ThefugitiveN.gi": {
+        "sha256": "7a68121aa179df4f0b9b070ebe310b178848df330c8d604885dfbb2a4cc0f11b",
+        "size": 1138
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Race/2Blazer.png": {
+        "sha256": "76cd4b931804cfd690ddd1f5badaf3b1322239d8f21c05cdac61cc21e756bf13",
+        "size": 1976
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ruins/BlazerB.gai": {
+        "sha256": "9075bad733c2d843b424a4f84edcf95590046c91a0569c34e44b6badbc214dbc",
+        "size": 5479186
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ruins/BlazerB.gi": {
+        "sha256": "ea7cacdd105c643708742f1f64321c4cfbe63bd78e53e8037e930c5eae18b3ce",
+        "size": 55081
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ruins/DBB.gai": {
+        "sha256": "9d7be0db68b63cdac2c4a3958e123fdd638fb49a4072eb4dcde7822a54600c18",
+        "size": 48706219
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ruins/DBB.gi": {
+        "sha256": "d5f4404e589e47ece0e8e7aff5014350c8110ef6122d71649f3a7253031eabcc",
+        "size": 80424
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ruins/MapBlazerB.gi": {
+        "sha256": "8cf4a521a5d995421c45aac18ff76ed28aea0e7bb03ac7a3460fae9c8f0b139b",
+        "size": 628
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ruins/MapDBB.gi": {
+        "sha256": "61c2086621e223e6fc90e71bd83b7b84fe7c96249a33e37a0592f71079a6aad7",
+        "size": 759
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/BlazerTranc.hai": {
+        "sha256": "62f587c91e314696c60eb34bcae481532e12ab5e973eebe46fc337fef1bebb31",
+        "size": 7833652
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/BlazerTrancs.hai": {
+        "sha256": "a3ec82279ae7bb1287129e9f1c4ef22093f44bb2a4b9d347485fa625591527db",
+        "size": 2611252
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer1.hai": {
+        "sha256": "fbce8bcf9354df0a8767d1773c8493e80a12924ead1973f35f1aa763e9e6bfd2",
+        "size": 44544052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer1s.hai": {
+        "sha256": "63356f948afbc94a503bf789c04d5ba938566d5afbbc88b3ba45768f5b5983e2",
+        "size": 14848052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer2.hai": {
+        "sha256": "8c7607fddd9af6369a7e87c8065bf3d985b44fcfd2e4770de03958e859f0db12",
+        "size": 44544052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer2s.hai": {
+        "sha256": "a365bd114c59f0bea3432b9d80197e9e9e69ce75ca4976169edb7bf18c6bf4da",
+        "size": 14848052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer3.hai": {
+        "sha256": "e245bb688950585fb9827910d1ca815e8ebda1c36bd8e618d26264653da30f6e",
+        "size": 44544052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer3s.hai": {
+        "sha256": "56a8816038b8ef6b82d4bed3d1bcc32d64dd2cd7a280cda1ed148bf3f938e49a",
+        "size": 14848052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer4.hai": {
+        "sha256": "17201f622e41afa0adf2c8000708faacad67c6a23e3fd3780033eb804a6fe79d",
+        "size": 44544052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer4s.hai": {
+        "sha256": "46f60f39b4a832192d89e2743b53e5da72113df1f7e0e923147c495f63d71e51",
+        "size": 14848052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer5.hai": {
+        "sha256": "7a2caf7ab4299b5a8df28d719afc277065f66152da38964103769ceb248f7837",
+        "size": 44544052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer5s.hai": {
+        "sha256": "b24994a57fe3ea7585bba983159a04000befd9ea307162abeba0d4362f7ca2e2",
+        "size": 14848052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer6.hai": {
+        "sha256": "4e4436e471451c86f8dd849f78cf82268eeb132c419224a94837180d5f95452d",
+        "size": 29696052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer6s.hai": {
+        "sha256": "39cf21cfa49ebda1ef77b4520a0d636b35a48325d065d224fd3f40ace0e6fbe7",
+        "size": 14848052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer7.hai": {
+        "sha256": "cb27b01816e455c1736c8aed52cc3dfd36015bbaacddef6047cac95775dad237",
+        "size": 14848052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Blazzzer7s.hai": {
+        "sha256": "069cfe52209f99a4435e10d7011184d3dbd6627c8ebda3bff72c0257c7c5fcd2",
+        "size": 7424052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/FighterSwarm.gai": {
+        "sha256": "ab8f0704f36a1c6bac26607052cc067119727531f9ff8376219f0c7642dc1692",
+        "size": 1066804
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/MapBlazerAll.gi": {
+        "sha256": "67978054745e3fa68add9b4b3d74b1b71be015965c5d2db0f3381cd044fa9b15",
+        "size": 316
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/MapBlazerAll.png": {
+        "sha256": "caffb255171c8f577b591904a2044884ec2235dbadfe669568b6ade5dcf5216c",
+        "size": 202
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/MapBlazerBertor.gi": {
+        "sha256": "992095dce4d9fe6dd07b941be0845fd8f56d1596ec9cf66400892c344a4d71b7",
+        "size": 745
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/MapBlazerBertor.png": {
+        "sha256": "e7d3ed050ca547added0c84c11983b13b712755d4029bcf4b8bf1df093fe3785",
+        "size": 2441
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/StarDestroyer.hai": {
+        "sha256": "8ec0e154bd872f9af8339930c579244a76f5e008f6008de8a84f5ec33c518f58",
+        "size": 14848052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/StarDestroyers.hai": {
+        "sha256": "d32a660568feda3a9c44bc50e22e7c1e4e9acdca71a66e626bfb2ec49fa0da17",
+        "size": 7424052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Thefugitive.hai": {
+        "sha256": "53268747e451401aa4d03e252d310acc2baabfa99b80315012b671018321d900",
+        "size": 14848052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Ship/Thefugitives.hai": {
+        "sha256": "0f53af5c4af720612e6662ac88e9713461023546d9be91acb2fdbda25bf8ca51",
+        "size": 7424052
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/ShipP/2Blazer1.gi": {
+        "sha256": "0f54744877aa1196859dd1d783fb0915a2bc010fcc31b38ff4b4f444cd65350c",
+        "size": 24567
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/ShipP/2Blazer2.gi": {
+        "sha256": "81aa3c8389ca4712795d95e6aff1d0234d373d5a628df2c43411c37d9c5dda3a",
+        "size": 21956
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/ShipP/2Blazer3.gi": {
+        "sha256": "1211f72a07eb4217d9c2affcee8d28ccec3007d93cc21826fd10d2dd58c77cb7",
+        "size": 19484
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/ShipP/2Blazer4.gi": {
+        "sha256": "bd34c9298d5eded4ac7c46b3f355e099b6168e49e551a8e100c13ce62fe56f8c",
+        "size": 16971
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/ShipP/2Blazer5.gi": {
+        "sha256": "3bcc6d075051e18029fc728dbab5471c682b95f9abcc741fd8272b17bdbdf217",
+        "size": 7738
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/ShipP/2Blazer6.gi": {
+        "sha256": "10ac766feda2c560318206321267bdde651b4ad18c42db2ea2254e66dab9844f",
+        "size": 46907
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/ShipP/2Blazer7.gi": {
+        "sha256": "9fbf0894ea9763db93cf998571d7ebe0a44822f2fe24200349d9a402c3ceb3b4",
+        "size": 21924
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/ShipP/2BlazerTranc.gi": {
+        "sha256": "0a4473201fe5eeb6fb83e39b8a85bd3817f136cbd50d331f529fd0ad5acadf8d",
+        "size": 26245
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/ShipP/2BlazerTrancSm.gi": {
+        "sha256": "a887dceb656b96bfbbb8890af026aaa8714aad815fd2acbdcb6494e3b913fb7b",
+        "size": 6859
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/ShipP/2StarDestroyer.gi": {
+        "sha256": "f0dcd70c832a813fe06e615e0007aa3bf3dff061b498e47cd70f76a643d51f20",
+        "size": 39735
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/ShipP/2Thefugitive.gi": {
+        "sha256": "7d90d78f40cd69154d7ffb0a2d91a6ed088932b3ab15501b411c0b5b6289152d",
+        "size": 28190
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Sound/Subspace_emitter.wav": {
+        "sha256": "aeb31d43f3b01e0b2f4e56f1ddc6d0bbeaf681728dcc4ae4fbf2135e240e6fff",
+        "size": 264782
+      },
+      "Клесс мод/Mods/OtherMods/DrKlesMod/DATA/Weapon/FX_yellow.gai": {
+        "sha256": "fe23db00a30719aaa0e0472a2f1117545cae7490e446f5cd84cb4241f0d98842",
+        "size": 309105
+      }
+    }
+  }
+}

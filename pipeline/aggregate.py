@@ -23,6 +23,7 @@
 """
 import argparse
 import hashlib
+import re
 import json
 import os
 import shutil
@@ -930,6 +931,174 @@ def code_track(cfg):
           f'{len(index["chunks"])} чанков')
 
 
+# ---- Фаза 1: дескрипторы модов (мод = пакет по URL) ----
+
+def _after_mods(relpath):
+    """Путь после последнего сегмента 'Mods' (для определения корня мода). None если нет."""
+    parts = relpath.replace('\\', '/').split('/')
+    idxs = [i for i, p in enumerate(parts) if p.lower() == 'mods']
+    if not idxs:
+        return None
+    return '/'.join(parts[idxs[-1] + 1:])
+
+
+def _read_text_auto(path):
+    """Прочитать ModuleInfo.txt с автоопределением кодировки (UTF-16 BOM / cp1251)."""
+    b = Path(path).read_bytes()
+    if b[:2] in (b'\xff\xfe', b'\xfe\xff'):
+        return b.decode('utf-16', 'replace')
+    try:
+        return b.decode('utf-8')
+    except UnicodeDecodeError:
+        return b.decode('cp1251', 'replace')
+
+
+def _parse_moduleinfo(text):
+    """ModuleInfo.txt 'Ключ=Значение' -> dict (повторы ключа склеиваем переводом строки)."""
+    out = {}
+    for line in text.splitlines():
+        if '=' not in line:
+            continue
+        k, _, v = line.partition('=')
+        k, v = k.strip(), v.strip()
+        if not k:
+            continue
+        out[k] = (out[k] + '\n' + v) if k in out else v
+    return out
+
+
+def _split_modlist(val):
+    """Conflict/Dependence -> список id модов (разделители , ; пробел)."""
+    if not val:
+        return []
+    return [x for x in re.split(r'[,;\s]+', val.strip()) if x]
+
+
+def _strip_color(s):
+    """Убрать игровую разметку <color=...>...</color> для отображаемого имени."""
+    return re.sub(r'</?color[^>]*>', '', s or '').strip()
+
+
+def build_descriptors(cfg):
+    """Сгенерировать дескриптор на каждый (источник, мод) — мод = папка с ModuleInfo.txt.
+    Один и тот же мод в разных паках = РАЗНЫЕ варианты (версии часто отличаются), поэтому
+    путь дескриптора квалифицирован источником: descriptors/<camp>/<unit>/<modid>.json.
+    catalog.json группирует по логическому id со списком вариантов и дефолтным источником.
+    Дескриптор самоописываем: id/source/version, мета из ModuleInfo, отфильтрованные
+    code/assets манифесты, depends/conflicts, указатель на индекс чанков."""
+    from collections import defaultdict
+    store_cfg = cfg.get('asset_store', {})
+    repo_id = store_cfg.get('hf_repo', '')
+    chunk_index_url = (f'https://huggingface.co/datasets/{repo_id}/resolve/main/asset_index.json'
+                       if repo_id else 'state/asset_index.json')
+    out_root = REPO / 'descriptors'
+    if out_root.exists():
+        shutil.rmtree(out_root)
+    out_root.mkdir(parents=True)
+
+    variants = defaultdict(list)   # mod_id -> [variant catalog-entry]
+    n_desc = 0
+    for unit_dir in sorted(MODS.glob('*/*')):
+        camp_unit = f'{unit_dir.parent.name}/{unit_dir.name}'
+        code_man = load_json(unit_dir / 'code.manifest.json', {}).get('files', {})
+        am = load_json(unit_dir / 'assets.manifest.json', {})
+        asset_man = am.get('files', am) if isinstance(am, dict) else {}
+        if not code_man and not asset_man:
+            continue
+        code_dir = unit_dir / 'code'
+
+        roots = {}  # mod_id -> relpath ModuleInfo
+        for rel in code_man:
+            a = _after_mods(rel)
+            if a and a.lower().endswith('/moduleinfo.txt'):
+                roots[a[:-len('/ModuleInfo.txt')]] = rel
+        if not roots:
+            continue
+        sorted_roots = sorted(roots, key=len, reverse=True)
+
+        def assign(rel):
+            a = _after_mods(rel)
+            if a is None:
+                return None
+            for root in sorted_roots:
+                if a == root or a.startswith(root + '/'):
+                    return root
+            return None
+
+        buckets = {r: {'code': {}, 'assets': {}} for r in roots}
+        for rel, meta in code_man.items():
+            r = assign(rel)
+            if r:
+                buckets[r]['code'][rel] = meta
+        for rel, meta in asset_man.items():
+            r = assign(rel)
+            if r:
+                buckets[r]['assets'][rel] = meta
+
+        for root, mi_rel in roots.items():
+            files = buckets[root]
+            mi = _parse_moduleinfo(_read_text_auto(code_dir / mi_rel))
+            allpairs = sorted([(_after_mods(k), v['sha256'])
+                               for k, v in {**files['code'], **files['assets']}.items()])
+            version = hashlib.sha256(
+                json.dumps(allpairs, ensure_ascii=False).encode('utf-8')).hexdigest()[:16]
+            raw_title = mi.get('Name', root.split('/')[-1])
+            desc = {
+                'schema': 'srmod/1',
+                'id': root,
+                'source': camp_unit,
+                'name': _strip_color(raw_title) or root.split('/')[-1],
+                'title': raw_title,
+                'author': mi.get('Author') or mi.get('Autor', ''),
+                'section': mi.get('Section', ''),
+                'priority': mi.get('Priority', ''),
+                'description': mi.get('SmallDescription', ''),
+                'version': version,
+                'depends': _split_modlist(mi.get('Dependence', '')),
+                'conflicts': _split_modlist(mi.get('Conflict', '')),
+                'chunk_index_url': chunk_index_url,
+                'files': files,
+            }
+            rel_path = f'descriptors/{camp_unit}/{root}.json'
+            out_f = REPO / rel_path
+            out_f.parent.mkdir(parents=True, exist_ok=True)
+            save_json(out_f, desc)
+            variants[root].append({
+                'source': camp_unit, 'version': version, 'name': desc['name'],
+                'author': desc['author'], 'depends': desc['depends'],
+                'conflicts': desc['conflicts'], 'code_files': len(files['code']),
+                'asset_files': len(files['assets']), 'path': rel_path,
+                'unit_mod_count': len(roots),
+            })
+            n_desc += 1
+
+    # каталог: группировка по id; дефолт = вариант из самого «специализированного» юнита
+    # (меньше всего модов в юните), tie-break — больше файлов
+    catalog = {}
+    for mid, vs in variants.items():
+        vs_sorted = sorted(vs, key=lambda v: (v['unit_mod_count'],
+                                              -(v['code_files'] + v['asset_files'])))
+        default = vs_sorted[0]
+        catalog[mid] = {
+            'name': default['name'], 'author': default['author'],
+            'default_source': default['source'],
+            'versions_differ': len({v['version'] for v in vs}) > 1,
+            'variants': [{k: v[k] for k in ('source', 'version', 'name', 'depends',
+                                            'conflicts', 'code_files', 'asset_files', 'path')}
+                         for v in vs_sorted],
+        }
+    save_json(out_root / 'catalog.json', {'schema': 'srmod-catalog/2', 'mods': catalog})
+
+    multi = sum(1 for v in catalog.values() if len(v['variants']) > 1)
+    differ = sum(1 for v in catalog.values() if v['versions_differ'])
+    with_dep = sum(1 for v in variants.values() for x in v if x['depends'])
+    with_con = sum(1 for v in variants.values() for x in v if x['conflicts'])
+    print(f'Дескрипторы: {n_desc} вариантов / {len(catalog)} уник. модов '
+          f'(в неск. источниках {multi}, версии различаются {differ}); '
+          f'записей с depends {with_dep}, с conflicts {with_con}; '
+          f'каталог descriptors/catalog.json')
+
+
 def regroup_assets(cfg):
     """Перегруппировать уже залитые на HF ассеты ПО МОДАМ (без GDrive).
     Скачивает блобы из текущих HF-чанков -> локальный store -> переупаковывает
@@ -1182,6 +1351,11 @@ def main():
     ap.add_argument('--code-track', action='store_true',
                     help='нарезать КОД по модам (из mods/<юнит>/code/) и залить на HF '
                          '+ code.manifest.json (без GDrive)')
+    ap.add_argument('--descriptors', action='store_true',
+                    help='сгенерировать дескрипторы модов (descriptors/<id>.json + catalog.json) '
+                         'из ModuleInfo.txt + манифестов (Фаза 1)')
+    ap.add_argument('--publish-index', action='store_true',
+                    help='залить state/asset_index.json на HF (chunk_index_url для дескрипторов)')
     a = ap.parse_args()
 
     cfg = load_json(a.config, None)
@@ -1220,6 +1394,21 @@ def main():
     if a.code_track:
         print('=== Код-трек по модам (на HF) ===')
         code_track(cfg)
+        return
+
+    if a.descriptors:
+        print('=== Генерация дескрипторов модов (Фаза 1) ===')
+        build_descriptors(cfg)
+        return
+
+    if a.publish_index:
+        store_cfg = cfg.get('asset_store', {})
+        repo_id = store_cfg.get('hf_repo')
+        token = os.environ.get('HF_TOKEN') or store_cfg.get('token')
+        if not repo_id or not token:
+            print('publish-index: нет hf_repo/HF_TOKEN'); return
+        ok = _hf_put(repo_id, str(ASSET_INDEX), token)
+        print(f'asset_index.json -> HF ({repo_id}): {"OK" if ok else "FAIL"}')
         return
 
     if a.code_release:

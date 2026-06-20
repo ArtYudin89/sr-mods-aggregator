@@ -1,0 +1,885 @@
+{
+  "schema": "srmod/1",
+  "id": "PlanetaryBattles/PBEngine",
+  "source": "universe/universe_community",
+  "name": "PBEngine",
+  "title": "PBEngine",
+  "author": "Обер, Klaxons, LORKI, <empty>, Blurred Dev, l3c9ll3uk",
+  "section": "Планетарные бои",
+  "priority": "7",
+  "description": "Обновляет версию движка планетарных боёв",
+  "version": "95f8563c37c4c4ac",
+  "depends": [],
+  "conflicts": [],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "files": {
+    "code": {
+      "{app}/Mods/PlanetaryBattles/PBEngine/ModuleInfo.txt": {
+        "sha256": "35741dc739bc6b9e33081e5f4068582797355d7b95ee59de1b8c15ffbedf9447",
+        "size": 23356
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/CFG/CacheData.dat": {
+        "sha256": "5bf84b2a37dc7255f0f4c68261c927413d1598a82fab0d9414dd925e4dbbac78",
+        "size": 194
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/CFG/Eng/Lang.dat": {
+        "sha256": "1545f496be6acad4afeef64e0182e38b0581073fe85a5f0ce21432143e4ef0ae",
+        "size": 126
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/CFG/Eng/Robots/cache.txt": {
+        "sha256": "fb49291724746e5969d378b46a5232e0bcf870e7e579fec23834e4acf55312cc",
+        "size": 34984
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/CFG/Eng/Robots/data.txt": {
+        "sha256": "081fe08e82e91846b7206f24685373e4c107fbdfdb95a97dee241d709811d360",
+        "size": 199910
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/CFG/Eng/Robots/iface.txt": {
+        "sha256": "0f00bc087d21b87501777fea584580be1fa0a3212b68d4d621e30fea36dcd5c9",
+        "size": 237790
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/CFG/Rus/Lang.dat": {
+        "sha256": "1545f496be6acad4afeef64e0182e38b0581073fe85a5f0ce21432143e4ef0ae",
+        "size": 126
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/CFG/Rus/Robots/cache.txt": {
+        "sha256": "fb49291724746e5969d378b46a5232e0bcf870e7e579fec23834e4acf55312cc",
+        "size": 34984
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/CFG/Rus/Robots/data.txt": {
+        "sha256": "081fe08e82e91846b7206f24685373e4c107fbdfdb95a97dee241d709811d360",
+        "size": 199910
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/CFG/Rus/Robots/iface.txt": {
+        "sha256": "0f00bc087d21b87501777fea584580be1fa0a3212b68d4d621e30fea36dcd5c9",
+        "size": 237790
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0.txt": {
+        "sha256": "83b2bbdf88d3165b633fbd0b80ecf07eb5ca37fd4b3733c3aa18db44365ad33e",
+        "size": 25
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0_1.txt": {
+        "sha256": "83b2bbdf88d3165b633fbd0b80ecf07eb5ca37fd4b3733c3aa18db44365ad33e",
+        "size": 25
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b1.txt": {
+        "sha256": "83b2bbdf88d3165b633fbd0b80ecf07eb5ca37fd4b3733c3aa18db44365ad33e",
+        "size": 25
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b2.txt": {
+        "sha256": "83b2bbdf88d3165b633fbd0b80ecf07eb5ca37fd4b3733c3aa18db44365ad33e",
+        "size": 25
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b3.txt": {
+        "sha256": "83b2bbdf88d3165b633fbd0b80ecf07eb5ca37fd4b3733c3aa18db44365ad33e",
+        "size": 25
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b4.txt": {
+        "sha256": "83b2bbdf88d3165b633fbd0b80ecf07eb5ca37fd4b3733c3aa18db44365ad33e",
+        "size": 25
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b5.txt": {
+        "sha256": "83b2bbdf88d3165b633fbd0b80ecf07eb5ca37fd4b3733c3aa18db44365ad33e",
+        "size": 25
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Head5_e.txt": {
+        "sha256": "323400f75c5c2032b41d98205fae10bc4d01443873f8bf225559f96939f8c9b0",
+        "size": 25
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Head6_e.txt": {
+        "sha256": "323400f75c5c2032b41d98205fae10bc4d01443873f8bf225559f96939f8c9b0",
+        "size": 25
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Head7_e.txt": {
+        "sha256": "323400f75c5c2032b41d98205fae10bc4d01443873f8bf225559f96939f8c9b0",
+        "size": 25
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/WeaponBomb.txt": {
+        "sha256": "323400f75c5c2032b41d98205fae10bc4d01443873f8bf225559f96939f8c9b0",
+        "size": 25
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/WeaponBomb_e.txt": {
+        "sha256": "83b2bbdf88d3165b633fbd0b80ecf07eb5ca37fd4b3733c3aa18db44365ad33e",
+        "size": 25
+      }
+    },
+    "assets": {
+      "{app}/Mods/PlanetaryBattles/PBEngine/CFG/Eng/MatrixGame.dll": {
+        "sha256": "b68ccca70049b63007f205e5c0e7999195d01a409e9c60af248e536b6127d8fc",
+        "size": 2174464
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0.cvo": {
+        "sha256": "00a8b19694fc7d2f557e41e2690839f481b386a491161f64be0e0211ca3a53b4",
+        "size": 430
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0.dds": {
+        "sha256": "8ae7d478c62e232e32664e76ce7d436624a862ed877cfda60f7a86a7320b22bb",
+        "size": 349680
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0.vo": {
+        "sha256": "e5e9a30ae3264e4989058bb88af2caa2aacd279dddc15ee5dbe8e63cbf1602d3",
+        "size": 105262
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0_0.vo": {
+        "sha256": "4f0776f1b9fb2ffcd87a301bfe1b090f0b3accb320ee91f47332fba94a9f6362",
+        "size": 34358
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0_1.dds": {
+        "sha256": "9ab00bf627e5b6b633a10b07cf9eb9640dec451a07ad070eed2f06c3d73f9c12",
+        "size": 43832
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0_1_back.dds": {
+        "sha256": "841da8d86cf3ffdc6dcd89fa216db836b6f73095fbffed14b9b6bd9520fd674f",
+        "size": 43832
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0_1_mask.dds": {
+        "sha256": "6ba43d24f864cae435cd2801dbcd426fcadd0a1f071a0f5bf667f8f05883e667",
+        "size": 43832
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0_anim.vo": {
+        "sha256": "1593972ec11e56a7ee660514375a1c6c94ffbce33e63066e7483674ed5a6f5d4",
+        "size": 48636
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0_back.dds": {
+        "sha256": "f032ff1604b5a92f57d1c3c74967fa139019dc45900a2ae2036337a5569fd822",
+        "size": 43832
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0_gloss.dds": {
+        "sha256": "7cb53c2d5d76de530ef24a0431e0058c8c3f5293cb86463a8de681773a5d55ac",
+        "size": 43832
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0_left.vo": {
+        "sha256": "12338ecc78372c4f876ba3d3c9146cbd4dc95c2159c73a665676ed6b7eab9789",
+        "size": 4836
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0_mask.dds": {
+        "sha256": "6e146118b6715fe2144a1774a71fe35ca32c7e3e9d20d180cb6f2c386039e7c9",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0_platform.vo": {
+        "sha256": "1b95401bce4f558a23174666a5aae76beb9df4038cf9019f3037a3d54bace285",
+        "size": 4016
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0_radar.vo": {
+        "sha256": "d17f12fd46ea2a428b32f3c987794e33d3ca8b6dc25d8f31bc0ee4fbe5b65d50",
+        "size": 400018
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b0_right.vo": {
+        "sha256": "b89870170fc7122aa192b5e2d4f880e5c2901c246debd21304dfd59f6b659efa",
+        "size": 4838
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b1.cvo": {
+        "sha256": "e34895463ba36ef183134ed4fe67bec12a54fc575a1a6db045054b60fb281095",
+        "size": 305
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b1.dds": {
+        "sha256": "d1e74d52ca37ff837477195a5f1586be95cf14a16d48def94318b558f9eae5f8",
+        "size": 349680
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b1.vo": {
+        "sha256": "82bcffa7106af12b765ad6e294b49bc1ec0d9282725f7345d92dc070f7b7e289",
+        "size": 42906
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b1_back.dds": {
+        "sha256": "f3fc925977b56e44171e6f5c1555645d956024673affc1172b6375a9e8fa5b0e",
+        "size": 43832
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b1_gloss.dds": {
+        "sha256": "d25640154e94a2d2af51840ac5bf1eef5ced86b55bc0f77cfd5397ad4e48777d",
+        "size": 43832
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b1_mask.dds": {
+        "sha256": "aae9a16ceb659048e8c936bfa9175c5885e4d2effac3c6c3132f142a5506cb53",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b2.cvo": {
+        "sha256": "95c83812e12d0bafcef4cfc5dc6e612ac6230d53fa58ed9e56e83680955d6bde",
+        "size": 306
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b2.dds": {
+        "sha256": "8bd15f7e3968670060f0f9be0c55deed69d573ff472f4101f8e016ce34227138",
+        "size": 349680
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b2.vo": {
+        "sha256": "ba1ba54cdaa44be0712afdec5710d751b9267e136ceaa82ed93604bef9aeb9cd",
+        "size": 42954
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b2_back.dds": {
+        "sha256": "368998359954bb2113163711684125663dc8c31c2e7041eb874ac251092e4ce5",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b2_gloss.dds": {
+        "sha256": "47038abb99ff3fd49e6b878f04e23a5656295aec0f2d5f01a4f10861411119de",
+        "size": 43832
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b2_mask.dds": {
+        "sha256": "1f772d8ba696dadc3b8d0ac3c158331225dda626d3fe4b3dd2bf37ef53e806d2",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b3.cvo": {
+        "sha256": "8189cf6c7f24dedbc7e5bd881ae9a050371c2b91e6690d60f80dca060da17dfb",
+        "size": 378
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b3.dds": {
+        "sha256": "46b16b83719d680441caecd37ee594bc5cd2cf8817c502a066e3daa2434190a3",
+        "size": 349680
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b3.vo": {
+        "sha256": "6273d388f03485730e578baa0a159ffde078c51e23a30486394332808671153a",
+        "size": 52238
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b3_back.dds": {
+        "sha256": "19d79e84ceb665b516062f58890c70369fa0937602e50e310bc538aa6f28ef12",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b3_gloss.dds": {
+        "sha256": "05bc491d30b0e915a5b08afa50e7f13855eba790f1e5402c81dafa61feca4577",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b3_mask.dds": {
+        "sha256": "dd41376e4d2c685c995cb63ad7ac5206c32749cea098033a4ad11295ff9d7238",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b3_radar.vo": {
+        "sha256": "f07d3255b4a3f32f06e7c251b03a8932ce5a945d6f0d8235a1009d822aac1ad2",
+        "size": 205558
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b4.cvo": {
+        "sha256": "fd36936be467c87bff365dde33b7428f9539666db54ef936de68342562a37077",
+        "size": 279
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b4.dds": {
+        "sha256": "cf6ff477d2866746dd2c276a1b31a08a54f18efe603a797c6787c3a90f9e852d",
+        "size": 349680
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b4.vo": {
+        "sha256": "bb576ad7eb92b67fcaddebec7c20576d893d416205daf72d2671c2e4431e0a77",
+        "size": 64738
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b4_back.dds": {
+        "sha256": "0c144b691826ccea90756a8a04f1aa2aad7b8cdbb6089d1c955dd0b001cda89f",
+        "size": 43832
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b4_mask.dds": {
+        "sha256": "d2c4761a1d67254ec4001515916019321ca2e35d1cdee1f8c0aad1966f9f584f",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b5.cvo": {
+        "sha256": "7f3f6223d6616a2f8826cc43e7523274a1c4d027128043f53e935affa5d6f613",
+        "size": 284
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b5.dds": {
+        "sha256": "ca206e2ffce3aaf85c54c479b247da33236128f30831ab23c96c776a4ee5aac7",
+        "size": 87536
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b5.vo": {
+        "sha256": "ad7b9fd9d8b902af6e0e4295c27bc4caba0bede7230774c5498c7b3e25983e11",
+        "size": 7474254
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b5_back.dds": {
+        "sha256": "a0628db1c1e2ca4ecab9c0b393de8dfdf19897806cdb202af2be0ef4d2bba00a",
+        "size": 11064
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/b5_mask.dds": {
+        "sha256": "7b7f2d0767af4e5dfc0b78943c40b4c8218b59f44a2cd68bf7f31b15ca25ff2f",
+        "size": 43832
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/platform.dds": {
+        "sha256": "cef5eae3714077330378ec164880e8e260b1e668f29f6221e2eefa3203802d14",
+        "size": 87536
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/Platform.vo": {
+        "sha256": "12fdfe6b36d75414ce6af2fec503d63fca21c6ff622f63b8a5777ca647040961",
+        "size": 6646
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b0.dds": {
+        "sha256": "3f5532b6dc375ea9ecc70d3434c363ae8f571182ac5b33105675c9931772ef5c",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b0.vo": {
+        "sha256": "de47bf4b533f2e179d85dae860740d63923f8e339ad15ca43b4cb4fa27e88ed6",
+        "size": 140642
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b1.dds": {
+        "sha256": "fcbc78a8ed707b3e97ee23c21d950ae331ff8fda539532810666f9662d8cf9e9",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b1.vo": {
+        "sha256": "e373e7798b346b8179efbb1aeb55cf90fe8bb76ca1fbf01ff7a5c7f222c28631",
+        "size": 34868
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b1p.vo": {
+        "sha256": "92490ba81a438afa177661873f0791aad657240afad1ff6a2619364151d226c1",
+        "size": 1072
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b2.dds": {
+        "sha256": "5f03fdbc26360391e20c2f92b62d96d584c3a942bf82d4160fe24f7f8ff562f5",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b2.vo": {
+        "sha256": "d2b80ac5c8aeaa47a627c125fec1c505ecf3302f4f07f7207a154410ee8191f3",
+        "size": 53050
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b2p.vo": {
+        "sha256": "67c07068ee48c35f78dd5d4e59fffa84f566f6124ac3af3054bb958e5461da76",
+        "size": 1072
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b3.dds": {
+        "sha256": "53e267708cd890fc7307566ad931c7073e4cc5cff5c2953de1d4ee90a074a0dc",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b3.vo": {
+        "sha256": "8fe0a09032d6f82f18ad857d917a5495f4e611b9be06a024a11777d82f6bc5e3",
+        "size": 58570
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b3p.vo": {
+        "sha256": "4c17af60ab705cbcea71f9ff44e111c45bad985bdf4cbfb87a49eef3427966d2",
+        "size": 1072
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b4.dds": {
+        "sha256": "9ef8de63e51a7a7ec026a487b9c6dad819fe0398254b3a14010929589adb1a76",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b4.vo": {
+        "sha256": "9c802cf1a42fa8cb8e08ff5fecfad189c42fcffa142372b1e2ffa6281ba405db",
+        "size": 67046
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b4p.vo": {
+        "sha256": "67553d016c6438de1becbd8a91ce36e2a21ab094877771c8585b2f37b0bd530d",
+        "size": 1072
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b5.dds": {
+        "sha256": "427f22dcf5160251dbb12d7966dc25570014a446ceb95bc12533a5344a382e28",
+        "size": 174904
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b5.vo": {
+        "sha256": "32a7473703a420ad02b6836f9e8ef782fb29c819d67c61a2114684f11e22ab57",
+        "size": 74210
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Building/ruins/b5p.vo": {
+        "sha256": "c54f16ad46c7e0c7f9be161e93c0f6cfceb65f9e081733619bd485ca40d88227",
+        "size": 1072
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Cannon/LaserTurret_GunModel.vo": {
+        "sha256": "aadf554adb1697f1de1759b9d858d801d780579fb8126c0c4005b59d7c67d409",
+        "size": 64052
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/AH.png": {
+        "sha256": "3fa3d4d30781874ba4d4f2f6a38f80d19f770d43214b6560f4d8878f1884b0ca",
+        "size": 319522
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/AH.VO": {
+        "sha256": "e8246fa7345cd93898aa5c5b0e5a0363f0aba36629008a2a33f6fa283ac4f6f0",
+        "size": 69324
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/BH.png": {
+        "sha256": "6a8f34cfb122e55d3d037ead8410d9d71391404615900ceba915f94eaef4fabf",
+        "size": 321638
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/BH.VO": {
+        "sha256": "99997827fd8c7686dbbf4001bb7bd4c4d8095fbcb943d0bed87aebd08dcc3ce9",
+        "size": 58070
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/Engine_SH.VO": {
+        "sha256": "da8017bbf0d00fa7195057be74cd9de206ce16f344af42691a008b56a52954bf",
+        "size": 27564
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/Screw_AH.VO": {
+        "sha256": "cf78fc725c72570e0e4b1a6cc8e187995d362f6ca003d455e16ab28ff97d3eb2",
+        "size": 4060
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/Screw_BH.VO": {
+        "sha256": "03da03e6f81b2120783194386889850946c09a280d3d6b7b993ede9da8594b98",
+        "size": 90320
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/Screw_SH.VO": {
+        "sha256": "ed9034747078d4d82dc5489fca630ecee8c024122a5fd151ae9d597eaaade04a",
+        "size": 7748
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/Screw_TH.VO": {
+        "sha256": "5e9781972b088acae3b7412bb35a67fe319d6b597129d9c40dc8a5f8f90d50b6",
+        "size": 7876
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/ScrewAH.png": {
+        "sha256": "56f6a47e08f33e6c99bab54e7ff8709d99f04a76885eb36e31dc60d37846192e",
+        "size": 123416
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/ScrewBH.png": {
+        "sha256": "87ea2417937768294f2f9dfb9ff1334e839bbef0a878e995f0d4c75932936187",
+        "size": 186087
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/ScrewSH.png": {
+        "sha256": "ad444054abbd3654a32aaa77776c3dea9f6ac1cbc9a43174a0a5b100c8021c41",
+        "size": 159751
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/Screwth.png": {
+        "sha256": "6913b1096452ef4be7b84b0607df68bdf7998b016b53c5d8bda340ff5a54f91d",
+        "size": 188384
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/SH.png": {
+        "sha256": "c50c5736bbaf4d46cd4148589dd99e3a86d145786a18249101090623de0c1125",
+        "size": 337960
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/SH.VO": {
+        "sha256": "88b06c6c198b73931d0730bc799b9553ef6ea935928c2e96dd9c73dc02ab03ac",
+        "size": 48460
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/TH.png": {
+        "sha256": "a668dbe43aa6629adbb775e827594e3e89811d5c562caa58cc28601ac1076bde",
+        "size": 308651
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/TH.VO": {
+        "sha256": "cd6aa7ed2edc89d2d5383f8de0b83e8b1c7b60b8e398e92fae14a5238e287044",
+        "size": 59506
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/W1_ah.png": {
+        "sha256": "648341953a85b78676dbd607161a0606563dc264e38f18ce896ed9afd13aeafe",
+        "size": 267144
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/W1_ah.VO": {
+        "sha256": "731209423e5c0b51b0dddd629109aed53ef8979d5d1d14457bf96f8d2ec8bc88",
+        "size": 20848
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/W1_sh.png": {
+        "sha256": "648341953a85b78676dbd607161a0606563dc264e38f18ce896ed9afd13aeafe",
+        "size": 267144
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/W1_SH.VO": {
+        "sha256": "7b70ead05948364b5d311370985f97b7a611516d549b6fb4c5b5283d1b6a434a",
+        "size": 20848
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/W2_ah.png": {
+        "sha256": "fc068764b570fab251c36ffc119e6e4c2b36b4cb355127b5b9079b5b22420035",
+        "size": 285281
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/W2_ah.VO": {
+        "sha256": "c1653b443abcf884045670097c283372ad63d6fd78011ef6aca96ada4b3ce23a",
+        "size": 15256
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/W_Flamethrower.png": {
+        "sha256": "4abf352946b303fe73a9c7dc3c21cd8d6f5607750c3151c1697b99b4366cd298",
+        "size": 221823
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Flyer/W_Flamethrower.vo": {
+        "sha256": "9de7fd9765552a3e9e22584274c818aad2d8e48f905365cc66d23c9870dce93c",
+        "size": 31312
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/IFace/base_1.png": {
+        "sha256": "9597cdbe1486b244ec41d5ea47b5eea26e5cd8c05b6f9a44228963f9a3c8b36d",
+        "size": 264069
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/IFace/interface2.png": {
+        "sha256": "281e4ade0c2ef36aa60de5c16026e0437bf3dac4a98435840b7b2c9c69435211",
+        "size": 399283
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/IFace/interface4.png": {
+        "sha256": "679f8ad36638df37665972fee58131c971ec5b6cb77474dc94d5516681b70a14",
+        "size": 86726
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/MatrixGame.dll": {
+        "sha256": "5a928c1ce2ed886a7e071f2e3834f5af485aa6b34c7363715505cbde86bafab4",
+        "size": 2178560
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Chassis1.vo": {
+        "sha256": "fddaa35200b6aec9aa942f3043bb5282bc6632794bb5850e8d1e3b5390580b01",
+        "size": 1245804
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Chassis2.vo": {
+        "sha256": "d7a58fae127e2a27a6d0bd9183e5ea78ea20e5d1a6878072fe5fc331d11ba97b",
+        "size": 5996556
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Chassis3.vo": {
+        "sha256": "83ac78cc9a487b0191d8c7d0f86682197f875d95f07ef5714e2adb1ebf95f465",
+        "size": 6652132
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Chassis4.vo": {
+        "sha256": "1753130f68f8db24b3ade57c8808a694d4a2e7137e0e37bc533bb0fe4214cbdf",
+        "size": 504518
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Chassis5.vo": {
+        "sha256": "21f50ddb0ea34255b182905094a89f21c42adaeb652403afab17a7b6d5734073",
+        "size": 16723608
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Head5.png": {
+        "sha256": "b900a90f73c84550244d9ec895eb7b718a1c91a57899bcbe6bc2bf1157c52e36",
+        "size": 255224
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Head5.vo": {
+        "sha256": "c11691f8170f9bc997206392ebd4c42f77ef674e941f665eeb4a50ad77575557",
+        "size": 15092
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Head5_e.png": {
+        "sha256": "b900a90f73c84550244d9ec895eb7b718a1c91a57899bcbe6bc2bf1157c52e36",
+        "size": 255224
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/head6.png": {
+        "sha256": "2a581cb0e0ffd359e06f68fcaad554bb2174a5f261e44c9d351f59dd6d7a5000",
+        "size": 203092
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Head6.vo": {
+        "sha256": "8a5c38c6ff974a9b9f0d784a4dd46dd1ce789b4deb28e7a60c4e7b1193df8ea4",
+        "size": 13280
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/head6_e.png": {
+        "sha256": "2a581cb0e0ffd359e06f68fcaad554bb2174a5f261e44c9d351f59dd6d7a5000",
+        "size": 203092
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Head7.png": {
+        "sha256": "3b810955395edfae539c2650ef36ca54a552d0d03761051b915b718fc5a5cacd",
+        "size": 296595
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Head7.vo": {
+        "sha256": "1be90a2deb11a536f852fccc2356228b06f5fb3072bd89bb0f217f55430c3469",
+        "size": 11514
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/head7_e.png": {
+        "sha256": "3b810955395edfae539c2650ef36ca54a552d0d03761051b915b718fc5a5cacd",
+        "size": 296595
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Hull1.vo": {
+        "sha256": "f86e3e57013a7f2d2a51978e56905b89deca203dd3d13fa0136d02232912123e",
+        "size": 32392
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Hull2.vo": {
+        "sha256": "cd4cbfa1b2f90e16420fe47c7d12954f25f33ae7b7f1b28dfe332bff1cb0924d",
+        "size": 27026
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Hull3.vo": {
+        "sha256": "13c1059d4642b3f33a42f9e5b9536551998e1052b0df322cbfa51095e22dc3b9",
+        "size": 39504
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Hull4.vo": {
+        "sha256": "fe5ec58f1edd7b6e091564b14dd8ce0737a820818e6f6f53f2b2600583adc207",
+        "size": 40586
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Hull5.vo": {
+        "sha256": "2346fd7089d575d1f56c42b8d78fdbb7447c9dc05970e05990258d95f4d58be6",
+        "size": 28894
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Hull6.vo": {
+        "sha256": "991d03c514c5810585de65d3d3f031c19ca58068e58a75bd5ce2f85ddc4d4a21",
+        "size": 43884
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Shaft1.vo": {
+        "sha256": "b8a7b413e2f6e59bbe05bed57ce09568c9d3f26eb3289dae17d250cab3314f44",
+        "size": 498162
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Shaft2.vo": {
+        "sha256": "47824763a834d4f46e70c1baba6a7353c234c3592f2a3590a2e0a657d98ed22a",
+        "size": 241220
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Shaft3.vo": {
+        "sha256": "dcec3fd8d0970d98feeb4979918fdb48a6dce704f228763e3525f22905b1d804",
+        "size": 63966
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/Shaft4.vo": {
+        "sha256": "6e4c88a2ce1c07854c5ca86c6f45baeaff07f4aed2fcccf3ce94c8950a58fd9b",
+        "size": 109620
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/WeaponBomb.dds": {
+        "sha256": "6bb0bc4e7d3bf5a3fd93a55777547e51ae214e74b8519d14198bba76799da31f",
+        "size": 262272
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/WeaponBomb.png": {
+        "sha256": "d1572baa564bdceb43032b51fdc4f9b2f4b656a2930e2a7f3d61876b53ae35ea",
+        "size": 286928
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/WeaponBomb.vo": {
+        "sha256": "d6186dec1628209997b4fbebc0128d0a70571df1cdfa78d378b52516d0775b80",
+        "size": 496086
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Robot/WeaponBomb_e.dds": {
+        "sha256": "e0e11798e69de80c87a16ac72b9a5f013be6f673090acee771ec55cfff342694",
+        "size": 262272
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Sound/guidance_switch.wav": {
+        "sha256": "90e7cd4ef26f9e5e7d54e0e6f12ffd8f08d9ddadd2a0c93f38256a167ab07d53",
+        "size": 28188
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Sound/laser_hit.wav": {
+        "sha256": "a746c744774ed2d1fe1782ea9081a31feaa313498d6702e814c93088fb2925ee",
+        "size": 28276
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Sound/mortar_shot.wav": {
+        "sha256": "7fa4c84ed3359316c6183943085de19f5d4a3ec2e27c157ea3eb84d174757ffb",
+        "size": 100816
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Sound/plasmagun_hit.wav": {
+        "sha256": "0b8e1624a38bb7e955439182bf61eb08df87b0bf6182a3e93369c6ca3960e71a",
+        "size": 17692
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Sound/weapon_set.wav": {
+        "sha256": "9c46d877389af1e61fc8700ca5ade7e0f32c3d605809bccd9790f1d2f5fad87a",
+        "size": 41644
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Cursors/arrow_mini_map.png": {
+        "sha256": "41d6f9b9d3cb22a2c2a8e80eee950e3e89669abd5ea520b8e2ba479f99baccb2",
+        "size": 2698
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/LandSpots/sole_w.png": {
+        "sha256": "bf42b4c1457f3f724fd3b50b8777a300b35e1b5a6808e22a71d9939372d0142b",
+        "size": 2178
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/LandSpots/TurretSpot.png": {
+        "sha256": "6166c88760723554a79d872ea422c65a45ddaa90fdebd658775e526e04c75405",
+        "size": 2399
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/LandSpots/TurretSpot_Original.png": {
+        "sha256": "c12cbc0523902c573b8d14f492645940d65d6810ecb6cb13b4e069fce90e7571",
+        "size": 243
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/path_particle.png": {
+        "sha256": "be6960b70d526803bc59eebaf869355fb587c731839e0a0bb86554a1eb7f1b3e",
+        "size": 2587
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/selback.png": {
+        "sha256": "be7503a960834c364111f547b56cc0d5147ca46badb82d6adf78b2e78237d5ee",
+        "size": 11137
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/alien_blue.dds": {
+        "sha256": "c4d4222afb1b474033a51c282dbf9403a2d878165b51057126bbdfdad0d4f671",
+        "size": 524416
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/alien_blue_high.png": {
+        "sha256": "db352b034b6b02f6ca89cb04d1ac099189c1c3a513e036c742f0bdd6e4d4abbc",
+        "size": 1352422
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/black.dds": {
+        "sha256": "60491f9041982f945cf5c58ffb69804110b8f6b9f1eb3acba6838cae810d3787",
+        "size": 136
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/black_high.png": {
+        "sha256": "a505a4362cb949e85c3a0bdc9a106763c91da01a6b8f53ee71233c46a1e1298d",
+        "size": 119
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/blue.dds": {
+        "sha256": "4fba6b298e3cdca36162284fcc67da73f57d436b581d127153647daae6153386",
+        "size": 524416
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/blue_high.png": {
+        "sha256": "8e628f0f0d10258d0b185d542d257a07128080be238489170fd2de82a6688064",
+        "size": 920459
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/blue_moon.dds": {
+        "sha256": "5ad952b3ee2f4adeb7856f869647279670ffbf6a8e6cc8e7ca315145f4cf5eb2",
+        "size": 524416
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/blue_moon_high.png": {
+        "sha256": "93a44a1d7d3bf032ae37c5c1fec94efa76a314961034a6de7d350c6f072df835",
+        "size": 866680
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/dark_green.dds": {
+        "sha256": "1cf079829a4ee81132193a91a79a16d460052482f9ef892c0c5b7665665b6abd",
+        "size": 524416
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/dark_green_high.png": {
+        "sha256": "617e630267ee4fc9aebff2117b76441e6d7357b03e07fbf254323500eb3eee88",
+        "size": 1321083
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/mars.dds": {
+        "sha256": "896fd3c94ae8c98b483be693e7507b132ddd77fd8da4118b2ee8480dce7eb7f9",
+        "size": 524416
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/mars_high.png": {
+        "sha256": "17e37b38ff7889d4b2e610137961ce76c1024318c2af3cbf8feb08f1e4d028a4",
+        "size": 1227175
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/reflection_blue.png": {
+        "sha256": "885e16202d69882d1dba9f7abdcf961fc3918e00f14a127fca3cf74cb80d235d",
+        "size": 1592
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/reflection_green.png": {
+        "sha256": "177f69a30c470b9c323684bf0b5f14e413d09790d6921f1b5fdb36f273866ad3",
+        "size": 1272
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/reflection_red.png": {
+        "sha256": "8a8445d1ec8ce84d73855fc585145b9a038edb840f1849928bea52d680b70c5c",
+        "size": 1272
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/stars.dds": {
+        "sha256": "96534b442c494e9ed085126a5ce183d7ac23ba32197e977f226e808bad316d81",
+        "size": 524416
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sky/stars_high.png": {
+        "sha256": "c854b642813d1840e285a5606e471921d7d00b1ea2b197971aa04b424c28b51d",
+        "size": 1380192
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/blue_flame_1.png": {
+        "sha256": "56a27be62d0ce002049516fffb4e0dd45be6745bac31e366a8c867e918c0ebf9",
+        "size": 4192
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/blue_flame_2.png": {
+        "sha256": "43b1f8587338ba5e90e4696b9d6a9d602880b61f3b12423844e0eb15f82290e8",
+        "size": 4103
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/blue_flame_3.png": {
+        "sha256": "6da094b441aa630c4cbc61835672b3f4cc4bd962fd679bd114e3ea05a3bdba57",
+        "size": 3920
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/blue_flame_4.png": {
+        "sha256": "8559e8755ae4c24403b5f96a0869f53386f903f08dad4b55ec41a9f81d5c1e30",
+        "size": 3796
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/blue_flame_5.png": {
+        "sha256": "6047e8b673329ccb8f4f0d95de841459b28e7c1cb157e0e656f579b0deb0fec0",
+        "size": 4312
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/blue_flame_6.png": {
+        "sha256": "f7f8c4ac1e5a94722386a77a72b33ba27eeacb7e174634591166a3bccea29560",
+        "size": 4118
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/blue_flame_7.png": {
+        "sha256": "6bdc2b508baeb9950fc53dbc963cc6e3f7e4042558e9309c5784936f152c7b4e",
+        "size": 4047
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/blue_flame_8.png": {
+        "sha256": "b7c2d67396059096bc2ebf0ef32f8a76d41a2416985b48eefe8c71ef4971b188",
+        "size": 4067
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/capture_circle.dds": {
+        "sha256": "9803e396f82ba80ae97b333cb736b54ee3c5afefe455201bc4979e745b7a279b",
+        "size": 2858
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/contrail.png": {
+        "sha256": "2192530e717cb0b465a2385b805bdfce0618ebea5e14cf847adeeb66f18be24c",
+        "size": 248
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/discharger_beam.png": {
+        "sha256": "15905da8ab4def90d12ea75509d5ca78da7e4de824ce70f4aa5889739a84e495",
+        "size": 5841
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/discharger_spot.png": {
+        "sha256": "a30b281582efad94a089cb6e389c19328266b770044a447fadbb1c0650e00fb3",
+        "size": 7224
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/fire_particle.png": {
+        "sha256": "b4e584dd62ca4cee5066c0aa40d4d29a3d49399d1acb23dd6214cbc226fff1a4",
+        "size": 21228
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/flamethrower_beam.png": {
+        "sha256": "fdac021067a6ba62ffa4045bae5535d2290b0ddb6b07aaa2303db0b8a785c468",
+        "size": 5167
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/flamethrower_spot.png": {
+        "sha256": "88097b20084a1736a7511072d377c04b637c92c8bf539f9ea58ff4e44fa98bfd",
+        "size": 4426
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/gathering_point.png": {
+        "sha256": "5eb5ff2d6a7e5ac8d1c026370f0fba8c6c83f93c4dc78785b9cad2dd1106abc9",
+        "size": 585
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/gun_flash_1.png": {
+        "sha256": "9dee48cf0ca046c5cc71180700041bd17dd5940cd63f4cf368ad88c5fa1aa784",
+        "size": 12872
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/gun_flash_2.png": {
+        "sha256": "93e2280bfd1b9889742254da8ad75643e19cfe47240ea112e4eff110b8f4e167",
+        "size": 10125
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/gun_flash_3.png": {
+        "sha256": "5701854de106ef8d5d7dfb9cd558aa00b5f37e4336ff4ea8d389d7e45e7ca1af",
+        "size": 8990
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/jet_stream_anim_1.png": {
+        "sha256": "0fe0908d1cf86ad5b48abf52a7989d72a2694087b8b6e475184e1823adf582de",
+        "size": 15835
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/jet_stream_anim_2.png": {
+        "sha256": "ad9a2ae63364364d3ffbcabf05defde1ff02c7bedaa74abb5b0f41b52aae8e94",
+        "size": 15755
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/jet_stream_anim_3.png": {
+        "sha256": "40689b16c8074ae5403b620212fed929143df132c36b3f61726ecf40b1d81a23",
+        "size": 15303
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/jet_stream_anim_4.png": {
+        "sha256": "0736400cee5dcd6aab169601b2f2b2e7cfceced300eb62b3d4ed5960ea78a0aa",
+        "size": 15978
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/jet_stream_anim_5.png": {
+        "sha256": "05bf0ba90f81ef24062e26c48ded1377a03a331dbd9c129362da35cb66db5385",
+        "size": 15804
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/laser_beam.png": {
+        "sha256": "ec8c943c7ae5f66e486d4ec1e310ba94cdb0763745b33e084ecb182abe45482a",
+        "size": 2169
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/laser_spot.png": {
+        "sha256": "784d8b6815a538a03416feffbdd3f62adaada63421bdd21d69389159c987989e",
+        "size": 2860
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/light_spot.png": {
+        "sha256": "64bd5d30f1dd13a247ce7047f85ff0639f2dcf61a1eed995ea79a73beb81f84b",
+        "size": 7319
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/merged_sprites.png": {
+        "sha256": "76edb6c280724208fecd04536d069456feeecf8d441b3238d44ce726b269c6a6",
+        "size": 46673
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/mortar_trace.png": {
+        "sha256": "2192530e717cb0b465a2385b805bdfce0618ebea5e14cf847adeeb66f18be24c",
+        "size": 248
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/plasma_rect.png": {
+        "sha256": "8bf3725c12ad8b537ea6e14d882111927ec1f85a68de8c1b3fa52e4bb26e45d3",
+        "size": 4784
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/plasma_spot.png": {
+        "sha256": "1d7985cd6a21c781d4366788f3903d61e95dc193a32b7b22988144519adab186",
+        "size": 2578
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/repairer_rect.png": {
+        "sha256": "e6267727ce19173dbae0eb7bb5e85220d78367ba43c406c6a3b07e5a3c784939",
+        "size": 4102
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/repairer_spot.png": {
+        "sha256": "384ec8557a5f1dde754b467132d8c3d2b8da3de412ce3dc0599289bef2f7681f",
+        "size": 3677
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/Smoke2.png": {
+        "sha256": "e48205861a2abd777b5d43e4fee0ba473a2c8a439fc2c7838de16968cfa7d0e8",
+        "size": 8614
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/smoke_particle.png": {
+        "sha256": "6b897d62b53e65e90ec4e9752114cc1058484cec9a44a7fbd39a041d171e2bae",
+        "size": 2358
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/spark.png": {
+        "sha256": "eadb8e42d7d7246ff6cf5038713ad326a0193ddba1cf65ce57f7e4665bbd3255",
+        "size": 3800
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Sprites/way_point.png": {
+        "sha256": "0a2fc4bd1b48c8d2a6602d9202c3948defb0fa5be18a6bf3443dfc6419a0e18c",
+        "size": 515
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Water/Blackness.png": {
+        "sha256": "7c399839e30ddb1161d3c868503de1d137ba55da3f02f875c75264bee12ab586",
+        "size": 133
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Water/BlueInshoreWave.png": {
+        "sha256": "3f67c2202def02a98c60206a57e94daaf79c1050f9318b8262bea77004eaa20e",
+        "size": 13037
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Water/BlueReflection.png": {
+        "sha256": "b2fb9f3663825b605a2cbd52a2e42fa1c1cd24a8220868b72878eed9db86cd78",
+        "size": 20128
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Water/BlueWater.png": {
+        "sha256": "57668b6f5d5eeb00f7b46fb4323d18b98207264f2da908ae66b988739d53769c",
+        "size": 93563
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Water/OrangeInshoreWave.png": {
+        "sha256": "bb8baaa5b73f3c09b0ccdd042a1faef045ec71cd1e37635f9eacd4f637a19689",
+        "size": 13026
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Water/OrangeReflection.png": {
+        "sha256": "22cf5efc82930d90ba2f40be9ee263d052b38dba441c970885a521082b4e2e1c",
+        "size": 18331
+      },
+      "{app}/Mods/PlanetaryBattles/PBEngine/Matrix/Textures/Water/OrangeWater.png": {
+        "sha256": "4d1a722c2a03cdc25d318d6763e7191d046c71ed9923dbfe94315132de618985",
+        "size": 32136
+      }
+    }
+  }
+}

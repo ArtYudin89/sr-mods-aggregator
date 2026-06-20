@@ -1,0 +1,2457 @@
+{
+  "schema": "srmod/1",
+  "id": "ZeaEnch/ZeaQuestEnch",
+  "source": "universe/universe_prochee",
+  "name": "ZeaQuestEnch",
+  "title": "ZeaQuestEnch",
+  "author": "СНК-Games,Elemental games,ZEABLICKESTER,Purmurtail,Klaxon. Тестеры: cyber jerusalem,EksDee.",
+  "section": "Твики",
+  "priority": "3",
+  "description": "Замещает оригинальные иллюстрации текстовых квестов на их улучшенные нейросетью версии.",
+  "version": "e3bfcf0b0fcd4ca9",
+  "depends": [],
+  "conflicts": [],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "files": {
+    "code": {
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/INSTALL.TXT": {
+        "sha256": "2b8cbf2dd52ca3b8262da35d4ca1d14a985a2e7c07f87b579cdbafff1c83d94f",
+        "size": 122
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/ModuleInfo.txt": {
+        "sha256": "185917ae93943ebe8a0db33b1365fb2d66d60e3259e2156f74ea1bb8d47a917e",
+        "size": 1240
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/CFG/CacheData.dat": {
+        "sha256": "a5eda5ba10a76faa01a3f5a91001ea14e0f2b563d3fc2b062c506e6a7e023bf5",
+        "size": 72124
+      }
+    },
+    "assets": {
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/60_Disk.jpg": {
+        "sha256": "2fefcfeb56786fb1e60b61e8a02e7af755e1e355ed5af35e954fda3af7178357",
+        "size": 38211
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/63_Sibolusovt.jpg": {
+        "sha256": "d9d142d4ec240406606a874a654bc9d2f3d48147969cc1b10a05741be7bad9a6",
+        "size": 21229
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/ace_01.jpg": {
+        "sha256": "6752efbe1572067e942ec7999da43af67a85e17f616998f5405583681593014c",
+        "size": 14669
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Amnesia_00.jpg": {
+        "sha256": "6d0d0be95197c6affa058eb460fb8db40f44cf9052e8e61b74d4c9a4339bee22",
+        "size": 23166
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Amnesia_01.jpg": {
+        "sha256": "1f4d115a5397ac4feb672ca0f89b3c19e3912201854aca0ef610b07225018a3a",
+        "size": 26985
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Amnesia_02.jpg": {
+        "sha256": "4b3ae133714cbe69da59166a0016459f1179d546c24aef207b55dcb35b54599f",
+        "size": 24136
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Amnesia_03.jpg": {
+        "sha256": "8e4d2a554bd38eabbfa4225b6c425407a89507ea80a025e2c16deb39a14b6cfb",
+        "size": 20147
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Amnesia_04.jpg": {
+        "sha256": "4a479bf2e917711b8f641975b22b8c05425266a5af7b464112897cefd6d77eb0",
+        "size": 22807
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Amnesia_05.jpg": {
+        "sha256": "22c100f3739da19b2aa49ad93eb402d0628c9ba16d77ac72003a6150802d2f87",
+        "size": 23209
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Amnesia_06.jpg": {
+        "sha256": "919bccbfc693f6de45ff0cfeb7ab420a6a0aecc19dfaa41498823e53fa87b797",
+        "size": 19627
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Amnesia_07.jpg": {
+        "sha256": "5c0cb4d27a124d769c412a16f3584cc79b52dd49021a8a5ce077ca52c0231dc8",
+        "size": 28129
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Amnesia_08.jpg": {
+        "sha256": "fa77d044be4d095bf571b47773e8a6525bc228f423a3d1c84ff4b17815db340a",
+        "size": 33804
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Amnesia_09.jpg": {
+        "sha256": "3402288d4ad730720be081fa39d9570f5a14fe218c680d1998e22ddb89ca2e92",
+        "size": 34393
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_00.jpg": {
+        "sha256": "7e9ae7c8ff08dbf386016cb4c87f0f994d0fc2a01ba785d72285e9422415e02d",
+        "size": 34486
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_01.jpg": {
+        "sha256": "42cd754311604f2a69d54ec37d120a55554600de411fa2b24a9ef9ec13bcfc61",
+        "size": 19209
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_02.jpg": {
+        "sha256": "80f0fc380d9a5e172b78f7c1cfb3b58478eb26b3fc129be07f99337e01eb3bd3",
+        "size": 22697
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_03.jpg": {
+        "sha256": "8b8c199d2613fa637dab473817c478116776e4806bbda1f6028d8f2a5d0914f0",
+        "size": 27181
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_04.jpg": {
+        "sha256": "c2f058f8f0e46972d8d07a91efd6237634514d09b4662ea2a87378604c76d8fd",
+        "size": 22857
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_05.jpg": {
+        "sha256": "63d7125fb92e2f94f00a2c1af9dd723f020684c4d1eb9a6fcafd598d1808f4a4",
+        "size": 17956
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_06.jpg": {
+        "sha256": "0e59936f723662d5924d390525ea3f351405f7f9569cf3e629684885bbb92818",
+        "size": 35507
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_07.jpg": {
+        "sha256": "2a7e81359f1ed7d8b1c7d4763835cc1ca3ce22d099f9282824d9928f47515cc6",
+        "size": 21923
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_08.jpg": {
+        "sha256": "03a21e796de440f3b31aec542efceed3f1bc4b08c9ab576bcc6fda3f77dbbf5b",
+        "size": 28973
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_09.jpg": {
+        "sha256": "ffb07068c66548f9bc24097ff35d864a893cdd438e718a9400e004935fbda58c",
+        "size": 9389
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_10.jpg": {
+        "sha256": "9341808a5b12ce8a156fd82545f870fd768b60147aeda552598d63c27a5b0464",
+        "size": 19830
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_11.jpg": {
+        "sha256": "209de41c2cd6ea886f588c5d9cdab63952a0cd913c724c11bb395010d0db27d6",
+        "size": 13948
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_12.jpg": {
+        "sha256": "866f941ddda01b7e130913961d0d8d9e63ca5814a8c884ca21f9a380d198f620",
+        "size": 19311
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/BadDayR_13.jpg": {
+        "sha256": "d5ff275e1efa906c16918c7f89a5b0d126d0bb09b3b659ce8c8b158fc46d7cea",
+        "size": 22865
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bank_00.jpg": {
+        "sha256": "f6f8e47dc066f0fde3761bb5c18150315c99c2105772b0f12a007eae41ea89b3",
+        "size": 37133
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bank_01.jpg": {
+        "sha256": "8c485673f0972d223878cd50968305ec820c607950f8a53da75d6ee87568c051",
+        "size": 42872
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bank_02.jpg": {
+        "sha256": "3ac3d5a8d11546a7cb9eb3715c3a1bebd1e6c7b049fd4b0512a74809f7a61fb1",
+        "size": 35107
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bank_03.jpg": {
+        "sha256": "410525027d66a07b8f885cc43517290bd6ed826955acda3eb4b9b550d2432b8c",
+        "size": 39866
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bank_04.jpg": {
+        "sha256": "a0b506ec63f00ec2c37e69ad91628e4719b9923d4084982434ef6ba1a9b44ed9",
+        "size": 35237
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bank_05.jpg": {
+        "sha256": "82d3eae6056a1619663536718f25cb18adb934dd2bbea88cfd4e3079ca2b5e9c",
+        "size": 25679
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bank_06.jpg": {
+        "sha256": "9b97e726e5a08d551cf4b893a3430d80045617bdf8589249cfd433874f34b5da",
+        "size": 39401
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bank_07.jpg": {
+        "sha256": "e98400f13c350890660844dad9865de48b59ed653257614f6092a9802255c1a2",
+        "size": 40262
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bank_08.jpg": {
+        "sha256": "d871c54d7932c9dda69ae844a92b16bd72a5fcbc989d9b766cd36eb09cae1ad4",
+        "size": 30148
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bank_09.jpg": {
+        "sha256": "8fbc17dbca62ac3a612774f6f878b87c533e513ae5c86596d4b55c2e5f2ab824",
+        "size": 31531
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Banket_00.jpg": {
+        "sha256": "248bf2843a98af9332e35161bfd439a46f31c65bc61b1a6696badc7995070b7e",
+        "size": 38799
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Banket_01.jpg": {
+        "sha256": "de5b97f02a8e78927dec4dd535fe6a710519d19d8763ede38d3fdce082f35cc4",
+        "size": 31507
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Banket_02.jpg": {
+        "sha256": "96c7c981a19a0fc11aa9ed827ea0d9b5be8fcd405b0b08f62271a5d4fd2ed491",
+        "size": 20668
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Boat_00.jpg": {
+        "sha256": "144310042fc9529d9cb64b434dbbac52c3d8916c66fb2a23508ed4b450a0e885",
+        "size": 41459
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Boat_01.jpg": {
+        "sha256": "d4e36728efc6e6ee3ae3f3df0cb228cd14a0492de8eda43fbeedc818d68f001a",
+        "size": 39718
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Boat_02.jpg": {
+        "sha256": "2fd1cb696de7f705194c8e90744b3be33a6d1db456007dc5c0e2b60e0854ea7e",
+        "size": 19319
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Boat_03.jpg": {
+        "sha256": "a65cad1266d79fee0736e21cb8e8697422d7e83cd05dc27a4e9c1a75001e5f4c",
+        "size": 17821
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bomber_00.jpg": {
+        "sha256": "5876c8b10f58142cc30290bb4d3fe47cdaaa98f3d01c1e8d1fce6f00bd769b42",
+        "size": 28279
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bomber_01.jpg": {
+        "sha256": "c92d069110fc70a5303b1fd43a59cf7da91ed26adf3a9baa1bb41e89f6890f42",
+        "size": 33097
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bomber_02.jpg": {
+        "sha256": "c6fe5b04070013753a3e41daf5d997839ecbce9b791973826ffd06e6d7be539c",
+        "size": 31880
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bomber_03.jpg": {
+        "sha256": "61d8b4e20728eb46220aa09e7a83e67035618066005bcadbe4fa867438b54c2f",
+        "size": 40308
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bomber_04.jpg": {
+        "sha256": "8bace6be9ab09bee02d76b0951a8f52fd0dd7aadd9b40a8f37752854ab1668f6",
+        "size": 26660
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bomber_05.jpg": {
+        "sha256": "f8851a3db0cf6f4f3585bc63cbb3d673db616e58f987625082386c608bdaa08e",
+        "size": 28275
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bomber_06.jpg": {
+        "sha256": "e7b62fff655d56e74d1d2da4bd2b1382b4d2906f601e1c32d7d71c02d5b2dead",
+        "size": 29261
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bomber_07.jpg": {
+        "sha256": "c93a9ea0f451901214a40cd231c68ad76c71a969514a01c9fc049615686febef",
+        "size": 31295
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bomber_08.jpg": {
+        "sha256": "cb7f7c1c2de79f84b4085d0fc909420d3eebec6fe7cfc9f7a5692b475bd5077e",
+        "size": 25845
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Bondiana_00.jpg": {
+        "sha256": "78ffda8e83107194b10cd1b95faeeab2bd27225a9c01236b8f81877c40d1edd5",
+        "size": 32322
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Borzukhan_00.jpg": {
+        "sha256": "5ef7caff22924288c1739a7a2fb8219e4e03b0c17fec05ef5dfbb22ca9e367cd",
+        "size": 36850
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Borzukhan_01.jpg": {
+        "sha256": "c2d800fc62e6dfcf16f0ff6011936b2f74c0e6762f8291ddc8e7039d81add421",
+        "size": 42612
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Borzukhan_02.jpg": {
+        "sha256": "001859d074a51e178eb7032029afa363fcc2ed4cf3a66afdb9218ecc475ed2a2",
+        "size": 37747
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Borzukhan_03.jpg": {
+        "sha256": "d6a2a2bae9198f2a5863dd9c881f022a13d3ee3f5b55f26f8b0a9bdb4d145482",
+        "size": 24135
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Borzukhan_04.jpg": {
+        "sha256": "09a9572daed2cf545e743102ad93742529afa7701f4c921e74576cfb8cd913e3",
+        "size": 27261
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Borzukhan_05.jpg": {
+        "sha256": "d287eda683f91674477e0f6bfab23fd1cd60e37d87ab048cda717762ca899e5e",
+        "size": 21287
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Borzukhan_06.jpg": {
+        "sha256": "3949da5d5ccf446955162d3b1e1682f971ba6693e4cea46f9a21c6b2fd5c57f3",
+        "size": 34439
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Borzukhan_07.jpg": {
+        "sha256": "a2608c622abb4fee796951910e741e0b05332da8ea7365b6f14051f845f665b8",
+        "size": 31860
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Borzukhan_08.jpg": {
+        "sha256": "352de027d38572a2bcd973875fda84696091d0be09645f43d36920968de36083",
+        "size": 34620
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Build_00.jpg": {
+        "sha256": "a13c4bb25306ead3149c1fb7c8b7f54050444af854ba6d9db9db57928f754495",
+        "size": 36244
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Build_01.jpg": {
+        "sha256": "2b11c2d4510f690d3ca412fa2deba85518ec44cd9426348f13ce1a593a7f4c94",
+        "size": 33175
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Build_02.jpg": {
+        "sha256": "3747479db5b8b3a158e78e4e3d8fae0865ae53c29591f3d7d476d4423973cbc3",
+        "size": 33779
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Casino_00.jpg": {
+        "sha256": "5ef7b336a10e226cdca45466162e562687d5a81610ecbc6fb55d621fe69a9617",
+        "size": 24368
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Casino_01.jpg": {
+        "sha256": "b96ce2742125b9c9b49fd55ab5b2f51d93cee878333962b911316905eff8bb0a",
+        "size": 21787
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Casino_02.jpg": {
+        "sha256": "3bfc230e46cd60da4877b38c16f244478bb46a4530454b232072b618f9513ce1",
+        "size": 25793
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Casino_03.jpg": {
+        "sha256": "afb9be42e00fc2192da3d8ec655bf0c74eeed7d7656612d512a94ca2801380f3",
+        "size": 27796
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Casino_04.jpg": {
+        "sha256": "49e98d5594299b75eaf3a052dde295c12100162d5a29649cc60fc6d6f709c83f",
+        "size": 24585
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Casino_05.jpg": {
+        "sha256": "12529b82d2dcfe1358a843893e0eb4dfdfb77e64b61e37845bae2517e21b31b0",
+        "size": 24709
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Citadels_00.jpg": {
+        "sha256": "928f9ebbc95fd6830565a858dc3c90653a45b39730e745f43118332e022b0bb9",
+        "size": 28457
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Citadels_01.jpg": {
+        "sha256": "49cecf6b8356583c70facf50bc3d7251367faa6e5305a0517ef64336ea92ce29",
+        "size": 35249
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Citadels_02.jpg": {
+        "sha256": "2a0ca9ef72bb67b4827412f6e2dd8de86d664adb82c99524a2abc4e0130160d7",
+        "size": 71530
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Citadels_03.jpg": {
+        "sha256": "1aa88a7ac7c8b976a9de25ec10ed6d28b1319b6e18152f2b4f23b066065f3380",
+        "size": 33749
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Commando_00.jpg": {
+        "sha256": "2e8ecefd0eabd30258d342c1a6267b717b682f1749e5371990636478a50f9cad",
+        "size": 32420
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Commando_01.jpg": {
+        "sha256": "beeb38412a8a5be50e84fe6adadb7f27356197fc96f3204c9cb49c5bea85b6e2",
+        "size": 32661
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Commando_02.jpg": {
+        "sha256": "bf976b68eae3e5c372ace6587db622b8dbd27d5891c207ad247dcbf135b190c2",
+        "size": 28798
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Commando_03.jpg": {
+        "sha256": "2c4313d65a8b06bde9d282115179608db56ea30d2455dabbcae89faf6ab27041",
+        "size": 29538
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Commando_04.jpg": {
+        "sha256": "ef619efbe0be4a8bcda6b9ba269664e87bbf20900df0c1081e0f5d08d483e25f",
+        "size": 32622
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Cybersport_00.jpg": {
+        "sha256": "dc44dbc8bf13d4ff7338fc5b8eb833a4b6085cf653ad8e05a81c00fa41b6604b",
+        "size": 30885
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Cybersport_01.jpg": {
+        "sha256": "0643acd5a6940d63e68512f8d5d16ef1e8ac1ce98a23825b6336e2f1908b1f1b",
+        "size": 33353
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Cybersport_02.jpg": {
+        "sha256": "d592f45cf0aaab87a1478ddef6d1f64743dbaec6eb45d9183093af9d6e9f7c5c",
+        "size": 35980
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Cybersport_03.jpg": {
+        "sha256": "571ae2e72a5e577e21cb5e49cbdacd7b41251e5f9cf2dd4c51b4e29c7845e7ec",
+        "size": 44046
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Cybersport_04.jpg": {
+        "sha256": "66da8be765360a3bc38e0370636dcb669dd28bcf594723191869ede22938bc2b",
+        "size": 14821
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Cybersport_05.jpg": {
+        "sha256": "abe8b9062e0a40e3d3c7c91b0dfecce7858130ce27a6aedacc292a787555dafc",
+        "size": 25600
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Cybersport_06.jpg": {
+        "sha256": "e604393ff5e7aa1c9479b76c3ba7412e4e4d9da1b260615ed558dc2f24f6dc6b",
+        "size": 22360
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Cybersport_07.jpg": {
+        "sha256": "67d9d713fec34c422c2f03b4c7bd1fdb02a5339ab9600cf0eaeb8a17e7d6bb3d",
+        "size": 24625
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Deadoralive.jpg": {
+        "sha256": "8fc75693039bd11da489cbf0d85d9021ce11ae4968b24533c081d2540ad74808",
+        "size": 24097
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Deadoralive_00.jpg": {
+        "sha256": "64182326c2537a91a091793be2b859bfa1c2a0df5971b819cdea3ad56f005a20",
+        "size": 24502
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Deadoralive_01.jpg": {
+        "sha256": "d8db53e7628a6a5efa2072691c836b892fba4ac2fa4995fb088de533c47657e4",
+        "size": 41348
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Depth_00.jpg": {
+        "sha256": "069ebe83420411afd989221bece6ceb19302e83a220f74e2842c95ada43c67c0",
+        "size": 50225
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Depth_01.jpg": {
+        "sha256": "bba6fe5d7e4421fafcb2da2a4d3ac572491d7f1368d107e693840abc22ca6e0f",
+        "size": 20262
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Depth_02.jpg": {
+        "sha256": "a925dcb60f2a55fa93ba3229187df9ad322051e5dca7fe5ce07cd91a22d8d57f",
+        "size": 53861
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Depth_03.jpg": {
+        "sha256": "6363d662bb56a6ab692428cdda1125556c8f475f5b18b36c22755cf7f02df3a4",
+        "size": 23085
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Diamond_00.jpg": {
+        "sha256": "ded19943ec17ef7573199a94e5f9574fa1a85f834e99ddc93b0ada15c48c6dfc",
+        "size": 34235
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Diamond_01.jpg": {
+        "sha256": "5b7cf34314d2bde097b097a564b1ef9a58c49c400a56074838d44b92c45966bf",
+        "size": 37578
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Diehard_00.jpg": {
+        "sha256": "e422da9c26fe33823e2821bf2da353ea43580824e8b7c7beed775ab436548aae",
+        "size": 26967
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Diehard_01.jpg": {
+        "sha256": "7c2daf9212fad2ffbe269e72a5727c12b5053c2ec46d4d3b66f7f0ae7d88e15e",
+        "size": 23870
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Diehard_02.jpg": {
+        "sha256": "23f1b2658c0115bc3ed9a35eb29ec665af1e94e68187e1da8d964455579f08b1",
+        "size": 26327
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Diehard_03.jpg": {
+        "sha256": "4f5fe3a4e3a4621b064f52d4d06ab6b3aae27462046c449a6ab8065be3fe7933",
+        "size": 26765
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Diver_00.jpg": {
+        "sha256": "c875909020270d8b1fc5fcbbae5f173be0bd9580c38c89c465ec196e1773e759",
+        "size": 20792
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Diver_01.jpg": {
+        "sha256": "850a16ab435123125bee05d1cef52d4db97a4b23c7952201a9bbf101e217f18e",
+        "size": 20907
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Diver_02.jpg": {
+        "sha256": "d134499705b6c4f9b4107738b32c81d4fdb789b732a9f5011f5c1c3feb70d802",
+        "size": 20534
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Diver_03.jpg": {
+        "sha256": "843dd05cb666b0e5d3d2ae9a5f628c2a78ac7b823c2ea7deade944a16bab1446",
+        "size": 38536
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Diver_04.jpg": {
+        "sha256": "237e84b137b4ae3a17b2ffe6429c98f010e2be2ff87c7e3b54d11d4f62d00a72",
+        "size": 22883
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Diver_05.jpg": {
+        "sha256": "db6b31f4b9fcee26aec9f642c15945d400a53073b0f69e704a3ec5b02d9eedf2",
+        "size": 19899
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Diver_06.jpg": {
+        "sha256": "4831b393fdaa7014a55c72068db4be8d38862f20c4585565edca9a987d4efcb7",
+        "size": 23605
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Domoclan_00.jpg": {
+        "sha256": "0bac9b1a2da9f01392fd8e7d99854f57f7eb8130de34b6d5a66471c967f8cf6b",
+        "size": 31401
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Domoclan_01.jpg": {
+        "sha256": "bf08a7e7a15bd000668312121042ce6f11fb1f69b05182eefa4e1f2925a90b66",
+        "size": 21012
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Doomino.jpg": {
+        "sha256": "6a652d25ad18c78e12f0c1d5090575e3119719f142c7f7d3a8892fdc6a943c79",
+        "size": 36714
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_00.jpg": {
+        "sha256": "21dd21f8054b18d47fcf26926e156794b6631b2043222c0ac65f74eb3b6e614a",
+        "size": 21854
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_01.jpg": {
+        "sha256": "55ee53218962f3798cc5317e0b57de895c8a805a0634404a554a74ca10aa420f",
+        "size": 20054
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_02.jpg": {
+        "sha256": "56b737f6d20e29c3d60715d677edc451baaf579aa1ad42e1f912c5f567b04408",
+        "size": 30273
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_03.jpg": {
+        "sha256": "dca3d1205218cd5b80d8831517f85927a9050fcee0703ea5f2fce5cc1a2073e6",
+        "size": 25198
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_04.jpg": {
+        "sha256": "3ed61da0a94970c63afa88e7a2c9336526b3a6e4b6f227818c4881e60d0a1c49",
+        "size": 27960
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_05.jpg": {
+        "sha256": "d76732b230ce74b2c799101e35808d1d311ce1385c1ab05fc45576ad2d22b562",
+        "size": 19941
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_06.jpg": {
+        "sha256": "13850034bc80e1cf7b5bb98914b478c62ce9261cc14de0fc7c4e27630923db70",
+        "size": 19614
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_07.jpg": {
+        "sha256": "737491b4e799bef297ce90b7f483b2330b392dcce7a681e2efdb62f394d8bd3a",
+        "size": 26424
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_08.jpg": {
+        "sha256": "acde89da6f6e25f904a4c713e3742351a9fd7dd73e5d1563fba7214cfd7ed0bc",
+        "size": 28261
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_09.jpg": {
+        "sha256": "008747d03b0d329661a1645ff0e688a6f260f1232e85f08da6164f2e407a759d",
+        "size": 21435
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_10.jpg": {
+        "sha256": "25ceb3d9f47065fb4771c269d0a40e5ee6ba828d26eae0f11630e31cda515d16",
+        "size": 42667
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_11.jpg": {
+        "sha256": "daf48747a9985dc331c4491f3d21bd5ffb206c97ad462fb0a5ee28a06c037417",
+        "size": 27211
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_12.jpg": {
+        "sha256": "6519a625887e7fcd490f0c69b0b541ce30a3036f021fae7bae9abcfaca61f9d8",
+        "size": 18059
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_13.jpg": {
+        "sha256": "7fdf1942dde9bcefdad0158660530d53114e995de1a599ed52cb8423e802b87b",
+        "size": 20559
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Driver_14.jpg": {
+        "sha256": "23d8d9f4f358157d39855629ca20eff9d154002ea4105d5175ee8266681b321f",
+        "size": 26489
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Drugs_00.jpg": {
+        "sha256": "35a516f0f1c91fa75b84dae3c8943dcda56c215725009549848f4bdc8be7d072",
+        "size": 26891
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Drugs_01.jpg": {
+        "sha256": "be9c1ef3e6d18fcc5f58eb2c3676631e4195e1cf1f6e79b3010efe5eeb8e7201",
+        "size": 32215
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Drugs_02.jpg": {
+        "sha256": "a6df24b51b53a554ebdb37b6e44a4e1f3646f45e98a9d676021ad67555c08ba4",
+        "size": 28528
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Drugs_03.jpg": {
+        "sha256": "921baebd7a8faa39320a2c67f8637a76040ad6e4f9088a810e95bf5a98b0bc6d",
+        "size": 25301
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Drugs_04.jpg": {
+        "sha256": "d1d9d75bf244f06bcf7ea1642ae3476c330793eb965b8315f0ae6c325e1e7daf",
+        "size": 30542
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Drugs_05.jpg": {
+        "sha256": "83d733f869bf87e08d0843ea09349d70b59ac681ef0d41be5e219d3622102142",
+        "size": 19406
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Easywork_00.jpg": {
+        "sha256": "78bbeedfef327ef92f5fc2a3c8aa92f1278faffd4b127697cb4daa8ecfa2b762",
+        "size": 26997
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Easywork_01.jpg": {
+        "sha256": "4c067d23ce18f61c27cbfb3117f05cc0a148ed61fc513d5a01646690a91ac973",
+        "size": 26296
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Easywork_02.jpg": {
+        "sha256": "74fe97dcd72585f5496cf7477e3993fb1e6e3d0a0665fff0ec93235818754238",
+        "size": 29601
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Easywork_03.jpg": {
+        "sha256": "552a0d92002deaea79d526879e5dd91c2730b4eb4f3a3a14f8fe85852241b589",
+        "size": 19550
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Easywork_04.jpg": {
+        "sha256": "726163b63bfa085eb9c2d115aab0dba280efc874f27d975f483e08eae102c71a",
+        "size": 24931
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Easywork_05.jpg": {
+        "sha256": "3669b10be35b1659a14f7c48049e8acd09da38e453f7152bd520b96dd72d6803",
+        "size": 19147
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Easywork_06.jpg": {
+        "sha256": "4406f417f022d4b2c3b060114293c88b9bdc6b74df81129c12a456f5c336f2e5",
+        "size": 24524
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Easywork_07.jpg": {
+        "sha256": "e9c119e48657b460730a3d4475de447e95000f9b6bcac2d3c68af1b8dabd2532",
+        "size": 27917
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Easywork_08.jpg": {
+        "sha256": "3d6ce3bb101577ce4da7cce656e1d0d5af10f5e76797554c2087291df29f9914",
+        "size": 25751
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Easywork_09.jpg": {
+        "sha256": "572101aa721d1dbda9215ec916f4720631eb16d8eb0403c5d9f3b3a9ea25b289",
+        "size": 19743
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/edelweiss_00.jpg": {
+        "sha256": "0166f7807f6effbd06364864dfe8dd76f00b33a12668b6d71ff4262ccdb940ac",
+        "size": 32050
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/edelweiss_01.jpg": {
+        "sha256": "2c80eb79f47f227719a3c94b60c124ee506cc46c9aade71f5e31835a0a6cabab",
+        "size": 24751
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Election_00.jpg": {
+        "sha256": "29c0c4894e1882e41b70e7649d3d724d9d3aa30537bad9c9902de38840cbe47f",
+        "size": 27930
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Election_01.jpg": {
+        "sha256": "a53fa8ff9f78cf89108f0ecd22a352445545faf243f6f3b877e608d712a597de",
+        "size": 28948
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Election_02.jpg": {
+        "sha256": "f2fb5ac77be691d3e1eff11ad34e659daa67100fb8bf8a8fc7856bf5895c609f",
+        "size": 18701
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Election_03.jpg": {
+        "sha256": "38926881270de3730cdc190b0fdf23bb3b27194cc7c3b120bc9499d4c3b3e89e",
+        "size": 26173
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Election_04.jpg": {
+        "sha256": "c88809a1d7c4ac12d88e76eb229be07e1a5eafeea797ecb77a9e83d6f4aef200",
+        "size": 19538
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Election_05.jpg": {
+        "sha256": "8fc75693039bd11da489cbf0d85d9021ce11ae4968b24533c081d2540ad74808",
+        "size": 24097
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Elus_00.jpg": {
+        "sha256": "546f7e23372f18c56f4969725a259680c32f2951a4e6694c2f3fb9f756cbe361",
+        "size": 22327
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Energy_00.jpg": {
+        "sha256": "18d8b609037ad4dcb557de98b9164fe745e21e8d1a8c19c6d216f251396265f3",
+        "size": 23130
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Energy_01.jpg": {
+        "sha256": "dccf408e68c6e582f4de404f5df5cb4670fd99f82499ec4b78d7ca592383e76e",
+        "size": 41468
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Evidence_01.jpg": {
+        "sha256": "69dc747043030cf8be31e708f83fad926dba630fbc3b3d7a3b448d7615299479",
+        "size": 22874
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/EvilGenius_00.jpg": {
+        "sha256": "29eebb87a3cabe00a365ce343b79e5548ffacffc4252ce69efa42a4338124db5",
+        "size": 31705
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/EvilGenius_01.jpg": {
+        "sha256": "186720b36858a5a27348e159971026614876408da47cea4898d881d2f7ca7229",
+        "size": 37631
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/EvilGenius_02.jpg": {
+        "sha256": "6b0603abddeae709185746471652f2d6afe885daa8090aaac2ff803544ee98cb",
+        "size": 27073
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/EvilGenius_03.jpg": {
+        "sha256": "051770407979b24b6a58fcee7590c3372e35a509d58c8492cae34288f7834b3e",
+        "size": 13659
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Examen_00.jpg": {
+        "sha256": "f2c088883afedf3bf6f05657ec850c4046cbb2e9219b9c3e9208f780b4161929",
+        "size": 29372
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Examen_01.jpg": {
+        "sha256": "42a9ec25ea491f32fbb9774e9514d114a9ebd73c77857f15340777a35a9c7304",
+        "size": 32291
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Examen_02.jpg": {
+        "sha256": "50e67b231681b759bb6aeb3192ff1215dd8f023f5a55b9ef34c1177e9e00f46b",
+        "size": 32749
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Examen_03.jpg": {
+        "sha256": "bb1d3f79dd18941148ade0f5640cbb6ae86eb05bae654c20af5addc7c9d5b5ae",
+        "size": 34330
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Examen_04.jpg": {
+        "sha256": "bbf9591dee1a1250ae2b14c2ffd85b565367c2ec27e37e02cf474a16190fb95c",
+        "size": 32158
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Examen_05.jpg": {
+        "sha256": "6c52db822d658d0e91e185263636d6e714e06e1055d16e316237a3500b1e0896",
+        "size": 29736
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Examen_06.jpg": {
+        "sha256": "703e0766b3b7fa9a96e625374aef86b9e3e3dd1da225988f016e7eae05bb13bb",
+        "size": 31969
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Faruk_00.jpg": {
+        "sha256": "34a636c13983e369f100c04f811c00316c8a053a2f46ab65fe567f0ac4a5184f",
+        "size": 30145
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Faruk_01.jpg": {
+        "sha256": "8bc2ee991674639d3fd138b14012c210877ddfd971aa0f5deb73a7c2ba841f98",
+        "size": 28117
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Faruk_02.jpg": {
+        "sha256": "31a07ac8815a708816979649c5da2733e8d82e93a4208b03872d52fe0d5b8b6a",
+        "size": 17059
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Faruk_03.jpg": {
+        "sha256": "856bf601117bfd7965dd10331dace46ac829d28504478a2fdf23627e67d9a7c5",
+        "size": 18705
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Faruk_04.jpg": {
+        "sha256": "754a635fc2198d50123ea72941170afcb8cd729e6026bb66635ca448d625f5c1",
+        "size": 29537
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Feipsycho_00.jpg": {
+        "sha256": "2b9df4675003af65972610fa03f0dd64203e4be33207acc059bef96899671ac2",
+        "size": 19072
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Feipsycho_01.jpg": {
+        "sha256": "b0f12f520e1d5285aa9d6f0dba1eace73995a4316c6ecf995e84483375fea8af",
+        "size": 21058
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Feipsycho_02.jpg": {
+        "sha256": "fc4af4b70a284142a6b08d881961b44dedac45e886f3e6a0b5f0755da242e529",
+        "size": 25997
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Filial_00.jpg": {
+        "sha256": "e0ab8edc962c13e8d210b8b19a11fc107df4b270a6e30fc2439579395a860b13",
+        "size": 27879
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Filial_01.jpg": {
+        "sha256": "48c0fc39b4659dfedbbd81a8bbda422b77ab3c33cfce222adc26245822ced725",
+        "size": 29258
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_00.jpg": {
+        "sha256": "e002de74c9d6fe663aff81d979f0d869d3d282e4f31b2251a171f2d1fa6b5213",
+        "size": 32304
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_01.jpg": {
+        "sha256": "dee861ba126b2892360d927befcd85f6e9933868a735fb5d60868d35e2e0010a",
+        "size": 18668
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_02.jpg": {
+        "sha256": "5c1bff7413f0d934fc84b43c8446de16fecc8d3c968fb39293fc8341f62e4620",
+        "size": 19748
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_03.jpg": {
+        "sha256": "b151ddb057a51e123eb78a7f82009c6a858e114552a840359890a6e8d3c2cf7d",
+        "size": 27409
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_04.jpg": {
+        "sha256": "cb6ebf4733452c2c586deeaf18a8836e59cbbfbfef1571762fefba166a555c90",
+        "size": 37244
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_05.jpg": {
+        "sha256": "f6bb706554558cd54aa8a397307821fd4962ebfc1ad5a85f265e442bc71181fb",
+        "size": 26651
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_06.jpg": {
+        "sha256": "baf9094c44a006dec53a037e308ef1d4f92fe4a27aa89752d405c663eea2b795",
+        "size": 26766
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_07.jpg": {
+        "sha256": "cd9bca534295de60bceef075674db84ee3f86de6f242bfc0ae85ebd99386d218",
+        "size": 16220
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_08.jpg": {
+        "sha256": "6391997bfff55935a25c80ee9e769f17af87ba7c9c3d946ab39652000c02e01f",
+        "size": 22386
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_09.jpg": {
+        "sha256": "d3c6782f9e103b7fa2a24ee8401ecc3935d1052598a9d7f844a5f64f30d464f8",
+        "size": 34758
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_10.jpg": {
+        "sha256": "54e7cb09e164cfeedb4d4263a8a22bd584a1435e0b6fa3e6c2c746d5553a0e10",
+        "size": 15411
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_11.jpg": {
+        "sha256": "ae62dfd1c1052774e8c54fc9e9388881724d5119d4c3a995fad25fd4fe08ce73",
+        "size": 18614
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_12.jpg": {
+        "sha256": "1fa8bfd08a406363410ac09c394a16cc291d14ac25e4bdae86a94c37dc52b7ec",
+        "size": 25574
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_13.jpg": {
+        "sha256": "475e35898de2c591cae9b83591ae83da82da258ec8bd3032da818bfa914a8862",
+        "size": 13091
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_14.jpg": {
+        "sha256": "9fa0e1f491b3602d773ee76d826f29302b4202364c4e06bfd843d839153723a7",
+        "size": 21787
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_15.jpg": {
+        "sha256": "989af8aa8eb9087dc47dfe7d94fd1357235c32977693671a6903f415960af8b3",
+        "size": 15723
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_16.jpg": {
+        "sha256": "2eca5d230dcc556dbf867ca1bb103b025a6c30ef1b931c1422e71e6ed0f60be3",
+        "size": 23633
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_17.jpg": {
+        "sha256": "856c4f94b617d5bbebbcade3a5fc8f199daa0c085cbecdaf55f4a1cdb163e824",
+        "size": 26882
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_18.jpg": {
+        "sha256": "9a652d115cc856f2c0283f785aac700f7aeda385fa7f631370304e4f4fca86ee",
+        "size": 14664
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_19.jpg": {
+        "sha256": "1cade8d4494e3ec50f64ff2000104751d7fe00f0375300b9e85aae997cab280f",
+        "size": 15513
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_20.jpg": {
+        "sha256": "a8fb61149593652f068ff97a64fde6e512b42a28549b122b91141f52aa5f0299",
+        "size": 18697
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Fishing_21.jpg": {
+        "sha256": "fec0c44a8ee9e160283030ca32be986a3da5ab16687e2af8ecf093ef21d7bca6",
+        "size": 16796
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Foncers_00.jpg": {
+        "sha256": "f00d5c6f9235d40a3e9b3fcedaf77d3c132b1e3c80bfa214397e4dc944a43abe",
+        "size": 20217
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Foncers_01.jpg": {
+        "sha256": "e4ad76c1898f57dedd0ae6acb7a6310cc31f0bd226cdadcf6a261f6a34b32782",
+        "size": 25562
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Foncers_02.jpg": {
+        "sha256": "410c5be645d099f3eb9d6b73b5275ffe366788c917e3607187e0b67055f27648",
+        "size": 20977
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Foncers_03.jpg": {
+        "sha256": "eb933db568e0bc35e71438bbcfc598d6a6d985b9f9160379a65364bb2e15c18f",
+        "size": 21396
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Forum_00.jpg": {
+        "sha256": "9d824868b67108b546a67df8d95bda6539daabafe1672baf6d17c9c36d7c4823",
+        "size": 35245
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Forum_01.jpg": {
+        "sha256": "3ab4eaf7707c34c7c4ba5f25a190c51ade506a96d143e83d84cbff12f1610678",
+        "size": 30323
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gaidnet_00.jpg": {
+        "sha256": "cc9aceb41d57587795aef0e2152928ca01b1bff2d23cd56cf83e62a3a8b742cd",
+        "size": 31018
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gaidnet_01.jpg": {
+        "sha256": "167c254a52529429aa2ea75a732d93b3711c3ed1e969c6a9379a75b956d27246",
+        "size": 34714
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gaidnet_02.jpg": {
+        "sha256": "a0889eabe15876d746929ba8532f5e447a2dbe943de7c304ee587f0b427d325f",
+        "size": 51371
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gaidnet_03.jpg": {
+        "sha256": "92dd1cab0340f89592778d7b8c7e7a96649947d26967d0921603a4916d7a5519",
+        "size": 30891
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gaidnet_04.jpg": {
+        "sha256": "8803745ee5710ea802c63d52cb4d626133b9071734775a1f90a7f4b6628c1769",
+        "size": 27777
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Galaxy_00.jpg": {
+        "sha256": "6219fc200d120dc985e7ac3ea64533bfd74d887808f28a8611e82f4bc09cc872",
+        "size": 28057
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Galaxy_01.jpg": {
+        "sha256": "fa3a493700b186ce9517cff31915a18bde1034c37f9df97a926f99a620ebb4dc",
+        "size": 22574
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Galaxy_02.jpg": {
+        "sha256": "3419f8d4df7720882163c8863da6fb8bc4c6e90c8662b6130dcfdfd6f387b471",
+        "size": 30397
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Galaxy_03.jpg": {
+        "sha256": "b8e07d8a94ee328ee4edceb0ddd727c4bf8be752e704bfb9adaec24a8c954a24",
+        "size": 25156
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gladiator_00.jpg": {
+        "sha256": "be7ca59848e2bce54ef3f2be03528e18a0d7e585596d597bfdaa335f09f62295",
+        "size": 35304
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gladiator_01.jpg": {
+        "sha256": "e1ba3d86d3eb79ed17573870e22955c14371854c45144d078588ca822ec6bd25",
+        "size": 24941
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gladiator_02.jpg": {
+        "sha256": "9d70d180d3a8865970473f7e68cd0554f85e4fc55ee4a306cbdccb0ff3fbce7f",
+        "size": 19480
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gladiator_03.jpg": {
+        "sha256": "ab31aba2167d273f5b5fc81615315ac8705acc771a4c28886656d371e4cb6490",
+        "size": 27440
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/glavred_01.jpg": {
+        "sha256": "7203ee01e149e58d5b6af90d3709e153dae91b5d1bdf73176ef01a955f9627d6",
+        "size": 40390
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/glavred_02.jpg": {
+        "sha256": "43b93626b8eb2818da5f799b49d4923fd38c247ead27b3ed58f95e3bc3e2730a",
+        "size": 33192
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/glavred_03.jpg": {
+        "sha256": "be754c7ab31b7352bc9226175fb69dfc855ec9b3cadb910b7ff6ff8812bf6b75",
+        "size": 31765
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/glavred_04.jpg": {
+        "sha256": "8a44bc681f62ed66c42ecdd0858d70eb06f46bbb17622593820538b3a013e34c",
+        "size": 34723
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/glavred_05.jpg": {
+        "sha256": "e2cbd668ec806bcd5ec4611791ee33b029ad378f9d98ec955ebc42d43df31c60",
+        "size": 31955
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/glavred_06.jpg": {
+        "sha256": "88e89b687c203bc93d39ca72ec416166c4056357a1b4f033fe213f9e239d9495",
+        "size": 15041
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/glavred_07.jpg": {
+        "sha256": "2a4ca5505ab6116902a781834242afae1631268912f41a627f3bdc87e1dbbfd4",
+        "size": 34162
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gluki_00.jpg": {
+        "sha256": "e6dbc41f2d4ab2374c7a6789d9f667d920564b5469a343ead6565be5757ceb29",
+        "size": 31526
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gluki_01.jpg": {
+        "sha256": "866ec19f52ab00d11a25a071dcb34f041fd3103c511ed29ab036389c5fb5571e",
+        "size": 27502
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gluki_02.jpg": {
+        "sha256": "9ed69a4d05094006a2ddf80170b465958aac2d2feb759f58c77845ca66b0b401",
+        "size": 26100
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gluki_03.jpg": {
+        "sha256": "4e9291b2a84e8776bcf0c00cbb070d6a8ae08e7e497a11efc0e02f8c08f75214",
+        "size": 9557
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gluki_04.jpg": {
+        "sha256": "060446f4b023a8ec8fdde0d3223db9f462eea956b476407cbb4c070e5628a3bf",
+        "size": 31364
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gluki_05.jpg": {
+        "sha256": "bfad91bc5591d1c4e23ad1a4e44750c08fff3cbfaa0d2a53424e697107096d97",
+        "size": 38641
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gluki_06.jpg": {
+        "sha256": "74126d4061da8ee5137aa8ed5e1afd05b03e00171ba09c06dbc09d78f7bccd96",
+        "size": 38612
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gluki_07.jpg": {
+        "sha256": "5228d8c7ad8dc12ee1750794723dc2748a50bf9d9b398d579c948ddfb5af1e57",
+        "size": 16351
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gluki_08.jpg": {
+        "sha256": "e7941e47fe385d1782cd4640f35e34972003217eedd2887cb6e02a2458c83917",
+        "size": 31913
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gluki_09.jpg": {
+        "sha256": "2ad0c18a41d3ef6d49becdcde81a14d82344daf5eee8343b1b3df5b1d5432ca8",
+        "size": 36398
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gluki_10.jpg": {
+        "sha256": "01ed9a5ec6d18c81cd5215aebccae468482cb617e92fb32ee642798ed9f6e461",
+        "size": 13786
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gluki_11.jpg": {
+        "sha256": "4a7e5b2db4fc5d305fdb0a8f3e24840ff0a0b2a0349a9c8e00d6451391916963",
+        "size": 26796
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gobsaur_00.jpg": {
+        "sha256": "b37f8c062bafdf10c0633f600229fcd372972e9da8eadf03a351d128895ce1ab",
+        "size": 28485
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gobsaur_01.jpg": {
+        "sha256": "b261e568e520840098ff2900c962e946fbd558546efab90a24a0ca8594bdabfd",
+        "size": 27848
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gobsaur_02.jpg": {
+        "sha256": "76091e4812dd4ababb4cc4bde575364835e14198e87f8ba23d784e6ee330641a",
+        "size": 23780
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Gobsaur_03.jpg": {
+        "sha256": "f1913ef0457a5aca70f2087d14f6f8b6cea08652030da95a641bf39618d3ad4d",
+        "size": 30232
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Hachball_00.jpg": {
+        "sha256": "134a3459a52534fcf3526988b9209857e443bebf419d06c0648eea52c60293d9",
+        "size": 47362
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Hachball_01.jpg": {
+        "sha256": "7d31870bfd21c688bb8b620acdc279807be8bdae1c4e4ceaadd9d8b7c2d71309",
+        "size": 24612
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Hachball_02.jpg": {
+        "sha256": "8a80ce0ab6cc81dd752a1c999fd358cc34fab959570128c55535ff038465b369",
+        "size": 33612
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Hachball_03.jpg": {
+        "sha256": "4f5e0156c1d7a96264e85ccd25f8f03b043544715d5e10347dd777dde1133da5",
+        "size": 22921
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Hachball_04.jpg": {
+        "sha256": "0b4c03d1dbea2ee3ac646d22ad91304aac856b0150bb7a2a98ab4563cd013581",
+        "size": 25872
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Hachball_05.jpg": {
+        "sha256": "68c6bc7aefc34d3ed13b1427de2d9c94b842538761eb9e58313b24131e7de21b",
+        "size": 26112
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ice_01.jpg": {
+        "sha256": "7e9ae7c8ff08dbf386016cb4c87f0f994d0fc2a01ba785d72285e9422415e02d",
+        "size": 34486
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ice_02.jpg": {
+        "sha256": "42cd754311604f2a69d54ec37d120a55554600de411fa2b24a9ef9ec13bcfc61",
+        "size": 19209
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ice_03.jpg": {
+        "sha256": "80f0fc380d9a5e172b78f7c1cfb3b58478eb26b3fc129be07f99337e01eb3bd3",
+        "size": 22697
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ice_04.jpg": {
+        "sha256": "63d7125fb92e2f94f00a2c1af9dd723f020684c4d1eb9a6fcafd598d1808f4a4",
+        "size": 17956
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ice_05.jpg": {
+        "sha256": "ffb07068c66548f9bc24097ff35d864a893cdd438e718a9400e004935fbda58c",
+        "size": 9389
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ice_06.jpg": {
+        "sha256": "d5ff275e1efa906c16918c7f89a5b0d126d0bb09b3b659ce8c8b158fc46d7cea",
+        "size": 22865
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ice_07.jpg": {
+        "sha256": "620dc9d6423fcf98fa8a8cabc48e3af95be536ed47003bcdc668d136bd2fe61b",
+        "size": 33378
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ice_08.jpg": {
+        "sha256": "29a255c3055de05fb4d34a418101309d95d39f3672d8708b07a023c9008150f4",
+        "size": 50864
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ice_09.jpg": {
+        "sha256": "2dc117cf7b0dcb26a8a69a496c5f96c9acfbe4f11ca9f4d463cd74cbd621e93c",
+        "size": 9826
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ice_10.jpg": {
+        "sha256": "475e35898de2c591cae9b83591ae83da82da258ec8bd3032da818bfa914a8862",
+        "size": 13091
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ice_11.jpg": {
+        "sha256": "5d5e20e1c3d0c9aa3b1be2e163a67336aa643e0c4541605f1acf8d6b098c7067",
+        "size": 30878
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ice_12.jpg": {
+        "sha256": "e8a83197cbb6d11cd2cc642f381245b314de16f1575076e0172ca75abea67dce",
+        "size": 19837
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ikebana_00.jpg": {
+        "sha256": "0b67e94a8e24c8fd8a5a775521756d68fd55339c9ad360ea9ac694cdc0031cfd",
+        "size": 30056
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ikebana_01.jpg": {
+        "sha256": "ddd258afa7c7524883d45e560fce71199f30af295f83f21d4e6bc06a1a27687a",
+        "size": 32323
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ikebana_02.jpg": {
+        "sha256": "55aed8b3abf591d12d8c2bd6efe04843a61df54324ce15adb5f570d4bce242fd",
+        "size": 37811
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/image_14_Battle.jpg": {
+        "sha256": "e604393ff5e7aa1c9479b76c3ba7412e4e4d9da1b260615ed558dc2f24f6dc6b",
+        "size": 22360
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/image_14_Battle2.jpg": {
+        "sha256": "67d9d713fec34c422c2f03b4c7bd1fdb02a5339ab9600cf0eaeb8a17e7d6bb3d",
+        "size": 24625
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/JUMPER_00.jpg": {
+        "sha256": "b59985211f2af377e430ddc0b8a151cd967ee84556e098668465cb2084659567",
+        "size": 20502
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/JUMPER_01.jpg": {
+        "sha256": "cf67fcfdc8a7413e2d9fcbe1b48be757402c3a71546052263baa71fbe5aa1f07",
+        "size": 23194
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/JUMPER_02.jpg": {
+        "sha256": "f8e76cca369d23448a9d2b8f106520f1b809e60a99ed386193613790d01836a0",
+        "size": 21434
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/JUMPER_03.jpg": {
+        "sha256": "d92775769a1d60a837098a68e38f31c97ea94c0ad831e2bf412413b5a88c8f28",
+        "size": 20509
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_01.jpg": {
+        "sha256": "c2f058f8f0e46972d8d07a91efd6237634514d09b4662ea2a87378604c76d8fd",
+        "size": 22857
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_02.jpg": {
+        "sha256": "03a21e796de440f3b31aec542efceed3f1bc4b08c9ab576bcc6fda3f77dbbf5b",
+        "size": 28973
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_03.jpg": {
+        "sha256": "41de5bb4985ceb39326caf3e3e7608257b13b6294dc3978a3a38873878221de1",
+        "size": 11560
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_04.jpg": {
+        "sha256": "6678c525aca28c46d0079fc63e70a26b244c7cf4f7627ec5d4578f4463fd1acb",
+        "size": 32209
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_05.jpg": {
+        "sha256": "d3c6782f9e103b7fa2a24ee8401ecc3935d1052598a9d7f844a5f64f30d464f8",
+        "size": 34758
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_06.jpg": {
+        "sha256": "833e0f1e30aef274f61bb1d3b7b3ffd4ad309fe883bf4d5e1bba4576ae3631a1",
+        "size": 17196
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_07.jpg": {
+        "sha256": "95a5bc2b7d3b601a7232cc704aefbe86e83e5623ce1832ae285aebb0a58a955d",
+        "size": 32984
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_08.jpg": {
+        "sha256": "dc44dbc8bf13d4ff7338fc5b8eb833a4b6085cf653ad8e05a81c00fa41b6604b",
+        "size": 30885
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_09.jpg": {
+        "sha256": "782fe00a4c65e0f4aa09df25353d2212da90ae84a6c6ef731668d273211e4646",
+        "size": 19367
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_10.jpg": {
+        "sha256": "9c876cdaa20c9f427443115dc1c9695b3efe20b00e1a9eec7e25af846bdfca92",
+        "size": 23096
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_11.jpg": {
+        "sha256": "0643acd5a6940d63e68512f8d5d16ef1e8ac1ce98a23825b6336e2f1908b1f1b",
+        "size": 33353
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_12.jpg": {
+        "sha256": "222da8585c4a8bf10e4d41543b6a96bcd68074eda06fd06865243fe46d5a0071",
+        "size": 38882
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_13.jpg": {
+        "sha256": "69070b2f1a1da18df3c7c5f924bf31dbabb1e401b3438cde62fe65652ca35507",
+        "size": 24903
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_14.jpg": {
+        "sha256": "c215905be6e89868cc61acc68881d7de87db01291b994526f7963364966bbf0c",
+        "size": 24833
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_15.jpg": {
+        "sha256": "66d3f4b8e2ffffa4bd093bf4fd0d9baf987fa091faacd04660339057516f4a92",
+        "size": 20118
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_16.jpg": {
+        "sha256": "8a69d7f689f427ecc3829c8f86b03ef7258dbfaa13d04315c63c99d5c937df9a",
+        "size": 34820
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_17.jpg": {
+        "sha256": "bff2d3ea15fa89e1598fd3ad544ec08c6a7ad62312b1af88c31811d4252cac03",
+        "size": 26320
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_18.jpg": {
+        "sha256": "5acb1a9bf05fd4d34860535c5b43662c46c2ebb47197c2316a7d6ec0e0aaa3e5",
+        "size": 32296
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_19.jpg": {
+        "sha256": "d1a58723b0583298e3c8013b130a308080c5fe1a58deb0383f1999b58fccad78",
+        "size": 22215
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_20.jpg": {
+        "sha256": "60aa3fd7e1b04bb8a96c337020187adeb8b004067754194c2d3ed5b9987b7e7c",
+        "size": 24926
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_21.jpg": {
+        "sha256": "45fe14ae920443bf0b48812f6dbebad67e04619ebd02f8dadb3821ff30e4b89e",
+        "size": 26482
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_22.jpg": {
+        "sha256": "13973c99b089465d53c20ab851d95432a34ceba4ea7c86542094c366bb095594",
+        "size": 19878
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/kas_23.jpg": {
+        "sha256": "3d298003044af3c62dc77d9bd27accaa1bef3173f3b0528eb2170f043d083ef4",
+        "size": 17742
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kiberrazum_00.jpg": {
+        "sha256": "5147f038d6eee628add3e2dbf0a8816921b4a1c05d9d7af4caf895a08126a8ca",
+        "size": 23149
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kiberrazum_01.jpg": {
+        "sha256": "833e0f1e30aef274f61bb1d3b7b3ffd4ad309fe883bf4d5e1bba4576ae3631a1",
+        "size": 17196
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kiberrazum_02.jpg": {
+        "sha256": "95a5bc2b7d3b601a7232cc704aefbe86e83e5623ce1832ae285aebb0a58a955d",
+        "size": 32984
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kiberrazum_03.jpg": {
+        "sha256": "782fe00a4c65e0f4aa09df25353d2212da90ae84a6c6ef731668d273211e4646",
+        "size": 19367
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kiberrazum_04.jpg": {
+        "sha256": "9c876cdaa20c9f427443115dc1c9695b3efe20b00e1a9eec7e25af846bdfca92",
+        "size": 23096
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kiberrazum_05.jpg": {
+        "sha256": "222da8585c4a8bf10e4d41543b6a96bcd68074eda06fd06865243fe46d5a0071",
+        "size": 38882
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kiberrazum_06.jpg": {
+        "sha256": "429f2cb2d09f7f12c42dcac003268f713020bf48b519376481db5a86175e03bf",
+        "size": 28725
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kiberrazum_07.jpg": {
+        "sha256": "576c6e831e3df993a0b7c358a661551bc087c80f52715f84897c17db029c3158",
+        "size": 33561
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kiberrazum_08.jpg": {
+        "sha256": "ffcfbc377a111aadd65279ab7ddfba39e99b74868a19ca529d5b5326dd2ab87e",
+        "size": 25091
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kiberrazum_09.jpg": {
+        "sha256": "9c6a8838907b23be18c3a0c33b8533c6df0a4dc58b5e17854977df1ace4e9cfc",
+        "size": 24761
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kiberrazum_10.jpg": {
+        "sha256": "5d5e20e1c3d0c9aa3b1be2e163a67336aa643e0c4541605f1acf8d6b098c7067",
+        "size": 30878
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_00.jpg": {
+        "sha256": "bc719658c58cc0851807dd01836a04ddc19470227cd46780c378dbf2810293c6",
+        "size": 15926
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_01.jpg": {
+        "sha256": "950d133d9a9ed6dcbfc3a027a1e1eb5db12dca4c6337a3c5f0daf692b36b7dfc",
+        "size": 34475
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_02.jpg": {
+        "sha256": "7074aa553463e231160431d0e380550c270a6b6d017bd1eefcdcfc213b401acb",
+        "size": 24171
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_03.jpg": {
+        "sha256": "4062f926fef9deaf1badef07654f02727a5886595ba5b5df97e1569959826a2b",
+        "size": 27881
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_04.jpg": {
+        "sha256": "f2b566b6ab52e6a00ded94c82628811ca29bd5f05881ceda5ca68fd733746f82",
+        "size": 20254
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_05.jpg": {
+        "sha256": "398dcb667905aa66f820c4655788a204e6e05360fc63a1a2d614cc150d0e00ca",
+        "size": 34079
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_06.jpg": {
+        "sha256": "526247cd30c906399a3ea43defc1d7ec8a953b28fb097809cc2afcc8081b7d38",
+        "size": 22000
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_07.jpg": {
+        "sha256": "1ce29104749daf4acd6c41b654277e16a6fd60ab0d5320649b16f9e8bbfc4824",
+        "size": 25612
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_08.jpg": {
+        "sha256": "c364e17fb46361bd8d57795d9bff9df3bacfca2f31a94e79e1817cc4a8286723",
+        "size": 23484
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_09.jpg": {
+        "sha256": "05396bc80bb723643bae12cc8d8082d9e0fa7de7434c0391fe0f3cd04b6d0568",
+        "size": 20045
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_10.jpg": {
+        "sha256": "323ee33b3776c8fde9a90c3458c403be6a18df68e8cf8fe82945fa9e51abf5a2",
+        "size": 25853
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_11.jpg": {
+        "sha256": "e6bb6c66c3535a90579b009d04bf3c8238e99813c144618724fe3828619db620",
+        "size": 23120
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_12.jpg": {
+        "sha256": "10fc95c340c0da72cb79f8d07711e23ff663577b9039e2802523b09fde72f32e",
+        "size": 22059
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_13.jpg": {
+        "sha256": "b297e0820af762d5281642d680aca025d2403ade73a5c73437c307bc9fabab1a",
+        "size": 19563
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Kidnapped_14.jpg": {
+        "sha256": "95943ac00bcada4db192b2a2d61739bb40a978faced0c9553f16d1ff17698319",
+        "size": 34904
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/linx_01.jpg": {
+        "sha256": "29eebb87a3cabe00a365ce343b79e5548ffacffc4252ce69efa42a4338124db5",
+        "size": 31705
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/linx_02.jpg": {
+        "sha256": "186720b36858a5a27348e159971026614876408da47cea4898d881d2f7ca7229",
+        "size": 37631
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/linx_03.jpg": {
+        "sha256": "6b0603abddeae709185746471652f2d6afe885daa8090aaac2ff803544ee98cb",
+        "size": 27073
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/linx_04.jpg": {
+        "sha256": "e437288b087c4825972b5cee22c175c2dd5a1ef80eed1776c1e0ed620194b9ee",
+        "size": 32918
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/linx_05.jpg": {
+        "sha256": "9dcc3d29bd6f57b11985f9127d4cace47be742196219a6c4ed940c88ded27da3",
+        "size": 35025
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/linx_06.jpg": {
+        "sha256": "7ce1f6c9895f166a88cfcc11e99e2397bb563e047baa76be698a18ecb9e57912",
+        "size": 32269
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/linx_07.jpg": {
+        "sha256": "4a123205586ca865aa55807c0f0c3b32183c02b1e7a6539bea8ae49302173d5d",
+        "size": 21927
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Mafia_00.jpg": {
+        "sha256": "efe0482624aee595829c9f1c6751143a51d13cd58114a7832696e40412442a0d",
+        "size": 29194
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Mafia_01.jpg": {
+        "sha256": "39d0de681d0c53b5c376d9075470a53df183665272d0eec602f1731613516f07",
+        "size": 19974
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Mafia_02.jpg": {
+        "sha256": "646cd4d99112c9da2648cc380371762c037f2ea357a1c8292925e2db71d208ee",
+        "size": 21012
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Mafia_03.jpg": {
+        "sha256": "26deafe03ac262e2743c85ddb6e3b8f7be6bc2e3fc5eedfacd02a6927d3ccb64",
+        "size": 26872
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Mafia_04.jpg": {
+        "sha256": "c6b9489ca1574af00a01a7bc9543dad46a738226526a461f7f9b0b2f57e08e12",
+        "size": 26088
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Mafia_05.jpg": {
+        "sha256": "a62e94ae239a80075d88b5bec6b47a219df6ad5974ef3d601fa225805cc60051",
+        "size": 23726
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Maze_00.jpg": {
+        "sha256": "3ef93c76ab4213868ea9c7cd980bc555c6620e81de3a5b245c692d3d68739a8d",
+        "size": 27477
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Maze_01.jpg": {
+        "sha256": "38ed25f0a04b3f95dc377b6e92bc3ee0d584eff3f26c0b495cdc367141be4ec6",
+        "size": 17813
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Maze_02.jpg": {
+        "sha256": "8e2a0e413cfb2b701b8930645bf205a7a14a602c2e6102ed5defefc986b63039",
+        "size": 23928
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Maze_03.jpg": {
+        "sha256": "2210aaefee6bad19fff5cdeb7c1299166b250617c6f67cb646dad5f793be331f",
+        "size": 35315
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Maze_04.jpg": {
+        "sha256": "d3c832372c20a652a20541a980ec1079e54cf87eca58b1a54a3af20ee85ff351",
+        "size": 23983
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Menzols_00.jpg": {
+        "sha256": "3a378eb37d278d14bccb10921587b243c0f13ba6edbd7736d48b4b8ccb5d18d3",
+        "size": 27224
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Menzols_01.jpg": {
+        "sha256": "baa5463b85abae9a0817dc075c9fa8f05d50a1cf5b16bbeeeb99766fef57b245",
+        "size": 36783
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Menzols_02.jpg": {
+        "sha256": "992187b263d36be3ea3c0ce2dc5ddd80325389b981a08e6abdb38eac48d5689f",
+        "size": 29423
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Menzols_03.jpg": {
+        "sha256": "40a0c69b6be80a5ba88584a7e4d58e0075b4e4e2647bd52738ed6c0eadc8a302",
+        "size": 32879
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Menzols_04.jpg": {
+        "sha256": "2869f5435fce4a04b1efecd1de5b4512732a36be8205909cb7c58e137aefa166",
+        "size": 33879
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Menzols_05.jpg": {
+        "sha256": "229037b57ff35560c08f37731efffadfd02cea8cfc11dc3d40f039dce860b4cb",
+        "size": 38366
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Menzols_06.jpg": {
+        "sha256": "1eddb59d810f9116974477fcc54e46c6113801e1e2014e6a5853af57e419eda6",
+        "size": 23694
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ministry_00.jpg": {
+        "sha256": "3264f40119b4ff17192a15f51018ef508f4ddbb48afaca3dcee192403b0ab9a9",
+        "size": 34138
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ministry_01.jpg": {
+        "sha256": "168a8040f57df2bbd9a52b5be2dc12c8f5aa850ad44f13f34a9434ed47317cfc",
+        "size": 34775
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ministry_02.jpg": {
+        "sha256": "f8e1f9beb4df7486f772b493a5061ff1a8a98211a5dab20101051611485337f1",
+        "size": 33380
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ministry_04.jpg": {
+        "sha256": "8cdb7e93bfaf85cf91148fca27e4b97de8a83c9231350d6203abcbbbff08660b",
+        "size": 20143
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ministry_05.jpg": {
+        "sha256": "f4f26d85bb5266835dcfa6eb46edfb3ea8aaabe5dbff6e3b7c53c27db4a82cda",
+        "size": 19524
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_00.jpg": {
+        "sha256": "d769c5496546412fc1c8dfaf84e2ccff7cc7a86674bbba473b87ecc3009f2408",
+        "size": 33084
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_01.jpg": {
+        "sha256": "68e8c65c3fd1a8b2028a8af9fbd0b0fb2db197e8c920f5d48796cebfecdb776e",
+        "size": 40918
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_02.jpg": {
+        "sha256": "d39210895e6f2916c7903173ad8b56a19fab0a3acca2d08bb99fce097072d2f5",
+        "size": 40823
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_03.jpg": {
+        "sha256": "47f10a407e0b3a3ad35bd92ce6413ece256d6937e025087dc13c9a6b244c0ec4",
+        "size": 31373
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_04.jpg": {
+        "sha256": "a90cc5fbd7dc225d1611c2b5e338b1aeda03f3bf11b43361a72630e7ce9cefa4",
+        "size": 29603
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_05.jpg": {
+        "sha256": "cb0b157e23c14fedb6b0861525e618c016ab1cd9711e0cc54b541f22c6e03c09",
+        "size": 35784
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_06.jpg": {
+        "sha256": "6232c10e9a5ce2281cb64adccbd9282b69285aacbb58f3073c0c65061aa09036",
+        "size": 22126
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_07.jpg": {
+        "sha256": "f20df0484a687c67e89527602739b6ba0ce6361c913820bbb60bcf517c1e4543",
+        "size": 35068
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_08.jpg": {
+        "sha256": "83f25de83a69236689f3f05a4bfe97634bfc1304456a2924fc4446fb4e92aa3d",
+        "size": 35907
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_12.jpg": {
+        "sha256": "958ec33c7e00d23914f136bc1473796b4116c62ca9d214e82563864701f9af6b",
+        "size": 41399
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_13.jpg": {
+        "sha256": "54de30f2557c529342c7b69d2b577c79d73a57706746fc50b4a669516b50bc4a",
+        "size": 33369
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_14.jpg": {
+        "sha256": "6d8d8d8d182b9008c99162469ec1d9183ffbab6e5c4598117a2fa7c7abecebbd",
+        "size": 46354
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_15.jpg": {
+        "sha256": "95aa420450e6440c474972746d9e3e37df562844c502e14da3e3a1e3ed5c39cf",
+        "size": 24875
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_16.jpg": {
+        "sha256": "c7f98a0ef00fcdf2f2fa0918dad94e04b07cb6ee31d03ce15427feef357abb9e",
+        "size": 30333
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_17.jpg": {
+        "sha256": "58934f0e12e21e249166f3ae329d72ce003b73f5e493fcc574e2a4fd7cc15b62",
+        "size": 34965
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_18.jpg": {
+        "sha256": "498793b0e1446dc8d63863800edfcc38159a23e4a1704ca939b5537e8720a308",
+        "size": 28356
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Moi_19.jpg": {
+        "sha256": "e1a24f2ca8c1e2df922c8ded7ab5f1c600b66230b11285e4aead7a7daa759bde",
+        "size": 29078
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Murder_00.jpg": {
+        "sha256": "d299cf12f219e6b4c7800046e947e5f8df1c2fcc56f4f66db3e268773fcafcab",
+        "size": 42899
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Murder_01.jpg": {
+        "sha256": "50a0be52faf8cb2de867694aa009f3d028f572f08d0d8e16229d0742b02af2b1",
+        "size": 32515
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Murder_02.jpg": {
+        "sha256": "1b33a6e9606aebcdd53f7448eacf1bc9f9e9c69d3c469f465eccfe777e030c98",
+        "size": 35632
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Murder_03.jpg": {
+        "sha256": "6e6eaadcbfe6ea89448284959839dc7283aa318f65e7ad4fc90edb9faac0df46",
+        "size": 42024
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Murder_04.jpg": {
+        "sha256": "564d44d6fe9b7294e2daad8a2f0a2a05941bdb91b0c1ba411ff7733d5513d397",
+        "size": 33171
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Murder_05.jpg": {
+        "sha256": "4aa21918df55b7203b53abb43784f26a174a6980564740aecee65eab67c27e03",
+        "size": 30672
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Muzon_00.jpg": {
+        "sha256": "335e733a0050842ea4f8b6c2e22c2a8a64fcdcfeb5d1a1c8471b0bdf12c8ebd7",
+        "size": 26348
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Muzon_01.jpg": {
+        "sha256": "d0db34bef2163b7d1549867d0ee600b2a2ecbbaa429fef00eac8e444eb2b1ba4",
+        "size": 21414
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Muzon_02.jpg": {
+        "sha256": "022783d139af340925776201ddad11182d50e5cd154d2c6f50945cef39f3e020",
+        "size": 21857
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Muzon_03.jpg": {
+        "sha256": "9056085324e7d9e4fd4514eb78c7b598d4004d09e83bac26a0b123e6212bf4b6",
+        "size": 16375
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Muzon_04.jpg": {
+        "sha256": "b84c5f3745e125899a33183e253d793ca4752b5cd0e163a6a8dc825630ce00d7",
+        "size": 21807
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Muzon_05.jpg": {
+        "sha256": "8ef8c7b09fcae13f785b52a99ad745befab48129dd6ac7d6e428fed2b005e57e",
+        "size": 16638
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Newflora_00.jpg": {
+        "sha256": "c2ec399de15b616c62ea5be4f4b8fc7c0380becf9a27325e05fc6d3de653353f",
+        "size": 37759
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Newflora_01.jpg": {
+        "sha256": "91259168ab5fc0f5d333862fbd18fc7bede206ffdd4ffe4b2116a5a2c1ebf131",
+        "size": 38229
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Newflora_02.jpg": {
+        "sha256": "8c9f0a2348eeaa83c7a300589393f9dd7997104a338450fe9c90ef39f740641d",
+        "size": 34381
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Newflora_03.jpg": {
+        "sha256": "3a87cd7e7646ff7f20c393f8cf084e061445559174c4c9f5a9a03df24979bffe",
+        "size": 27436
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Newflora_04.jpg": {
+        "sha256": "f48172bb15046c04e22abc47abc38e2b6621baaecc94d6b1481affa344effb6f",
+        "size": 28109
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Newflora_05.jpg": {
+        "sha256": "df934f0648c1e8b248a467611e46ad5e0fd46e522beae1834dde509a4e347dfa",
+        "size": 31273
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Newflora_06.jpg": {
+        "sha256": "9a363b9a3a1d99422ec55271e122de4fda7764ca24b4d8bba3521d676d59ab15",
+        "size": 39312
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Newflora_07.jpg": {
+        "sha256": "0cbad3fa1934e386215d04d69dafb608cbad08a497264f5257d6f920265a1b12",
+        "size": 26575
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Olympiada_00.jpg": {
+        "sha256": "ca9fb7223f8853c3d2f2ebdd05bc5cd2308d84b58029fb420681544db63e77fe",
+        "size": 27751
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Olympiada_01.jpg": {
+        "sha256": "0b16aff39579fb470938dc17397ba24200e87fd059f827765b4bc09d49cca37a",
+        "size": 27020
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Olympiada_02.jpg": {
+        "sha256": "c9f0798710729445b88cf0f87529330d20ae8bf5fd63aca385df8d9b4f9903d7",
+        "size": 23430
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Olympiada_03.jpg": {
+        "sha256": "70eff0374910445af46ff750a1ca98f738c328cf75eec93a7b251714a383e4a9",
+        "size": 30568
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Pachvarash_00.jpg": {
+        "sha256": "7f1ad55b889168045d96e0edd071015fbdb578cb98452eb4d07ca5bbcd2b9e8b",
+        "size": 39328
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Pachvarash_01.jpg": {
+        "sha256": "89a02018cbf0f9bed37ec3d6a84ea0e87a346a022460d73b85240a621248f086",
+        "size": 29613
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Pachvarash_02.jpg": {
+        "sha256": "c0939b197d5a283839996175915d98341815eff73ae1457e51d4f7ab0a102d2e",
+        "size": 33506
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Park_00.jpg": {
+        "sha256": "3ee55d7947a7c9a9f14bb9807d1d44c24aa94ccf95118a5eaf73160aeacbd28a",
+        "size": 21574
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Park_01.jpg": {
+        "sha256": "be4a595d51d53b436c9062fae8c741da1a2efc25edf209766509949bc283769d",
+        "size": 31130
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Park_02.jpg": {
+        "sha256": "be0fa7b2b8d6ff305484f51cdb95b240fd51fde576d3863910b5477d39bb4d1c",
+        "size": 34610
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Park_03.jpg": {
+        "sha256": "9cac24272dbea5508293f2959d0b51a134f5ef76875fb4a856050df20df094a8",
+        "size": 37739
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Park_04.jpg": {
+        "sha256": "a77f51bf83dfbe368d0352733121a8797bc5dccf4f72d464b949bbacee585d82",
+        "size": 30132
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Park_05.jpg": {
+        "sha256": "ff80a3db2d72a43b3f1d7c231c010b1e35cbf477a2ae5718662b3678df89f37d",
+        "size": 28350
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Park_06.jpg": {
+        "sha256": "99c7e4bd118472383d5e3af50374f436e265d59a42923565377e7ee72b8853ab",
+        "size": 37199
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Penetrator_00.jpg": {
+        "sha256": "befe48ae09072f74604c1e9028eb5c652a271e17bf585109c0c139f417df5eb4",
+        "size": 29327
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Penetrator_01.jpg": {
+        "sha256": "c4a5ec3ffe90e3c8754925cf4ec2aeb672166a0fff199a49de4cde0319407879",
+        "size": 29804
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Penetrator_02.jpg": {
+        "sha256": "9854fec7af770875a74849a4a64d0401310ca75bbce8d3d2fc94ce12a6890ae2",
+        "size": 29800
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Penetrator_03.jpg": {
+        "sha256": "6590b6bf86f96f6de6fc382063c9f301659313c86c465f0d65fd69c8e1d24603",
+        "size": 30527
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Penetrator_04.jpg": {
+        "sha256": "6c12eed20a387f940a4ccf523ef57344a08927f7b576a04360ad1ea159a73935",
+        "size": 33622
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Penetrator_05.jpg": {
+        "sha256": "0b17204a3b698b17561bf05f7bbe6758db6ad935d11dc20258f58b4ad7bf0f56",
+        "size": 34917
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Pharaon_00.jpg": {
+        "sha256": "3570b02428dee2ea58f4d84b983d570c42006b95c1ac5b7c8215abd5fa0bc677",
+        "size": 13204
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Pharaon_01.jpg": {
+        "sha256": "9987940482d74bc4c09d56f2d16bccbb8f953120003483a11efe1986e2999daf",
+        "size": 30727
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Pharaon_02.jpg": {
+        "sha256": "a4d31f86c8f6268c017ab715de296f93d4f15d16b7a32df44969490f05b13471",
+        "size": 14951
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Pilot_00.jpg": {
+        "sha256": "55597cd70d13c36fb04e44760f09422d31107b82a9107751d1a744f1e6a9e40b",
+        "size": 22006
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Pilot_01.jpg": {
+        "sha256": "97b889741d70d382cc1ac33153386c9b43bebfa8981d5dd1117bd1f8c9bc84a2",
+        "size": 22753
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Pilot_02.jpg": {
+        "sha256": "c05125fc12eb8b6cc0610cd79a5d541281ea8c69fedb2ef15925b795aa1ab8d9",
+        "size": 25367
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Pizza_00.jpg": {
+        "sha256": "8d2ef01c4663f23b87b853d5fdd86482124558c27fb3fd18b5e41ea860631035",
+        "size": 25111
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Pizza_01.jpg": {
+        "sha256": "e7d39ee8cfa8c23235851666a612c514fd53d0d17396dcd7010ee57330f1f8fd",
+        "size": 19150
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Player_00.jpg": {
+        "sha256": "626395ce80d18651ef66da1839abe3ae8eaf78213307dfe06abd585d33135ef9",
+        "size": 28250
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Podstava_00.jpg": {
+        "sha256": "69dc747043030cf8be31e708f83fad926dba630fbc3b3d7a3b448d7615299479",
+        "size": 22874
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Podstava_01.jpg": {
+        "sha256": "78e4d9af8b94c643f52fd394dd73be52a9bd7efc3d3dd9c354708f1e9baec4ad",
+        "size": 29005
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Podstava_02.jpg": {
+        "sha256": "1ec027bd03f398493e9b1b51ba5460285b800939a105fd881d0a3238348dae12",
+        "size": 17795
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Poroda_00.jpg": {
+        "sha256": "326fb0c0c5f5929ae88120d0abfcd7e2a258a74983df6ebec213c63825642ef6",
+        "size": 31516
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Poroda_01.jpg": {
+        "sha256": "521433561af52a8166ce06c36d37a6dbe579a807f261c9de3def365688dabc0f",
+        "size": 26223
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Poroda_02.jpg": {
+        "sha256": "1e1955efa95fe7a7b953231fc5a2eaf96e08489397794231ce3dbd962cc0fc63",
+        "size": 22632
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Poroda_03.jpg": {
+        "sha256": "761af34ab5b3519f5ada4150e600a69a57ddf05a4364be4f0e7e2e6819905734",
+        "size": 23825
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Poroda_04.jpg": {
+        "sha256": "c164ea3ebd8ba4e7d240ed4947b51700fca566a8bca751632f3f88530b7f7de8",
+        "size": 25523
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Poroda_05.jpg": {
+        "sha256": "9e6072a14758d3013258ec86563bbea0df89a9f95d54bc010d19f1486be5b333",
+        "size": 29387
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Prison_00.JPG": {
+        "sha256": "83ddb7f8219f4112aa940c4cdf23cf34fa151b9dacd6d5f9c9185c2409ddd16b",
+        "size": 79045
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Prison_01.jpg": {
+        "sha256": "7b8d3d655357f5dc2d0ce7c679d3c5f938c2bb2f2067febfc77011a8994e536c",
+        "size": 37182
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Prison_02.jpg": {
+        "sha256": "8b7fc9525ea622ed53f6651dcd31510c4d2eeae8077b1b0d97f9137efc0b7727",
+        "size": 29026
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Prison_03.jpg": {
+        "sha256": "667d9a89aa0105bef13f344c68407fede98c38deb6d96b46807b50a1e64a5cdf",
+        "size": 32910
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Prison_04.jpg": {
+        "sha256": "8e29d16fa18c8b92e6de2fde7a8e3c915aa2aecffddf18a78738f31015d9330f",
+        "size": 25962
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Prison_05.jpg": {
+        "sha256": "ac2e8dabecdd2e50cb9fb8bf051203a68deebf47d29c6874758a1b8041f21f65",
+        "size": 33164
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Prison_06.jpg": {
+        "sha256": "55a2f7e961ee5c8f1db705677d27049d2c711423c8c3abb10288e2e136b74afa",
+        "size": 31222
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Prison_07.jpg": {
+        "sha256": "1fccfb801edbaf6e404249524396aee7929e6795a2039e2b983d82dc44cf951b",
+        "size": 27961
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Prison_08.jpg": {
+        "sha256": "488804421d1d95ea9f7e61f52efa551b522304431d649b1fa502e98b8163d9c4",
+        "size": 33464
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Prison_09.jpg": {
+        "sha256": "4a8441589c37594da48dbf0a996369835d5de6475ccf629d7e8003cdf4ec7b1d",
+        "size": 25673
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Prison_10.jpg": {
+        "sha256": "763ecf02fa88f669e891f5e958054345fe8bd3396e88ee3af09b01eacf8db581",
+        "size": 29890
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Prison_11.jpg": {
+        "sha256": "c82c297b4ae8f99511de3fa110c58a187002a45e28984526d73381bc632a153f",
+        "size": 19178
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Prison_12.jpg": {
+        "sha256": "1985fb13ed611328f306f2f4d4aadc9bed9624ff6e061a4f4d85882feda8a091",
+        "size": 15912
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/pro_01.jpg": {
+        "sha256": "866f941ddda01b7e130913961d0d8d9e63ca5814a8c884ca21f9a380d198f620",
+        "size": 19311
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/pro_02.jpg": {
+        "sha256": "571ae2e72a5e577e21cb5e49cbdacd7b41251e5f9cf2dd4c51b4e29c7845e7ec",
+        "size": 44046
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/pro_03.jpg": {
+        "sha256": "429f2cb2d09f7f12c42dcac003268f713020bf48b519376481db5a86175e03bf",
+        "size": 28725
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/pro_04.jpg": {
+        "sha256": "ffcfbc377a111aadd65279ab7ddfba39e99b74868a19ca529d5b5326dd2ab87e",
+        "size": 25091
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/pro_05.jpg": {
+        "sha256": "576c6e831e3df993a0b7c358a661551bc087c80f52715f84897c17db029c3158",
+        "size": 33561
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/pro_06.jpg": {
+        "sha256": "9c6a8838907b23be18c3a0c33b8533c6df0a4dc58b5e17854977df1ace4e9cfc",
+        "size": 24761
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/pro_07.jpg": {
+        "sha256": "9810e92b840802cee21c254d916f96f749d2b931b82f33847e5bd034ce3965e5",
+        "size": 31168
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/pro_08.jpg": {
+        "sha256": "62a06ec0ed318d5c50351abea1f215fd4c04224c7940322d22e3430cfb8f23f4",
+        "size": 19464
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/pro_09.jpg": {
+        "sha256": "7d523812b1bc26df072f7b79a9fc2cd5261f8b8f10ff4153f1b7ad3f0fc415c0",
+        "size": 32781
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/pro_10.jpg": {
+        "sha256": "a6816ba4c3a058ab8b1c224dbbeae930a7ac4e42f3e363a7b8361a8c9d8653e2",
+        "size": 33231
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Proprolog_00.jpg": {
+        "sha256": "8df1266ba6069159c1866cb1677a17f6af6500a49f429451f1dcf3b9168f6d2d",
+        "size": 15978
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Proprolog_01.jpg": {
+        "sha256": "9558ae8d4d3409302e9eb4eba301401846765a97e0f7b937c26f8650d61ee5bd",
+        "size": 28931
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Proprolog_02.jpg": {
+        "sha256": "0be0e51f604d8e7b666d64fb48262142ba1797df1b75d19122c5366ac7e541cc",
+        "size": 29466
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Proprolog_03.jpg": {
+        "sha256": "fd79bc656ae45ded987cc4332dfd83739e5e26d54228ae516848910774acf098",
+        "size": 16760
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Provoda_00.jpg": {
+        "sha256": "f7e84000732768d42ded9cd0be27094fe328b553c225f7434a142e41277005c6",
+        "size": 26668
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Provoda_01.jpg": {
+        "sha256": "3a931e54c5dfdc5f201fed1be3a27e39b3dd4f00aa988cec338558848c45abf0",
+        "size": 28261
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Provoda_02.jpg": {
+        "sha256": "13349ac4e705017d25ab048e01efde79cf095ca3df830c16423c6d68eeba906c",
+        "size": 27499
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Provoda_03.jpg": {
+        "sha256": "914784e84bbac58a21aabcb87fa5a11c280a23692f8af35abe71bbb251ae8869",
+        "size": 24276
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/qd_01.jpg": {
+        "sha256": "bad09015c9b540367c3dad9ea7ef2d6199e3e3a55f7c5ecd9a7800c9f38fce90",
+        "size": 19167
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/qd_02.jpg": {
+        "sha256": "abe8b9062e0a40e3d3c7c91b0dfecce7858130ce27a6aedacc292a787555dafc",
+        "size": 25600
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Robots_00.jpg": {
+        "sha256": "2fdafb5b694842ee33c58d8f81f233de2ab407dd9a05e94152a97f23fc103e4c",
+        "size": 28660
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Robots_01.jpg": {
+        "sha256": "5d813c565b1184f3ae3c31ddf2c9e40d9e95fcc3240cc46f21a496ba4f10ddd1",
+        "size": 28408
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Robots_02.jpg": {
+        "sha256": "d0f7a9dc217075202fe92212effa9671eb695d4ae2a0b43b2e6bd47b21fe06fc",
+        "size": 29528
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Robots_03.jpg": {
+        "sha256": "3f63a534e651dadf56b5f5ebdbd0c3fa4aca4d89072e5ed3640473f1652e9903",
+        "size": 25758
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Robots_04.jpg": {
+        "sha256": "f58e98c87544ef0b845a7d68069bc9be67561bb5a4de94c69c43cd864280060b",
+        "size": 26226
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Robots_05.jpg": {
+        "sha256": "f686e0d0d4fe7d740a5f47163112ada530c494478112c6b258d8cc6f09dfd148",
+        "size": 34625
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Rush_00.jpg": {
+        "sha256": "062b4b112ac66b34e138198b12809c3f6f6abf446f0bddc68231804133f8cc94",
+        "size": 26351
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Rush_01.jpg": {
+        "sha256": "d4f1c9ac90e0ef02cc11e95dfd1cccadcfdedbd393e36ac0dc9836ff2e473466",
+        "size": 35290
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Rush_02.jpg": {
+        "sha256": "bb310d2c38a94729debd9a10384ba0965f72ede2de13be03620e8b0e37553127",
+        "size": 26827
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Rush_03.jpg": {
+        "sha256": "7e7b16591b129f23892aa84d86c49a82f5aa6072c8f7679afcd4d8431116525d",
+        "size": 21714
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Rush_04.jpg": {
+        "sha256": "bf6570db717efe8dc98b8beb8577d1e0e63353497e915a4112f81c89e3feae7c",
+        "size": 28350
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Rvk_00.jpg": {
+        "sha256": "17263c41ae9e7c9ea47b6e88f0bf4b234eebe96f1e3aedc2aba3a8387090411d",
+        "size": 24443
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Rvk_01.jpg": {
+        "sha256": "c2bce18f431ec612b6142777ddfbb6b03114fb3a4cd6f8592e39f9a488c5d010",
+        "size": 23391
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Rvk_02.jpg": {
+        "sha256": "3f69d3e58e0c67f37998cf3d96beed1f21e76f1dd6631eaebb7b47e2b39e4656",
+        "size": 20470
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Rvk_03.jpg": {
+        "sha256": "73de60faf2bfda3ae7207d96fbb4252f61b6f164c56f7ddf73f2d9354df86f8e",
+        "size": 28032
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Rvk_04.jpg": {
+        "sha256": "bc17388485970dd6f4611b0b34871dbed5089146784460a9efea19e618b21372",
+        "size": 26649
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Shashki_00.jpg": {
+        "sha256": "c820c069c35c566682b7080f3bee6481442573981126057f951e3e1a304f08fb",
+        "size": 29866
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Sibolusovt_00.jpg": {
+        "sha256": "57f25fdf92809991b7f68f3c5b665d74e833106133c2d927957be8ae6c91f312",
+        "size": 30910
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Siege_00.jpg": {
+        "sha256": "b7f50923ac4b42201a60b0edde575360230de382e5b4e7fa5d5766d894454b14",
+        "size": 36394
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Siege_01.jpg": {
+        "sha256": "a978a6dfc9cc67b42ce7b5ec697acdda1057b3722d2bb45ca23b95fd622ee78c",
+        "size": 28452
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Siege_02.jpg": {
+        "sha256": "d2f8b033436246324ca18629deafe4c4ac8e530937875fe640dd45bf07dc3060",
+        "size": 34202
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Siege_03.jpg": {
+        "sha256": "52ee95a4ec5173b22c4fe94beda1429ea1e10da0d1d0958edbfbc1f724bc8394",
+        "size": 28743
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ski_00.jpg": {
+        "sha256": "11dd0a4d8934937ae12432d777a92aad5f09b01507f2d69af077212f56d47f68",
+        "size": 35073
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Ski_01.jpg": {
+        "sha256": "80a7f5b2ed892bf923980d3413342e6bcf146a1d42a572a58bae26135812219f",
+        "size": 29618
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Spy_00.jpg": {
+        "sha256": "ba37171edee8455081d30f0d25d3dc6a90360ee746b4c130b8892edeb4b395f1",
+        "size": 34905
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Spy_01.jpg": {
+        "sha256": "c47e6ec9e63716acdb10e3089c95cd5e43a8e2ed0e832aa7d67291ab2d52fe3c",
+        "size": 32777
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Spy_02.jpg": {
+        "sha256": "89f4ab6d971185a5fbc299c1b461beb3b76619da6f7170d843162e502f31de20",
+        "size": 23158
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_00.jpg": {
+        "sha256": "6b63fd640f015c9bd26e80f13573bc3bf772bff99bb65cb7ada471371ed53e97",
+        "size": 36159
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_01.jpg": {
+        "sha256": "e6c0cfa3f652e21df67a2c968f2069b7403951ed344cb07f9a7bf73bae47587c",
+        "size": 28593
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_02.jpg": {
+        "sha256": "de5630a76dac74a006611ff80aa02728db02aa4fa17491d88f78c786ce5fdde2",
+        "size": 14873
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_03.jpg": {
+        "sha256": "b0cad25340521b2513307706665edc74370e0b034a64005654b2ce5bbb1ecd32",
+        "size": 14982
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_04.jpg": {
+        "sha256": "53775bd805481e0d9ed5e4eca6e5d33d6729d9e196804f4b3fe66c930ac0f3cb",
+        "size": 18606
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_05.jpg": {
+        "sha256": "1201b43880df21cdeac4cf51786f071d6be7e3cc50a00c74f9da629f3036c26e",
+        "size": 28985
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_06.jpg": {
+        "sha256": "6f5ada733e19fa7f6ed8e1d33bc3f4ad6c117f4df4579003860425b48bfc2cd5",
+        "size": 34319
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_07.jpg": {
+        "sha256": "4d485cfdd7ab72da8e2ae20931782794e06d6c2cc0dcb4503b67914ccf1fc7a3",
+        "size": 24990
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_08.jpg": {
+        "sha256": "cf323fd9ffb7b56240cc779111ecc5721966a5465fb98923fa9f8c6a24ca4865",
+        "size": 32110
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_09.jpg": {
+        "sha256": "e0827c754d8b437ccd42581a1c0f9300672080040754f7e69a2ccf1dfd3f2da3",
+        "size": 30052
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_10.jpg": {
+        "sha256": "fdb34cc4a79c54b3f3cef6b936d4d219fae7d00658a748a622af97e831d0bb6c",
+        "size": 29533
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_11.jpg": {
+        "sha256": "8636dfc5fa251d40b7a4d3af2e963cb29ab0fcc9bc95d82d32e948b25f61d513",
+        "size": 23919
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_12.jpg": {
+        "sha256": "34007b0a78bfa1c57e66be95e72f92bfdda579ca8cdecf626afceea8395f4edb",
+        "size": 29787
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/stealth_13.jpg": {
+        "sha256": "23f653c9bdfd2aa0f5aa190fd0f40261e039ae90dcd5ff97bb1e49db6cf90760",
+        "size": 18210
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Ataman1_00.jpg": {
+        "sha256": "d148a242c8f92fe9398fe92a1b174daf49f65b6e42dda717eb66cbe6b66ba55b",
+        "size": 20554
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Baron1.jpg": {
+        "sha256": "beeb38412a8a5be50e84fe6adadb7f27356197fc96f3204c9cb49c5bea85b6e2",
+        "size": 32661
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Baron2.jpg": {
+        "sha256": "4d50b6f0c9997d4a1a8bb52322e9467df1bd65190d973073dbb70acf0405c380",
+        "size": 33291
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Baron2_00.jpg": {
+        "sha256": "4d50b6f0c9997d4a1a8bb52322e9467df1bd65190d973073dbb70acf0405c380",
+        "size": 33291
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Baron2_01.jpg": {
+        "sha256": "3a73431ceadc7df8011ef0c5b326a0da122e2296443431877ab1bb6fd65efb21",
+        "size": 32172
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Baron3.jpg": {
+        "sha256": "335e733a0050842ea4f8b6c2e22c2a8a64fcdcfeb5d1a1c8471b0bdf12c8ebd7",
+        "size": 26348
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Headhunter_00.jpg": {
+        "sha256": "bd381f48b6dcfc55144388b219ffa690dafba46eea4101e3077d1cf281b89813",
+        "size": 27577
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Headhunter_01.jpg": {
+        "sha256": "2bfc19530230c552b5256d18a8c1a40cdd9d66a1aad15edc45e29b8075fd4308",
+        "size": 17357
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Headhunter_02.jpg": {
+        "sha256": "cdf8e617126bdac6b5a1a615d61c02c3892c84066249e4f613b0567e6587b411",
+        "size": 29614
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Headhunter_03.jpg": {
+        "sha256": "58b45a203cfd71ca82a4cd40be6db13a2af000e49bd37364f93f2dc2fc8d4ab4",
+        "size": 19049
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Headhunter_04.jpg": {
+        "sha256": "968823c19d586d45d9535d5d1d21ed68d7a49c1c1dd9de7e2b5cce8eeaf06fca",
+        "size": 17183
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Headhunter_05.jpg": {
+        "sha256": "90501d7a6dca8ba36af59c4a13cb98cc866cc91d739a87764f340f3843b0ca89",
+        "size": 17474
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Headhunter_06.jpg": {
+        "sha256": "59938899803611ff94edd7a761aae5200b9ba2832498f06ada03fa81a991fce0",
+        "size": 29224
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/STQ_Podstava_02.jpg": {
+        "sha256": "1ec027bd03f398493e9b1b51ba5460285b800939a105fd881d0a3238348dae12",
+        "size": 17795
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Svarokok_00.jpg": {
+        "sha256": "cea203120867b4198d7da71b4b7828687e1845ba0d30c3bd2dc46b568a7258ad",
+        "size": 30864
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Svarokok_01.jpg": {
+        "sha256": "10a29324ac9de48ea635bfbe021804e31a6f48af573b26f4d31952f1fd4c968f",
+        "size": 24827
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Svarokok_02.jpg": {
+        "sha256": "7675a136a44ffca2d32addd481ac1c327a09fb298fc5c06dc88c0ce402816e28",
+        "size": 32613
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Svarokok_XX.jpg": {
+        "sha256": "ce79bd5b72c293ffd85804d897830c596f9c4b1d7b2f194a3e655bb91282b13a",
+        "size": 31283
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Taxist_00.jpg": {
+        "sha256": "acfd7d60b232233cabb25d07a34d95147863b559258da4760f222837884fe001",
+        "size": 23338
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Taxist_01.jpg": {
+        "sha256": "622cafe686ebfb8b55046366f2ee72eaf1e88039a9b3e909c89b2ba9e4b4fb1f",
+        "size": 21534
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Testing_00.jpg": {
+        "sha256": "fa1c9c00b8f60dba0002507d7754c9464c8c753f239197dc1c6afb33be0458f7",
+        "size": 23253
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Testing_01.jpg": {
+        "sha256": "86e21f964e8a179d7b771e3148df1e8ea1aa9f8b621b51bb85e5198f99714417",
+        "size": 11447
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Testing_02.jpg": {
+        "sha256": "68ca18cc4046c90b11f931adb65205609f1b57b387408e3e606737217a664829",
+        "size": 11722
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Testing_03.jpg": {
+        "sha256": "620dc9d6423fcf98fa8a8cabc48e3af95be536ed47003bcdc668d136bd2fe61b",
+        "size": 33378
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Testing_04.jpg": {
+        "sha256": "41de5bb4985ceb39326caf3e3e7608257b13b6294dc3978a3a38873878221de1",
+        "size": 11560
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Testing_05.jpg": {
+        "sha256": "54cc95dd77f5fd5e119562dfc28e775cab493d68f933e02b3fdcc845c2463e0b",
+        "size": 9963
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Testing_06.jpg": {
+        "sha256": "77cd350075576d79810721cd58da6f96db90c5785bc2d4b7b48994583fa15f98",
+        "size": 19537
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Testing_07.jpg": {
+        "sha256": "29a255c3055de05fb4d34a418101309d95d39f3672d8708b07a023c9008150f4",
+        "size": 50864
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Testing_08.jpg": {
+        "sha256": "71a322a192d39dd5386e7d9bfdf42770fcea9e4f57d2742e974a18d118825fb9",
+        "size": 18871
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Testing_09.jpg": {
+        "sha256": "886e17cee3a96a39ae19188370b13ecfdaf55805c762873ace99a4f18e9e8149",
+        "size": 10758
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Testing_10.jpg": {
+        "sha256": "2dc117cf7b0dcb26a8a69a496c5f96c9acfbe4f11ca9f4d463cd74cbd621e93c",
+        "size": 9826
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Testing_11.jpg": {
+        "sha256": "6678c525aca28c46d0079fc63e70a26b244c7cf4f7627ec5d4578f4463fd1acb",
+        "size": 32209
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Tomb_00.jpg": {
+        "sha256": "d055a21d83d991dbd1dead913760b9214f91e0d86c35d9661ee91748bd3fe9f0",
+        "size": 38811
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Tomb_01.jpg": {
+        "sha256": "7851174a39f02c37c67bb2f1652ea4d20060d9940bede7b4f9cbe11a17085083",
+        "size": 28198
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Tomb_02.jpg": {
+        "sha256": "b7d78c3ee3074509afb964aa13273d3a74dbb3b6b51185f9f899f9202911887d",
+        "size": 33347
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Tomb_03.jpg": {
+        "sha256": "f653cedbcf48641412be8a9e742447db3bdd5d1ada4bf6e10f8b48a29b948afa",
+        "size": 35140
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_01.jpg": {
+        "sha256": "8b8c199d2613fa637dab473817c478116776e4806bbda1f6028d8f2a5d0914f0",
+        "size": 27181
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_02.jpg": {
+        "sha256": "0e59936f723662d5924d390525ea3f351405f7f9569cf3e629684885bbb92818",
+        "size": 35507
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_03.jpg": {
+        "sha256": "2a7e81359f1ed7d8b1c7d4763835cc1ca3ce22d099f9282824d9928f47515cc6",
+        "size": 21923
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_04.jpg": {
+        "sha256": "9341808a5b12ce8a156fd82545f870fd768b60147aeda552598d63c27a5b0464",
+        "size": 19830
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_05.jpg": {
+        "sha256": "209de41c2cd6ea886f588c5d9cdab63952a0cd913c724c11bb395010d0db27d6",
+        "size": 13948
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_06.jpg": {
+        "sha256": "fa1c9c00b8f60dba0002507d7754c9464c8c753f239197dc1c6afb33be0458f7",
+        "size": 23253
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_07.jpg": {
+        "sha256": "68ca18cc4046c90b11f931adb65205609f1b57b387408e3e606737217a664829",
+        "size": 11722
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_08.jpg": {
+        "sha256": "86e21f964e8a179d7b771e3148df1e8ea1aa9f8b621b51bb85e5198f99714417",
+        "size": 11447
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_09.jpg": {
+        "sha256": "54cc95dd77f5fd5e119562dfc28e775cab493d68f933e02b3fdcc845c2463e0b",
+        "size": 9963
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_10.jpg": {
+        "sha256": "77cd350075576d79810721cd58da6f96db90c5785bc2d4b7b48994583fa15f98",
+        "size": 19537
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_11.jpg": {
+        "sha256": "71a322a192d39dd5386e7d9bfdf42770fcea9e4f57d2742e974a18d118825fb9",
+        "size": 18871
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_12.jpg": {
+        "sha256": "886e17cee3a96a39ae19188370b13ecfdaf55805c762873ace99a4f18e9e8149",
+        "size": 10758
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_13.jpg": {
+        "sha256": "051770407979b24b6a58fcee7590c3372e35a509d58c8492cae34288f7834b3e",
+        "size": 13659
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_14.jpg": {
+        "sha256": "cd9bca534295de60bceef075674db84ee3f86de6f242bfc0ae85ebd99386d218",
+        "size": 16220
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_15.jpg": {
+        "sha256": "6391997bfff55935a25c80ee9e769f17af87ba7c9c3d946ab39652000c02e01f",
+        "size": 22386
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_16.jpg": {
+        "sha256": "54e7cb09e164cfeedb4d4263a8a22bd584a1435e0b6fa3e6c2c746d5553a0e10",
+        "size": 15411
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_17.jpg": {
+        "sha256": "ae62dfd1c1052774e8c54fc9e9388881724d5119d4c3a995fad25fd4fe08ce73",
+        "size": 18614
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_18.jpg": {
+        "sha256": "1fa8bfd08a406363410ac09c394a16cc291d14ac25e4bdae86a94c37dc52b7ec",
+        "size": 25574
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_19.jpg": {
+        "sha256": "9fa0e1f491b3602d773ee76d826f29302b4202364c4e06bfd843d839153723a7",
+        "size": 21787
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_20.jpg": {
+        "sha256": "66da8be765360a3bc38e0370636dcb669dd28bcf594723191869ede22938bc2b",
+        "size": 14821
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_21.jpg": {
+        "sha256": "989af8aa8eb9087dc47dfe7d94fd1357235c32977693671a6903f415960af8b3",
+        "size": 15723
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_22-cropped.jpg": {
+        "sha256": "2eca5d230dcc556dbf867ca1bb103b025a6c30ef1b931c1422e71e6ed0f60be3",
+        "size": 23633
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_23.jpg": {
+        "sha256": "856c4f94b617d5bbebbcade3a5fc8f199daa0c085cbecdaf55f4a1cdb163e824",
+        "size": 26882
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_24.jpg": {
+        "sha256": "1cade8d4494e3ec50f64ff2000104751d7fe00f0375300b9e85aae997cab280f",
+        "size": 15513
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_25.jpg": {
+        "sha256": "9a652d115cc856f2c0283f785aac700f7aeda385fa7f631370304e4f4fca86ee",
+        "size": 14664
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_26.jpg": {
+        "sha256": "a8fb61149593652f068ff97a64fde6e512b42a28549b122b91141f52aa5f0299",
+        "size": 18697
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_27.jpg": {
+        "sha256": "fec0c44a8ee9e160283030ca32be986a3da5ab16687e2af8ecf093ef21d7bca6",
+        "size": 16796
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_28.jpg": {
+        "sha256": "5147f038d6eee628add3e2dbf0a8816921b4a1c05d9d7af4caf895a08126a8ca",
+        "size": 23149
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_29.jpg": {
+        "sha256": "503f9f069d7ae7f69ec0ea52a35afd9ed9c70c05e15f3c6c62759656dc74df61",
+        "size": 21282
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_30.jpg": {
+        "sha256": "918a4705825315c4faea576e212b6a134b8d791b29e276a2df9fbeabad05d791",
+        "size": 12316
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_31.jpg": {
+        "sha256": "55aacd9f67703ba85016b11f4bc8d04ed84f89a32ec89383dc070518845190ee",
+        "size": 38177
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_32.jpg": {
+        "sha256": "03af6273a44b25044c4c121081f33c359aeced67a235235a43d050a3f8dee2c6",
+        "size": 21375
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_33.jpg": {
+        "sha256": "f3a4114d1696cf06208831dfb5b50eae7f3c798cae4e87431778793631abf06a",
+        "size": 35122
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_34.jpg": {
+        "sha256": "b0205abc0c5d13aca47ae57dbb9895b439a5a8d3983cf33a7cd33d20db041f78",
+        "size": 36651
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_35.jpg": {
+        "sha256": "10531fb51d2a50a6c071139cac0e3d05af4f670c176a5ec56573bfc90bd22e56",
+        "size": 19835
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_36.jpg": {
+        "sha256": "788563f589146611461552d7cc13e9d73457c0be7248533d9bbcc1750832d9da",
+        "size": 18634
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_37.jpg": {
+        "sha256": "dbd754f4d4b32d685530c0c7438b42db1ca7d2c2c4a87b8b106000abbda2bfe1",
+        "size": 18903
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_38.jpg": {
+        "sha256": "ece64d255d8e02faadf326df6133b5cfb4a56e06db3dd904b7e3c86630c014db",
+        "size": 17275
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_39.jpg": {
+        "sha256": "ada7e0ee7fe5ebd70766ccabb7d0271337569720414de0d65339c80b704df061",
+        "size": 24020
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_40.jpg": {
+        "sha256": "943649c0362b641370397030e40566701109d6811980578f7f372af4d04b0d53",
+        "size": 29131
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_41.jpg": {
+        "sha256": "6fec8084179eb6408c5833d2938d0f9769b0fa37d062c5db4d153d93b0e060ef",
+        "size": 19287
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_42.jpg": {
+        "sha256": "12111ac79919c479910c6a055450bc991c00ccccd45104be354d7e84019165dc",
+        "size": 15818
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_43.jpg": {
+        "sha256": "a495b65476813ff1e745f9f99f8481aa1b60271a4839e2aa943185b3dc7d5f33",
+        "size": 16374
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_44.jpg": {
+        "sha256": "2b8a4c2d72091fb4a0024683cc6deaf40599c49789f0803cfc05e5ec4aa4f39a",
+        "size": 25155
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_45.jpg": {
+        "sha256": "295eb87afcd6331326fe9a11e495f58ad126bc9c70728c98244569017625566f",
+        "size": 24558
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_45_FIX.jpg": {
+        "sha256": "75b532535402ad2cfe439b2a4dfc24d26ed01fa5f2a8d8eac3956448194e2cf3",
+        "size": 24432
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_46.jpg": {
+        "sha256": "e141f62792798308c01be78f22d2f801f9ab9c2408adf6854a460c11e5eeaa0e",
+        "size": 21257
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_47.jpg": {
+        "sha256": "6b72b935e32baa4894db9e874fab82d8747177ab04c5ec20048c7a1f3a5e24e2",
+        "size": 23057
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_48.jpg": {
+        "sha256": "31247ffeddf1cdeaa9e5d9156fb6277abba1350c96fb3f48c2a355fcfb367b95",
+        "size": 19158
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_49.jpg": {
+        "sha256": "6e29a879f1e605cc0f6f34d32b72bc25dc303c452682514d07a3860c2d03f2a7",
+        "size": 16854
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_50.jpg": {
+        "sha256": "b0d7a1c841f1a8982010f3f835a6c4b6edf61bfa9863807efe401c8373781f90",
+        "size": 18689
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_51.jpg": {
+        "sha256": "8726536b06ece7489818edf3fd0aa70597fa01739efd3898f18125875ad9676b",
+        "size": 15697
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_52.jpg": {
+        "sha256": "7b1fc3d7d52a8ec73390d59be1c1c209390620073247db3b2c9b2a1014a0cff1",
+        "size": 8807
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_53.jpg": {
+        "sha256": "8ed1c03956284fcb67adabda220ef40fa5436cb6606e03075a746c11cb7000af",
+        "size": 23371
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_54.jpg": {
+        "sha256": "e64ef5c2647b7e799f73caf2f36298e12bc0ec7486c0f70e64d97ba3cc732216",
+        "size": 15818
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_55.jpg": {
+        "sha256": "5b3e4879d1632604b04ce7c09b2fecd2847fe7a61da9dd9486608168a21431ee",
+        "size": 12428
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_56.jpg": {
+        "sha256": "8c07718b3ebb17534cac032b87537005dc523705434e9fa61a6f8fd601acfb3b",
+        "size": 15192
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_57.jpg": {
+        "sha256": "29e61d6c05960bd69004a4bfe8d3fbde82fc80e8695e89e7a55816d5849eac9b",
+        "size": 12447
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_58.jpg": {
+        "sha256": "ef8f92bd2c3705ed7946b911fb8980f2c7e6e00d3ecde9aa1251e0569509f486",
+        "size": 21310
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_59.jpg": {
+        "sha256": "2b452a6e69962a9e4c568b2a72e064a94322bef234122238cb0dc8e4271cc9d3",
+        "size": 15526
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_60.jpg": {
+        "sha256": "90fcf5bc51f906d9839c8807636e4a5763be592113d86293568a04facc85556a",
+        "size": 14992
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_61.jpg": {
+        "sha256": "941668209fbf63e4ccde2f2763d96ace067e1ebbca0dc3741f4b5af6a0094ea3",
+        "size": 10650
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_62.jpg": {
+        "sha256": "9085ebbe04de1c15061a46ef74ca9d853ebf7c9de72bf04a61167b1e898d0f68",
+        "size": 24206
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_63.jpg": {
+        "sha256": "9f243a835379d582c0172cb462464f293b4a87e6b1fdcdbc4e8fa755dbe73742",
+        "size": 22252
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_64.jpg": {
+        "sha256": "43d6ecc569550cdefcb44215a2deeac2b08d4c5b78e4f7fad2b9e19cbf82bc27",
+        "size": 18799
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/van_65.jpg": {
+        "sha256": "612bdf6b2c010c6e292217caf81822ad5ae08566948c1343934572058447ae4c",
+        "size": 30267
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/war_01.jpg": {
+        "sha256": "4a838fb190bef97dd238c9fd52448d600d7fe002634b69025f4602eb89be32b0",
+        "size": 28144
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Xenolog_00.jpg": {
+        "sha256": "171a2837e960488865049477864b3efbd69a846213b18f216f12a01b85e4fc8e",
+        "size": 27063
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Xenolog_01.jpg": {
+        "sha256": "971808f9a6de8cb0998cc6356ecb821a98b2d8d814609df912da7b35a40e4b27",
+        "size": 29433
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Xenolog_02.jpg": {
+        "sha256": "7ed8df53b8c20f28e657e1c1a10b7046f0a40dc668cf168fd48b20742f1ea3f9",
+        "size": 23079
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Xenolog_03.jpg": {
+        "sha256": "498a42b77c6a45f49c6da9e30ba85ed96c1fe1e10def368cbde17d51abd9b51b",
+        "size": 24718
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Xenolog_04.jpg": {
+        "sha256": "1a43c5d9cd6db4b4aee6b2a58c36cd16e7afb0ba93a03b7d12dccec84ca3be3a",
+        "size": 29749
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Xenopark_00.jpg": {
+        "sha256": "cd6868fba89113e6f4ab5571c3f0a1a7b56c268d143b8188755bfdbfcd2989eb",
+        "size": 22362
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/DATA/PQI/Xenopark_01.jpg": {
+        "sha256": "2a17fc03283c9be56981c63db4e9c9f118ad6701cca1109dce4436dc3fa545e8",
+        "size": 24986
+      },
+      "ᶻₑᵃQuestology_unpacked/Mods/ZeaEnch/ZeaQuestEnch/PQI.pkg": {
+        "sha256": "31b817ef32e849c4cac9f4fab24ec991c510031620fc5be68bb3c080c82be27b",
+        "size": 16225826
+      }
+    }
+  }
+}

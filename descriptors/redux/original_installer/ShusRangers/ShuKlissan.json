@@ -1,0 +1,739 @@
+{
+  "schema": "srmod/1",
+  "id": "ShusRangers/ShuKlissan",
+  "source": "redux/original_installer",
+  "name": "ShuKlissan",
+  "title": "ShuKlissan",
+  "author": "Mr Shu, Klot Veil, Рейнджер Волк, SINIGR, -Molder-, auro, Elemental Games",
+  "section": "Shu's Rangers",
+  "priority": "5",
+  "description": "Фракция клисан",
+  "version": "d6107e8e71a2a8fe",
+  "depends": [
+    "SR1Faces",
+    "UtilityFunctionsPack"
+  ],
+  "conflicts": [
+    "BlockPirates",
+    "EndlessGame"
+  ],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "files": {
+    "code": {
+      "{app}/Mods/ShusRangers/ShuKlissan/ModuleInfo.txt": {
+        "sha256": "22ce8f7010241fad1ec160e0fec7e4399165ad97f6d1b6eb214685d70fb68a97",
+        "size": 1974
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/CFG/CacheData.dat": {
+        "sha256": "3726fa7fa2f4b69ab935c9828c186b668ab34fa5599833db3baa3f432c0f8cea",
+        "size": 1999
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/CFG/Main.dat": {
+        "sha256": "ea2cf4fdac514c7f885f5fc20be960a19371a61fd98cc7a9314aded1f66a1500",
+        "size": 6926
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/CFG/Eng/Lang.dat": {
+        "sha256": "20b5dda3e963ef509cfb9dd9b246e14c7285ad463cc3400e2c0c454380e91e8a",
+        "size": 52584
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/CFG/Rus/Lang.dat": {
+        "sha256": "a8189fc7c18d3dea4f35e238e71b271e88f58401b69c6acaf744cad6d3e5d791",
+        "size": 58229
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Script/Mod_ShuKlissan.scr": {
+        "sha256": "59d5a6210ff8c4b90c871abc44afc1a9a49b80fed589e14003929e1b9f60f86f",
+        "size": 407033
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Script/PC_final.scr": {
+        "sha256": "88a827e1c332b05239a915a10a5db84648826f74aed8ef2cc8b20c2af92b26ca",
+        "size": 39577
+      }
+    },
+    "assets": {
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Captain/Machpella.gai": {
+        "sha256": "e703632a6d88b6e2c157694d4333ce1dad997764465c0a8d74f02d89d4f158cb",
+        "size": 249766
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Captain/Machpella.gi": {
+        "sha256": "5df4031a6f4faaa6d6d56bcff9c77b709aac9b34debbf3ff4cf1e9d3c2ff0555",
+        "size": 19440
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/FormGameSet2/2LevelDown.gi": {
+        "sha256": "2b82415b1a7b22d2e0bf30cf5a24b654d735c55d3bfba402b799e0d81af54a59",
+        "size": 560315
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/FormRuinsBG/empty_table.gi": {
+        "sha256": "f06078e793151a3ef4b515f162f836f4d9f8fc97be54b4a5ed8f8e63d87962b3",
+        "size": 96
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/FormRuinsBG/HandlerBG.gi": {
+        "sha256": "55da5468640d403912adb654a9feb97c18017f410f47c387f2556d85cd4fa404",
+        "size": 1572960
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/FormRuinsBG/nones.gi": {
+        "sha256": "35341a57d3da2451d322b2b46c81a03c6e6f3b5b1cd30c23e06ed9d4c36f2a71",
+        "size": 96
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/FormShip2/comm.gi": {
+        "sha256": "e5ee32b4eb17fa066408cbcc53100b2f47248d7334178666a317b2b80e0f67a3",
+        "size": 938
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/FormShip2/comm_l.gi": {
+        "sha256": "24200c9abab5b819c61a804c995dca6e9f473d2310543d91b096ce01ea2dd94b",
+        "size": 2533
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2CargoHookKlissana.gai": {
+        "sha256": "5d051e3f755cb29417c047a6cec53aa60220247a94eaa60fab7f71c81fbd159f",
+        "size": 240894
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2CargoHookKlissani.gi": {
+        "sha256": "24549e1580da74ce426092966aa33011ce9dfa01a94d04765d1befdf7610905d",
+        "size": 4583
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2CargoHookKlissans.gi": {
+        "sha256": "c27882e94c504aa0c781c99606084c90eaba7af90c86cf297fee11c94f86c9a2",
+        "size": 1431
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2DefGeneratorKlissana.gai": {
+        "sha256": "a59c7846c230a07ed501e22f8bf27ce832beb78d7e673f75f224083e6e9517c3",
+        "size": 411079
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2DefGeneratorKlissani.gi": {
+        "sha256": "467647c51702a881537fe33193f3c2f3cc3c89f6847163c1a9a910a4a550ee96",
+        "size": 8083
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2DefGeneratorKlissans.gi": {
+        "sha256": "1581ce382bf2a62cb1a022b382311d9ac6c4afc43c0d30c5bf9c988811e8b24e",
+        "size": 2136
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2EngineKlissana.gai": {
+        "sha256": "9f76da0ec8798840f01475d59d68e0c9c9d140898dd468b168c9ec7df6499299",
+        "size": 232958
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2EngineKlissani.gi": {
+        "sha256": "69613d9bf8448a5eb63ea1b89ba296711b8208efe8f67492654458a62166a8f7",
+        "size": 4826
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2EngineKlissans.gi": {
+        "sha256": "6e1732e6e3640c98f840b4c013f0a8e6bd4defb48c4dc1e0e281705a0c6141bc",
+        "size": 2045
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2FuelTanksKlissana.gai": {
+        "sha256": "f70e6eeb911b94c5fbf76bfb5b197c07d38d6029f865f2d9ea31aaa8e0fd2e77",
+        "size": 409334
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2FuelTanksKlissani.gi": {
+        "sha256": "6e32c84108a5fa96fc1c0446d505e409cb4976c0554393e904dae502e19c26a0",
+        "size": 8180
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2FuelTanksKlissans.gi": {
+        "sha256": "0d6696f5cd4a55a3b51d60533b74170e6da1dd879c3ac0d697dac06f6a67fc5a",
+        "size": 2065
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm0.gi": {
+        "sha256": "6a810a794e0dc288f4ae460e398408fd16dfcc93f899a45de5c5b264798f12b0",
+        "size": 1558
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm0_0.gai": {
+        "sha256": "540b51efec6060182dd0df3ca7b088f398d11edca50339ea0c15951f976a9588",
+        "size": 21542
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm0_1.gai": {
+        "sha256": "f5b77d04d76ed3001bc37c45e5c0fc64f03df4c20282b2a52291169032fc58a3",
+        "size": 20776
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm0_2.gai": {
+        "sha256": "f5b77d04d76ed3001bc37c45e5c0fc64f03df4c20282b2a52291169032fc58a3",
+        "size": 20776
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm0_3.gai": {
+        "sha256": "9aa6eed6ba2bec9e58df9ddb1dd67c8fa4ec81e7ee84601ee74b9b1012ca1388",
+        "size": 18515
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm0_4.gai": {
+        "sha256": "9aa6eed6ba2bec9e58df9ddb1dd67c8fa4ec81e7ee84601ee74b9b1012ca1388",
+        "size": 18515
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm1.gi": {
+        "sha256": "e03620ae08d25b8ebcc81293d3177c346ea0a59ee7ce509d53e7f911314a95d7",
+        "size": 1928
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm1_0.gai": {
+        "sha256": "b4f4e34bdcdd00e0b13a55f035679454ff2f3373409691f558be4cfd16ce7c4c",
+        "size": 28261
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm1_1.gai": {
+        "sha256": "c65efd7bf4ef1a9334e582ee5d2c6324d066ecf4f2a3694b577becfa658a60d6",
+        "size": 25454
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm1_2.gai": {
+        "sha256": "c65efd7bf4ef1a9334e582ee5d2c6324d066ecf4f2a3694b577becfa658a60d6",
+        "size": 25454
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm1_3.gai": {
+        "sha256": "4ea2c9e395679b4be34a54ad181fccf7abcba0c8212b42693d9b86cc9b00644f",
+        "size": 23290
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm1_4.gai": {
+        "sha256": "4ea2c9e395679b4be34a54ad181fccf7abcba0c8212b42693d9b86cc9b00644f",
+        "size": 23290
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm2.gi": {
+        "sha256": "2e7166a882d7b7335be7c60352153d50e2efa12fcf071b4caff2dd8dd94e573b",
+        "size": 2321
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm2_0.gai": {
+        "sha256": "9c3b387ca34ba9f7d0a94e60b9606470a0fea77777141f1e6ee7c91b1151a147",
+        "size": 38363
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm2_1.gai": {
+        "sha256": "3efc5436d4d1506183520d9ab2670bbb9824646acb02438d88a6fc230aff482d",
+        "size": 33704
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm2_2.gai": {
+        "sha256": "3efc5436d4d1506183520d9ab2670bbb9824646acb02438d88a6fc230aff482d",
+        "size": 33704
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm2_3.gai": {
+        "sha256": "2919b17091e5142cbae028cb4799c6f2b460949ed75184909a4a824418872bd8",
+        "size": 31181
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm2_4.gai": {
+        "sha256": "2919b17091e5142cbae028cb4799c6f2b460949ed75184909a4a824418872bd8",
+        "size": 31181
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm3.gi": {
+        "sha256": "a41ecb1c6c109c3a4250f62420417b3b14d4c86f78fac39786a98bbed6411ec5",
+        "size": 2785
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm3_0.gai": {
+        "sha256": "9c3b387ca34ba9f7d0a94e60b9606470a0fea77777141f1e6ee7c91b1151a147",
+        "size": 38363
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm3_1.gai": {
+        "sha256": "3efc5436d4d1506183520d9ab2670bbb9824646acb02438d88a6fc230aff482d",
+        "size": 33704
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm3_2.gai": {
+        "sha256": "3efc5436d4d1506183520d9ab2670bbb9824646acb02438d88a6fc230aff482d",
+        "size": 33704
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm3_3.gai": {
+        "sha256": "2919b17091e5142cbae028cb4799c6f2b460949ed75184909a4a824418872bd8",
+        "size": 31181
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm3_4.gai": {
+        "sha256": "2919b17091e5142cbae028cb4799c6f2b460949ed75184909a4a824418872bd8",
+        "size": 31181
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm4.gi": {
+        "sha256": "cbb7e2f688a06a54d5fc921c673cdcf807bb4a2d87aef6c4dfb0e1fc6b976ce3",
+        "size": 3226
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm4_0.gai": {
+        "sha256": "66c43e1ab61d7acb9c05765bdd0b725ffd48a762b763d1e6d648556f193d002f",
+        "size": 56245
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm4_1.gai": {
+        "sha256": "92bb26f5ed0a376a3dd30f0be694e3371100724b089f0c8f8620c496177257bf",
+        "size": 45654
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm4_2.gai": {
+        "sha256": "92bb26f5ed0a376a3dd30f0be694e3371100724b089f0c8f8620c496177257bf",
+        "size": 45654
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm4_3.gai": {
+        "sha256": "f30dbfa85fd94cf7e790012b8dd8b5e40806057b84d492fe1425ab9beba46203",
+        "size": 44856
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2kProtoplasm4_4.gai": {
+        "sha256": "f30dbfa85fd94cf7e790012b8dd8b5e40806057b84d492fe1425ab9beba46203",
+        "size": 44856
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2RadarKlissana.gai": {
+        "sha256": "fd6cf4e099598f788e05a1ce95878d2c0e9077625c3f2b1bc9b5ce7e153a3d47",
+        "size": 280172
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2RadarKlissani.gi": {
+        "sha256": "e77488dc554ddee1774ea7fe882a6c57d7d259e5740d9c4b7cd4867a3dc7fd1a",
+        "size": 5220
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2RadarKlissans.gi": {
+        "sha256": "a12e6c2cfc04947e6c082abbe9f1cc4e996a24fdeb3f529e8d3e7deeeff51b40",
+        "size": 1549
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2RepairRobotKlissana.gai": {
+        "sha256": "5d4f5ae0987beaee273694943cf54eb0aa480972166f9d89b24261c68eddfac8",
+        "size": 268462
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2RepairRobotKlissani.gi": {
+        "sha256": "99e44dd909e872298ee777e1dc5a8288a1d18a66dcd57c35af5faf47d28dbc54",
+        "size": 5274
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2RepairRobotKlissans.gi": {
+        "sha256": "28a26374049d9f71d0ac5b2da78f349cbd9405facc1388ac7f4b66d886f11db1",
+        "size": 1639
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2ScanerKlissana.gai": {
+        "sha256": "eff0a6da7ae63ff2d2f20e10cf71d95b19d4660992d9264f6e05ffa7d254b1d4",
+        "size": 307045
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2ScanerKlissani.gi": {
+        "sha256": "8d72bce17c1f4b3b1cd8ae8938b5cd64136d6c5678da96f86d7a334eb9561995",
+        "size": 3129
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2ScanerKlissans.gi": {
+        "sha256": "ff4a1997d7f58a29795fb4513d751d64b62da6e89e4c5498eb5dff388c855aa2",
+        "size": 1641
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_antimattera.gai": {
+        "sha256": "499265ce897dbcfb07137f0cca41096bbc9010316b341d645e861581f2862b75",
+        "size": 11880
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_antimatteri.gi": {
+        "sha256": "df1fd08e5ad21f9055ab6c04ad0444cf77cf0b901172dae9213d0c76075465fe",
+        "size": 5891
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_antimatters.gi": {
+        "sha256": "98041483c93ac84c282f80e657069208e408115b1946e6316e6affccc2c72803",
+        "size": 1662
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_burstera.gai": {
+        "sha256": "0e6deba221b140f286450004e589db01f2b10637be73b79451dfcbf6754c2279",
+        "size": 11982
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_bursteri.gi": {
+        "sha256": "23eea50a5dc896cda3ae8594940656b8d964414b6234229aaf3adb1698dd4e44",
+        "size": 5942
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_bursters.gi": {
+        "sha256": "5b138ef5cdb4cb06061fb5b3cb3cd0d41e06e3824822523b99098f93ce132518",
+        "size": 1772
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_capacera.gai": {
+        "sha256": "85779f320d7d1f39e1446bb1db8ca5e07f479106199c44e5e29a7c815bf94dce",
+        "size": 13684
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_capaceri.gi": {
+        "sha256": "981b4a4d323d7a850e5b92ce4b3121f7e0a7727d094fbf4d5a8e45e4eb8b86b5",
+        "size": 6793
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_capacers.gi": {
+        "sha256": "090317625d460ad6389a5180b2dc3bf09d5a77d1b0b961ee85b6201af8da0b3b",
+        "size": 1824
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_clustera.gai": {
+        "sha256": "157d71be101aad05ae032abecdb467d6d887370dfa526a65cebe97e1b02bca72",
+        "size": 12020
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_clusteri.gi": {
+        "sha256": "c272dd42a8762bed1bc366386a7b92ff20dac57af7e063409a3eba333a622914",
+        "size": 5961
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_clusters.gi": {
+        "sha256": "9b954c9cec73673792edc00973a30692b851ea2f174edd81d18f12fd533952fb",
+        "size": 1505
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_emittera.gai": {
+        "sha256": "267a828de73c255d6f9d40e97f9de0e027363b209500e0865db542bc191dbcb8",
+        "size": 10012
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_emitteri.gi": {
+        "sha256": "f1d4011850a09d5a8c29406684f52e127834d7c0a4f826534bef8180110fff39",
+        "size": 4957
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_emitters.gi": {
+        "sha256": "d156a06ed4ef14cad60cd44ceaad99c1d4ef50b6490003334a9bf4322fb0aabb",
+        "size": 1600
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_hellwavea.gai": {
+        "sha256": "f169445d35387f84fd596725d1ae5a709ecb466c8864d78e2a566e7b6f11aef5",
+        "size": 14962
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_hellwavei.gi": {
+        "sha256": "b4a33686694fea3b62a4a0c5c6b23cfa34b8e6cde720145b214a9bcacc7da136",
+        "size": 7432
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_hellwaves.gi": {
+        "sha256": "3d377471cea673a3493051e6018ebdf5e04d266276563054625aaab0944061fc",
+        "size": 1955
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_lasera.gai": {
+        "sha256": "35adff97119c81d2b68d8a48d5fb3c41d3419b36c65d8b584c5bf27244a663a6",
+        "size": 10208
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_laseri.gi": {
+        "sha256": "41f94daa451e0bc0d0888079fab3924e863e0490f96cf3a682bd86f4d1bb0d67",
+        "size": 5055
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_lasers.gi": {
+        "sha256": "18f0417b4097dbbdf78d27a011b81ead3cdf49be16afdc1a297e4f395d3ee361",
+        "size": 1456
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_moldikvinka.gai": {
+        "sha256": "58ce65324f35797f2233ca3659522869d6a009e5574310e9ce672bd40a4f2b33",
+        "size": 9620
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_moldikvinki.gi": {
+        "sha256": "4eb67cf795770c6bac5598bac905ce7b40a91f59b98c7f9238e694de9967f9e8",
+        "size": 4761
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_moldikvinks.gi": {
+        "sha256": "511c59ec46beeec23cc177ab51b6f941f1bfe2eea655aa10ab7755ce0fe1e1f0",
+        "size": 1469
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_narguna.gai": {
+        "sha256": "e1db7cb4b0711dc629db86fc378220aa45f0ce9c2632585b0c66de5dc6dd3a04",
+        "size": 11814
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_narguni.gi": {
+        "sha256": "ea034adc36d3643ab4944bf3efb12b6427592bcdcfd7c521b1111426139f851f",
+        "size": 5858
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_narguns.gi": {
+        "sha256": "9dab2f022158533d1cbef28f84f176a545366122a21ff28cb956b45179048db0",
+        "size": 1606
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_nihilera.gai": {
+        "sha256": "7d232049477b375a40282434467e71761d2a917727407ec2cfeca8871221ab18",
+        "size": 12038
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_nihileri.gi": {
+        "sha256": "9b42fb89b267eb4c5fa0d97d8879c69bca60671d3b807fb06717d16ab8ebc91c",
+        "size": 5970
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_nihilers.gi": {
+        "sha256": "c722fae0253b1f5037c1840825492f6b448794bd217e08a7b4cd009104d93b6e",
+        "size": 1695
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_protomissilea.gai": {
+        "sha256": "8e208e78ae56c064fc486244231efef2514dfb7b5f5d84cfa2caf53be38390b5",
+        "size": 8456
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_protomissilei.gi": {
+        "sha256": "9f4a109fa3417d931978344eca2867eb65dfed034255b4535e4c914f826d7a40",
+        "size": 4179
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_protomissiles.gi": {
+        "sha256": "439ef1099f76045d126142c0080691f81f60141ac7f0794bb91ba83439732384",
+        "size": 1302
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_splittera.gai": {
+        "sha256": "bbe93ddda1a3cc3351bd6b10529f81947f2ccb297eed1d3cb1c471f45b8e9592",
+        "size": 10164
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_splitteri.gi": {
+        "sha256": "6435592dfee305a7c9fea552b34c8215e4766c9e38924f51d5f5685a568c70ba",
+        "size": 5033
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_splitters.gi": {
+        "sha256": "3bf9b3762bb439269f1c3f6ad164d40c85991fc3010de37cd9d13e133aa9cc80",
+        "size": 1432
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_stunnera.gai": {
+        "sha256": "9410ef50d46ab566e911c434f59fccbcd16815ffdaae91b5cbaa965b2dc51e75",
+        "size": 9174
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_stunneri.gi": {
+        "sha256": "96af5438fea956db77733ed279567127b34fbd74b68d486582de5a4c01880850",
+        "size": 4538
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Items/2Wklissan_stunners.gi": {
+        "sha256": "a2ca832b6d227bb84eebd869f675b255e21c90cb1ed1692fa0b370a7fe970e0a",
+        "size": 1347
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains.gai": {
+        "sha256": "6126a0ace5213c8335707c3b53ea3b8e4cd69a9737f97541ae245a65556173dd",
+        "size": 72195
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_0.gi": {
+        "sha256": "6a78a111db600cfe0dafbdffc32cd6f880ec72dc9e2b25df48399a4b54d823cf",
+        "size": 2062
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_1.gi": {
+        "sha256": "2a88cdac3ff09baf9f569d302c668007d815c55b054a9120dedba2b6be62a587",
+        "size": 2300
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_10.gi": {
+        "sha256": "e8fdbd48681b0e302d5add1f83c55dc98740932877622f5caf5d500072c96e46",
+        "size": 1937
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_11.gi": {
+        "sha256": "7e6aa53b117604da0daac10147bf3c01d79b0b61a52a1454dd0101aa0b1571a7",
+        "size": 1830
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_12.gi": {
+        "sha256": "c17b373d8f495bb6e4f9864d85d0ab6759e7f5e8b5b51c3534ed571b735bc0bf",
+        "size": 2522
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_13.gi": {
+        "sha256": "42d903135f5874c388bf96b5bfd9b4f123556786c7714a71b540c6e870cc1ab9",
+        "size": 2299
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_14.gi": {
+        "sha256": "5faf0e2856f53d0047920d93a14de3cf331c731e855744922ab56193f08ad37e",
+        "size": 2077
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_2.gi": {
+        "sha256": "77164c9784f04b5ff5ad5e3c343535c57c8a0c7ab9ed9b101a4c95bd483917eb",
+        "size": 2387
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_3.gi": {
+        "sha256": "75409d61ff9bf46208d5048eec1c438bfe0c44d80d9e2dbc4e94bed0077fd679",
+        "size": 2572
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_4.gi": {
+        "sha256": "7d7b3509fcfc0f6e9436424db906d17c191a6ad85e4e9834a6eea5c2ee3009ae",
+        "size": 1953
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_5.gi": {
+        "sha256": "d99b897f722e1348da00b504eb2a6df77ca3392b0b5b84e6f2b3bdd055619c93",
+        "size": 1882
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_6.gi": {
+        "sha256": "ad1aca32d6d0620515d8d7aefb961bac76901b42a489b5d0d688de1e44b78864",
+        "size": 2262
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_7.gi": {
+        "sha256": "4851ae90d6d6b5421fec9d03fa12390418fea14f2d5e51128819569acf81061e",
+        "size": 2383
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_8.gi": {
+        "sha256": "4e3905e5798b84aed58771a50591457a0549efcbba5e6b3e5e4753f04771ba96",
+        "size": 2266
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kRemains_9.gi": {
+        "sha256": "0a4ddb2af8df073477057815240910e946923b0ea6fba4e4101a89f73909d55b",
+        "size": 2840
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2kTransmitter.gi": {
+        "sha256": "c6ba3522817c1ebc0b2d00b480f130d252b7e695c5738f76b90ffa0129ddd60d",
+        "size": 2964
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ItemsUseless/2pelengator.gi": {
+        "sha256": "4bfc529e566e694402fef05a894b633700bf16893328556763d604896f5b2123",
+        "size": 2579
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Micromoduls/KlissanSpore.gai": {
+        "sha256": "e3be80e6d1c3bbd91613e99aa26b6b6740f05745f895dee3a6316aa3b497647c",
+        "size": 46131
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Micromoduls/KlissanSpore.gi": {
+        "sha256": "e02da87389e3c5c32b24e349b0c02b67cd63fd71718d49f11f24b5cc78087204",
+        "size": 1963
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Micromoduls/KlissanSpore_Set.gi": {
+        "sha256": "9bc24ec7d0ee2b33e8d7ac3102efd73e08fac015a33f7bed93f14998cc32852c",
+        "size": 2632
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Missile/klissan_protomissile.gi": {
+        "sha256": "e5efa9352cd0491717fb8dcbcbaa1e787f86edac2ce758c25d45cc6d5c2a1959",
+        "size": 5395
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Missile/klissan_protomissile.hai": {
+        "sha256": "163fe7224fdd9910d36b245a2c29af05ee329f6b26bceadebfc20e5df4926ed6",
+        "size": 1740852
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ruins/Handler.gai": {
+        "sha256": "e7f2258ceaf65ed7b6ca98208af357125c13d8ff9e8b1919191ebbc319d4f551",
+        "size": 2381854
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ruins/Handler.gi": {
+        "sha256": "61c32ac8edd64d7676521ec10248817a82ed8985513e6a11490e7bf9fd37fa90",
+        "size": 46623
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ruins/Handler.png": {
+        "sha256": "a6204d9d16ae497716ead16dd55baa0bd508329edd548e6aff53c3a2fca751d9",
+        "size": 14905
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ruins/KB.gai": {
+        "sha256": "bc2e2aa13e6e870c8edc211310061ddfba4fe5cdeefb4e9597b8239faf8743c4",
+        "size": 2532141
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ruins/KB.gi": {
+        "sha256": "59865fd5064475a27f79afac81c3b859f69d5bb87233eea14a103fbe7688a3c1",
+        "size": 90217
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ruins/Machpella.gai": {
+        "sha256": "a9e357b778f54e5560f307ba6b6879f7af5d69b8a348a7f3302f88770cba178a",
+        "size": 3961106
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ruins/Machpella.gi": {
+        "sha256": "6241f75fb18d5154e6af8c4b357cf23360610d4fc0f630182849642aa3ebf423",
+        "size": 37275
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ruins/Machpella.png": {
+        "sha256": "7e324f0465cc24c71bc399f5283805dbc9bb9951daaa0fd25de637bc836dc6d5",
+        "size": 14915
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ruins/MapHandler.gi": {
+        "sha256": "6f2f93eb38cb065ef47df4f4df71c356e794c9d3fb29507d319582d12af95650",
+        "size": 513
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ruins/MapKB.gi": {
+        "sha256": "04842831790c0755927771a4a18e222d193521d632d9f3b99d863be9e6283c9b",
+        "size": 557
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ruins/MapMachpella.gi": {
+        "sha256": "747d2c179c30f963bd5181615020610798b49de18bcc0e9dc08c7a6560fc9fd6",
+        "size": 598
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ship/FeiGuard.hai": {
+        "sha256": "a7d70b62100ff270a33e0b4db6f8d4680af992183e6d12a28e3c8ae38b9c6477",
+        "size": 295988
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ship/K1.hai": {
+        "sha256": "c15b77be98b9056194bff674578d9cc5f2649e57aae08fd5057fbbd33d4ac266",
+        "size": 870452
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ship/K2.hai": {
+        "sha256": "5d56f5a5378963aafd9549c4ed649fba143ea3e98a11f874739c544eb68f0f2b",
+        "size": 1148980
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ship/K3.hai": {
+        "sha256": "7516e5e394587fd9190148cef562a5c8f2e55bc24357e372767c1b10aaf38fed",
+        "size": 1288244
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ship/K4.hai": {
+        "sha256": "dafbe6f954e10c9e797cd5649885e42dff38cbe1cff4916b1a7d9fcdfa2e3938",
+        "size": 1166388
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ship/K5.hai": {
+        "sha256": "e68b3eb1e31bf5aadff8cb76b299b43937b7e1b083073f306c8d50cae080c8d8",
+        "size": 1427508
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Ship/KlissanMap.png": {
+        "sha256": "9d1cb07264757b77de55134b59fe3ed5ae0795f5db129498120413033d918b5c",
+        "size": 2290
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ShipP/FeiGuard.gi": {
+        "sha256": "a7252d053909cc7a17ed853de5d4658af5a9089f48a44d9aa231e559298f098c",
+        "size": 28875
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ShipP/K1.gi": {
+        "sha256": "2dc3a708208189e61b07981189711c8b545c895c14bdc3a42894a35412ccc8fc",
+        "size": 22392
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ShipP/K2.gi": {
+        "sha256": "b61ff427c6bc1af319c5c2a895bea3544319caf2efd778acab01d9c73efdcf44",
+        "size": 17333
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ShipP/K3.gi": {
+        "sha256": "d8e08e8e365f4c016a5f1a2858b4bb9d49291dd1a146beb89dacd4ec85ba99d2",
+        "size": 15220
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ShipP/K4.gi": {
+        "sha256": "f6d85d448a57095c64a7b74f2be93ff3ecb942a019d6d1a4a2174982ccc189bc",
+        "size": 16134
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ShipP/K5.gi": {
+        "sha256": "aef58f6de8cf35bb26c9ef5695367c8531e2d8e5ee02a1754459fa176a028b25",
+        "size": 14389
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ShipP/x0.gi": {
+        "sha256": "ff2fd39504221f0935521b55fc280a0befdf2c20da93a92210876418a5fd3537",
+        "size": 45405
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ShipP/x0.png": {
+        "sha256": "f3efcea62a454d59721133b088fc358e19a5432ff62f41c1842ed0e57683b99c",
+        "size": 16176
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ShipP/x1.gi": {
+        "sha256": "d0ee8ccd387e8686b1b1206ce49045b3da1cbdab8c92c25537e646b3f35d6228",
+        "size": 86434
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ShipP/x1.png": {
+        "sha256": "6a3d7ecf60623da78380657dbefb1b35d8f73fb7ee4d903182fba6e7d269e049",
+        "size": 28214
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ShipP/x2.gi": {
+        "sha256": "ea518e53a5ea55a9d9e733d1f59db951b34080b3c70cc24f485ebb400975a958",
+        "size": 21581
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/ShipP/x2.png": {
+        "sha256": "572974956113e8a36d9780c96edc6a45a964a134ab1b40f659d398c4cf42d049",
+        "size": 19349
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Sound/Antimatter.wav": {
+        "sha256": "5fd7341024eaecba27f9564456c7888a66602b91f032b24a3393d09aa049b651",
+        "size": 65494
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Sound/Capacer.wav": {
+        "sha256": "29bd973ad4e36319c791483766caffcc5fd035dfe6d3ac0d4ebec3aac6a1db7e",
+        "size": 44686
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Sound/Cluster.wav": {
+        "sha256": "3c1679f9e1a90cca4e97b2ddcf7972a70509bdd445185aa9eba7b1ee833079f4",
+        "size": 35538
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Sound/Emitter.wav": {
+        "sha256": "691c94b6090aafc68b22a7ff477524dac4dd3c38752e5795d88f529f1bb27fac",
+        "size": 51308
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Sound/Hellwave.wav": {
+        "sha256": "2917fc106e056884ddf012f691a600b2398076c6bdd23bc5db453191d58f6c5a",
+        "size": 74966
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Sound/Kvink.wav": {
+        "sha256": "0c5a8c88406f7bceb097a8ed2f73e3106d9a5eb9c84a1d668e4b56a834c730de",
+        "size": 20688
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Sound/Laser.wav": {
+        "sha256": "81ac70b198131f5b0d89336a21480befa89f2f9cdc22884292036bebe0369ddb",
+        "size": 62838
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Sound/Narguner.wav": {
+        "sha256": "6e4b095eaa6ee0c0f17a92419ebb62f7d1029db48a1e767641462b4d611c745e",
+        "size": 58710
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Sound/Nihiler.wav": {
+        "sha256": "2d059daebefd1deb6dabd2dc15beede22a450c0b460cc2b353ae68434370aa32",
+        "size": 58156
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Sound/Shield.wav": {
+        "sha256": "6832a1d8d6951b33cae076b97b334f33329c91d65b0443bba0a752ed8ad6b2c9",
+        "size": 23106
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Sound/Splitter.wav": {
+        "sha256": "b97696519d86659283db3bb9b784e7552afc0f8b8b2d172040dfd389b7b09666",
+        "size": 69494
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Sound/Stunner.wav": {
+        "sha256": "46b25b4902342c364e5fe22bbdfb60c0a8aad39673ea1add38fa80d6e8c2c979",
+        "size": 43826
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Weapon/Antimatter.gai": {
+        "sha256": "8eb676bec6f6b3957bbd4afeb591b0bd150726b104506dff269baa9a3f9a58a6",
+        "size": 338618
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Weapon/Cluster.gai": {
+        "sha256": "36c03a3169a88686caeaedffd9c536b305d991bb00affcf230e89e78ee6cb624",
+        "size": 126612
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Weapon/Hellwave.gai": {
+        "sha256": "8691bdbc6b6bd5ab9ef8d35d09e578a4d4fa491cc9987fd22bae82b9dde1e2dd",
+        "size": 5989684
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Weapon/Hellwave2.gai": {
+        "sha256": "434bb635930242592938dbd963553510054414fe51a8edf263a65ec2e9c2c852",
+        "size": 2836234
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Weapon/klissan_protomissile.gi": {
+        "sha256": "22bffb7dab51e37055b7435f4e169e8748b105421ead1023718721df65daf510",
+        "size": 1844
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Weapon/Kvink.gai": {
+        "sha256": "90ee69488b2e006233ef9956fe20a80b72d53c2c14f1e06ef1df38a2bee1e868",
+        "size": 33045
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Weapon/Nihiler.gai": {
+        "sha256": "98d049ff1e6d599558ed3c3748792eb23f8517d89c2b8c6856bef78f85b34f09",
+        "size": 28636
+      },
+      "{app}/Mods/ShusRangers/ShuKlissan/DATA/Weapon/Shield.gai": {
+        "sha256": "28d0590b0a54579034dd1e3c755735406a9277b659301e9c8d3647fe1467f642",
+        "size": 376510
+      }
+    }
+  }
+}

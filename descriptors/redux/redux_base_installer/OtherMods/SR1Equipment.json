@@ -1,0 +1,920 @@
+{
+  "schema": "srmod/1",
+  "id": "OtherMods/SR1Equipment",
+  "source": "redux/redux_base_installer",
+  "name": "SR1EquipmentLegacy",
+  "title": "SR1EquipmentLegacy",
+  "author": "Elemental Games, SkyComer, Джад Шейкер, MLGCat",
+  "section": "Прочие моды",
+  "priority": "4",
+  "description": "Добавление в игру корпусов и оборудования (КР1)\n(Мод можно <color=0,150,15>подключать</color>/<color=0,150,15>отключать</color> в течение партии)",
+  "version": "be25d58bc56ee204",
+  "depends": [],
+  "conflicts": [
+    "Cat_SR1Equipment",
+    "SR1Equipment"
+  ],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "files": {
+    "code": {
+      "{app}/Mods/OtherMods/SR1Equipment/ModuleInfo.txt": {
+        "sha256": "f031027c93bef3828c0c9f9df81baa009ebf58d9c0043bc54d96f8145a009a93",
+        "size": 2092
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/CFG/CacheData.dat": {
+        "sha256": "f4c2d06c232999fbcd2d43da28091080f67110b9c39c974c3f072e9a564d8013",
+        "size": 1538
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/CFG/Main.dat": {
+        "sha256": "dd474f3142c7209432ab402f745f541ad4d7c695182a7c7747d81bbb8cdc5dc7",
+        "size": 531
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/CFG/Eng/Lang.dat": {
+        "sha256": "f42b4c0cee1405cff75a63ebbbd0f5f3a7840c77ea1523ce6603a36510745ccd",
+        "size": 6203
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/CFG/Rus/Lang.dat": {
+        "sha256": "3e920711bfbe876ce0d6a1eb7630d43cff23fa0887414c944e33bfa6978208ce",
+        "size": 7460
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/CFG/Rus/Lang.txt": {
+        "sha256": "160cb974d2a1ba78f885bf5086b34675ad829d460cdce0fdb4c4350762b37271",
+        "size": 95392
+      }
+    },
+    "assets": {
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR0a.gai": {
+        "sha256": "c4342641fca6be3b348349214e1921d96a8c3b4043cb39759d850cb270531f91",
+        "size": 159303
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR0i.gi": {
+        "sha256": "113fca15998db440de807f1ab8f9b864abe83a438943414b4991be9157330abd",
+        "size": 5684
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR0s.gi": {
+        "sha256": "1420a3595ac96a1dc7505c94bddcc22921ec5f4403fd2461021613fa8e322a38",
+        "size": 1805
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR1a.gai": {
+        "sha256": "54732e9021496c68d7ba926bc22da6c2d742cf5b8978cf83e02e756d45fec60a",
+        "size": 178243
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR1i.gi": {
+        "sha256": "b31128391bf7f4d9a9082a1a5b08c16020e2c97f1144a17ca47dec8ce9bb4bd4",
+        "size": 6347
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR1s.gi": {
+        "sha256": "08954e9ed6db35925643132818c2438c6e001832d942e4332680984dc59f9955",
+        "size": 2252
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR2a.gai": {
+        "sha256": "91d7f602c055a74be7f9b1d3a0efd90c94a00a74b20b316085f101af88e24fc7",
+        "size": 202854
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR2i.gi": {
+        "sha256": "bfc3aa51ed6da1d4ad873df9baab07ab1d13defe5cf9363aeefc704711ae92c4",
+        "size": 7583
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR2s.gi": {
+        "sha256": "77beef87ff7141af47355417a69708c8398cd3a1249bea414b2c10f3af4b0d80",
+        "size": 2387
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR3a.gai": {
+        "sha256": "138979061721969f2fef2b7dc302d00ce3fadb9eb6c79ec0ba2eb5920c64d84b",
+        "size": 184507
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR3i.gi": {
+        "sha256": "810b4efe75c0ad50a1a1ad08b3ed811324f7c3478f181611f33ff1eb82458ea4",
+        "size": 7079
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR3s.gi": {
+        "sha256": "494fb408b70ac8145b640da61288a073d6a8439a5b217eb8c463528d0bb8c61d",
+        "size": 2431
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR4a.gai": {
+        "sha256": "b1b768a383ef1fef65fca2dd1a537cc1b184de35d8b265f51475e1be64a6b05d",
+        "size": 209849
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR4i.gi": {
+        "sha256": "f8cb7a2bdc48f7c31564535924e072bce7e97fcf42d33a8f362367a5b484eda0",
+        "size": 7589
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR4s.gi": {
+        "sha256": "2f28addf60e4dcd4585f94b1f433cd24507414667b5df30af70b21274fa7b2cb",
+        "size": 2595
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR5a.gai": {
+        "sha256": "4a57412cc8811b4f83a6c3915c3b9060d55f627449f1b254b8acb17b0e85d1c5",
+        "size": 233174
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR5i.gi": {
+        "sha256": "7bd9d6feaacde6f60648b6aa729f3ec1c4ca3c4ba558a9a1ab2b6388fd009470",
+        "size": 8207
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR5s.gi": {
+        "sha256": "2259beaca65b0a31799677d71be91f5c5a43d98dfdcdc3db40d1a88c5ed05201",
+        "size": 2611
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR6a.gai": {
+        "sha256": "d7b588513dfe067bad9bf9cd189abf8a997ce69028df8bd25e59a7f45fb0ae77",
+        "size": 221952
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR6i.gi": {
+        "sha256": "987ea9cfb196b214f9e7757e32fdccffb04df47aa2dd057c7daec89c51cab34b",
+        "size": 8048
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR6s.gi": {
+        "sha256": "599337136a6d24e5c51f9dbdaa8535af0657315214f4ec07659f16e29ad81cbe",
+        "size": 2767
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR7a.gai": {
+        "sha256": "aca6e0237cff7273eafd2b58cb94a7b87d7b847eb43846d4a16bc7fa6bbb60b4",
+        "size": 551539
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR7i.gi": {
+        "sha256": "8150cf4fb153e3c117d09f84348b3e5cb43d0c5b9d3331b65cc8ba0ca27a80b0",
+        "size": 8401
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2CargoHookSR7s.gi": {
+        "sha256": "0074d4a7ff7d576466c094da17ebb02eead6678b6f8ce810cbf436ff45336c34",
+        "size": 2543
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR0a.gai": {
+        "sha256": "e6f31e069d940ab2f8585e92f364b35e3978f8de685d3fe9a22d5d1bd46d2408",
+        "size": 329855
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR0i.gi": {
+        "sha256": "0226f7add851d47d703dd5e86c5b6296aa9f89373bd966da62286a26f6973b69",
+        "size": 8229
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR0s.gi": {
+        "sha256": "19e0dbebbe5dc220fa980a9faf27733390e8692b4829e6da64e0d1b9b5aa0e3e",
+        "size": 2721
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR1a.gai": {
+        "sha256": "a7f3890d74559d005a42f50cdb3a42facade13c97bf08513b8f8cfcca35d9a97",
+        "size": 350796
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR1i.gi": {
+        "sha256": "f395e55189a5bf6b9693b57b946921062670ab611e53072b1d4c941997032304",
+        "size": 8878
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR1s.gi": {
+        "sha256": "115eb0bb1214d29b24bad6dd30c827b82563cb24a4a6a93aae62b16dbfb066be",
+        "size": 2750
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR2a.gai": {
+        "sha256": "259ee1b8112b48d5e1014fc337bbc431a9e2d8c5df1a8901f351532db2c2c355",
+        "size": 378348
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR2i.gi": {
+        "sha256": "9c6e52bb2dc866fc14b582e5ac830db836e8a9bf45862103d0249d8f37747715",
+        "size": 9347
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR2s.gi": {
+        "sha256": "5a26d815d8d3d44a6c786fe034af09675d74f55ba0bc1441543de4b9c962d14c",
+        "size": 2785
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR3a.gai": {
+        "sha256": "92e83af48dcea34d0052a70c90e7a21b9dfce1bfc94d58f32ffa91b42335c4e1",
+        "size": 407633
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR3i.gi": {
+        "sha256": "c0aad6578272f4e31f409d9e6b9993e0c053fe3704d596ee21fee35250ca8d8f",
+        "size": 10033
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR3s.gi": {
+        "sha256": "c360b6d676c4920fd6904cb6899fe3e2f5f0717eb4a1cb7d89e491482ff01dc4",
+        "size": 3121
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR4a.gai": {
+        "sha256": "e056d3339c317afb7acb99ba238592291a3b2e01165f3e9cacd07f183d98dae5",
+        "size": 386120
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR4i.gi": {
+        "sha256": "a45c8498319a17ff0ae8fc5606c8fe04d6d650cc3ef860e087ff7eacb3b2b439",
+        "size": 9723
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR4s.gi": {
+        "sha256": "8da8e944748f2b773478c2929f5fe920a5e86fb120b65ffcddcf904505bccab2",
+        "size": 2871
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR5a.gai": {
+        "sha256": "f7224bc819830b473dbc7d437acf0b1adff7c07b160043c5cfbd7f6ba658fdc0",
+        "size": 360252
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR5i.gi": {
+        "sha256": "f7edb933afdc03d05ed031736587157d54d06437b655b9875c85902a6e7ce9f4",
+        "size": 9136
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR5s.gi": {
+        "sha256": "59607dbd1c83937c25f683e117fc80ea00a59c97ce7149867ad5f7ab12584ff3",
+        "size": 2816
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR6a.gai": {
+        "sha256": "4515d6e8148ad1a2ac30b7a7d9a0ea2293d1edfe465094330598e71954834681",
+        "size": 332591
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR6i.gi": {
+        "sha256": "dc98315f8558928bcd10ab8b7807f3efab4f772733b14e6ad1386e713a0f4683",
+        "size": 6702
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR6s.gi": {
+        "sha256": "071296bfaa11b8afe3baecb209e54d60119a115f59014de755fc7256fb5e2ff4",
+        "size": 2547
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR7a.gai": {
+        "sha256": "40574879678ad2ad3d24f02c7e3f435381d0e23bd9cc28f8b8daf6da8e2033f1",
+        "size": 529621
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR7i.gi": {
+        "sha256": "2dad9cf068bbf52c8f59a76a5be9cba633cfec3926b33d2d098b61c00fdb8925",
+        "size": 8052
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2DefGeneratorSR7s.gi": {
+        "sha256": "3ab7377cf36729beb9b8a710d07dfdcc5b8ef41aa14a9d5d7b532aff9507fc7e",
+        "size": 2504
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR0a.gai": {
+        "sha256": "6601e1d0d9c9436bc946e0e0e887833cb2f713bc6a2a9fbe806e1dfb083ba8ee",
+        "size": 181708
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR0i.gi": {
+        "sha256": "d16ee7332727bafe64798b91b87a1a520cfe9ccbdf246a5966908b41d07b93e3",
+        "size": 6344
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR0s.gi": {
+        "sha256": "4591cf99871e84d42aae11bda754b146b87dbc952c70974d95f3430bab97b8c8",
+        "size": 2257
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR1a.gai": {
+        "sha256": "4bd620c4dc2da3422e9b2c3a9daedc12f39a3366dffba924fc516d79f02619d5",
+        "size": 204062
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR1i.gi": {
+        "sha256": "51543e04437a7c865b32624534e3049d9a072fb39b202c1ee93c8c1c0a8f6d05",
+        "size": 6584
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR1s.gi": {
+        "sha256": "3a9ab5fb224372feefd7557ad73ce9c0b4824917cac08b5dfb06d63cb10067a1",
+        "size": 2590
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR2a.gai": {
+        "sha256": "67d32c2605ffc23fff7f45a0b60a53a25b243d299715cf0f81026106ca352eba",
+        "size": 215547
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR2i.gi": {
+        "sha256": "bb889957ed84b431f6dfe8cc3c588ba0bf1e8b197f1f9a624fc396c0d31a7989",
+        "size": 7001
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR2s.gi": {
+        "sha256": "84782238b370ddc02c9068f50fa3557f980bb81f6575c53d9c0d29fe6dece112",
+        "size": 2295
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR3a.gai": {
+        "sha256": "3e4c1fb9a99a03f873696fbfa8b0d2799c83a6f3886811d4ad9eef9e1e6c0324",
+        "size": 198640
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR3i.gi": {
+        "sha256": "a0413dcb4726929244e5ff7883c631fff20f97ddc18471630e09177aaf9558dc",
+        "size": 6563
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR3s.gi": {
+        "sha256": "0665c162f8a7fa1c2a3b935bf2d2c75e39b2b9be8b8ba390a16083c78ecfba77",
+        "size": 2612
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR4a.gai": {
+        "sha256": "61b577a9464f512c2664ad37785c1b8811a815d00c3b4ce6c48328ddf90d46d8",
+        "size": 219560
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR4i.gi": {
+        "sha256": "dbf30f2d3021c30f5e341f02e52d599694ff406a5622bf1815c9a31dd4ce40e8",
+        "size": 7068
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR4s.gi": {
+        "sha256": "3961eafc4d4073d9d98884d38a71560ec81da50d4209b32805be248d20f8204e",
+        "size": 2277
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR5a.gai": {
+        "sha256": "75fae9151609a0ea3af74634683f7be69bfdbc66a589c97a3d66108a95622f2e",
+        "size": 224098
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR5i.gi": {
+        "sha256": "56f79e965ed1095857d591b81a4dd244ae66898d1dc804a4a2e1b5b6b4a5e9bd",
+        "size": 7517
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR5s.gi": {
+        "sha256": "6014e78408851e75721a721994bfb8a13623dddf15b37b001d152da600398470",
+        "size": 2340
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR6a.gai": {
+        "sha256": "df6f1ebf7da0aff4729301eecdeeb299106264819297ddb201fda793458706da",
+        "size": 221654
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR6i.gi": {
+        "sha256": "26d7161e15f59d3d61e97f6cf733cd47ff284c916541b2d127deda51972e65c5",
+        "size": 7214
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR6s.gi": {
+        "sha256": "a00ff283a1981d49ee34db8cb87992a5d3e0f6fb655b7ed23e079b7c014f88fd",
+        "size": 2491
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR7a.gai": {
+        "sha256": "e33bb3c35d8ec55b7766a76d3257a59ba6489425265fb70bc071507484c7fa63",
+        "size": 508412
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR7i.gi": {
+        "sha256": "b0c8e26abe1b446e68c0130388e2778f88e3dc03111f85203a2bdaf702197bc6",
+        "size": 7441
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2EngineSR7s.gi": {
+        "sha256": "57d3fa4a503ecd4119c8088f08329bae4309968b7d4f01af7f4f6aae80bc6d5c",
+        "size": 2552
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR0a.gai": {
+        "sha256": "785031c2930c64fee36c3dafa95d6bbdda06f70006bb0ddac91d6c710c27dd8e",
+        "size": 256085
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR0i.gi": {
+        "sha256": "f1cdd1411f69c15b6bab25b36bf2fe032ead491dab3ec790d19039ee7fde1a17",
+        "size": 7932
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR0s.gi": {
+        "sha256": "502d70decc48f476429c361cb5e1e95c78f9f1ecdc1b0913c60907d8673733bc",
+        "size": 2340
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR1a.gai": {
+        "sha256": "982ce0f1706db524045d3c8c88301ecb4fec43fbfd4b93c30af2c72d246858bb",
+        "size": 231168
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR1i.gi": {
+        "sha256": "1c10d24787661e875c28eff4fb002fb7fe8b88c00f6105816c2a1638e614b186",
+        "size": 7729
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR1s.gi": {
+        "sha256": "571abb9fdb30d72227c38e4cf3ba344fd2af1fb71091a62440e7866b740ea901",
+        "size": 2578
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR2a.gai": {
+        "sha256": "5d69b2feb8d0bdec735b14c5f8c0a420a178c41a0eed2c5305701c964e936c9f",
+        "size": 238878
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR2i.gi": {
+        "sha256": "6e457566c82aa4b6c3eca6a199858c807e936cba83ad97b94ed20562422a26d0",
+        "size": 7822
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR2s.gi": {
+        "sha256": "88097eae5fff2a1cff03ea1f0d6276c8be40ae01216d1a283d0bedfa000f53ed",
+        "size": 2542
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR3a.gai": {
+        "sha256": "f5613d38b238c442f743ae4cfa436a4d5a30f6291d522dc61abc49a4f4807867",
+        "size": 471772
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR3i.gi": {
+        "sha256": "67c206c755823160d867a617db7ad0bdf63903754ddf8268af57b45df91f74b0",
+        "size": 7075
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR3s.gi": {
+        "sha256": "8ecb483444720dc8b63f28c29c4e2a9aac04247d6443ace533fe5b2a47b94ad6",
+        "size": 2545
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR4a.gai": {
+        "sha256": "c687a3f4fc8ca7aab3003916a3411873e3455e8f5769132d9541301cc89edb79",
+        "size": 262975
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR4i.gi": {
+        "sha256": "572fe7ce374278197159b03a723dc0d2bf2b064bc0fda8cbab78ee096d533bc5",
+        "size": 9264
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR4s.gi": {
+        "sha256": "12b2e8310b39a4a031921ebb197612e3eb821fe33490c5437a127dccf657c33b",
+        "size": 2828
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR5a.gai": {
+        "sha256": "c49896d91dd4a9a378e7d6b876a7444c2163ff50820ec3f9b46059c5d8d97b9e",
+        "size": 230735
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR5i.gi": {
+        "sha256": "ce1a18cb092dfa2625b4389d9e59e7fb01594564b4ed6169c9627b6dd27162e2",
+        "size": 7734
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR5s.gi": {
+        "sha256": "151cc8aab834a8604ba5a425444aa9e5a2088503054f08c856835b32d3f40a3a",
+        "size": 2447
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR6a.gai": {
+        "sha256": "8631f70ecd30ab2bf2688ad3500a4ac7231a1e8383ffae084686dd2432c6eb3e",
+        "size": 240873
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR6i.gi": {
+        "sha256": "6fba8f379cd6de78bdae61af0a52c42c5bf7d8cc946abc1b3158ff3616b65cbf",
+        "size": 8058
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR6s.gi": {
+        "sha256": "6c1d8c0b05004980fea1eed227cdcab5e51b930477db3fa92377e227c1cf559b",
+        "size": 2681
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR7a.gai": {
+        "sha256": "fc915fdb52c2ba6868ecd5fd6ad0e0fab7359158519ec896c33c42897331d39b",
+        "size": 567696
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR7i.gi": {
+        "sha256": "1c307c81c5813c63ada2487b66cca72a9566b0ef3b10d86c25cefb1d15cff501",
+        "size": 8641
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2FuelTanksSR7s.gi": {
+        "sha256": "d7a817148f6844770ca0a4d599a99c5f9c262e22010947835efbdc0ee5356439",
+        "size": 2678
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR0a.gai": {
+        "sha256": "d6d6bae22fca2b898311249a8e2036e31fb0295c959e02100caac08ea6804296",
+        "size": 164791
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR0i.gi": {
+        "sha256": "49ee53a7477e70a52e37f6ef095424bfe0a6fe2244f9d5e805c8dde284f8d0a8",
+        "size": 6168
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR0s.gi": {
+        "sha256": "003601f349dce60acc1f3846681e49df4ab6ea95fdeddfe1010e16d6cfdf2cc8",
+        "size": 2340
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR1a.gai": {
+        "sha256": "9c373e9237fd71a9b27db7025431031571704d3cd326b87fdf3b678d1e5be983",
+        "size": 251709
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR1i.gi": {
+        "sha256": "4ffbdb37bb6db425da224bf56ab3166ca3a94e5f8c60642d49809e1006658e38",
+        "size": 9385
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR1s.gi": {
+        "sha256": "d16b89b0b82d25e7b75404a8c4bef4690c71b15eee519d49cafee682fad17eb1",
+        "size": 2896
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR2a.gai": {
+        "sha256": "ea077ebe9a73f43a437ef2928c5bbc64ad681aa498f89360281013b58aec6c85",
+        "size": 257159
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR2i.gi": {
+        "sha256": "a42274bb5b9860dd386838de2d86e77801811192729f1135a91a469c0e58f32b",
+        "size": 10064
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR2s.gi": {
+        "sha256": "07eb1529e9c69be2eb1a9d1a29bf91df80a382c7e67daa675b10bcc7286224cb",
+        "size": 3236
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR3a.gai": {
+        "sha256": "02f17bf0cc0ea6436d2cfd41974c2ae9440e6bd594c7e16e9aa20cbed0c33bb8",
+        "size": 281821
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR3i.gi": {
+        "sha256": "acba67281252b1b80561fdaf7edd5f0f6a847a950ac8fcc02e1b84a2955b5344",
+        "size": 9359
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR3s.gi": {
+        "sha256": "00691ba59d2f744d0a9363f4efcc487f3ad7a72de226ea428fb45a99203e24ee",
+        "size": 2956
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR4a.gai": {
+        "sha256": "4eef9a836173e734ebd1d2f9413b5800e733e0bc48eddb788351e3d55c1a15b3",
+        "size": 315918
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR4i.gi": {
+        "sha256": "7b5450e4b9ccd514c16ec773a6fae2555367e4e3e0610b376060294fb8ce3852",
+        "size": 10557
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR4s.gi": {
+        "sha256": "9644db304fd94845ab0008f6164c72b0710a6b4559275c8541f6f5a7b3000e88",
+        "size": 3055
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR5a.gai": {
+        "sha256": "89dbbd6e1d07952c5487e19a3d81f3497815c9567907c035845a2400786f5ce9",
+        "size": 323442
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR5i.gi": {
+        "sha256": "a6e7d0b24eed7bbc271196c4d201f290d11e90c22676d4000ed933fa7e5810d1",
+        "size": 8883
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR5s.gi": {
+        "sha256": "425cbf6b9f2f380c44786ace3fc87f0bf94dc8a689570c90298fe490bbfd0fe6",
+        "size": 2902
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR6a.gai": {
+        "sha256": "33ccb91ef5f7799020389070769c197c1d3b8f23533513663fcbfc1990d6ea21",
+        "size": 250610
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR6i.gi": {
+        "sha256": "2850f3e97541d6f162c7369c0a70400ea5f8d720b5fed6365a86a4933cf1c0f1",
+        "size": 8338
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR6s.gi": {
+        "sha256": "51f3b8df7bb4c70784c7d28f43822fc712d4a9e5626efa8fcc3dd292885e0288",
+        "size": 2625
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR7a.gai": {
+        "sha256": "08bb7fcdd1c76d205c2f6f35a244d2baf1ccd747309d4ffb14a21e966d051d55",
+        "size": 653743
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR7i.gi": {
+        "sha256": "666d8952bccee1abdca674f4d9ec1539ae965abef656bac0c840a03850ee1866",
+        "size": 10032
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RadarSR7s.gi": {
+        "sha256": "69aff143d452323d85a5cbe345c40339ca8054fb5c620735829cfd697e06b183",
+        "size": 2453
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR0a.gai": {
+        "sha256": "b61fbec05bb5c045f021df27d4d33b10286e0a1e9ee7bf43a3560cd862c9a724",
+        "size": 414336
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR0i.gi": {
+        "sha256": "46e1f4aff4c26ae199b130298867eb680f46888ce63c180891183d5e5dc78d39",
+        "size": 7161
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR0s.gi": {
+        "sha256": "37648247f0a5f19fc08942401ee7a2a606aa9e7707e78621aa03738da724d52b",
+        "size": 2234
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR1a.gai": {
+        "sha256": "9f58ab9a24e1fe4d1ed4fc4fb9a84d0ad56a1b2d22ee32a19c3fcd3e853e4e9d",
+        "size": 367551
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR1i.gi": {
+        "sha256": "b10dcaf1283b10d4c99173722461965910636c74f7ffd1c85374a9d3b72933d4",
+        "size": 7483
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR1s.gi": {
+        "sha256": "ff09036280437e8e28bf217ff6643a616a6c49b3c7361e8d4387958bf4b062f3",
+        "size": 2409
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR2a.gai": {
+        "sha256": "4119c70d1b1b365687c173ff7a8ce318f121d2ae16e65635bef311e3ae293d6e",
+        "size": 337891
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR2i.gi": {
+        "sha256": "5958f3f779468fee50fe905a208212ba1a794b38b018ac634ae1aa06c6c8e6c8",
+        "size": 7178
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR2s.gi": {
+        "sha256": "b290afacc96964ef902d0e3d0152d3cc7a211f14a1acdbd487f1789f85856fe8",
+        "size": 2210
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR3a.gai": {
+        "sha256": "285a4c9f12d839aa249d1a2966ab1b45aedd8e4885693b2d094dc9e53ad76ffa",
+        "size": 397363
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR3i.gi": {
+        "sha256": "18ca41654ec991ffc052ddce7109ef2e33cdcf6680108ae0cf688dc4fcb221df",
+        "size": 7685
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR3s.gi": {
+        "sha256": "900d017fe7dfd55fa2375ae533f097f1d7f7a2753d6be3c2706b0d5f77e17ff7",
+        "size": 2493
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR4a.gai": {
+        "sha256": "ac7c202f11eb27a5076b9ac37c511dfb83b43b08e5b8c5f7c3864b49a1b7ac81",
+        "size": 398278
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR4i.gi": {
+        "sha256": "31d84aeb64458d6964e7f210f37e18f94d7340a051e26d4a9aec96eb7bb69394",
+        "size": 7822
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR4s.gi": {
+        "sha256": "00495288814c552a4af2917a0dd9071defd61759b6f276ddeba60193bb6b9a9c",
+        "size": 2876
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR5a.gai": {
+        "sha256": "2568970e876a100e0091ad0d5fba153f390cc51c653f2397b5c515c8f52f7cd5",
+        "size": 394892
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR5i.gi": {
+        "sha256": "6800a73d3e5e69e2cef826af5804baa4428521a8f9ed6f74a5d3bc121b4dff4e",
+        "size": 7330
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR5s.gi": {
+        "sha256": "56fd000e4dfd97c3e12638a05395df8fe28e087020b97d2fbdeb479dbd29121b",
+        "size": 2703
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR6a.gai": {
+        "sha256": "4b82ddda702c6575567842bbb86e21755bca253006fe66f70188f11eeccd6f61",
+        "size": 405278
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR6i.gi": {
+        "sha256": "98614c5da3f5250dc7ab46fd7f2ad16e0742c1bd7884a269b05fabe43a24405b",
+        "size": 7622
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR6s.gi": {
+        "sha256": "4b083f9c65f4926d4816d1ddabf593ed4466478417a296aa6aa21a47edcee1e2",
+        "size": 2529
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR7a.gai": {
+        "sha256": "efafcace2ec93488ee84d3dbd2c1d5d3033fc777bce371be45a4f95cd5419f49",
+        "size": 409571
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR7i.gi": {
+        "sha256": "c0efe7d4d7f8a10191b0c43361ea830b3459902b895ab6b2cea1ff24cddd1122",
+        "size": 5953
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2RepairRobotSR7s.gi": {
+        "sha256": "efeb77638bc3931dd7b1bc7656aad2deef868ed51813b4e87307dcf732aa3295",
+        "size": 2176
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR0a.gai": {
+        "sha256": "402f272e358eccfb6d218fc3e53c0e4eb2c693e3a4c2338e00eac14b6707c70b",
+        "size": 275247
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR0i.gi": {
+        "sha256": "36978a6b7f91e6dbd9469217a3000b6b45cc5ce1dea97e334a16d7422105ca46",
+        "size": 7115
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR0s.gi": {
+        "sha256": "c497d482808bb19f23d7def4bb28d929d0db97db695a74b6a7ee1f10e08d52a5",
+        "size": 2415
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR1a.gai": {
+        "sha256": "7384c347b813d31c327d3bf695f94cdcadfbb4862f8ce5fb1fb811745cebdde6",
+        "size": 539504
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR1i.gi": {
+        "sha256": "f5b81ae9d681f3f6d028a1acfab481e81516e43354c4c0f50fe41ec98cfe89d2",
+        "size": 8173
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR1s.gi": {
+        "sha256": "162349c36d6d99da7be881811ef411ca533a343c226281fe0466059d989f06aa",
+        "size": 2550
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR2a.gai": {
+        "sha256": "89448c693430e6245d6556a02838dd954161092df996062e18ce729346c19bc9",
+        "size": 224615
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR2i.gi": {
+        "sha256": "84d1145459c7478b242b37e75582c91ec462e39b604dfdd8ed93c517b86d7460",
+        "size": 9839
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR2s.gi": {
+        "sha256": "c0632829f01cb51e29d2428fb6eecca61d5a6ec36367bca2105028dafb29a2ed",
+        "size": 3024
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR3a.gai": {
+        "sha256": "cfe8e2b47cf77aae8dde259366939b4f69129a0047982c83e304f0b17ac7b5d6",
+        "size": 257355
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR3i.gi": {
+        "sha256": "ba1a274639a0fa627566a4c88496b3e14a764bbc388d167b0096c362f8940459",
+        "size": 11347
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR3s.gi": {
+        "sha256": "75cb712766a42da3661dd15114b23b47823ba7da9dfadbc43cdb22840c86ff1e",
+        "size": 3018
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR4a.gai": {
+        "sha256": "2bebe225a010f51093ec2774703ba0495a897c3810371c056ee00845e5227460",
+        "size": 328237
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR4i.gi": {
+        "sha256": "6a697a68f83cc66b664a9b5c1a4b5534b4d3029d18ec1b56e37438859c9c6c69",
+        "size": 10553
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR4s.gi": {
+        "sha256": "b1441d23a4ba35771853547554d445e82e142f869ee3c8f4453d33eee9416a2e",
+        "size": 3257
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR5a.gai": {
+        "sha256": "1c6e6e61690cf2f80849135dc481fb7703c125a2521977b10a0ba1100758ce02",
+        "size": 310534
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR5i.gi": {
+        "sha256": "b1115d5a240fd4baee32088f34ad3cc6b4bde1e57ab1eb4e48cd27eb8d67b563",
+        "size": 10317
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR5s.gi": {
+        "sha256": "a86097c7e0d85eba609672d3176a43eb5b078224e94adbcd482f4a18bf534a78",
+        "size": 3075
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR6a.gai": {
+        "sha256": "e96986a1ea740d43d89067550dcf377f6bd4d45f05527131c54e94914305bc7d",
+        "size": 300524
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR6i.gi": {
+        "sha256": "682425d623fa03798e2a66d345118b9a1518bcdef8752638cc709de272f908bc",
+        "size": 9665
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR6s.gi": {
+        "sha256": "173d0ad4e8bc4c31fa17511c43589ee7b5706034cb9e5ca016d66d66844ae3d9",
+        "size": 2962
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR7a.gai": {
+        "sha256": "5f82ffbd7acab1c6cb243465525f13de1f8df46d123bd79b3637d67a003fedd5",
+        "size": 465339
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR7i.gi": {
+        "sha256": "d2da7135bf2cfa58f95eb5ae7fd7dd4b57b4427009448cbac9528d6010658678",
+        "size": 5876
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/2ScanerSR7s.gi": {
+        "sha256": "c7e2ae988d5b497b3e6d9fc8e68b0026d9512ada6abcd39e7a878a0cbf482a03",
+        "size": 2878
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_Fei_a.gai": {
+        "sha256": "ae5dfe9ad5e2aefe4c9f01454d97e1242f0b5a4784bb9203e1276e93957c105c",
+        "size": 144452
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_Fei_i.gi": {
+        "sha256": "0395edb5db368684339e63d5fb427912c6ef7d126b72bfdb1ff7e7156b87767a",
+        "size": 3910
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_Fei_s.gi": {
+        "sha256": "5ee9e40eb678b9e89823c87f8e644278ada5cdd58f4d8aa5cfc41472ee65279d",
+        "size": 2553
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_Gaal_a.gai": {
+        "sha256": "c7d6b3b4e49700556b09651c1701db9030754c5a106e053037655420b96c5977",
+        "size": 180362
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_Gaal_i.gi": {
+        "sha256": "46b95a366ae7631489168d53e6c7fe3620e0a1d3873109d32ba821c1aca1f1f3",
+        "size": 4956
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_Gaal_s.gi": {
+        "sha256": "ce1b067e17c30886d13045853bbaf9c992dc2645f04ced6f9b16c11b8c8625c1",
+        "size": 2969
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_Maloc_a.gai": {
+        "sha256": "723cc366c000589fbf58319a00c26e3ff7f6fd1d68d385dafb96337d2f4897d7",
+        "size": 162254
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_Maloc_i.gi": {
+        "sha256": "af39ef67ba1ecd7c7925496576feac1a0cffa10b58396e4a7db8e01d6045e9a6",
+        "size": 4307
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_Maloc_s.gi": {
+        "sha256": "14c7da8dbbe6e3f13c02dfd9e5277105ee49e0c5f1bbc7e609754aa1ef4d5ea3",
+        "size": 1927
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_Peleng_a.gai": {
+        "sha256": "8b218b7d4f37e59398e468dabab5139b63e93b4bab2ea9e63f6bd1bb89548034",
+        "size": 155260
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_Peleng_i.gi": {
+        "sha256": "6ba20c2555a1de9b38ec7d65f361da9a03aa91d3aab874ffd0fceb7825932e34",
+        "size": 4653
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_Peleng_s.gi": {
+        "sha256": "4af43196bec9905af6650c017b778af93122b2b01cbfe47701c2b1b9224cb47f",
+        "size": 2559
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_People_a.gai": {
+        "sha256": "67ce80d245103f7c057e6c3e25917108531709b84688532d8a8659acb62fcebe",
+        "size": 130899
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_People_i.gi": {
+        "sha256": "6e899a997471c13502a4adfd6daf42afa031924572dc614554211755632d0d3e",
+        "size": 4998
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Items/Hull/2HullSR_People_s.gi": {
+        "sha256": "aa3682788a2e78c71960504711d8cdc6edff127a99026144add00d12e35ab21d",
+        "size": 2299
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_FeiA.gi": {
+        "sha256": "0a7f9dc276be51b0b85d7f7018fdc5aa42f08efafed27f75f253d86e54a0e40a",
+        "size": 1576
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_FeiD.gi": {
+        "sha256": "5469745061330420acb17bf9790ecd5eafb1e2aa1931446b3adcba57c9c47c90",
+        "size": 947
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_FeiH.gi": {
+        "sha256": "399d9c57e27198931273d02be7fe21474bff04cbfd84846eca2d2e4e6bb63408",
+        "size": 1114
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_FeiN.gi": {
+        "sha256": "a3d8063f925805943021142d5a6ed1fe6f035c970ad7051a69621c8d7a234c20",
+        "size": 1114
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_GaalA.gi": {
+        "sha256": "bfe42d80fa2e98009baa289c5bf60b83daf74d7749217102ffd186a6aa0e970f",
+        "size": 1501
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_GaalD.gi": {
+        "sha256": "0a9746328b1d2a72b2664e2727645075d1c7039c36f176232ab589fdcc2a4963",
+        "size": 1066
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_GaalH.gi": {
+        "sha256": "bb796aa78f892fa13ca2c90517937f915c26de8c45e6e81b3780d85d9e4284ec",
+        "size": 1271
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_GaalN.gi": {
+        "sha256": "756274d568cad532095e3fddd17770af8a5d6d5248f2d3418b8fd36a92c8fcc4",
+        "size": 1271
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_MalocA.gi": {
+        "sha256": "b41548b774f30177f94fe30b611d4f35bc7a89a8089c181fcbe5bd296337b092",
+        "size": 1214
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_MalocD.gi": {
+        "sha256": "7afc49b445d6cd3548bae9609e0e229d67e05878b3a9f551c4c9597cc7796bc6",
+        "size": 783
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_MalocH.gi": {
+        "sha256": "a268d5ca20c52ca7a7ca4b081d583f6add756dc6d92de5fb1c16ac1dee4b7c30",
+        "size": 903
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_MalocN.gi": {
+        "sha256": "5f6c03f4c6e89f1254951fc8ac35829239aa7a4a7bdf6580b7799864c2bfc577",
+        "size": 903
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_PelengA.gi": {
+        "sha256": "5dc425c3ad48ffba5c56603b96694f697bf93cb75c6cb12812642609fe1bfaa9",
+        "size": 1389
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_PelengD.gi": {
+        "sha256": "c2314564465df333f7e930647f6ec3dd6a2d6d4b1571021ffba6cfe2fc02a137",
+        "size": 931
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_PelengH.gi": {
+        "sha256": "2e2c90cc5b152842849774a9006c2e2a0d4daaf5ace48e2d621e1f5c9f20d6bc",
+        "size": 1097
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_PelengN.gi": {
+        "sha256": "f9fe4c5206683c56b618d470e14c4654a2c39c7000535014bd957879dc837ecd",
+        "size": 1097
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_PeopleA.gi": {
+        "sha256": "a4d747cb1dac7315afcbb1008c01aed56b5c232c8d55e4090ec34a26912fee2e",
+        "size": 1472
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_PeopleD.gi": {
+        "sha256": "07585526528c9bfe6ddc8c27a5e550a76b14c3eab7c7381ebf39d2af91874e72",
+        "size": 909
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_PeopleH.gi": {
+        "sha256": "2c8adc798a77b80dec730e7c5e70da89308b6b22fa06c02f4e362ab48177bda7",
+        "size": 1075
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/PanelSpace2/2HullSR_PeopleN.gi": {
+        "sha256": "d66b3c6d75e9bcaf85cf71060eaeecc73f863071bf263466f10d03b2d0d171c3",
+        "size": 1075
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Ship/2HullSR_Fei.hai": {
+        "sha256": "d2ad6cacaa8ac42b2c0a3f6f7e4d90347cea20d5655885fc97744fb19e892e99",
+        "size": 1218612
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Ship/2HullSR_Fei_s.hai": {
+        "sha256": "696d7c43315cfb87ff590aa599b7ede3d97426b7f76e8877c132a9328787cdcf",
+        "size": 348212
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Ship/2HullSR_Gaal.hai": {
+        "sha256": "82517ccf9ac26ee1405333f2d1d321c67d63678626cb7d140f7c1da86d3febde",
+        "size": 1044532
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Ship/2HullSR_Gaal_s.hai": {
+        "sha256": "b2d5d5aafbcdedd3d5e0c7fb97eaa951926ce8bd3211a5e44faffc576852e014",
+        "size": 348212
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Ship/2HullSR_Maloc.hai": {
+        "sha256": "e5c2f3aa633dccab22346ebac05d338b086b48f7b2f46ce5888a27e7d4b5580e",
+        "size": 887860
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Ship/2HullSR_Maloc_s.hai": {
+        "sha256": "b04cfba1f08c074762c7796f5422fa974605f0b1dbf2312acedc3a2645cde752",
+        "size": 539700
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Ship/2HullSR_Peleng.hai": {
+        "sha256": "52b115727920444fac4cafcb9a48435fc6c9e2c38cbe695d50c2ae88bef5cd4f",
+        "size": 1392692
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Ship/2HullSR_Peleng_s.hai": {
+        "sha256": "2f96ee0b79f63a6d0e711c0d107c1f8cd689683b6c45f81c26edcfa1306bb3e0",
+        "size": 348212
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Ship/2HullSR_People.hai": {
+        "sha256": "80461869625db6f6b4e8703273895135d6999eca828d5a114116eba6cf068fee",
+        "size": 1148980
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/Ship/2HullSR_People_s.hai": {
+        "sha256": "d3f691535d72e4a04cb4844972e56868d2529045d5a6287f8ac153536beb472f",
+        "size": 574516
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/ShipP/2HullSR_Fei.gi": {
+        "sha256": "56f630027545a4af3d0eef9979839138d3c2613dc19d8f0f6b72bc2e21420504",
+        "size": 15291
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/ShipP/2HullSR_Gaal.gi": {
+        "sha256": "bc55a57541e1149d868ff784d58c6d76a9963aee531f1ba386cd18267f5c3464",
+        "size": 22419
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/ShipP/2HullSR_Maloc.gi": {
+        "sha256": "789218d81b3899de74e370d7979d45cc80c9667a77e7a67503e312c21ead7b3c",
+        "size": 17266
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/ShipP/2HullSR_Peleng.gi": {
+        "sha256": "11991190960313dbf21145b8bc6355e7529a70c7b896ff8ba0c4cf23bd64622a",
+        "size": 26583
+      },
+      "{app}/Mods/OtherMods/SR1Equipment/DATA/ShipP/2HullSR_People.gi": {
+        "sha256": "71b58d8d19414c0efb3362ecbd5cdf62653d294feb5b7a616777877b8463c241",
+        "size": 14396
+      }
+    }
+  }
+}

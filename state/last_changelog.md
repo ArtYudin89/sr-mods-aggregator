@@ -1,11 +1,12 @@
-# Код-трек universe 2026-06-18T07:20:10Z
+# Код-трек universe (все 10 юнитов) 2026-06-18T17:54:02Z
 
-- universe_community
-- universe_fixes_130325
-- fairans_vision_universe
-- universe_prochee
-- solyanka_universe
+- arti_mods_pack
 - denmods
 - denmods_fix
-- arti_mods_pack
+- fairans_vision_universe
 - kotyanka_universe
+- solyanka_universe
+- universe_community
+- universe_fixes_130325
+- universe_prochee
+- zelmods
