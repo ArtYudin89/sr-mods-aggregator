@@ -832,6 +832,104 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
     return total_new
 
 
+def code_track(cfg):
+    """Нарезать КОД по модам (из committed mods/<camp>/<unit>/code/) и залить на HF.
+    Пишет code.manifest.json (path->sha,size) на юнит; код-блобы идут в общий
+    asset_index (chunk kind='code'). Без GDrive — код уже в git."""
+    from collections import defaultdict
+    index = load_json(ASSET_INDEX, {'blobs': {}, 'chunks': {}})
+    seen = set(index['blobs'])
+    store_cfg = cfg.get('asset_store', {})
+    if store_cfg.get('type') != 'hf':
+        print('code-track: только asset_store type=hf'); return
+    repo_id = store_cfg.get('hf_repo')
+    token = os.environ.get('HF_TOKEN') or store_cfg.get('token')
+    if not repo_id or not token:
+        print('code-track: нет hf_repo/HF_TOKEN'); return
+    os.environ['HF_HUB_DISABLE_XET'] = '1'
+    chunk_max = cfg.get('asset_policy', {}).get('chunk_max_mb', 512) * 1024 * 1024
+    total = 0
+
+    for unit_dir in sorted(MODS.glob('*/*')):
+        code_dir = unit_dir / 'code'
+        if not code_dir.is_dir():
+            continue
+        name = unit_dir.name
+        # манифест кода (path -> sha,size) + sha по файлам
+        files = {}
+        for f in code_dir.rglob('*'):
+            if f.is_file():
+                rel = str(f.relative_to(code_dir)).replace('\\', '/')
+                files[rel] = {'sha256': sha256_file(f), 'size': f.stat().st_size}
+        if not files:
+            continue
+        save_json(unit_dir / 'code.manifest.json', {'files': files})
+
+        need = {}                       # sha -> relpath (первая встреча новых)
+        for rel, m in files.items():
+            sh = m['sha256']
+            if sh in seen or sh in need:
+                continue
+            need[sh] = rel
+        if not need:
+            print(f'  {name}: код без новых блобов')
+            continue
+
+        by_mod = defaultdict(list)
+        for sh, rel in need.items():
+            by_mod[mod_key(rel)].append(sh)
+        uchunks = REPO / '_code_chunks'
+        if uchunks.exists():
+            shutil.rmtree(uchunks)
+        uchunks.mkdir(parents=True)
+        DIST.mkdir(parents=True, exist_ok=True)
+        base = stamp()
+        usan = _sanitize_group(name)
+        pending = []
+        seq = 0
+
+        def build(grp, cur):
+            nonlocal seq
+            if not cur:
+                return
+            cn = f'code-{usan}-{_sanitize_group(grp)}-{base}-{seq:03d}.zip'
+            seq += 1
+            with zipfile.ZipFile(uchunks / cn, 'w', zipfile.ZIP_STORED, allowZip64=True) as z:
+                for sh in cur:
+                    z.write(code_dir / need[sh], sh)
+            pending.append((cn, list(cur), grp))
+
+        for grp in sorted(by_mod):
+            cur, cur_sz = [], 0
+            for sh in sorted(by_mod[grp]):
+                sz = files[need[sh]]['size']
+                if sz > chunk_max:
+                    build(grp, [sh]); continue
+                if cur_sz + sz > chunk_max and cur:
+                    build(grp, cur); cur, cur_sz = [], 0
+                cur.append(sh); cur_sz += sz
+            build(grp, cur)
+
+        if _hf_put_folder(repo_id, uchunks, token):
+            for cn, shas, grp in pending:
+                url = f'https://huggingface.co/datasets/{repo_id}/resolve/main/{cn}'
+                index['chunks'][cn] = {'url': url, 'store': 'hf', 'group': grp,
+                                       'kind': 'code', 'blob_count': len(shas)}
+                for sh in shas:
+                    index['blobs'][sh] = {'chunk': cn, 'size': files[need[sh]]['size']}
+                    seen.add(sh)
+            save_json(ASSET_INDEX, index)
+            total += sum(len(s) for _, s, _ in pending)
+            print(f'  {name}: код залит — {len(need)} блобов, {len(pending)} чанков '
+                  f'({len(by_mod)} мод-групп)')
+        else:
+            print(f'  {name}: FAIL заливка кода после ретраев')
+        shutil.rmtree(uchunks, ignore_errors=True)
+
+    print(f'Код-трек: новых код-блобов {total}; в индексе {len(index["blobs"])} блобов, '
+          f'{len(index["chunks"])} чанков')
+
+
 def regroup_assets(cfg):
     """Перегруппировать уже залитые на HF ассеты ПО МОДАМ (без GDrive).
     Скачивает блобы из текущих HF-чанков -> локальный store -> переупаковывает
@@ -987,7 +1085,7 @@ def _hf_put(repo_id, path, token, timeout=600, retries=4):
     return False
 
 
-def _hf_put_folder(repo_id, folder, token, timeout=1800, retries=8):
+def _hf_put_folder(repo_id, folder, token, timeout=420, retries=8):
     """Залить ВСЮ папку чанков ОДНИМ коммитом (upload_folder) в subprocess с
     таймаутом+ретраями. Мало коммитов (обходит rate-limit HF) + не зависает
     (subprocess убивается по таймауту). upload_folder резюмируемый — пропускает
@@ -1081,6 +1179,9 @@ def main():
     ap.add_argument('--regroup', action='store_true',
                     help='перегруппировать уже залитые на HF ассеты ПО МОДАМ '
                          '(скачать с HF -> переупаковать -> залить -> удалить старые)')
+    ap.add_argument('--code-track', action='store_true',
+                    help='нарезать КОД по модам (из mods/<юнит>/code/) и залить на HF '
+                         '+ code.manifest.json (без GDrive)')
     a = ap.parse_args()
 
     cfg = load_json(a.config, None)
@@ -1114,6 +1215,11 @@ def main():
     if a.regroup:
         print('=== Перегруппировка ассетов по модам (из HF) ===')
         regroup_assets(cfg)
+        return
+
+    if a.code_track:
+        print('=== Код-трек по модам (на HF) ===')
+        code_track(cfg)
         return
 
     if a.code_release:
