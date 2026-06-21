@@ -45,6 +45,8 @@ jobs:
   update:
     runs-on: windows-latest        # innounp.exe (Inno Setup 6.4) — Windows
     timeout-minutes: 350
+    env:
+      RCLONE_CONFIG: ${{ github.workspace }}\rclone.conf   # rclone берёт конфиг отсюда
     steps:
       - name: Checkout aggregator
         uses: actions/checkout@v4
@@ -66,16 +68,27 @@ jobs:
       - name: Install deps
         run: pip install gdown requests huggingface_hub
 
-      - name: Setup rclone
-        uses: AnimMouse/setup-rclone@v1
-        with:
-          rclone_config: ${{ secrets.RCLONE_CONF }}
-
-      - name: Incremental update (download changed -> decompile -> manifests)
-        working-directory: sr-mods-aggregator
+      - name: Setup rclone + config
+        shell: pwsh
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          HF_HUB_DISABLE_XET: '1'
+          RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+        run: |
+          choco install rclone -y --no-progress
+          if (-not $env:RCLONE_CONF) { Write-Host 'RCLONE_CONF секрет не задан — access:shared юниты будут пропущены'; exit 0 }
+          Set-Content -Path "$env:GITHUB_WORKSPACE\rclone.conf" -Value $env:RCLONE_CONF -Encoding ascii
+          rclone --config "$env:GITHUB_WORKSPACE\rclone.conf" listremotes
+
+      - name: Git identity
+        working-directory: sr-mods-aggregator
+        shell: bash
+        run: |
+          git config user.name  "sr-mods-bot"
+          git config user.email "bot@users.noreply.github.com"
+
+      # 1) ДЕТЕКЦИЯ + декомпиляция изменённых юнитов (это и есть проверка автообновления:
+      #    skip-if-unchanged по remote_sig из GDrive; --commit коммитит изменения).
+      - name: Detect & decompile changed units
+        working-directory: sr-mods-aggregator
         shell: bash
         run: |
           ONLY='${{ github.event.inputs.only }}'
@@ -84,22 +97,58 @@ jobs:
           [ -n "$ONLY" ] && ARGS="$ARGS --only $ONLY"
           [ "$FORCE" = "true" ] && ARGS="$ARGS --force"
           python pipeline/aggregate.py $ARGS
-          # ассеты и код изменённых юнитов -> HF (skip-if-unchanged по индексу)
-          python pipeline/aggregate.py --assets --fetch --lean
-          python pipeline/aggregate.py --code-track
-          # дескрипторы + индекс
-          python pipeline/aggregate.py --descriptors
-          python pipeline/aggregate.py --publish-index
 
-      - name: Commit & push
+      # 2) Закрепить доказательство СРАЗУ (push коммитов детекции), даже если ниже упадёт.
+      - name: Push detected changes
         working-directory: sr-mods-aggregator
         shell: bash
         run: |
-          git config user.name  "sr-mods-bot"
-          git config user.email "bot@users.noreply.github.com"
+          git push || echo "push skipped (нечего пушить / уже актуально)"
+
+      # 3) Ассеты изменённых юнитов на HF (тяжёлый шаг; не валит весь прогон).
+      - name: Assets to HF
+        if: ${{ always() }}
+        continue-on-error: true
+        working-directory: sr-mods-aggregator
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_HUB_DISABLE_XET: '1'
+        shell: bash
+        run: python pipeline/aggregate.py --assets --fetch --lean
+
+      # 4) Код изменённых юнитов на HF.
+      - name: Code to HF
+        if: ${{ always() }}
+        continue-on-error: true
+        working-directory: sr-mods-aggregator
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_HUB_DISABLE_XET: '1'
+        shell: bash
+        run: python pipeline/aggregate.py --code-track
+
+      # 5) Дескрипторы + публикация индекса.
+      - name: Descriptors + index
+        if: ${{ always() }}
+        continue-on-error: true
+        working-directory: sr-mods-aggregator
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_HUB_DISABLE_XET: '1'
+        shell: bash
+        run: |
+          python pipeline/aggregate.py --descriptors
+          python pipeline/aggregate.py --publish-index
+
+      # 6) Финальный коммит/пуш всего (дескрипторы, индекс, lock) — всегда.
+      - name: Commit & push all
+        if: ${{ always() }}
+        working-directory: sr-mods-aggregator
+        shell: bash
+        run: |
           git add -A
           if git diff --cached --quiet; then
-            echo "Изменений нет."
+            echo "Изменений для коммита нет."
           else
             git commit -m "auto-update: $(date -u +%Y-%m-%d) (изменённые юниты + дескрипторы)"
             git push
