@@ -48,6 +48,10 @@ jobs:
     env:
       RCLONE_CONFIG: ${{ github.workspace }}\rclone.conf   # rclone берёт конфиг отсюда
     steps:
+      - name: Enable git long paths (Windows)
+        shell: pwsh
+        run: git config --global core.longpaths true
+
       - name: Checkout aggregator
         uses: actions/checkout@v4
         with:
@@ -107,7 +111,6 @@ jobs:
 
       # 3) Ассеты изменённых юнитов на HF (тяжёлый шаг; не валит весь прогон).
       - name: Assets to HF
-        if: ${{ always() }}
         continue-on-error: true
         working-directory: sr-mods-aggregator
         env:
@@ -118,7 +121,6 @@ jobs:
 
       # 4) Код изменённых юнитов на HF.
       - name: Code to HF
-        if: ${{ always() }}
         continue-on-error: true
         working-directory: sr-mods-aggregator
         env:
@@ -129,7 +131,6 @@ jobs:
 
       # 5) Дескрипторы + публикация индекса.
       - name: Descriptors + index
-        if: ${{ always() }}
         continue-on-error: true
         working-directory: sr-mods-aggregator
         env:
