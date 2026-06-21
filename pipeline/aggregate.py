@@ -1089,6 +1089,47 @@ def build_descriptors(cfg):
         }
     save_json(out_root / 'catalog.json', {'schema': 'srmod-catalog/2', 'mods': catalog})
 
+    # packs.json: тир каждого юнита для проверки совместимости в лаунчере (Фаза 2).
+    #   base   — полноценная игра (содержит Rangers.exe); сейвы привязаны к базе.
+    #   fix    — фикс-пак, ставится ТОЛЬКО на родителя (fix_parent); обновление обязательно.
+    #   assets — графика/музыка; mod — обычный мод.
+    FIX_PARENT = {                       # нерегулярные имена -> родитель (можно переопр. в config)
+        'redux_fixes': 'redux_base_installer',
+        'original_fixes': 'original_installer',
+        'reflection_fixes': 'reflection_installer',
+        'universe_fixes_130325': 'universe_community',
+        'denmods_fix': 'denmods',
+    }
+    packs = {}
+    for u in cfg.get('units', []):
+        name, camp = u['name'], u['camp']
+        unit_dir = MODS / camp / name
+        cm = load_json(unit_dir / 'code.manifest.json', {}).get('files', {})
+        am = load_json(unit_dir / 'assets.manifest.json', {})
+        am = am.get('files', am) if isinstance(am, dict) else {}
+        contains_exe = any(k.lower().endswith('rangers.exe') for k in {**cm, **am})
+        role = u.get('role')
+        if role == 'pack' and contains_exe:
+            tier = 'base'
+        elif role == 'fixes':
+            tier = 'fix'
+        elif role == 'assets':
+            tier = 'assets'
+        else:
+            tier = 'mod'
+        packs[f'{camp}/{name}'] = {
+            'name': name, 'camp': camp, 'role': role, 'tier': tier,
+            'contains_exe': contains_exe,
+            'fix_parent': u.get('fix_parent') or (FIX_PARENT.get(name) if tier == 'fix' else None),
+            'load_order': u.get('load_order'),
+            'update_required': tier in ('base', 'fix'),  # критично: обновление обязательно
+            'display_name': u.get('display_name', name),
+        }
+    save_json(REPO / 'state' / 'packs.json', {'schema': 'srmod-packs/1', 'packs': packs})
+    n_base = sum(1 for p in packs.values() if p['tier'] == 'base')
+    n_fix = sum(1 for p in packs.values() if p['tier'] == 'fix')
+    print(f'  packs.json: {len(packs)} юнитов (base {n_base}, fix {n_fix})')
+
     multi = sum(1 for v in catalog.values() if len(v['variants']) > 1)
     differ = sum(1 for v in catalog.values() if v['versions_differ'])
     with_dep = sum(1 for v in variants.values() for x in v if x['depends'])
