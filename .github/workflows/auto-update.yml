@@ -110,7 +110,12 @@ jobs:
         working-directory: sr-mods-aggregator
         shell: bash
         run: |
-          git push || echo "push skipped (нечего пушить / уже актуально)"
+          for i in 1 2 3; do
+            git push && break || {
+              echo "push retry $i (fetch+rebase)";
+              git fetch origin master && git rebase origin/master || git rebase --abort;
+            }
+          done
 
       # 3) Ассеты изменённых юнитов на HF (тяжёлый шаг; не валит весь прогон).
       - name: Assets to HF
@@ -155,5 +160,10 @@ jobs:
             echo "Изменений для коммита нет."
           else
             git commit -m "auto-update: $(date -u +%Y-%m-%d) (изменённые юниты + дескрипторы)"
-            git push
+            for i in 1 2 3; do
+              git push && break || {
+                echo "push retry $i (fetch+rebase)";
+                git fetch origin master && git rebase origin/master || git rebase --abort;
+              }
+            done
           fi

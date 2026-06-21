@@ -24,6 +24,9 @@ concurrency:
 
 jobs:
   sync:
+    # Не запускаться на пуши бота (их делает auto-update, который сам пересобирает
+    # дескрипторы) — иначе гонка пушей. На ручной запуск и пуши человека — работаем.
+    if: github.event_name == 'workflow_dispatch' || github.event.head_commit.author.name != 'sr-mods-bot'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
