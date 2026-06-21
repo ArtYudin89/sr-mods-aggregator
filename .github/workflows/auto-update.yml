@@ -79,8 +79,11 @@ jobs:
         run: |
           choco install rclone -y --no-progress
           if (-not $env:RCLONE_CONF) { Write-Host 'RCLONE_CONF секрет не задан — access:shared юниты будут пропущены'; exit 0 }
-          Set-Content -Path "$env:GITHUB_WORKSPACE\rclone.conf" -Value $env:RCLONE_CONF -Encoding ascii
-          rclone --config "$env:GITHUB_WORKSPACE\rclone.conf" listremotes
+          $conf = $env:RCLONE_CONF
+          if ($conf.Length -gt 0 -and [int][char]$conf[0] -eq 0xFEFF) { $conf = $conf.Substring(1) }
+          [IO.File]::WriteAllText("$env:GITHUB_WORKSPACE\rclone.conf", $conf, (New-Object System.Text.UTF8Encoding($false)))
+          $rc = "C:\ProgramData\chocolatey\bin\rclone.exe"
+          if (Test-Path $rc) { & $rc --config "$env:GITHUB_WORKSPACE\rclone.conf" listremotes } else { Write-Host 'rclone shim ещё не в PATH — следующий шаг найдёт через which' }
 
       - name: Git identity
         working-directory: sr-mods-aggregator
