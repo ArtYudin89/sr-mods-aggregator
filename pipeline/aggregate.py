@@ -1363,29 +1363,8 @@ def main():
         print(f'ERROR: конфиг не найден: {a.config}', file=sys.stderr)
         sys.exit(1)
 
-    run_py = (REPO / cfg['decompiler_run_py']).resolve()
-    if not run_py.exists():
-        print(f'ERROR: декомпилятор не найден: {run_py}', file=sys.stderr)
-        sys.exit(1)
-    policy = cfg['asset_policy']
-
-    lock_before = load_json(LOCK, {})
-    lock = dict(lock_before)
-    changed_by_camp = {}
-    remote = cfg.get('rclone', {}).get('remote', 'gdrive')
-    rclone_exe = _find_rclone()
-
-    if a.only:
-        # явно названный юнит запускаем независимо от enabled
-        units = [u for u in cfg['units'] if u['name'] == a.only]
-    else:
-        units = [u for u in cfg['units'] if u.get('enabled', True)]
-        if a.camp:
-            units = [u for u in units if u['camp'] == a.camp]
-    if not units:
-        print('Нет включённых юнитов под выбранные фильтры.')
-        return
-
+    # Автономные подкоманды (НЕ требуют декомпилятора/GDrive/юнитов) — диспатчим первыми,
+    # чтобы они работали и в облаке (workflow без репо декомпилятора).
     if a.regroup:
         print('=== Перегруппировка ассетов по модам (из HF) ===')
         regroup_assets(cfg)
@@ -1409,6 +1388,29 @@ def main():
             print('publish-index: нет hf_repo/HF_TOKEN'); return
         ok = _hf_put(repo_id, str(ASSET_INDEX), token)
         print(f'asset_index.json -> HF ({repo_id}): {"OK" if ok else "FAIL"}')
+        return
+
+    run_py = (REPO / cfg['decompiler_run_py']).resolve()
+    if not run_py.exists():
+        print(f'ERROR: декомпилятор не найден: {run_py}', file=sys.stderr)
+        sys.exit(1)
+    policy = cfg['asset_policy']
+
+    lock_before = load_json(LOCK, {})
+    lock = dict(lock_before)
+    changed_by_camp = {}
+    remote = cfg.get('rclone', {}).get('remote', 'gdrive')
+    rclone_exe = _find_rclone()
+
+    if a.only:
+        # явно названный юнит запускаем независимо от enabled
+        units = [u for u in cfg['units'] if u['name'] == a.only]
+    else:
+        units = [u for u in cfg['units'] if u.get('enabled', True)]
+        if a.camp:
+            units = [u for u in units if u['camp'] == a.camp]
+    if not units:
+        print('Нет включённых юнитов под выбранные фильтры.')
         return
 
     if a.code_release:
