@@ -1356,6 +1356,9 @@ def main():
                          'из ModuleInfo.txt + манифестов (Фаза 1)')
     ap.add_argument('--publish-index', action='store_true',
                     help='залить state/asset_index.json на HF (chunk_index_url для дескрипторов)')
+    ap.add_argument('--cloud', action='store_true',
+                    help='облачный режим: manual-юниты (тяжёлые, manual:true) НЕ обрабатывать, '
+                         'только детектить изменения -> state/manual_pending.json (для уведомления)')
     a = ap.parse_args()
 
     cfg = load_json(a.config, None)
@@ -1436,6 +1439,7 @@ def main():
                           fetch=a.fetch, lean=a.lean, remote=remote)
         return
 
+    manual_pending = []
     for unit in units:
         name, camp = unit['name'], unit['camp']
         print(f'\n=== [{camp}] {name} — {unit.get("display_name", name)} ===')
@@ -1445,6 +1449,18 @@ def main():
         # Предзагрузочная проверка: спрашиваем у GDrive контрольную сумму/отпечаток
         # БЕЗ скачивания. Если совпал с локом — не качаем вообще.
         sig = None if a.no_download else remote_signature(unit, rclone_exe, remote)
+
+        # Облако: тяжёлые manual-юниты НЕ обрабатываем — только детектим изменение
+        # (lock не трогаем, останется pending до локального прогона).
+        if a.cloud and unit.get('manual'):
+            if a.force or (sig and prev.get('remote_sig') != sig):
+                manual_pending.append({'name': name, 'camp': camp,
+                                       'display_name': unit.get('display_name', name)})
+                print(f'  [MANUAL-CHANGED] {name}: изменился на GDrive — нужен локальный прогон')
+            else:
+                print('  manual-юнит без изменений (облако пропускает)')
+            continue
+
         if not a.force and not a.check and sig and prev.get('remote_sig') == sig:
             print('  без изменений (метаданные GDrive) — не качаем')
             continue
@@ -1510,6 +1526,14 @@ def main():
                         p.unlink()
 
     save_json(LOCK, lock)
+
+    # Облако: список тяжёлых manual-юнитов, требующих локального прогона (для уведомления).
+    if a.cloud:
+        save_json(REPO / 'state' / 'manual_pending.json',
+                  {'pending': manual_pending, 'checked_at': now_iso()})
+        if manual_pending:
+            names = ', '.join(m['name'] for m in manual_pending)
+            print(f'\n[MANUAL-PENDING] требуют локального прогона: {names}')
 
     total_changed = sum(len(v) for v in changed_by_camp.values())
     print(f'\n--- Итого: изменилось {total_changed} юнитов в {len(changed_by_camp)} лагерях ---')

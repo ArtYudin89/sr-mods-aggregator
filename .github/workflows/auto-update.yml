@@ -33,6 +33,10 @@ on:
         description: 'Игнорировать lock (true/false)'
         required: false
         default: 'false'
+      notify_test:
+        description: 'Тест Telegram-уведомления (true) — отправить тестовое сообщение'
+        required: false
+        default: 'false'
 
 permissions:
   contents: write
@@ -100,7 +104,7 @@ jobs:
         run: |
           ONLY='${{ github.event.inputs.only }}'
           FORCE='${{ github.event.inputs.force }}'
-          ARGS="--commit --lean"
+          ARGS="--commit --lean --cloud"
           [ -n "$ONLY" ] && ARGS="$ARGS --only $ONLY"
           [ "$FORCE" = "true" ] && ARGS="$ARGS --force"
           python pipeline/aggregate.py $ARGS
@@ -116,6 +120,27 @@ jobs:
               git fetch origin master && git rebase origin/master || git rebase --abort;
             }
           done
+
+      # 2b) Уведомить в Telegram, если тяжёлый manual-юнит (redux_base) изменился на GDrive.
+      - name: Notify heavy unit changed (Telegram)
+        if: ${{ always() }}
+        working-directory: sr-mods-aggregator
+        shell: bash
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          NOTIFY_TEST: ${{ github.event.inputs.notify_test }}
+        run: |
+          if [ -z "$TG_BOT_TOKEN" ] || [ -z "$TG_CHAT_ID" ]; then
+            echo "TG_BOT_TOKEN/TG_CHAT_ID не заданы — уведомление пропущено"; exit 0; fi
+          PENDING=$(python -c "import json;d=json.load(open('state/manual_pending.json'));print(', '.join(m['name'] for m in d.get('pending',[])))" 2>/dev/null || echo "")
+          if [ "$NOTIFY_TEST" = "true" ]; then PENDING="ТЕСТ (redux_base_installer)"; fi
+          if [ -z "$PENDING" ]; then echo "Тяжёлых юнитов к обновлению нет — не шлём."; exit 0; fi
+          MSG=$'\xF0\x9F\x9B\xB0 SR Mods: тяжёлый юнит обновился на GDrive и требует ЛОКАЛЬНОГО прогона:\n'"$PENDING"$'\n\nЗапусти update_base.bat в репозитории и дождись завершения.'
+          curl -sS -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage" \
+            -d chat_id="${TG_CHAT_ID}" --data-urlencode text="$MSG" >/dev/null \
+            && echo "Telegram-уведомление отправлено ($PENDING)" \
+            || echo "Telegram: ошибка отправки"
 
       # 3) Ассеты изменённых юнитов на HF (тяжёлый шаг; не валит весь прогон).
       - name: Assets to HF
