@@ -130,7 +130,7 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           NOTIFY_TEST: ${{ github.event.inputs.notify_test }}
-        run: python pipeline/notify.py
+        run: python pipeline/notify.py manual
 
       # 3) Ассеты изменённых юнитов на HF (тяжёлый шаг; не валит весь прогон).
       - name: Assets to HF
@@ -182,3 +182,14 @@ jobs:
               }
             done
           fi
+
+      # 7) Итоговое Telegram-уведомление об обычном автообновлении (если что-то обновилось).
+      - name: Notify auto-update result (Telegram)
+        if: ${{ always() }}
+        working-directory: sr-mods-aggregator
+        shell: bash
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          NOTIFY_TEST: ${{ github.event.inputs.notify_test }}
+        run: python pipeline/notify.py summary

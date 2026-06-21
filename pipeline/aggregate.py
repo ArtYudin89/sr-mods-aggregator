@@ -1527,10 +1527,16 @@ def main():
 
     save_json(LOCK, lock)
 
-    # Облако: список тяжёлых manual-юнитов, требующих локального прогона (для уведомления).
+    # Облако: сводка прогона для Telegram-уведомлений (changed = обработанные авто-юниты,
+    # manual = тяжёлые, требующие локального прогона).
     if a.cloud:
+        changed_names = [n for names in changed_by_camp.values() for n in names]
         save_json(REPO / 'state' / 'manual_pending.json',
                   {'pending': manual_pending, 'checked_at': now_iso()})
+        save_json(REPO / 'state' / 'cloud_summary.json',
+                  {'changed': changed_names,
+                   'manual': [m['name'] for m in manual_pending],
+                   'checked_at': now_iso()})
         if manual_pending:
             names = ', '.join(m['name'] for m in manual_pending)
             print(f'\n[MANUAL-PENDING] требуют локального прогона: {names}')

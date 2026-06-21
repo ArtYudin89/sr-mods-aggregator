@@ -1,33 +1,45 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Отправка Telegram-уведомления о тяжёлых manual-юнитах, требующих локального прогона.
-Текст хранится здесь (UTF-8), чтобы кодировка раннера не калечила кириллицу.
-Читает env: TG_BOT_TOKEN, TG_CHAT_ID, NOTIFY_TEST; файл state/manual_pending.json.
-Код выхода 0 — отправлено/нечего слать; 1 — ошибка доставки."""
-import os, json, sys, urllib.request, urllib.parse
+"""Telegram-уведомления автообновления. Текст здесь (UTF-8), чтобы кодировка раннера
+не калечила кириллицу.
 
-tok = os.environ.get('TG_BOT_TOKEN', '')
+Режимы (argv[1]):
+  manual  — алерт: тяжёлый manual-юнит (redux_base) изменился, нужен локальный прогон.
+  summary — итог обычного автообновления: какие паки обновились (если обновились).
+
+Env: TG_BOT_TOKEN, TG_CHAT_ID, NOTIFY_TEST. Источник: state/cloud_summary.json.
+Код выхода 0 — отправлено/нечего слать; 1 — ошибка доставки."""
+import os, json, sys, urllib.request, urllib.parse, urllib.error
+
+KIND = sys.argv[1] if len(sys.argv) > 1 else 'summary'
+tok = os.environ.get('TG_BOT_TOKEN', '').strip()
 chat = os.environ.get('TG_CHAT_ID', '').strip()
+test = os.environ.get('NOTIFY_TEST') == 'true'
 if not tok or not chat:
     print('TG_BOT_TOKEN/TG_CHAT_ID не заданы — уведомление пропущено')
     sys.exit(0)
 
-if os.environ.get('NOTIFY_TEST') == 'true':
-    pending = ['ТЕСТ (redux_base_installer)']
-else:
-    try:
-        d = json.load(open('state/manual_pending.json', encoding='utf-8'))
-        pending = [m['name'] for m in d.get('pending', [])]
-    except Exception:
-        pending = []
+try:
+    s = json.load(open('state/cloud_summary.json', encoding='utf-8'))
+except Exception:
+    s = {'changed': [], 'manual': []}
 
-if not pending:
-    print('Тяжёлых юнитов к обновлению нет — не шлём.')
-    sys.exit(0)
-
-msg = ('🛰 SR Mods: тяжёлый юнит обновился на GDrive и требует ЛОКАЛЬНОГО прогона:\n'
-       + ', '.join(pending)
-       + '\n\nЗапусти update_base.bat в репозитории и дождись завершения.')
+if KIND == 'manual':
+    units = ['redux_base_installer'] if test else s.get('manual', [])
+    if not units:
+        print('Тяжёлых юнитов к обновлению нет — не шлём.')
+        sys.exit(0)
+    msg = ('🛰 SR Mods: тяжёлый юнит обновился на GDrive и требует ЛОКАЛЬНОГО прогона:\n'
+           + ', '.join(units)
+           + '\n\nЗапусти update_base.bat в репозитории и дождись завершения.')
+else:  # summary
+    units = ['redux_fixes', 'universe_fixes_130325'] if test else s.get('changed', [])
+    if not units:
+        print('Обычных изменений нет — итог не шлём.')
+        sys.exit(0)
+    msg = (f'✅ SR Mods: автообновление отработало — обновлено паков: {len(units)}\n'
+           + ', '.join(units)
+           + '\n\nИсходники и ассеты на HF обновлены автоматически.')
 
 data = urllib.parse.urlencode({'chat_id': chat, 'text': msg}).encode('utf-8')
 url = f'https://api.telegram.org/bot{tok}/sendMessage'
@@ -41,7 +53,7 @@ except Exception as e:
     sys.exit(1)
 
 if resp.get('ok'):
-    print('Telegram доставлено:', ', '.join(pending))
+    print(f'Telegram доставлено [{KIND}]:', ', '.join(units))
     sys.exit(0)
-print('Telegram НЕ доставлено:', json.dumps(resp, ensure_ascii=False))
+print(f'Telegram НЕ доставлено [{KIND}]:', json.dumps(resp, ensure_ascii=False))
 sys.exit(1)
