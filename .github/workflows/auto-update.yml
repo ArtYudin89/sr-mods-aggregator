@@ -20,8 +20,10 @@ name: auto-update
 #   RCLONE_CONF — содержимое rclone.conf с remote 'gdrive' (для access:shared юнитов).
 
 on:
-  schedule:
-    - cron: '0 3 * * *'        # ежедневно 03:00 UTC
+  # Расписание ВЫКЛЮЧЕНО до настройки секретов (иначе ночные падения). После того как
+  # заданы REPO_PAT/HF_TOKEN/RCLONE_CONF и ручной прогон прошёл — раскомментируйте:
+  # schedule:
+  #   - cron: '0 3 * * *'      # ежедневно 03:00 UTC
   workflow_dispatch:
     inputs:
       only:
