@@ -130,19 +130,7 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           NOTIFY_TEST: ${{ github.event.inputs.notify_test }}
-        run: |
-          if [ -z "$TG_BOT_TOKEN" ] || [ -z "$TG_CHAT_ID" ]; then
-            echo "TG_BOT_TOKEN/TG_CHAT_ID не заданы — уведомление пропущено"; exit 0; fi
-          PENDING=$(python -c "import json;d=json.load(open('state/manual_pending.json'));print(', '.join(m['name'] for m in d.get('pending',[])))" 2>/dev/null || echo "")
-          if [ "$NOTIFY_TEST" = "true" ]; then PENDING="ТЕСТ (redux_base_installer)"; fi
-          if [ -z "$PENDING" ]; then echo "Тяжёлых юнитов к обновлению нет — не шлём."; exit 0; fi
-          MSG=$'\xF0\x9F\x9B\xB0 SR Mods: тяжёлый юнит обновился на GDrive и требует ЛОКАЛЬНОГО прогона:\n'"$PENDING"$'\n\nЗапусти update_base.bat в репозитории и дождись завершения.'
-          RESP=$(curl -sS -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage" \
-            -d chat_id="${TG_CHAT_ID}" --data-urlencode text="$MSG")
-          echo "Ответ Telegram API: $RESP"
-          echo "$RESP" | python -c "import sys,json; sys.exit(0 if json.load(sys.stdin).get('ok') else 1)" \
-            && echo "Telegram доставлено ($PENDING)" \
-            || { echo 'Telegram НЕ доставлено — см. ответ выше (частая причина: не нажат Start у бота)'; exit 1; }
+        run: python pipeline/notify.py
 
       # 3) Ассеты изменённых юнитов на HF (тяжёлый шаг; не валит весь прогон).
       - name: Assets to HF
