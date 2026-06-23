@@ -934,12 +934,16 @@ def code_track(cfg):
 # ---- Фаза 1: дескрипторы модов (мод = пакет по URL) ----
 
 def _after_mods(relpath):
-    """Путь после последнего сегмента 'Mods' (для определения корня мода). None если нет."""
+    """Путь после последнего сегмента 'Mods' (корень мода). Если 'Mods' нет — мод
+    ставится в корень игры (Inno '{app}/...'): срезаем '{app}'. None, если ни того, ни др."""
     parts = relpath.replace('\\', '/').split('/')
     idxs = [i for i, p in enumerate(parts) if p.lower() == 'mods']
-    if not idxs:
-        return None
-    return '/'.join(parts[idxs[-1] + 1:])
+    if idxs:
+        return '/'.join(parts[idxs[-1] + 1:])
+    aidx = [i for i, p in enumerate(parts) if p.lower() == '{app}']
+    if aidx and aidx[-1] < len(parts) - 1:
+        return '/'.join(parts[aidx[-1] + 1:])
+    return None
 
 
 def _read_text_auto(path):
