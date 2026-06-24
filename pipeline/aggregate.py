@@ -394,27 +394,36 @@ def _find_innounp():
     return shutil.which('innounp')
 
 
-def _inno_exe(path):
-    """Если path (файл/папка) — это Inno Setup установщик, вернуть путь к .exe.
-    Иначе None. Использует innounp для распознавания версии."""
+def _inno_exes(path):
+    """ВСЕ Inno Setup установщики в path (файл/папка). Папка может содержать
+    несколько инсталляторов (напр. большой пак + патч) — извлекать надо ВСЕ.
+    Возвращает список .exe, отсортированный по размеру УБЫВ. (база → патч поверх)."""
     iu = _find_innounp()
     if not iu:
-        return None
+        return []
     cands = []
     p = Path(path)
     if p.is_dir():
         cands = sorted(p.glob('*.exe')) + sorted(p.glob('*.[0-9]'))  # exe или setup.0
     elif p.suffix.lower() == '.exe' or _sniff_ext(p) == '.bin':
         cands = [p]
+    inno = []
     for c in cands:
         try:
             r = subprocess.run([iu, '-v', str(c)], capture_output=True, text=True,
                                encoding='utf-8', errors='replace', timeout=LIST_TIMEOUT)
             if 'Inno Setup version detected' in (r.stdout or ''):
-                return c
+                inno.append(c)
         except Exception:
             continue
-    return None
+    inno.sort(key=lambda c: c.stat().st_size, reverse=True)
+    return inno
+
+
+def _inno_exe(path):
+    """Первый Inno-установщик (back-compat). См. _inno_exes."""
+    lst = _inno_exes(path)
+    return lst[0] if lst else None
 
 
 def _innounp_extract(exe, dest):
@@ -447,11 +456,13 @@ def extract(archive, dest):
     if dest.exists():
         shutil.rmtree(dest)
     dest.mkdir(parents=True)
-    # Inno Setup установщик (в т.ч. split .bin-слайсы, 6.4.x) -> innounp
-    inno = _inno_exe(archive)
-    if inno is not None:
-        print(f'    Inno Setup -> innounp: {Path(inno).name}')
-        _innounp_extract(inno, dest)
+    # Inno Setup установщик(и) -> innounp. Папка может содержать несколько
+    # (большой пак + патч): извлекаем ВСЕ в общий dest (база, затем патч поверх).
+    innos = _inno_exes(archive)
+    if innos:
+        for inno in innos:
+            print(f'    Inno Setup -> innounp: {inno.name} ({inno.stat().st_size // (1<<20)} МБ)')
+            _innounp_extract(inno, dest)
         return dest
     if Path(archive).is_dir():
         shutil.copytree(archive, dest, dirs_exist_ok=True)
