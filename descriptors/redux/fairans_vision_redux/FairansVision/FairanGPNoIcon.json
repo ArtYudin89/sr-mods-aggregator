@@ -1,0 +1,827 @@
+{
+  "schema": "srmod/1",
+  "id": "FairansVision/FairanGPNoIcon",
+  "source": "redux/fairans_vision_redux",
+  "name": "FairanGPNoIcon",
+  "title": "FairanGPNoIcon",
+  "author": "Fairan",
+  "section": "Fairan's Vision",
+  "priority": "13",
+  "description": "Убирает иконки акринов орудий из Графпака и возвращает старую графику ингибитора, незначительно изменяя ее <color=0,132,15>(легален)</color>",
+  "version": "18cffe6980a7d94f",
+  "depends": [
+    "LEOGraphicsUpdate"
+  ],
+  "conflicts": [],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "files": {
+    "code": {
+      "{app}/FairansVision/FairanGPNoIcon/ModuleInfo.txt": {
+        "sha256": "c6a5030ac6fec3ab753a42936c1144b49b551c6caaf5f98e0724c8803a13fed5",
+        "size": 1562
+      },
+      "{app}/FairansVision/FairanGPNoIcon/CFG/CacheData.dat": {
+        "sha256": "329406444da34966632c539dd2970b3035bcb8eabadbb421abe2d3c3289e07fb",
+        "size": 1489
+      },
+      "{app}/FairansVision/FairanGPNoIcon/CFG/Main.dat": {
+        "sha256": "43076879460b070645b8747ed7160055226b5a3588ba6ad690d4423b8ef6c448",
+        "size": 251
+      }
+    },
+    "assets": {
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W01a.gai": {
+        "sha256": "390d40e4b73cc548a377595cf11f62e73e2e352ca346e7ff08a7cd4a85c1dc0c",
+        "size": 375777
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W01bona.gai": {
+        "sha256": "37bc9fd161530df6924feb6df1b6522d5d3393e007adb7b69ad3bbc9eb6b4d3b",
+        "size": 477147
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W01boni.gi": {
+        "sha256": "b57f14e27426226d0ff5ba24d0f67afec4a8d99f01a0e58e16b075e5eed0a3e4",
+        "size": 5153
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W01bons.gi": {
+        "sha256": "5f43afb00cdc71d56be949883750137f7c567ab124fdfff2364d02d7bfd4a87e",
+        "size": 1508
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W01dmga.gai": {
+        "sha256": "c592ca1c3b66ace875426996bc50fec476cef984eb4e97529fe80f60af2d2063",
+        "size": 474730
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W01dmgi.gi": {
+        "sha256": "e7378c4e2a97699f4bf80702007f5b2c34a87bb33fab2ea8fd1f35f16291e1e7",
+        "size": 4947
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W01dmgs.gi": {
+        "sha256": "c1138116cf3a563241e6c8e119c7df17e148d3e72b09e078f12bd17a11a9b05a",
+        "size": 1473
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W01dropa.gai": {
+        "sha256": "5a2817ca22e25706dadd4ad71aa24fc72f78e18c7a1099e46c9fdb4ad6b4e9fc",
+        "size": 448475
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W01dropi.gi": {
+        "sha256": "203980e77fdae803e647cb7cbfab5266b9fa654e50a937a876390524d6570f69",
+        "size": 5020
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W01drops.gi": {
+        "sha256": "f3e1efe1e623723d228be27a6f5710117b539b70365c8055963cfae86d2c8908",
+        "size": 1490
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W01i.gi": {
+        "sha256": "a52f1cb355b1655ca1ec40b213960c04bb5a0a8e411b91c96339e443aa9eab38",
+        "size": 4147
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W01s.gi": {
+        "sha256": "d7c30d13519eeefe6be57e63af8a2254a04b30d622b9187c6a8e6fae78926f93",
+        "size": 1734
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W02a.gai": {
+        "sha256": "c444d111a852c6d05b667a0814bc04b4e5b3466467852dd356da4532290fb269",
+        "size": 372483
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W02droida.gai": {
+        "sha256": "b213b39e3f1a0cce434da98b10f4d799319a7ab8ff5d601443253d420ce14f41",
+        "size": 448511
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W02droidi.gi": {
+        "sha256": "d321e893e657cc4d385095c5b822495a87504ffb7e7438555b0182aeaf113605",
+        "size": 4422
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W02droids.gi": {
+        "sha256": "5527e7504eec281884f0a869f71a3663ddefa28216717344fea5b846e6d75da2",
+        "size": 1857
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W02goodsa.gai": {
+        "sha256": "9d17042205c7797f3268256f0c543ed30326cf214ac1f4f849cdf1edde957e70",
+        "size": 561612
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W02goodsi.gi": {
+        "sha256": "c4c8919db91c41c56540e7a7f36bf48991c5e13226ee65b1ec878b210bd49a9b",
+        "size": 4579
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W02goodss.gi": {
+        "sha256": "471a49f883dce375256e2a04d48c0bf744ad7a96db6f857adcfa58ac7e068d05",
+        "size": 1860
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W02i.gi": {
+        "sha256": "fee7664978b9abc975ee45509c32e9aa8b88985769a7d2c39ebb7f3b834245a9",
+        "size": 4198
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W02overheata.gai": {
+        "sha256": "09aecb9e8e22d668dd9b598ec2a01d254c2eee2a55892698573c70d4fddfa47e",
+        "size": 376606
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W02overheati.gi": {
+        "sha256": "41c87b521e6a959d371d1556a083072c4b2ef5c19aafdc59690a1825070c3eb2",
+        "size": 4087
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W02overheats.gi": {
+        "sha256": "544d447d249b8e44f4467a4614ef67f45dec743dc1fe92a04303594f26655f28",
+        "size": 1977
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W02s.gi": {
+        "sha256": "fe502775278660bc7abc9a5bb700262540e8a9c6fb968d32743307d670991ab6",
+        "size": 2000
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03a.gai": {
+        "sha256": "15dbf075c66fd6918c3d7042990fc594ec56c228ba43c6faccd5602a1d1c76f9",
+        "size": 451324
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03blocka.gai": {
+        "sha256": "fa6f5f31373237628142f5113b273df6a9d3eb1ab80f383a7b5db4985ff2fa77",
+        "size": 578183
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03blocki.gi": {
+        "sha256": "4bde0ce0bbcea06d1319f2f8cdd4444f1dfd8925760447fce3d13dc0edc50632",
+        "size": 4988
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03blocks.gi": {
+        "sha256": "d7908e98f0c3e7ef53b528043ee01dba457bca970117399751daddf8b9012e7c",
+        "size": 1888
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03bona.gai": {
+        "sha256": "f7e2da248dc2b7e159675f623590a43993b66a8bd45e4a43584f13cb62a3dd20",
+        "size": 595108
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03boni.gi": {
+        "sha256": "5539101146cb9705cc64bdd7c7bad4b7f5f0473dfa49a380c6a70d4ad6d79b8b",
+        "size": 5323
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03bons.gi": {
+        "sha256": "0efb664255a2b32a9dedcbcb0505ab9510b059d271cc33c74c1ab947fe31f9e3",
+        "size": 1913
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03dmga.gai": {
+        "sha256": "c12471dec6dcb957cffec14b56c876a5b6633f8fd0d5b7afe90e9dbafaea1ac6",
+        "size": 547100
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03dmgi.gi": {
+        "sha256": "384b10e9c7402f0834fe29afeecf4ae3a5cb5c948ff0ffbb7fb73bf3d73d9913",
+        "size": 4884
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03dmgs.gi": {
+        "sha256": "c6796ef03d0cab70aa83d3214a5a5edb1b32652a6cb0ab564e764f151856c157",
+        "size": 1793
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03droida.gai": {
+        "sha256": "a966645f243f20c38384381d0624f5ad4b36a142efb2959f1dbdc190bcb6b407",
+        "size": 563050
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03droidi.gi": {
+        "sha256": "b7724b42f61e22376c1a42f4b39fad9f13ecc414ce01bdd0b3cafcde35f6c2f6",
+        "size": 4614
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03droids.gi": {
+        "sha256": "59b00abc92a0a3ac5a943e574f45d0855e27cf69ad1f0decaa7faed8b62cc1e7",
+        "size": 1770
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03i.gi": {
+        "sha256": "ef30e70a97246499be942977fb1d4b5b4777ed9838032e44dcf461a6ec79cdd4",
+        "size": 4393
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W03s.gi": {
+        "sha256": "5499cd07fcd56d531020c1a6b493f8448fe66884333890aa33d85f93d05a873e",
+        "size": 1839
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04a.gai": {
+        "sha256": "e79ecfbce43748fbcbd666ddadb0d461e45694f57fd1e3aacede766e4bf3ada9",
+        "size": 533106
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04bona.gai": {
+        "sha256": "e232dbb809108cf8c5af45f7ac2f4b8e36b1d178f8149487a044e256bcf8977d",
+        "size": 641280
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04boni.gi": {
+        "sha256": "7e51c47e475eb649a7b92ecbe0e984a7513b30b85f82a9bf2fdd4b809febb91e",
+        "size": 5282
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04bons.gi": {
+        "sha256": "b247fdef066880ff6d50593d541142e2231590d2d68c877b1ebc1495fe7a9164",
+        "size": 2038
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04dmga.gai": {
+        "sha256": "98fed1cb7941429fafda6541f113c58775b4833390a180c7480619ffecf552c2",
+        "size": 686165
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04dmgi.gi": {
+        "sha256": "9ffe1bed1f2350d478b00f5b91de3885c7d98a723107a66a319c7aa2f7c7afc8",
+        "size": 5333
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04dmgs.gi": {
+        "sha256": "b62aa5fc74e0d89baeed00e1c10134b53a5959909c14c348f4312aae78617e62",
+        "size": 2102
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04dropa.gai": {
+        "sha256": "068c77eaf24a8966e358a6f2e3d52508d35ea411abdf9f4e7b237ec3c335d104",
+        "size": 546986
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04dropi.gi": {
+        "sha256": "039faa7d7527471f890b234bb7c30382a371b62723168987a40396d3f844aff9",
+        "size": 5111
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04drops.gi": {
+        "sha256": "9fb09917e44317798e9a080f1f3a84239a091845055808081f250ea9b2f31d08",
+        "size": 1932
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04i.gi": {
+        "sha256": "47fbe5b194374bb9dd83fa3ab1640cd88b5d1f272a8c65bd12d9e4ef615413aa",
+        "size": 4976
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04overheata.gai": {
+        "sha256": "b27c47ba68252986bc89bf618dae38eb0d5bea781bea205de49fc537ac5f49ba",
+        "size": 721573
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04overheati.gi": {
+        "sha256": "b55ec496b12eb10976eb68030b6e9aa6bea858591877c15c71bf628dd3653822",
+        "size": 5928
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04overheats.gi": {
+        "sha256": "9edb552cf94ac307a95f0c209950b7ada675e1f99ded99bd60dee9a1a76f2231",
+        "size": 2216
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W04s.gi": {
+        "sha256": "fbc469890ba38f2260c8da5476580b490f7ae02c63a908e21cf4f54cd3074304",
+        "size": 2251
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W05a.gai": {
+        "sha256": "96970fd2a1b78ec549b4a41e59fdc63e0b5285cc7e6a26a9d593b96348e3ee8d",
+        "size": 930083
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W05blocka.gai": {
+        "sha256": "ba44ff49c028c8a3e8d8d6fda8366792ca5d7d0c75a6cb4516f9ef408ba78fff",
+        "size": 1021270
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W05blocki.gi": {
+        "sha256": "56a7227f7cd5556e7c9c56f3a54aed97f469890a63ad930fea6453917236b35f",
+        "size": 5463
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W05blocks.gi": {
+        "sha256": "5579559074f506df8e4e28544c59d32bab75766f168b609ebbe38a4873d867ae",
+        "size": 1949
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W05dropa.gai": {
+        "sha256": "f480daaa529bc27d29307e3bb913a438100da3857f6ad6cdf374179401185e0f",
+        "size": 1058079
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W05dropi.gi": {
+        "sha256": "70e90b40c866d710774178d3496cc2047a4d7a98d0553791900e166d35d4ab3b",
+        "size": 5899
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W05drops.gi": {
+        "sha256": "66d40f02758ec0aa399fa54b66dc44e0c22fc299474822330c7bbed26895e42f",
+        "size": 2145
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W05goodsa.gai": {
+        "sha256": "b5f2472ddfe8b23d87e6b5cf8773d7f122d87c213a495898dc3115569ab30acb",
+        "size": 1150641
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W05goodsi.gi": {
+        "sha256": "786d9652c22cb453f3b57a395b7624fe749c31047c4e1559ce577eacfb85b126",
+        "size": 5680
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W05goodss.gi": {
+        "sha256": "f83a2ccdbedaf4a17e0cf524996754157f8b0f6c2b09434727a4072611c60724",
+        "size": 2153
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W05i.gi": {
+        "sha256": "9cefb1b687b8445b379100638457908bbec5499a31085299e5b6b520cb93618a",
+        "size": 5883
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W05s.gi": {
+        "sha256": "ae0d2a4f754f88a1d6ce758f43de5c242187d7e4807da62c52ee4bef30c0c44a",
+        "size": 2279
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W06a.gai": {
+        "sha256": "59204c767c31ff4b2e72e0b76c00cd105167ead5a8072a8d3e8054d1c2e217fc",
+        "size": 851674
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W06blocka.gai": {
+        "sha256": "61b3f9182742443cdf8d868a9b6f7c99961e583408cee9ba1f6039f748523419",
+        "size": 1127682
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W06blocki.gi": {
+        "sha256": "78f67d4211f924ad2f746e425fd1370413961cf9c01ae69757b2183ed0223006",
+        "size": 5685
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W06blocks.gi": {
+        "sha256": "070700b6d84bf69f8fa1d5d20cd8dafa81f690d69aa1f6bd0d38b1e3c685d60e",
+        "size": 1991
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W06droida.gai": {
+        "sha256": "d2252fc1fcda0b36d72162109d464a68115bc09091f8e25a9d99ff091f6e3632",
+        "size": 1167934
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W06droidi.gi": {
+        "sha256": "5beb139ce0d78821e1a33774e88c21a3302037b361afef071999da2d20733f6d",
+        "size": 5305
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W06droids.gi": {
+        "sha256": "22d9c3bb19bf07a80448a0927040f75075d06a3834b071b1fea40a62b58da019",
+        "size": 2165
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W06goodsa.gai": {
+        "sha256": "1612e1e2bf4fa81de8ac6e312ff9560e807d14795b6c59e97a2c8073dea4f82b",
+        "size": 1107903
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W06goodsi.gi": {
+        "sha256": "99abf53d3b112faacaf689a4a41dae76f70f95c39caf97281795fbd2433258dc",
+        "size": 5282
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W06goodss.gi": {
+        "sha256": "0e6bfc3a839e0b84164a0318f62e09b5a39c75c1830c8f11220d36fd78512b90",
+        "size": 1914
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W06i.gi": {
+        "sha256": "5a587b979776de6033ccd16d3c24eeb7e8163b95b03eef93a64ce616b3853119",
+        "size": 4898
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W06s.gi": {
+        "sha256": "c3e7ca574027a941ba115708753c4962e44fd3fa560c61562d38d1a6cf1d4b2c",
+        "size": 2228
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W07a.gai": {
+        "sha256": "77a8df998eda41d84cd4fc6b6f5e2a05423b588d91bd71e0cde85da87640f2bf",
+        "size": 1007973
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W07blocka.gai": {
+        "sha256": "c77d0b7ec171f1374fc1b1daf86ea889b71c2b468f92432b937e3e83ea3fc5aa",
+        "size": 1233260
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W07blocki.gi": {
+        "sha256": "f7b71fa28e081f735c61e8f85c5d0f5ed4fdd1f8cf00fd6ed4788960f78a11ee",
+        "size": 6687
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W07blocks.gi": {
+        "sha256": "9624457f73022b78d7cfe7fe7921a68dad1acaba390d9bfe59cd13601b8c0a9d",
+        "size": 2296
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W07bona.gai": {
+        "sha256": "e3c402dcd8640e28abd5a8f6c59306de339b3da2d9fc5e97411c98680889f531",
+        "size": 1055811
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W07boni.gi": {
+        "sha256": "05bb6526d7b6f139fc613ca7cfdcab151f25bc369a1e642999d777ce8a7ce827",
+        "size": 5568
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W07bons.gi": {
+        "sha256": "5a9274246b5c0de2e8200b410e93e3071583329ee34ed7a0f636233d8478d383",
+        "size": 2088
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W07droida.gai": {
+        "sha256": "ae1452b5aa4e82fe828c138f0bea473261271568aec420673e8e0b12919150d9",
+        "size": 1149531
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W07droidi.gi": {
+        "sha256": "f3b50028a1a151ac726a0a79d9cfcd6b90b8284333aef735097d1b780af1e703",
+        "size": 6202
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W07droids.gi": {
+        "sha256": "937ff965a092495ffa9cfbb97fd108858bebe772462ffce4a86d9c5c6fd1b506",
+        "size": 2132
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W07i.gi": {
+        "sha256": "8b0f2cf1f98f4f6c3da1e346e5dfa622bf29cbcceefc771eed34afb5dd87d6fc",
+        "size": 5119
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W07s.gi": {
+        "sha256": "b4d98e01e4298115ec540c2a9703a778969af2f9baa4906088cc5655bf733897",
+        "size": 2278
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W08a.gai": {
+        "sha256": "408e515f35a046b2c7f936eced47732382deb1dac6e82650ad2b4caac3192f1d",
+        "size": 768193
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W08blocka.gai": {
+        "sha256": "a90ff16e46962b07622c934398e85013f8b019b6384483c065fe0162bba31d64",
+        "size": 870655
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W08blocki.gi": {
+        "sha256": "78fecff60997283e83582d9633deb7d10bbe9e00ea56cb7c3c404a5be0cac903",
+        "size": 4931
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W08blocks.gi": {
+        "sha256": "9a97b548f23415f0e24e16c2e0e069afff6afac591d562cf62196f811f72c46c",
+        "size": 1951
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W08droida.gai": {
+        "sha256": "9a3d203788f523a1a442398287cdf9bf7fe8d2501ab06fdd33a4933bf112646d",
+        "size": 928339
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W08droidi.gi": {
+        "sha256": "7a14ec524d324e06b88bbc2948384c3039668e14e1234bb5307434cf34aaba58",
+        "size": 5499
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W08droids.gi": {
+        "sha256": "99c942febb8b77a7638c38bc2d4ff78d882e8b002b590f485862acb2e8c9e618",
+        "size": 2094
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W08i.gi": {
+        "sha256": "b3adb0cbbf354adb0ad75b9273541fdca652866bf3e9065dbfa0109b41b02e67",
+        "size": 5054
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W08overheata.gai": {
+        "sha256": "a2b522ecb1c04a7255ec71e7e91e6db128fb87de5810e4912ee0ec099f5ac3c9",
+        "size": 1038492
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W08overheati.gi": {
+        "sha256": "9b2351ed941a9b1c86b7f4bcc52f9a9093566985d605a8757937bf264cb8f988",
+        "size": 5337
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W08overheats.gi": {
+        "sha256": "f8ef4827db05b10e796df037d27b62971c087b981211910df3c4e75126772c61",
+        "size": 1915
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W08s.gi": {
+        "sha256": "53525c7e988be1a8a791e37b9dde927d1b74f5080a0184819cd77d46f0622050",
+        "size": 2231
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W09a.gai": {
+        "sha256": "9074f5ae96696cc06004e0b11583f64e7ee3bb66f9540b851643c135a8a6840a",
+        "size": 615964
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W09blocka.gai": {
+        "sha256": "79f86750756e8f0f0bce3c2a5fd02d11fd4c9f069acd3776b9402ec11cdca7a6",
+        "size": 712530
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W09blocki.gi": {
+        "sha256": "169a81da0771a6cdb060c0df6f4fb95b4922691c6a71d8e10039c69cc77be812",
+        "size": 4424
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W09blocks.gi": {
+        "sha256": "e86cc0cf0e19ee67403e032a38a66ea4ada46bf7bab1246f1ffaabfda89df998",
+        "size": 2099
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W09dmga.gai": {
+        "sha256": "8b89df691ac7ebfafed7941a20b8c4619cb1e2232b1b23b22bdcc94306ee422e",
+        "size": 689719
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W09dmgi.gi": {
+        "sha256": "d865a6f6584217e6bf678462b6e672a1923e01f99064b17f0b896a78b19dd051",
+        "size": 4430
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W09dmgs.gi": {
+        "sha256": "b2fe18f08bebb2528e22e0425587654a28f53f3b65fa8e4149b658c7af3654d2",
+        "size": 2253
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W09droida.gai": {
+        "sha256": "66bf14b0c8c59da385e48e610c239811fc65446103b4c3c2418afb8ec2c05102",
+        "size": 644161
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W09droidi.gi": {
+        "sha256": "5f44814919481ccddc6bb40fddac65c4879119e73f545a5a050782e0f1f053f3",
+        "size": 3925
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W09droids.gi": {
+        "sha256": "ecc52c0374e82d57e9ed6c8d7e6d8f269bbb735de15b2d47be1d3a4fd8392052",
+        "size": 1944
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W09i.gi": {
+        "sha256": "6aefacf5416c97cd9e18124a97efcb6933b8878e2d751e3763d53ebe65ae5e01",
+        "size": 4217
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W09s.gi": {
+        "sha256": "2058c34ae2dc05532fa29a1cb1df6c0ba937cf9e7b584526c2e1817a7bc1b898",
+        "size": 2535
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W10a.gai": {
+        "sha256": "95e20cd60e59be6e3762c75696ca7fe52c89ee293c5ff10a2d632322c94b4db8",
+        "size": 804933
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W10dmga.gai": {
+        "sha256": "cbf8c4ebf5ebf4c77cc345d0dfb39470aeea5488a9fcb7a6b27ce6f9ba7b1167",
+        "size": 1017459
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W10dmgi.gi": {
+        "sha256": "5e389b1fdb250a9b21f4c62ad82b44e34e465384ac42e4b7fb45559a736ed88f",
+        "size": 5740
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W10dmgs.gi": {
+        "sha256": "be2be008649dba54c3772dea2aefe87f086684c8b375d56e75cd40c5696a6d84",
+        "size": 2180
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W10droida.gai": {
+        "sha256": "170422aecc155f149408ec8a0eb55e69b6f8d420491c4b66bdc1216411f11619",
+        "size": 1111142
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W10droidi.gi": {
+        "sha256": "3f11cbee7aff4a6ebb3e9d03ccf0b01fc6f7a700c983f74499daf4ea42217403",
+        "size": 6624
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W10droids.gi": {
+        "sha256": "192f337d14db890c58566a25b7a1aae396aed0a6396a06a8c32e81507418e75b",
+        "size": 1838
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W10i.gi": {
+        "sha256": "a449c1d456e8cbd5f04279d6963f2bfa9a747dd0bc0d3a71415be51e5b12ee7e",
+        "size": 5616
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W10s.gi": {
+        "sha256": "696770d6e9059866245e2bda4715fa71ebc86093a1e9e4c4ae529ab07b950062",
+        "size": 2292
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W11a.gai": {
+        "sha256": "00e04717d1363f95cf17b0074ea0b674e9afa52343b4078ff9427da0a577e8a5",
+        "size": 951185
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W11blocka.gai": {
+        "sha256": "cd5ed4a2292604cf08daa905554a79c3314e69bea69dd8bb24cc05d80999899b",
+        "size": 1040008
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W11blocki.gi": {
+        "sha256": "337c737147169151ad25050a9408792298920b0b1c871020dd9c3baac78466fd",
+        "size": 6469
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W11blocks.gi": {
+        "sha256": "bc9dc1fdf8aa0d8f9afca37a2a378de33668c111e0e5171d4693abbd8f1a5b0d",
+        "size": 1815
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W11bona.gai": {
+        "sha256": "a4a921066f1787d4f96cb65cb36bea9359551b5874397765f84fc2e11da2a7a7",
+        "size": 1144834
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W11boni.gi": {
+        "sha256": "66ce4d07513716da6a9f0e6dcb7a4ecefa5ca34c99db5501deeafa96492a0d91",
+        "size": 6888
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W11bons.gi": {
+        "sha256": "ef2236c5dbd2fb62cf76c626a3bca152980bac4d0a64637537a87d6cedf93613",
+        "size": 1922
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W11dropa.gai": {
+        "sha256": "d5c54ad8888d18ea79f80d2cc3b8754be28656468ce4f1f2f0ae479c1acd2bdd",
+        "size": 1005125
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W11dropi.gi": {
+        "sha256": "f2ae691cf814c8ff79c8482a993c54addf63647c4434c4dc2b176d9b86d5401a",
+        "size": 6274
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W11drops.gi": {
+        "sha256": "f851fd173d6950749badfcb86415ace110115f7b1bcf08c0ad907bd3c31b1f64",
+        "size": 1761
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W11i.gi": {
+        "sha256": "76d6009b313b452db577b6c2640b14b361e79d0fb11f52ed4123e8a3877449cd",
+        "size": 5750
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W11s.gi": {
+        "sha256": "f0ea99182e001fbc202bb0604931fb5fefca99d59dbebef18531a4b60e11269b",
+        "size": 2088
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W12a.gai": {
+        "sha256": "452ea724a0990b339e82afd2ff47f06bed6bd4dc0c63407a2f06ea38d95ba7b8",
+        "size": 1387318
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W12bona.gai": {
+        "sha256": "2c759d707b9be6261e815f4e31cb7f3f27b735b80f0f774a38fe54fc9a7ad73a",
+        "size": 1415164
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W12boni.gi": {
+        "sha256": "c0af9d77174842f7fd9d699b586547679dc11482fea6db8f4d43d4b854eaabd6",
+        "size": 6769
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W12bons.gi": {
+        "sha256": "0d39303f23ddc460c26268a0ac7ba706c5c1afcd7885d057a818d5c25971f481",
+        "size": 2163
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W12dmga.gai": {
+        "sha256": "c94a10e1d3abf764741e4eececc813b963d039d91e7ea2fd8464ab655bed5b74",
+        "size": 1754005
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W12dmgi.gi": {
+        "sha256": "b51d507d694f62f47e7548977257819d58743f6b41fee51437c64455f8d74c53",
+        "size": 9276
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W12dmgs.gi": {
+        "sha256": "ce4caf1fc726cc01d61bde718faa6a1b28d7475a567c069e93765e7c406792fe",
+        "size": 2736
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W12i.gi": {
+        "sha256": "786a4cbdfcf61971df67b63678aa09f8c4b3fff6ee7320cd8bc3e19ded697789",
+        "size": 5976
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W12overheata.gai": {
+        "sha256": "0ea73b3c9e5574fff6608fab3dc15a7c8d5e51d17264c5f9fb00316ce8401129",
+        "size": 1358960
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W12overheati.gi": {
+        "sha256": "0392f399758d7cf3ab95cbc913350330513bddfaed33e4275a82b10aa8ff80be",
+        "size": 6398
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W12overheats.gi": {
+        "sha256": "64bd3da9618db33a04cff7bef08885636910e2048cb0c14cb9f4a98f3a02866d",
+        "size": 2217
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W12s.gi": {
+        "sha256": "e30f1ce1650190e3e2c4b5d83839e2a2b2e7dbaf20a693acb9fd24035f82b874",
+        "size": 2441
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W13a.gai": {
+        "sha256": "0a5c6bc99b354f210bb4fd54d446efe56e3c705909cb007687b139020c2adcaf",
+        "size": 946513
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W13i.gi": {
+        "sha256": "096f8ea1a2625b82ffd8afd1adb36e8c479b68461b7bf5304bc7f3bca328fc94",
+        "size": 7110
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W13s.gi": {
+        "sha256": "e722e6b604b53cbc42b431879cd99a12f80b7a16cce2ca6dfcf15aea2e83bd0a",
+        "size": 2614
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W14a.gai": {
+        "sha256": "ed4656292bda725e0a9dd61d0dd8b771ef86f6e6f6ab27ff06dd5cadb6547ca5",
+        "size": 1075046
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W14i.gi": {
+        "sha256": "71483a63dd94a7e36fb2348f383612c72fee7aceb9924889645e1159ba9a4e31",
+        "size": 4922
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W14s.gi": {
+        "sha256": "395b399d327bb85f4d7193e9d77decdc451d767886e7e34bb93c6ccc1e04c0c3",
+        "size": 2574
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W15a.gai": {
+        "sha256": "8ee24a56f229fb5a4624a77c905cc5c7784792129523c02175e493facfa150af",
+        "size": 1187786
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W15i.gi": {
+        "sha256": "234b1c7ca5d840ab5c90c2b59b9228ffe88146b4fd0eb53a86d70889deef971a",
+        "size": 7182
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W15s.gi": {
+        "sha256": "6b0c2fa7b9e0f027f4779240abfaf8c06c13d5776598817cf8708e9d3576677c",
+        "size": 2480
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W16a.gai": {
+        "sha256": "25264be04430457d9ec4f45ec63c05e8cb7d1eacb2b7a7e2a521ab36da6e44df",
+        "size": 752007
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W16dmga.gai": {
+        "sha256": "5bb1901a624106dd18858093b6f043e89485d87659ed821020231d8fa593500f",
+        "size": 764502
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W16dmgi.gi": {
+        "sha256": "1ffe0ee663c5cf4f9fc3bfe236c3f4752f19d009055603cd7ce75787c456169c",
+        "size": 7542
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W16dmgs.gi": {
+        "sha256": "2954e389d78a12549f6897ce09966910cb2a1e4e6b390992a421c4b243365474",
+        "size": 1864
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W16droida.gai": {
+        "sha256": "a3a4a83da66dcc2630b0701ab6fa7393aa6a3bb989d53f940909dd616c39031f",
+        "size": 884777
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W16droidi.gi": {
+        "sha256": "13a555b3de3c83115f267a62aebfa599b5e84a8d033ebe3b4ef1961e60ffbac3",
+        "size": 8905
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W16droids.gi": {
+        "sha256": "2862e78f5a436b264df05263162067b855f06a22c496183cd9a8f7fe2eb3d013",
+        "size": 2075
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W16i.gi": {
+        "sha256": "17f1dec72f2fb4f085eb354d7599963d7575e99861df87633cd78d645e5ea03a",
+        "size": 7522
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W16overheata.gai": {
+        "sha256": "f9bd35148950884a43411357edce7562a23b9adcdcfb7f0e88499bf9ad347578",
+        "size": 811378
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W16overheati.gi": {
+        "sha256": "94c2d75053bc4e175bd61a8ecede3d5a930849e08fb97b98c2b0827e2f996255",
+        "size": 8203
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W16overheats.gi": {
+        "sha256": "95c0fca9395fb395b981a223cc508a3892f9e84816374179445ad7f65466530b",
+        "size": 2067
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W16s.gi": {
+        "sha256": "beba798dd9d5a7072389867640a6dd1b11d838e6d4ceae60bfd5cbd13bd086f7",
+        "size": 1862
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W17a.gai": {
+        "sha256": "8fe774a50c1c4b618d0fd515f658ae02746088fe4a8454d4ebf898bc98d89464",
+        "size": 725850
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W17dmga.gai": {
+        "sha256": "d968d568acb7236188560e341f4371c2b44941c30fa92e8c1d457c857950ecc8",
+        "size": 713761
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W17dmgi.gi": {
+        "sha256": "baf609247048dfa0be0856d33941cb9687187e50d791d6d3069bc48e7b1fd71d",
+        "size": 7034
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W17dmgs.gi": {
+        "sha256": "82551a29d08259c5097cc399a76e12c64c8dd2d20e2850e924fa72501762eab9",
+        "size": 2199
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W17droida.gai": {
+        "sha256": "764abbcf12cf7c8ffe9771f8c7d6271b2ab4827c5a9ef47c9b3c5a8114780acd",
+        "size": 799545
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W17droidi.gi": {
+        "sha256": "92f7ef027ef7f4e93c449a80d5d16d11459d308b0d07a3e6abad9ca6068ee32b",
+        "size": 7536
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W17droids.gi": {
+        "sha256": "05d7b30bbd3c294cd0bfa00550a886c868a7b6dce4bb980a549e9cb7a6f969ac",
+        "size": 2377
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W17goodsa.gai": {
+        "sha256": "086aa83d853c63936581fea36914f94ff19062138b7c2670f4caed7a226f96b4",
+        "size": 752493
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W17goodsi.gi": {
+        "sha256": "4c2b8ded3d9fd8e3f93573e3b8f293b8688958d6ecae37edac8351a38af53a1f",
+        "size": 7431
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W17goodss.gi": {
+        "sha256": "fd082251fb6a9edcbb7ef9f2fc6cab26c978ec9ff1b2c22fe84f1e1125e5bc07",
+        "size": 2333
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W17i.gi": {
+        "sha256": "22e5024ed754cd4584c4066d548ebbc175095be91ea227f747bd3e00c7f03796",
+        "size": 6986
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W17s.gi": {
+        "sha256": "33e237928be7df619cf098a4215f958b9744cd8acb5e8e26041ccd7f7dc0e451",
+        "size": 2192
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W18a.gai": {
+        "sha256": "a1fbb78923234fea91ad19ce3dd2ef6a0d8cdb8d66105d2a333301f093459b56",
+        "size": 459326
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W18dmga.gai": {
+        "sha256": "9e3dd18067132293f7c3843a19691caa798376aa1580a7d04d0ff29cba75f0d3",
+        "size": 801799
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W18dmgi.gi": {
+        "sha256": "2f4442dd2cf93c3611198125f7565b8752ea946c8af565839a413977bc93a3fc",
+        "size": 7625
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W18dmgs.gi": {
+        "sha256": "f623686a8cfbfdd93d1e137ee1232920ffc4455f2390900082bb27a6008300e7",
+        "size": 2027
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W18dropa.gai": {
+        "sha256": "fee99c3839d687ccf6aa7feb2fe6c2a9700e4fd358f85a49324dc7efbcc5102d",
+        "size": 714810
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W18dropi.gi": {
+        "sha256": "623c53245c17f353cc4a4bb2394f7103de086584505964d80139f2c2d32cbf1f",
+        "size": 7161
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W18drops.gi": {
+        "sha256": "a661c95dff6c20d01e9a45c920d8f6985955d7f8c8f022ce56ef10838fa57585",
+        "size": 1876
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W18i.gi": {
+        "sha256": "161fd49696893d6c7de41f7371226e2dc1706ff4b8ab7ff266d4d76cd81f7d2d",
+        "size": 6735
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W18overheata.gai": {
+        "sha256": "7aa801a0331c206fc0dd2a49d9845584a9307394cbbc3856c8a552651b654a3e",
+        "size": 781346
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W18overheati.gi": {
+        "sha256": "c4babed051b200631866088498d55d329e95d26d119b36708d8f01034ad427a7",
+        "size": 7625
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W18overheats.gi": {
+        "sha256": "c5ba13b4b310f26f85367983146766dcbea8aa761c8fbb01e443df81514a67f9",
+        "size": 2006
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Items/2W18s.gi": {
+        "sha256": "5d94c9fdb9419ee46f6814ff031ac024baa2bbd08977789b7b00afe2ea7b7ed1",
+        "size": 1817
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Ruins/Inhibitor.gi": {
+        "sha256": "7adbf79d875617740fd98dd80f79d93889bab2233ad56d606e7a63723457806e",
+        "size": 11931
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Ruins/Inhibitor.hai": {
+        "sha256": "78c816dceec254ab73fceac5ef2d0a8a91f212524944baf537c198527346b552",
+        "size": 2541620
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Ruins/InhibitorOff.hai": {
+        "sha256": "cfa0aafa6ef9b561bb31fa2e6f76af6e65600d769cc3cdb5c176826b7989cbd0",
+        "size": 1270836
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Ruins/InhibitorOn.hai": {
+        "sha256": "bc80cd957a8045ca077aab080bfb62b1208e78bff07db34c2bf3f14dbd62508d",
+        "size": 1270836
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Ruins/MapInhibitor.gi": {
+        "sha256": "4bdbef6b4a4c06a1a38e74da742bd2f13e9b86e3e04cc4d428686199427be247",
+        "size": 520
+      },
+      "{app}/FairansVision/FairanGPNoIcon/DATA/Ruins/MapInhibitor.png": {
+        "sha256": "4dd6ae772ca05c4aabd8484cf9b5972ccccce685231e0b81b4d8439565dc76da",
+        "size": 355
+      }
+    }
+  }
+}
