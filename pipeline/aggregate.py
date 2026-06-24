@@ -844,6 +844,20 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
     return total_new
 
 
+def _build_code_manifest(code_dir):
+    """relpath('/') -> {'sha256','size'} для всех файлов в code/. ЕДИНЫЙ источник
+    истины для code.manifest.json — используется и code_track, и build_descriptors,
+    чтобы манифест не отставал от содержимого code/ (см. self-heal в build_descriptors)."""
+    files = {}
+    if not Path(code_dir).is_dir():
+        return files
+    for f in Path(code_dir).rglob('*'):
+        if f.is_file():
+            rel = str(f.relative_to(code_dir)).replace('\\', '/')
+            files[rel] = {'sha256': sha256_file(f), 'size': f.stat().st_size}
+    return files
+
+
 def code_track(cfg):
     """Нарезать КОД по модам (из committed mods/<camp>/<unit>/code/) и залить на HF.
     Пишет code.manifest.json (path->sha,size) на юнит; код-блобы идут в общий
@@ -867,12 +881,8 @@ def code_track(cfg):
         if not code_dir.is_dir():
             continue
         name = unit_dir.name
-        # манифест кода (path -> sha,size) + sha по файлам
-        files = {}
-        for f in code_dir.rglob('*'):
-            if f.is_file():
-                rel = str(f.relative_to(code_dir)).replace('\\', '/')
-                files[rel] = {'sha256': sha256_file(f), 'size': f.stat().st_size}
+        # манифест кода (path -> sha,size) — единый билдер с build_descriptors
+        files = _build_code_manifest(code_dir)
         if not files:
             continue
         save_json(unit_dir / 'code.manifest.json', {'files': files})
@@ -1015,12 +1025,20 @@ def build_descriptors(cfg):
     n_desc = 0
     for unit_dir in sorted(MODS.glob('*/*')):
         camp_unit = f'{unit_dir.parent.name}/{unit_dir.name}'
-        code_man = load_json(unit_dir / 'code.manifest.json', {}).get('files', {})
+        code_dir = unit_dir / 'code'
+        # Источник истины — сам code/ на диске. code.manifest.json мог отстать, если
+        # юнит переагрегировали (новое содержимое code/), но --code-track ещё не
+        # прогоняли — тогда в манифесте файлы прошлой версии, и часть ModuleInfo.txt
+        # (а значит и модов-дескрипторов) теряется. Пересобираем из code/ и сохраняем.
+        if code_dir.is_dir():
+            code_man = _build_code_manifest(code_dir)
+            save_json(unit_dir / 'code.manifest.json', {'files': code_man})
+        else:
+            code_man = load_json(unit_dir / 'code.manifest.json', {}).get('files', {})
         am = load_json(unit_dir / 'assets.manifest.json', {})
         asset_man = am.get('files', am) if isinstance(am, dict) else {}
         if not code_man and not asset_man:
             continue
-        code_dir = unit_dir / 'code'
 
         roots = {}  # mod_id -> relpath ModuleInfo
         for rel in code_man:
