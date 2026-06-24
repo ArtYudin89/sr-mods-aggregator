@@ -11,6 +11,13 @@ Env: TG_BOT_TOKEN, TG_CHAT_ID, NOTIFY_TEST. Источник: state/cloud_summar
 Код выхода 0 — отправлено/нечего слать; 1 — ошибка доставки."""
 import os, json, sys, urllib.request, urllib.parse, urllib.error
 
+# stdout раннера = cp1252 -> кириллица в print() роняет процесс (UnicodeEncodeError).
+for _s in (sys.stdout, sys.stderr):
+    try:
+        _s.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
 KIND = sys.argv[1] if len(sys.argv) > 1 else 'summary'
 tok = os.environ.get('TG_BOT_TOKEN', '').strip()
 chat = os.environ.get('TG_CHAT_ID', '').strip()

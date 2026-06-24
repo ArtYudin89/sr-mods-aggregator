@@ -124,6 +124,7 @@ jobs:
       # 2b) Уведомить в Telegram, если тяжёлый manual-юнит (redux_base) изменился на GDrive.
       - name: Notify heavy unit changed (Telegram)
         if: ${{ always() }}
+        continue-on-error: true
         working-directory: sr-mods-aggregator
         shell: bash
         env:
