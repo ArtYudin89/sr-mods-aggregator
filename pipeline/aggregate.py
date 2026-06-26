@@ -954,17 +954,58 @@ def code_track(cfg):
 
 # ---- Фаза 1: дескрипторы модов (мод = пакет по URL) ----
 
+# Корень игры (НЕ моды): эти имена при роутинге уходят в папку игры, не в Mods.
+# Должно совпадать с install_route в лаунчере (launcher_core.py) — иначе агрегатор
+# каталогизирует не те папки, что лаунчер кладёт на диск.
+_ROOT_DIRS = {'cfg', 'data', 'matrix', 'soundtrack', 'help', 'man', 'build', 'dist'}
+_ROOT_FILES = {
+    'rangers.exe', 'cassandra.exe', 'manualrus.exe', 'matrixgame.dll',
+    'build version.txt', 'cachedata.txt', 'cfg.txt', 'cfg.dat', 'lang.txt',
+    'main.txt', 'changelog_rus.txt', 'generatemergedcfg.bat',
+    'install.txt', 'install_russian.txt', 'readme_ru_ru.txt',
+}
+_ROOT_EXTS = {'.dll'}
+
+
 def _after_mods(relpath):
-    """Путь после последнего сегмента 'Mods' (корень мода). Если 'Mods' нет — мод
-    ставится в корень игры (Inno '{app}/...'): срезаем '{app}'. None, если ни того, ни др."""
-    parts = relpath.replace('\\', '/').split('/')
-    idxs = [i for i, p in enumerate(parts) if p.lower() == 'mods']
-    if idxs:
-        return '/'.join(parts[idxs[-1] + 1:])
-    aidx = [i for i, p in enumerate(parts) if p.lower() == '{app}']
-    if aidx and aidx[-1] < len(parts) - 1:
-        return '/'.join(parts[aidx[-1] + 1:])
-    return None
+    """Путь мода относительно Mods/ — или None, если файл не модовый (корень игры,
+    мусор инсталлятора, Inno-плейсхолдер). Зеркалит install_route() лаунчера:
+    срезает обёртки '<X>_unpacked/'; пропускает .exe(не игры)/.iss; берёт всё после
+    последнего 'Mods'; срезает ведущий '{app}'; корневые папки/файлы игры и одиночные
+    верхнеуровневые файлы -> None; прочая папка -> это мод (путь как есть)."""
+    parts = [p for p in relpath.replace('\\', '/').split('/') if p]
+    if any(p.startswith('.') for p in parts):    # staging агрегатора (.temp/.tmp) — не мод
+        return None
+    while parts and parts[0].lower().endswith('_unpacked'):
+        parts = parts[1:]
+    if not parts:
+        return None
+    base = parts[-1].lower()
+    ext = os.path.splitext(base)[1]
+    if ext == '.iss' or (ext == '.exe' and base not in _ROOT_FILES):
+        return None
+    low = [p.lower() for p in parts]
+    if 'mods' in low:
+        i = max(j for j, p in enumerate(low) if p == 'mods')
+        rest = parts[i + 1:]
+        return '/'.join(rest) if rest else None
+    if parts and parts[0] == '{app}':
+        parts = parts[1:]
+        low = [p.lower() for p in parts]
+        if not parts:
+            return None
+        if 'mods' in low:
+            i = max(j for j, p in enumerate(low) if p == 'mods')
+            rest = parts[i + 1:]
+            return '/'.join(rest) if rest else None
+    topl = parts[0].lower()
+    if topl.startswith('{') and topl.endswith('}'):
+        return None
+    if topl in _ROOT_DIRS:
+        return None
+    if len(parts) == 1:          # одиночный файл сверху — не мод (readme/корневой файл)
+        return None
+    return '/'.join(parts)
 
 
 def _read_text_auto(path):
@@ -1141,6 +1182,9 @@ def build_descriptors(cfg):
         am = load_json(unit_dir / 'assets.manifest.json', {})
         am = am.get('files', am) if isinstance(am, dict) else {}
         contains_exe = any(k.lower().endswith('rangers.exe') for k in {**cm, **am})
+        # размер юнита (байты на диске после установки) — для показа в лаунчере
+        code_bytes = sum(int(v.get('size', 0)) for v in cm.values())
+        asset_bytes = sum(int(v.get('size', 0)) for v in am.values())
         role = u.get('role')
         if role == 'pack' and contains_exe:
             tier = 'base'
@@ -1157,6 +1201,9 @@ def build_descriptors(cfg):
             'load_order': u.get('load_order'),
             'update_required': tier in ('base', 'fix'),  # критично: обновление обязательно
             'display_name': u.get('display_name', name),
+            'code_bytes': code_bytes,
+            'asset_bytes': asset_bytes,
+            'bytes': code_bytes + asset_bytes,
         }
     save_json(REPO / 'state' / 'packs.json', {'schema': 'srmod-packs/1', 'packs': packs})
     n_base = sum(1 for p in packs.values() if p['tier'] == 'base')
