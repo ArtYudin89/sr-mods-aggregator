@@ -1045,6 +1045,25 @@ def _strip_color(s):
     return re.sub(r'</?color[^>]*>', '', s or '').strip()
 
 
+def _norm_name(s):
+    """Каноничная форма имени мода для сравнения идентичности: без цветовой
+    разметки, без скобочных пометок (напр. '(нано-версия)') и без пробелов/
+    подчёркиваний, в нижнем регистре. 'ShuMM'->'shumm', 'PolMM'->'polmm',
+    'Dr_Kles_Mod (нано-версия)'->'drklesmod'."""
+    s = re.sub(r'\([^)]*\)', '', _strip_color(s))
+    return re.sub(r'[\s_]+', '', s).lower()
+
+
+def _mi_localized(mi, *keys):
+    """Первое непустое значение из ModuleInfo по списку ключей (рус → eng-фолбэк),
+    с убранной цветовой разметкой. Для описаний в дескрипторе/каталоге."""
+    for k in keys:
+        v = mi.get(k)
+        if v:
+            return _strip_color(v)
+    return ''
+
+
 def build_descriptors(cfg):
     """Сгенерировать дескриптор на каждый (источник, мод) — мод = папка с ModuleInfo.txt.
     Один и тот же мод в разных паках = РАЗНЫЕ варианты (версии часто отличаются), поэтому
@@ -1126,7 +1145,8 @@ def build_descriptors(cfg):
                 'author': mi.get('Author') or mi.get('Autor', ''),
                 'section': mi.get('Section', ''),
                 'priority': mi.get('Priority', ''),
-                'description': mi.get('SmallDescription', ''),
+                'description': _mi_localized(mi, 'SmallDescription', 'SmallDescriptionEng'),
+                'full_description': _mi_localized(mi, 'FullDescription', 'FullDescriptionEng'),
                 'version': version,
                 'depends': _split_modlist(mi.get('Dependence', '')),
                 'conflicts': _split_modlist(mi.get('Conflict', '')),
@@ -1143,24 +1163,61 @@ def build_descriptors(cfg):
                 'conflicts': desc['conflicts'], 'code_files': len(files['code']),
                 'asset_files': len(files['assets']), 'path': rel_path,
                 'unit_mod_count': len(roots),
+                'description': desc['description'],
+                'full_description': desc['full_description'],
+                'section': desc['section'],
             })
             n_desc += 1
 
     # каталог: группировка по id; дефолт = вариант из самого «специализированного» юнита
-    # (меньше всего модов в юните), tie-break — больше файлов
-    catalog = {}
-    for mid, vs in variants.items():
-        vs_sorted = sorted(vs, key=lambda v: (v['unit_mod_count'],
-                                              -(v['code_files'] + v['asset_files'])))
+    # (меньше всего модов в юните), tie-break — больше файлов.
+    # ВАЖНО: id (путь папки) НЕ равен идентичности мода. Некоторые источники кладут
+    # РАЗНЫЕ моды в одну папку (Polus Mira: PolMM в ShusRangers/ShuMM, PolMusic в
+    # ShuMusic и т.д.). Истинный идентификатор в движке — Name= из ModuleInfo (через
+    # него заданы depends/conflicts). Поэтому внутри одного пути доразбиваем варианты
+    # по нормализованному имени: группа, чьё имя совпадает с именем папки (или дефолт,
+    # если совпадения нет), держит ключ = путь; остальные получают ключ '<путь>@<Name>',
+    # чтобы чужой мод не маскировался под имя папки.
+    def _emit(mid, group):
+        vs_sorted = sorted(group, key=lambda v: (v['unit_mod_count'],
+                                                 -(v['code_files'] + v['asset_files'])))
         default = vs_sorted[0]
+        # описание/раздел — из дефолта, но если у него пусто, берём первое непустое
+        # среди вариантов (фиксы часто без ModuleInfo-описания, а установщик с ним)
+        def _first(field):
+            return next((v[field] for v in vs_sorted if v.get(field)), '')
         catalog[mid] = {
             'name': default['name'], 'author': default['author'],
             'default_source': default['source'],
-            'versions_differ': len({v['version'] for v in vs}) > 1,
+            'description': default.get('description') or _first('description'),
+            'full_description': default.get('full_description') or _first('full_description'),
+            'section': default.get('section') or _first('section'),
+            'versions_differ': len({v['version'] for v in group}) > 1,
             'variants': [{k: v[k] for k in ('source', 'version', 'name', 'depends',
                                             'conflicts', 'code_files', 'asset_files', 'path')}
                          for v in vs_sorted],
         }
+
+    catalog = {}
+    for root, vs in variants.items():
+        by_norm = defaultdict(list)
+        for v in vs:
+            by_norm[_norm_name(v['name'])].append(v)
+        if len(by_norm) == 1:                       # обычный случай — один мод, путь = id
+            _emit(root, vs)
+            continue
+        base_norm = _norm_name(root.split('/')[-1])
+        # какая группа удержит «голый» путь как ключ: совпадение с именем папки,
+        # иначе — группа с общим дефолтным вариантом
+        keep = next((n for n in by_norm if n == base_norm), None)
+        if keep is None:
+            overall_default = sorted(
+                vs, key=lambda v: (v['unit_mod_count'],
+                                   -(v['code_files'] + v['asset_files'])))[0]
+            keep = _norm_name(overall_default['name'])
+        for n, group in by_norm.items():
+            mid = root if n == keep else f"{root}@{group[0]['name']}"
+            _emit(mid, group)
     save_json(out_root / 'catalog.json', {'schema': 'srmod-catalog/2', 'mods': catalog})
 
     # packs.json: тир каждого юнита для проверки совместимости в лаунчере (Фаза 2).
@@ -1452,7 +1509,7 @@ def main():
     ap.add_argument('--commit', action='store_true')
     ap.add_argument('--release', action='store_true')
     ap.add_argument('--only', default=None, help='только юнит с этим name')
-    ap.add_argument('--camp', default=None, help='только лагерь (redux/universe/shared)')
+    ap.add_argument('--camp', default=None, help='только лагерь (original/redux/universe/shared)')
     ap.add_argument('--force', action='store_true', help='игнорировать lock')
     ap.add_argument('--assets', action='store_true',
                     help='режим ассет-трека: упаковать новые блобы в чанки <2ГБ и залить')

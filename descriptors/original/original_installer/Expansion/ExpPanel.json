@@ -1,0 +1,150 @@
+{
+  "schema": "srmod/1",
+  "id": "Expansion/ExpPanel",
+  "source": "original/original_installer",
+  "name": "ExpPanel",
+  "title": "ExpPanel",
+  "author": "Huk, Обер, Klaxons",
+  "section": "Экспансия",
+  "priority": "1",
+  "description": "Добавляет дополнительные интерфейсные панели на экране космоса",
+  "full_description": "Нововведения мода:\n- Добавлена специальная панель с кнопками переключения корабельных комплектаций (до 9 комплектаций) оборудования на форме космоса. Сами комплектации необходимо создавать в меню управления кораблём, при этом комплектации под номерами с 4 по 9 выбираются соответствующими цифровыми клавишами на клавиатуре при открытом корабельном меню.\n- Рядом с панелью переключения комплектаций добавлены кнопки ручного переключения режимов работы корпуса Клещ (присутствует в моде ExpScienceRanks). Кнопки появляются только при активации соответствующей функции на мостике Клеща, а значит, не могут быть вызваны без модов ExpScienceRanks, а также ExpPilotBridge или ExpPilotBridgePlus.\n- Сразу над кнопкой завершения хода на форме космоса была добавлена шкала общего износа установленного оборудования. При наведении мыши на эту шкалу, она отобразит форму с точным процентом износа каждого конкретного элемента оборудования, установленного на корабле.\n- Рядом с панелью радара добавлена шкала, отображающая текущую прочность корпуса вашего корабля.\n- При сканировании мирных кораблей (транспорты, лайнеры, дипломаты) их военное звание будет полностью скрываться.\n- С помощью правого клика мышью по кнопке пропуска хода можно включать и выключать режим автоостановки хода во время космических перелётов.\n- Также данный мод необходим для корректной работы технологического центра из мода ExpTC.",
+  "version": "20d0c2aa6758db31",
+  "depends": [],
+  "conflicts": [],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "files": {
+    "code": {
+      "{app}/Mods/Expansion/ExpPanel/ModuleInfo.txt": {
+        "sha256": "482d1291c6b771141b869d4443631530a72f60cbf2d4896f2b0bb9eab2b1c448",
+        "size": 4199
+      },
+      "{app}/Mods/Expansion/ExpPanel/CFG/CacheData.dat": {
+        "sha256": "23747e23e5ba6e8aedc93dabdf49fc55b67fd34abdf35c8fe7c427746a91ef2c",
+        "size": 416
+      },
+      "{app}/Mods/Expansion/ExpPanel/CFG/Main.dat": {
+        "sha256": "d4a2f1d85a309a64ce83054b2ec2a4bc5e0fa4f217eab30d2f9ac5a4e745cdcd",
+        "size": 6574
+      },
+      "{app}/Mods/Expansion/ExpPanel/CFG/Eng/Lang.dat": {
+        "sha256": "fd87df81eae7ca1263a026b3c7f38a4c589379a6fd02cee97de03615b859e960",
+        "size": 1703
+      },
+      "{app}/Mods/Expansion/ExpPanel/CFG/Rus/Lang.dat": {
+        "sha256": "3e952ef3f9d6567514eb8192769592f67e03d682c473bff4629fb2a3f57cd4ae",
+        "size": 1782
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/Script/Mod_ExpPanel.scr": {
+        "sha256": "612054e8c87c73d706e9a152c175f142ac17f9da8b09a5676fb0348694409751",
+        "size": 883
+      }
+    },
+    "assets": {
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/Add_panel_image.gi": {
+        "sha256": "37189f384b5b13ca559a6d1d5956bc5eaf9d10504ae2c8cca178301bfc111a17",
+        "size": 19421
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/fix_but_a.gi": {
+        "sha256": "4f95e7a6954e12e8c95e11b8fd4a927a51feeabff4de6e520e614951c5ba038a",
+        "size": 736
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/fix_but_n.gi": {
+        "sha256": "382fd0010eb2b0bb91aff32329df55d66ffb3d29ad7eaa9e474d073f5488169c",
+        "size": 736
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/fix_info_image.gi": {
+        "sha256": "243fe1c7159e51db238f1c607e706f00a9338497321608429f83d2d8488f83a8",
+        "size": 109523
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/grab_aster_A.gi": {
+        "sha256": "6086c12f606c7728f19808eded69e003fb40b0e2e544e66ed305be20bad68899",
+        "size": 983
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/grab_aster_D.gi": {
+        "sha256": "3c6e6821ec7b0093e59c7ae344350bb5203fa6e39b8bb6a156b85b7696ab6c3f",
+        "size": 983
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/grab_aster_N.gi": {
+        "sha256": "aa25a3967ceb17b75a74fc96ff3a2cff07059a2c3d846416063b8e9d1aa18276",
+        "size": 983
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/HPbar.gi": {
+        "sha256": "8489aa0822a053f7f4b5540ec732030b85e06d9fb5054906abaa6df3dc932fe9",
+        "size": 10291
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/HPbar_2.gi": {
+        "sha256": "9ce75446e98db98fb20553daf08e09e9299e080f164d8b24998df7f1d2cf19bb",
+        "size": 5860
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/HPbar_3.gi": {
+        "sha256": "756115b55fcf8af0500e2977c2d76be5e6dd27534ed589cacbd58c77146072a6",
+        "size": 5860
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/klesh_add_panel.gi": {
+        "sha256": "529b3e2e5f5bd46a894b647e4282e017c16db7f0e8d6335e931ce881aa5c1ba2",
+        "size": 7653
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/klesh_D.gi": {
+        "sha256": "dbbcd0b1154daf762d28f781be6ad6e79fea991540559d85a92dbbb89d8e68b3",
+        "size": 1447
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/klesh_G.gi": {
+        "sha256": "d82b1cfd240e5e3fc6b2131c13033c7560c95230cd7fb33d3a821dc3b22b80af",
+        "size": 1440
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/klesh_N.gi": {
+        "sha256": "fe6ceb33beb102452f3f9c27166135473e47f6c4719c9194aa4dcfdaff4a17f2",
+        "size": 1440
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/klesh_R.gi": {
+        "sha256": "3cfc3148851fac00f1bd6919f38f521dcd998925e7d37a41545c90390c9354dd",
+        "size": 1440
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/klesh_Y.gi": {
+        "sha256": "29addfa47ceac677b45917cc423d1ca57847e3bac9f0a0a378045e5c57210c20",
+        "size": 1440
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/Set_Button_A.gi": {
+        "sha256": "3749eec543b173e1ff9cd0ea716187b62bee5a21e11e0c128dae322b69b95167",
+        "size": 1236
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/Set_Button_C.gi": {
+        "sha256": "cf872724318234c927ef66ea93b568218f6e08c00fa9ab38ac6346f51073516a",
+        "size": 1236
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/Set_Button_D.gi": {
+        "sha256": "99d8698b4c26e63cb5428c46e41cb1f929ee6232b3f7be80da189169b3c268a4",
+        "size": 1236
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/SetFirstA.gi": {
+        "sha256": "0e3bdc15216924d94dadebdd491cb8d7120d6a28d5d32c3e6d7dee07f03b34ec",
+        "size": 1206
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/SetFirstC.gi": {
+        "sha256": "db6f81b514997764c994664f33b06c8f8e69f403e8ae9220d93aaeb876e53f0c",
+        "size": 1206
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/SetFirstD.gi": {
+        "sha256": "0f3345d4a63273a75b94bd48f6dcb8c42b0800c6d39cf917b716d95fc712eab5",
+        "size": 1206
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/SetLastA.gi": {
+        "sha256": "cbbbbaaeea0b03e5f07de4109584c1a76e933ac906200e158cc454c5451996bd",
+        "size": 1179
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/SetLastC.gi": {
+        "sha256": "2dcf06847d6e5cbf8f5d5ce1895c46686a91ef8a095fb438669ea655aeeb0e6b",
+        "size": 1179
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/SetLastD.gi": {
+        "sha256": "cd8a0a26a7c701a9462e423f5c617082d15dd67ad7c6729fbc02b6966fc215e3",
+        "size": 1179
+      },
+      "{app}/Mods/Expansion/ExpPanel/DATA/PanelSpace2/TurnBrakeOff_Ind.gi": {
+        "sha256": "c92fa3253886bd64bc9ee979bce6ca6fabd5b84e7a03c9a54a02fc4da48ba9e7",
+        "size": 1069
+      }
+    }
+  }
+}

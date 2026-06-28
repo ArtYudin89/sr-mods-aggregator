@@ -1,0 +1,237 @@
+{
+  "schema": "srmod/1",
+  "id": "Expansion/ExpPhysGun",
+  "source": "original/original_installer",
+  "name": "ExpPhysGun",
+  "title": "ExpPhysGun",
+  "author": "Huk, Klaxons",
+  "section": "Экспансия",
+  "priority": "1",
+  "description": "Добавляет новый космический квест и уникальное оружие \"Физган\"",
+  "full_description": "Данный мод добавляет в игру новый космический квест, связанный со спасением целой планеты. Главным (но не единственным) условием для начала квеста является наличие в системе технологического центра из мода ExpTC.\nПо выполнению квеста игрок будет вознаграждён необычным оружием с уникальными свойствами - \"Физганом\".\n<clr><clrEnd>\nБонусная совместимость с модом ExpArts (можно заряжать в физган новые виды бомб).",
+  "version": "a19c2537663d2724",
+  "depends": [
+    "ExpTC",
+    "UtilityFunctionsPack"
+  ],
+  "conflicts": [],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "files": {
+    "code": {
+      "{app}/Mods/Expansion/ExpPhysGun/ModuleInfo.txt": {
+        "sha256": "6fcdfdfe37aa1dbaf39e72ed1832d4a0c817f75f2b332685a2364651b335e13f",
+        "size": 2636
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/CFG/CacheData.dat": {
+        "sha256": "6776be391afb5d6c509c48b5979daa79b7e9023aa17d2172fb8e1e89d912514c",
+        "size": 816
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/CFG/Main.dat": {
+        "sha256": "f3ceb45e3fde285157997c2cc8383a9be23c9279a64fbd93b01989e663aa1f63",
+        "size": 638
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/CFG/Eng/Lang.dat": {
+        "sha256": "95924ae6a35698c5c6f820b8066176982bd21e35bbf59ea1c3b50e9af9e3611e",
+        "size": 16021
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/CFG/Rus/Lang.dat": {
+        "sha256": "31a474d9cb7217592e56f672fb67b5de107704b0080f54895c2e9a14fdb2c0e6",
+        "size": 17573
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Script/Mod_ExpPhysGun.scr": {
+        "sha256": "6b4fae51ea11f6fb7fa9c7b1921cfd61256b8ef33ca1747d04b12ba11fe9007f",
+        "size": 83351
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Script/Mod_ExpPhysGun_AfterQuestDone.scr": {
+        "sha256": "fda9f167916c5d8e84a7b029b2fdcfa59b537d1452bd15130abe596cdea6ed6a",
+        "size": 2437
+      }
+    },
+    "assets": {
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Items/PhysGun_a.gai": {
+        "sha256": "10058f3d7278dc2c226967739bb136a4a19741eb1fb5aab72cb42f473c08654b",
+        "size": 706905
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Items/PhysGun_i.gi": {
+        "sha256": "97107f519c3695c51552a7cff511b5fdf22bc8962df5476778bbc57e832774c0",
+        "size": 7070
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Items/PhysGun_s.gi": {
+        "sha256": "19cc2572b66edea54c06a275a30326bdb104d7d66e5a4ad8ba8069532191f987",
+        "size": 1843
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Items/Quark_bomb.gai": {
+        "sha256": "1d17360894c768ca30896a56ea82435e952293b83eeef8059a5c845670012316",
+        "size": 288894
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Items/Quark_bomb.gi": {
+        "sha256": "e3c9289b13123ff302148732f042513acf93fe7434ee7d57fe47affbec1ead3f",
+        "size": 2214
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Items/Quark_bomb_ab.gi": {
+        "sha256": "0f8918324dc32971fd4020a51e26437ac124e1add4d1e31289485faa752193a6",
+        "size": 999
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/ItemsUseless/BrokenPhysGun.gi": {
+        "sha256": "f0733e4325be91f796cb6f44e8f15056b6f9d50e4dd7bdde650cc1bd19532a14",
+        "size": 2592
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Asteroid_blue.hai": {
+        "sha256": "2fb018b4f9c27bfd50047f1b588ebe5e06cfe9c18b8a6be5ddba859d51347faf",
+        "size": 1462324
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Asteroid_blue_s.gi": {
+        "sha256": "ffdaf33043200490676fe18bcc1da1b75c901472c83a52d68a64d39909071f36",
+        "size": 2349
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Asteroid_green.hai": {
+        "sha256": "f1820f2481f9d5b8d81d91940dc442908f9fcf4263df8c674874343d5ba2e7e3",
+        "size": 1740852
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Asteroid_green_s.gi": {
+        "sha256": "24f8c11657b02e30a10aa73cb4044379e06665ab38a407761f61d86c61c83ba5",
+        "size": 2705
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Asteroid_red.hai": {
+        "sha256": "b441f60ca2897b3058ed0d44e06e50fe5e703ea28f9eda5f3c4e654a2be596bd",
+        "size": 1740852
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Asteroid_red_s.gi": {
+        "sha256": "0b6d9161c8e22076fb7cbdea7df7431a29670e0e24ff0f69880c80e7f5160a17",
+        "size": 2980
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Asteroid_violet.hai": {
+        "sha256": "9a1b65fe0f91d6f8e9f1d73a07665342d0defecb79d1afca0213af0d64325729",
+        "size": 1740852
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Asteroid_violet_s.gi": {
+        "sha256": "70eba03fbd7e35ca0f8c28b78fa7e6ae5643e52aa0a64181dd3ea19e89723043",
+        "size": 2732
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Asteroid_white.hai": {
+        "sha256": "495f7398e373e2fabc0b1221f665e428d499c9b964f25d86e59f95ec31c963c9",
+        "size": 1740852
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Asteroid_white_s.gi": {
+        "sha256": "dd9503522d7895ecbe6fd6340cf601b5c9204331a7bdb3410ae67b4a3fa9ecc6",
+        "size": 2989
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Asteroid_yellow.hai": {
+        "sha256": "83ae500e8a9c0857049a7ecaf817a2457d004b64f768f20a38fc3bddf541eac6",
+        "size": 1410100
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Asteroid_yellow_s.gi": {
+        "sha256": "419f459f2941bccd8291cd470667b142aa686b1da861639c03b8e642dff50b1c",
+        "size": 2077
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Average_item.hai": {
+        "sha256": "ee8b6427ce7e8d39b8eb69e9ce951300c2d785b5a8679a3bb6ccfeebd3f61237",
+        "size": 835636
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Average_item_s.gi": {
+        "sha256": "dae1a4ec9fe0626757130dfe54a51fc408b2aa670dbc132ebf898eee23ab31c1",
+        "size": 22697
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Big_item.hai": {
+        "sha256": "221113874d723b3bf2c1d30e29c2b401c5f39f1cb873ee5936ebd2e785a31e31",
+        "size": 853044
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Big_item_s.gi": {
+        "sha256": "fb705fe8b737fe3ce43a69b331c98b83f12548afd4d4aa623824d53a1c9c3264",
+        "size": 2836
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_EMP_bomb.hai": {
+        "sha256": "655bda3b247b0fed7a48aa08287cb72b7034f23c67027f194a77f7812471b528",
+        "size": 2263092
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_EMP_bomb_s.gi": {
+        "sha256": "f4bce1da2257d35a327d423549289082df0c678bb479381e5eaf94b41ed74ca6",
+        "size": 3691
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Escape_pod.hai": {
+        "sha256": "355fd34d67c89b0fcb373597fe1ea9aa6f8fd3cfef49873d46de1b54ec7c21da",
+        "size": 1740852
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Escape_pod_s.gi": {
+        "sha256": "d47615bb2b72fa188ccb9b6e6635d5fbcc27695c604d1b00bf095401b1514dca",
+        "size": 2468
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Fuel_tank.hai": {
+        "sha256": "675356e49b8969cd2bb60f9957e3951d3ae8f89902b4ded50a2ce72a78c3a1f0",
+        "size": 1740852
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Fuel_tank_s.gi": {
+        "sha256": "cd877f4ad5f0b6706732515c341ae01b6dbbec7d0fd0c97f53482751342acd63",
+        "size": 3647
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Maloq_stool.hai": {
+        "sha256": "90dad5596f7845b71f45cf1596c0aad31ea61b99b3c3f21771d32ad7e151d5d2",
+        "size": 835636
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Maloq_stool_s.gi": {
+        "sha256": "544b22a70b8655b2254037b732afb5e58c8e36fd575c5b1aade32b7635e833ca",
+        "size": 2781
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Quark_bomb.hai": {
+        "sha256": "60c7d9dc04548d8b9545bd8f64737763eba5c58f4876a8aeeb387cb0c47dead2",
+        "size": 2263092
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Quark_bomb_s.gi": {
+        "sha256": "1e8955916f9d8781fafffd9ccee51d27ee63dd7b678fb732980348e1ccce3e56",
+        "size": 3449
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Small_item.hai": {
+        "sha256": "90dad5596f7845b71f45cf1596c0aad31ea61b99b3c3f21771d32ad7e151d5d2",
+        "size": 835636
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Small_item_s.gi": {
+        "sha256": "544b22a70b8655b2254037b732afb5e58c8e36fd575c5b1aade32b7635e833ca",
+        "size": 2781
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Stun_bomb.hai": {
+        "sha256": "f9b5153586f9429385368ef8afa2a9ff33483dcb188ff0d8e3805e50ac813ac5",
+        "size": 2263092
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Stun_bomb_s.gi": {
+        "sha256": "1a83e844ea6ca58f6f2dff9b943ae8597eba4b97455490df397b6cdc54c0c9ee",
+        "size": 3561
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Urine_tank.hai": {
+        "sha256": "a82a0e8820113a4dc09c1de18dae5d46f90c319ce4eef496a6f9d1f93bba6b00",
+        "size": 17460
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Missile/Missile_Urine_tank_s.gi": {
+        "sha256": "0d6cb1d772af945e916f5f5d5632ef01a2c7ab5a2871482da8587c7094159391",
+        "size": 2854
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Msg/GalaxyAlert_A.gi": {
+        "sha256": "dc17c3afb3f1c786c1721789cf3016f57c067855dcaf30393522f2b9118cd278",
+        "size": 1192
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Msg/GalaxyAlert_D.gi": {
+        "sha256": "1b89a05d1d0d6f31d5dc03e69677e53c73b9abcc658d55eb0743b3ea465620d6",
+        "size": 1192
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Msg/GalaxyAlert_N.gi": {
+        "sha256": "863b8bd9b87bf0a6b77d02d3c4043398e9a6f72780fa8b403265d8d493bcf45b",
+        "size": 1192
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Ship/KillerAsteroid.hai": {
+        "sha256": "83ae500e8a9c0857049a7ecaf817a2457d004b64f768f20a38fc3bddf541eac6",
+        "size": 1410100
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/Ship/KillerAsteroid_s.hai": {
+        "sha256": "83ae500e8a9c0857049a7ecaf817a2457d004b64f768f20a38fc3bddf541eac6",
+        "size": 1410100
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/ShipP/KillerAsteroid.gi": {
+        "sha256": "288e016d320204de1806e9c4aa5a5a3a92bdac4834e836c53c2f7b387031c899",
+        "size": 2803
+      },
+      "{app}/Mods/Expansion/ExpPhysGun/DATA/ShipP/KillerAsteroid_map.png": {
+        "sha256": "b30d7fbf569e19559abbc2a85b7b023c67596dbe556d4b37b775f145f103f9c0",
+        "size": 292
+      }
+    }
+  }
+}
