@@ -22,6 +22,7 @@
   python pipeline/aggregate.py --release                   # + GitHub Release (код-трек)
 """
 import argparse
+import fnmatch
 import hashlib
 import re
 import json
@@ -452,7 +453,12 @@ def _unpack_one(arc, into):
         raise RuntimeError(f'неизвестный формат: {arc}')
 
 
-def extract(archive, dest):
+def extract(archive, dest, include=None):
+    """include: список glob-масок по ИМЕНИ архива. Если задан и папка содержит
+    несколько архивов (folder-of-zips), распаковываются ТОЛЬКО подходящие, остальные
+    отбрасываются. Нужно для папок с вариантами одного пака под разные базы (напр.
+    Solyanka_..._For_Redux vs _For_Original в одной GDrive-папке) — без фильтра оба
+    архива слились бы в один юнит и моды одного варианта «протекали» бы в другой."""
     if dest.exists():
         shutil.rmtree(dest)
     dest.mkdir(parents=True)
@@ -470,11 +476,24 @@ def extract(archive, dest):
         _unpack_one(Path(archive), dest)
     # Папки часто содержат вложенные архивы (folder-of-zips) — распаковываем
     # их на месте, повторяя пока появляются новые. arc -> arc_unpacked/, arc удаляем.
-    for _ in range(6):
+    for round_i in range(6):
         nested = [p for p in dest.rglob('*')
                   if p.is_file() and p.suffix.lower() in ARCHIVE_EXT]
         if not nested:
             break
+        # include применяем только на ПЕРВОМ проходе — к архивам-братьям из самой
+        # папки. Глубже (внутри выбранного архива) фильтр не трогаем, чтобы случайно
+        # не выкинуть нужные вложенные части по совпадению имени.
+        if round_i == 0 and include:
+            keep = [p for p in nested
+                    if any(fnmatch.fnmatch(p.name.lower(), pat.lower()) for pat in include)]
+            for p in nested:
+                if p not in keep:
+                    print(f'    [include] пропускаю архив {p.name} (не подходит под {include})')
+                    p.unlink(missing_ok=True)
+            nested = keep
+            if not nested:
+                print(f'    [warn] include={include}: ни один архив не подошёл')
         for arc in nested:
             sub = arc.parent / (arc.stem + '_unpacked')
             try:
@@ -1657,7 +1676,7 @@ def main():
 
         # Изоляция: сбой/таймаут на одном юните не должен ронять весь прогон.
         try:
-            extracted = extract(archive, EXTRACT / name)
+            extracted = extract(archive, EXTRACT / name, unit.get('include'))
 
             rson_tmp = RSON_TMP / name
             decompile(extracted, rson_tmp, run_py, a.check)
