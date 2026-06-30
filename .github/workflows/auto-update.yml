@@ -141,7 +141,11 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HF_HUB_DISABLE_XET: '1'
         shell: bash
-        run: python pipeline/aggregate.py --assets --fetch --lean
+        run: |
+          ONLY='${{ github.event.inputs.only }}'
+          ARGS="--assets --fetch --lean"
+          [ -n "$ONLY" ] && ARGS="$ARGS --only $ONLY"
+          python pipeline/aggregate.py $ARGS
 
       # 4) Код изменённых юнитов на HF.
       - name: Code to HF
