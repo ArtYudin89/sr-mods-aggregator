@@ -701,6 +701,15 @@ def _sanitize_group(g):
     return re.sub(r'[^0-9A-Za-z._-]+', '_', g).strip('_') or 'misc'
 
 
+def _hf_token(store_cfg=None):
+    """HF-токен из env/конфига, ОЧИЩЕННЫЙ от BOM/пробелов. Секрет в GitHub Actions
+    может прийти с ведущим BOM (﻿) → заголовок 'Authorization: Bearer ﻿...'
+    падает UnicodeEncodeError (httpx кодирует значение заголовка в ascii) и ЛЮБАЯ
+    заливка на HF из облака рушится. Поэтому чистим токен всегда."""
+    t = os.environ.get('HF_TOKEN') or (store_cfg or {}).get('token') or ''
+    return t.replace('﻿', '').strip()
+
+
 def _drop_cache(name):
     """Удалить скачанное из cache/ (для --lean)."""
     for p in CACHE.glob(f'{name}.*'):
@@ -727,7 +736,7 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
     hf_repo = hf_token = None
     if do_upload and stype == 'hf':
         hf_repo = store_cfg.get('hf_repo')
-        hf_token = os.environ.get('HF_TOKEN') or store_cfg.get('token')
+        hf_token = _hf_token(store_cfg)
         if not hf_repo or not hf_token:
             print('  upload[hf]: нет hf_repo или HF_TOKEN — выход')
             return 0
@@ -888,7 +897,7 @@ def code_track(cfg):
     if store_cfg.get('type') != 'hf':
         print('code-track: только asset_store type=hf'); return
     repo_id = store_cfg.get('hf_repo')
-    token = os.environ.get('HF_TOKEN') or store_cfg.get('token')
+    token = _hf_token(store_cfg)
     if not repo_id or not token:
         print('code-track: нет hf_repo/HF_TOKEN'); return
     os.environ['HF_HUB_DISABLE_XET'] = '1'
@@ -987,7 +996,7 @@ def fill_missing(cfg, dry=False):
     if store_cfg.get('type') != 'hf':
         print('fill-missing: только asset_store type=hf'); return
     repo_id = store_cfg.get('hf_repo')
-    token = os.environ.get('HF_TOKEN') or store_cfg.get('token')
+    token = _hf_token(store_cfg)
     if not (dry or (repo_id and token)):
         print('fill-missing: нет hf_repo/HF_TOKEN'); return
     os.environ['HF_HUB_DISABLE_XET'] = '1'
@@ -1409,7 +1418,7 @@ def regroup_assets(cfg):
     if store_cfg.get('type') != 'hf':
         print('regroup: поддержан только asset_store type=hf'); return
     repo_id = store_cfg.get('hf_repo')
-    token = os.environ.get('HF_TOKEN') or store_cfg.get('token')
+    token = _hf_token(store_cfg)
     if not repo_id or not token:
         print('regroup: нет hf_repo/HF_TOKEN'); return
     os.environ['HF_HUB_DISABLE_XET'] = '1'
@@ -1702,7 +1711,7 @@ def main():
     if a.publish_index:
         store_cfg = cfg.get('asset_store', {})
         repo_id = store_cfg.get('hf_repo')
-        token = os.environ.get('HF_TOKEN') or store_cfg.get('token')
+        token = _hf_token(store_cfg)
         if not repo_id or not token:
             print('publish-index: нет hf_repo/HF_TOKEN'); return
         ok = _hf_put(repo_id, str(ASSET_INDEX), token)
