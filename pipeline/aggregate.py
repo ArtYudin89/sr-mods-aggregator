@@ -1538,7 +1538,11 @@ def _hf_put(repo_id, path, token, timeout=600, retries=4):
             'HfApi(token=os.environ["HF_TOKEN"]).upload_file('
             'path_or_fileobj=sys.argv[2],path_in_repo=os.path.basename(sys.argv[2]),'
             'repo_id=sys.argv[1],repo_type="dataset")')
-    env = dict(os.environ, HF_TOKEN=token, HF_HUB_DISABLE_XET='1')
+    # PYTHONIOENCODING/UTF8: дочерний python на Windows-раннере по умолч. пишет stdout
+    # в ascii → huggingface_hub, печатая путь/имя с не-ASCII (BOM, кириллица), падал
+    # UnicodeEncodeError. Форсим UTF-8 вывод, чтобы любой не-ASCII не валил заливку.
+    env = dict(os.environ, HF_TOKEN=token, HF_HUB_DISABLE_XET='1',
+               PYTHONIOENCODING='utf-8', PYTHONUTF8='1')
     for attempt in range(1, retries + 1):
         try:
             r = subprocess.run([sys.executable, '-c', code, repo_id, str(path)],
@@ -1566,7 +1570,11 @@ def _hf_put_folder(repo_id, folder, token, timeout=420, retries=8):
             'HfApi(token=os.environ["HF_TOKEN"]).upload_folder('
             'folder_path=sys.argv[1],repo_id=sys.argv[2],repo_type="dataset",'
             'commit_message="assets batch")')
-    env = dict(os.environ, HF_TOKEN=token, HF_HUB_DISABLE_XET='1')
+    # PYTHONIOENCODING/UTF8: дочерний python на Windows-раннере по умолч. пишет stdout
+    # в ascii → huggingface_hub, печатая путь/имя с не-ASCII (BOM, кириллица), падал
+    # UnicodeEncodeError. Форсим UTF-8 вывод, чтобы любой не-ASCII не валил заливку.
+    env = dict(os.environ, HF_TOKEN=token, HF_HUB_DISABLE_XET='1',
+               PYTHONIOENCODING='utf-8', PYTHONUTF8='1')
     for attempt in range(1, retries + 1):
         try:
             r = subprocess.run([sys.executable, '-c', code, str(folder), repo_id],
