@@ -971,6 +971,108 @@ def code_track(cfg):
           f'{len(index["chunks"])} чанков')
 
 
+def fill_missing(cfg, dry=False):
+    """Долить на HF блобы, на которые ССЫЛАЮТСЯ committed-манифесты, но которых НЕТ
+    в asset_index — восстановить инвариант «каждый sha манифеста есть в индексе».
+    Манифесты могут уйти вперёд HF (--descriptors самовосстанавливает code.manifest
+    из git, а заливка не переобрабатывает неизменившиеся юниты). КОД восстановим из
+    git (mods/<юнит>/code/<rel>, sha должен совпасть) и доливается дёшево. Ассеты
+    (нет байт в git) и устаревшие код-записи (файл на диске изменился) НЕ доливаются —
+    только сообщаются (нужен --assets --fetch / пересборка манифеста). dry=True —
+    только посчитать, без заливки/записи индекса."""
+    from collections import defaultdict
+    index = load_json(ASSET_INDEX, {'blobs': {}, 'chunks': {}})
+    seen = set(index['blobs'])
+    store_cfg = cfg.get('asset_store', {})
+    if store_cfg.get('type') != 'hf':
+        print('fill-missing: только asset_store type=hf'); return
+    repo_id = store_cfg.get('hf_repo')
+    token = os.environ.get('HF_TOKEN') or store_cfg.get('token')
+    if not (dry or (repo_id and token)):
+        print('fill-missing: нет hf_repo/HF_TOKEN'); return
+    os.environ['HF_HUB_DISABLE_XET'] = '1'
+    chunk_max = cfg.get('asset_policy', {}).get('chunk_max_mb', 512) * 1024 * 1024
+
+    need = {}                       # sha -> (relpath, abspath) — код к доливу из git
+    asset_units, stale_units = set(), set()
+    asset_gap = stale = 0
+    for unit_dir in sorted(MODS.glob('*/*')):
+        cm = load_json(unit_dir / 'code.manifest.json', {}).get('files', {})
+        am = load_json(unit_dir / 'assets.manifest.json', {}).get('files', {})
+        code_dir = unit_dir / 'code'
+        for rel, m in cm.items():
+            sh = m['sha256']
+            if sh in seen or sh in need:
+                continue
+            fp = code_dir / rel
+            if fp.is_file() and sha256_file(fp) == sh:
+                need[sh] = (rel, fp)
+            else:
+                stale += 1; stale_units.add(unit_dir.name)
+        for m in am.values():
+            if m['sha256'] not in seen:
+                asset_gap += 1; asset_units.add(unit_dir.name)
+    print(f'fill-missing: код к доливу из git {len(need)}; устаревших код-записей '
+          f'{stale} ({len(stale_units)} юн.); ассет-дыр {asset_gap} ({len(asset_units)} юн.)')
+    if asset_units:
+        print('  ассеты долить ре-фетчем (--assets --fetch --only <юнит>): '
+              + ', '.join(sorted(asset_units)))
+    if stale_units:
+        print('  устаревшие код-записи (нужна пересборка манифеста --code-track): '
+              + ', '.join(sorted(stale_units)))
+    if not need:
+        print('  из git доливать нечего.'); return
+    if dry:
+        print(f'  [dry] залилось бы {len(need)} код-блобов.'); return
+
+    by_mod = defaultdict(list)
+    for sh in need:
+        by_mod[mod_key(need[sh][0])].append(sh)
+    uchunks = REPO / '_fill_chunks'
+    if uchunks.exists():
+        shutil.rmtree(uchunks)
+    uchunks.mkdir(parents=True)
+    base = stamp()
+    pending = []
+    seq = 0
+
+    def build(grp, cur):
+        nonlocal seq
+        if not cur:
+            return
+        cn = f'code-fill-{_sanitize_group(grp)}-{base}-{seq:03d}.zip'
+        seq += 1
+        with zipfile.ZipFile(uchunks / cn, 'w', zipfile.ZIP_STORED, allowZip64=True) as z:
+            for sh in cur:
+                z.write(need[sh][1], sh)
+        pending.append((cn, list(cur), grp))
+
+    for grp in sorted(by_mod):
+        cur, cur_sz = [], 0
+        for sh in sorted(by_mod[grp]):
+            sz = need[sh][1].stat().st_size
+            if sz > chunk_max:
+                build(grp, [sh]); continue
+            if cur_sz + sz > chunk_max and cur:
+                build(grp, cur); cur, cur_sz = [], 0
+            cur.append(sh); cur_sz += sz
+        build(grp, cur)
+
+    if _hf_put_folder(repo_id, uchunks, token):
+        for cn, shas, grp in pending:
+            url = f'https://huggingface.co/datasets/{repo_id}/resolve/main/{cn}'
+            index['chunks'][cn] = {'url': url, 'store': 'hf', 'group': grp,
+                                   'kind': 'code', 'blob_count': len(shas)}
+            for sh in shas:
+                index['blobs'][sh] = {'chunk': cn, 'size': need[sh][1].stat().st_size}
+        save_json(ASSET_INDEX, index)
+        print(f'  залито {len(need)} код-блобов в {len(pending)} чанках; '
+              f'в индексе теперь {len(index["blobs"])} блобов')
+    else:
+        print('  FAIL заливка после ретраев')
+    shutil.rmtree(uchunks, ignore_errors=True)
+
+
 # ---- Фаза 1: дескрипторы модов (мод = пакет по URL) ----
 
 # Корень игры (НЕ моды): эти имена при роутинге уходят в папку игры, не в Mods.
@@ -1553,6 +1655,10 @@ def main():
                          'из ModuleInfo.txt + манифестов (Фаза 1)')
     ap.add_argument('--publish-index', action='store_true',
                     help='залить state/asset_index.json на HF (chunk_index_url для дескрипторов)')
+    ap.add_argument('--fill-missing', action='store_true',
+                    help='долить на HF код-блобы, на которые ссылаются манифесты, но '
+                         'которых нет в asset_index (из git); ассет-дыры сообщить. '
+                         'С --no-upload — только посчитать (dry-run)')
     ap.add_argument('--cloud', action='store_true',
                     help='облачный режим: manual-юниты (тяжёлые, manual:true) НЕ обрабатывать, '
                          'только детектить изменения -> state/manual_pending.json (для уведомления)')
@@ -1573,6 +1679,11 @@ def main():
     if a.code_track:
         print('=== Код-трек по модам (на HF) ===')
         code_track(cfg)
+        return
+
+    if a.fill_missing:
+        print('=== Долив недостающих блобов (verify-and-fill) ===')
+        fill_missing(cfg, dry=a.no_upload)
         return
 
     if a.descriptors:
