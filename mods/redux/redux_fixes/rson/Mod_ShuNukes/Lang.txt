@@ -253,7 +253,7 @@ Items ^{
                 MaxDamageStep=180
                 MinDamageMin=700
                 MinDamageStep=135
-                NukesPerYear=0
+                NukesPerYear=12
                 NukesSold=0
                 RangeMin=900
                 RangeStep=75
@@ -268,7 +268,7 @@ Items ^{
                 MaxDamageStep=120
                 MinDamageMin=450
                 MinDamageStep=85
-                NukesPerYear=0
+                NukesPerYear=8
                 NukesSold=0
                 RangeMin=700
                 RangeStep=75
@@ -775,11 +775,12 @@ ShipInfo ^{
                                     04=else if(ShipStar(cur_ship) != ShipStar(target)) exit;
                                     05=int tech = ItemLevel(ShipEqInSlot(cur_ship, t_Hull));
                                     06=str nuke_type = ShipCustomShipInfoTextData(0, cur_info, 1);
-                                    07=if(Dist(cur_ship, target) > g_NukeParams[nuke_type, 'RangeStep'] * tech + g_NukeParams[nuke_type, 'RangeMin']) exit;
-                                    08=if(((HullDamage(target) >= 85 && round(HullHP(target) * 100 / max(HullDamageSuspectibility(target,2),1)) < 400) || round(HullHP(target) * 100 / max(HullDamageSuspectibility(target,2),1)) < 600) && round(HullHP(cur_ship)) > 700) exit;
-                                    09=int ship_type_n = ShipTypeN(target);
-                                    10=if(ship_type_n == t_Kling)
-                                    11 ^{
+                                    07=if(0) SFT('PolNukes login: ship is '+ShipName(cur_ship)+', nuke type is '+nuke_type);
+                                    08=if(Dist(cur_ship, target) > g_NukeParams[nuke_type, 'RangeStep'] * tech + g_NukeParams[nuke_type, 'RangeMin']) exit;
+                                    09=if(((HullDamage(target) >= 85 && round(HullHP(target) * 100 / max(HullDamageSuspectibility(target,2),1)) < 400) || round(HullHP(target) * 100 / max(HullDamageSuspectibility(target,2),1)) < 600) && round(HullHP(cur_ship)) > 700) exit;
+                                    10=int ship_type_n = ShipTypeN(target);
+                                    11=if(ship_type_n == t_Kling)
+                                    12 ^{
                                         01=if(ShipSubType(target) != 7)
                                         02 ^{
                                             01=if(DomikProgramm(target) == 9) exit;
@@ -794,8 +795,8 @@ ShipInfo ^{
                                             10=else exit;
                                         }
                                     }
-                                    12=else
-                                    13 ^{
+                                    13=else
+                                    14 ^{
                                         01=if(DomikProgramm(cur_ship) == 7) exit;
                                         02=if(DomikProgramm(cur_ship) == 9) exit;
                                         03=else if(DomikProgramm(cur_ship) == 11) exit;

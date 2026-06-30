@@ -83,7 +83,7 @@ ShipInfo ^{
                     02=if(!ship) exit;
                     03=if(~ShipFindCustomShipInfoByType(ship,'RefSmershInfo')) ShipAddCustomShipInfo(ship,'RefSmershInfo','NoShow');
                     04=dword info = ShipFindCustomShipInfoByType(ship,'RefSmershInfo');
-                    05=if(HullSpecial(ShipEqInSlot(ship,t_Hull)) == FindBonusByNameInCfg('RefUniqueSmersh_Energy') || HullSpecial(ShipEqInSlot(ship,t_Hull)) == FindBonusByNameInCfg('RefUniqueSmersh_Splinter'))
+                    05=if(HullSpecial(ShipEqInSlot(ship,t_Hull)) == FindBonusByNameInCfg('RefUniqueSmersh_Energy') || HullSpecial(ShipEqInSlot(ship,t_Hull)) == FindBonusByNameInCfg('RefUniqueSmersh_Missile'))
                     06 ^{
                         01=if(ScriptItemActionType(t_OnDealingDamage))
                         02 ^{
@@ -91,24 +91,28 @@ ShipInfo ^{
                             02=if(ShipOwner(target) == 5)
                             03 ^{
                                 01=ScriptItemActParam(round(ScriptItemActParam() * 125 / 100));
-                                02=if(ShipCustomShipInfoData(0,info,1) == 0)
+                                02=if(1)
                                 03 ^{
-                                    01=str tstr = ''
+                                    01=str tstr = '';
                                     02=tstr = Name(target);
                                     03=if(HullDamageSuspectibility(target,0) > HullDamageSuspectibility(target,1) && HullDamageSuspectibility(target,0) > HullDamageSuspectibility(target,2)) tstr = tstr + ' наиболее восприимчив к энергетическому урону';
                                     04=else if(HullDamageSuspectibility(target,1) > HullDamageSuspectibility(target,0) && HullDamageSuspectibility(target,1) > HullDamageSuspectibility(target,2)) tstr = tstr + ' наиболее восприимчив к осколочному урону';
                                     05=else if(HullDamageSuspectibility(target,2) > HullDamageSuspectibility(target,1) && HullDamageSuspectibility(target,2) > HullDamageSuspectibility(target,0)) tstr = tstr + ' наиболее восприимчив к ракетному урону';
-                                    06=else tstr = tstr + ' равновосприимчив к любому типу урона');
-                                    07=ShipCustomShipInfoData(0,CurInfo(),1,tstr);
+                                    06=else tstr = tstr + ' равновосприимчив к любому типу урона';
+                                    07=ShipCustomShipInfoTextData(0,info,1,ShipCustomShipInfoTextData(0,info,1) + Format('<br>') + tstr);
+                                    08=ShipCustomShipInfoData(0,info,3,1);
                                 }
                             }
                         }
                         03=else if(ScriptItemActionType(t_OnStep,0) && IsPlayer(ship))
                         04 ^{
-                            01=NewsAdd(ShipCustomShipInfoTextData(0,CurInfo(),1));
-                            02=Sound('Sound.NewMsg');
-                            03=ShipCustomShipInfoData(0,info,1,0);
-                            04=if(ShipCustomShipInfoData(0,info,3)) ShipCustomShipInfoData(0,info,3,ShipCustomShipInfoData(0,info,3)-1);
+                            01=if(ShipCustomShipInfoData(0,info,3) > 0)
+                            02 ^{
+                                01=Sound('Sound.NewMsg');
+                                02=ShipCustomShipInfoData(0,info,3,0);
+                                03=NewsAdd(ShipCustomShipInfoTextData(0,info,1));
+                                04=ShipCustomShipInfoTextData(0,info,1,'')
+                            }
                         }
                     }
                 }

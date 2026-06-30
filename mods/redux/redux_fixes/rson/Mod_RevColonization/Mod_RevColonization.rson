@@ -1,0 +1,4751 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RevColonization",
+    "ScriptFileOut": "D:\\Mod_RevColonization.scr",
+    "ScriptTextOut": "D:\\Mod_RevColonization.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 95,
+                    "Msg": "Я хотел бы больше узнать о возможности переоборудовании станции",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.11\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 96,
+                    "Msg": "Отлично, перевожу деньги на ваш счет. Начинайте подготовку к миссии",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.12\"))"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 240,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 97,
+                    "Msg": "",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('exit')"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 360,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 98,
+                    "Msg": "Нет, сумма велика для меня, в другой раз",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.13\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 99,
+                    "Msg": "Сейчас продукты дорогие, поделюсь ими",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.14\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 100,
+                    "Msg": "Я пожертвую немного денег",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.15\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 720,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 101,
+                    "Msg": "Я думаю, медикаменты никогда не бывают лишними",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.16\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 840,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 102,
+                    "Msg": "Назад",
+                    "AMsg.Num": "7",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.17\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 960,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 103,
+                    "Msg": "Назад",
+                    "AMsg.Num": "8",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.17\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1080,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 104,
+                    "Msg": "В <0> раза больше",
+                    "AMsg.Num": "9",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.18\"),\"<0>\",2))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 105,
+                    "Msg": "<0> тонн продуктов. Внос хоть и мизерный, но пойдет на пользу, я надеюсь",
+                    "AMsg.Num": "10",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.19\"),\"<0>\",tcount))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1320,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 106,
+                    "Msg": "В <0> раза меньше",
+                    "AMsg.Num": "11",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.20\"),\"<0>\",2))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1440,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 107,
+                    "Msg": "В <0> раза больше",
+                    "AMsg.Num": "12",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.18\"),\"<0>\",2))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1560,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 108,
+                    "Msg": "Нуждающиеся получат от меня <0> cr",
+                    "AMsg.Num": "13",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.21\"),\"<0>\",tcount))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1680,
+                    "Pos.y": 640,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 109,
+                    "Msg": "В <0> раза меньше",
+                    "AMsg.Num": "14",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.20\"),\"<0>\",2))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 110,
+                    "Msg": "В <0> раза больше",
+                    "AMsg.Num": "15",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.18\"),\"<0>\",2))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 111,
+                    "Msg": "<0> тонн",
+                    "AMsg.Num": "16",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.22\"),\"<0>\",tcount))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 112,
+                    "Msg": "В <0> раза меньше",
+                    "AMsg.Num": "17",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.20\"),\"<0>\",2))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 113,
+                    "Msg": "Всегда рад помочь!",
+                    "AMsg.Num": "18",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.23\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 114,
+                    "Msg": "Будем разворачивать производство товаров массового потребления",
+                    "AMsg.Num": "19",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.67\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 115,
+                    "Msg": "Разворачивайте производство <color=0,48,192>минералов</color>",
+                    "AMsg.Num": "20",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.68\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 720,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 116,
+                    "Msg": "Разворачивайте производство <color=0,48,192>продуктов</color>",
+                    "AMsg.Num": "21",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.69\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 840,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 117,
+                    "Msg": "Разворачивайте производство <color=0,48,192>медикаментов</color>",
+                    "AMsg.Num": "22",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.70\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 960,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 118,
+                    "Msg": "Разворачивайте производство <color=0,48,192>алкоголя</color>",
+                    "AMsg.Num": "23",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.71\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1080,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 119,
+                    "Msg": "Разворачивайте производство <color=0,48,192>роскоши</color>",
+                    "AMsg.Num": "24",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.72\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1200,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 120,
+                    "Msg": "Ничего пока не будем производить",
+                    "AMsg.Num": "25",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.73\"))"
+                },
+                {
+                    "Name": "fastexit",
+                    "Pos.x": 1320,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 121,
+                    "Msg": "Отлично",
+                    "AMsg.Num": "26",
+                    "_orig_danswer": "DAnswer('fastexit~'+CT(\"Script.Mod_RevColonization.74\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1440,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 122,
+                    "Msg": "Пока что никак, возможно помогу вам позже",
+                    "AMsg.Num": "27",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.75\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1560,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 123,
+                    "Msg": "Это мне не интересно, не хочу тратить свои деньги на недоразвитых дикарей",
+                    "AMsg.Num": "28",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.76\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1680,
+                    "Pos.y": 665,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 124,
+                    "Msg": "Завершаем проект. Отныне база распущена",
+                    "AMsg.Num": "29",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.77\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 0,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 125,
+                    "Msg": "Назад",
+                    "AMsg.Num": "30",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.17\"))"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 120,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 126,
+                    "Msg": "Да, я все взвесил, закрывайте базу",
+                    "AMsg.Num": "31",
+                    "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_RevColonization.78\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 127,
+                    "Msg": "Я по поводу находки",
+                    "AMsg.Num": "32",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.79\"))"
+                },
+                {
+                    "Name": "fastexit",
+                    "Pos.x": 360,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 128,
+                    "Msg": "Отлично",
+                    "AMsg.Num": "33",
+                    "_orig_danswer": "DAnswer('fastexit~'+CT(\"Script.Mod_RevColonization.74\"))"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 480,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 129,
+                    "Msg": "Прервать связь",
+                    "AMsg.Num": "34",
+                    "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_RevColonization.82\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 130,
+                    "Msg": "Мне нужны сведения о ходе производства <0>",
+                    "AMsg.Num": "35",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.83\"),\"<0>\",prodStr))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 720,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 131,
+                    "Msg": "Понятно. Перейдем к другим делам",
+                    "AMsg.Num": "36",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.89\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 840,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 132,
+                    "Msg": "Управление складом",
+                    "AMsg.Num": "37",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.90\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 960,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 133,
+                    "Msg": "Увеличить объем складов на <0> ед.",
+                    "AMsg.Num": "38",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.91\"),\"<0>\",50))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1080,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 134,
+                    "Msg": "Увеличить объем складов на <0> ед.",
+                    "AMsg.Num": "39",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.91\"),\"<0>\",25))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 135,
+                    "Msg": "Увеличить объем складов на <0> ед.",
+                    "AMsg.Num": "40",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.91\"),\"<0>\",10))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1320,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 136,
+                    "Msg": "Назад",
+                    "AMsg.Num": "41",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.17\"))"
+                },
+                {
+                    "Name": "fastexit",
+                    "Pos.x": 1440,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 137,
+                    "Msg": "Отлично",
+                    "AMsg.Num": "42",
+                    "_orig_danswer": "DAnswer('fastexit~'+CT(\"Script.Mod_RevColonization.74\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1560,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 138,
+                    "Msg": "Скорость производства",
+                    "AMsg.Num": "43",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.92\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1680,
+                    "Pos.y": 690,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 139,
+                    "Msg": "Увеличить производство на одну тонну",
+                    "AMsg.Num": "44",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.93\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 140,
+                    "Msg": "Я хочу забрать партию <0> со склада",
+                    "AMsg.Num": "45",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.94\"),\"<0>\",prodStr))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 141,
+                    "Msg": "В <0> раза больше",
+                    "AMsg.Num": "46",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.18\"),\"<0>\",2))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 142,
+                    "Msg": "Забрать <0> т. <1>",
+                    "AMsg.Num": "47",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.95\"),\"<0>\",tcount,\"<1>\",prodStr))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 360,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 143,
+                    "Msg": "В <0> раза меньше",
+                    "AMsg.Num": "48",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.20\"),\"<0>\",2))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 480,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 144,
+                    "Msg": "Назад",
+                    "AMsg.Num": "49",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.17\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 600,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 145,
+                    "Msg": "Я передумал, пусть товары полежат у вас на складе",
+                    "AMsg.Num": "50",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.96\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 720,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 146,
+                    "Msg": "<color=0,48,192>Активировать</color> продажу товаров со склада",
+                    "AMsg.Num": "51",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.97\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 840,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 147,
+                    "Msg": "Закрыть производство <0>",
+                    "AMsg.Num": "52",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.98\"),\"<0>\",prodStr))"
+                },
+                {
+                    "Name": "exit",
+                    "Pos.x": 960,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 148,
+                    "Msg": "Да, я уверен. Прекращаем производство <0>",
+                    "AMsg.Num": "53",
+                    "_orig_danswer": "DAnswer('exit~'+Format(CT(\"Script.Mod_RevColonization.99\"),\"<0>\",prodStr))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1080,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 149,
+                    "Msg": "Назад",
+                    "AMsg.Num": "54",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.17\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 150,
+                    "Msg": "Настроить продажу товаров со склада",
+                    "AMsg.Num": "55",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.100\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1320,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 151,
+                    "Msg": "<color=0,48,192>Выключить</color> продажу товаров со склада",
+                    "AMsg.Num": "56",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.101\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1440,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 152,
+                    "Msg": "Будем обучать торговцев",
+                    "AMsg.Num": "57",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.102\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1560,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 153,
+                    "Msg": "Изменить объем продаж со складов",
+                    "AMsg.Num": "58",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.103\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1680,
+                    "Pos.y": 715,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 154,
+                    "Msg": "Назад",
+                    "AMsg.Num": "59",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.17\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 740,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 155,
+                    "Msg": "Нет, пока не будем никого обучать",
+                    "AMsg.Num": "60",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.104\"))"
+                },
+                {
+                    "Name": "fastexit",
+                    "Pos.x": 120,
+                    "Pos.y": 740,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 156,
+                    "Msg": "Начинайте образовательный процесс.",
+                    "AMsg.Num": "61",
+                    "_orig_danswer": "DAnswer('fastexit~'+CT(\"Script.Mod_RevColonization.105\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 740,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 157,
+                    "Msg": "Уменьшить на <color=0,48,192>10%</color>",
+                    "AMsg.Num": "62",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.107\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 360,
+                    "Pos.y": 740,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 158,
+                    "Msg": "Увеличить на <color=0,48,192>10%</color>",
+                    "AMsg.Num": "63",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.106\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 740,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 159,
+                    "Msg": "Назад",
+                    "AMsg.Num": "64",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.17\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 740,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 160,
+                    "Msg": "Уменьшить цену",
+                    "AMsg.Num": "65",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.110\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 720,
+                    "Pos.y": 740,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 161,
+                    "Msg": "<0> cr.",
+                    "AMsg.Num": "66",
+                    "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_RevColonization.111\"),\"<0>\",tcount))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 840,
+                    "Pos.y": 740,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 162,
+                    "Msg": "Увеличить цену",
+                    "AMsg.Num": "67",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.112\"))"
+                },
+                {
+                    "Name": "planet",
+                    "Pos.x": 960,
+                    "Pos.y": 740,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 163,
+                    "Msg": "Пока",
+                    "AMsg.Num": "68",
+                    "_orig_danswer": "DAnswer('planet~'+CT(\"Script.Mod_RevColonization.113\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1080,
+                    "Pos.y": 740,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 164,
+                    "Msg": "Назад",
+                    "AMsg.Num": "69",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevColonization.17\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 1200,
+                    "Pos.y": 740,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 165,
+                    "Msg": "Назад",
+                    "AMsg.Num": "70",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.17\"))"
+                },
+                {
+                    "Name": "planet",
+                    "Pos.x": 1320,
+                    "Pos.y": 740,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 166,
+                    "Msg": "Я не буду ничего продавать",
+                    "AMsg.Num": "71",
+                    "_orig_danswer": "DAnswer('planet~'+CT(\"Script.Mod_RevColonization.124\"))"
+                },
+                {
+                    "Name": "planet",
+                    "Pos.x": 1440,
+                    "Pos.y": 740,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 167,
+                    "Msg": "Сделка отменяется",
+                    "AMsg.Num": "72",
+                    "_orig_danswer": "DAnswer('planet~'+CT(\"Script.Mod_RevColonization.126\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 66,
+                    "Msg": "На планете <0> бушует эпидемия. Проживающие там мензолы страдают от редкого вида гранэкской чумы, которую туда занесли воинственные малоки. Их экспедиция уже покинула планету, оставив после себя страшную болезнь. Мы могли бы посадить наш медицинский центр на <1>, после чего переоборудовать его в планетарную базу. Это позволит нам развернуть полноценную гуманитарную миссию по спасению мензольской цивилизации. Также, среди нас присутствуют добровольцы-исследователи, желающие изучить мензольскую культуру и обычаи после того, как мы справимся с последствиями эпидемии. К сожалению, все это сопровождается колоссальными финансовыми затратами, которые мы не можем себе позволить. Вы можете проспонсировать наши начинания. В таком случае, мы будем отдавать вам все, что найдем за время пребывания на <2>. Таким образом, помимо морального удовлетворения от спасения целой цивилизации от гибели, вы сможете получить какой-нибудь археологический или технический артефакт с планеты <3> в качестве памятного приза.\r\nЕсли же вы не располагаете суммой для постройки планетарной базы, можете пожертвовать нашей миссии сумму, которую сами посчитаете нужной. Также, нам понадабятся медикаменты и продукты питания.\r\nИтак, каким образом вы хотите помочь бедствующим?",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.122\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",Name(IdToPlanet(planetColonyId)),\"<2>\",Name(IdToPlanet(planetColonyId)),\"<3>\",Name(IdToPlanet(planetColonyId))))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 67,
+                    "Msg": "В данный момент у нас есть практически все, что может понадобится для посадки и развертывания базы на планете, однако Галактический Совет не желает оплачивать дальнейшее содержание нашей миссии, в связи с дефицитом бюджета. Также персоналу понадобятся средства на закупку дополнительных ресурсов для станции, не говоря уже о вознаграждении за тот объем работы, который предстоит проделать, чтобы справиться с последствиями гранэкской чумы. \r\nОказавшись на планете, мы сможем наладить производство товаров для близлежащих планет, а также будем сообщать о различных находках на поверхности <0>. Мы сами доставим найденное на планету <1>, после чего вы сможете выйти на связь c базой и забрать причитающееся.\r\nИсследования, проводимые нашем центром, позволят не только помочь мензольской расе, но и послужат источником знаний об их удивительной культуре и обычаях. Вы сможете узнавать о результатах нашей деятельности из RNN, мы непременно сообщим журналистам, что все это возможно только благодаря вашей финансовой помощи. Надеемся, что правительства рас Коалиции оценят ваше меценатство и будут куда лояльнее относиться к вашей персоне.\r\nКасательно финансовой части: вы выплачиваете нам подъемные <2> cr. плюс <3> cr. каждые стандартные 60 дней на оплату содержания станции и труда персонала.\r\nНу как, вы согласны?",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.4\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",Name(IdToPlanet(planetHabitableId)),\"<2>\",sum,\"<3>\",serviceCost))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 68,
+                    "Msg": "Отлично, курс на <0> уже проложен. Ах да, я совсем забыл упомянуть о связи. Ее будем держать очень просто: когда мы вам понадобимся, подлетите к планете <1>, затем запустите спутник в открытый космос. Мы увидим сигнал с поверхности, после чего сами выйдем на связь. Если же срочно понадобится сообщить вам что-то важное, мы пошлем вам сообщение через галанет. Спутник связи мы погрузили в ваш трюм.",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.5\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",Name(IdToPlanet(planetColonyId))))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 69,
+                    "Msg": "Что ж, это ваше право, <Player>, может у мензолов появится другой шанс побороть заболевание.\r\nРазрешите тогда хотя бы рассказать о нашем центре.",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RevColonization.6\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 70,
+                    "Msg": "Увы, война не способствует развитию сельского хозяйства. Сколько тонн продуктов вы готовы пожертвовать для нашей миссии?",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RevColonization.7\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 71,
+                    "Msg": "Итак, какой частью кровно заработанного капитала вы готовы поделится с нуждающимися, <Player>?",
+                    "DMsg.Num": "5",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RevColonization.8\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 900,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 72,
+                    "Msg": "Совершенно верно, <Player>. Сколько медикаментов вы можете пожертвовать?",
+                    "DMsg.Num": "6",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RevColonization.9\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1050,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 73,
+                    "Msg": "Благодарим, <Player>, за помощь. Нуждающиеся вас не забудут!",
+                    "DMsg.Num": "7",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RevColonization.10\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 74,
+                    "Msg": "Планетарная база им. <Player> на связи.",
+                    "DMsg.Num": "8",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RevColonization.46\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1350,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 75,
+                    "Msg": "Хоть мы и не производственная и даже не пищевая база, организвать производство некоторых типов товаров при сотрудничестве с местным населением, мы можем. Вот список: \r\n - <color=0,48,192>продукты</color> - экзотические коренья, листва, сочные плоды кванги и трехглазая рыба;\r\n - <color=0,48,192>медикаменты</color> - целебные травы, ароматные масла и лечебные грязи из озера Мумба-Юмба;\r\n - <color=0,48,192>роскошь</color> - красивая донги, деревянные ганги, новые тонги и еще множество диковинных вещей, служащих мензолам в быту;\r\n - <color=0,48,192>алкоголь</color> - чрезвычайно питательный напиток на основе гуанавы помимо целебных качеств содержит в себе долю алкоголя, что, несомненно, придется по вкусу представителям разных рас;\r\n - <color=0,48,192>минералы</color> - редкие композиты, не встречающиеся на планетах Коалиции почти нигде, однако тут имеющиееся в избытке.\r\n\r\nНа данный момент стоимость открытия производства составляет <0> cr. \r\nАх, да, чуть не забыл: одновременно можно производить лишь <color=0,48,192>один</color> вид товаров.",
+                    "DMsg.Num": "9",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.47\"),\"<0>\",GalaxyMoney(4,4)*2))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1500,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 76,
+                    "Msg": "Итак, производство <0> уже развернуто. Текущая скорость производства: <1> т. в день, склад может вместить еще <2> тонн <3>.",
+                    "DMsg.Num": "10",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.48\"),\"<0>\",prodStr,\"<1>\",prodOutput,\"<2>\",(whCap-prodTotal),\"<3>\",prodStr))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1650,
+                    "Pos.y": 520,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 77,
+                    "Msg": "<Player>, вы уверены, что хотите закрыть планетарную станцию? Учтите, что ее восстановление будет невозможно.",
+                    "DMsg.Num": "11",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RevColonization.49\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 545,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 78,
+                    "Msg": "<0>",
+                    "DMsg.Num": "12",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.50\"),\"<0>\",tStr))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 545,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 79,
+                    "Msg": "Все силы брошены на усовершенствование производственного процесса. Вернитесь к нам через <0><1>.\r\n",
+                    "DMsg.Num": "13",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.51\"),\"<0>\",(prodEnhTimer-CurTurn()),\"<1>\",tStr))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 545,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 80,
+                    "Msg": "<0>",
+                    "DMsg.Num": "14",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.50\"),\"<0>\",tStr))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 545,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 81,
+                    "Msg": "Объем склада: <0> т.\r\nСвободно: <1> куб. метров.\r\nУвеличение склада на <2> ед: <3> cr.\r\nУвеличение склада на <4> ед: <5> cr.\r\nУвеличение склада на <6> ед: <7> cr.",
+                    "DMsg.Num": "15",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.52\"),\"<0>\",whCap,\"<1>\",(whCap-prodTotal),\"<2>\",50,\"<3>\",((GalaxyMoney(1,3)*prodType)),\"<4>\",25,\"<5>\",((GalaxyMoney(1,3)*prodType)/2),\"<6>\",10,\"<7>\",((GalaxyMoney(1,3)*prodType)/5)))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 545,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 82,
+                    "Msg": "Отлично, переоборудование складских помещений уже начато. Это займет примерно <0> дней, так что в этот период какие-либо операции, связанные с производством, невозможно будет осуществить.",
+                    "DMsg.Num": "16",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.53\"),\"<0>\",(prodEnhTimer-CurTurn())))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 545,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 83,
+                    "Msg": "Скорость производства: <0> т. в день.\r\nСтоимость увеличения производства:\r\n - Увеличение на 1 т. в день - <1> cr.",
+                    "DMsg.Num": "17",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.54\"),\"<0>\",prodOutput,\"<1>\",((prodType*prodCost)*prodOutput)*2))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 900,
+                    "Pos.y": 545,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 84,
+                    "Msg": "Переоборудование производства начато, данная операция займет примерно <0> дней. До истечения этого срока изменение параметров производства будет недоступно.",
+                    "DMsg.Num": "18",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.55\"),\"<0>\",(prodEnhTimer-CurTurn())))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1050,
+                    "Pos.y": 545,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 85,
+                    "Msg": "В данный момент на складе <0> <1>.\r\nМы можем передать контейнер с товаром прямо на орбиту посредством нашего космического лифта.",
+                    "DMsg.Num": "19",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.56\"),\"<0>\",prodTotal,\"<1>\",prodStr))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 545,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 86,
+                    "Msg": "Партия <0> уже запакована и готова к отправке.\r\nНе отлетайте далеко от <1>, <Player>, - скоро на орбите появится заказанный контейнер.\r\n",
+                    "DMsg.Num": "20",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.57\"),\"<0>\",prodStr,\"<1>\",Name(IdToPlanet(planetColonyId))))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1350,
+                    "Pos.y": 545,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 87,
+                    "Msg": "Вы уверены в том, что хотите прекратить производство <0>? Оставшаяся продукция на складе будет утилизирована, склады переоборудованы в технические помещения, а специалисты по торговле будут уволены.",
+                    "DMsg.Num": "21",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.58\"),\"<0>\",prodStr))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1500,
+                    "Pos.y": 545,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 88,
+                    "Msg": "Продажа <0> со склада <color=0,48,192>включена</color>.\r\n   - Продавать <1><color=0,48,192>%</color> <2>, остальное - складировать.\r\n   - Стоимость одной тонны <3>: <4> cr. - по данной стоимости будет производиться сбыт <5>, процент чистой прибыли зависит от навыков штатных торговцев базы.\r\n   - Чистая прибыль от сделки: <6><color=0,48,192>%</color> - данный параметр зависит от мастерства уговоров торговцев с планетарной базы и означает процент конечной прибыли от номинальной стоимости партии <7>.",
+                    "DMsg.Num": "22",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.115\"),\"<0>\",prodStr,\"<1>\",whSellPercent,\"<2>\",prodStr,\"<3>\",prodStr,\"<4>\",prodCost,\"<5>\",prodStr,\"<6>\",prodProfit,\"<7>\",prodStr))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1650,
+                    "Pos.y": 545,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 89,
+                    "Msg": "На данный момент на станции обитают ранее вольные торговцы, которые теперь работают совместно с нами и продают товары, по мере заполнения склада. На данный момент их знания позволяют получать <0> процентов выгоды от стоимости каждой сделки. Вы можете профинансировать обучающие курсы для наших торгашей за <1> cr., которые будут длиться около <2> дней, но в это время, нельзя будет производить никакие работы на территории станции , чтобы не отвлекать их от обучающего процесса.",
+                    "DMsg.Num": "23",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.60\"),\"<0>\",prodProfit,\"<1>\",((GalaxyMoney(1,3)*(prodProfit-40))/20),\"<2>\",15))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 570,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 90,
+                    "Msg": "На данный момент мы продаем <0><color=0,48,192>%</color> <1>, а остальное оставляем на складе, где продукция и ожидает вашего распоряжения ею.\r\nВы можете увеличить или же уменьшить процент продаваемой продукции, если это необходимо.",
+                    "DMsg.Num": "24",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.61\"),\"<0>\",whSellPercent,\"<1>\",prodStr))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 570,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 91,
+                    "Msg": "Ах, да, нас же предупреждали коллеги с планеты <0>. Что же вы хотите нам продать?",
+                    "DMsg.Num": "25",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.123\"),\"<0>\",Name(IdToPlanet(planetColonyId))))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 570,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 92,
+                    "Msg": "Итак, сколько вы хотите за <0>?",
+                    "DMsg.Num": "26",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.64\"),\"<0>\",Name(item)))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 570,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 93,
+                    "Msg": "Ну что же вы, голубчик, хотите <0> продать за <1> cr.? Это надувательство! Цена непомерна высока! Уменьшите ее, иначе сделка не состоится.\r\n",
+                    "DMsg.Num": "27",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevColonization.65\"),\"<0>\",Name(item),\"<1>\",tcount))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 570,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 94,
+                    "Msg": "Благодарим за сотрудничество, <Player>. Вещица уже доставлена на наш склад, а деньги переведены на ваш счет.\r\nВсего хорошего!",
+                    "DMsg.Num": "28",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RevColonization.125\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "DialogColonization",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 450,
+                    "Parent": -1,
+                    "#": 62
+                },
+                {
+                    "Name": "DialogColony",
+                    "Type": "TDialog",
+                    "Pos.x": 270,
+                    "Pos.y": 450,
+                    "Parent": -1,
+                    "#": 63
+                },
+                {
+                    "Name": "DialogGov",
+                    "Type": "TDialog",
+                    "Pos.x": 450,
+                    "Pos.y": 450,
+                    "Parent": -1,
+                    "#": 64
+                },
+                {
+                    "Name": "DialogSellItems",
+                    "Type": "TDialog",
+                    "Pos.x": 600,
+                    "Pos.y": 450,
+                    "Parent": -1,
+                    "#": 65
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "PlayerGroup",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 0,
+                    "CntShipMax": 0,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "InitPlanet",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 325,
+                    "Parent": -1,
+                    "#": 49
+                },
+                {
+                    "Name": "GroupMC",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 0,
+                    "CntShipMax": 0,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "InitPlanet",
+                    "+State": 1,
+                    "Type": "TGroup",
+                    "Pos.x": 90,
+                    "Pos.y": 325,
+                    "Parent": -1,
+                    "#": 50
+                },
+                {
+                    "Name": "DeliveryGroup",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 0,
+                    "CntShipMax": 0,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "InitPlanet",
+                    "+State": 3,
+                    "Type": "TGroup",
+                    "Pos.x": 180,
+                    "Pos.y": 325,
+                    "Parent": -1,
+                    "#": 51
+                }
+            ],
+            "Items": [
+                {
+                    "Type": "TItem",
+                    "Name": "satellite",
+                    "Class": 5,
+                    "Item.Type": 0,
+                    "Size": 10,
+                    "Level": 1,
+                    "Radius": 150,
+                    "Owner": 6,
+                    "Useless": "",
+                    "+Place": "",
+                    "Pos.x": 0,
+                    "Pos.y": 280,
+                    "Parent": -1,
+                    "#": 47
+                },
+                {
+                    "Type": "TItem",
+                    "Name": "itemToDrop",
+                    "Class": 5,
+                    "Item.Type": 0,
+                    "Size": 10,
+                    "Level": 1,
+                    "Radius": 150,
+                    "Owner": 6,
+                    "Useless": "",
+                    "+Place": "",
+                    "Pos.x": 90,
+                    "Pos.y": 280,
+                    "Parent": -1,
+                    "#": 48
+                }
+            ],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "if(GLastTurnRun(GScriptName) + 4000 < CurTurn()) {",
+                        "  GRun();",
+                        "}"
+                    ],
+                    "#": 52,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 810
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "//NewsAdd(ScriptRun(ShipStar(Player()),GetShipPlanet(Player()),'Mod_RevColonization'));",
+                        "//Значения переменной scrStatus: 0 - скрипт запущен, ничего нет;",
+                        "//1 - найдена подходящая система, добавлен диалог на МЦ;",
+                        "//2 - игрок оплатил постройку базы на незаселенной планете;",
+                        "//3 - база приземлилась на планету, запущен таймер до конца;",
+                        "//100 - завершение колонизации или же отказ от нее;",
+                        "//200 - заселение планеты;",
+                        "//Значения переменной rewardStatus: 0 - нет предмета, ведутся раскопки",
+                        "//1 - предмет найден",
+                        "//2 - доставляется к игроку транспортом",
+                        "//Функция выбора системы для колонизации. Ищет неоспариваемую коалиционную систему с МЦ.",
+                        "//Возвращает указатель на систему или 0.",
+                        "function SelectSystem() {",
+                        "    int i;",
+                        "    dword system, ruin;",
+                        "    for(i=5;i<GalaxyStars();i=i+1) {    //Пропуск родных систем кажой расы",
+                        "        system=GalaxyStar(i);",
+                        "        if(StarOwner(system)) continue;    //Пропуск некоалиционных систем",
+                        "        if(StarBattle(system)) continue;    //Пропуск оспариваемых систем",
+                        "        if(!StarRuins(system)) continue;    //Пропуск систем без станций",
+                        "        ruin=StarRuins(system,'MC');        //Поиск МЦ",
+                        "        if(ruin) ArrayAdd(tempArray,system);",
+                        "    }",
+                        "    if(ArrayDim(tempArray)<=1) system=0;",
+                        "    else system=tempArray[Rnd(1,ArrayDim(tempArray)-1)];",
+                        "    ArrayClear(tempArray);",
+                        "    result=system;",
+                        "}",
+                        "//Функция переноса кораблей из МЦ на планету.",
+                        "function TransferShipsToPlanet(dword ruins, dword planetId) {",
+                        "    int i;",
+                        "    dword ship, planet, star;",
+                        "    star=ShipStar(ruins);",
+                        "    planet=IdToPlanet(planetId);",
+                        "    for(i=0;i<StarShips(star);i=i+1) {",
+                        "        ship=StarShips(star,i);",
+                        "        if(ship==Player()) continue;",
+                        "        if(GetShipRuins(ship)==ruins) TransferShip(ship,planet);",
+                        "    }",
+                        "}",
+                        "//Функция поиска наибольшей цены на товары в системе. Первый параметр - Id системы,",
+                        "//Второй - тип товара соответствующий prodType. Возвращает либо цену конкретного товара",
+                        "function FindOutPrices(dword starId, dword productionType) {",
+                        "    int i;",
+                        "    dword star, planet, price, tempPrice, goodsType;",
+                        "    star=GalaxyStar(starId-1);",
+                        "    price=0;",
+                        "    if(productionType==1) goodsType=t_Minerals;",
+                        "    else if(productionType==2) goodsType=t_Food;",
+                        "    else if(productionType==3) goodsType=t_Medicine;",
+                        "    else if(productionType==4) goodsType=t_Alcohol;",
+                        "    else goodsType=t_Luxury;",
+                        "    for(i=0;i<StarPlanets(star);i=i+1) {",
+                        "        planet=StarPlanets(star,i);",
+                        "        tempPrice=GoodsBuyPrice(planet,goodsType);",
+                        "        if(tempPrice>price) price=tempPrice;",
+                        "    }",
+                        "    result=price;",
+                        "}",
+                        "//Функция инициализации массивов наград и событий",
+                        "function InitArrays() {",
+                        "    int i, itemTL, itemSize, itemOwner;",
+                        "    dword tempItem, itemSubtype;",
+                        "    str itemTypeStr, subTypeStr, copyStr;",
+                        "    eventsCount=15;",
+                        "    for(i=0;i<eventsCount;i=i+1) ArrayAdd(eventsArray,0);",
+                        "    rewardsCount=CT('ColonizationRewards.TotalRewards');",
+                        "    for(i=0;i<rewardsCount;i=i+1) ArrayAdd(rewardsArray,0);",
+                        "    for(i=1;i<ArrayDim(rewardsArray);i=i+1) {",
+                        "        itemTypeStr=CT('ColonizationRewards.'+i+'.Type');",
+                        "        if(itemTypeStr=='useless') {",
+                        "            subTypeStr=CT('ColonizationRewards.'+i+'.Subtype');",
+                        "            copyStr=CT('ColonizationRewards.'+i+'.Owner');",
+                        "            itemOwner=GetValueFromScript('',copyStr);",
+                        "            tempItem=CreateQuestItem(subTypeStr,itemOwner);",
+                        "        }",
+                        "        else if(itemTypeStr=='artifact') {",
+                        "            itemSubtype=GetValueFromScript('',CT('ColonizationRewards.'+i+'.Subtype'));",
+                        "            copyStr=CT('ColonizationRewards.'+i+'.Owner');",
+                        "            if(copyStr=='-1') itemOwner=Rnd(Maloc,Gaal);",
+                        "            else itemOwner=GetValueFromScript('',copyStr);",
+                        "            tempItem=CreateArt(itemSubtype,itemOwner);",
+                        "        }",
+                        "        else if(itemTypeStr=='equipment') {",
+                        "            itemSubtype=GetValueFromScript('',CT('ColonizationRewards.'+i+'.Subtype'));",
+                        "            copyStr=CT('ColonizationRewards.'+i+'.Owner');",
+                        "            if(copyStr=='-1') itemOwner=Rnd(Maloc,Gaal);",
+                        "            else itemOwner=GetValueFromScript('',copyStr);",
+                        "            itemSize=CT('ColonizationRewards.'+i+'.Size');",
+                        "            if(itemSize<0) {",
+                        "                if(itemSubtype==t_FuelTanks) itemSize=CT('Items.FuelTanks.AverageSize');",
+                        "                else if(itemSubtype==t_Engine) itemSize=CT('Items.Engine.AverageSize');",
+                        "                else if(itemSubtype==t_Radar) itemSize=CT('Items.Radar.AverageSize');",
+                        "                else if(itemSubtype==t_Scaner) itemSize=CT('Items.Scaner.AverageSize');",
+                        "                else if(itemSubtype==t_RepairRobot) itemSize=CT('Items.RepairRobot.AverageSize');",
+                        "                else if(itemSubtype==t_CargoHook) itemSize=CT('Items.CargoHook.AverageSize');",
+                        "                else if(itemSubtype==t_DefGenerator) itemSize=CT('Items.DefGenerator.AverageSize');",
+                        "                else if(itemSubtype>t_DefGenerator && itemSubtype<t_CustomWeapon) itemSize=CT('Items.Weapon.Stats.'+(itemSubtype-t_DefGenerator)+'.AverageSize');",
+                        "                itemSize=round(Rnd(itemSize/2,itemSize*2));",
+                        "            }",
+                        "            itemTL=CT('ColonizationRewards.'+i+'.ItemTechLevel');",
+                        "            if(itemTL<0) itemTL=GalaxyTechLevel();",
+                        "            tempItem=CreateEquipment(itemSubtype,itemSize,itemTL,itemOwner);",
+                        "        }",
+                        "        PutItemInVault('RevColonization_Vault_'+i,tempItem);",
+                        "    }",
+                        "}",
+                        "//Функция создания корабля-доставщика",
+                        "function BuyDelivery(dword planetId) {",
+                        "    dword planet, ship;",
+                        "    planet=IdToPlanet(planetId);",
+                        "    ship=BuyTransport(planet);",
+                        "    ShipJoin(DeliveryGroup,ship);",
+                        "    TransferShip(ship, planet);",
+                        "    NoTargetToShip(ship,3);",
+                        "}",
+                        "//Функция генерации случайных событий для колонии. Все доступные события заносятся во временный массив",
+                        "//После чего одно из них случайно выбирается и срабатывает.",
+                        "//Отношения не могут опуститься до враждебных по событию.",
+                        "function CreateEvent() {",
+                        "    int i;",
+                        "    dword curEvent, curRelations;",
+                        "    str newsText, addition;",
+                        "    for(i=1;i<ArrayDim(eventsArray);i=i+1) {",
+                        "        if(!eventsArray[i]) ArrayAdd(tempArray,i);",
+                        "    }",
+                        "    addition='';",
+                        "    if(ArrayDim(tempArray)<=1) curEvent=0;",
+                        "    else {",
+                        "        curEvent=tempArray[Rnd(1,ArrayDim(tempArray)-1)];",
+                        "        if(curEvent==1) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.40\"),\"<0>\",Name(IdToPlanet(planetColonyId)));",
+                        "            ChangeGlobalRelationsPlanets(Player(),0,2,20,2+4+8+16);",
+                        "            ChangeGlobalRelationsShips(Player(),0,2,20,4+8+16+32,1+2+4+8+16);",
+                        "        }",
+                        "        else if(curEvent==2) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.39\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",Name(IdToPlanet(planetColonyId)));",
+                        "            ChangeGlobalRelationsPlanets(Player(),0,2,10,1+2+4+8+16);",
+                        "            ChangeGlobalRelationsShips(Player(),0,2,10,4+8+16+32,1+2+4+8+16);",
+                        "        }",
+                        "        else if(curEvent==3) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.38\"),\"<0>\",Name(IdToPlanet(planetColonyId)));",
+                        "            curRelations=GlobalRelationsShips(Player(),0,4+8+16+32,2);",
+                        "            if(curRelations<30) ChangeGlobalRelationsShips(Player(),0,0,10,4+8+16+32,2);",
+                        "            else ChangeGlobalRelationsShips(Player(),0,3,20,4+8+16+32,2);",
+                        "            curRelations=GlobalRelationsPlanets(Player(),0,2);",
+                        "            if(curRelations<30) ChangeGlobalRelationsPlanets(Player(),0,0,10,2);",
+                        "            else ChangeGlobalRelationsPlanets(Player(),0,3,20,2);",
+                        "            ChangeGlobalRelationsPlanets(Player(),0,2,10,1+4+8+16);",
+                        "            ChangeGlobalRelationsShips(Player(),0,2,10,4+8+16+32,1+4+8+16);",
+                        "        }",
+                        "        else if(curEvent==4) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.127\"),\"<0>\",Name(IdToPlanet(planetColonyId)));",
+                        "            curRelations=GlobalRelationsShips(Player(),0,4+8+16+32,8);",
+                        "            if(curRelations<30) ChangeGlobalRelationsShips(Player(),0,0,10,4+8+16+32,8);",
+                        "            else ChangeGlobalRelationsShips(Player(),0,3,20,4+8+16+32,8);",
+                        "            curRelations=GlobalRelationsPlanets(Player(),0,8);",
+                        "            if(curRelations<30) ChangeGlobalRelationsPlanets(Player(),0,0,10,8);",
+                        "            else ChangeGlobalRelationsPlanets(Player(),0,3,20,8);",
+                        "            ChangeGlobalRelationsPlanets(Player(),0,2,10,1+2+4+16);",
+                        "            ChangeGlobalRelationsShips(Player(),0,2,10,4+8+16+32,1+2+4+16);",
+                        "        }",
+                        "        else if(curEvent==5) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.36\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",Name(IdToPlanet(planetColonyId)));",
+                        "            curRelations=GlobalRelationsShips(Player(),0,4+8+16+32,1);",
+                        "            if(curRelations<30) ChangeGlobalRelationsShips(Player(),0,0,10,4+8+16+32,1);",
+                        "            else ChangeGlobalRelationsShips(Player(),0,3,20,4+8+16+32,1);",
+                        "            curRelations=GlobalRelationsPlanets(Player(),0,1);",
+                        "            if(curRelations<30) ChangeGlobalRelationsPlanets(Player(),0,0,10,1);",
+                        "            else ChangeGlobalRelationsPlanets(Player(),0,3,20,1);",
+                        "        }",
+                        "        else if(curEvent==6) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.35\"),\"<0>\",Name(IdToPlanet(planetColonyId)));",
+                        "            curRelations=GlobalRelationsShips(Player(),0,4+8+16+32,8+16);",
+                        "            if(curRelations<20) ChangeGlobalRelationsShips(Player(),0,0,10,4+8+16+32,8+16);",
+                        "            else ChangeGlobalRelationsShips(Player(),0,3,10,4+8+16+32,8+16);",
+                        "            curRelations=GlobalRelationsPlanets(Player(),0,8+16);",
+                        "            if(curRelations<20) ChangeGlobalRelationsPlanets(Player(),0,0,10,8+16);",
+                        "            else ChangeGlobalRelationsPlanets(Player(),0,3,10,8+16);",
+                        "        }",
+                        "        else if(curEvent==7) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.34\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",Name(IdToPlanet(planetColonyId)));",
+                        "            curRelations=GlobalRelationsShips(Player(),0,4+8+16+32,16);",
+                        "            if(curRelations<20) ChangeGlobalRelationsShips(Player(),0,0,10,4+8+16+32,16);",
+                        "            else ChangeGlobalRelationsShips(Player(),0,3,10,4+8+16+32,16);",
+                        "            curRelations=GlobalRelationsPlanets(Player(),0,8+16);",
+                        "            if(curRelations<20) ChangeGlobalRelationsPlanets(Player(),0,0,10,16);",
+                        "            else ChangeGlobalRelationsPlanets(Player(),0,3,10,16);",
+                        "            ChangeGlobalRelationsPlanets(Player(),0,2,10,1+2);",
+                        "            ChangeGlobalRelationsShips(Player(),0,2,10,4+8+16+32,1+2);",
+                        "        }",
+                        "        else if(curEvent==8) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.33\"),\"<0>\",Name(IdToPlanet(planetColonyId)));",
+                        "            curRelations=GlobalRelationsShips(Player(),0,4+8+16+32,4);",
+                        "            if(curRelations<30) ChangeGlobalRelationsShips(Player(),0,0,10,4+8+16+32,4);",
+                        "            else ChangeGlobalRelationsShips(Player(),0,3,20,4+8+16+32,4);",
+                        "            curRelations=GlobalRelationsPlanets(Player(),0,4);",
+                        "            if(curRelations<30) ChangeGlobalRelationsPlanets(Player(),0,0,10,4);",
+                        "            else ChangeGlobalRelationsPlanets(Player(),0,3,20,4);",
+                        "            ChangeGlobalRelationsPlanets(Player(),0,2,10,1+2+8+16);",
+                        "            ChangeGlobalRelationsShips(Player(),0,2,10,4+8+16+32,1+2+8+16);",
+                        "            if(prodType==1) {",
+                        "                prodOutput=prodOutput+4;    //Бонус к производству минералов",
+                        "                addition=Format(CT(\"Script.Mod_RevColonization.25\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",prodStr);",
+                        "            }",
+                        "       }",
+                        "        else if(curEvent==9) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.32\"),\"<0>\",Name(IdToPlanet(planetColonyId)));",
+                        "            ChangeGlobalRelationsPlanets(Player(),0,2,15,1+2+4+8+16);",
+                        "            ChangeGlobalRelationsShips(Player(),0,2,15,4+8+16+32,1+2+4+8+16);",
+                        "        }",
+                        "        else if(curEvent==10) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.31\"),\"<0>\",Name(IdToPlanet(planetColonyId)));",
+                        "            ChangeGlobalRelationsPlanets(Player(),0,2,10,1+2+4+8+16);",
+                        "            ChangeGlobalRelationsShips(Player(),0,2,10,4+8+16+32,1+2+4+8+16);",
+                        "        }",
+                        "        else if(curEvent==11) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.30\"),\"<0>\",Name(IdToPlanet(planetColonyId)));",
+                        "            ChangeGlobalRelationsPlanets(Player(),0,2,10,1+2+4+8+16);",
+                        "            ChangeGlobalRelationsShips(Player(),0,2,10,4+8+16+32,1+2+4+8+16);",
+                        "            if(prodType==5) {",
+                        "                prodOutput=prodOutput+1;    //Бонус к производству роскоши",
+                        "                addition=Format(CT(\"Script.Mod_RevColonization.25\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",prodStr);",
+                        "            }",
+                        "        }",
+                        "        else if(curEvent==12) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.29\"),\"<0>\",Name(IdToPlanet(planetColonyId)));",
+                        "            ChangeGlobalRelationsPlanets(Player(),0,2,10,1);",
+                        "            ChangeGlobalRelationsShips(Player(),0,2,10,4+8+16+32,1);",
+                        "        }",
+                        "        else if(curEvent==13) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.28\"),\"<0>\",Name(IdToPlanet(planetColonyId)));",
+                        "            curRelations=GlobalRelationsShips(Player(),0,4+8+16+32,4);",
+                        "            if(curRelations<30) ChangeGlobalRelationsShips(Player(),0,0,10,4+8+16+32,4);",
+                        "            else ChangeGlobalRelationsShips(Player(),0,3,20,4+8+16+32,4);",
+                        "            curRelations=GlobalRelationsPlanets(Player(),0,4);",
+                        "            if(curRelations<30) ChangeGlobalRelationsPlanets(Player(),0,0,10,4);",
+                        "            else ChangeGlobalRelationsPlanets(Player(),0,3,20,4);",
+                        "            ChangeGlobalRelationsPlanets(Player(),0,2,10,8+16);",
+                        "            ChangeGlobalRelationsShips(Player(),0,2,10,4+8+16+32,8+16);",
+                        "            if(prodType==2) {",
+                        "                prodOutput=prodOutput+2;    //Бонус к производству продуктов",
+                        "                addition=Format(CT(\"Script.Mod_RevColonization.25\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",prodStr);",
+                        "            }",
+                        "        }",
+                        "        else if(curEvent==14) {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.27\"),\"<0>\",Name(IdToPlanet(planetColonyId)));",
+                        "            curRelations=GlobalRelationsShips(Player(),0,4+8+16+32,1+16);",
+                        "            if(curRelations<30) ChangeGlobalRelationsShips(Player(),0,0,10,4+8+16+32,1+16);",
+                        "            else ChangeGlobalRelationsShips(Player(),0,3,20,4+8+16+32,1+16);",
+                        "            curRelations=GlobalRelationsPlanets(Player(),0,1+16);",
+                        "            if(curRelations<30) ChangeGlobalRelationsPlanets(Player(),0,0,10,1+16);",
+                        "            else ChangeGlobalRelationsPlanets(Player(),0,3,20,1+16);",
+                        "            ChangeGlobalRelationsPlanets(Player(),0,2,10,2+4);",
+                        "            ChangeGlobalRelationsShips(Player(),0,2,10,4+8+16+32,2+4);",
+                        "            if(prodType==4) {",
+                        "                prodOutput=prodOutput+2;    //Бонус к производству алкоголя",
+                        "                addition=Format(CT(\"Script.Mod_RevColonization.25\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",prodStr);",
+                        "            }",
+                        "        }",
+                        "        else {",
+                        "            newsText=Format(CT(\"Script.Mod_RevColonization.26\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",Name(IdToPlanet(planetColonyId)));",
+                        "            ChangeGlobalRelationsPlanets(Player(),0,2,10,2);",
+                        "            ChangeGlobalRelationsShips(Player(),0,2,10,4+8+16+32,2);",
+                        "            if(prodType==3) {",
+                        "                prodOutput=prodOutput+2;    //Бонус к производству медикаментов",
+                        "                addition=Format(CT(\"Script.Mod_RevColonization.25\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",prodStr);",
+                        "            }",
+                        "        }",
+                        "        AddPlanetNews(newsText,88);",
+                        "        NewsAdd(newsText);",
+                        "        Sound('Sound.NewMsg');",
+                        "        if(addition!='') NewsAdd(addition);",
+                        "        eventsArray[curEvent]=1;",
+                        "    }",
+                        "    ArrayClear(tempArray);",
+                        "}",
+                        "//Функция выдачи случайной награды игроку",
+                        "function CreateReward() {",
+                        "    int i;",
+                        "    dword curReward, tempItem, ship;",
+                        "    for(i=1;i<ArrayDim(rewardsArray);i=i+1) {",
+                        "        if(!rewardsArray[i]) ArrayAdd(tempArray,i);",
+                        "    }",
+                        "    if(ArrayDim(tempArray)<=1) curReward=0;",
+                        "    else {",
+                        "        curReward=tempArray[Rnd(1,ArrayDim(tempArray)-1)];",
+                        "        tempItem=GetItemFromVault('RevColonization_Vault_'+curReward);",
+                        "        /*if(!GroupCount(DeliveryGroup)) BuyDelivery(planetHabitableId);",
+                        "        LinkItemToScript(tempItem,itemToDrop);",
+                        "        ship=GroupToShip(DeliveryGroup);",
+                        "        AddItemToShip(ship,tempItem);",
+                        "        ShipCalcParam(ship);",
+                        "        if(ShipFreeSpace(ship)<0) {",
+                        "            ItemSize(ShipItems(ship,0),ItemSize(ShipItems(ship,0))+abs(ShipFreeSpace(ship))+Rnd(1,5));",
+                        "            HullHP(ship,ItemSize(ShipItems(ship,0)));",
+                        "        }*/",
+                        "        AddItemToPlanet(IdToPlanet(planetColonyId),tempItem);",
+                        "        rewardName=Name(tempItem);",
+                        "        //rewardStatus=1;",
+                        "        rewardTimer=CurTurn()+Rnd(50,100);",
+                        "        Sound('Sound.UserMsgAdd');",
+                        "        Ether(5,'4DD640F7-23DD-4A45-82F1-D5F7D32A877B',Format(CT(\"Script.Mod_RevColonization.138\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",rewardName));",
+                        "        rewardsArray[curReward]=1;",
+                        "    }",
+                        "    ArrayClear(tempArray);",
+                        "}",
+                        "//Если колонизация завершилась преждевременно",
+                        "//Очищаем массивы, убираем все предметы из хранилища, делаем систему захватываемой",
+                        "function FreeRes() {",
+                        "    int i;",
+                        "    dword tempItem, tSystem;",
+                        "    for(i=1;i<ArrayDim(rewardsArray);i=i+1) {",
+                        "        tempItem=GetItemFromVault('RevColonization_Vault_'+i);",
+                        "        if(tempItem) FreeItem(tempItem);",
+                        "    }",
+                        "    tSystem=GalaxyStar(systemId-1);",
+                        "    if(NoComeKlingToStar(tSystem)) NoComeKlingToStar(tSystem,0);",
+                        "    ArrayClear(tempArray);",
+                        "    ArrayClear(eventsArray);",
+                        "    ArrayClear(rewardsArray);",
+                        "}",
+                        "//Функция изъятия у корабля-доставщика скиптового предмета. Изымает предмет и помещает его на склад игрока",
+                        "//Первй параметр - корабль, второй - скриптовый предмет, третий - Id планеты, на склад которой поместить предмет",
+                        "function GetScriptItem(dword ship, dword scriptItem, dword planetId) {",
+                        "    dword tempItem, planet;",
+                        "    planet=IdToPlanet(planetId);",
+                        "    if(rewardStatus==1) {",
+                        "        if(ItemIn(scriptItem,ship)) {",
+                        "            tempItem=ScriptItemToItem(scriptItem);",
+                        "            ReleaseItemFromScript(scriptItem);",
+                        "            if(ItemType(tempItem)>=t_Artefact && ItemType(tempItem)<=t_ArtFastRacks) GetArtFromShip(ship,tempItem);",
+                        "            else GetItemFromShip(ship,tempItem);",
+                        "            Sound('Sound.NewMsg');",
+                        "            AddItemToStorage(planet,tempItem);",
+                        "            Ether(4,'4DD640F7-23DD-4A45-82F1-D5F7D32A877B',Format(CT(\"Script.Mod_RevColonization.24\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",rewardName));",
+                        "            NewsAdd(Format(CT(\"Script.Mod_RevColonization.120\"),\"<0>\",Name(GroupToShip(DeliveryGroup)),\"<1>\",rewardName,\"<2>\",Name(IdToPlanet(planetHabitableId))));",
+                        "        }",
+                        "    }",
+                        "}",
+                        "",
+                        "//Функция для запуска из юзкода зонда, мне впадлу писать юзкодом, да и мало ли кому ещё понадобится",
+                        "function g_CallStation() {",
+                        "    if(!StateIs(GroupToShip(GroupMC),'ColonizationState')) exit;",
+                        "",
+                        "    if(Dist(Player(),IdToPlanet(planetColonyId)) <= 250) {",
+                        "        //Если кто-то напихает много МЦшек сюда, то он 1) гейний 2) поставит здесь перебор кораблей группы",
+                        "        Sound('Sound.ProbeSignal6');",
+                        "        Dialoggy = 2;",
+                        "    }",
+                        "    else MessageBox(CT('Script.Mod_RevColonization.SatteliteNo'));",
+                        "    //MessageBox(GroupToShip(GetValueFromScript('Mod_RevColonisation','GroupMC')));",
+                        "}"
+                    ],
+                    "#": 53,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 810
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Выбор системы для старта",
+                        "if(!scrStatus) {",
+                        "  system=SelectSystem();",
+                        "  if(system) {    //Запоминаем Id нужных планет, меняем статус скрипта, создаем новости",
+                        "    systemId=Id(system);",
+                        "//    NoComeKlingToStar(system,1);",
+                        "    planetColonyId=Id(FindPlanet(system,'NotMaloc,NotPeleng,NotPeople,NotFei,NotGaal,NotKling,NotPirateClan',0,0));",
+                        "    planetHabitableId=Id(FindPlanet(system,'NotNone,NotKling,NotPirateClan',0,0));",
+                        "    strMCName=ShortName(StarRuins(system,'MC'));",
+                        "    tStr=Format(CT(\"Script.Mod_RevColonization.131\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",Name(system),\"<2>\",strMCName);",
+                        "    AddPlanetNews(tStr);",
+                        "    NewsAdd(tStr);",
+                        "    Sound('Sound.NewMsg');",
+                        "    scrStatus=1;",
+                        "    clnzEndTimer = 0;",
+                        "  }",
+                        "}",
+                        "else if(scrStatus==1) {",
+                        "    if(clnzEndTimer < 300) {",
+                        "        clnzEndTimer = clnzEndTimer + 1;",
+                        "    }",
+                        "    else {",
+                        "        //Если игрок не захотел участвовать - эпидемия фсё",
+                        "        tStr=Format(CT(\"Script.Mod_RevColonization.130\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",Name(PlanetToStar(IdToPlanet(planetColonyId))));",
+                        "        AddPlanetNews(tStr);",
+                        "        NewsAdd(tStr);",
+                        "        Sound('Sound.NewMsg');",
+                        "        scrStatus=0;",
+                        "        AllShipOut();",
+                        "    }",
+                        "}",
+                        "else if(scrStatus==2) {    //Завершаем скрипт, если МЦ был уничтожен до приземления на планету мензолов",
+                        "  if(!GroupCount(GroupMC)) scrStatus=100;",
+                        "}",
+                        "else if(scrStatus==3) {    //Если колонизация состоялась",
+                        "wasDialog=0;",
+                        "  if(CurTurn()>=clnzEndTimer) {    //Таймер до завершения колонизации",
+                        "    scrStatus=100;",
+                        "    Sound('Sound.NewMsg');",
+                        "    AddPlanetNews(Format(CT(\"Script.Mod_RevColonization.44\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",strMCName));",
+                        "    Ether(4,'5DBE0D43-E810-429D-A7F6-2365EE7B95EE',Format(CT(\"Script.Mod_RevColonization.44\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",Name(GroupToShip(GroupMC))));",
+                        "  }",
+                        "  if(!rewardStatus) {",
+                        "    if(CurTurn()>=rewardTimer) {    //Таймер до следующей находки",
+                        "      CreateReward();",
+                        "    }",
+                        "  }",
+                        "  if(CurTurn()>=eventTimer) {    //Таймер до следующего события",
+                        "    CreateEvent();",
+                        "    eventTimer=CurTurn()+Rnd(30,90);",
+                        "  }",
+                        "  if(CurTurn()>=serviceTimer) {    //Таймер до списания денег за обслуживание",
+                        "    Ether(0,'0D35F817-56DD-42B1-BD90-F1CE3DE1FDA5',Format(CT(\"Script.Mod_RevColonization.118\"),\"<0>\",serviceCost,\"<1>\",Name(IdToPlanet(planetColonyId))));",
+                        "    ShipMoney(Player(),(ShipMoney(Player())-serviceCost));",
+                        "    Sound('Sound.Buy');",
+                        "    serviceTimer=CurTurn()+60;",
+                        "  }",
+                        "  //Производство",
+                        "  if(prodOutput!=0) {",
+                        "    if(prodTotal==whCap) {",
+                        "      if(!whSellPercent) {",
+                        "        Sound('Sound.UserMsgAdd');",
+                        "        Ether(0,'0D35F817-56DD-42B1-BD90-F1CE3DE1FDA5',Format(CT(\"Script.Mod_RevColonization.43\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",prodStr));",
+                        "      }",
+                        "      else {",
+                        "        if(CurTurn()>=prodSellTimer) {",
+                        "          prodCost=FindOutPrices(systemId,prodType);",
+                        "          sum=((prodTotal*whSellPercent)/100)*((prodCost*prodProfit)/100);",
+                        "          ShipMoney(Player(),ShipMoney(Player())+sum);",
+                        "          prodTotal=whCap-(whCap*whSellPercent/100);",
+                        "          prodSellTimer=CurTurn()+60;",
+                        "          Sound('Sound.Buy');",
+                        "          Ether(0,'C456704F-8445-45A4-8FD5-0534AF0896E7',Format(CT(\"Script.Mod_RevColonization.119\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",whCap-prodTotal,\"<2>\",prodStr,\"<3>\",whSellPercent,\"<4>\",sum));",
+                        "        }",
+                        "        else {",
+                        "          if(((prodSellTimer-CurTurn())%10)==1) tStr=' день';",
+                        "          else if(((prodSellTimer-CurTurn())%10)>1 && ((prodSellTimer-CurTurn())%10)<5) tStr=' дня';",
+                        "          else tStr=' дней';",
+                        "          Sound('Sound.UserMsgAdd');",
+                        "          Ether(0,'0D35F817-56DD-42B1-BD90-F1CE3DE1FDA5',Format(CT(\"Script.Mod_RevColonization.41\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",prodStr,\"<2>\",(prodSellTimer-CurTurn()),\"<3>\",tStr));",
+                        "        }",
+                        "      }",
+                        "    }",
+                        "    if(whCap>prodTotal) {",
+                        "      prodTotal=prodTotal+prodOutput;",
+                        "      if(prodTotal+prodOutput>whCap) {",
+                        "        prodTotal=whCap;",
+                        "      }",
+                        "    }",
+                        "  }",
+                        "}",
+                        "//Завершаем скрипт при досрочном завершении колонизации",
+                        "else if(scrStatus==100) {",
+                        "  if(!GroupCount(GroupMC)) {",
+                        "    if(!GroupCount(DeliveryGroup)) {",
+                        "      FreeRes();",
+                        "      scrStatus=0;",
+                        "      AllShipOut();",
+                        "    }",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 54,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 810
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "//Диалог о колонизации",
+                        "curRuin=GetShipRuins(Player());",
+                        "if(curRuin) {",
+                        "  if(!PlayerBridge()) {",
+                        "    if(ShipType(curRuin)=='MC') {",
+                        "      if(Id(ShipStar(curRuin))==systemId) {",
+                        "        if(scrStatus==1) AddDialogInject('DialogColonization',Format(CT(\"Script.Mod_RevColonization.132\"),\"<0>\",Name(IdToPlanet(planetColonyId))),CT(\"Script.Mod_RevColonization.1\"),2);",
+                        "      }",
+                        "    }",
+                        "  }",
+                        "}",
+                        "//Диалог о продаже юзлессов на планете",
+                        "if(scrStatus>=3) {",
+                        "  if(GetShipPlanet(Player())) {",
+                        "    if(Id(GetShipPlanet(Player()))==planetHabitableId) {",
+                        "      AddDialogInject('DialogGov','',CT(\"Script.Mod_RevColonization.121\"),2);",
+                        "    }",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 55,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 810
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(!OrderLock(CurShip)) OrderLock(CurShip,1);",
+                        "if(!GetShipPlanet(CurShip)) {    //Столько условий именно для того, чтобы станция приземлилась 1 раз",
+                        "    if(!ShipIsTakeoff(CurShip)) OrderLanding(CurShip,IdToPlanet(planetColonyId));",
+                        "    NoLanding(CurShip,1);",
+                        "}",
+                        "if(GetShipPlanet(CurShip)) {",
+                        "  ChangeGlobalRelationsShips(Player(),0,1,13,2+4+8+16+32,1+2+4+8+16);",
+                        "  ChangeGlobalRelationsPlanets(Player(),0,1,15,1+2+4+8+16);",
+                        "  AddPlanetNews(Format(CT(\"Script.Mod_RevColonization.129\"),\"<0>\",Name(IdToPlanet(planetColonyId))));",
+                        "  scrStatus=3;",
+                        "  InitArrays();                                //Инициализация массивов",
+                        "  BuyDelivery(planetHabitableId);                //Корабль-доставщик",
+                        "  clnzEndTimer=CurTurn()+365*3+Rnd(-30,180);    //Таймер окончания колонизации",
+                        "  rewardTimer=CurTurn()+Rnd(50,100);            //Таймер для находок",
+                        "  eventTimer=CurTurn()+Rnd(30,90);            //Таймер для случайных событий",
+                        "  serviceTimer=CurTurn()+60;                   //Таймер до списания денег за обслуживание",
+                        "  TransferShipsToPlanet(CurShip,planetHabitableId);    //Переносим все корабли со станции на планету",
+                        "  NoComeKlingToStar(ShipStar(CurShip),1);",
+                        "  ChangeState(2);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 168,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 80
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(Dialoggy == 2) {",
+                        "    Dialog(DialogColony,CurShip);",
+                        "}",
+                        "if(scrStatus==100) {",
+                        "  ChangeState(4);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 169,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 160
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(rewardStatus==2) {",
+                        "    if(!OrderLock(CurShip)) OrderLock(CurShip,1);",
+                        "",
+                        "    if(GetShipPlanet(CurShip) && ShipStar(Player())==ShipStar(CurShip)) OrderTakeOff(CurShip);",
+                        "    else if(ShipInNormalSpace(CurShip) && ShipStar(Player())==ShipStar(CurShip)) {",
+                        "        if(rewardStatus != 0) {",
+                        "            OrderFollowShip(CurShip,Player());",
+                        "            if(Dist(CurShip,Player()) < 150) {",
+                        "                if(itemToDrop > 0) {",
+                        "                    DropScriptItem(CurShip,itemToDrop);",
+                        "                    ReleaseItemFromScript(itemToDrop);",
+                        "                    rewardStatus=0;",
+                        "                    rewardTimer=CurTurn()+Rnd(50,100);",
+                        "                    Ether(4,'4DD640F7-23DD-4A45-82F1-D5F7D32A877B',Format(CT(\"Script.Mod_RevColonization.24\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",rewardName));",
+                        "                }",
+                        "                else {",
+                        "                    for(i=ShipItems(CurShip);i>=0;i=i-1) {",
+                        "                        if(ItemIsInUse(ShipItems(CurShip,i))) continue;",
+                        "                        else DropItem(CurShip,ShipItems(CurShip,i));",
+                        "                    }",
+                        "                    for(i=ShipArts(CurShip);i>=0;i=i-1) {",
+                        "                        if(ItemIsInUse(ShipArts(CurShip,i))) continue;",
+                        "                        DropItem(CurShip,ShipArts(CurShip,i));",
+                        "                    }",
+                        "                    rewardStatus=0;",
+                        "                    rewardTimer=CurTurn()+Rnd(50,100);",
+                        "                    Ether(4,'4DD640F7-23DD-4A45-82F1-D5F7D32A877B',Format(CT(\"Script.Mod_RevColonization.24\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",rewardName));",
+                        "                }",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "    else if(ShipStar(Player())!=ShipStar(CurShip)) OrderLanding(CurShip,IdToPlanet(planetHabitableId));",
+                        "}",
+                        "else if(!rewardStatus) {",
+                        "    if(!GetShipPlanet(CurShip)) OrderLanding(CurShip,IdToPlanet(planetHabitableId));",
+                        "}",
+                        "if(scrStatus>=100) {",
+                        "  if(rewardStatus!=2) {",
+                        "    ChangeState(5);",
+                        "    exit;",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 170,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 240
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "TransferShipsToPlanet(CurShip,planetHabitableId); //Кто-то мог приземлиться на МЦ, когда тот уже был на планете",
+                        "if(prodTotal) { //Продажа остатков товара со склада",
+                        "    prodCost=FindOutPrices(systemId,prodType);",
+                        "    sum=prodTotal*(prodCost*prodProfit)/100;",
+                        "    ShipMoney(Player(),ShipMoney(Player())+sum);",
+                        "    prodTotal=0;",
+                        "    Sound('Sound.Buy');",
+                        "    Ether(0,'C456704F-8445-45A4-8FD5-0534AF0896E7',Format(CT(\"Script.Mod_RevColonization.128\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",sum));",
+                        "}",
+                        "if(GetShipPlanet(CurShip)) OrderTakeOff(CurShip);",
+                        "else if(ShipInNormalSpace(CurShip)) {",
+                        "    if(OrderLock(CurShip)) OrderLock(CurShip,0);",
+                        "    NoLanding(CurShip,0);",
+                        "    ShipOut(CurShip);",
+                        "}"
+                    ],
+                    "#": 171,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 320
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "GetScriptItem(CurShip, itemToDrop, planetHabitableId);",
+                        "if(OrderLock(CurShip)) OrderLock(CurShip,0);",
+                        "ShipOut(CurShip);"
+                    ],
+                    "#": 172,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 400
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 173,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 450
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Dialoggy = 1;",
+                        "DChange(8);",
+                        "exit;"
+                    ],
+                    "#": 174,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 250,
+                    "Pos.y": 450
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(25);",
+                        "exit;"
+                    ],
+                    "#": 175,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 450
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "item=ShipItems(Player(),GAnswerData);",
+                        "tcount=2000;    //Цена",
+                        "//Максимальная цена = ГТУ * 3000 * (100% + 10%*(навык торговли + навык обаяния + торговый рейтинг/20)",
+                        "maxPrice=GalaxyTechLevel()*3000*(100+(10*(ShipSkill(Player(),'TraderCur')+ShipSkill(Player(),'CharmCur')+ShipStatus(Player(),0)/20)))/100;",
+                        "DChange(26);",
+                        "exit;"
+                    ],
+                    "#": 176,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 450
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(GoodsCount(Player(),0)>0) {",
+                        "  DAdd(4);",
+                        "}",
+                        "DAdd(5);",
+                        "if(GoodsCount(Player(),1)>0) {",
+                        "  DAdd(6);",
+                        "}",
+                        "DAdd(0);",
+                        "DAdd(27);",
+                        "DAdd(28);"
+                    ],
+                    "#": 177,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=sum) {",
+                        "  DAdd(1);",
+                        "}",
+                        "DAdd(3);"
+                    ],
+                    "#": 178,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(2);"
+                    ],
+                    "#": 179,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(2);"
+                    ],
+                    "#": 180,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(10);",
+                        "if(GoodsCount(Player(),0)>=(tcount*2)) {",
+                        "  DAdd(9);",
+                        "}",
+                        "if(tcount/2>0) {",
+                        "  DAdd(11);",
+                        "}",
+                        "DAdd(69);"
+                    ],
+                    "#": 181,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(13);",
+                        "if(ShipMoney(Player())>(tcount*2)) {",
+                        "  DAdd(12);",
+                        "}",
+                        "if(tcount/2>0) {",
+                        "  DAdd(14);",
+                        "}",
+                        "DAdd(7);"
+                    ],
+                    "#": 182,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(16);",
+                        "if(GoodsCount(Player(),1)>=(tcount*2)) {",
+                        "  DAdd(15);",
+                        "}",
+                        "if(tcount/2>0) {",
+                        "  DAdd(17);",
+                        "}",
+                        "DAdd(8);"
+                    ],
+                    "#": 183,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 880,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(18);"
+                    ],
+                    "#": 184,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1030,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(!prodType) {",
+                        "  DAdd(19);",
+                        "}",
+                        "if(prodType) {",
+                        "  DAdd(35);",
+                        "}",
+                        "if(rewardStatus==1) {",
+                        "  DAdd(32);",
+                        "}",
+                        "DAdd(29);",
+                        "DAdd(34);"
+                    ],
+                    "#": 185,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=(GalaxyMoney(4,4)*2)) {",
+                        "  DAdd(20);",
+                        "  DAdd(21);",
+                        "  DAdd(22);",
+                        "  DAdd(23);",
+                        "  DAdd(24);",
+                        "}",
+                        "DAdd(25);"
+                    ],
+                    "#": 186,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1330,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(26);"
+                    ],
+                    "#": 187,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1480,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(30);",
+                        "DAdd(31);"
+                    ],
+                    "#": 188,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1630,
+                    "Pos.y": 520
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(33);"
+                    ],
+                    "#": 189,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 545
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(36);"
+                    ],
+                    "#": 190,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 545
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(whSellPercent) {",
+                        "  DAdd(55);",
+                        "}",
+                        "if(!whSellPercent) {",
+                        "  DAdd(51);",
+                        "}",
+                        "DAdd(37);",
+                        "DAdd(43);",
+                        "DAdd(45);",
+                        "DAdd(52);",
+                        "DAdd(70);"
+                    ],
+                    "#": 191,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 545
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=(GalaxyMoney(1,3)*prodType)) {",
+                        "  DAdd(38);",
+                        "}",
+                        "if(ShipMoney(Player())>=(GalaxyMoney(1,3)*prodType/2)) {",
+                        "  DAdd(39);",
+                        "}",
+                        "if(ShipMoney(Player())>=(GalaxyMoney(1,3)*prodType/5)) {",
+                        "  DAdd(40);",
+                        "}",
+                        "DAdd(41);"
+                    ],
+                    "#": 192,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 545
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(42);"
+                    ],
+                    "#": 193,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 545
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipMoney(Player())>=(prodType*prodCost*prodOutput*2)) {",
+                        "  if(prodOutput<prodOutputCap) {",
+                        "    DAdd(44);",
+                        "  }",
+                        "}",
+                        "DAdd(49);"
+                    ],
+                    "#": 194,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 545
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(42);"
+                    ],
+                    "#": 195,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 880,
+                    "Pos.y": 545
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(tcount*2<=prodTotal) {",
+                        "  DAdd(46);",
+                        "}",
+                        "DAdd(47);",
+                        "if(tcount/2>0) {",
+                        "  DAdd(48);",
+                        "}",
+                        "DAdd(50);"
+                    ],
+                    "#": 196,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1030,
+                    "Pos.y": 545
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(42);"
+                    ],
+                    "#": 197,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 545
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(53);",
+                        "DAdd(54);"
+                    ],
+                    "#": 198,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1330,
+                    "Pos.y": 545
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(56);",
+                        "DAdd(57);",
+                        "DAdd(58);",
+                        "DAdd(59);"
+                    ],
+                    "#": 199,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1480,
+                    "Pos.y": 545
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(prodProfit<120 && ShipMoney(Player())>=((GalaxyMoney(1,3)*(prodProfit-40))/20)) {",
+                        "  DAdd(61);",
+                        "}",
+                        "DAdd(60);"
+                    ],
+                    "#": 200,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1630,
+                    "Pos.y": 545
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(whSellPercent>11) {",
+                        "  DAdd(62);",
+                        "}",
+                        "if(whSellPercent<91) {",
+                        "  DAdd(63);",
+                        "}",
+                        "DAdd(64);"
+                    ],
+                    "#": 201,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 570
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i=0;i<ShipItems(Player());i=i+1) {",
+                        "    item=ShipItems(Player(),i);",
+                        "    if(ItemType(item)!=t_UselessItem) continue;",
+                        "    if(~findsubstr(EquipmentImageName(item), 'RevColonization_') && EquipmentImageName(item)!='RevColonization_satellite_su') InjectAnswer('DialogSellItems','</color>'+Name(item),i);",
+                        "}",
+                        "DAdd(71);"
+                    ],
+                    "#": 202,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 570
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(65);",
+                        "DAdd(66);",
+                        "DAdd(67);",
+                        "DAdd(72);"
+                    ],
+                    "#": 203,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 570
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(65);"
+                    ],
+                    "#": 204,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 570
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(68);"
+                    ],
+                    "#": 205,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 570
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "sum=GalaxyMoney(2)*(100-foodDiscount-medicineDiscount-donationsDiscount);",
+                        "serviceCost=1.5*GalaxyMoney(2);",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 206,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ShipMoney(Player(),(ShipMoney(Player())-sum));",
+                        "Sound('Sound.Buy');",
+                        "ShipJoin(GroupMC,curRuin);",
+                        "SetName(GroupToShip(GroupMC),'им. '+ShortName(Player()));",
+                        "scrStatus=2;",
+                        "tempItem=CreateQuestItem('RevColonization_satellite_su');",
+                        "AddItemToShip(Player(),tempItem);",
+                        "LinkItemToScript(tempItem,satellite);",
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 207,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(3);",
+                        "exit;"
+                    ],
+                    "#": 208,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tcount=GoodsCount(Player(),0);",
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 209,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tcount=ShipMoney(Player())/5;",
+                        "DChange(5);",
+                        "exit;"
+                    ],
+                    "#": 210,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tcount=GoodsCount(Player(),1);",
+                        "DChange(6);",
+                        "exit;"
+                    ],
+                    "#": 211,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 212,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 213,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 940,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tcount=tcount*2;",
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 214,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1060,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ShipGoods(Player(),0,-tcount);",
+                        "ChangeGlobalRelationsPlanets(Player(),0,2,(tcount/15),1+2+4+8+16);",
+                        "ChangeGlobalRelationsShips(Player(),0,2,(tcount/15),2+4+8+16+32,1+2+4+8+16);",
+                        "foodDiscount=foodDiscount+tcount/15;",
+                        "if(foodDiscount>10) foodDiscount=10;",
+                        "DChange(7);",
+                        "exit;"
+                    ],
+                    "#": 215,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tcount=tcount/2;",
+                        "DChange(4);",
+                        "exit;"
+                    ],
+                    "#": 216,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1300,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tcount=tcount*2;",
+                        "DChange(5);",
+                        "exit;"
+                    ],
+                    "#": 217,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1420,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),(ShipMoney(Player())-tcount));",
+                        "ChangeGlobalRelationsShips(Player(),0,2,(tcount/GalaxyMoney(2,2)),2+4+8+16+32,1+2+4+8+16);",
+                        "ChangeGlobalRelationsPlanets(Player(),0,2,(tcount/GalaxyMoney(2,2)),1+2+4+8+16);",
+                        "donationsDiscount=donationsDiscount+tcount/GalaxyMoney(2,2);",
+                        "if(donationsDiscount>10) donationsDiscount=10;",
+                        "DChange(7);",
+                        "exit;"
+                    ],
+                    "#": 218,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1540,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tcount=tcount/2;",
+                        "DChange(5);",
+                        "exit;"
+                    ],
+                    "#": 219,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1660,
+                    "Pos.y": 640
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tcount=tcount*2;",
+                        "DChange(6);",
+                        "exit;"
+                    ],
+                    "#": 220,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 665
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ShipGoods(Player(),1,-tcount);",
+                        "ChangeGlobalRelationsPlanets(Player(),0,2,(tcount/15),1+2+4+8+16);",
+                        "ChangeGlobalRelationsShips(Player(),0,2,(tcount/15),2+4+8+16+32,1+2+4+8+16);",
+                        "medicineDiscount=medicineDiscount+tcount/15;",
+                        "if(medicineDiscount>10) medicineDiscount=10;",
+                        "DChange(7);",
+                        "exit;"
+                    ],
+                    "#": 221,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 665
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tcount=tcount/2;",
+                        "DChange(6);",
+                        "exit;"
+                    ],
+                    "#": 222,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 665
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(9);",
+                        "exit;"
+                    ],
+                    "#": 223,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 665
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "prodOutput=5;",
+                        "prodOutputCap=25;",
+                        "prodType=1;",
+                        "prodStr='минералов';",
+                        "prodCost=FindOutPrices(systemId,prodType);",
+                        "whCap=50;",
+                        "prodProfit=50;",
+                        "serviceCost=(GalaxyMoney(2)*1.5)+GalaxyMoney(0,4)*prodType;",
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),(ShipMoney(Player())-GalaxyMoney(4,4)*2));",
+                        "wasDialog=1;",
+                        "DChange(10);",
+                        "exit;"
+                    ],
+                    "#": 224,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 665
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "prodOutput=2;",
+                        "prodOutputCap=16;",
+                        "prodType=2;",
+                        "prodStr='продуктов';",
+                        "prodCost=FindOutPrices(systemId,prodType);",
+                        "whCap=50;",
+                        "prodProfit=50;",
+                        "serviceCost=(GalaxyMoney(2)*1.5)+GalaxyMoney(0,4)*prodType;",
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),(ShipMoney(Player())-GalaxyMoney(4,4)*2));",
+                        "wasDialog=1;",
+                        "DChange(10);",
+                        "exit;"
+                    ],
+                    "#": 225,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 665
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "prodOutput=2;",
+                        "prodOutputCap=16;",
+                        "prodType=3;",
+                        "prodStr='медикаментов';",
+                        "prodCost=FindOutPrices(systemId,prodType);",
+                        "whCap=50;",
+                        "prodProfit=50;",
+                        "serviceCost=(GalaxyMoney(2)*1.5)+GalaxyMoney(0,4)*prodType;",
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),(ShipMoney(Player())-GalaxyMoney(4,4)*2));",
+                        "wasDialog=1;",
+                        "DChange(10);",
+                        "exit;"
+                    ],
+                    "#": 226,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 665
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "prodOutput=3;",
+                        "prodOutputCap=12;",
+                        "prodType=4;",
+                        "prodStr='алкоголя';",
+                        "prodCost=FindOutPrices(systemId,prodType);",
+                        "whCap=50;",
+                        "prodProfit=50;",
+                        "serviceCost=(GalaxyMoney(2)*1.5)+GalaxyMoney(0,4)*prodType;",
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),(ShipMoney(Player())-GalaxyMoney(4,4)*2));",
+                        "wasDialog=1;",
+                        "DChange(10);",
+                        "exit;"
+                    ],
+                    "#": 227,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 940,
+                    "Pos.y": 665
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "prodOutput=1;",
+                        "prodOutputCap=8;",
+                        "prodType=5;",
+                        "prodStr='роскоши';",
+                        "prodCost=FindOutPrices(systemId,prodType);",
+                        "whCap=50;",
+                        "prodProfit=50;",
+                        "serviceCost=(GalaxyMoney(2)*1.5)+GalaxyMoney(0,4)*prodType;",
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),(ShipMoney(Player())-GalaxyMoney(4,4)*2));",
+                        "wasDialog=1;",
+                        "DChange(10);",
+                        "exit;"
+                    ],
+                    "#": 228,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1060,
+                    "Pos.y": 665
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "scrStatus=100;"
+                    ],
+                    "#": 229,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1540,
+                    "Pos.y": 665
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(11);",
+                        "exit;"
+                    ],
+                    "#": 230,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1660,
+                    "Pos.y": 665
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "wasDialog=1;",
+                        "scrStatus=100;",
+                        "SetName(CurShip,strMCName);",
+                        "AddPlanetNews(Format(CT(\"Script.Mod_RevColonization.44\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",strMCName));"
+                    ],
+                    "#": 231,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 690
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "rewardStatus=2;",
+                        "tStr=Format(CT(\"Script.Mod_RevColonization.81\"),\"<0>\",Name(GroupToShip(DeliveryGroup)),\"<1>\",rewardName);",
+                        "if(ItemType(itemToDrop)==t_UselessItem) tStr1=Format(CT(\"Script.Mod_RevColonization.80\"),\"<0>\",Name(IdToPlanet(planetHabitableId)));",
+                        "else tStr1='';",
+                        "tStr=tStr+tStr1;",
+                        "wasDialog=1;",
+                        "DChange(12);",
+                        "exit;"
+                    ],
+                    "#": 232,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 690
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "wasDialog = 1;"
+                    ],
+                    "#": 233,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 690
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(CurTurn()>=prodEnhTimer) {",
+                        "  prodCost=FindOutPrices(systemId,prodType);",
+                        "  tStr=Format(CT(\"Script.Mod_RevColonization.88\"),\"<0>\",prodStr,\"<1>\",whCap,\"<2>\",(whCap-prodTotal),\"<3>\",prodTotal,\"<4>\",prodOutput);",
+                        "  if(whSellPercent==0) tStr1=CT(\"Script.Mod_RevColonization.87\");",
+                        "  else {",
+                        "      tStr1=Format(CT(\"Script.Mod_RevColonization.116\"),\"<0>\",whSellPercent,\"<1>\",prodStr,\"<2>\",prodStr,\"<3>\",prodCost,\"<4>\",prodProfit);",
+                        "      if(CurTurn()<prodSellTimer) {",
+                        "          tStr1=tStr1+Format(CT(\"Script.Mod_RevColonization.85\"),\"<0>\",(prodSellTimer-CurTurn()));",
+                        "          if(((prodSellTimer-CurTurn())%10)==1) tStr1=tStr1+CT(\"Script.Mod_RevColonization.137\");",
+                        "          else if(((prodSellTimer-CurTurn())%10)>1 && ((prodSellTimer-CurTurn())%10)<5) tStr1=tStr1+CT(\"Script.Mod_RevColonization.136\");",
+                        "          else tStr1=tStr1+' дней.';",
+                        "      }",
+                        "      else tStr1=tStr1+CT(\"Script.Mod_RevColonization.84\");",
+                        "  }",
+                        "  tStr=tStr+tStr1;",
+                        "  DChange(14);",
+                        "  exit;",
+                        "}",
+                        "if(CurTurn()<prodEnhTimer) {",
+                        "  if((prodEnhTimer-CurTurn())==1) tStr=CT(\"Script.Mod_RevColonization.135\");",
+                        "  else if((prodEnhTimer-CurTurn())<5) tStr=CT(\"Script.Mod_RevColonization.134\");",
+                        "  else tStr=CT(\"Script.Mod_RevColonization.133\");",
+                        "  wasDialog=1;",
+                        "  DChange(13);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 234,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 690
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(15);",
+                        "exit;"
+                    ],
+                    "#": 235,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 690
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "whCap=whCap+50;",
+                        "ShipMoney(Player(),(ShipMoney(Player())-(GalaxyMoney(1,3)*prodType)));",
+                        "Sound('Sound.Buy');",
+                        "prodEnhTimer=CurTurn()+15;",
+                        "wasDialog=1;",
+                        "DChange(16);",
+                        "exit;"
+                    ],
+                    "#": 236,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 940,
+                    "Pos.y": 690
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "whCap=whCap+25;",
+                        "ShipMoney(Player(),(ShipMoney(Player())-(GalaxyMoney(1,3)*prodType/2)));",
+                        "Sound('Sound.Buy');",
+                        "prodEnhTimer=CurTurn()+10;",
+                        "wasDialog=1;",
+                        "DChange(16);",
+                        "exit;"
+                    ],
+                    "#": 237,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1060,
+                    "Pos.y": 690
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "whCap=whCap+10;",
+                        "ShipMoney(Player(),(ShipMoney(Player())-(GalaxyMoney(1,3)*prodType/5)));",
+                        "Sound('Sound.Buy');",
+                        "prodEnhTimer=CurTurn()+5;",
+                        "wasDialog=1;",
+                        "DChange(16);",
+                        "exit;"
+                    ],
+                    "#": 238,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 690
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(17);",
+                        "exit;"
+                    ],
+                    "#": 239,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1540,
+                    "Pos.y": 690
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ShipMoney(Player(),(ShipMoney(Player())-(prodType*prodCost*prodOutput*2)));",
+                        "prodOutput=prodOutput+1;",
+                        "Sound('Sound.Buy');",
+                        "prodEnhTimer=CurTurn()+15;",
+                        "wasDialog=1;",
+                        "DChange(18);",
+                        "exit;"
+                    ],
+                    "#": 240,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1660,
+                    "Pos.y": 690
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(prodTotal) {",
+                        "  tcount=prodTotal;",
+                        "  DChange(19);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 241,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 715
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tcount=tcount*2;",
+                        "DChange(19);",
+                        "exit;"
+                    ],
+                    "#": 242,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 715
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(prodType==1) ShipGoods(Player(),4,tcount);",
+                        "else if(prodType==2) ShipGoods(Player(),0,tcount);",
+                        "else if(prodType==3) ShipGoods(Player(),1,tcount);",
+                        "else if(prodType==4) ShipGoods(Player(),5,tcount);",
+                        "else ShipGoods(Player(),3,tcount);",
+                        "prodTotal=prodTotal-tcount;",
+                        "wasDialog=1;",
+                        "DChange(20);",
+                        "exit;"
+                    ],
+                    "#": 243,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 715
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tcount=tcount/2;",
+                        "DChange(19);",
+                        "exit;"
+                    ],
+                    "#": 244,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 715
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "whSellPercent=50;"
+                    ],
+                    "#": 245,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 715
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(21);",
+                        "exit;"
+                    ],
+                    "#": 246,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 715
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "prodType=0;",
+                        "prodOutput=0;",
+                        "prodStr='';",
+                        "prodCost=0;",
+                        "prodTotal=0;",
+                        "prodProfit=50;",
+                        "whCap=50;",
+                        "whSellPercent=0;",
+                        "serviceCost=GalaxyMoney(2)*1.5;",
+                        "wasDialog=1;"
+                    ],
+                    "#": 247,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 940,
+                    "Pos.y": 715
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(22);",
+                        "exit;"
+                    ],
+                    "#": 248,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 715
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "whSellPercent=0;"
+                    ],
+                    "#": 249,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1300,
+                    "Pos.y": 715
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(23);",
+                        "exit;"
+                    ],
+                    "#": 250,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1420,
+                    "Pos.y": 715
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(24);",
+                        "exit;"
+                    ],
+                    "#": 251,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1540,
+                    "Pos.y": 715
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(22);",
+                        "exit;"
+                    ],
+                    "#": 252,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 740
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "prodProfit=prodProfit+10;",
+                        "prodEnhTimer=CurTurn()+15;",
+                        "Sound('Sound.Buy');",
+                        "ShipMoney(Player(),(ShipMoney(Player())-((GalaxyMoney(1,3)*(prodProfit-40))/20)));",
+                        "wasDialog=1;"
+                    ],
+                    "#": 253,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 740
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "whSellPercent=whSellPercent-10;",
+                        "DChange(24);",
+                        "exit;"
+                    ],
+                    "#": 254,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 740
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "whSellPercent=whSellPercent+10;",
+                        "DChange(24);",
+                        "exit;"
+                    ],
+                    "#": 255,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 340,
+                    "Pos.y": 740
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(22);",
+                        "exit;"
+                    ],
+                    "#": 256,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 740
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(tcount>0) {",
+                        "  tcount=max(0,tcount-Rnd(1000,2000));",
+                        "}",
+                        "DChange(26);",
+                        "exit;"
+                    ],
+                    "#": 257,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 740
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(tcount>maxPrice) {",
+                        "  DChange(27);",
+                        "  exit;",
+                        "}",
+                        "if(tcount<=maxPrice) {",
+                        "  ShipMoney(Player(),(ShipMoney(Player())+tcount));",
+                        "  Sound('Sound.Buy');",
+                        "  FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),item)));",
+                        "  DChange(28);",
+                        "  exit;",
+                        "}"
+                    ],
+                    "#": 258,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 700,
+                    "Pos.y": 740
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tcount=tcount+Rnd(1000,2000);",
+                        "DChange(26);",
+                        "exit;"
+                    ],
+                    "#": 259,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 820,
+                    "Pos.y": 740
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 260,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1060,
+                    "Pos.y": 740
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "InitPlanet",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "InitStar",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 235,
+                    "Parent": -1,
+                    "#": 46
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "InitStar",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 145,
+                    "Parent": -1,
+                    "#": 45
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "InitStar",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 190,
+                    "Parent": -1,
+                    "#": 44,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "PlayerState",
+                    "Move": 5,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 350,
+                    "Parent": -1,
+                    "#": 56
+                },
+                {
+                    "Name": "MCState",
+                    "Move": 5,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 90,
+                    "Pos.y": 350,
+                    "Parent": -1,
+                    "#": 57
+                },
+                {
+                    "Name": "ColonizationState",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 180,
+                    "Pos.y": 350,
+                    "Parent": -1,
+                    "#": 58
+                },
+                {
+                    "Name": "DeliveryState",
+                    "Move": 5,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 270,
+                    "Pos.y": 350,
+                    "Parent": -1,
+                    "#": 59
+                },
+                {
+                    "Name": "MCOut",
+                    "Move": 5,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 360,
+                    "Pos.y": 350,
+                    "Parent": -1,
+                    "#": 60
+                },
+                {
+                    "Name": "DeliveryOut",
+                    "Move": 5,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 450,
+                    "Pos.y": 350,
+                    "Parent": -1,
+                    "#": 61
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "rewardsArray",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "eventsArray",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "scrStatus",
+                    "Pos.x": 360,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tempArray",
+                    "Pos.x": 510,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "planetHabitableId",
+                    "Pos.x": 660,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "planetColonyId",
+                    "Pos.x": 900,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "system",
+                    "Pos.x": 1110,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "systemId",
+                    "Pos.x": 1200,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "curRuin",
+                    "Pos.x": 1320,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tStr",
+                    "Pos.x": 1440,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tStr1",
+                    "Pos.x": 1530,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "strMCName",
+                    "Pos.x": 1620,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 11,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tcount",
+                    "Pos.x": 1770,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 12,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "clnzEndTimer",
+                    "Pos.x": 0,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 13,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tempItem",
+                    "Pos.x": 180,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 14,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "serviceCost",
+                    "Pos.x": 300,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 15,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "wasDialog",
+                    "Pos.x": 480,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 16,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "prodType",
+                    "Pos.x": 630,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 17,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "prodOutput",
+                    "Pos.x": 750,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 18,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "prodStr",
+                    "Pos.x": 900,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 19,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "prodCost",
+                    "Pos.x": 1020,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 20,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "whCap",
+                    "Pos.x": 1140,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 21,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "prodTotal",
+                    "Pos.x": 1230,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 22,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "sum",
+                    "Pos.x": 1380,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 23,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "prodEnhTimer",
+                    "Pos.x": 1470,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 24,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "whSellPercent",
+                    "Pos.x": 1650,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 25,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "prodProfit",
+                    "Pos.x": 0,
+                    "Pos.y": 50,
+                    "Parent": -1,
+                    "#": 26,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "prodOutputCap",
+                    "Pos.x": 150,
+                    "Pos.y": 50,
+                    "Parent": -1,
+                    "#": 27,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "prodSellTimer",
+                    "Pos.x": 360,
+                    "Pos.y": 50,
+                    "Parent": -1,
+                    "#": 28,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "eventTimer",
+                    "Pos.x": 570,
+                    "Pos.y": 50,
+                    "Parent": -1,
+                    "#": 29,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "rewardTimer",
+                    "Pos.x": 720,
+                    "Pos.y": 50,
+                    "Parent": -1,
+                    "#": 30,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "eventsCount",
+                    "Pos.x": 900,
+                    "Pos.y": 50,
+                    "Parent": -1,
+                    "#": 31,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "rewardsCount",
+                    "Pos.x": 1080,
+                    "Pos.y": 50,
+                    "Parent": -1,
+                    "#": 32,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "rewardStatus",
+                    "Pos.x": 1260,
+                    "Pos.y": 50,
+                    "Parent": -1,
+                    "#": 33,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "rewardName",
+                    "Pos.x": 1440,
+                    "Pos.y": 50,
+                    "Parent": -1,
+                    "#": 34,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "serviceTimer",
+                    "Pos.x": 1590,
+                    "Pos.y": 50,
+                    "Parent": -1,
+                    "#": 35,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 1770,
+                    "Pos.y": 50,
+                    "Parent": -1,
+                    "#": 36,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "j",
+                    "Pos.x": 0,
+                    "Pos.y": 75,
+                    "Parent": -1,
+                    "#": 37,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "item",
+                    "Pos.x": 90,
+                    "Pos.y": 75,
+                    "Parent": -1,
+                    "#": 38,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "maxPrice",
+                    "Pos.x": 180,
+                    "Pos.y": 75,
+                    "Parent": -1,
+                    "#": 39,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "foodDiscount",
+                    "Pos.x": 300,
+                    "Pos.y": 75,
+                    "Parent": -1,
+                    "#": 40,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "medicineDiscount",
+                    "Pos.x": 480,
+                    "Pos.y": 75,
+                    "Parent": -1,
+                    "#": 41,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "donationsDiscount",
+                    "Pos.x": 720,
+                    "Pos.y": 75,
+                    "Parent": -1,
+                    "#": 42,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "Dialoggy",
+                    "Pos.x": 960,
+                    "Pos.y": 75,
+                    "Parent": -1,
+                    "#": 43,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 57,
+            "End": 168,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 58,
+            "End": 169,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 59,
+            "End": 170,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 60,
+            "End": 171,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 61,
+            "End": 172,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 62,
+            "End": 173,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 63,
+            "End": 174,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 64,
+            "End": 175,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 65,
+            "End": 176,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 66,
+            "End": 177,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 67,
+            "End": 178,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 68,
+            "End": 179,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 69,
+            "End": 180,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 70,
+            "End": 181,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 71,
+            "End": 182,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 72,
+            "End": 183,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 73,
+            "End": 184,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 74,
+            "End": 185,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 75,
+            "End": 186,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 76,
+            "End": 187,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 77,
+            "End": 188,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 78,
+            "End": 189,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 79,
+            "End": 190,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 80,
+            "End": 191,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 81,
+            "End": 192,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 82,
+            "End": 193,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 83,
+            "End": 194,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 84,
+            "End": 195,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 85,
+            "End": 196,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 86,
+            "End": 197,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 87,
+            "End": 198,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 88,
+            "End": 199,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 89,
+            "End": 200,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 90,
+            "End": 201,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 91,
+            "End": 202,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 92,
+            "End": 203,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 93,
+            "End": 204,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 94,
+            "End": 205,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 95,
+            "End": 206,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 96,
+            "End": 207,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 98,
+            "End": 208,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 99,
+            "End": 209,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 100,
+            "End": 210,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 101,
+            "End": 211,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 102,
+            "End": 212,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 103,
+            "End": 213,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 104,
+            "End": 214,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 105,
+            "End": 215,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 106,
+            "End": 216,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 107,
+            "End": 217,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 108,
+            "End": 218,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 109,
+            "End": 219,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 110,
+            "End": 220,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 111,
+            "End": 221,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 112,
+            "End": 222,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 114,
+            "End": 223,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 115,
+            "End": 224,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 116,
+            "End": 225,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 117,
+            "End": 226,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 118,
+            "End": 227,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 119,
+            "End": 228,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 123,
+            "End": 229,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 124,
+            "End": 230,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 126,
+            "End": 231,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 127,
+            "End": 232,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 129,
+            "End": 233,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 130,
+            "End": 234,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 132,
+            "End": 235,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 133,
+            "End": 236,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 134,
+            "End": 237,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 135,
+            "End": 238,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 138,
+            "End": 239,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 139,
+            "End": 240,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 140,
+            "End": 241,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 141,
+            "End": 242,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 142,
+            "End": 243,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 143,
+            "End": 244,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 146,
+            "End": 245,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 147,
+            "End": 246,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 148,
+            "End": 247,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 150,
+            "End": 248,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 151,
+            "End": 249,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 152,
+            "End": 250,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 153,
+            "End": 251,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 155,
+            "End": 252,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 156,
+            "End": 253,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 157,
+            "End": 254,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 158,
+            "End": 255,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 159,
+            "End": 256,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 160,
+            "End": 257,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 161,
+            "End": 258,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 162,
+            "End": 259,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 164,
+            "End": 260,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 45,
+            "End": 44,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 46,
+            "End": 44,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 47,
+            "End": 45,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 48,
+            "End": 45,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 49,
+            "End": 46,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 49,
+            "End": 56,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 50,
+            "End": 46,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 50,
+            "End": 57,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 51,
+            "End": 46,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 51,
+            "End": 59,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

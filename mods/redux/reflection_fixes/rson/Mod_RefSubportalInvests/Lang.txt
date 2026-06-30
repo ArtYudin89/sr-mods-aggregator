@@ -61,8 +61,8 @@ Artefacts ^{
                     05=HoleTurnCreate(tdwd,CurTurn()-days);
                     06=ShipAddCustomShipInfo(Player(),'RefHoleInfo','NoShow');
                     07=ShipCustomShipInfoData(Player(),'RefHoleInfo',1,Id(tdwd));
-                    08=FreeItem(CurItem());
-                    09=OrderJumpHole(Player(),tdwd);
+                    08=OrderJumpHole(Player(),tdwd);
+                    09=NoDropItem(CurItem(), 1);
                 }
             }
             Size=7

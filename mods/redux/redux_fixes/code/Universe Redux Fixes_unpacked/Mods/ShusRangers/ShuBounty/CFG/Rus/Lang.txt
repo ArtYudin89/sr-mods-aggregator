@@ -872,9 +872,9 @@ UselessItems ^{
             03=if(!ShipInNormalSpace(cur_ship)) exit;
             04=dword cur_star = ShipStar(cur_ship);
             05=if(cur_star == GalaxyStar(UselessItemData(CurItem(),2) - 1)) exit;
-            05=int i, rat = 0, sh = 0, men = 0, sm = 0, ur = 0, ber = 0, kl =0, eq = 0, pr = 0;
-            06=for(i=0;StarShips(cur_star)>i;i=i+1)
-            07 ^{
+            06=int i, rat = 0, sh = 0, men = 0, sm = 0, ur = 0, ber = 0, kl =0, eq = 0, pr = 0;
+            07=for(i=0;StarShips(cur_star)>i;i=i+1)
+            08 ^{
                 01=dword ship = StarShips(cur_star,i);
                 02=if(ShipOwner(ship) != Kling) continue;
                 03=if(ShipCustomFaction(ship) != '') continue;
@@ -896,8 +896,8 @@ UselessItems ^{
                     01=if(~findsubstr(BonusNumInCfg(EqModule(ShipEqInSlot(ship,t_Hull))),'Prier')) pr = pr + 1;
                 }
             }
-            08=if(!UselessItemData(CurItem(),1))
-            09 ^{
+            09=if(!UselessItemData(CurItem(),1))
+            10 ^{
                 01=if(ber || pr)
                 02 ^{
                     01=Sound('Sound.NewMsg');
@@ -905,8 +905,8 @@ UselessItems ^{
                     03=UselessItemData(CurItem(),2,Id(cur_star));
                 }
             }
-            10=else
-            11 ^{
+            11=else
+            12 ^{
                 01=if(rat || sh || men || sm || ur || ber || kl || eq)
                 02 ^{
                     01=Sound('Sound.NewMsg');
@@ -1099,17 +1099,16 @@ UselessItems ^{
     Usl_60 ^{
         Cost=Mini
         Name=Гаальская книга
-        Owner=Gaal
-        Size=1
-        Text=В этой гаальской книге содержатся сверхсекретные знания из области физики и высоких технологий.
-        Text=(Можно сдать на <clr>НБ-ЦР<clrEnd>)
         OnUseCode ^{
             01=if(UselessItemData(CurItem(),1)) exit;
             02=MessageBox('Книга, конечно, вызывала в вас опасения - всё же, сложный материал, серьёзно продвинувший пеленгскую науку. Несмотря на то, что само произведение явно пыталось быть понятным, вы чувствовали нехватку базиса в своих размышлениях. И, всё же, в чём-то она оказалась для вас познавательна.');
             03=ShipFreeExp(Player(), ShipFreeExp(Player()) + 2500);
             04=SetShipExpByType(Player(), GetShipExpByType(Player()) + 2500, 0);
-            05=UselessItemData(CurItem(),1,1);
         }
+        Owner=Gaal
+        Size=1
+        Text=В этой гаальской книге содержатся сверхсекретные знания из области физики и высоких технологий.
+        Text=(Можно сдать на <clr>НБ-ЦР<clrEnd>)
     }
     Usl_63 ^{
         Text=Самое обыкновенное несекретное письмо от одного человека другому в типовом бумажном конверте
@@ -1190,9 +1189,9 @@ UselessItems ^{
         Text=(Можно сдать на <clr>БЦ<clrEnd>)
     }
     Usl_81 ^{
+        Size=1
         Text=Уникальное оружие, сверхкомпактный инфракрасный огнемет.
         Text=(Можно сдать на <clr>ВБ-ПБ<clrEnd>)
-        Size=1
     }
     Usl_83 ^{
         Text=В контейнере находится вирус "Бактериус-Грокус".

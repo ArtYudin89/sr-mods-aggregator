@@ -239,7 +239,7 @@ UniStartCharInfos ^{
     Char17=Дополнительные партнеры в начале игры и высокий стартовый навык лидерства
     Char18=<color=244,68,68>Малок</color> - при снижении структуры пропорционально повышаются боевые характеристики; <br><color=161,173,19>Пеленг</color> - хороший начальный набор и артефакты, но плохое отношение всех рас; <br><color=79,102,240>Человек</color> - постоянное медленное повышение отношения всех рас, кроме людей; <br><color=199,100,255>Фэянин</color> - медленная автопочинка оборудования; <br><color=255,208,11>Гаалец</color> - хорошие начальные навыки, но очень медленный прирост опыта
     Char19=Механика каперской лицензии - повышение отношения родной расы при грабеже кораблей некоторых других рас: Малоки поощряют ограбление людей и фэян; Пеленги - фэян и гаальцев; Люди - малоков, пеленгов и гаальцев; Фэяне - малоков и Пеленгов. У гаальцев целевая раса динамическая. Вступление в клан лишает игрока каперской лицензии навсегда.
-    Char2=Старт на военной базе с воинским званием "Истребитель"
+    Char2=Старт на военной базе с воинским званием "Пилот"
     Char20=При наличии вероятностного анализатора ЧД обнаруживаются чаще.
     Char3=Увеличенный прирост опыта в первые 5 лет игры
     Char4=Старт с научным званием, на Научной Базе
@@ -364,27 +364,28 @@ ShipInfo ^{
                 Name=Гиперсферный разведчик
                 OnActCode ^{
                     00=int luckDiff = GalaxyDiffLevels(7);
-                    00=int i=0;
-                    00=int hasAnalyzer = ArtefactTypeInUse(ScriptItemActShip(), 20);
-                    01=int msgTurn=ShipCustomShipInfoData(ScriptItemActShip(), 'UniStart_char20', 1);
-                    02=if(hasAnalyzer == 0)
-                    03 ^{
-                        msgTurn=0;
+                    01=int i=0;
+                    02=int hasAnalyzer = ArtefactTypeInUse(ScriptItemActShip(), 20);
+                    03=int msgTurn=ShipCustomShipInfoData(ScriptItemActShip(), 'UniStart_char20', 1);
+                    04=if(hasAnalyzer == 0)
+                    05 ^{
+                        01=msgTurn=0;
                     }
-                    04=else if(!msgTurn) msgTurn = CurTurn() + (luckDiff * 2) + Rnd(50, 100);
-                    05=if(CurTurn() == msgTurn)
-                    06 ^{
+                    06=else if(!msgTurn) msgTurn = CurTurn() + (luckDiff * 2) + Rnd(50, 100);
+                    07=if(CurTurn() == msgTurn)
+                    08 ^{
                         01=int openTurn = CurTurn() + Rnd(10, 30);
                         02=i=Rnd(3,8);
                         03=ShipCustomShipInfoData(ScriptItemActShip(), 'UniStart_char20', 3,Id(StarNearbyStars(ShipStar(Player()),i)));
-                        03=ShipCustomShipInfoData(ScriptItemActShip(), 'UniStart_char20', 2,openTurn);
-                        04=Ether(7, '', 'Обнаружена аномалия! В ближайшее время в системе ' + StarName(StarNearbyStars(ShipStar(Player()),i)) +' откроется червоточина');
+                        04=ShipCustomShipInfoData(ScriptItemActShip(), 'UniStart_char20', 2,openTurn);
+                        05=Ether(7, '', 'Обнаружена аномалия! В ближайшее время в системе ' + StarName(StarNearbyStars(ShipStar(Player()),i)) +' откроется червоточина');
                     }
-                    07=if(CurTurn() >= ShipCustomShipInfoData(ScriptItemActShip(), 'UniStart_char20', 2) && ShipCustomShipInfoData(ScriptItemActShip(), 'UniStart_char20', 2)!=0)
-                    08 ^{
+                    09=if(CurTurn() >= ShipCustomShipInfoData(ScriptItemActShip(), 'UniStart_char20', 2) && ShipCustomShipInfoData(ScriptItemActShip(), 'UniStart_char20', 2)!=0)
+                    10 ^{
                         01=i=Rnd(2,15);
-                        02=dword targetStar=GalaxyStar((ShipCustomShipInfoData(ScriptItemActShip(), 'UniStart_char20', 3))-1);
-                        03=HoleCreate2(targetStar,StarNearbyStars(targetStar,i));
+                        02=while(!SectorVisible(StarToCon(StarNearbyStars(targetStar,i))) || StarToCon(StarNearbyStars(targetStar,i)) == StarToCon(PlanetToStar(PlanetPirateClan()))) i=Rnd(2,15);
+                        03=dword targetStar=GalaxyStar((ShipCustomShipInfoData(ScriptItemActShip(), 'UniStart_char20', 3))-1);
+                        04=HoleCreate2(targetStar,StarNearbyStars(targetStar,i));
                         05=msgTurn = CurTurn() + (luckDiff * 2) + Rnd(50, 100);
                         06=ShipCustomShipInfoData(ScriptItemActShip(), 'UniStart_char20', 1, msgTurn);
                         07=ShipCustomShipInfoData(ScriptItemActShip(), 'UniStart_char20', 2, 0);
@@ -424,7 +425,7 @@ ShipInfo ^{
 Script ~{
     Mod_UniExtraStarts ~{
         Char17Addition=Кстати, вслед за вами и следуя именно вашему примеру, в ряды рейнджеров записалось еще два добровольца. Мы решили удовлетворить их просьбу служить с вами, и передаём их вам подчинение на два года. Они уже прошли инструктаж и ждут вылета.
-        GotoRC=<br>Несмотря на то, что вы уже зачислены в рейнджерский корпус заочно, рекомендую явиться в центр рейнджеров <0> в системе <1>.
+        GotoRC=<br>Несмотря на то, что вы уже зачислены в рейнджерский корпус заочно, рекомендую явиться в центр рейнджеров <0> в системе <1> для проведения инструктажа.
         GotoRCPirate=<br>Ты, конечно, заочно записан в рейнджерский корпус, но рекомендую все-таки явиться в центр рейнджеров <0> в системе <1>.
         GotoRCQuest=Явиться в центр рейнджеров <0> в системе <1>.
         11=Ваш корабль автоматически перенаправлен в систему
@@ -458,8 +459,8 @@ UselessItems ~{
                     04=if(eq_type<t_FuelTanks || eq_type>t_DefGenerator) continue;
                     05=if(ItemIsInUse(eq,player)==0) continue;
                     06=if(ItemIsBroken(eq)) continue;
-                    08=if (ItemDurability(eq)>=89) continue;
-                    11=ItemDurability(eq,ItemDurability(eq)+2);
+                    07=if (ItemDurability(eq)>=59) continue;
+                    08=ItemDurability(eq,ItemDurability(eq)+Rnd(0,2));
                 }
             }
             03=if(ScriptItemActionType(t_OnEnteringForm))
@@ -1500,7 +1501,7 @@ UniStartSettings ^{
             Money=2800
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -1590,7 +1591,7 @@ UniStartSettings ^{
             Money=2400
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -1680,7 +1681,7 @@ UniStartSettings ^{
             Money=2400
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -1770,7 +1771,7 @@ UniStartSettings ^{
             Money=1800
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -1860,7 +1861,7 @@ UniStartSettings ^{
             Money=2500
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -1952,7 +1953,7 @@ UniStartSettings ^{
             Money=1900
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -2042,7 +2043,7 @@ UniStartSettings ^{
             Money=2200
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -2132,7 +2133,7 @@ UniStartSettings ^{
             Money=1900
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -2222,7 +2223,7 @@ UniStartSettings ^{
             Money=1200
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -2312,7 +2313,7 @@ UniStartSettings ^{
             Money=1800
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -4898,12 +4899,12 @@ UniStartSettings ^{
                     size=30
                 }
                 RepairRobot ^{
-                    level=1
-                    size=40
+                    level=0
+                    size=0
                 }
                 Scaner ^{
-                    level=1
-                    size=30
+                    level=0
+                    size=0
                 }
                 Weapon1 ^{
                     level=1
@@ -5114,7 +5115,7 @@ UniStartSettings ^{
                 }
             }
             Money=890
-            Skill0=0
+            Skill0=1
             Skill1=0
             Skill2=0
             Skill3=0
@@ -5204,7 +5205,7 @@ UniStartSettings ^{
                 }
             }
             Money=1420
-            Skill0=0
+            Skill0=1
             Skill1=0
             Skill2=0
             Skill3=0
@@ -5294,7 +5295,7 @@ UniStartSettings ^{
                 }
             }
             Money=1120
-            Skill0=0
+            Skill0=1
             Skill1=0
             Skill2=0
             Skill3=0
@@ -5384,7 +5385,7 @@ UniStartSettings ^{
                 }
             }
             Money=990
-            Skill0=0
+            Skill0=1
             Skill1=0
             Skill2=0
             Skill3=0
@@ -5474,7 +5475,7 @@ UniStartSettings ^{
                 }
             }
             Money=1020
-            Skill0=0
+            Skill0=1
             Skill1=0
             Skill2=0
             Skill3=0
@@ -8280,7 +8281,7 @@ UniStartSettings ^{
             Money=1010
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -8370,7 +8371,7 @@ UniStartSettings ^{
             Money=1045
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -8460,7 +8461,7 @@ UniStartSettings ^{
             Money=1030
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -8550,7 +8551,7 @@ UniStartSettings ^{
             Money=1030
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -8640,7 +8641,7 @@ UniStartSettings ^{
             Money=1165
             Skill0=0
             Skill1=0
-            Skill2=0
+            Skill2=1
             Skill3=0
             Skill4=0
             Skill5=0
@@ -8733,7 +8734,7 @@ UniStartSettings ^{
             Skill0=0
             Skill1=0
             Skill2=0
-            Skill3=0
+            Skill3=1
             Skill4=0
             Skill5=0
         }
@@ -8823,7 +8824,7 @@ UniStartSettings ^{
             Skill0=0
             Skill1=0
             Skill2=0
-            Skill3=0
+            Skill3=1
             Skill4=0
             Skill5=0
         }
@@ -8913,7 +8914,7 @@ UniStartSettings ^{
             Skill0=0
             Skill1=0
             Skill2=0
-            Skill3=0
+            Skill3=1
             Skill4=0
             Skill5=0
         }
@@ -9003,7 +9004,7 @@ UniStartSettings ^{
             Skill0=0
             Skill1=0
             Skill2=0
-            Skill3=0
+            Skill3=1
             Skill4=0
             Skill5=0
         }
@@ -9093,7 +9094,7 @@ UniStartSettings ^{
             Skill0=0
             Skill1=0
             Skill2=0
-            Skill3=0
+            Skill3=1
             Skill4=0
             Skill5=0
         }
