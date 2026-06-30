@@ -1550,8 +1550,7 @@ def _hf_put(repo_id, path, token, timeout=600, retries=4):
                                encoding='utf-8', errors='replace', timeout=timeout)
             if r.returncode == 0:
                 return True
-            _lines = (r.stderr or r.stdout or '').strip().splitlines()
-            err = (_lines[-1] if _lines else '')[:240]   # последняя строка = сам exception
+            err = (r.stderr or r.stdout or '').strip()[-800:]   # хвост трейсбека = место+ошибка
         except subprocess.TimeoutExpired:
             err = f'timeout {timeout}s'
         print(f'    [upload retry {attempt}/{retries}] {path.name}: {err}')
@@ -1582,8 +1581,7 @@ def _hf_put_folder(repo_id, folder, token, timeout=420, retries=8):
                                encoding='utf-8', errors='replace', timeout=timeout)
             if r.returncode == 0:
                 return True
-            _lines = (r.stderr or r.stdout or '').strip().splitlines()
-            err = (_lines[-1] if _lines else '')[:240]   # последняя строка = сам exception
+            err = (r.stderr or r.stdout or '').strip()[-800:]   # хвост трейсбека = место+ошибка
         except subprocess.TimeoutExpired:
             err = f'timeout {timeout}s (резюмируемо, повтор)'
         print(f'    [folder upload retry {attempt}/{retries}]: {err}')
