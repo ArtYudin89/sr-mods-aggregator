@@ -42,17 +42,21 @@ jobs:
       - name: Rebuild descriptors
         run: python pipeline/aggregate.py --descriptors
 
-      - name: Publish chunk index to HF
+      - name: Fill missing code blobs + publish chunk index to HF
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HF_HUB_DISABLE_XET: '1'
-        run: python pipeline/aggregate.py --publish-index
+        run: |
+          # --descriptors самовосстанавливает code.manifest из git → доливаем
+          # недостающие код-блобы на HF, чтобы манифест не ушёл вперёд хранилища.
+          python pipeline/aggregate.py --fill-missing
+          python pipeline/aggregate.py --publish-index
 
       - name: Commit descriptors
         run: |
           git config user.name  "sr-mods-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add descriptors
+          git add descriptors state/asset_index.json
           if git diff --cached --quiet; then
             echo "Дескрипторы не изменились."
           else

@@ -163,6 +163,11 @@ jobs:
         shell: bash
         run: |
           python pipeline/aggregate.py --descriptors
+          # инвариант: каждый sha манифеста должен быть на HF. --descriptors
+          # самовосстанавливает code.manifest из git, поэтому ПОСЛЕ него доливаем
+          # недостающие код-блобы (иначе манифест уходит вперёд HF). Ассет-дыры
+          # шаг лишь сообщит — они закрываются ре-фетчем (--assets --fetch).
+          python pipeline/aggregate.py --fill-missing
           python pipeline/aggregate.py --publish-index
 
       # 6) Финальный коммит/пуш всего (дескрипторы, индекс, lock) — всегда.
