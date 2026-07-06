@@ -1138,6 +1138,64 @@ def _after_mods(relpath):
     return '/'.join(parts)
 
 
+def _safe_mtime(path):
+    """mtime файла или None, если файла нет/недоступен (для дедупа по свежести)."""
+    try:
+        return Path(path).stat().st_mtime
+    except OSError:
+        return None
+
+
+def _dedup_install_path(entries, mtime_of):
+    """Схлопнуть записи манифеста, делящие ОДИН install-путь (_after_mods).
+    Двойная укладка пака (прямая ветка Mods/X/ и обёртка X_unpacked/Mods/X/) даёт
+    обе копии одного файла под РАЗНЫМИ code-rel, но одинаковым install-путём —
+    иначе обе уезжают в дескриптор и лаунчер арбитрарно выбирает при установке.
+    Оставляем свежую по mtime исходника (None-mtime проигрывает любому реальному;
+    при равенстве — детерминированно по rel). Возвращает (deduped, dropped)."""
+    best = {}   # install-path -> (rel, meta, mtime)
+    dropped = 0
+    for rel, meta in entries.items():
+        ip = _after_mods(rel)
+        if ip is None:
+            continue
+        mt = mtime_of(rel)
+        cur = best.get(ip)
+        if cur is None:
+            best[ip] = (rel, meta, mt)
+            continue
+        dropped += 1
+        c_rel, _, c_mt = cur
+        cand = (mt if mt is not None else float('-inf'), rel)
+        keep = (c_mt if c_mt is not None else float('-inf'), c_rel)
+        if cand > keep:
+            best[ip] = (rel, meta, mt)
+    return {rel: meta for (rel, meta, _) in best.values()}, dropped
+
+
+def _cosmetic_installs(files):
+    """Install-пути регенерируемых/косметических файлов мода: .dat, скомпилированный из
+    соседнего .txt (Lang.dat←Lang.txt, Main.dat←Main.txt) либо рантайм-кэш игры
+    (CacheData.dat). У скачавших мод ВРУЧНУЮ их байты дрейфуют (игра пересобирает .dat
+    из .txt / перестраивает кэш; фидбэк RevDiggers: Lang.dat разошёлся на 4 байта) →
+    лаунчер не должен считать такое расхождение обновлением. Агрегатор знает о .txt-
+    источнике рядом, поэтому маркирует авторитетно (лаунчер иначе гадает по имени)."""
+    installs = set()
+    for sub in ('code', 'assets'):
+        for rel in files.get(sub, {}):
+            ip = _after_mods(rel)
+            if ip:
+                installs.add(ip)
+    txt_stems = {ip[:-4].lower() for ip in installs if ip.lower().endswith('.txt')}
+    cos = []
+    for ip in installs:
+        low = ip.lower()
+        if low.endswith('.dat') and (low[:-4] in txt_stems
+                                     or low.rsplit('/', 1)[-1] == 'cachedata.dat'):
+            cos.append(ip)
+    return sorted(cos)
+
+
 def _read_text_auto(path):
     """Прочитать ModuleInfo.txt с автоопределением кодировки (UTF-16 BOM / cp1251)."""
     b = Path(path).read_bytes()
@@ -1259,7 +1317,17 @@ def build_descriptors(cfg):
                 buckets[r]['assets'][rel] = meta
 
         for root, mi_rel in roots.items():
-            files = buckets[root]
+            raw = buckets[root]
+            code_files, dc = _dedup_install_path(
+                raw['code'], lambda rel: _safe_mtime(code_dir / rel))
+            asset_files, da = _dedup_install_path(raw['assets'], lambda rel: None)
+            files = {'code': code_files, 'assets': asset_files}
+            if dc or da:
+                print(f'  дедуп install-путей {camp_unit}/{root}: '
+                      f'code -{dc}, assets -{da}')
+            # ModuleInfo парсим из победившей копии (mi_rel мог отсеяться при дедупе)
+            mi_install = root + '/ModuleInfo.txt'
+            mi_rel = next((r for r in code_files if _after_mods(r) == mi_install), mi_rel)
             mi = _parse_moduleinfo(_read_text_auto(code_dir / mi_rel))
             allpairs = sorted([(_after_mods(k), v['sha256'])
                                for k, v in {**files['code'], **files['assets']}.items()])
@@ -1281,6 +1349,7 @@ def build_descriptors(cfg):
                 'depends': _split_modlist(mi.get('Dependence', '')),
                 'conflicts': _split_modlist(mi.get('Conflict', '')),
                 'chunk_index_url': chunk_index_url,
+                'cosmetic': _cosmetic_installs(files),
                 'files': files,
             }
             rel_path = f'descriptors/{camp_unit}/{root}.json'
