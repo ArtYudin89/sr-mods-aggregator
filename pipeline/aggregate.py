@@ -592,7 +592,10 @@ def classify(extracted, code_dir, policy):
             code_n += 1
             code_b += size
         else:
-            manifest[rel] = {'sha256': sha256_file(p), 'size': size}
+            # mtime источника = дата изменения файла РАЗРАБОТЧИКОМ: rclone copy папок
+            # сохраняет modifiedTime с Google Drive, распаковщики архивов — дату в архиве.
+            manifest[rel] = {'sha256': sha256_file(p), 'size': size,
+                             'mtime': int(p.stat().st_mtime)}
             asset_n += 1
             asset_b += size
     return manifest, (code_n, code_b), (asset_n, asset_b)
@@ -872,17 +875,27 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
     return total_new
 
 
-def _build_code_manifest(code_dir):
-    """relpath('/') -> {'sha256','size'} для всех файлов в code/. ЕДИНЫЙ источник
+def _build_code_manifest(code_dir, prev=None):
+    """relpath('/') -> {'sha256','size','mtime'} для всех файлов в code/. ЕДИНЫЙ источник
     истины для code.manifest.json — используется и code_track, и build_descriptors,
-    чтобы манифест не отставал от содержимого code/ (см. self-heal в build_descriptors)."""
+    чтобы манифест не отставал от содержимого code/ (см. self-heal в build_descriptors).
+
+    mtime — дата изменения файла РАЗРАБОТЧИКОМ. git checkout сбрасывает mtime файла на
+    диске, поэтому при пересборке манифеста БЕЗ повторного скачивания (prev — прошлый
+    манифест) для НЕизменившегося файла (совпал rel+sha) держим ранее зафиксированный
+    mtime; иначе берём текущий (свежий copy2 из классификатора сохраняет mtime источника)."""
+    prev = prev or {}
     files = {}
     if not Path(code_dir).is_dir():
         return files
     for f in Path(code_dir).rglob('*'):
         if f.is_file():
             rel = str(f.relative_to(code_dir)).replace('\\', '/')
-            files[rel] = {'sha256': sha256_file(f), 'size': f.stat().st_size}
+            sha = sha256_file(f)
+            pm = prev.get(rel)
+            mt = pm['mtime'] if (pm and pm.get('sha256') == sha and pm.get('mtime')) \
+                else int(f.stat().st_mtime)
+            files[rel] = {'sha256': sha, 'size': f.stat().st_size, 'mtime': mt}
     return files
 
 
@@ -909,8 +922,10 @@ def code_track(cfg):
         if not code_dir.is_dir():
             continue
         name = unit_dir.name
-        # манифест кода (path -> sha,size) — единый билдер с build_descriptors
-        files = _build_code_manifest(code_dir)
+        # манифест кода (path -> sha,size,mtime) — единый билдер с build_descriptors;
+        # prev сохраняет dev-mtime неизменившихся файлов через git-checkout (см. билдер)
+        prev_cm = load_json(unit_dir / 'code.manifest.json', {}).get('files', {})
+        files = _build_code_manifest(code_dir, prev_cm)
         if not files:
             continue
         save_json(unit_dir / 'code.manifest.json', {'files': files})
@@ -1279,7 +1294,8 @@ def build_descriptors(cfg):
         # прогоняли — тогда в манифесте файлы прошлой версии, и часть ModuleInfo.txt
         # (а значит и модов-дескрипторов) теряется. Пересобираем из code/ и сохраняем.
         if code_dir.is_dir():
-            code_man = _build_code_manifest(code_dir)
+            prev_cm = load_json(unit_dir / 'code.manifest.json', {}).get('files', {})
+            code_man = _build_code_manifest(code_dir, prev_cm)
             save_json(unit_dir / 'code.manifest.json', {'files': code_man})
         else:
             code_man = load_json(unit_dir / 'code.manifest.json', {}).get('files', {})
@@ -1329,10 +1345,14 @@ def build_descriptors(cfg):
             mi_install = root + '/ModuleInfo.txt'
             mi_rel = next((r for r in code_files if _after_mods(r) == mi_install), mi_rel)
             mi = _parse_moduleinfo(_read_text_auto(code_dir / mi_rel))
-            allpairs = sorted([(_after_mods(k), v['sha256'])
-                               for k, v in {**files['code'], **files['assets']}.items()])
+            allmeta = {**files['code'], **files['assets']}
+            allpairs = sorted([(_after_mods(k), v['sha256']) for k, v in allmeta.items()])
             version = hashlib.sha256(
                 json.dumps(allpairs, ensure_ascii=False).encode('utf-8')).hexdigest()[:16]
+            # дата варианта = самый свежий dev-mtime среди его файлов (фикс-пак с более
+            # новым файлом поднимает дату мода). None, если манифесты ещё без mtime.
+            _mts = [m['mtime'] for m in allmeta.values() if m.get('mtime')]
+            mtime = max(_mts) if _mts else None
             raw_title = mi.get('Name', root.split('/')[-1])
             desc = {
                 'schema': 'srmod/1',
@@ -1350,6 +1370,7 @@ def build_descriptors(cfg):
                 'conflicts': _split_modlist(mi.get('Conflict', '')),
                 'chunk_index_url': chunk_index_url,
                 'cosmetic': _cosmetic_installs(files),
+                'mtime': mtime,
                 'files': files,
             }
             rel_path = f'descriptors/{camp_unit}/{root}.json'
@@ -1360,7 +1381,7 @@ def build_descriptors(cfg):
                 'source': camp_unit, 'version': version, 'name': desc['name'],
                 'author': desc['author'], 'depends': desc['depends'],
                 'conflicts': desc['conflicts'], 'code_files': len(files['code']),
-                'asset_files': len(files['assets']), 'path': rel_path,
+                'asset_files': len(files['assets']), 'path': rel_path, 'mtime': mtime,
                 'unit_mod_count': len(roots),
                 'description': desc['description'],
                 'full_description': desc['full_description'],
@@ -1392,8 +1413,12 @@ def build_descriptors(cfg):
             'full_description': default.get('full_description') or _first('full_description'),
             'section': default.get('section') or _first('section'),
             'versions_differ': len({v['version'] for v in group}) > 1,
-            'variants': [{k: v[k] for k in ('source', 'version', 'name', 'depends',
-                                            'conflicts', 'code_files', 'asset_files', 'path')}
+            # дата мода по умолчанию = дата дефолтного варианта (лаунчер для versions_differ
+            # берёт дату ВЫБРАННОГО варианта из списка ниже)
+            'mtime': default.get('mtime'),
+            'variants': [{k: v.get(k) for k in ('source', 'version', 'name', 'depends',
+                                                'conflicts', 'code_files', 'asset_files',
+                                                'path', 'mtime')}
                          for v in vs_sorted],
         }
 
