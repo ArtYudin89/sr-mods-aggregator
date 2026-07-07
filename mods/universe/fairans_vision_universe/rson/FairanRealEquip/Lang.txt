@@ -1,0 +1,124 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RealEquip ^{
+                Description=Монтаж/демонтаж оборудования: <br><TextData2><br><clr><clrEnd><br> Дней до смены артефактов: <br><Data3>
+                Icon=801
+                Name=Технические условия
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnReEnteringForm))
+                    02 ^{
+                        01=if(GetShipPlanet(Player())!=0)
+                        02 ^{
+                            01=if(PlanetOwner(GetShipPlanet(Player()))!=6)
+                            02 ^{
+                                01=exit;
+                            }
+                            03=else int b=1;
+                        }
+                        03=if(ShipInNormalSpace(Player())==0 && b==0)
+                        04 ^{
+                            01=exit;
+                        }
+                        05=if(FormShipCurItem()!=0)
+                        06 ^{
+                            01=for(int i=0; i<GetValueFromScript('FairanRealEquip','ItemsCount'); i=i+1)
+                            02 ^{
+                                01=if(Id(FormShipCurItem())==GetValueFromScript('FairanRealEquip','Items',i))
+                                02 ^{
+                                    01=FormShipCurItem('PutBack');
+                                    02=break;
+                                }
+                            }
+                        }
+                        07=for(i=0; i<GetValueFromScript('FairanRealEquip','ItemsCount'); i=i+1)
+                        08 ^{
+                            01=if(!ItemIsInUse(IdToItem(GetValueFromScript('FairanRealEquip','Items',i))))
+                            02 ^{
+                                01=ItemIsInUse(IdToItem(GetValueFromScript('FairanRealEquip','Items',i)),Player(),1);
+                                02=break;
+                            }
+                        }
+                        09=if(GetValueFromScript('FairanRealEquip','ArtTimer')<GetValueFromScript('FairanRealEquip','ArtsChangeCount'))
+                        10 ^{
+                            01=for(i=0; i<GetValueFromScript('FairanRealEquip','ArtsCount'); i=i+1)
+                            02 ^{
+                                01=if(!ItemIsInUse(IdToItem(GetValueFromScript('FairanRealEquip','Arts',i))))
+                                02 ^{
+                                    01=ItemIsInUse(IdToItem(GetValueFromScript('FairanRealEquip','Arts',i)),Player(),1);
+                                    02=break;
+                                }
+                            }
+                        }
+                        11=if(FormShipCurItem('MoveType')==3)
+                        12 ^{
+                            01=if(GetValueFromScript('FairanRealEquip','ArtTimer')<GetValueFromScript('FairanRealEquip','ArtsChangeCount'))
+                            02 ^{
+                                01=int c=0;
+                                02=for(i=0; i<GetValueFromScript('FairanRealEquip','ArtsCount'); i=i+1)
+                                03 ^{
+                                    01=if(Id(FormShipCurItem())==GetValueFromScript('FairanRealEquip','Arts',i))
+                                    02 ^{
+                                        01=c=1;
+                                        02=break;
+                                    }
+                                }
+                                04=if(ItemType(FormShipCurItem())==23) c=1;
+                                05=else if(ItemType(FormShipCurItem())==24) c=1;
+                                06=else if(ItemType(FormShipCurItem())==25) c=1;
+                                07=else if(ItemType(FormShipCurItem())==35) c=1;
+                                08=if(c!=1) FormShipCurItem('PutBack');
+                            }
+                        }
+                    }
+                    03=if(ScriptItemActionType(t_OnDropItemFixed))
+                    04 ^{
+                        01=if(GetValueFromScript('FairanRealEquip','ArtTimer')<GetValueFromScript('FairanRealEquip','ArtsChangeCount'))
+                        02 ^{
+                            01=for(i=0; i<GetValueFromScript('FairanRealEquip','ArtsCount'); i=i+1)
+                            02 ^{
+                                01=if(Id(ScriptItemActObject1())==GetValueFromScript('FairanRealEquip','Arts',i))
+                                02 ^{
+                                    01=ScriptItemActParam(-1);
+                                    02=MessageBox('Попытка демонтажа в условиях открытого космоса привела к критическому повреждению. Артефакт уничтожен!');
+                                }
+                            }
+                        }
+                    }
+                    05=if(ScriptItemActionType(t_OnStep, 0))
+                    06 ^{
+                        01=if(GetShipPlanet(Player())!=0)
+                        02 ^{
+                            01=if(PlanetOwner(GetShipPlanet(Player()))!=6)
+                            02 ^{
+                                01=exit;
+                            }
+                            03=else int a=1;
+                        }
+                        03=if(ShipInNormalSpace(Player())==0 && a==0)
+                        04 ^{
+                            01=exit;
+                        }
+                        05=for(i=0; i<GetValueFromScript('FairanRealEquip','ItemsCount'); i=i+1)
+                        06 ^{
+                            01=if(!ItemIsInUse(IdToItem(GetValueFromScript('FairanRealEquip','Items',i))))
+                            02 ^{
+                                01=ItemIsInUse(IdToItem(GetValueFromScript('FairanRealEquip','Items',i)),Player(),1);
+                            }
+                        }
+                        07=if(GetValueFromScript('FairanRealEquip','ArtTimer')<GetValueFromScript('FairanRealEquip','ArtsChangeCount'))
+                        08 ^{
+                            01=for(i=0; i<GetValueFromScript('FairanRealEquip','ArtsCount'); i=i+1)
+                            02 ^{
+                                01=if(!ItemIsInUse(IdToItem(GetValueFromScript('FairanRealEquip','Arts',i))))
+                                01 ^{
+                                    01=ItemIsInUse(IdToItem(GetValueFromScript('FairanRealEquip','Arts',i)),Player(),1);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

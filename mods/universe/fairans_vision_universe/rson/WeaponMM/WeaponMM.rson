@@ -1,0 +1,983 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "WeaponMM",
+    "ScriptFileOut": "D:\\WeaponMM.scr",
+    "ScriptTextOut": "D:\\WeaponMM.txt",
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Name": "restart",
+                    "Pos.x": 0,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 36,
+                    "Msg": "Ага, обойдетесь",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.WeaponMM.12\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 37,
+                    "Msg": "Плачу только наличным",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer(CT(\"Script.WeaponMM.13\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 38,
+                    "Msg": "Давай его сюда, мне пора",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.WeaponMM.14\"))"
+                },
+                {
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 39,
+                    "Msg": "Хорошо",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.WeaponMM.15\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 40,
+                    "Msg": "Хочу еще один такой",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer(CT(\"Script.WeaponMM.16\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 540,
+                    "Type": "TDialogAnswer",
+                    "Parent": -1,
+                    "#": 41,
+                    "Msg": "Оплатить половину с нод-счета",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer(CT(\"Script.WeaponMM.17\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "Все эти сертифицированные штуки, конечно, хороши, но что может быть лучше старого доброго микромодуля, собранного лично, без лишних проверок и испытаний.\r\nДа, <PlayerFull>?\r\nТак, на данный момент у нас есть наработки для следующих орудий:\r\n<0>",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.WeaponMM.3\"),\"<0>\",tstr1))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "Чудесно! Только вот нашим ребятам нужно кое-что - для вдохновения, так сказать. Притащи-ка им:\r\n<0> ед. алкоголя\r\n<1> ед. наркоты\r\nНу и материалов для работы:\r\n<2> ед.техники\r\n<3> нод\r\nЛибо мы можем списать 50% от суммы с твоего нод-счета - если там что-то водится, конечно.\r\n\r\nТак, с учетом сложности операции вывода нодов, мы спишем с нод-счета <4> нод и возьмем <5> нод наличными.",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(Format(CT(\"Script.WeaponMM.4\"),\"<0>\",alcogol_count,\"<1>\",narkota_count,\"<2>\",technica_count,\"<3>\",1*selected_nod_cost,\"<4>\",1*selected_nod_cost,\"<5>\",1*selected_nod_cost/2))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "Ох, не имею ни малейшего понятия, что там они намудрили, но вот, держи, посмотри сам. Во всяком случае, в разгар боя орудия еще ни у кого не клинили. Да и тем более, вы ведь, рейнджеры, народ бесстрашный, все что ни попадя в трюм тащите, а потом на нас жалуетесь!",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(CT(\"Script.WeaponMM.5\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 30,
+                    "Msg": "Мы, конечно, ценим твое желание потратить немного кредитов на нашей станции, но нашим техникам нужно отдохнуть после бурной... работы. Вон, главного инженера вчера вообще в стволе осколочного орудия нашли. Как он туда забрался, ума не приложу. Да ведь еще и застрял, наглухо.\r\nТы это, приходи позже, а пока мы можем предложить тебе другие услуги.",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(CT(\"Script.WeaponMM.6\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 31,
+                    "Msg": "К сожалению, мы сейчас не можем принять твой заказ. У нас тут возникли некоторые, э-э-э...трудности технического плана. Ты случайно не знаешь, как остановить расплавление ядра ядерного реактора?\r\n(истеричные крики на фоне: мы все умре-е-е-е-м!)\r\nМ-м-м, да... вот и мы не знаем. В общем, заходи позже, мы с радостью примем твои деньги... ну, то есть, твой заказ, да.",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(CT(\"Script.WeaponMM.7\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 750,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 32,
+                    "Msg": "(Громкие звуки веселья на фоне):\r\n- Кто всех разбомбит их в хлам?! Наш лякуша Инцихшам! Хэй, братва, погнали на верхнюю палубу, там еще есть несколько тонн этой втыкилы, или чего там привёз Лякуша Лошарик.\r\n(Радостные крики нескольких сотен гуманоидов)\r\n--------------------------------------------------\r\nАх, это вы, рейнджер. Видите ли, вы пришли немного невовремя. Наши инженеры решили немного отдохнуть и, боюсь, это надолго. Советую зайти к нам немного попозже.",
+                    "DMsg.Num": "5",
+                    "_orig_dtext": "DText(CT(\"Script.WeaponMM.8\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 900,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 33,
+                    "Msg": "(Разговор на фоне):\r\n- Так, здесь вот так, немного ровней, ага. Отлично. Должно работать, запускай. Стоп, какого пенчекряка?\r\n- АКТИВИРОВАН ЗАЩИТНЫЙ ПРОТОКОЛ.\r\n- Бегом в тот отсек, скорее!\r\n-----------------------------------------------\r\nПод вой громкой сирены и крики персонала станции вы успеваете услышать фразу - EXTERMINATE EXTERMINATE, после чего целый отсек буквально исчезает на ваших глазах после серии мощных взрывов.\r\n-----------------------------------------------\r\nО, здравствуйте. Я думаю вам стоит зайти пойже. Когда мы найдем нам новых инженеров и новое помещение под проведение экспериментов.",
+                    "DMsg.Num": "6",
+                    "_orig_dtext": "DText(CT(\"Script.WeaponMM.9\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1050,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 34,
+                    "Msg": "(вы заходите в помещение, из которого доносятся странные звуки).\r\nВнутри него вы видите сборище различных гуманоидов, водящих некое подобие хоровода вокруг кучи запчастей неясного происхождения. Откуда-то из-под горы деталей медленно струится дым, и вся эта загадочная конструкция испускает яркий неоновый свет. Во главе хоровода вы замечаете пеленга - техника, держащего в одной паре рук бубен, в другой же сжимающий пару инструментов.\r\n--------------------------------------------------\r\nВдруг вы замечаете подбегающего к вам из толпы человека - явно в не самом адекватном состоянии. Его глаза бегают по сторонам, а он сам кажется чересчур гиперактивным.\r\n\r\n- О-о-о, <PlayerFull>! Не знаю, что вы в прошлой раз нам привезли, но ребята до сих пор находятся во вдохновленном состоянии. Сейчас они создают свой новый шедевр и, надеюсь, вскоре у них все получится. Зайдите попозже и сами сможете в этом убедиться!",
+                    "DMsg.Num": "7",
+                    "_orig_dtext": "DText(CT(\"Script.WeaponMM.10\"))"
+                },
+                {
+                    "Name": "",
+                    "Pos.x": 1200,
+                    "Pos.y": 470,
+                    "Type": "TDialogMsg",
+                    "Parent": -1,
+                    "#": 35,
+                    "Msg": "Вы замечаете толстую железную дверь. Висящая на ней табличка гордо гласит: <clr>НУЧНЫЙ ОТДЕЛ<clrEnd>. Вы решаете зайти внутрь, не дожидаясь кого-либо из персонала. Вдруг дверь распахивается, и из нее появляется малок в банном халате, подвыпитой наружности.\r\n-----------------------------------------------\r\n- ТЫ МЕНЯ УВАЖАЕШЬ?\r\nВпрочем, не дожидаясь ответа он тут же продолжил.\r\n- ТЫ ПРЕДСТАВЛЯЕШЬ, Я ИМ И ТАК ОБЪЯСНЯЮ, И ЭДАК. ЭТИ ИДИОТЫ НИЧЕГО НЕ ПОНИМАЮТ! А ЭТО ЖЕ ОСНОВЫ! Создание управляемого гаусс-магнитного поля с помощью псевдосингулярности, принципы Гнука-Эйнштейна можно отправлять прямиком на Гралгар... Ай, черт с ними, я за кинзой.\r\n-----------------------------------------------\r\nПошатываясь, малок скрылся в коридорах базы, даже не заметив упавший со своей груди бейджик с надписью \"Т.Сторк\".\r\nПостояв еще немного удивлённым от увиденного, вы решили, что будет лучше зайти сюда попозже.",
+                    "DMsg.Num": "8",
+                    "_orig_dtext": "DText(CT(\"Script.WeaponMM.11\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Name": "ChoiceMM",
+                    "Type": "TDialog",
+                    "Pos.x": 0,
+                    "Pos.y": 400,
+                    "Parent": -1,
+                    "#": 24
+                },
+                {
+                    "Name": "CraftMM",
+                    "Type": "TDialog",
+                    "Pos.x": 120,
+                    "Pos.y": 400,
+                    "Parent": -1,
+                    "#": 25
+                },
+                {
+                    "Name": "ChoiceMM_TC",
+                    "Type": "TDialog",
+                    "Pos.x": 240,
+                    "Pos.y": 400,
+                    "Parent": -1,
+                    "#": 26
+                }
+            ],
+            "Groups": [
+                {
+                    "Name": "GroupNew",
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0,
+                    "Type": "TGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 18
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Name": "",
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ],
+                    "#": 19,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 0,
+                    "Pos.y": 610
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Init",
+                    "Code": [
+                        "WeaponsPath=newarray(1);",
+                        "CT('Script.MMInfoBase.MM_Craft_Path',WeaponsPath);",
+                        "WeaponsGTU=newarray(1);",
+                        "CT('Script.MMInfoBase.MM_Craft_GTU',WeaponsGTU);",
+                        "WeaponsList=newarray(1);",
+                        "CT('Script.MMInfoBase.MM_Craft_Mods',WeaponsList);",
+                        "",
+                        "path='Script.Weapon_MM_Koefs.';",
+                        "",
+                        "Date = CT('Script.WeaponMM.Date');"
+                    ],
+                    "#": 20,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 60,
+                    "Pos.y": 610
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(!findsubstr(GameDateTxtByTurn(CurTurn()),CT('Script.FirstJanuary'))) buy_count=0;",
+                        "",
+                        "//Обновляем массивы",
+                        "if(CT('Script.WeaponMM.Date') != Date) {",
+                        "    Date = CT('Script.WeaponMM.Date');",
+                        "",
+                        "    WeaponsPath=newarray(1);",
+                        "    CT('Script.MMInfoBase.MM_Craft_Path',WeaponsPath);",
+                        "    WeaponsGTU=newarray(1);",
+                        "    CT('Script.MMInfoBase.MM_Craft_GTU',WeaponsGTU);",
+                        "    WeaponsList=newarray(1);",
+                        "    CT('Script.MMInfoBase.MM_Craft_Mods',WeaponsList);",
+                        "}"
+                    ],
+                    "#": 21,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 120,
+                    "Pos.y": 610
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(GetShipRuins(Player())>0) {",
+                        "  if(ShipType(GetShipRuins(Player()))=='PB') {",
+                        "    AddDialogInject('ChoiceMM',CT(\"Script.WeaponMM.2\"),CT(\"Script.WeaponMM.0\"),0);",
+                        "  }",
+                        "  else if(ShipType(GetShipRuins(Player()))=='TC') {",
+                        "    AddDialogInject('ChoiceMM_TC',CT(\"Script.WeaponMM.1\"),CT(\"Script.WeaponMM.0\"),0);",
+                        "  }",
+                        "}"
+                    ],
+                    "#": 22,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 180,
+                    "Pos.y": 610
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(buy_count>=4.5) {",
+                        "  i=Rnd(1,6);",
+                        "  if(i==1) {",
+                        "    DChange(3);",
+                        "  }",
+                        "  if(i==2) {",
+                        "    DChange(4);",
+                        "  }",
+                        "  if(i==3) {",
+                        "    DChange(5);",
+                        "  }",
+                        "  if(i==4) {",
+                        "    DChange(6);",
+                        "  }",
+                        "  if(i==5) {",
+                        "    DChange(7);",
+                        "  }",
+                        "  if(i==6) {",
+                        "    DChange(8);",
+                        "  }",
+                        "}",
+                        "else {",
+                        "  DChange(0);",
+                        "}",
+                        "exit;"
+                    ],
+                    "#": 42,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 400
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "selected_koef=CT(path+WeaponsPath[GAnswerData]);",
+                        "selected_nod_cost=100.0*selected_koef;",
+                        "technica_count=selected_nod_cost/20;",
+                        "alcogol_count=selected_nod_cost/10;",
+                        "narkota_count=int((technica_count*5+alcogol_count*5)/15-(selected_koef-1));",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 43,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 400
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ],
+                    "#": 44,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 220,
+                    "Pos.y": 400
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tstr1 = '';",
+                        "for (i=1;i<=ArrayDim(WeaponsPath);i=i+1)",
+                        "{",
+                        "    //Проверяем, в наличии ли нужный ММке мод",
+                        "    if(WeaponsList[i-1] != 'Vanilla') {",
+                        "        if(!BlockExist('Script.'+WeaponsList[i-1])) continue;",
+                        "    }",
+                        "    //Создать этот микромодуль ищо низя",
+                        "    if(GalaxyTechLevel()<WeaponsGTU[i-1]) continue;",
+                        "",
+                        "    InjectAnswer('CraftMM',BonusName(FindBonusByNameInCfg(WeaponsPath[i-1])),i-1);",
+                        "",
+                        "    //Подготавливаем материал для подстановки в текст",
+                        "    tstr2 = '</color>' + CT('Script.WeaponMM.MMWeaponList'+i);",
+                        "    //Защищаем от задвоений",
+                        "    if(!findsubstr(tstr1,tstr2)) tstr1 = tstr1 + tstr2 + Format('<br>');",
+                        "}"
+                    ],
+                    "#": 45,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": -20,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(GoodsCount(Player(),7)>=narkota_count && GoodsCount(Player(),2)>=technica_count && GoodsCount(Player(),5)>=alcogol_count && GetNodesFromShip(Player())>=selected_nod_cost) {",
+                        "  DAdd(1);",
+                        "}",
+                        "if(GoodsCount(Player(),7)>=narkota_count && GoodsCount(Player(),2)>=technica_count && GoodsCount(Player(),5)>=alcogol_count && RangerBaseNodes(Player())>=selected_nod_cost) {",
+                        "  DAdd(5);",
+                        "}",
+                        "DAdd(0);"
+                    ],
+                    "#": 46,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 130,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(buy_count<4.5) {",
+                        "  DAdd(4);",
+                        "}",
+                        "DAdd(2);"
+                    ],
+                    "#": 47,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 280,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);"
+                    ],
+                    "#": 48,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 430,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);"
+                    ],
+                    "#": 49,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);"
+                    ],
+                    "#": 50,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 730,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);"
+                    ],
+                    "#": 51,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 880,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);"
+                    ],
+                    "#": 52,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1030,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);"
+                    ],
+                    "#": 53,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 1180,
+                    "Pos.y": 470
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "unicMM=CreateMM(FindBonusByNameInCfg(WeaponsPath[GAnswerData]));",
+                        "AddItemToStorage(GetShipRuins(Player()),unicMM);",
+                        "if (i==100)",
+                        "{",
+                        "    GetNodesFromShip(Player(),selected_nod_cost/2);",
+                        "    RangerBaseNodes(Player(),RangerBaseNodes(Player())-selected_nod_cost);",
+                        "}",
+                        "else",
+                        "{",
+                        "    GetNodesFromShip(Player(),selected_nod_cost);",
+                        "}",
+                        "ShipGoods(Player(),7,-narkota_count);",
+                        "ShipGoods(Player(),2,-technica_count);",
+                        "ShipGoods(Player(),5,-alcogol_count);",
+                        "buy_count=buy_count+selected_nod_cost/500;",
+                        "Sound('Sound.CraftMM');",
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 54,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 100,
+                    "Pos.y": 540
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Скидываем маркер оплаты при выборе повторного заказа",
+                        "i=0;",
+                        "DChange(1);",
+                        "exit;"
+                    ],
+                    "#": 55,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 460,
+                    "Pos.y": 540
+                },
+                {
+                    "Name": "",
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Маркируем выбор снятия части нодов с нод-счета",
+                        "i=100;",
+                        "unicMM=CreateMM(FindBonusByNameInCfg(WeaponsPath[GAnswerData]));",
+                        "AddItemToStorage(GetShipRuins(Player()),unicMM);",
+                        "if (i==100)",
+                        "{",
+                        "    GetNodesFromShip(Player(),selected_nod_cost/2);",
+                        "    RangerBaseNodes(Player(),RangerBaseNodes(Player())-selected_nod_cost);",
+                        "}",
+                        "else",
+                        "{",
+                        "    GetNodesFromShip(Player(),selected_nod_cost);",
+                        "}",
+                        "ShipGoods(Player(),7,-narkota_count);",
+                        "ShipGoods(Player(),2,-technica_count);",
+                        "ShipGoods(Player(),5,-alcogol_count);",
+                        "buy_count=buy_count+selected_nod_cost/500;",
+                        "Sound('Sound.CraftMM');",
+                        "DChange(2);",
+                        "exit;"
+                    ],
+                    "#": 56,
+                    "Type": "Top",
+                    "Parent": -1,
+                    "Pos.x": 580,
+                    "Pos.y": 540
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Name": "PlanetNew",
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew",
+                    "Type": "TPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 185,
+                    "Parent": -1,
+                    "#": 17
+                }
+            ],
+            "Ships": [
+                {
+                    "Name": "",
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew",
+                    "Type": "TStarShip",
+                    "Pos.x": 0,
+                    "Pos.y": 95,
+                    "Parent": -1,
+                    "#": 16
+                }
+            ],
+            "Stars": [
+                {
+                    "Name": "StarNew",
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false,
+                    "Type": "TStar",
+                    "Pos.x": 0,
+                    "Pos.y": 140,
+                    "Parent": -1,
+                    "#": 15,
+                    "Constellation": 0
+                }
+            ],
+            "States": [
+                {
+                    "Name": "StateNew",
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "Attack.Items": [],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": "",
+                    "Type": "TState",
+                    "Pos.x": 0,
+                    "Pos.y": 300,
+                    "Parent": -1,
+                    "#": 23
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "selected_nod_cost",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Float",
+                    "Init": "0.000",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "selected_koef",
+                    "Pos.x": 240,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Float",
+                    "Init": "0.000",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "narkota_count",
+                    "Pos.x": 450,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "technica_count",
+                    "Pos.x": 660,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "alcogol_count",
+                    "Pos.x": 870,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "unicMM",
+                    "Pos.x": 1080,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "buy_count",
+                    "Pos.x": 1170,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Float",
+                    "Init": "0.000",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "path",
+                    "Pos.x": 1320,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 1410,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "WeaponsList",
+                    "Pos.x": 1500,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "None",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "WeaponsPath",
+                    "Pos.x": 1680,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 10,
+                    "Var.Type": "None",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "WeaponsGTU",
+                    "Pos.x": 0,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 11,
+                    "Var.Type": "None",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tstr1",
+                    "Pos.x": 150,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 12,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tstr2",
+                    "Pos.x": 240,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 13,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "Date",
+                    "Pos.x": 330,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 14,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 24,
+            "End": 42,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 43,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 44,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 27,
+            "End": 45,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 28,
+            "End": 46,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 29,
+            "End": 47,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 30,
+            "End": 48,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 31,
+            "End": 49,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 32,
+            "End": 50,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 33,
+            "End": 51,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 34,
+            "End": 52,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 35,
+            "End": 53,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 37,
+            "End": 54,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 40,
+            "End": 55,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 41,
+            "End": 56,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 15,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 17,
+            "End": 15,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 17,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 23,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": []
+}

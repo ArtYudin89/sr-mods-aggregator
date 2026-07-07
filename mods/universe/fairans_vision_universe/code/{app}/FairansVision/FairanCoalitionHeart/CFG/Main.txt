@@ -1,0 +1,236 @@
+Data ~{
+    Script ^{
+        Coalition_Heart=1,Script.Coalition_Heart
+    }
+    Star ~{
+        Aelra ~{
+            DamageRadius=350
+            Priority=5
+            Radius=300
+            SEGraph=Star.Aelra
+            SEProcess=Process.Normal
+            SafeRadius=340
+        }
+    }
+    SE ~{
+		Weapon ^{
+            8 ^{
+                Palettes ^{
+                    26 ^{
+                        Color0=0.18,0.25,0.14
+                        GAI=Bm.Weapon.BBG_6174ShotPiro
+                        SoundShot=Sound.BBG_6174_Pyrokar
+                    }
+                }
+            }
+            AuraEffect ^{
+                Palettes ^{
+                    26 ^{
+                        GAI=Bm.Weapon.BBG_6174EffectPiro
+                    }
+                }
+            }
+        }
+        Star ~{
+            Aelra ~{
+                Anim=Bm.Star.Aelraa
+                Image=GI,Bm.Star.Aelra
+                ImageMap=Bm.Star.MapAelra
+                PosZ=Star
+                SmeImage=280,280
+                SmeImageMap=8,8
+            }
+        }
+        Ship ~{
+            Akrin ^{
+                FlagmanFei ^{
+                    1ImageP=GI,Bm.ShipP.1FeiBW
+                    2ImageP=GI,Bm.ShipP.2FeiBW
+                    Anim ^{
+                        0=1,[70,50-99]
+                        Normal=2,[70,0-49]
+                    }
+                    AnimS ^{
+                        Normal=2,[70,0-49]
+                    }
+                    Image=Bm.Ship.FeiBW
+                    ImageMap=Bm.Ship.FeiMapBW
+                    ImageS=Bm.Ship.FeiBWs
+                    PosZ=Ship
+                    SizeImage=128,128
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=2,2
+                    StateTime=2000
+                }
+                FlagmanGaal ^{
+                    1ImageP=GI,Bm.ShipP.1GaalBW
+                    2ImageP=GI,Bm.ShipP.2GaalBW
+                    Anim ^{
+                        0=1,[70,50-99]
+                        Normal=2,[70,0-49]
+                    }
+                    AnimS ^{
+                        Normal=1,[70,0-49]
+                    }
+                    Image=Bm.Ship.GaalBW
+                    ImageMap=Bm.Ship.GaalMapBW
+                    ImageS=Bm.Ship.GaalBWs
+                    PosZ=Ship
+                    SizeImage=128,128
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=2,2
+                    StateTime=2000
+                    Tail1=64,115
+                    Tail2=32,92
+                    Tail3=96,92
+                }
+                FlagmanMaloc ^{
+                    1ImageP=GI,Bm.ShipP.1MalocBW
+                    2ImageP=GI,Bm.ShipP.2MalocBW
+                    Anim ^{
+                        0=1,[70,50-99]
+                        Normal=2,[70,0-49]
+                    }
+                    AnimS ^{
+                        Normal=2,[70,0-49]
+                    }
+                    Image=Bm.Ship.MalocBW
+                    ImageMap=Bm.Ship.MalocMapBW
+                    ImageS=Bm.Ship.MalocBWs
+                    PosZ=Ship
+                    SizeImage=128,128
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=2,2
+                    StateTime=2000
+                }
+                FlagmanPeleng ^{
+                    1ImageP=GI,Bm.ShipP.1PelengBW
+                    2ImageP=GI,Bm.ShipP.2PelengBW
+                    Anim ^{
+                        0=1,[70,50-99]
+                        Normal=2,[70,0-49]
+                    }
+                    AnimS ^{
+                        Normal=2,[70,0-49]
+                    }
+                    Image=Bm.Ship.PelengBW
+                    ImageMap=Bm.Ship.PelengMapBW
+                    ImageS=Bm.Ship.PelengBWs
+                    PosZ=Ship
+                    SizeImage=128,128
+                    SmeCenterImage=64,64
+                    SmeImage=64,64
+                    SmeImageMap=2,2
+                    StateTime=2000
+                    Tail1=63,117
+                }
+                FlagmanPeople ^{
+                    1ImageP=GI,Bm.ShipP.1PeopleBW
+                    2ImageP=GI,Bm.ShipP.2PeopleBW
+                    Anim ^{
+                        0=1,[70,50-99]
+                        Normal=2,[70,0-49]
+                    }
+                    AnimS ^{
+                        Normal=2,[70,0-49]
+                    }
+                    Image=Bm.Ship.PeopleBW
+                    ImageMap=Bm.Ship.PeopleMapBW
+                    ImageS=Bm.Ship.PeopleBWs
+                    PosZ=Ship
+                    SizeImage=128,128
+                    SmeCenterImage=64,64
+                    SmeImage=63,69
+                    SmeImageMap=2,2
+                    StateTime=2000
+                    Tail1=64,115
+                }
+				PeopleTitan ^{
+                    2ImageP=GI,Bm.ShipP.2PeopleTitan
+                    Anim ^{
+                        Normal=1,[50,0-287]
+                    }
+					AnimS ^{
+                        Normal=1,[50,0-287]
+                    }
+                    Image=Bm.Ship.PeopleTitan
+                    ImageMap=Bm.Ship.SpecialMap
+                    ImageS=Bm.Ship.PeopleTitans
+                    PanelPartnerImage=PeopleTitan
+                    PosZ=Ship
+                    SizeImage=256,256
+                    SmeCenterImage=128,128
+                    SmeImage=128,128
+                    SmeImageMap=2,2
+                    StateTime=2000
+                }
+            }
+        }
+        Ruins ^{
+            EliteWB_0 ^{
+                Image=Bm.Ruins.EliteWB_0
+                ImageI=GI,Bm.Ruins.WBi
+                ImageMap=GI,Bm.Ruins.MapWB
+                PosZ=Ruins
+            }
+            EliteWB_1 ^{
+                Image=Bm.Ruins.EliteWB_1
+                ImageI=GI,Bm.Ruins.WBi
+                ImageMap=GI,Bm.Ruins.MapWB
+                PosZ=Ruins
+            }
+            EliteWB_2 ^{
+                Image=Bm.Ruins.EliteWB_2
+                ImageI=GI,Bm.Ruins.WBi
+                ImageMap=GI,Bm.Ruins.MapWB
+                PosZ=Ruins
+            }
+        }
+        Sound ^{
+            Loop ^{
+                Ruins ^{
+                    EliteWB_0 ^{
+                        10=3000,Sound.LoopRuins02
+                    }
+                    EliteWB_1 ^{
+                        10=3000,Sound.LoopRuins02
+                    }
+                    EliteWB_2 ^{
+                        10=3000,Sound.LoopRuins02
+                    }
+                }
+            }
+            Rnd ^{
+                Ruins ^{
+                    EliteWB_0 ^{
+                    }
+                    EliteWB_1 ^{
+                    }
+                    EliteWB_2 ^{
+                    }
+                }
+            }
+        }
+    }
+    StyleAsteroid ~{
+        200=Yellow,8
+    }
+    StyleComet ~{
+        200=Yellow,4
+    }
+    StyleGarbage ~{
+        200=200,300,400,500,100
+    }
+    StyleNebula ~{
+        200=3
+    }
+    StyleStar ~{
+        200=00,01,02,03,04,Red
+    }
+	StyleFacePeople ^{
+        100=
+	}
+}

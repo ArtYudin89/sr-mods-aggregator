@@ -1,0 +1,1718 @@
+MicroModuls ^{
+    Atomic_vision_Destractor ^{
+        Cost=130
+        Equipments=W10
+        Fragility=166
+        Name="Дестрактор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной версии оснащено электромагнитным модулятором, благодаря чему каждый выстрел серьезно <clr>повреждает<clrEnd> оборудование цели. Ускоряет <clr>износ<clrEnd> орудия и увеличивает его <clr>дальность<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+16<clrEnd> ед.
+        WeaponMods=Destruct
+        bonWRadius=16
+    }
+    Atomic_vision_Magnetron ^{
+        Cost=130
+        Equipments=W10
+        Name="Магнетрон"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает амплитуду любого энергетического импульса, вызывая <clr>помехи<clrEnd> в работе оборудования цели. При этом вызываемые магнитным полем помехи отрицательно сказываются на <clr>навигационных<clrEnd> системах корабля.</color><br> <br>
+        Text=Мощность сканера: <clr>-4<clrEnd> ед.
+        Text=Дальность радара: <clr>-300<clrEnd> ед.
+        WeaponMods=Magnetic
+        bonRadar=-300
+        bonScan=-4
+    }
+    Atomizer_Armolock ^{
+        Cost=130
+        Equipments=Atomizer
+        Name="Армолок"
+        OnPlanets=1
+        Owner=Maloc
+        Priority=10
+        Ruins=Any
+        ShotVisual=4
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие модификации "Армолок" может высокоточными выстрелами выводить из строя концентратор каналов управления вооружением цели, на некоторое время отнимая у противника способность вести ответный огонь.</color><br> <br>
+        Text=Шанс блокировки <clr>вооружения<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность стрельбы: <clr>+54<clrEnd> ед.
+        Text=Скорость двигателя: <clr>-20<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockWeapon
+        bonSpeed=-20
+        bonWRadius=54
+    }
+    Atomizer_Corruptor ^{
+        Cost=130
+        Equipments=Atomizer
+        Name="Корраптор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Данное оружие адаптированно под специальные уплотненные снаряды, существенно лучше пробивающие <clr>броню<clrEnd> противника. Однако, ее установка существенно увеличивает <clr>массу корабля<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+14<clrEnd> ед.
+        Text=Масса корабля: <clr>+8%<clrEnd>
+        WeaponMods=Acid
+        bonMass=8
+        bonWRadius=14
+    }
+    Atomizer_Lyphocar ^{
+        Cost=130
+        Equipments=Atomizer
+        Name="Лифокар"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модернизированное по проекту "Лифокар" вооружение наносит дополнительный урон поврежденным целям, используя механизм последовательной сверхточной стрельбы в пробоины корпуса.</color><br> <br>
+        Text=Бонус к урону: до <clr>33%<clrEnd>
+        Text=Урон осколочного оружия: <clr>+7<clrEnd> ед.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BonusToDamaged
+        bonScan=-4
+        bonWSplinter=7
+    }
+    CryoProjector_Armolock ^{
+        Cost=130
+        Equipments=CryoProjector
+        Name="Армолок"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=4
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие модификации "Армолок" может высокоточными выстрелами выводить из строя концентратор каналов управления вооружением цели, на некоторое время отнимая у противника способность вести ответный огонь.</color><br> <br>
+        Text=Шанс блокировки <clr>вооружения<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность стрельбы: <clr>+21<clrEnd> ед.
+        Text=Скорость двигателя: <clr>-30<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockWeapon
+        bonSpeed=-30
+        bonWRadius=21
+    }
+    CryoProjector_Javitor ^{
+        Cost=130
+        Equipments=CryoProjector
+        Fragility=91
+        Name="Джавитор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модифицированное для прицельного отстрела ремонтных роботов вооружение в варианте "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта в ходе битвы. Обладает повышенной надежностью.</color><br> <br>
+        Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность радара: <clr>-250<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockDroid
+        bonRadar=-250
+    }
+    Disintegrator_Destractor ^{
+        Cost=130
+        Equipments=W11
+        Fragility=166
+        Name="Дестрактор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной версии оснащено электромагнитным модулятором, благодаря чему каждый выстрел серьезно <clr>повреждает<clrEnd> оборудование цели. Ускоряет <clr>износ<clrEnd> орудия и увеличивает его <clr>дальность<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+13<clrEnd> ед.
+        WeaponMods=Destruct
+        bonWRadius=13
+    }
+    Disintegrator_Drainir ^{
+        Cost=130
+        Equipments=W11
+        Name="Дрэйнир"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной модификации переносит часть вещества корпуса цели посредством гравитационной воронки для дальнейшей <clr>реструктуризации<clrEnd> собственного корабля. <clr>Снижает эффективность<clrEnd> ремонтного дроида.</color><br> <br>
+        Text=Ремонт дроида: <clr>-25<clrEnd> ед.
+        Text=Урон энергетического оружия: <clr>-70<clrEnd> ед.
+        WeaponMods=Drain
+        bonDroid=-25
+        bonWEnergy=-70
+    }
+    Disintegrator_Dyshot ^{
+        Cost=130
+        Equipments=W11
+        Name="Дишот"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Акриновая модификация, нацеленная на экстремальный разгон орудия за счет подведения дополнительного потока энергии от генератора защитного поля.</color><br> <br>
+        Text=Скорострельность: <clr>+1<clrEnd>
+        Text=Урон энергетического оружия: <clr>-40<clrEnd> ед.
+        Text=Мощность генератора защитного поля: <clr>-4<clrEnd> ед.
+        bonAttacks=1
+        bonDef=-4
+        bonWEnergy=-40
+    }
+    Disintegrator_Voltat ^{
+        Cost=130
+        Equipments=W11
+        Name="Вольтат"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Дополнительный контур сверхпроводников, тянущийся от орудия вплоть до двигателя, позволяющий осуществлять разгон элементарных частиц и добиваться <clr>ионизирующего<clrEnd> эффекта цели. Однако, работа микроколлайдера вносит постоянные сбои в работу <clr>систем зажигания<clrEnd>.</color><br> <br>
+        Text=Урон энергетического оружия: <clr>+3<clrEnd> ед.
+        Text=Скорость корабля: <clr>-45<clrEnd> ед.
+        WeaponMods=Shock
+        bonSpeed=-45
+        bonWEnergy=3
+    }
+    Electronic_cutter_Drainir ^{
+        Cost=130
+        Equipments=W08
+        Name="Дрэйнир"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной модификации переносит часть вещества корпуса цели посредством гравитационной воронки для дальнейшей <clr>реструктуризации<clrEnd> собственного корабля. <clr>Снижает эффективность<clrEnd> ремонтного дроида.</color><br> <br>
+        Text=Ремонт дроида: <clr>-20<clrEnd> ед.
+        Text=Урон энергетического оружия: <clr>-24<clrEnd> ед.
+        WeaponMods=Drain,Destruct
+        bonDroid=-20
+        bonWEnergy=-24
+    }
+    Electronic_cutter_Voltat ^{
+        Cost=130
+        Equipments=W08
+        Name="Вольтат"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Дополнительный контур сверхпроводников, тянущийся от орудия вплоть до двигателя, позволяющий осуществлять разгон элементарных частиц и добиваться <clr>ионизирующего<clrEnd> эффекта цели. Однако, работа микроколлайдера вносит постоянные сбои в работу <clr>систем зажигания<clrEnd>.</color><br> <br>
+        Text=Урон энергетического оружия: <clr>+2<clrEnd> ед.
+        Text=Скорость корабля: <clr>-30<clrEnd> ед.
+        WeaponMods=Shock
+        bonSpeed=-30
+        bonWEnergy=2
+    }
+    Esodafer_Destractor ^{
+        Cost=130
+        Equipments=W16
+        Fragility=143
+        Name="Дестрактор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной версии оснащено электромагнитным модулятором, благодаря чему каждый выстрел серьезно <clr>повреждает<clrEnd> оборудование цели. Ускоряет <clr>износ<clrEnd> орудия и увеличивает его <clr>дальность<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+28<clrEnd> ед.
+        WeaponMods=Destruct
+        bonWRadius=28
+    }
+    ExzoShocker_Diphrod ^{
+        Cost=130
+        Equipments=ExzoShocker
+        Name="Дифрод"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Серийный комплект модифицированных узлов орудия и программных доработок "Дифрод", увеличивающий мощность оружия разных типов.</color><br> <br>
+        Text=Бонус к урону: <clr>15%<clrEnd>
+        Text=Урон энергетического оружия: <clr>+2<clrEnd> ед.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=ScanBonus
+        bonScan=-5
+        bonWEnergy=2
+    }
+    ExzoShocker_Javitor ^{
+        Cost=130
+        Equipments=ExzoShocker
+        Fragility=91
+        Name="Джавитор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модифицированное для прицельного отстрела ремонтных роботов вооружение в варианте "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта в ходе битвы. Обладает повышенной надежностью.</color><br> <br>
+        Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность радара: <clr>-250<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockDroid
+        bonRadar=-250
+    }
+    FairanForkGuns_MeonPlasmathrowerGrinch ^{
+        Cost=70
+        Equipments=MeonPlasmathrower
+        Fragility=133
+        KindGraph=Grinch
+        Name="Гринч"
+        OnPlanets=1
+        Owner=Peleng,PirateClan
+        Priority=10
+        Ruins=CB,Manaan
+        ShotVisual=403
+        Size=135
+        Special=1
+        Text=<color=248,252,248>Модификация <clr>"Гринч"<clrEnd> представляет собой кустарную <clr>пеленгскую<clrEnd> и <clr>пиратскую<clrEnd> доработку малокского плазмомёта. Нацепив на него дополнительный бак с фрагилиумной наносмесью, пиратским "кулибиным" удалось нарастить огневую мощь в ущерб дальности и надёжности и без того не самого долговечного орудия.</color>
+        Text=<clr><clrEnd>
+        Text=Дополнительный эффект: <clr>разрушение оборудования<clrEnd>
+        Text=Сила осколочногого оружия: <clr>+30<clrEnd> ед.
+        Text=Дальность стрельбы: <clr>-40<clrEnd> ед.
+        Text=Стоимость: <clr>-30%<clrEnd>
+        Text=Размер: <clr>+35%<clrEnd>
+        Text=Надёжность: <clr>-25%<clrEnd>
+        WeaponMods=Destruct
+        bonWRadius=-40
+        bonWSplinter=30
+    }
+    FairanForkGuns_MeonPlasmathrowerPlasmaroll ^{
+        Cost=140
+        Equipments=MeonPlasmathrower
+        KindGraph=Plasmaroll
+        Name="Плазмаролл"
+        OnPlanets=1
+        Owner=Peleng,People
+        Priority=10
+        Ruins=WB,RC,PB,MB,Manaan,PlayerMB
+        ShotVisual=402
+        Size=120
+        Special=1
+        Text=<color=248,252,248>Модификация <clr>"Плазмаролл"<clrEnd> была сконструирована в <clr>человеческих<clrEnd> ОКБ (после чего скопирована <clr>пеленгами<clrEnd>) с целью повышения равномерности распределения плазмы в поражаемой зоне. С задачей конструкторы справились, однако нагнетание стабильного давления привело к снижению поражающего эффекта даже на самых малых дистанциях.</color>
+        Text=<clr><clrEnd>
+        Text=Дополнительный эффект: <clr>отсутствует разброс урона<clrEnd>
+        Text=Сила осколочного оружия: <clr>-35<clrEnd> ед.
+        Text=Стоимость: <clr>+40%<clrEnd>
+        Text=Размер: <clr>+20%<clrEnd>
+        WeaponMods=NoDelta
+        bonWSplinter=-35
+    }
+    Frag_gun_Armolock ^{
+        Cost=130
+        Equipments=frag_gun
+        Name="Армолок"
+        OnPlanets=1
+        Owner=Maloc
+        Priority=10
+        Ruins=Any
+        ShotVisual=4
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие модификации "Армолок" может высокоточными выстрелами выводить из строя концентратор каналов управления вооружением цели, на некоторое время отнимая у противника способность вести ответный огонь.</color><br> <br>
+        Text=Шанс блокировки <clr>вооружения<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность стрельбы: <clr>+63<clrEnd> ед.
+        Text=Скорость двигателя: <clr>-20<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockWeapon
+        bonSpeed=-20
+        bonWRadius=63
+    }
+    Frag_gun_Corruptor ^{
+        Cost=130
+        Equipments=frag_gun
+        Name="Корраптор"
+        OnPlanets=1
+        Owner=Maloc
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Данное оружие адаптированно под специальные уплотненные снаряды, существенно лучше пробивающие <clr>броню<clrEnd> противника. Однако, ее установка существенно увеличивает <clr>массу корабля<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+19<clrEnd> ед.
+        Text=Масса корабля: <clr>+6%<clrEnd>
+        WeaponMods=Acid
+        bonMass=6
+        bonWRadius=19
+    }
+    Frag_gun_Diphrod ^{
+        Cost=130
+        Equipments=frag_gun
+        Name="Дифрод"
+        OnPlanets=1
+        Owner=Maloc
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Серийный комплект модифицированных узлов орудия и программных доработок "Дифрод", увеличивающий мощность оружия разных типов.</color><br> <br>
+        Text=Бонус к урону: <clr>15%<clrEnd>
+        Text=Урон осколочного оружия: <clr>+8<clrEnd> ед.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=ScanBonus
+        bonScan=-3
+        bonWSplinter=8
+    }
+    Frag_gun_Javitor ^{
+        Cost=130
+        Equipments=frag_gun
+        Fragility=77
+        Name="Джавитор"
+        OnPlanets=1
+        Owner=Maloc
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модифицированное для прицельного отстрела ремонтных роботов вооружение в варианте "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта в ходе битвы. Обладает повышенной надежностью.</color><br> <br>
+        Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность радара: <clr>-150<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockDroid
+        bonRadar=-150
+    }
+    FusionQuasar_Diphrod ^{
+        Cost=130
+        Equipments=FusionQuasar
+        Name="Дифрод"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Серийный комплект модифицированных узлов орудия и программных доработок "Дифрод", увеличивающий мощность оружия разных типов.</color><br> <br>
+        Text=Бонус к урону: <clr>15%<clrEnd>
+        Text=Урон энергетического оружия: <clr>+5<clrEnd> ед.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=ScanBonus
+        bonScan=-3
+        bonWEnergy=5
+    }
+    FusionQuasar_Dyshot ^{
+        Cost=130
+        Equipments=FusionQuasar
+        Name="Дишот"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Акриновая модификация, нацеленная на экстремальный разгон орудия за счет подведения дополнительного потока энергии от генератора защитного поля.</color><br> <br>
+        Text=Скорострельность: <clr>+1<clrEnd>
+        Text=Урон энергетического оружия: <clr>-14<clrEnd> ед.
+        Text=Мощность генератора защитного поля: <clr>-3<clrEnd> ед.
+        bonAttacks=1
+        bonDef=-3
+        bonWEnergy=-14
+    }
+    FusionQuasar_Extremum ^{
+        Cost=130
+        Equipments=FusionQuasar
+        Name="Экстремум"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>В данное оружие вмонтирован автономный блок сверхточных расчетов и наведения, полностью автоматизирующий работу орудия в бою. В среднем, устройство выдает <clr>далеко не лучший<clrEnd> результат, зато всегда <clr>стабильный<clrEnd>.</color><br> <br>
+        Text=Урон энергетического оружия: <clr>-7<clrEnd> ед.
+        Text=Дальность стрельбы: <clr>-32<clrEnd> ед.
+        WeaponMods=NoDelta
+        bonWEnergy=-7
+        bonWRadius=-32
+    }
+    Gaal_vision_Destractor ^{
+        Cost=130
+        Equipments=gaal_vision
+        Fragility=166
+        Name="Дестрактор"
+        OnPlanets=1
+        Owner=Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной версии оснащено электромагнитным модулятором, благодаря чему каждый выстрел серьезно <clr>повреждает<clrEnd> оборудование цели. Ускоряет <clr>износ<clrEnd> орудия и увеличивает его <clr>дальность<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+15<clrEnd> ед.
+        WeaponMods=Destruct
+        bonWRadius=15
+    }
+    Gaal_vision_Diphrod ^{
+        Cost=130
+        Equipments=gaal_vision
+        Name="Дифрод"
+        OnPlanets=1
+        Owner=Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Серийный комплект модифицированных узлов орудия и программных доработок "Дифрод", увеличивающий мощность оружия разных типов.</color><br> <br>
+        Text=Бонус к урону: <clr>15%<clrEnd>
+        Text=Урон энергетического оружия: <clr>+8<clrEnd> ед.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=ScanBonus
+        bonScan=-4
+        bonWEnergy=8
+    }
+    Gaal_vision_Extremum ^{
+        Cost=130
+        Equipments=gaal_vision
+        Name="Экстремум"
+        OnPlanets=1
+        Owner=Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>В данное оружие вмонтирован автономный блок сверхточных расчетов и наведения, полностью автоматизирующий работу орудия в бою. В среднем, устройство выдает <clr>далеко не лучший<clrEnd> результат, зато всегда <clr>стабильный<clrEnd>.</color><br> <br>
+        Text=Урон энергетического оружия: <clr>-22<clrEnd> ед.
+        Text=Дальность стрельбы: <clr>-48<clrEnd> ед.
+        WeaponMods=NoDelta
+        bonWEnergy=-22
+        bonWRadius=-48
+    }
+    Gaal_vision_Javitor ^{
+        Cost=130
+        Equipments=gaal_vision
+        Fragility=83
+        Name="Джавитор"
+        OnPlanets=1
+        Owner=Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модифицированное для прицельного отстрела ремонтных роботов вооружение в варианте "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта в ходе битвы. Обладает повышенной надежностью.</color><br> <br>
+        Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность радара: <clr>-200<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockDroid
+        bonRadar=-200
+    }
+    Gaal_vision_Voltat ^{
+        Cost=130
+        Equipments=gaal_vision
+        Name="Вольтат"
+        OnPlanets=1
+        Owner=Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Дополнительный контур сверхпроводников, тянущийся от орудия вплоть до двигателя, позволяющий осуществлять разгон элементарных частиц и добиваться <clr>ионизирующего<clrEnd> эффекта цели. Однако, работа микроколлайдера вносит постоянные сбои в работу <clr>систем зажигания<clrEnd>.</color><br> <br>
+        Text=Урон энергетического оружия: <clr>+3<clrEnd> ед.
+        Text=Скорость корабля: <clr>-45<clrEnd> ед.
+        WeaponMods=Shock
+        bonSpeed=-45
+        bonWEnergy=3
+    }
+    Grav_beam_Armolock ^{
+        Cost=130
+        Equipments=grav_beam
+        Name="Армолок"
+        OnPlanets=1
+        Owner=Fei
+        Priority=10
+        Ruins=Any
+        ShotVisual=4
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие модификации "Армолок" может высокоточными выстрелами выводить из строя концентратор каналов управления вооружением цели, на некоторое время отнимая у противника способность вести ответный огонь.</color><br> <br>
+        Text=Шанс блокировки <clr>вооружения<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность стрельбы: <clr>+46<clrEnd> ед.
+        Text=Скорость двигателя: <clr>-20<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockWeapon
+        bonSpeed=-20
+        bonWRadius=46
+    }
+    Grav_beam_Javitor ^{
+        Cost=130
+        Equipments=grav_beam
+        Fragility=77
+        Name="Джавитор"
+        OnPlanets=1
+        Owner=Fei
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модифицированное для прицельного отстрела ремонтных роботов вооружение в варианте "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта в ходе битвы. Обладает повышенной надежностью.</color><br> <br>
+        Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность радара: <clr>-150<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockDroid
+        bonRadar=-150
+    }
+    Industrial_laser_Destractor ^{
+        Cost=130
+        Equipments=W01
+        Fragility=111
+        Name="Дестрактор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной версии оснащено электромагнитным модулятором, благодаря чему каждый выстрел серьезно <clr>повреждает<clrEnd> оборудование цели. Ускоряет <clr>износ<clrEnd> орудия и увеличивает его <clr>дальность<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+44<clrEnd> ед.
+        WeaponMods=Destruct
+        bonWRadius=44
+    }
+    Industrial_laser_Drainir ^{
+        Cost=130
+        Equipments=W01
+        Name="Дрэйнир"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной модификации переносит часть вещества корпуса цели посредством гравитационной воронки для дальнейшей <clr>реструктуризации<clrEnd> собственного корабля. <clr>Снижает эффективность<clrEnd> ремонтного дроида.</color><br> <br>
+        Text=Ремонт дроида: <clr>-10<clrEnd> ед.
+        Text=Урон энергетического оружия: <clr>-5<clrEnd> ед.
+        WeaponMods=Drain
+        bonDroid=-10
+        bonWEnergy=-5
+    }
+    Industrial_laser_Dyshot ^{
+        Cost=130
+        Equipments=W01
+        Name="Дишот"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Акриновая модификация, нацеленная на экстремальный разгон орудия за счет подведения дополнительного потока энергии от генератора защитного поля.</color><br> <br>
+        Text=Скорострельность: <clr>+1<clrEnd>
+        Text=Урон энергетического оружия: <clr>-3<clrEnd> ед.
+        Text=Мощность генератора защитного поля: <clr>-1<clrEnd> ед.
+        bonAttacks=1
+        bonDef=-1
+        bonWEnergy=-3
+    }
+    Laser_gun_Inveiter ^{
+        Cost=130
+        Equipments=laser_gun
+        Name="Инвейтер"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=3
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие версии "Инвейтер" параллельно с обычным действием подавляет работу системы зажигания цели, повреждая при этом ее <clr>двигатель<clrEnd> и <clr>замедляя<clrEnd> цель.</color><br> <br>
+        Text=Дальность радара: <clr>-200<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=ReduceEngine,Decelerate
+        bonRadar=-200
+    }
+    Laser_gun_Stealermain ^{
+        Cost=130
+        Equipments=laser_gun
+        Name="Стилермейн"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=85
+        Special=1
+        Text=<color=248,252,248>"Стилермейн" - модификация, монтируемая на корпусе орудийной установки. Во время боя она пытается одновременно со стрельбой транслировать в центральную систему управления вражеского корабля аварийную команду на сброс груза. Вероятность срабатывания относительно невелика, однако это может дать пилоту тактическое преимущество в бою и возможность поживиться добычей. Отличается своей компактностью.</color><br> <br>
+        Text=Шанс сброса товаров из трюма: <clr>5%<clrEnd>
+        Text=Мощность захвата: <clr>-12<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=DropCargo
+        bonHook=-12
+    }
+    Lezka_Drainir ^{
+        Cost=130
+        Equipments=W03
+        Name="Дрэйнир"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной модификации переносит часть вещества корпуса цели посредством гравитационной воронки для дальнейшей <clr>реструктуризации<clrEnd> собственного корабля. <clr>Снижает эффективность<clrEnd> ремонтного дроида.</color><br> <br>
+        Text=Ремонт дроида: <clr>-15<clrEnd> ед.
+        Text=Урон энергетического оружия: <clr>-15<clrEnd> ед.
+        WeaponMods=Drain
+        bonDroid=-15
+        bonWEnergy=-15
+    }
+    Lezka_Dyshot ^{
+        Cost=130
+        Equipments=W03
+        Name="Дишот"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Акриновая модификация, нацеленная на экстремальный разгон орудия за счет подведения дополнительного потока энергии от генератора защитного поля.</color><br> <br>
+        Text=Скорострельность: <clr>+1<clrEnd>
+        Text=Урон энергетического оружия: <clr>-10<clrEnd> ед.
+        Text=Мощность генератора защитного поля: <clr>-2<clrEnd> ед.
+        bonAttacks=1
+        bonDef=-2
+        bonWEnergy=-10
+    }
+    Lirecron_Extremum ^{
+        Cost=130
+        Equipments=W18
+        Name="Экстремум"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>В данное оружие вмонтирован автономный блок сверхточных расчетов и наведения, полностью автоматизирующий работу орудия в бою. В среднем, устройство выдает <clr>далеко не лучший<clrEnd> результат, зато всегда <clr>стабильный<clrEnd>.</color><br> <br>
+        Text=Урон ракетного оружия: <clr>-15<clrEnd> ед.
+        Text=Дальность стрельбы: <clr>-36<clrEnd> ед.
+        WeaponMods=NoDelta
+        bonWMissile=-11
+        bonWRadius=-36
+    }
+    Lirecron_Sunlow ^{
+        Cost=130
+        Equipments=W18
+        Name="Санлоу"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Инновационная система кассетного пуска ракет, обладающая повышенной <clr>скорострельностью<clrEnd>. Комплектуется большим <clr>количеством ракет<clrEnd> с меньшим <clr>запасом топлива<clrEnd>.</color><br> <br>
+        Text=Скорострельность: <clr>+1<clrEnd>
+        Text=Боезапас: <clr>+30<clrEnd> ед.
+        Text=Скорость ракет: <clr>-450<clrEnd> ед.
+        bonAmmo=30
+        bonMissileSpeed=-450
+        bonShots=5
+    }
+    Mabokit_Sunlow ^{
+        Cost=130
+        Equipments=Mabokit
+        Name="Санлоу"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Инновационная система кассетного пуска ракет, обладающая повышенной <clr>скорострельностью<clrEnd>. Комплектуется большим <clr>количеством ракет<clrEnd> с меньшим <clr>запасом топлива<clrEnd>.</color><br> <br>
+        Text=Скорострельность: <clr>+1<clrEnd>
+        Text=Боезапас: <clr>+40<clrEnd> ед.
+        Text=Скорость ракет: <clr>-300<clrEnd> ед.
+        bonAmmo=40
+        bonMissileSpeed=-300
+        bonShots=2
+    }
+    Maloc_laser2_Armolock ^{
+        Cost=130
+        Equipments=maloc_laser2
+        Name="Армолок"
+        OnPlanets=1
+        Owner=Peleng
+        Priority=10
+        Ruins=Any
+        ShotVisual=4
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие модификации "Армолок" может высокоточными выстрелами выводить из строя концентратор каналов управления вооружением цели, на некоторое время отнимая у противника способность вести ответный огонь.</color><br> <br>
+        Text=Шанс блокировки <clr>вооружения<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность стрельбы: <clr>+73<clrEnd> ед.
+        Text=Скорость двигателя: <clr>-15<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockWeapon
+        bonSpeed=-15
+        bonWRadius=73
+    }
+    Maloc_laser_Javitor ^{
+        Cost=130
+        Equipments=maloc_laser
+        Fragility=71
+        Name="Джавитор"
+        OnPlanets=1
+        Owner=Maloc
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модифицированное для прицельного отстрела ремонтных роботов вооружение в варианте "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта в ходе битвы. Обладает повышенной надежностью.</color><br> <br>
+        Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность радара: <clr>-100<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockDroid
+        bonRadar=-100
+    }
+    Mauler_Adropter ^{
+        Cost=65
+        Equipments=Mauler
+        Name="Адроптер"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=3
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие с комплексом дополнительного оборудования "Адроптер" работает по принципу Локализатора взрывной волны. Пиратская технология далека от совершенства, но всё же повышает вероятность сохранения ценных трофеев после уничтожения вражеского корабля. Отличается очень низкой стоимостью изготовления.</color><br> <br>
+        Text=Мощность захвата: <clr>-12<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=MoreDrop
+        bonHook=-12
+    }
+    Mauler_Inveiter ^{
+        Cost=130
+        Equipments=Mauler
+        Name="Инвейтер"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=3
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие версии "Инвейтер" параллельно с обычным действием подавляет работу системы зажигания цели, повреждая при этом ее <clr>двигатель<clrEnd> и <clr>замедляя<clrEnd> цель.</color><br> <br>
+        Text=Дальность радара: <clr>-200<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=ReduceEngine,Decelerate
+        bonRadar=-200
+    }
+    Mauler_Lyphocar ^{
+        Cost=130
+        Equipments=Mauler
+        Name="Лифокар"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модернизированное по проекту "Лифокар" вооружение наносит дополнительный урон поврежденным целям, используя механизм последовательной сверхточной стрельбы в пробоины корпуса.</color><br> <br>
+        Text=Бонус к урону: до <clr>33%<clrEnd>
+        Text=Урон осколочного оружия: <clr>+7<clrEnd> ед.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BonusToDamaged
+        bonScan=-4
+        bonWSplinter=7
+    }
+    Multiplet_Javitor ^{
+        Cost=130
+        Equipments=Multiplet
+        Fragility=83
+        Name="Джавитор"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модифицированное для прицельного отстрела ремонтных роботов вооружение в варианте "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта в ходе битвы. Обладает повышенной надежностью.</color><br> <br>
+        Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность радара: <clr>-200<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockDroid
+        bonRadar=-200
+    }
+    Multiplet_Stealermain ^{
+        Cost=130
+        Equipments=Multiplet
+        Name="Стилермейн"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=85
+        Special=1
+        Text=<color=248,252,248>"Стилермейн" - модификация, монтируемая на корпусе орудийной установки. Во время боя она пытается одновременно со стрельбой транслировать в центральную систему управления вражеского корабля аварийную команду на сброс груза. Вероятность срабатывания относительно невелика, однако это может дать пилоту тактическое преимущество в бою и возможность поживиться добычей. Отличается своей компактностью.</color><br> <br>
+        Text=Шанс сброса товаров из трюма: <clr>5%<clrEnd>
+        Text=Мощность захвата: <clr>-12<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=DropCargo
+        bonHook=-12
+    }
+    Multiresonator_Corruptor ^{
+        Cost=130
+        Equipments=W09
+        Name="Корраптор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Данное оружие адаптированно под специальные уплотненные снаряды, существенно лучше пробивающие <clr>броню<clrEnd> противника. Однако, ее установка существенно увеличивает <clr>массу корабля<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+11<clrEnd> ед.
+        Text=Масса корабля: <clr>+8%<clrEnd>
+        WeaponMods=Acid
+        bonMass=8
+        bonWRadius=11
+    }
+    Multiresonator_Destractor ^{
+        Cost=130
+        Equipments=W09
+        Fragility=166
+        Name="Дестрактор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной версии оснащено электромагнитным модулятором, благодаря чему каждый выстрел серьезно <clr>повреждает<clrEnd> оборудование цели. Ускоряет <clr>износ<clrEnd> орудия и увеличивает его <clr>дальность<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+17<clrEnd> ед.
+        WeaponMods=Destruct
+        bonWRadius=17
+    }
+    Multiresonator_Extremum ^{
+        Cost=130
+        Equipments=W09
+        Name="Экстремум"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>В данное оружие вмонтирован автономный блок сверхточных расчетов и наведения, полностью автоматизирующий работу орудия в бою. В среднем, устройство выдает <clr>далеко не лучший<clrEnd> результат, зато всегда <clr>стабильный<clrEnd>.</color><br> <br>
+        Text=Урон осколочного оружия: <clr>-18<clrEnd> ед.
+        Text=Дальность стрельбы: <clr>-43<clrEnd> ед.
+        WeaponMods=NoDelta
+        bonWRadius=-43
+        bonWSplinter=-18
+    }
+    Photon_gun2_Inveiter ^{
+        Cost=130
+        Equipments=photon_gun2
+        Name="Инвейтер"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=3
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие версии "Инвейтер" параллельно с обычным действием подавляет работу системы зажигания цели, повреждая при этом ее <clr>двигатель<clrEnd> и <clr>замедляя<clrEnd> цель.</color><br> <br>
+        Text=Дальность радара: <clr>-50<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=ReduceEngine,Decelerate
+        bonRadar=-50
+    }
+    Photon_gun2_Lyphocar ^{
+        Cost=130
+        Equipments=photon_gun2
+        Name="Лифокар"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модернизированное по проекту "Лифокар" вооружение наносит дополнительный урон поврежденным целям, используя механизм последовательной сверхточной стрельбы в пробоины корпуса.</color><br> <br>
+        Text=Бонус к урону: до <clr>33%<clrEnd>
+        Text=Урон энергетического оружия: <clr>+8<clrEnd> ед.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BonusToDamaged
+        bonScan=-1
+        bonWEnergy=8
+    }
+    Photon_gun2_Stealermain ^{
+        Cost=130
+        Equipments=photon_gun2
+        Name="Стилермейн"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=70
+        Special=1
+        Text=<color=248,252,248>"Стилермейн" - модификация, монтируемая на корпусе орудийной установки. Во время боя она пытается одновременно со стрельбой транслировать в центральную систему управления вражеского корабля аварийную команду на сброс груза. Вероятность срабатывания относительно невелика, однако это может дать пилоту тактическое преимущество в бою и возможность поживиться добычей. Отличается своей компактностью.</color><br> <br>
+        Text=Шанс сброса товаров из трюма: <clr>5%<clrEnd>
+        Text=Мощность захвата: <clr>-3<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=DropCargo
+        bonHook=-3
+    }
+    Photon_gun3_Armolock ^{
+        Cost=130
+        Equipments=photon_gun3
+        Name="Армолок"
+        OnPlanets=1
+        Owner=Maloc
+        Priority=10
+        Ruins=Any
+        ShotVisual=4
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие модификации "Армолок" может высокоточными выстрелами выводить из строя концентратор каналов управления вооружением цели, на некоторое время отнимая у противника способность вести ответный огонь.</color><br> <br>
+        Text=Шанс блокировки <clr>вооружения<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность стрельбы: <clr>+98<clrEnd> ед.
+        Text=Скорость двигателя: <clr>-10<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockWeapon
+        bonSpeed=-10
+        bonWRadius=98
+    }
+    Photon_gun3_Extremum ^{
+        Cost=130
+        Equipments=photon_gun3
+        Name="Экстремум"
+        OnPlanets=1
+        Owner=Maloc
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>В данное оружие вмонтирован автономный блок сверхточных расчетов и наведения, полностью автоматизирующий работу орудия в бою. В среднем, устройство выдает <clr>далеко не лучший<clrEnd> результат, зато всегда <clr>стабильный<clrEnd>.</color><br> <br>
+        Text=Урон энергетического оружия: <clr>-2<clrEnd> ед.
+        Text=Дальность стрельбы: <clr>-9<clrEnd> ед.
+        WeaponMods=NoDelta
+        bonWEnergy=-2
+        bonWRadius=-9
+    }
+    Photon_gun3_Magnetron ^{
+        Cost=130
+        Equipments=photon_gun3
+        Name="Магнетрон"
+        OnPlanets=1
+        Owner=Maloc
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает амплитуду любого энергетического импульса, вызывая <clr>помехи<clrEnd> в работе оборудования цели. При этом вызываемые магнитным полем помехи отрицательно сказываются на <clr>навигационных<clrEnd> системах корабля.</color><br> <br>
+        Text=Мощность сканера: <clr>-1<clrEnd> ед.
+        Text=Дальность радара: <clr>-75<clrEnd> ед.
+        WeaponMods=Magnetic
+        bonRadar=-75
+        bonScan=-1
+    }
+    Photon_gun_Diphrod ^{
+        Cost=130
+        Equipments=photon_gun
+        Name="Дифрод"
+        OnPlanets=1
+        Owner=Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Серийный комплект модифицированных узлов орудия и программных доработок "Дифрод", увеличивающий мощность оружия разных типов.</color><br> <br>
+        Text=Бонус к урону: <clr>15%<clrEnd>
+        Text=Урон энергетического оружия: <clr>+5<clrEnd> ед.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=ScanBonus
+        bonScan=-1
+        bonWEnergy=5
+    }
+    Photon_gun_Drainir ^{
+        Cost=130
+        Equipments=photon_gun
+        Name="Дрэйнир"
+        OnPlanets=1
+        Owner=Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной модификации переносит часть вещества корпуса цели посредством гравитационной воронки для дальнейшей <clr>реструктуризации<clrEnd> собственного корабля. <clr>Снижает эффективность<clrEnd> ремонтного дроида.</color><br> <br>
+        Text=Ремонт дроида: <clr>-10<clrEnd> ед.
+        Text=Урон энергетического оружия: <clr>-5<clrEnd> ед.
+        WeaponMods=Drain
+        bonDroid=-10
+        bonWEnergy=-5
+    }
+    Photon_gun_Voltat ^{
+        Cost=130
+        Equipments=photon_gun
+        Name="Вольтат"
+        OnPlanets=1
+        Owner=Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Дополнительный контур сверхпроводников, тянущийся от орудия вплоть до двигателя, позволяющий осуществлять разгон элементарных частиц и добиваться <clr>ионизирующего<clrEnd> эффекта цели. Однако, работа микроколлайдера вносит постоянные сбои в работу <clr>систем зажигания<clrEnd>.</color><br> <br>
+        Text=Урон энергетического оружия: <clr>+2<clrEnd> ед.
+        Text=Скорость корабля: <clr>-10<clrEnd> ед.
+        WeaponMods=Shock
+        bonSpeed=-10
+        bonWEnergy=2
+    }
+    PlasmaGun_Armolock ^{
+        Cost=130
+        Equipments=PlasmaGun
+        KindGraph=Armolock
+        Name="Армолок"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=4
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие модификации "Армолок" может высокоточными выстрелами выводить из строя концентратор каналов управления вооружением цели, на некоторое время отнимая у противника способность вести ответный огонь.</color><br> <br>
+        Text=Шанс блокировки <clr>вооружения<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность стрельбы: <clr>+48<clrEnd> ед.
+        Text=Скорость двигателя: <clr>-25<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockWeapon
+        bonSpeed=-25
+        bonWRadius=48
+    }
+    PlasmaGun_Diphrod ^{
+        Cost=130
+        Equipments=PlasmaGun
+        KindGraph=Diphrod
+        Name="Дифрод"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Серийный комплект модифицированных узлов орудия и программных доработок "Дифрод", увеличивающий мощность оружия разных типов.</color><br> <br>
+        Text=Бонус к урону: <clr>15%<clrEnd>
+        Text=Урон энергетического оружия: <clr>+5<clrEnd> ед.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=ScanBonus
+        bonScan=-4
+        bonWEnergy=5
+    }
+    PlasmaGun_Involute ^{
+        Cost=180
+        Equipments=PlasmaGun
+        Fragility=80
+        KindGraph=Evolute
+        Name="Эвольвента"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=0
+        Size=70
+        Special=1
+        Text=<color=248,252,248>Следующий этап в развитии плазмогана. За счёт снижения скорострельности удалось добиться существенного прироста надёжности орудия. К тому же модифицированная энергетическая установка получилась заметно более лёгкой, а выпущенные из неё потоки плазмы стали мощнее, и дольше сохраняющими свою пробивную силу.</color>
+        Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15<clrEnd> ед.
+        Text=Дальность стрельбы: <clr>+80<clrEnd> ед.
+        Text=Скорострельность: <clr>-1<clrEnd>
+        TextOld=<color=248,252,248>Следующая ступень в развитии плазмогана. Модифицированная энергетическая установка значительно дороже и быстрее перегревается, но взамен увеличивает скорострельность, дальность стрельбы, а также уменьшает занимаемый орудием объём.</color>
+        bonAttacks=-1
+        bonWEnergy=15
+        bonWRadius=80
+    }
+    PlasmaGun_Javitor ^{
+        Cost=130
+        Equipments=PlasmaGun
+        Fragility=83
+        KindGraph=Javitor
+        Name="Джавитор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модифицированное для прицельного отстрела ремонтных роботов вооружение в варианте "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта в ходе битвы. Обладает повышенной надежностью.</color><br> <br>
+        Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность радара: <clr>-150<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockDroid
+        bonRadar=-200
+    }
+    PlasmaGun_Lyphocar ^{
+        Cost=130
+        Equipments=PlasmaGun
+        KindGraph=Liphocar
+        Name="Лифокар"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модернизированное по проекту "Лифокар" вооружение наносит дополнительный урон поврежденным целям, используя механизм последовательной сверхточной стрельбы в пробоины корпуса.</color><br> <br>
+        Text=Бонус к урону: до <clr>33%<clrEnd>
+        Text=Урон энергетического оружия: <clr>+7<clrEnd> ед.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BonusToDamaged
+        bonScan=-4
+        bonWEnergy=7
+    }
+    Pulse_gun2_Javitor ^{
+        Cost=130
+        Equipments=pulse_gun2
+        Fragility=83
+        Name="Джавитор"
+        OnPlanets=1
+        Owner=People
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модифицированное для прицельного отстрела ремонтных роботов вооружение в варианте "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта в ходе битвы. Обладает повышенной надежностью.</color><br> <br>
+        Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность радара: <clr>-200<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockDroid
+        bonRadar=-200
+    }
+    Pulse_gun_Javitor ^{
+        Cost=130
+        Equipments=pulse_gun
+        Fragility=83
+        Name="Джавитор"
+        OnPlanets=1
+        Owner=Fei
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Модифицированное для прицельного отстрела ремонтных роботов вооружение в варианте "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта в ходе битвы. Обладает повышенной надежностью.</color><br> <br>
+        Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность радара: <clr>-200<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockDroid
+        bonRadar=-200
+    }
+    Shrapnel_gun_Corruptor ^{
+        Cost=130
+        Equipments=W02
+        Name="Корраптор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Данное оружие адаптированно под специальные уплотненные снаряды, существенно лучше пробивающие <clr>броню<clrEnd> противника. Однако, ее установка существенно увеличивает <clr>массу корабля<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+28<clrEnd> ед.
+        Text=Масса корабля: <clr>+4%<clrEnd>
+        WeaponMods=Acid
+        bonMass=4
+        bonWRadius=28
+    }
+    Shrapnel_gun_Dyshot ^{
+        Cost=130
+        Equipments=W02
+        Name="Дишот"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Акриновая модификация, нацеленная на экстремальный разгон орудия за счет подведения дополнительного потока энергии от генератора защитного поля.</color><br> <br>
+        Text=Скорострельность: <clr>+1<clrEnd>
+        Text=Урон осколочного оружия: <clr>-10<clrEnd> ед.
+        Text=Мощность генератора защитного поля: <clr>-2<clrEnd> ед.
+        bonAttacks=1
+        bonDef=-2
+        bonWSplinter=-10
+    }
+    Slow_gun_Destractor ^{
+        Cost=130
+        Equipments=slow_gun
+        Fragility=125
+        Name="Дестрактор"
+        OnPlanets=1
+        Owner=Peleng
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной версии оснащено электромагнитным модулятором, благодаря чему каждый выстрел серьезно <clr>повреждает<clrEnd> оборудование цели. Ускоряет <clr>износ<clrEnd> орудия и увеличивает его <clr>дальность<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+26<clrEnd> ед.
+        WeaponMods=Destruct
+        bonWRadius=26
+    }
+    Slow_gun_Drainir ^{
+        Cost=130
+        Equipments=slow_gun
+        Name="Дрэйнир"
+        OnPlanets=1
+        Owner=Peleng
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной модификации переносит часть вещества корпуса цели посредством гравитационной воронки для дальнейшей <clr>реструктуризации<clrEnd> собственного корабля. <clr>Снижает эффективность<clrEnd> ремонтного дроида.</color><br> <br>
+        Text=Ремонт дроида: <clr>-15<clrEnd> ед.
+        Text=Урон энергетического оружия: <clr>-15<clrEnd> ед.
+        WeaponMods=Drain
+        bonDroid=-15
+        bonWEnergy=-15
+    }
+    Slow_gun_Dyshot ^{
+        Cost=130
+        Equipments=slow_gun
+        Name="Дишот"
+        OnPlanets=1
+        Owner=Peleng
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Акриновая модификация, нацеленная на экстремальный разгон орудия за счет подведения дополнительного потока энергии от генератора защитного поля.</color><br> <br>
+        Text=Скорострельность: <clr>+1<clrEnd>
+        Text=Урон энергетического оружия: <clr>-10<clrEnd> ед.
+        Text=Мощность генератора защитного поля: <clr>-2<clrEnd> ед.
+        bonAttacks=1
+        bonDef=-2
+        bonWEnergy=-10
+    }
+    Slow_gun_Magnetron ^{
+        Cost=130
+        Equipments=slow_gun
+        Name="Магнетрон"
+        OnPlanets=1
+        Owner=Peleng
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает амплитуду любого энергетического импульса, вызывая <clr>помехи<clrEnd> в работе оборудования цели. При этом вызываемые магнитным полем помехи отрицательно сказываются на <clr>навигационных<clrEnd> системах корабля.</color><br> <br>
+        Text=Мощность сканера: <clr>-2<clrEnd> ед.
+        Text=Дальность радара: <clr>-150<clrEnd> ед.
+        WeaponMods=Magnetic
+        bonRadar=-150
+        bonScan=-2
+    }
+    Sphere_gun_Inveiter ^{
+        Cost=130
+        Equipments=sphere_gun
+        Name="Инвейтер"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=3
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие версии "Инвейтер" параллельно с обычным действием подавляет работу системы зажигания цели, повреждая при этом ее <clr>двигатель<clrEnd> и <clr>замедляя<clrEnd> цель.</color><br> <br>
+        Text=Дальность радара: <clr>-200<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=ReduceEngine,Decelerate
+        bonRadar=-200
+    }
+    Sphere_gun_Stealermain ^{
+        Cost=130
+        Equipments=sphere_gun
+        Name="Стилермейн"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=85
+        Special=1
+        Text=<color=248,252,248>"Стилермейн" - модификация, монтируемая на корпусе орудийной установки. Во время боя она пытается одновременно со стрельбой транслировать в центральную систему управления вражеского корабля аварийную команду на сброс груза. Вероятность срабатывания относительно невелика, однако это может дать пилоту тактическое преимущество в бою и возможность поживиться добычей. Отличается своей компактностью.</color><br> <br>
+        Text=Шанс сброса товаров из трюма: <clr>5%<clrEnd>
+        Text=Мощность захвата: <clr>-12<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=DropCargo
+        bonHook=-12
+    }
+    Splash_faser_Armolock ^{
+        Cost=130
+        Equipments=splash_faser
+        Name="Армолок"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=4
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие модификации "Армолок" может высокоточными выстрелами выводить из строя концентратор каналов управления вооружением цели, на некоторое время отнимая у противника способность вести ответный огонь.</color><br> <br>
+        Text=Шанс блокировки <clr>вооружения<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность стрельбы: <clr>+98<clrEnd> ед.
+        Text=Скорость двигателя: <clr>-10<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockWeapon
+        bonSpeed=-20
+        bonWRadius=58
+    }
+    Splash_faser_Destractor ^{
+        Cost=130
+        Equipments=splash_faser
+        Fragility=144
+        Name="Дестрактор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной версии оснащено электромагнитным модулятором, благодаря чему каждый выстрел серьезно <clr>повреждает<clrEnd> оборудование цели. Ускоряет <clr>износ<clrEnd> орудия и увеличивает его <clr>дальность<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+26<clrEnd> ед.
+        WeaponMods=Destruct
+        bonWRadius=26
+    }
+    Splash_faser_Extremum ^{
+        Cost=130
+        Equipments=splash_faser
+        Name="Экстремум"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>В данное оружие вмонтирован автономный блок сверхточных расчетов и наведения, полностью автоматизирующий работу орудия в бою. В среднем, устройство выдает <clr>далеко не лучший<clrEnd> результат, зато всегда <clr>стабильный<clrEnd>.</color><br> <br>
+        Text=Урон энергетического оружия: <clr>-6<clrEnd> ед.
+        Text=Дальность стрельбы: <clr>-32<clrEnd> ед.
+        WeaponMods=NoDelta
+        bonWEnergy=-6
+        bonWRadius=-32
+    }
+    Splash_faser_Stealermain ^{
+        Cost=130
+        Equipments=splash_faser
+        Name="Стилермейн"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=80
+        Special=1
+        Text=<color=248,252,248>"Стилермейн" - модификация, монтируемая на корпусе орудийной установки. Во время боя она пытается одновременно со стрельбой транслировать в центральную систему управления вражеского корабля аварийную команду на сброс груза. Вероятность срабатывания относительно невелика, однако это может дать пилоту тактическое преимущество в бою и возможность поживиться добычей. Отличается своей компактностью.</color><br> <br>
+        Text=Шанс сброса товаров из трюма: <clr>5%<clrEnd>
+        Text=Мощность захвата: <clr>-9<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=DropCargo
+        bonHook=-9
+    }
+    Stream_blaster_Corruptor ^{
+        Cost=130
+        Equipments=W07
+        Name="Корраптор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Данное оружие адаптированно под специальные уплотненные снаряды, существенно лучше пробивающие <clr>броню<clrEnd> противника. Однако, ее установка существенно увеличивает <clr>массу корабля<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+15<clrEnd> ед.
+        Text=Масса корабля: <clr>+4%<clrEnd>
+        WeaponMods=Acid
+        bonMass=6
+        bonWRadius=15
+    }
+    Stream_blaster_Destractor ^{
+        Cost=130
+        Equipments=W07
+        Fragility=143
+        Name="Дестрактор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной версии оснащено электромагнитным модулятором, благодаря чему каждый выстрел серьезно <clr>повреждает<clrEnd> оборудование цели. Ускоряет <clr>износ<clrEnd> орудия и увеличивает его <clr>дальность<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+23<clrEnd> ед.
+        WeaponMods=Destruct
+        bonWRadius=23
+    }
+    Stream_blaster_Dyshot ^{
+        Cost=130
+        Equipments=W07
+        Name="Дишот"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Акриновая модификация, нацеленная на экстремальный разгон орудия за счет подведения дополнительного потока энергии от генератора защитного поля.</color><br> <br>
+        Text=Скорострельность: <clr>+1<clrEnd>
+        Text=Урон осколочного оружия: <clr>-24<clrEnd> ед.
+        Text=Мощность генератора защитного поля: <clr>-3<clrEnd> ед.
+        bonAttacks=1
+        bonDef=-3
+        bonWSplinter=-24
+    }
+    Sub_gun_Armolock ^{
+        Cost=130
+        Equipments=sub_gun
+        Name="Армолок"
+        OnPlanets=1
+        Owner=People
+        Priority=10
+        Ruins=Any
+        ShotVisual=4
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие модификации "Армолок" может высокоточными выстрелами выводить из строя концентратор каналов управления вооружением цели, на некоторое время отнимая у противника способность вести ответный огонь.</color><br> <br>
+        Text=Шанс блокировки <clr>вооружения<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Дальность стрельбы: <clr>+25<clrEnd> ед.
+        Text=Скорость двигателя: <clr>-30<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=BlockWeapon
+        bonSpeed=-30
+        bonWRadius=25
+    }
+    Torpedomet_Adropter ^{
+        Cost=65
+        Equipments=Torpedomet
+        Name="Адроптер"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=3
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие с комплексом дополнительного оборудования "Адроптер" работает по принципу Локализатора взрывной волны. Пиратская технология далека от совершенства, но всё же повышает вероятность сохранения ценных трофеев после уничтожения вражеского корабля. Отличается очень низкой стоимостью изготовления.</color><br> <br>
+        Text=Мощность захвата: <clr>-12<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=MoreDrop
+        bonHook=-12
+    }
+    Torpedomet_Stealermain ^{
+        Cost=130
+        Equipments=Torpedomet
+        Name="Стилермейн"
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=85
+        Special=1
+        Text=<color=248,252,248>"Стилермейн" - модификация, монтируемая на корпусе орудийной установки. Во время боя она пытается одновременно со стрельбой транслировать в центральную систему управления вражеского корабля аварийную команду на сброс груза. Вероятность срабатывания относительно невелика, однако это может дать пилоту тактическое преимущество в бою и возможность поживиться добычей. Отличается своей компактностью.</color><br> <br>
+        Text=Шанс сброса товаров из трюма: <clr>5%<clrEnd>
+        Text=Мощность захвата: <clr>-12<clrEnd> ед.
+        Text=(необходимо превышение мощности сканера над защитой цели)
+        WeaponMods=DropCargo
+        bonHook=-12
+    }
+    Tretton_Destractor ^{
+        Cost=130
+        Equipments=W05
+        Fragility=125
+        Name="Дестрактор"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Оружие данной версии оснащено электромагнитным модулятором, благодаря чему каждый выстрел серьезно <clr>повреждает<clrEnd> оборудование цели. Ускоряет <clr>износ<clrEnd> орудия и увеличивает его <clr>дальность<clrEnd>.</color><br> <br>
+        Text=Дальность стрельбы: <clr>+26<clrEnd> ед.
+        WeaponMods=Destruct
+        bonWRadius=26
+    }
+    Tretton_Dyshot ^{
+        Cost=130
+        Equipments=W05
+        Name="Дишот"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Акриновая модификация, нацеленная на экстремальный разгон орудия за счет подведения дополнительного потока энергии от генератора защитного поля.</color><br> <br>
+        Text=Скорострельность: <clr>+1<clrEnd>
+        Text=Урон энергетического оружия: <clr>-4<clrEnd> ед.
+        Text=Мощность генератора защитного поля: <clr>-2<clrEnd> ед.
+        bonAttacks=1
+        bonDef=-2
+        bonWEnergy=-4
+    }
+    Tretton_Magnetron ^{
+        Cost=130
+        Equipments=W05
+        Name="Магнетрон"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает амплитуду любого энергетического импульса, вызывая <clr>помехи<clrEnd> в работе оборудования цели. При этом вызываемые магнитным полем помехи отрицательно сказываются на <clr>навигационных<clrEnd> системах корабля.</color><br> <br>
+        Text=Мощность сканера: <clr>-2<clrEnd> ед.
+        Text=Дальность радара: <clr>-150<clrEnd> ед.
+        WeaponMods=Magnetic
+        bonRadar=-150
+        bonScan=-2
+    }
+    Turbogravir_Magnetron ^{
+        Cost=130
+        Equipments=W12
+        Name="Магнетрон"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает амплитуду любого энергетического импульса, вызывая <clr>помехи<clrEnd> в работе оборудования цели. При этом вызываемые магнитным полем помехи отрицательно сказываются на <clr>навигационных<clrEnd> системах корабля.</color><br> <br>
+        Text=Мощность сканера: <clr>-4<clrEnd> ед.
+        Text=Дальность радара: <clr>-300<clrEnd> ед.
+        WeaponMods=Magnetic
+        bonRadar=-300
+        bonScan=-4
+    }
+    Wave_phaser_Extremum ^{
+        Cost=130
+        Equipments=W06
+        Name="Экстремум"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>В данное оружие вмонтирован автономный блок сверхточных расчетов и наведения, полностью автоматизирующий работу орудия в бою. В среднем, устройство выдает <clr>далеко не лучший<clrEnd> результат, зато всегда <clr>стабильный<clrEnd>.</color><br> <br>
+        Text=Урон энергетического оружия: <clr>-11<clrEnd> ед.
+        Text=Дальность стрельбы: <clr>-26<clrEnd> ед.
+        WeaponMods=NoDelta
+        bonWEnergy=-11
+        bonWRadius=-26
+    }
+    Wave_phaser_Voltat ^{
+        Cost=130
+        Equipments=W06
+        Name="Вольтат"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=115
+        Special=1
+        Text=<color=248,252,248>Дополнительный контур сверхпроводников, тянущийся от орудия вплоть до двигателя, позволяющий осуществлять разгон элементарных частиц и добиваться <clr>ионизирующего<clrEnd> эффекта цели. Однако, работа микроколлайдера вносит постоянные сбои в работу <clr>систем зажигания<clrEnd>.</color><br> <br>
+        Text=Урон энергетического оружия: <clr>+3<clrEnd> ед.
+        Text=Скорость корабля: <clr>-30<clrEnd> ед.
+        WeaponMods=Shock
+        bonSpeed=-30
+        bonWEnergy=3
+    }
+}
