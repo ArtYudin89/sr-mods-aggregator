@@ -939,6 +939,7 @@ def code_track(cfg):
         print('code-track: нет hf_repo/HF_TOKEN'); return
     os.environ['HF_HUB_DISABLE_XET'] = '1'
     chunk_max = cfg.get('asset_policy', {}).get('chunk_max_mb', 512) * 1024 * 1024
+    manual_units = {u['name'] for u in cfg.get('units', []) if u.get('manual')}
     total = 0
 
     for unit_dir in sorted(MODS.glob('*/*')):
@@ -947,12 +948,18 @@ def code_track(cfg):
             continue
         name = unit_dir.name
         # манифест кода (path -> sha,size,mtime) — единый билдер с build_descriptors;
-        # prev сохраняет dev-mtime неизменившихся файлов через git-checkout (см. билдер)
+        # prev сохраняет dev-mtime неизменившихся файлов через git-checkout (см. билдер).
+        # manual-юниты (redux_base) НЕ пересобираем: их манифест авторитетно пишет
+        # локальный прогон при живой распаковке; на раннере пересборка затёрла бы mtime.
         prev_cm = load_json(unit_dir / 'code.manifest.json', {}).get('files', {})
-        files = _build_code_manifest(code_dir, prev_cm)
+        if name in manual_units:
+            files = prev_cm
+        else:
+            files = _build_code_manifest(code_dir, prev_cm)
+            if files:
+                save_json(unit_dir / 'code.manifest.json', {'files': files})
         if not files:
             continue
-        save_json(unit_dir / 'code.manifest.json', {'files': files})
 
         need = {}                       # sha -> relpath (первая встреча новых)
         for rel, m in files.items():
@@ -1310,6 +1317,7 @@ def build_descriptors(cfg):
 
     variants = defaultdict(list)   # mod_id -> [variant catalog-entry]
     n_desc = 0
+    manual_units = {u['name'] for u in cfg.get('units', []) if u.get('manual')}
     for unit_dir in sorted(MODS.glob('*/*')):
         camp_unit = f'{unit_dir.parent.name}/{unit_dir.name}'
         code_dir = unit_dir / 'code'
@@ -1317,7 +1325,11 @@ def build_descriptors(cfg):
         # юнит переагрегировали (новое содержимое code/), но --code-track ещё не
         # прогоняли — тогда в манифесте файлы прошлой версии, и часть ModuleInfo.txt
         # (а значит и модов-дескрипторов) теряется. Пересобираем из code/ и сохраняем.
-        if code_dir.is_dir():
+        # ИСКЛЮЧЕНИЕ — manual-юниты (redux_base): их манифест авторитетно пишет
+        # локальный прогон (живая распаковка, реальные mtime). На раннере code/ =
+        # git-checkout (дата checkout, sha CRLF-файла ≠ sha LF-блоба) → пересборка
+        # затёрла бы даты разработчика. Берём committed-манифест как есть.
+        if code_dir.is_dir() and unit_dir.name not in manual_units:
             prev_cm = load_json(unit_dir / 'code.manifest.json', {}).get('files', {})
             code_man = _build_code_manifest(code_dir, prev_cm)
             save_json(unit_dir / 'code.manifest.json', {'files': code_man})
@@ -1932,6 +1944,14 @@ def main():
             manifest, (cn, cb), (an, ab) = classify(extracted, unit_dir / 'code', policy)
             save_json(unit_dir / 'assets.manifest.json',
                       {'asset_count': an, 'asset_bytes': ab, 'files': manifest})
+            # code.manifest пишем ЗДЕСЬ только для manual-юнитов (redux_base): они
+            # НЕ переизвлекаются в облаке, а code_track/build_descriptors на раннере
+            # их НЕ пересобирают (иначе mtime затирается датой git-checkout, т.к. sha
+            # локального CRLF-файла ≠ sha LF-блоба). Здесь распаковка живая → mtime
+            # реальный. Для остальных юнитов манифест строит code_track/descriptors.
+            if unit.get('manual'):
+                save_json(unit_dir / 'code.manifest.json',
+                          {'files': _build_code_manifest(unit_dir / 'code')})
             save_json(unit_dir / 'meta.json', {
                 'name': name, 'camp': camp, 'role': unit.get('role'),
                 'display_name': unit.get('display_name', name),
