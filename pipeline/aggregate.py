@@ -47,6 +47,15 @@ MODS = REPO / 'mods'
 
 SEVENZIP = r'C:\Program Files\7-Zip\7z.exe'
 
+# «Дата разработчика» (mtime в манифестах/каталоге) ВРЕМЕННО ОТКЛЮЧЕНА.
+# Причина: _extract_zip_cp866 не восстанавливает mtime из архива (info.date_time),
+# поэтому распакованные файлы получают время РАСПАКОВКИ, и почти все моды
+# застампливались датой прогона вместо реальной даты автора → игроки видели у всех
+# модов одинаковую свежую дату. Пока False — манифесты пишутся без mtime, лаунчер
+# грациозно откатывается на дату файлов на диске (_dev_date=None). Включить обратно
+# (=True) после фикса распаковки (os.utime из date_time) — см. план B.
+EMIT_DEV_MTIME = False
+
 
 # ---------------------------------------------------------------------------
 # Утилиты
@@ -592,10 +601,12 @@ def classify(extracted, code_dir, policy):
             code_n += 1
             code_b += size
         else:
-            # mtime источника = дата изменения файла РАЗРАБОТЧИКОМ: rclone copy папок
-            # сохраняет modifiedTime с Google Drive, распаковщики архивов — дату в архиве.
-            manifest[rel] = {'sha256': sha256_file(p), 'size': size,
-                             'mtime': int(p.stat().st_mtime)}
+            # mtime источника = дата изменения файла РАЗРАБОТЧИКОМ. Отключено, пока
+            # распаковка zip не сохраняет дату из архива (EMIT_DEV_MTIME, план B).
+            entry = {'sha256': sha256_file(p), 'size': size}
+            if EMIT_DEV_MTIME:
+                entry['mtime'] = int(p.stat().st_mtime)
+            manifest[rel] = entry
             asset_n += 1
             asset_b += size
     return manifest, (code_n, code_b), (asset_n, asset_b)
@@ -893,9 +904,11 @@ def _build_code_manifest(code_dir, prev=None):
             rel = str(f.relative_to(code_dir)).replace('\\', '/')
             sha = sha256_file(f)
             pm = prev.get(rel)
-            mt = pm['mtime'] if (pm and pm.get('sha256') == sha and pm.get('mtime')) \
-                else int(f.stat().st_mtime)
-            files[rel] = {'sha256': sha, 'size': f.stat().st_size, 'mtime': mt}
+            entry = {'sha256': sha, 'size': f.stat().st_size}
+            if EMIT_DEV_MTIME:
+                entry['mtime'] = pm['mtime'] if (pm and pm.get('sha256') == sha and pm.get('mtime')) \
+                    else int(f.stat().st_mtime)
+            files[rel] = entry
     return files
 
 
