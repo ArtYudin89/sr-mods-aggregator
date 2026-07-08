@@ -52,9 +52,10 @@ SEVENZIP = r'C:\Program Files\7-Zip\7z.exe'
 # поэтому распакованные файлы получают время РАСПАКОВКИ, и почти все моды
 # застампливались датой прогона вместо реальной даты автора → игроки видели у всех
 # модов одинаковую свежую дату. Пока False — манифесты пишутся без mtime, лаунчер
-# грациозно откатывается на дату файлов на диске (_dev_date=None). Включить обратно
-# (=True) после фикса распаковки (os.utime из date_time) — см. план B.
-EMIT_DEV_MTIME = False
+# грациозно откатывается на дату файлов на диске (_dev_date=None).
+# ПЛАН B ВЫПОЛНЕН: _extract_zip_cp866 восстанавливает mtime из info.date_time,
+# 7z/innounp/rclone-copy дату держат сами → dev-mtime снова достоверна.
+EMIT_DEV_MTIME = True
 
 
 # ---------------------------------------------------------------------------
@@ -530,6 +531,16 @@ def _extract_zip_cp866(archive, dest):
             target.parent.mkdir(parents=True, exist_ok=True)
             with z.open(info) as src, open(target, 'wb') as out:
                 shutil.copyfileobj(src, out)
+            # Восстановить дату файла из архива (info.date_time — локальное время без tz).
+            # Иначе распакованный файл получает время РАСПАКОВКИ, а не дату разработчика
+            # (см. EMIT_DEV_MTIME). zipfile сам mtime НЕ ставит. Мин. год в zip — 1980.
+            dt = info.date_time
+            if dt and dt[0] >= 1980 and dt[1] >= 1:
+                try:
+                    ts = datetime(*dt).timestamp()
+                    os.utime(target, (ts, ts))
+                except (ValueError, OverflowError, OSError):
+                    pass
 
 
 # ---------------------------------------------------------------------------
