@@ -902,10 +902,14 @@ def _build_code_manifest(code_dir, prev=None):
     истины для code.manifest.json — используется и code_track, и build_descriptors,
     чтобы манифест не отставал от содержимого code/ (см. self-heal в build_descriptors).
 
-    mtime — дата изменения файла РАЗРАБОТЧИКОМ. git checkout сбрасывает mtime файла на
-    диске, поэтому при пересборке манифеста БЕЗ повторного скачивания (prev — прошлый
-    манифест) для НЕизменившегося файла (совпал rel+sha) держим ранее зафиксированный
-    mtime; иначе берём текущий (свежий copy2 из классификатора сохраняет mtime источника)."""
+    mtime — дата изменения файла РАЗРАБОТЧИКОМ. КЛЮЧЕВОЕ: mtime держим по REL-ПУТИ из
+    prev, НЕ по sha. Причина: git checkout сбрасывает mtime файла И (при autocrlf)
+    переводит CRLF↔LF, из-за чего sha на диске «плывёт» между Windows/Linux и не
+    совпадает с sha в манифесте. Если привязывать сохранение к sha (как было), на
+    Linux-раннере sha не сходится → берётся mtime файла = дата CHECKOUT → дата
+    разработчика затирается (ре-порча всех модов при sync-descriptors). Диск (st_mtime)
+    достоверен ТОЛЬКО сразу после распаковки (главный прогон, свежий copy2), поэтому
+    его берём лишь для НОВЫХ файлов, которых ещё нет в prev."""
     prev = prev or {}
     files = {}
     if not Path(code_dir).is_dir():
@@ -917,7 +921,7 @@ def _build_code_manifest(code_dir, prev=None):
             pm = prev.get(rel)
             entry = {'sha256': sha, 'size': f.stat().st_size}
             if EMIT_DEV_MTIME:
-                entry['mtime'] = pm['mtime'] if (pm and pm.get('sha256') == sha and pm.get('mtime')) \
+                entry['mtime'] = pm['mtime'] if (pm and pm.get('mtime')) \
                     else int(f.stat().st_mtime)
             files[rel] = entry
     return files
