@@ -57,6 +57,17 @@ SEVENZIP = r'C:\Program Files\7-Zip\7z.exe'
 # 7z/innounp/rclone-copy дату держат сами → dev-mtime снова достоверна.
 EMIT_DEV_MTIME = True
 
+# Фикс-юнит -> родительский юнит, поверх которого он накладывается (нерегулярные
+# имена; можно переопределить в config через unit['fix_parent']). Используется и при
+# сборке packs.json (тиры), и при сворачивании фикс-оверлеев в дескрипторы родителя.
+FIX_PARENT = {
+    'redux_fixes': 'redux_base_installer',
+    'original_fixes': 'original_installer',
+    'reflection_fixes': 'reflection_installer',
+    'universe_fixes_130325': 'universe_community',
+    'denmods_fix': 'denmods',
+}
+
 
 # ---------------------------------------------------------------------------
 # Утилиты
@@ -1302,6 +1313,132 @@ def _mi_localized(mi, *keys):
     return ''
 
 
+def _fold_fix_overlays(cfg, variants):
+    """Свернуть файлы фикс-юнитов (role=fixes) в дескрипторы РОДИТЕЛЬСКИХ модов.
+
+    Причина: лаунчер ставит отдельный мод per-mod (install_set по default_source из
+    каталога) и НЕ накладывает фикс-юнит поверх. Без сворачивания игрок получал базовую
+    версию мода без фикса (напр. EvoDreadnought: краш-гард из redux_fixes терялся,
+    Lang.dat/.scr отдавались до-фиксовые). А там, где у фикса СЛУЧАЙНО был ModuleInfo.txt
+    и потому свой дескриптор, каталог выбирал фикс-юнит как default_source (эвристика
+    «меньше модов = специализированнее») → дефолт ставил ЧАСТИЧНЫЙ оверлей без базы.
+
+    Обе беды лечатся здесь: файлы каждого фикс-юнита накладываются на дескриптор его
+    родителя (fix_parent, по load_order — поздний перекрывает), а сам фикс-юнит
+    перестаёт быть отдельным вариантом каталога. Моды, существующие ТОЛЬКО в фикс-юните
+    (нет родительского варианта), остаются самостоятельными дескрипторами."""
+    units = cfg.get('units', [])
+    camp_unit_of = {u['name']: f"{u['camp']}/{u['name']}" for u in units}
+    fix_units = [u for u in units if u.get('role') == 'fixes']
+    fix_units.sort(key=lambda u: (u.get('load_order') or 999, u['name']))
+
+    folded = added = 0
+    touched = {}                       # rel_path дескриптора -> desc (пишем в конце)
+
+    def _load(rel_path):
+        if rel_path not in touched:
+            touched[rel_path] = load_json(REPO / rel_path, None)
+        return touched[rel_path]
+
+    for fu in fix_units:
+        parent_name = fu.get('fix_parent') or FIX_PARENT.get(fu['name'])
+        pcamp_unit = camp_unit_of.get(parent_name) if parent_name else None
+        if not pcamp_unit:
+            continue
+        fdir = MODS / fu['camp'] / fu['name']
+        fcm = load_json(fdir / 'code.manifest.json', {}).get('files', {})
+        fam = load_json(fdir / 'assets.manifest.json', {})
+        fam = fam.get('files', fam) if isinstance(fam, dict) else {}
+
+        parent_roots = {root: v['path'] for root, vs in variants.items()
+                        for v in vs if v['source'] == pcamp_unit}
+        if not parent_roots:
+            continue
+        sorted_proots = sorted(parent_roots, key=len, reverse=True)
+
+        def _root_of(inst):
+            il = inst.lower()
+            for r in sorted_proots:
+                rl = r.lower()
+                if il == rl or il.startswith(rl + '/'):
+                    return r
+            return None
+
+        for kind, man in (('code', fcm), ('assets', fam)):
+            for rel, meta in man.items():
+                inst = _after_mods(rel)
+                if inst is None:
+                    continue
+                root = _root_of(inst)
+                if root is None:
+                    continue           # мода нет у родителя — не наш случай, пропускаем
+                desc = _load(parent_roots[root])
+                if desc is None:
+                    continue
+                files = desc.setdefault('files', {'code': {}, 'assets': {}})
+                # найти запись родителя с тем же install-путём (в любом kind-ведре)
+                fk = fkey = None
+                for k2 in ('code', 'assets'):
+                    for pk in files.get(k2, {}):
+                        if (_after_mods(pk) or '').lower() == inst.lower():
+                            fk, fkey = k2, pk
+                            break
+                    if fkey:
+                        break
+                nm = {'sha256': meta['sha256'], 'size': meta.get('size')}
+                if meta.get('mtime'):
+                    nm['mtime'] = meta['mtime']
+                if fkey:
+                    if files[fk][fkey].get('sha256') != meta['sha256']:
+                        files[fk][fkey] = nm         # перекрыть базу фиксом
+                        folded += 1
+                else:
+                    files.setdefault(kind, {})[rel] = nm   # фикс добавляет новый файл
+                    added += 1
+
+    # пересчитать version/mtime/cosmetic изменённых дескрипторов и синхронизировать variants
+    for rel_path, desc in touched.items():
+        if desc is None:
+            continue
+        files = desc.get('files', {})
+        allmeta = {**files.get('code', {}), **files.get('assets', {})}
+        allpairs = sorted([(_after_mods(k), v['sha256']) for k, v in allmeta.items()])
+        desc['version'] = hashlib.sha256(
+            json.dumps(allpairs, ensure_ascii=False).encode('utf-8')).hexdigest()[:16]
+        _mts = [m['mtime'] for m in allmeta.values() if m.get('mtime')]
+        desc['mtime'] = max(_mts) if _mts else None
+        desc['cosmetic'] = _cosmetic_installs(files)
+        desc['overlaid_fixes'] = True
+        save_json(REPO / rel_path, desc)
+        for vs in variants.values():
+            for v in vs:
+                if v['path'] == rel_path:
+                    v['version'], v['mtime'] = desc['version'], desc['mtime']
+                    v['code_files'] = len(files.get('code', {}))
+                    v['asset_files'] = len(files.get('assets', {}))
+
+    # фикс-юниты — оверлеи, не самостоятельные варианты: убрать их из каталога там, где у
+    # мода есть непустой родительский вариант (иначе default_source брал бы частичный фикс).
+    fix_sources = {f"{u['camp']}/{u['name']}" for u in fix_units}
+    pruned = 0
+    for root, vs in list(variants.items()):
+        if not any(v['source'] not in fix_sources for v in vs):
+            continue                    # фикс-only мод (нет родителя) — оставляем как есть
+        keep = []
+        for v in vs:
+            if v['source'] in fix_sources:
+                fp = REPO / v['path']
+                if fp.exists():
+                    fp.unlink()
+                pruned += 1
+            else:
+                keep.append(v)
+        variants[root] = keep
+
+    print(f'  фикс-фолд: перекрыто {folded} файлов, добавлено {added}, '
+          f'убрано отдельных фикс-вариантов {pruned}')
+
+
 def build_descriptors(cfg):
     """Сгенерировать дескриптор на каждый (источник, мод) — мод = папка с ModuleInfo.txt.
     Один и тот же мод в разных паках = РАЗНЫЕ варианты (версии часто отличаются), поэтому
@@ -1429,6 +1566,10 @@ def build_descriptors(cfg):
             })
             n_desc += 1
 
+    # свернуть фикс-оверлеи в родительские дескрипторы (см. _fold_fix_overlays):
+    # per-mod установка получит base+fix, фикс-юниты уйдут из вариантов каталога
+    _fold_fix_overlays(cfg, variants)
+
     # каталог: группировка по id; дефолт = вариант из самого «специализированного» юнита
     # (меньше всего модов в юните), tie-break — больше файлов.
     # ВАЖНО: id (путь папки) НЕ равен идентичности мода. Некоторые источники кладут
@@ -1488,13 +1629,6 @@ def build_descriptors(cfg):
     #   base   — полноценная игра (содержит Rangers.exe); сейвы привязаны к базе.
     #   fix    — фикс-пак, ставится ТОЛЬКО на родителя (fix_parent); обновление обязательно.
     #   assets — графика/музыка; mod — обычный мод.
-    FIX_PARENT = {                       # нерегулярные имена -> родитель (можно переопр. в config)
-        'redux_fixes': 'redux_base_installer',
-        'original_fixes': 'original_installer',
-        'reflection_fixes': 'reflection_installer',
-        'universe_fixes_130325': 'universe_community',
-        'denmods_fix': 'denmods',
-    }
     packs = {}
     for u in cfg.get('units', []):
         name, camp = u['name'], u['camp']
@@ -1535,7 +1669,8 @@ def build_descriptors(cfg):
     differ = sum(1 for v in catalog.values() if v['versions_differ'])
     with_dep = sum(1 for v in variants.values() for x in v if x['depends'])
     with_con = sum(1 for v in variants.values() for x in v if x['conflicts'])
-    print(f'Дескрипторы: {n_desc} вариантов / {len(catalog)} уник. модов '
+    n_var = sum(len(v) for v in variants.values())     # после фикс-фолда (n_desc — до прунинга)
+    print(f'Дескрипторы: {n_var} вариантов / {len(catalog)} уник. модов '
           f'(в неск. источниках {multi}, версии различаются {differ}); '
           f'записей с depends {with_dep}, с conflicts {with_con}; '
           f'каталог descriptors/catalog.json')
