@@ -24,6 +24,8 @@
 import argparse
 import fnmatch
 import hashlib
+import ntpath
+import posixpath
 import re
 import json
 import os
@@ -526,6 +528,25 @@ def extract(archive, dest, include=None):
     return dest
 
 
+def _safe_zip_target(dest, name):
+    """Путь распаковки записи внутри dest — или ValueError, если запись выводит наружу.
+
+    Имена берутся из архива, а архивы приезжают с чужого GDrive. Запись вида
+    '../../x' или 'C:/Windows/x' в обычных модах не встречается, но zipfile
+    сам ничего не проверяет, а `dest / 'C:/x'` в pathlib даёт АБСОЛЮТНЫЙ путь —
+    правая часть с буквой диска побеждает, и файл уезжает мимо dest целиком.
+    Ведущий '/' безобиден: пустой сегмент отбрасывается, путь остаётся внутри.
+    """
+    parts = [p for p in name.replace('\\', '/').split('/') if p not in ('', '.')]
+    if any(p == '..' or ntpath.splitdrive(p)[0] or posixpath.isabs(p) for p in parts):
+        raise ValueError(f'запись выводит за пределы каталога распаковки: {name!r}')
+    target = dest.joinpath(*parts) if parts else dest
+    root = os.path.abspath(dest)
+    if os.path.abspath(target) != root and not os.path.abspath(target).startswith(root + os.sep):
+        raise ValueError(f'запись выводит за пределы каталога распаковки: {name!r}')
+    return target
+
+
 def _extract_zip_cp866(archive, dest):
     with zipfile.ZipFile(archive) as z:
         for info in z.infolist():
@@ -535,7 +556,7 @@ def _extract_zip_cp866(archive, dest):
                     name = name.encode('cp437').decode('cp866')
                 except Exception:
                     pass
-            target = dest / name
+            target = _safe_zip_target(dest, name)
             if info.is_dir():
                 target.mkdir(parents=True, exist_ok=True)
                 continue
