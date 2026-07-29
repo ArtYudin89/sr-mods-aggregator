@@ -3,9 +3,9 @@
     "FileVersion": 8,
     "ViewPos.x": -75,
     "ViewPos.y": -186,
-    "ScriptName": "Mod_FlexTheUniverse",
-    "ScriptFileOut": "D:\\Mod_FlexTheUniverse.scr",
-    "ScriptTextOut": "D:\\Mod_FlexTheUniverse.txt",
+    "ScriptName": "AModGalaxyLite",
+    "ScriptFileOut": "D:\\AModGalaxyLite.scr",
+    "ScriptTextOut": "D:\\AModGalaxyLite.txt",
     "LangDatIn": "",
     "LangDatOut": "",
     "MainDatIn": "",
@@ -64,7 +64,7 @@
                     "#": 5,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -76,41 +76,9 @@
                     "#": 6,
                     "Code.Type": "Init",
                     "Code": [
-                        "player_face = ShipFace(Player());",
-                        "",
-                        "function PlayerActCode() //t_OnEnteringForm, t_OnScan",
-                        "{",
-                        "    if(ScriptItemActionType(t_OnEnteringForm))",
-                        "    {",
-                        "        if(CurrentForm() == 'Ship')",
-                        "        {",
-                        "            if(findsubstr(ShipName(Player()), CT('ShipName.Ranger.People.35')))// || ShipPilotRace(Player()) != People) //Рикардо",
-                        "            {",
-                        "                if(ShipFace(Player()) == 82736775) ShipFace(Player(), player_face);",
-                        "                exit;",
-                        "            }",
-                        "",
-                        "            if(ShipFace(Player()) != 82736775)",
-                        "            {",
-                        "                player_face = ShipFace(Player());",
-                        "                ShipFace(Player(), 82736775);",
-                        "            }",
-                        "        }",
-                        "        else if(CurrentForm() == 'Talk') //Разговор в космосе",
-                        "        {",
-                        "            dword ship = GetTalkShip();",
-                        "            //if(ShipPilotRace(ship) != People) exit;",
-                        "            if(findsubstr(ShipName(ship), CT('ShipName.Ranger.People.35'))) exit; //Рикардо",
-                        "            ShipFace(ship, 82736775);",
-                        "        }",
-                        "    }",
-                        "    else",
-                        "    {",
-                        "        ship = FormCurShip();",
-                        "        //if(ShipPilotRace(ship) != People) exit;",
-                        "        if(findsubstr(ShipName(ship), CT('ShipName.Ranger.People.35'))) exit; //Рикардо",
-                        "        ShipFace(ship, 82736775);",
-                        "    }",
+                        "if(infostate == 0 && ShipFindCustomShipInfoByType(Player(),'GalaxyHelper') == -1){",
+                        "    ShipAddCustomShipInfo(Player(),'GalaxyHelper','NoShow');",
+                        "    infostate = 1;",
                         "}"
                     ]
                 }
@@ -191,7 +159,7 @@
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
-                    "OnActCode": "[t_OnEnteringForm,t_OnScan|]\r\nPlayerActCode();",
+                    "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
                     "EMsg": ""
@@ -200,13 +168,13 @@
             "Variables": [
                 {
                     "Type": "TVar",
-                    "Name": "player_face",
+                    "Name": "infostate",
                     "Pos.x": 0,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 0,
                     "Var.Type": "Int",
-                    "Init": "4294967295",
+                    "Init": "0",
                     "Global": false
                 }
             ]
@@ -260,7 +228,7 @@
             "AlignX": 0,
             "AlignY": 0,
             "AlignRect": false,
-            "Text": "SCR Decompiling Mod_FlexTheUniverse\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Text": "SCR Decompiling AModGalaxyLite\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
             "Color": 16777215,
             "Font": "Segoe UI",
             "FontSize": 10,
