@@ -6,15 +6,23 @@
     "ScriptName": "Mod_ExpRepair",
     "ScriptFileOut": "D:\\Mod_ExpRepair.scr",
     "ScriptTextOut": "D:\\Mod_ExpRepair.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
             "DialogAnswers": [
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "exit",
                     "Pos.x": 0,
-                    "Pos.y": 590,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 580,
                     "Parent": -1,
                     "#": 61,
                     "Msg": "",
@@ -22,10 +30,10 @@
                     "_orig_danswer": "DAnswer('exit')"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "exit",
                     "Pos.x": 120,
-                    "Pos.y": 590,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 580,
                     "Parent": -1,
                     "#": 62,
                     "Msg": "",
@@ -33,10 +41,10 @@
                     "_orig_danswer": "DAnswer('exit')"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "exit",
                     "Pos.x": 240,
-                    "Pos.y": 590,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 580,
                     "Parent": -1,
                     "#": 63,
                     "Msg": "",
@@ -46,10 +54,10 @@
             ],
             "DialogMessages": [
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 0,
-                    "Pos.y": 520,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 510,
                     "Parent": -1,
                     "#": 54,
                     "Msg": "",
@@ -57,10 +65,10 @@
                     "_orig_dtext": "DText(Format(CT(\"Script.Mod_ExpRepair.130\"),\"<0>\",tstr1))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 150,
-                    "Pos.y": 520,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 510,
                     "Parent": -1,
                     "#": 55,
                     "Msg": "",
@@ -68,10 +76,10 @@
                     "_orig_dtext": "DText(Format(CT(\"Script.Mod_ExpRepair.130\"),\"<0>\",tstr1))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 300,
-                    "Pos.y": 520,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 510,
                     "Parent": -1,
                     "#": 56,
                     "Msg": "",
@@ -79,10 +87,10 @@
                     "_orig_dtext": "DText(Format(CT(\"Script.Mod_ExpRepair.130\"),\"<0>\",tstr1))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 450,
-                    "Pos.y": 520,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 510,
                     "Parent": -1,
                     "#": 57,
                     "Msg": "",
@@ -90,10 +98,10 @@
                     "_orig_dtext": "DText(Format(CT(\"Script.Mod_ExpRepair.130\"),\"<0>\",tstr1))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 600,
-                    "Pos.y": 520,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 510,
                     "Parent": -1,
                     "#": 58,
                     "Msg": "",
@@ -101,10 +109,10 @@
                     "_orig_dtext": "DText(Format(CT(\"Script.Mod_ExpRepair.130\"),\"<0>\",tstr1))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 750,
-                    "Pos.y": 520,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 510,
                     "Parent": -1,
                     "#": 59,
                     "Msg": "",
@@ -112,10 +120,10 @@
                     "_orig_dtext": "DText(Format(CT(\"Script.Mod_ExpRepair.130\"),\"<0>\",tstr1))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 900,
-                    "Pos.y": 520,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 510,
                     "Parent": -1,
                     "#": 60,
                     "Msg": "",
@@ -125,57 +133,62 @@
             ],
             "Dialogs": [
                 {
-                    "Name": "GetBack",
                     "Type": "TDialog",
+                    "Name": "GetBack",
                     "Pos.x": 0,
-                    "Pos.y": 450,
+                    "Pos.y": 440,
                     "Parent": -1,
                     "#": 48
                 },
                 {
-                    "Name": "RepairDialog",
                     "Type": "TDialog",
+                    "Name": "RepairDialog",
                     "Pos.x": 120,
-                    "Pos.y": 450,
+                    "Pos.y": 440,
                     "Parent": -1,
                     "#": 49
                 },
                 {
-                    "Name": "RepairPlayer",
                     "Type": "TDialog",
+                    "Name": "RepairPlayer",
                     "Pos.x": 300,
-                    "Pos.y": 450,
+                    "Pos.y": 440,
                     "Parent": -1,
                     "#": 50
                 },
                 {
-                    "Name": "RepairPartner",
                     "Type": "TDialog",
+                    "Name": "RepairPartner",
                     "Pos.x": 480,
-                    "Pos.y": 450,
+                    "Pos.y": 440,
                     "Parent": -1,
                     "#": 51
                 },
                 {
-                    "Name": "RepairYes",
                     "Type": "TDialog",
+                    "Name": "RepairYes",
                     "Pos.x": 690,
-                    "Pos.y": 450,
+                    "Pos.y": 440,
                     "Parent": -1,
                     "#": 52
                 },
                 {
-                    "Name": "RepairNo",
                     "Type": "TDialog",
+                    "Name": "RepairNo",
                     "Pos.x": 840,
-                    "Pos.y": 450,
+                    "Pos.y": 440,
                     "Parent": -1,
                     "#": 53
                 }
             ],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "PlayerGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 255,
+                    "Parent": -1,
+                    "#": 43,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -198,30 +211,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "PlanetNew",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 43
+                    "+State": 0
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 650,
+                    "Parent": -1,
+                    "#": 44,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 44,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 660
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 650,
+                    "Parent": -1,
+                    "#": 45,
                     "Code.Type": "Init",
                     "Code": [
                         "items = newarray(1);",
@@ -281,15 +294,15 @@
                         "    if(mod == 7) result = IntVar;",
                         "    else if(mod == 5) result = IntVar * 2;",
                         "}"
-                    ],
-                    "#": 45,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 660
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 650,
+                    "Parent": -1,
+                    "#": 46,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "cur_ruin = GetShipRuins(Player());",
@@ -318,29 +331,29 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 46,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 180,
-                    "Pos.y": 660
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 64,
                     "Code.Type": "Turn",
                     "Code": [
                         "tstr1 = '</color>' + CT('Script.Mod_ExpRepair.' + CurRuinTypeStr + '.DeclainRepair');",
                         "DChange(0);",
                         "exit;"
-                    ],
-                    "#": 64,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 450
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 65,
                     "Code.Type": "Turn",
                     "Code": [
                         "ArrayClear(ship);",
@@ -409,15 +422,15 @@
                         "tstr1 = '</color>' + Format(CT('Script.Mod_ExpRepair.' + CurRuinTypeStr + '.Greeting'), '<SplitLine'+'>', DefSplt);",
                         "DChange(1);",
                         "exit;"
-                    ],
-                    "#": 65,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 100,
-                    "Pos.y": 450
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 280,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 66,
                     "Code.Type": "Turn",
                     "Code": [
                         "cur_ship = Player();",
@@ -1478,15 +1491,15 @@
                         "    exit;",
                         "  }",
                         "}"
-                    ],
-                    "#": 66,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 280,
-                    "Pos.y": 450
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 460,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 67,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!cur_ship) cur_ship = GAnswerData;",
@@ -1797,15 +1810,15 @@
                         "  DChange(4);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 67,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 460,
-                    "Pos.y": 450
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 670,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 68,
                     "Code.Type": "Turn",
                     "Code": [
                         "//Проверяем, сколько игрок потратил на ремонт в кредитах",
@@ -3334,15 +3347,15 @@
                         "  DChange(5);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 68,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 670,
-                    "Pos.y": 450
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 820,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 69,
                     "Code.Type": "Turn",
                     "Code": [
                         "str player_race = ShipPilotRace(Player());",
@@ -3398,27 +3411,27 @@
                         "}",
                         "DChange(6);",
                         "exit;"
-                    ],
-                    "#": 69,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 820,
-                    "Pos.y": 450
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 510,
+                    "Parent": -1,
+                    "#": 70,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);"
-                    ],
-                    "#": 70,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 520
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 510,
+                    "Parent": -1,
+                    "#": 71,
                     "Code.Type": "Turn",
                     "Code": [
                         "//Ремонт текущего оборудования",
@@ -3500,27 +3513,27 @@
                         "",
                         "InjectAnswer('GetBack', CT('Script.Mod_ExpRepair.' + CurRuinTypeStr + '.PlayerDeclainRepair'), -1);",
                         "cur_ship = 0; //Важно, это обнуление не убирать!;"
-                    ],
-                    "#": 71,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 130,
-                    "Pos.y": 520
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 280,
+                    "Pos.y": 510,
+                    "Parent": -1,
+                    "#": 72,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(1);"
-                    ],
-                    "#": 72,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 280,
-                    "Pos.y": 520
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 430,
+                    "Pos.y": 510,
+                    "Parent": -1,
+                    "#": 73,
                     "Code.Type": "Turn",
                     "Code": [
                         "//Проверяем, хватает ли у игрока денег и выводим варианты ответов",
@@ -3541,15 +3554,15 @@
                         "//Отказ от ремонта",
                         "tstr1 = '</color>' + DeleteTags(CT('Script.Mod_ExpRepair.' + CurRuinTypeStr + '.PlayerRepairNo'));",
                         "InjectAnswer('RepairNo', tstr1, 0);"
-                    ],
-                    "#": 73,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 430,
-                    "Pos.y": 520
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 580,
+                    "Pos.y": 510,
+                    "Parent": -1,
+                    "#": 74,
                     "Code.Type": "Turn",
                     "Code": [
                         "//Формируем список опций ремонта, игрок может выбрать, какую группу оборудования ему чинить",
@@ -3706,42 +3719,42 @@
                         "",
                         "tstr1 = '</color>' + CT('Script.Mod_ExpRepair.' + CurRuinTypeStr + '.PlayerRepairNo');",
                         "InjectAnswer('RepairNo', tstr1, 0);"
-                    ],
-                    "#": 74,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 580,
-                    "Pos.y": 520
+                    ]
                 },
                 {
-                    "Name": "",
-                    "Code.Type": "Turn",
-                    "Code": [
-                        "DAdd(2);"
-                    ],
-                    "#": 75,
                     "Type": "Top",
-                    "Parent": -1,
+                    "Name": "",
                     "Pos.x": 730,
-                    "Pos.y": 520
-                },
-                {
-                    "Name": "",
+                    "Pos.y": 510,
+                    "Parent": -1,
+                    "#": 75,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(2);"
-                    ],
-                    "#": 76,
+                    ]
+                },
+                {
                     "Type": "Top",
-                    "Parent": -1,
+                    "Name": "",
                     "Pos.x": 880,
-                    "Pos.y": 520
+                    "Pos.y": 510,
+                    "Parent": -1,
+                    "#": 76,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(2);"
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "PlanetNew",
+                    "Pos.x": 0,
+                    "Pos.y": 210,
+                    "Parent": -1,
+                    "#": 42,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -3749,17 +3762,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "StarNew",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 235,
-                    "Parent": -1,
-                    "#": 42
+                    "+Star": "StarNew"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 120,
+                    "Parent": -1,
+                    "#": 41,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -3778,47 +3791,41 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "StarNew",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 145,
-                    "Parent": -1,
-                    "#": 41
+                    "+Star": "StarNew"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "StarNew",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "StarNew",
                     "Pos.x": 0,
-                    "Pos.y": 190,
+                    "Pos.y": 165,
                     "Parent": -1,
                     "#": 40,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "PlayerState",
+                    "Pos.x": 0,
+                    "Pos.y": 280,
+                    "Parent": -1,
+                    "#": 47,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 350,
-                    "Parent": -1,
-                    "#": 47
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -3836,7 +3843,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_ship",
-                    "Pos.x": 90,
+                    "Pos.x": 60,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 1,
@@ -3847,7 +3854,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_item",
-                    "Pos.x": 210,
+                    "Pos.x": 180,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 2,
@@ -3858,7 +3865,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tint",
-                    "Pos.x": 330,
+                    "Pos.x": 300,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 3,
@@ -3869,7 +3876,7 @@
                 {
                     "Type": "TVar",
                     "Name": "art_cost",
-                    "Pos.x": 420,
+                    "Pos.x": 360,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 4,
@@ -3880,7 +3887,7 @@
                 {
                     "Type": "TVar",
                     "Name": "nod_cost",
-                    "Pos.x": 540,
+                    "Pos.x": 480,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 5,
@@ -3891,7 +3898,7 @@
                 {
                     "Type": "TVar",
                     "Name": "item_cost",
-                    "Pos.x": 660,
+                    "Pos.x": 600,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 6,
@@ -3902,7 +3909,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cost",
-                    "Pos.x": 810,
+                    "Pos.x": 750,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 7,
@@ -3913,7 +3920,7 @@
                 {
                     "Type": "TVar",
                     "Name": "max_duration",
-                    "Pos.x": 900,
+                    "Pos.x": 810,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 8,
@@ -3924,7 +3931,7 @@
                 {
                     "Type": "TVar",
                     "Name": "domik_wpn_cost",
-                    "Pos.x": 1080,
+                    "Pos.x": 990,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 9,
@@ -3935,7 +3942,7 @@
                 {
                     "Type": "TVar",
                     "Name": "total",
-                    "Pos.x": 1290,
+                    "Pos.x": 1200,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 10,
@@ -3946,7 +3953,7 @@
                 {
                     "Type": "TVar",
                     "Name": "bad_equipments",
-                    "Pos.x": 1380,
+                    "Pos.x": 1290,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 11,
@@ -3957,7 +3964,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tstr",
-                    "Pos.x": 1590,
+                    "Pos.x": 1500,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 12,
@@ -3968,7 +3975,7 @@
                 {
                     "Type": "TVar",
                     "Name": "ship",
-                    "Pos.x": 1680,
+                    "Pos.x": 1560,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 13,
@@ -3979,8 +3986,8 @@
                 {
                     "Type": "TVar",
                     "Name": "items",
-                    "Pos.x": 1770,
-                    "Pos.y": 0,
+                    "Pos.x": 0,
+                    "Pos.y": 25,
                     "Parent": -1,
                     "#": 14,
                     "Var.Type": "None",
@@ -3990,7 +3997,7 @@
                 {
                     "Type": "TVar",
                     "Name": "variable",
-                    "Pos.x": 0,
+                    "Pos.x": 90,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 15,
@@ -4001,7 +4008,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tstr2",
-                    "Pos.x": 120,
+                    "Pos.x": 210,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 16,
@@ -4012,7 +4019,7 @@
                 {
                     "Type": "TVar",
                     "Name": "discount",
-                    "Pos.x": 210,
+                    "Pos.x": 300,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 17,
@@ -4023,7 +4030,7 @@
                 {
                     "Type": "TVar",
                     "Name": "bad_equipments_count",
-                    "Pos.x": 330,
+                    "Pos.x": 420,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 18,
@@ -4034,7 +4041,7 @@
                 {
                     "Type": "TVar",
                     "Name": "DefSplt",
-                    "Pos.x": 630,
+                    "Pos.x": 720,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 19,
@@ -4045,7 +4052,7 @@
                 {
                     "Type": "TVar",
                     "Name": "AddText",
-                    "Pos.x": 750,
+                    "Pos.x": 840,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 20,
@@ -4056,7 +4063,7 @@
                 {
                     "Type": "TVar",
                     "Name": "TrankRep",
-                    "Pos.x": 870,
+                    "Pos.x": 960,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 21,
@@ -4067,7 +4074,7 @@
                 {
                     "Type": "TVar",
                     "Name": "AddTextNodes",
-                    "Pos.x": 990,
+                    "Pos.x": 1080,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 22,
@@ -4078,7 +4085,7 @@
                 {
                     "Type": "TVar",
                     "Name": "AnsCount",
-                    "Pos.x": 1170,
+                    "Pos.x": 1260,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 23,
@@ -4089,7 +4096,7 @@
                 {
                     "Type": "TVar",
                     "Name": "nod_cost_float",
-                    "Pos.x": 1290,
+                    "Pos.x": 1380,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 24,
@@ -4100,7 +4107,7 @@
                 {
                     "Type": "TVar",
                     "Name": "discount_float",
-                    "Pos.x": 1500,
+                    "Pos.x": 1590,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 25,
@@ -4111,8 +4118,8 @@
                 {
                     "Type": "TVar",
                     "Name": "nodes_count_total",
-                    "Pos.x": 1710,
-                    "Pos.y": 25,
+                    "Pos.x": 0,
+                    "Pos.y": 50,
                     "Parent": -1,
                     "#": 26,
                     "Var.Type": "Int",
@@ -4122,7 +4129,7 @@
                 {
                     "Type": "TVar",
                     "Name": "nodes_count_array",
-                    "Pos.x": 0,
+                    "Pos.x": 240,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 27,
@@ -4133,7 +4140,7 @@
                 {
                     "Type": "TVar",
                     "Name": "temp_dword",
-                    "Pos.x": 240,
+                    "Pos.x": 480,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 28,
@@ -4144,7 +4151,7 @@
                 {
                     "Type": "TVar",
                     "Name": "item_type",
-                    "Pos.x": 390,
+                    "Pos.x": 630,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 29,
@@ -4155,7 +4162,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_ruin",
-                    "Pos.x": 540,
+                    "Pos.x": 780,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 30,
@@ -4166,7 +4173,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tstr1",
-                    "Pos.x": 660,
+                    "Pos.x": 900,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 31,
@@ -4177,7 +4184,7 @@
                 {
                     "Type": "TVar",
                     "Name": "check",
-                    "Pos.x": 750,
+                    "Pos.x": 990,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 32,
@@ -4188,7 +4195,7 @@
                 {
                     "Type": "TVar",
                     "Name": "CurRuinTypeStr",
-                    "Pos.x": 840,
+                    "Pos.x": 1080,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 33,
@@ -4199,7 +4206,7 @@
                 {
                     "Type": "TVar",
                     "Name": "IndentStr",
-                    "Pos.x": 1050,
+                    "Pos.x": 1290,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 34,
@@ -4210,7 +4217,7 @@
                 {
                     "Type": "TVar",
                     "Name": "SpecialRepairStr",
-                    "Pos.x": 1200,
+                    "Pos.x": 1440,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 35,
@@ -4221,8 +4228,8 @@
                 {
                     "Type": "TVar",
                     "Name": "tint1",
-                    "Pos.x": 1440,
-                    "Pos.y": 50,
+                    "Pos.x": 0,
+                    "Pos.y": 75,
                     "Parent": -1,
                     "#": 36,
                     "Var.Type": "Int",
@@ -4232,8 +4239,8 @@
                 {
                     "Type": "TVar",
                     "Name": "tint2",
-                    "Pos.x": 1530,
-                    "Pos.y": 50,
+                    "Pos.x": 90,
+                    "Pos.y": 75,
                     "Parent": -1,
                     "#": 37,
                     "Var.Type": "Int",
@@ -4243,8 +4250,8 @@
                 {
                     "Type": "TVar",
                     "Name": "non_standard_repair",
-                    "Pos.x": 1620,
-                    "Pos.y": 50,
+                    "Pos.x": 180,
+                    "Pos.y": 75,
                     "Parent": -1,
                     "#": 38,
                     "Var.Type": "Int",
@@ -4254,7 +4261,7 @@
                 {
                     "Type": "TVar",
                     "Name": "max_durability_to_repair",
-                    "Pos.x": 0,
+                    "Pos.x": 450,
                     "Pos.y": 75,
                     "Parent": -1,
                     "#": 39,
@@ -4387,5 +4394,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_ExpRepair\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }
