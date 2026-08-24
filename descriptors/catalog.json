@@ -10749,7 +10749,7 @@
     },
     "FHD_FON/FHDBG": {
       "name": "FHDBG",
-      "author": "Prolog_D,( на базе мода denball )",
+      "author": "Prolog_D",
       "default_source": "redux/fhd_prologde_redux",
       "description": "Пак c Full HD фонами для мода на разнообразные фоны",
       "full_description": "В игру добавлено более 300 различных фонов для населённых планет, правительств и станций. Каждый фон соответствует своей расе и уникальному стилю, что делает прохождение более разнообразным и избавляет игру от однообразия.\n(можно подключать/отключать в течение партии)\n(легален)",
@@ -10759,15 +10759,14 @@
       "variants": [
         {
           "source": "redux/fhd_prologde_redux",
-          "version": "ab7b03a608b716d3",
+          "version": "e77755335cde2220",
           "name": "FHDBG",
           "depends": [
             "FHDDynamicBG"
           ],
           "conflicts": [
             "DenDynamicBG",
-            "DenBG",
-            "DenNightBG"
+            "DenBG"
           ],
           "code_files": 4,
           "asset_files": 1,
@@ -10776,15 +10775,14 @@
         },
         {
           "source": "universe/fhd_prologde_universe",
-          "version": "ab7b03a608b716d3",
+          "version": "e77755335cde2220",
           "name": "FHDBG",
           "depends": [
             "FHDDynamicBG"
           ],
           "conflicts": [
             "DenDynamicBG",
-            "DenBG",
-            "DenNightBG"
+            "DenBG"
           ],
           "code_files": 4,
           "asset_files": 1,
@@ -10795,7 +10793,7 @@
     },
     "FHD_FON/FHDDynamicBG": {
       "name": "FHDDynamicBG",
-      "author": "Prolog_D,( на базе мода denball )",
+      "author": "Prolog_D",
       "default_source": "redux/fhd_prologde_redux",
       "description": "Добавлено 300+ Full HD фонов для планет и станций",
       "full_description": "В игру добавлено более 300 различных фонов для населённых планет, правительств и станций. Каждый фон соответствует своей расе и уникальному стилю, что делает прохождение более разнообразным и избавляет игру от однообразия.\nПодключение этих модов добавит фонов в общий набор фонов:\n- FHDBG (куча фонов планет и станций)\n- KlaxonsCoalitionBG (фоны планет из КР2)\n- KlaxonsStationsBG (фоны станций из КР2)\n- FairanBG (фоны планет)\n- PolarCoalitionBG (фоны планет)\n- PolarStationsBG (фоны станций)\n- PolarPirateBG (фоны пиратских планет)\n<clr></clr>\nЧтобы отключить мод во время партии, нужно:\n- ввести этот код в консоль девкита или чита SUDO:\nShipDeleteCustomShipInfo(Player(),'Player_FHDDynamicBG');\n- сохраниться\n- отключить мод\n- загрузить сейв и играть дальше, все фоны сбросятся на обычные\n<clr></clr>\n(легален)\n(мод сам по себе контента не добавляет)",
@@ -10805,9 +10803,11 @@
       "variants": [
         {
           "source": "redux/fhd_prologde_redux",
-          "version": "38c669a53a87806c",
+          "version": "29c8e648563359b5",
           "name": "FHDDynamicBG",
-          "depends": [],
+          "depends": [
+            "FHDBG"
+          ],
           "conflicts": [
             "DenDynamicBG",
             "DenBG",
@@ -10820,9 +10820,11 @@
         },
         {
           "source": "universe/fhd_prologde_universe",
-          "version": "38c669a53a87806c",
+          "version": "29c8e648563359b5",
           "name": "FHDDynamicBG",
-          "depends": [],
+          "depends": [
+            "FHDBG"
+          ],
           "conflicts": [
             "DenDynamicBG",
             "DenBG",
@@ -10837,7 +10839,7 @@
     },
     "FHD_FON/FHDNightBG": {
       "name": "FHDNightBG",
-      "author": "Prolog_D,( на базе мода denball )",
+      "author": "Prolog_D",
       "default_source": "redux/fhd_prologde_redux",
       "description": "Добавляет 10 ночных фонов планет и 10 ночных фонов правительств",
       "full_description": "Добавляет 10 ночных фонов планет и 10 ночных фонов правительств.\n(можно подключать/отключать в течение партии)\n(легален)",
@@ -10847,14 +10849,13 @@
       "variants": [
         {
           "source": "redux/fhd_prologde_redux",
-          "version": "adc50a563d8533d0",
+          "version": "561848142355f090",
           "name": "FHDNightBG",
           "depends": [
             "FHDDynamicBG"
           ],
           "conflicts": [
             "DenDynamicBG",
-            "DenBG",
             "DenNightBG"
           ],
           "code_files": 4,
@@ -10864,14 +10865,13 @@
         },
         {
           "source": "universe/fhd_prologde_universe",
-          "version": "adc50a563d8533d0",
+          "version": "561848142355f090",
           "name": "FHDNightBG",
           "depends": [
             "FHDDynamicBG"
           ],
           "conflicts": [
             "DenDynamicBG",
-            "DenBG",
             "DenNightBG"
           ],
           "code_files": 4,
@@ -10883,17 +10883,17 @@
     },
     "FHD_SpaceBG": {
       "name": "FHD_SpaceBG",
-      "author": "Prolog_D , ( на базе мода SkyComer )",
+      "author": "Prolog_D",
       "default_source": "redux/fhd_prologde_redux",
-      "description": "25 Новых фонов систем c разрешением 3000х2048 + папка с 60 фонами",
-      "full_description": "Все звездные системы получили новые обновленные фоны, которые значительно улучшают общее восприятие игровой атмосферы. Также добавлена папка с 60 дополнительными фонами, чтобы каждый мог выбрать оформление по своему вкусу. Как установить: Откройте папку: mods -> FHD_SpaceBG -> DATA -> FON. Выберите понравившийся фон. Переименуйте его в то же название, что и у фона, который хотите заменить. Скопируйте файл с заменой в папку BGObj.",
+      "description": "25 Новых фонов систем c разрешением 3000х2048 + папка с 74 фонами",
+      "full_description": "Все звездные системы получили новые обновленные фоны, которые значительно улучшают общее восприятие игровой атмосферы. Также добавлена папка с 74 дополнительными фонами, чтобы каждый мог выбрать оформление по своему вкусу. Как установить: Откройте папку: mods -> FHD_SpaceBG -> DATA -> FON. Выберите понравившийся фон. Переименуйте его в то же название, что и у фона, который хотите заменить. Скопируйте файл с заменой в папку BGObj.",
       "section": "FHD_FON",
       "versions_differ": false,
-      "mtime": 1783883927,
+      "mtime": 1787474754,
       "variants": [
         {
           "source": "redux/fhd_prologde_redux",
-          "version": "4273f203544a2d19",
+          "version": "f138f0b914dffc7f",
           "name": "FHD_SpaceBG",
           "depends": [],
           "conflicts": [
@@ -10901,13 +10901,13 @@
             "PolarLights"
           ],
           "code_files": 3,
-          "asset_files": 230,
+          "asset_files": 264,
           "path": "descriptors/redux/fhd_prologde_redux/FHD_SpaceBG.json",
-          "mtime": 1783883927
+          "mtime": 1787474754
         },
         {
           "source": "universe/fhd_prologde_universe",
-          "version": "4273f203544a2d19",
+          "version": "f138f0b914dffc7f",
           "name": "FHD_SpaceBG",
           "depends": [],
           "conflicts": [
@@ -10915,9 +10915,9 @@
             "PolarLights"
           ],
           "code_files": 3,
-          "asset_files": 230,
+          "asset_files": 264,
           "path": "descriptors/universe/fhd_prologde_universe/FHD_SpaceBG.json",
-          "mtime": 1783883927
+          "mtime": 1787474754
         }
       ]
     },
