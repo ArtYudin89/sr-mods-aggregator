@@ -1334,11 +1334,13 @@ ShipInfo ^{
                     01=if(ScriptItemActionType(t_OnStep))
                     02 ^{
                         01=if(CurTurn() > ShipCustomShipInfoData(0,CurInfo(),1) + 30) ShipDeleteCustomShipInfo(0,CurInfo());
+                        02=exit;
                     }
                     03=else
                     04 ^{
-                        01=if(ScriptItemActObject1() == IdToShip(ShipCustomShipInfoData(0,CurInfo(),2)) && CustomMissileType(ScriptItemActObject2()) == 'EMNukeTorpedo')
-                        02 ^{
+                        01=if(ObjectType(ScriptItemActObject2()) != 7) exit;
+                        02=if(ScriptItemActObject1() == IdToShip(ShipCustomShipInfoData(0,CurInfo(),2)) && CustomMissileType(ScriptItemActObject2()) == 'EMNukeTorpedo')
+                        03 ^{
                             01=int player_can_see = FilmFlags(0);
                             02=dword boom_ship = ScriptItemActShip(), bomb_star = ShipStar(ScriptItemActShip());
                             03=if(player_can_see)
@@ -1347,8 +1349,9 @@ ShipInfo ^{
                                 02=FilmSound('Sound.Zamknulo', boom_ship);
                             }
                         }
+                        04=exit;
                     }
-                    05=for(i = StarShips(bomb_star) - 1; i >= 0; i = i - 1)
+                    05=for(int i = StarShips(bomb_star) - 1; i >= 0; i = i - 1)
                     06 ^{
                         01=dword ship = StarShips(bomb_star, i);
                         02=if(boom_ship)

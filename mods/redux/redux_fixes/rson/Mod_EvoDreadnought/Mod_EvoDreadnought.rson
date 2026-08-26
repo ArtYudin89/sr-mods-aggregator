@@ -6,6 +6,14 @@
     "ScriptName": "Mod_EvoDreadnought",
     "ScriptFileOut": "D:\\Mod_EvoDreadnought.scr",
     "ScriptTextOut": "D:\\Mod_EvoDreadnought.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
@@ -14,7 +22,12 @@
             "Dialogs": [],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "Dreadnought",
+                    "Pos.x": 0,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 40,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -37,15 +50,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "SpawnPlanet",
-                    "+State": 2,
-                    "Type": "TGroup",
-                    "Pos.x": 80,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 40
+                    "+State": 2
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "PlayerGroup",
+                    "Pos.x": 180,
+                    "Pos.y": 275,
+                    "Parent": -1,
+                    "#": 41,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -68,15 +81,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "SpawnPlanet",
-                    "+State": 4,
-                    "Type": "TGroup",
-                    "Pos.x": 170,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 41
+                    "+State": 4
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "PirateGalleon",
+                    "Pos.x": 0,
+                    "Pos.y": 335,
+                    "Parent": -1,
+                    "#": 42,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -99,15 +112,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "SpawnPlanet",
-                    "+State": 5,
-                    "Type": "TGroup",
-                    "Pos.x": 260,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 42
+                    "+State": 5
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "PirateFrigate",
+                    "Pos.x": 210,
+                    "Pos.y": 335,
+                    "Parent": -1,
+                    "#": 43,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -130,15 +143,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "SpawnPlanet",
-                    "+State": 8,
-                    "Type": "TGroup",
-                    "Pos.x": 270,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 43
+                    "+State": 8
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "GroupFollow",
+                    "Pos.x": 0,
+                    "Pos.y": 395,
+                    "Parent": -1,
+                    "#": 44,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -161,30 +174,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "SpawnPlanet",
-                    "+State": 11,
-                    "Type": "TGroup",
-                    "Pos.x": 360,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 44
+                    "+State": 11
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 625,
+                    "Parent": -1,
+                    "#": 45,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 45,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 560
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 625,
+                    "Parent": -1,
+                    "#": 46,
                     "Code.Type": "Init",
                     "Code": [
                         "//Вешаем на игрока инфошку для подсветки числа батарейных орудий на многопушечных кораблях",
@@ -1915,15 +1928,15 @@
                         "    i = i + 1;",
                         "    result = i;",
                         "}"
-                    ],
-                    "#": 46,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 560
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 625,
+                    "Parent": -1,
+                    "#": 47,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ShipIsTakeoff(Player())) {",
@@ -2193,15 +2206,15 @@
                         "      }",
                         "  }",
                         "}"
-                    ],
-                    "#": 47,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 560
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 625,
+                    "Parent": -1,
+                    "#": 48,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "cur_ship = GetTalkShip();",
@@ -2224,15 +2237,15 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 48,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 180,
-                    "Pos.y": 560
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 480,
+                    "Parent": -1,
+                    "#": 61,
                     "Code.Type": "Turn",
                     "Code": [
                         "OrderLock(CurShip, 1);",
@@ -2388,28 +2401,30 @@
                         "  ChangeState(1);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 61,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 80
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 62,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!StarBattle(ShipStar(CurShip))) {",
                         "  ChangeState(0);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 62,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 160
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 300,
+                    "Parent": -1,
+                    "#": 63,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipInNormalSpace(CurShip)) {",
@@ -2422,14 +2437,15 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 63,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 320
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 530,
+                    "Parent": -1,
+                    "#": 64,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(StarBattle(ShipStar(CurShip))) {",
@@ -2440,14 +2456,15 @@
                         "  ChangeState(0);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 64,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 360,
+                    "Parent": -1,
+                    "#": 65,
                     "Code.Type": "Turn",
                     "Code": [
                         "//GetData(0) - таймер до начала следующего патруля",
@@ -2486,14 +2503,15 @@
                         "    OrderLock(CurShip, 0);",
                         "    ChangeState('GalleonInBattle');",
                         "}"
-                    ],
-                    "#": 65,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 480
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 555,
+                    "Parent": -1,
+                    "#": 66,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipInHyperSpace(CurShip)) exit;",
@@ -2504,14 +2522,15 @@
                         "    SetData(0, 0);",
                         "    ChangeState('GalleonOnPatrol');",
                         "}"
-                    ],
-                    "#": 66,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 560
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 190,
+                    "Pos.y": 555,
+                    "Parent": -1,
+                    "#": 67,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipInHyperSpace(CurShip)) exit;",
@@ -2533,14 +2552,15 @@
                         "        ChangeState('GalleonAtHome');",
                         "    }",
                         "}"
-                    ],
-                    "#": 67,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 640
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 190,
+                    "Pos.y": 360,
+                    "Parent": -1,
+                    "#": 68,
                     "Code.Type": "Turn",
                     "Code": [
                         "//GetData(0) - таймер до начала следующего патруля",
@@ -2578,14 +2598,15 @@
                         "    OrderLock(CurShip, 0);",
                         "    ChangeState('FrigateInBattle');",
                         "}"
-                    ],
-                    "#": 68,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 720
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 580,
+                    "Parent": -1,
+                    "#": 69,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipInHyperSpace(CurShip)) exit;",
@@ -2607,14 +2628,15 @@
                         "        ChangeState('FrigateAtHome');",
                         "    }",
                         "}"
-                    ],
-                    "#": 69,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 800
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 190,
+                    "Pos.y": 580,
+                    "Parent": -1,
+                    "#": 70,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipInHyperSpace(CurShip)) exit;",
@@ -2625,14 +2647,15 @@
                         "    SetData(0, 0);",
                         "    ChangeState('FrigateOnPatrol');",
                         "}"
-                    ],
-                    "#": 70,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 880
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 420,
+                    "Parent": -1,
+                    "#": 71,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(GetData() > 0) {",
@@ -2684,11 +2707,7 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 71,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 960
+                    ]
                 }
             ],
             "Places": [
@@ -2696,7 +2715,7 @@
                     "Type": "TPlace",
                     "Name": "DreadnoughtRoute",
                     "Pos.x": 0,
-                    "Pos.y": 300,
+                    "Pos.y": 185,
                     "Parent": -1,
                     "#": 37,
                     "Place.Type": 0,
@@ -2711,7 +2730,7 @@
                     "Type": "TPlace",
                     "Name": "GalleonPatrol",
                     "Pos.x": 90,
-                    "Pos.y": 300,
+                    "Pos.y": 185,
                     "Parent": -1,
                     "#": 38,
                     "Place.Type": 0,
@@ -2726,7 +2745,7 @@
                     "Type": "TPlace",
                     "Name": "FrigatePatrol",
                     "Pos.x": 180,
-                    "Pos.y": 300,
+                    "Pos.y": 185,
                     "Parent": -1,
                     "#": 39,
                     "Place.Type": 0,
@@ -2740,7 +2759,12 @@
             ],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "SpawnPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 36,
                     "Race": 62,
                     "Owner": 256,
                     "Economy": 14,
@@ -2748,17 +2772,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "SpawnStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 210,
-                    "Parent": -1,
-                    "#": 36
+                    "+Star": "SpawnStar"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 95,
+                    "Parent": -1,
+                    "#": 35,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -2777,256 +2801,239 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "SpawnStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 120,
-                    "Parent": -1,
-                    "#": 35
+                    "+Star": "SpawnStar"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "SpawnStar",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "SpawnStar",
                     "Pos.x": 0,
-                    "Pos.y": 165,
+                    "Pos.y": 140,
                     "Parent": -1,
                     "#": 34,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "DreadnoughtOnPatrol",
+                    "Pos.x": 0,
+                    "Pos.y": 480,
+                    "Parent": -1,
+                    "#": 49,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 49
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "DreadnoughtInBattle",
+                    "Pos.x": 0,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 50,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 90,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 50
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "DreadnoughtAtHome",
+                    "Pos.x": 0,
+                    "Pos.y": 300,
+                    "Parent": -1,
+                    "#": 51,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 180,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 51
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "DreadnoughtOnRoute",
+                    "Pos.x": 0,
+                    "Pos.y": 530,
+                    "Parent": -1,
+                    "#": 52,
                     "Move": 1,
                     "MoveObj": 37,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 270,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 52
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "PlayerState",
+                    "Pos.x": 180,
+                    "Pos.y": 300,
+                    "Parent": -1,
+                    "#": 53,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 360,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 53
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "GalleonAtHome",
+                    "Pos.x": 0,
+                    "Pos.y": 360,
+                    "Parent": -1,
+                    "#": 54,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 450,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 54
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "GalleonInBattle",
+                    "Pos.x": 0,
+                    "Pos.y": 555,
+                    "Parent": -1,
+                    "#": 55,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 540,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 55
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "GalleonOnPatrol",
+                    "Pos.x": 210,
+                    "Pos.y": 555,
+                    "Parent": -1,
+                    "#": 56,
                     "Move": 1,
                     "MoveObj": 38,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 630,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 56
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "FrigateAtHome",
+                    "Pos.x": 210,
+                    "Pos.y": 360,
+                    "Parent": -1,
+                    "#": 57,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 720,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 57
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "FrigateOnPatrol",
+                    "Pos.x": 0,
+                    "Pos.y": 580,
+                    "Parent": -1,
+                    "#": 58,
                     "Move": 1,
                     "MoveObj": 39,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 810,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 58
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "FrigateInBattle",
+                    "Pos.x": 210,
+                    "Pos.y": 580,
+                    "Parent": -1,
+                    "#": 59,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 900,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 59
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "StateFollowDreadnought",
+                    "Pos.x": 0,
+                    "Pos.y": 420,
+                    "Parent": -1,
+                    "#": 60,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 990,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 60
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -3066,7 +3073,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_star",
-                    "Pos.x": 540,
+                    "Pos.x": 510,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 3,
@@ -3077,7 +3084,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_planet",
-                    "Pos.x": 660,
+                    "Pos.x": 630,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 4,
@@ -3088,7 +3095,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_item",
-                    "Pos.x": 810,
+                    "Pos.x": 780,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 5,
@@ -3099,7 +3106,7 @@
                 {
                     "Type": "TVar",
                     "Name": "s",
-                    "Pos.x": 930,
+                    "Pos.x": 900,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 6,
@@ -3110,7 +3117,7 @@
                 {
                     "Type": "TVar",
                     "Name": "k",
-                    "Pos.x": 1020,
+                    "Pos.x": 960,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 7,
@@ -3121,7 +3128,7 @@
                 {
                     "Type": "TVar",
                     "Name": "j",
-                    "Pos.x": 1110,
+                    "Pos.x": 1020,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 8,
@@ -3132,7 +3139,7 @@
                 {
                     "Type": "TVar",
                     "Name": "temp_array",
-                    "Pos.x": 1200,
+                    "Pos.x": 1080,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 9,
@@ -3143,7 +3150,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tint",
-                    "Pos.x": 1350,
+                    "Pos.x": 1230,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 10,
@@ -3154,7 +3161,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tint2",
-                    "Pos.x": 1440,
+                    "Pos.x": 1290,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 11,
@@ -3165,7 +3172,7 @@
                 {
                     "Type": "TVar",
                     "Name": "mark",
-                    "Pos.x": 1530,
+                    "Pos.x": 1380,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 12,
@@ -3176,7 +3183,7 @@
                 {
                     "Type": "TVar",
                     "Name": "DreadnoughtSpawnCount",
-                    "Pos.x": 1620,
+                    "Pos.x": 1440,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 13,
@@ -3242,7 +3249,7 @@
                 {
                     "Type": "TVar",
                     "Name": "fucking_crutch",
-                    "Pos.x": 630,
+                    "Pos.x": 600,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 19,
@@ -3253,7 +3260,7 @@
                 {
                     "Type": "TVar",
                     "Name": "temp_count",
-                    "Pos.x": 840,
+                    "Pos.x": 810,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 20,
@@ -3264,7 +3271,7 @@
                 {
                     "Type": "TVar",
                     "Name": "dwd0",
-                    "Pos.x": 990,
+                    "Pos.x": 960,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 21,
@@ -3275,7 +3282,7 @@
                 {
                     "Type": "TVar",
                     "Name": "GTL",
-                    "Pos.x": 1080,
+                    "Pos.x": 1020,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 22,
@@ -3286,7 +3293,7 @@
                 {
                     "Type": "TVar",
                     "Name": "GeneralDiffLevel",
-                    "Pos.x": 1170,
+                    "Pos.x": 1080,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 23,
@@ -3297,7 +3304,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_ship",
-                    "Pos.x": 1410,
+                    "Pos.x": 1320,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 24,
@@ -3308,7 +3315,7 @@
                 {
                     "Type": "TVar",
                     "Name": "ShuDomiksInit",
-                    "Pos.x": 1530,
+                    "Pos.x": 1440,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 25,
@@ -3319,8 +3326,8 @@
                 {
                     "Type": "TVar",
                     "Name": "lastShipId",
-                    "Pos.x": 1740,
-                    "Pos.y": 25,
+                    "Pos.x": 0,
+                    "Pos.y": 50,
                     "Parent": -1,
                     "#": 26,
                     "Var.Type": "Dword",
@@ -3330,7 +3337,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tint3",
-                    "Pos.x": 0,
+                    "Pos.x": 150,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 27,
@@ -3341,7 +3348,7 @@
                 {
                     "Type": "TVar",
                     "Name": "GalleonSpawnCount",
-                    "Pos.x": 90,
+                    "Pos.x": 240,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 28,
@@ -3352,7 +3359,7 @@
                 {
                     "Type": "TVar",
                     "Name": "FrigateSpawnCount",
-                    "Pos.x": 330,
+                    "Pos.x": 480,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 29,
@@ -3363,7 +3370,7 @@
                 {
                     "Type": "TVar",
                     "Name": "LegendsCD",
-                    "Pos.x": 570,
+                    "Pos.x": 720,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 30,
@@ -3374,7 +3381,7 @@
                 {
                     "Type": "TVar",
                     "Name": "def_ship",
-                    "Pos.x": 720,
+                    "Pos.x": 870,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 31,
@@ -3385,7 +3392,7 @@
                 {
                     "Type": "TVar",
                     "Name": "PolBountyInit",
-                    "Pos.x": 840,
+                    "Pos.x": 990,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 32,
@@ -3396,7 +3403,7 @@
                 {
                     "Type": "TVar",
                     "Name": "DreadnoughtStart",
-                    "Pos.x": 1050,
+                    "Pos.x": 1200,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 33,
@@ -3592,5 +3599,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_EvoDreadnought\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

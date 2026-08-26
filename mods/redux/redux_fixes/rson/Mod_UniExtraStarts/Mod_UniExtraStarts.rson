@@ -6,6 +6,14 @@
     "ScriptName": "Mod_UniExtraStarts",
     "ScriptFileOut": "D:\\Mod_UniExtraStarts.scr",
     "ScriptTextOut": "D:\\Mod_UniExtraStarts.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
@@ -14,7 +22,12 @@
             "Dialogs": [],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "PlayerGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 27,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -37,18 +50,18 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "InitPlanet",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 27
+                    "+State": 0
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 360,
+                    "Parent": -1,
+                    "#": 28,
                     "Code.Type": "Global",
                     "Code": [
                         "if(!GLastTurnRun(GScriptName))",
@@ -59,15 +72,15 @@
                         "//1. изменить начальные скрипты",
                         "//4. сделать бонус капера",
                         "//6. написать тексты;"
-                    ],
-                    "#": 28,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 560
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 360,
+                    "Parent": -1,
+                    "#": 29,
                     "Code.Type": "Init",
                     "Code": [
                         "function SetRelationsToPlayer(str relation, int maloc,int peleng,int people,int fei,int gaal,int pirate)",
@@ -479,7 +492,7 @@
                         "  ShipStatus(Player(), 2, 100); //Военный статус",
                         "  star = CreateQuestItem('Usl_Rvk',startRace);",
                         "  AddItemToShip(Player(),star);",
-                        "  UselessItemText(star,'</color>'+Format(CT('UselessItems.Usl_Rvk.CommonText'),'<ShipName'+'>',ShortName(Player()))+Format('<br>')+CT('UselessItems.Usl_Rvk.CommonText'));",
+                        "  UselessItemText(star,'</color>'+Format(CT('UselessItems.Usl_Rvk.CommonText'),'<ShipName'+'>',ShortName(Player()))+Format('<br>')+CT('UselessItems.Usl_Rvk.Text'));",
                         "  ",
                         "  ShipRaiseRank(Player(),2);",
                         "  ",
@@ -575,7 +588,7 @@
                         "  InterfaceState('Ship', 'CustomRankImage_2_NR', 0);",
                         "  InterfaceImage('Ship', 'CustomRankImageL_' + 4, 'GI,Bm.FormShip2.2SR1_img');",
                         "  ",
-                        "  g_FixForUniExtraStarts();",
+                        "  RunFunctionFromScript('Mod_ExpScienceRanks','FixForUniExtraStarts');",
                         "  ",
                         "  //}",
                         "  //SFT('UniExtraStarts logging:назначили назначению ранга ученого');",
@@ -664,6 +677,63 @@
                         "  char5MissionState=1;",
                         "  char5QuestItem=CreateQuestItem('Usl_Courier_'+startRace,startRace);",
                         "  AddItemToShip(Player(),char5QuestItem);",
+                        "  //Случайные штуки",
+                        "  i = 0;",
+                        "  if(!Rnd(0,2) && i < 4) {",
+                        "      char5QuestItem=CreateQuestItem('Usl_10',Rnd(0,4));",
+                        "      AddItemToShip(Player(),char5QuestItem);",
+                        "      i = i + 1;",
+                        "  }",
+                        "  if(!Rnd(0,2) && i < 4) {",
+                        "      char5QuestItem=CreateQuestItem('Usl_12',Rnd(0,4));",
+                        "      AddItemToShip(Player(),char5QuestItem);",
+                        "      i = i + 1;",
+                        "  }",
+                        "  if(!Rnd(0,2) && i < 4) {",
+                        "      char5QuestItem=CreateQuestItem('Usl_14',Rnd(0,4));",
+                        "      AddItemToShip(Player(),char5QuestItem);",
+                        "      i = i + 1;",
+                        "  }",
+                        "  if(!Rnd(0,2) && i < 4) {",
+                        "      char5QuestItem=CreateQuestItem('Usl_16',Rnd(0,4));",
+                        "      AddItemToShip(Player(),char5QuestItem);",
+                        "      i = i + 1;",
+                        "  }",
+                        "  if(!Rnd(0,2) && i < 4) {",
+                        "      char5QuestItem=CreateQuestItem('Usl_18',Rnd(0,4));",
+                        "      AddItemToShip(Player(),char5QuestItem);",
+                        "      i = i + 1;",
+                        "  }",
+                        "  if(!Rnd(0,2) && i < 4) {",
+                        "      char5QuestItem=CreateQuestItem('Usl_19',Rnd(0,4));",
+                        "      AddItemToShip(Player(),char5QuestItem);",
+                        "      i = i + 1;",
+                        "  }",
+                        "  if(!Rnd(0,2) && i < 4) {",
+                        "      char5QuestItem=CreateQuestItem('Usl_20',Rnd(0,4));",
+                        "      AddItemToShip(Player(),char5QuestItem);",
+                        "      i = i + 1;",
+                        "  }",
+                        "  if(!Rnd(0,2) && i < 4) {",
+                        "      char5QuestItem=CreateQuestItem('Usl_21',Rnd(0,4));",
+                        "      AddItemToShip(Player(),char5QuestItem);",
+                        "      i = i + 1;",
+                        "  }",
+                        "  if(!Rnd(0,2) && i < 4) {",
+                        "      char5QuestItem=CreateQuestItem('Usl_26',Rnd(0,4));",
+                        "      AddItemToShip(Player(),char5QuestItem);",
+                        "      i = i + 1;",
+                        "  }",
+                        "  if(!Rnd(0,2) && i < 4) {",
+                        "      char5QuestItem=CreateQuestItem('Usl_33',Rnd(0,4));",
+                        "      AddItemToShip(Player(),char5QuestItem);",
+                        "      i = i + 1;",
+                        "  }",
+                        "  if(!Rnd(0,2) && i < 4) {",
+                        "      char5QuestItem=CreateQuestItem('Usl_38',Rnd(0,4));",
+                        "      AddItemToShip(Player(),char5QuestItem);",
+                        "      i = i + 1;",
+                        "  }",
                         "}",
                         "if(startClass == '6') {",
                         "  if (startRace == Maloc) {",
@@ -1406,15 +1476,15 @@
                         "  ",
                         "  ShipAddCustomShipInfo(Player(), 'UniStart_char20', '',302,0,0);",
                         "}"
-                    ],
-                    "#": 29,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 560
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 360,
+                    "Parent": -1,
+                    "#": 30,
                     "Code.Type": "Turn",
                     "Code": [
                         "if (startClass==5) {",
@@ -1545,15 +1615,15 @@
                         "    if(ShipFindCustomShipInfoByType(Player(),'UniStart_char19') != -1) ShipCustomShipInfoData(Player(), 'UniStart_char19', 1, char19GaalFlag);",
                         "}",
                         "if(ShipInPirateClan && ShipFindCustomShipInfoByType(Player(),'UniStart_char19') != -1) ShipDeleteCustomShipInfo(Player(),'UniStart_char19');"
-                    ],
-                    "#": 30,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 560
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 360,
+                    "Parent": -1,
+                    "#": 31,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "if (GetShipPlanet(Player()) == char5QuestPlanet && char5MissionState==1) { //завершаем квест курьера если миссия выполняется и ГГ говорит с правителем целевой планеты",
@@ -1617,18 +1687,18 @@
                         "        mSBeginState=2;",
                         "    }",
                         "}"
-                    ],
-                    "#": 31,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 180,
-                    "Pos.y": 560
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "InitPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 185,
+                    "Parent": -1,
+                    "#": 26,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -1636,17 +1706,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "InitStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 210,
-                    "Parent": -1,
-                    "#": 26
+                    "+Star": "InitStar"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 95,
+                    "Parent": -1,
+                    "#": 25,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -1665,47 +1735,41 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "InitStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 120,
-                    "Parent": -1,
-                    "#": 25
+                    "+Star": "InitStar"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "InitStar",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "InitStar",
                     "Pos.x": 0,
-                    "Pos.y": 165,
+                    "Pos.y": 140,
                     "Parent": -1,
                     "#": 24,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "PlayerState",
+                    "Pos.x": 0,
+                    "Pos.y": 255,
+                    "Parent": -1,
+                    "#": 32,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 32
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -1723,7 +1787,7 @@
                 {
                     "Type": "TVar",
                     "Name": "transfer_ruin",
-                    "Pos.x": 90,
+                    "Pos.x": 60,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 1,
@@ -1734,7 +1798,7 @@
                 {
                     "Type": "TVar",
                     "Name": "startRace",
-                    "Pos.x": 300,
+                    "Pos.x": 270,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 2,
@@ -1745,7 +1809,7 @@
                 {
                     "Type": "TVar",
                     "Name": "startClass",
-                    "Pos.x": 450,
+                    "Pos.x": 420,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 3,
@@ -1756,7 +1820,7 @@
                 {
                     "Type": "TVar",
                     "Name": "acryn_name",
-                    "Pos.x": 600,
+                    "Pos.x": 570,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 4,
@@ -1767,7 +1831,7 @@
                 {
                     "Type": "TVar",
                     "Name": "isPlayerInClan",
-                    "Pos.x": 750,
+                    "Pos.x": 720,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 5,
@@ -1778,7 +1842,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tstr1",
-                    "Pos.x": 960,
+                    "Pos.x": 930,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 6,
@@ -1789,7 +1853,7 @@
                 {
                     "Type": "TVar",
                     "Name": "char16LiberationPoints",
-                    "Pos.x": 1050,
+                    "Pos.x": 1020,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 7,
@@ -1800,7 +1864,7 @@
                 {
                     "Type": "TVar",
                     "Name": "char16LiberationTimer",
-                    "Pos.x": 1380,
+                    "Pos.x": 1350,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 8,
@@ -1811,8 +1875,8 @@
                 {
                     "Type": "TVar",
                     "Name": "char16BufFlag",
-                    "Pos.x": 1680,
-                    "Pos.y": 0,
+                    "Pos.x": 0,
+                    "Pos.y": 25,
                     "Parent": -1,
                     "#": 9,
                     "Var.Type": "Int",
@@ -1822,7 +1886,7 @@
                 {
                     "Type": "TVar",
                     "Name": "char19GaalFlag",
-                    "Pos.x": 0,
+                    "Pos.x": 210,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 10,
@@ -1833,7 +1897,7 @@
                 {
                     "Type": "TVar",
                     "Name": "char10Star",
-                    "Pos.x": 210,
+                    "Pos.x": 420,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 11,
@@ -1844,7 +1908,7 @@
                 {
                     "Type": "TVar",
                     "Name": "char5MissionState",
-                    "Pos.x": 360,
+                    "Pos.x": 570,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 12,
@@ -1855,7 +1919,7 @@
                 {
                     "Type": "TVar",
                     "Name": "char5QuestPlanet",
-                    "Pos.x": 600,
+                    "Pos.x": 810,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 13,
@@ -1866,7 +1930,7 @@
                 {
                     "Type": "TVar",
                     "Name": "star",
-                    "Pos.x": 840,
+                    "Pos.x": 1050,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 14,
@@ -1877,7 +1941,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tint",
-                    "Pos.x": 930,
+                    "Pos.x": 1110,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 15,
@@ -1888,7 +1952,7 @@
                 {
                     "Type": "TVar",
                     "Name": "char17State",
-                    "Pos.x": 1020,
+                    "Pos.x": 1170,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 16,
@@ -1899,7 +1963,7 @@
                 {
                     "Type": "TVar",
                     "Name": "mSBeginState",
-                    "Pos.x": 1200,
+                    "Pos.x": 1350,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 17,
@@ -1910,7 +1974,7 @@
                 {
                     "Type": "TVar",
                     "Name": "startSystemName",
-                    "Pos.x": 1380,
+                    "Pos.x": 1530,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 18,
@@ -1921,8 +1985,8 @@
                 {
                     "Type": "TVar",
                     "Name": "startRuinsType",
-                    "Pos.x": 1590,
-                    "Pos.y": 25,
+                    "Pos.x": 0,
+                    "Pos.y": 50,
                     "Parent": -1,
                     "#": 19,
                     "Var.Type": "Int",
@@ -1932,7 +1996,7 @@
                 {
                     "Type": "TVar",
                     "Name": "j",
-                    "Pos.x": 0,
+                    "Pos.x": 210,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 20,
@@ -1943,7 +2007,7 @@
                 {
                     "Type": "TVar",
                     "Name": "startPlanet",
-                    "Pos.x": 90,
+                    "Pos.x": 270,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 21,
@@ -1954,7 +2018,7 @@
                 {
                     "Type": "TVar",
                     "Name": "char5QuestItem",
-                    "Pos.x": 270,
+                    "Pos.x": 450,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 22,
@@ -1965,7 +2029,7 @@
                 {
                     "Type": "TVar",
                     "Name": "startRCName",
-                    "Pos.x": 480,
+                    "Pos.x": 660,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 23,
@@ -2007,5 +2071,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_UniExtraStarts\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }
