@@ -476,12 +476,17 @@ def _unpack_one(arc, into):
         raise RuntimeError(f'неизвестный формат: {arc}')
 
 
-def extract(archive, dest, include=None):
+def extract(archive, dest, include=None, exclude=None):
     """include: список glob-масок по ИМЕНИ архива. Если задан и папка содержит
     несколько архивов (folder-of-zips), распаковываются ТОЛЬКО подходящие, остальные
     отбрасываются. Нужно для папок с вариантами одного пака под разные базы (напр.
     Solyanka_..._For_Redux vs _For_Original в одной GDrive-папке) — без фильтра оба
-    архива слились бы в один юнит и моды одного варианта «протекали» бы в другой."""
+    архива слились бы в один юнит и моды одного варианта «протекали» бы в другой.
+    exclude: то же наоборот — маски архивов, которые НЕ брать. Нужно, когда в раздаче
+    рядом с обычными модами лежит альтернативная версия одного из них (zelmods:
+    ZelDomiks «новая» и «старая + фиксы»): её выносим в отдельный юнит, чтобы у игрока
+    был ВЫБОР версии, а не молчаливое схлопывание в одну. exclude сильнее include, и
+    новые архивы, которые автор добавит в раздачу, продолжают ехать в основной юнит."""
     if dest.exists():
         shutil.rmtree(dest)
     dest.mkdir(parents=True)
@@ -504,19 +509,26 @@ def extract(archive, dest, include=None):
                   if p.is_file() and p.suffix.lower() in ARCHIVE_EXT]
         if not nested:
             break
-        # include применяем только на ПЕРВОМ проходе — к архивам-братьям из самой
+        # include/exclude применяем только на ПЕРВОМ проходе — к архивам-братьям из самой
         # папки. Глубже (внутри выбранного архива) фильтр не трогаем, чтобы случайно
         # не выкинуть нужные вложенные части по совпадению имени.
-        if round_i == 0 and include:
-            keep = [p for p in nested
-                    if any(fnmatch.fnmatch(p.name.lower(), pat.lower()) for pat in include)]
+        if round_i == 0 and (include or exclude):
+            def _hit(p, pats):
+                return any(fnmatch.fnmatch(p.name.lower(), pat.lower()) for pat in pats)
+            keep = []
             for p in nested:
-                if p not in keep:
+                if include and not _hit(p, include):
                     print(f'    [include] пропускаю архив {p.name} (не подходит под {include})')
-                    p.unlink(missing_ok=True)
+                elif exclude and _hit(p, exclude):
+                    print(f'    [exclude] пропускаю архив {p.name} (подходит под {exclude})')
+                else:
+                    keep.append(p)
+                    continue
+                p.unlink(missing_ok=True)
             nested = keep
             if not nested:
-                print(f'    [warn] include={include}: ни один архив не подошёл')
+                print(f'    [warn] include={include} exclude={exclude}: '
+                      f'ни один архив не подошёл')
         for arc in nested:
             sub = arc.parent / (arc.stem + '_unpacked')
             try:
@@ -1228,30 +1240,43 @@ def _safe_mtime(path):
         return None
 
 
+def _dedup_key(rel, meta, mtime_of):
+    """Ключ выбора копии при дедупе install-пути: (dev-дата, меньшая вложенность, rel).
+
+    Свежесть берём из dev-mtime МАНИФЕСТА (дата из архива), а не из mtime файла в
+    code/: файлы репозитория датируются копированием/checkout'ом, у всех копий это
+    одно и то же время — «свежую» фактически выбирал алфавит, а он ставил вложенную
+    обёртку выше прямой ветки (NorthSouth.zip внутри раздачи NorthSouth → каталог
+    получил версию на неделю старше; Mod_ExpTCPlus/Mods/.../Mod_ExpTCPlus → сентябрь
+    вместо декабря). mtime_of(rel) остаётся фолбэком для манифестов без dev-даты.
+    При равной дате побеждает МЕНЕЕ вложенная копия — именно её читает игра."""
+    mt = meta.get('mtime')
+    if mt is None:
+        mt = mtime_of(rel)
+    depth = len([p for p in rel.replace('\\', '/').split('/') if p])
+    return (mt if mt is not None else float('-inf'), -depth, rel)
+
+
 def _dedup_install_path(entries, mtime_of):
     """Схлопнуть записи манифеста, делящие ОДИН install-путь (_after_mods).
     Двойная укладка пака (прямая ветка Mods/X/ и обёртка X_unpacked/Mods/X/) даёт
     обе копии одного файла под РАЗНЫМИ code-rel, но одинаковым install-путём —
     иначе обе уезжают в дескриптор и лаунчер арбитрарно выбирает при установке.
-    Оставляем свежую по mtime исходника (None-mtime проигрывает любому реальному;
-    при равенстве — детерминированно по rel). Возвращает (deduped, dropped)."""
-    best = {}   # install-path -> (rel, meta, mtime)
+    Оставляем лучшую по _dedup_key. Возвращает (deduped, dropped)."""
+    best = {}   # install-path -> (rel, meta, key)
     dropped = 0
     for rel, meta in entries.items():
         ip = _after_mods(rel)
         if ip is None:
             continue
-        mt = mtime_of(rel)
+        k = _dedup_key(rel, meta, mtime_of)
         cur = best.get(ip)
         if cur is None:
-            best[ip] = (rel, meta, mt)
+            best[ip] = (rel, meta, k)
             continue
         dropped += 1
-        c_rel, _, c_mt = cur
-        cand = (mt if mt is not None else float('-inf'), rel)
-        keep = (c_mt if c_mt is not None else float('-inf'), c_rel)
-        if cand > keep:
-            best[ip] = (rel, meta, mt)
+        if k > cur[2]:
+            best[ip] = (rel, meta, k)
     return {rel: meta for (rel, meta, _) in best.values()}, dropped
 
 
@@ -2094,7 +2119,8 @@ def main():
 
         # Изоляция: сбой/таймаут на одном юните не должен ронять весь прогон.
         try:
-            extracted = extract(archive, EXTRACT / name, unit.get('include'))
+            extracted = extract(archive, EXTRACT / name, unit.get('include'),
+                                unit.get('exclude'))
 
             rson_tmp = RSON_TMP / name
             decompile(extracted, rson_tmp, run_py, a.check)
