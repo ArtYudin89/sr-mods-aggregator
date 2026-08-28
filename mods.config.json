@@ -288,9 +288,24 @@
       "known_version": "",
       "gdrive": "https://drive.google.com/drive/folders/119HyaopLgkaqJX44h-dRiSJtn8IXUSPU",
       "kind": "folder",
+      "exclude": ["ZelDomiksOld*"],
       "enabled": true,
       "access": "shared",
-      "note": "Доступ \"расшарено мне\" (не публично) — нужна авторизация Google; gdown анонимно не качает."
+      "note": "Доступ \"расшарено мне\" (не публично) — нужна авторизация Google; gdown анонимно не качает. В раздаче ДВЕ версии ZelDomiks рядом (новая от Zelenium и старая + фиксы DrKles) — старая вынесена в юнит zelmods_old, чтобы у игрока был выбор версии, а не молчаливое схлопывание дедупом. exclude, а не include: новые архивы автора продолжают ехать сюда."
+    },
+    {
+      "name": "zelmods_old",
+      "camp": "universe",
+      "display_name": "Zelmods — ZelDomiks (старая версия + фиксы DrKles)",
+      "role": "pack",
+      "load_order": 39,
+      "known_version": "",
+      "gdrive": "https://drive.google.com/drive/folders/119HyaopLgkaqJX44h-dRiSJtn8IXUSPU",
+      "kind": "folder",
+      "include": ["ZelDomiksOld*"],
+      "enabled": true,
+      "access": "shared",
+      "note": "Та же раздача, что и zelmods, но берётся только альтернативная сборка ZelDomiks. load_order ниже zelmods → по умолчанию побеждает новая версия, старую игрок выбирает в карточке мода."
     },
     {
       "name": "universe_prochee",
