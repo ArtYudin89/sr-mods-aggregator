@@ -303,9 +303,10 @@
       "gdrive": "https://drive.google.com/drive/folders/119HyaopLgkaqJX44h-dRiSJtn8IXUSPU",
       "kind": "folder",
       "include": ["ZelDomiksOld*"],
+      "default_rank": 1,
       "enabled": true,
       "access": "shared",
-      "note": "Та же раздача, что и zelmods, но берётся только альтернативная сборка ZelDomiks. load_order ниже zelmods → по умолчанию побеждает новая версия, старую игрок выбирает в карточке мода."
+      "note": "Та же раздача, что и zelmods, но берётся только альтернативная сборка ZelDomiks. load_order ниже zelmods → при установке сборки побеждает новая версия. default_rank=1 — юнит не претендует на роль default_source: иначе «специализированность» (1 мод в юните) вывела бы в дефолт заведомо старую версию. Старую игрок выбирает в карточке мода."
     },
     {
       "name": "universe_prochee",

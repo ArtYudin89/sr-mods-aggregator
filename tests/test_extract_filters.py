@@ -83,5 +83,39 @@ class ExtractFilterTests(unittest.TestCase):
         self.assertEqual(len(main | old), len(self.ARCS))
 
 
+class VariantDefaultOrderTests(unittest.TestCase):
+    """Какой источник станет default_source мода в каталоге."""
+
+    @staticmethod
+    def _v(source, mods_in_unit, files, rank=0):
+        return {'source': source, 'unit_mod_count': mods_in_unit,
+                'code_files': files, 'asset_files': 0, 'default_rank': rank}
+
+    def _order(self, *variants):
+        return [v['source'] for v in sorted(variants, key=aggregate._variant_default_key)]
+
+    def test_specialised_unit_wins_over_compilation(self):
+        """Авторская раздача одного мода лучше сборника — правило не изменилось."""
+        self.assertEqual(
+            self._order(self._v('redux/community_mods', 40, 9),
+                        self._v('redux/drkles_mod', 1, 9))[0],
+            'redux/drkles_mod')
+
+    def test_default_rank_pushes_a_unit_out_of_the_default_slot(self):
+        """zelmods_old — юнит из одного мода, но версия в нём заведомо старая."""
+        self.assertEqual(
+            self._order(self._v('universe/zelmods_old', 1, 7, rank=1),
+                        self._v('universe/zelmods', 5, 8))[0],
+            'universe/zelmods')
+
+    def test_more_files_wins_on_a_tie(self):
+        self.assertEqual(
+            self._order(self._v('a/small', 2, 3), self._v('a/big', 2, 30))[0], 'a/big')
+
+    def test_missing_rank_defaults_to_zero(self):
+        v = {'source': 'a/u', 'unit_mod_count': 1, 'code_files': 1, 'asset_files': 0}
+        self.assertEqual(aggregate._variant_default_key(v)[0], 0)
+
+
 if __name__ == '__main__':
     unittest.main()

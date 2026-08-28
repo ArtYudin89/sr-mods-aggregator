@@ -1280,6 +1280,17 @@ def _dedup_install_path(entries, mtime_of):
     return {rel: meta for (rel, meta, _) in best.values()}, dropped
 
 
+def _variant_default_key(v):
+    """Порядок вариантов мода в каталоге: первый становится default_source.
+
+    Сначала default_rank юнита (0 по умолчанию; больше = юнит не претендует на роль
+    дефолта — так помечена раздача с заведомо СТАРОЙ версией мода рядом с новой), затем
+    «специализированность» юнита (меньше модов в юните = ближе к авторской раздаче, а не
+    к сборнику), затем больше файлов."""
+    return (v.get('default_rank', 0), v['unit_mod_count'],
+            -(v['code_files'] + v['asset_files']))
+
+
 def _cosmetic_installs(files):
     """Install-пути регенерируемых/косметических файлов мода: .dat, скомпилированный из
     соседнего .txt (Lang.dat←Lang.txt, Main.dat←Main.txt) либо рантайм-кэш игры
@@ -1505,8 +1516,10 @@ def build_descriptors(cfg):
     variants = defaultdict(list)   # mod_id -> [variant catalog-entry]
     n_desc = 0
     manual_units = {u['name'] for u in cfg.get('units', []) if u.get('manual')}
+    unit_by_key = {f"{u['camp']}/{u['name']}": u for u in cfg.get('units', [])}
     for unit_dir in sorted(MODS.glob('*/*')):
         camp_unit = f'{unit_dir.parent.name}/{unit_dir.name}'
+        unit_cfg = unit_by_key.get(camp_unit)
         code_dir = unit_dir / 'code'
         # Источник истины — сам code/ на диске. code.manifest.json мог отстать, если
         # юнит переагрегировали (новое содержимое code/), но --code-track ещё не
@@ -1606,6 +1619,7 @@ def build_descriptors(cfg):
                 'conflicts': desc['conflicts'], 'code_files': len(files['code']),
                 'asset_files': len(files['assets']), 'path': rel_path, 'mtime': mtime,
                 'unit_mod_count': len(roots),
+                'default_rank': int((unit_cfg or {}).get('default_rank', 0)),
                 'description': desc['description'],
                 'full_description': desc['full_description'],
                 'section': desc['section'],
@@ -1617,7 +1631,10 @@ def build_descriptors(cfg):
     _fold_fix_overlays(cfg, variants)
 
     # каталог: группировка по id; дефолт = вариант из самого «специализированного» юнита
-    # (меньше всего модов в юните), tie-break — больше файлов.
+    # (меньше всего модов в юните), tie-break — больше файлов. Юнит может отказаться от
+    # роли дефолта полем default_rank в конфиге (больше = позже): так помечен zelmods_old
+    # — юнит из одного мода, и «специализированность» вывела бы в дефолт заведомо СТАРУЮ
+    # версию ZelDomiks, которую автор держит рядом с новой.
     # ВАЖНО: id (путь папки) НЕ равен идентичности мода. Некоторые источники кладут
     # РАЗНЫЕ моды в одну папку (Polus Mira: PolMM в ShusRangers/ShuMM, PolMusic в
     # ShuMusic и т.д.). Истинный идентификатор в движке — Name= из ModuleInfo (через
@@ -1626,8 +1643,7 @@ def build_descriptors(cfg):
     # если совпадения нет), держит ключ = путь; остальные получают ключ '<путь>@<Name>',
     # чтобы чужой мод не маскировался под имя папки.
     def _emit(mid, group):
-        vs_sorted = sorted(group, key=lambda v: (v['unit_mod_count'],
-                                                 -(v['code_files'] + v['asset_files'])))
+        vs_sorted = sorted(group, key=_variant_default_key)
         default = vs_sorted[0]
         # описание/раздел — из дефолта, но если у него пусто, берём первое непустое
         # среди вариантов (фиксы часто без ModuleInfo-описания, а установщик с ним)
@@ -2130,14 +2146,17 @@ def main():
             manifest, (cn, cb), (an, ab) = classify(extracted, unit_dir / 'code', policy)
             save_json(unit_dir / 'assets.manifest.json',
                       {'asset_count': an, 'asset_bytes': ab, 'files': manifest})
-            # code.manifest пишем ЗДЕСЬ только для manual-юнитов (redux_base): они
-            # НЕ переизвлекаются в облаке, а code_track/build_descriptors на раннере
-            # их НЕ пересобирают (иначе mtime затирается датой git-checkout, т.к. sha
-            # локального CRLF-файла ≠ sha LF-блоба). Здесь распаковка живая → mtime
-            # реальный. Для остальных юнитов манифест строит code_track/descriptors.
-            if unit.get('manual'):
-                save_json(unit_dir / 'code.manifest.json',
-                          {'files': _build_code_manifest(unit_dir / 'code')})
+            # code.manifest пишем ЗДЕСЬ, пока распаковка живая и mtime = дата
+            # РАЗРАБОТЧИКА. Раньше для обычных юнитов его строил code_track — а он идёт
+            # в облаке ПОСЛЕ шага «Push detected changes», где отклонённый push делает
+            # `git rebase origin/master` и переписывает рабочую копию: mtime становится
+            # временем ребейза. Для существующих юнитов дату спасал prev по rel-пути, а
+            # НОВЫЙ юнит спасать нечем — zelmods_old приехал с датой прогона вместо
+            # 2020-2021 (ассеты, чей манифест пишется здесь же, даты сохранили).
+            # prev передаём, чтобы даты уже известных файлов не переставились.
+            prev_cm = load_json(unit_dir / 'code.manifest.json', {}).get('files', {})
+            save_json(unit_dir / 'code.manifest.json',
+                      {'files': _build_code_manifest(unit_dir / 'code', prev_cm)})
             save_json(unit_dir / 'meta.json', {
                 'name': name, 'camp': camp, 'role': unit.get('role'),
                 'display_name': unit.get('display_name', name),
