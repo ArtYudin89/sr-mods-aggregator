@@ -6,15 +6,23 @@
     "ScriptName": "Cat_AsteroidStations",
     "ScriptFileOut": "D:\\Cat_AsteroidStations.scr",
     "ScriptTextOut": "D:\\Cat_AsteroidStations.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
             "DialogAnswers": [
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "fastexit",
                     "Pos.x": 0,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 31,
                     "Msg": "",
@@ -22,10 +30,10 @@
                     "_orig_danswer": "DAnswer('fastexit')"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "restart",
                     "Pos.x": 120,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 32,
                     "Msg": "",
@@ -33,10 +41,10 @@
                     "_orig_danswer": "DAnswer('restart')"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "restart",
                     "Pos.x": 240,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 33,
                     "Msg": "Да, я согласен!",
@@ -44,10 +52,10 @@
                     "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_AsteroidStations.12\"))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "restart",
                     "Pos.x": 360,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 34,
                     "Msg": "Нет, пожалуй, нет",
@@ -55,10 +63,10 @@
                     "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_AsteroidStations.13\"))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "restart",
                     "Pos.x": 480,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 35,
                     "Msg": "Да, абсолютно точно",
@@ -68,10 +76,10 @@
             ],
             "DialogMessages": [
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 0,
-                    "Pos.y": 470,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 460,
                     "Parent": -1,
                     "#": 28,
                     "Msg": "",
@@ -79,10 +87,10 @@
                     "_orig_dtext": "DText(CT(\"Script.Cat_AsteroidStations.2\"))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 150,
-                    "Pos.y": 470,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 460,
                     "Parent": -1,
                     "#": 29,
                     "Msg": "О, да, конечно. Специально для рейнджеров мы предлагаем возможность легко подзаработать! Смотрите сами:\r\n\r\n1) За каждый день, когда в нашей системе будет меньше определённого количества мусора, вы будете получать некоторую небольшую сумму:\r\n- Меньше 50 тонн: 25 cr./сутки\r\n- Меньше 20 тонн: 70 cr./сутки\r\n- 0 - 5 тонн: 150 cr./сутки\r\n\r\n2) Пока вы работаете на нас, для вас действуют особые условия в нашем магазине: мы\r\nскупаем минералы по особо выгодным ценам\r\n\r\n\r\nНо учтите: <clr>как только вы покинете систему, контракт будет автоматически расторгнут<clrEnd>.\r\nА во избежание мошеннических схем <clr>покупка минералов<clrEnd> на всех планетах и станциях системы приравнивается к контрабандным сделкам.\r\n\r\nНу что, идёт?",
@@ -90,10 +98,10 @@
                     "_orig_dtext": "DText(CT(\"Script.Cat_AsteroidStations.10\"))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 300,
-                    "Pos.y": 470,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 460,
                     "Parent": -1,
                     "#": 30,
                     "Msg": "Уверены, что хотите разорвать контракт?",
@@ -103,33 +111,38 @@
             ],
             "Dialogs": [
                 {
-                    "Name": "DialogAS",
                     "Type": "TDialog",
+                    "Name": "DialogAS",
                     "Pos.x": 0,
-                    "Pos.y": 400,
+                    "Pos.y": 390,
                     "Parent": -1,
                     "#": 25
                 },
                 {
-                    "Name": "DialogAsteroid",
                     "Type": "TDialog",
+                    "Name": "DialogAsteroid",
                     "Pos.x": 120,
-                    "Pos.y": 400,
+                    "Pos.y": 390,
                     "Parent": -1,
                     "#": 26
                 },
                 {
-                    "Name": "DialogAsteroid_End",
                     "Type": "TDialog",
+                    "Name": "DialogAsteroid_End",
                     "Pos.x": 330,
-                    "Pos.y": 400,
+                    "Pos.y": 390,
                     "Parent": -1,
                     "#": 27
                 }
             ],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "GroupNew",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 17,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -152,15 +165,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "PlanetNew",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 17
+                    "+State": 0
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "GroupTransport",
+                    "Pos.x": 120,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 18,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -183,30 +196,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "PlanetNew",
-                    "+State": 1,
-                    "Type": "TGroup",
-                    "Pos.x": 90,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 18
+                    "+State": 1
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 19,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 19,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 20,
                     "Code.Type": "Init",
                     "Code": [
                         "//Структура массива changed_owner",
@@ -320,15 +333,15 @@
                         "    ShipImproveItems(ship,0);",
                         "    ShipJoin('GroupTransport',ship);",
                         "}"
-                    ],
-                    "#": 20,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 21,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(CurTurn() > 350) {",
@@ -396,15 +409,15 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 21,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 22,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "if(GetShipRuins(Player())) {",
@@ -421,15 +434,15 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 22,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 180,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 36,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(GetShipRuins(CurShip)) {",
@@ -463,123 +476,124 @@
                         "else {",
                         "    ShipOut(CurShip);",
                         "}"
-                    ],
-                    "#": 36,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 80
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 390,
+                    "Parent": -1,
+                    "#": 37,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(0);",
                         "exit;"
-                    ],
-                    "#": 37,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 390,
+                    "Parent": -1,
+                    "#": 38,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(1);",
                         "exit;"
-                    ],
-                    "#": 38,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 100,
-                    "Pos.y": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 310,
+                    "Pos.y": 390,
+                    "Parent": -1,
+                    "#": 39,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(2);",
                         "exit;"
-                    ],
-                    "#": 39,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 310,
-                    "Pos.y": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 460,
+                    "Parent": -1,
+                    "#": 40,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);"
-                    ],
-                    "#": 40,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 470
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 460,
+                    "Parent": -1,
+                    "#": 41,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(1);",
                         "DAdd(2);"
-                    ],
-                    "#": 41,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 130,
-                    "Pos.y": 470
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 280,
+                    "Pos.y": 460,
+                    "Parent": -1,
+                    "#": 42,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(3);",
                         "DAdd(4);"
-                    ],
-                    "#": 42,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 280,
-                    "Pos.y": 470
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 220,
+                    "Pos.y": 530,
+                    "Parent": -1,
+                    "#": 43,
                     "Code.Type": "Turn",
                     "Code": [
                         "Sound('Sound.Buy');",
                         "",
                         "ShipAddCustomShipInfo(Player(),'CatAS_Main');"
-                    ],
-                    "#": 43,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 220,
-                    "Pos.y": 540
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 460,
+                    "Pos.y": 530,
+                    "Parent": -1,
+                    "#": 44,
                     "Code.Type": "Turn",
                     "Code": [
                         "Sound('Sound.Buy');",
                         "ShipMoney(Player(),ShipMoney(Player())+money);",
                         "",
                         "ShipDeleteCustomShipInfo(Player(),'CatAS_Main');"
-                    ],
-                    "#": 44,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 460,
-                    "Pos.y": 540
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "PlanetNew",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 16,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -587,17 +601,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "StarNew",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 185,
-                    "Parent": -1,
-                    "#": 16
+                    "+Star": "StarNew"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 15,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -616,66 +630,59 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "StarNew",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 95,
-                    "Parent": -1,
-                    "#": 15
+                    "+Star": "StarNew"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "StarNew",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "StarNew",
                     "Pos.x": 0,
-                    "Pos.y": 140,
+                    "Pos.y": 115,
                     "Parent": -1,
                     "#": 14,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "StateNew",
+                    "Pos.x": 0,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 23,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 23
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "StateTransport",
+                    "Pos.x": 120,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 24,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 90,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 24
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -737,7 +744,7 @@
                 {
                     "Type": "TVar",
                     "Name": "i",
-                    "Pos.x": 690,
+                    "Pos.x": 660,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 5,
@@ -748,7 +755,7 @@
                 {
                     "Type": "TVar",
                     "Name": "temp_array",
-                    "Pos.x": 780,
+                    "Pos.x": 720,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 6,
@@ -759,7 +766,7 @@
                 {
                     "Type": "TVar",
                     "Name": "temp_dword_4",
-                    "Pos.x": 930,
+                    "Pos.x": 870,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 7,
@@ -770,7 +777,7 @@
                 {
                     "Type": "TVar",
                     "Name": "temp_dword_3",
-                    "Pos.x": 1110,
+                    "Pos.x": 1050,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 8,
@@ -781,7 +788,7 @@
                 {
                     "Type": "TVar",
                     "Name": "StationsArray",
-                    "Pos.x": 1290,
+                    "Pos.x": 1230,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 9,
@@ -792,7 +799,7 @@
                 {
                     "Type": "TVar",
                     "Name": "money",
-                    "Pos.x": 1500,
+                    "Pos.x": 1440,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 10,
@@ -803,7 +810,7 @@
                 {
                     "Type": "TVar",
                     "Name": "changed_owner",
-                    "Pos.x": 1590,
+                    "Pos.x": 1530,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 11,
@@ -944,5 +951,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Cat_AsteroidStations\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

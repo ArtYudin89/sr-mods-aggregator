@@ -6,6 +6,14 @@
     "ScriptName": "Cat_Marshal",
     "ScriptFileOut": "D:\\Cat_Marshal.scr",
     "ScriptTextOut": "D:\\Cat_Marshal.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 1,
@@ -14,7 +22,12 @@
             "Dialogs": [],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "GroupNew",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 17,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -37,30 +50,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "PlanetNew",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 17
+                    "+State": 0
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 335,
+                    "Parent": -1,
+                    "#": 18,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 18,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 535
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 335,
+                    "Parent": -1,
+                    "#": 19,
                     "Code.Type": "Init",
                     "Code": [
                         "tint = 250;",
@@ -76,15 +89,15 @@
                         "hull = Id(tdwd);",
                         "",
                         "AddItemToShop(star,tdwd);"
-                    ],
-                    "#": 19,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 535
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 335,
+                    "Parent": -1,
+                    "#": 20,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(CurTurn() % 130 == 0) {",
@@ -107,18 +120,18 @@
                         "        AllShipOut();",
                         "    }",
                         "}"
-                    ],
-                    "#": 20,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 535
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "PlanetNew",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 16,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -126,17 +139,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "StarNew",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 185,
-                    "Parent": -1,
-                    "#": 16
+                    "+Star": "StarNew"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 15,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -155,47 +168,41 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "StarNew",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 95,
-                    "Parent": -1,
-                    "#": 15
+                    "+Star": "StarNew"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "StarNew",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "StarNew",
                     "Pos.x": 0,
-                    "Pos.y": 140,
+                    "Pos.y": 115,
                     "Parent": -1,
                     "#": 14,
-                    "Constellation": 1
+                    "Constellation": 1,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "StateNew",
+                    "Pos.x": 0,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 21,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 21
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -312,7 +319,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cost",
-                    "Pos.x": 90,
+                    "Pos.x": 60,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 10,
@@ -323,7 +330,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tdwd",
-                    "Pos.x": 180,
+                    "Pos.x": 120,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 11,
@@ -334,7 +341,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tint",
-                    "Pos.x": 270,
+                    "Pos.x": 180,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 12,
@@ -345,7 +352,7 @@
                 {
                     "Type": "TVar",
                     "Name": "planet",
-                    "Pos.x": 360,
+                    "Pos.x": 240,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 13,
@@ -387,5 +394,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Cat_Marshal\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

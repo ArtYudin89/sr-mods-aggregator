@@ -1,0 +1,286 @@
+Data ^{
+    Script ^{
+        Mod_ExpPB=1,Script.Mod_ExpPB
+    }
+}
+ML ^{
+    RuinsTalk ^{
+        Panel ^{
+            ExpPB_ChangeRaceWrap ^{
+                Panel ^{
+                    Active=False
+                    Edit ^{
+                        AlignX=Center
+                        Font=Font.2Normal
+                        MaxLen=10
+                        Name=ExpPB_Name
+                        Pos=181,516,2
+                        Size=122,21
+                        TextColor=247,148,29
+                    }
+                    GraphButton ^{
+                        Help=FormGameSet2.Common.HelpRaceMaloc
+                        ImageDown=GI,Bm.FormGameSet2.2RaceMalocD
+                        ImageNormalA=GI,Bm.FormGameSet2.2RaceMalocA
+                        Kind=Fix
+                        KindHit=Graph
+                        Name=ExpPB_RaceMaloc
+                        OnPressCode ^{
+                            01=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Sel', 0);
+                            02=int f=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_FaceCur'); if(f < 0) f=0;
+                            03=InterfaceImage('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Captain', 'GI,Bm.Captain.2Maloc'+f+'i');
+                            04=UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceMaloc', 'IsDown', 1); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeleng', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeople', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceFei', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceGaal', 'IsDown', 0);
+                        }
+                        Pos=42,142,50
+                        Size=193,95
+                        Style=Style.GB.SoundNormal
+                    }
+                    GraphButton ^{
+                        Help=FormGameSet2.Common.HelpRacePeleng
+                        ImageDown=GI,Bm.FormGameSet2.2RacePelengD
+                        ImageNormalA=GI,Bm.FormGameSet2.2RacePelengA
+                        Kind=Fix
+                        KindHit=Graph
+                        Name=ExpPB_RacePeleng
+                        OnPressCode ^{
+                            01=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Sel', 1);
+                            02=int f=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_FaceCur'); if(f < 0) f=0;
+                            03=InterfaceImage('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Captain', 'GI,Bm.Captain.2Peleng'+f+'i');
+                            04=UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceMaloc', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeleng', 'IsDown', 1); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeople', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceFei', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceGaal', 'IsDown', 0);
+                        }
+                        Pos=90,77,50
+                        Size=152,105
+                        Style=Style.GB.SoundNormal
+                    }
+                    GraphButton ^{
+                        Help=FormGameSet2.Common.HelpRacePeople
+                        ImageDown=GI,Bm.FormGameSet2.2RacePeopleD
+                        ImageNormalA=GI,Bm.FormGameSet2.2RacePeopleA
+                        Kind=Fix
+                        KindHit=Graph
+                        Name=ExpPB_RacePeople
+                        OnPressCode ^{
+                            01=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Sel', 2);
+                            02=int f=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_FaceCur'); if(f < 0) f=0;
+                            03=InterfaceImage('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Captain', 'GI,Bm.Captain.2People'+f+'i');
+                            04=UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceMaloc', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeleng', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeople', 'IsDown', 1); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceFei', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceGaal', 'IsDown', 0);
+                        }
+                        Pos=186,63,50
+                        Size=114,119
+                        Style=Style.GB.SoundNormal
+                    }
+                    GraphButton ^{
+                        Help=FormGameSet2.Common.HelpRaceFei
+                        ImageDown=GI,Bm.FormGameSet2.2RaceFeiD
+                        ImageNormalA=GI,Bm.FormGameSet2.2RaceFeiA
+                        Kind=Fix
+                        KindHit=Graph
+                        Name=ExpPB_RaceFei
+                        OnPressCode ^{
+                            01=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Sel', 3);
+                            02=int f=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_FaceCur'); if(f < 0) f=0;
+                            03=InterfaceImage('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Captain', 'GI,Bm.Captain.2Fei'+f+'i');
+                            04=UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceMaloc', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeleng', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeople', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceFei', 'IsDown', 1); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceGaal', 'IsDown', 0);
+                        }
+                        Pos=247,77,50
+                        Size=148,105
+                        Style=Style.GB.SoundNormal
+                    }
+                    GraphButton ^{
+                        Help=FormGameSet2.Common.HelpRaceGaal
+                        ImageDown=GI,Bm.FormGameSet2.2RaceGaalD
+                        ImageNormalA=GI,Bm.FormGameSet2.2RaceGaalA
+                        Kind=Fix
+                        KindHit=Graph
+                        Name=ExpPB_RaceGaal
+                        OnPressCode ^{
+                            01=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Sel', 4);
+                            02=int f=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_FaceCur'); if(f < 0) f=0;
+                            03=InterfaceImage('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Captain', 'GI,Bm.Captain.2Gaal'+f+'i');
+                            04=UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceMaloc', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeleng', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeople', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceFei', 'IsDown', 0); UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceGaal', 'IsDown', 1);
+                        }
+                        Pos=253,142,50
+                        Size=192,95
+                        Style=Style.GB.SoundNormal
+                    }
+                    GraphButton ^{
+                        Help=FormGameSet2.Common.HelpFaceChange
+                        ImageDown=GI,Bm.FormGameSet2.2PortLD
+                        ImageNormalA=GI,Bm.FormGameSet2.2PortLA
+                        Kind=Normal
+                        KindHit=Graph
+                        Name=ExpPB_FaceLeft
+                        OnPressCode ^{
+                            01=int f=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_FaceCur'); f=f-1; if(f < 0) f=14;
+                            02=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_FaceCur', f);
+                            03=int s=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Sel');
+                            04=str tok='Maloc'; if(s == 1) tok='Peleng'; else if(s == 2) tok='People'; else if(s == 3) tok='Fei'; else if(s == 4) tok='Gaal';
+                            05=if(s >= 0) InterfaceImage('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Captain', 'GI,Bm.Captain.2'+tok+f+'i');
+                        }
+                        Pos=151,212,50
+                        Size=39,94
+                        Style=Style.GB.SoundNormal
+                    }
+                    GraphButton ^{
+                        Help=FormGameSet2.Common.HelpFaceChange
+                        ImageDown=GI,Bm.FormGameSet2.2PortRD
+                        ImageNormalA=GI,Bm.FormGameSet2.2PortRA
+                        Kind=Normal
+                        KindHit=Graph
+                        Name=ExpPB_FaceRight
+                        OnPressCode ^{
+                            01=int f=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_FaceCur'); f=f+1; if(f > 14) f=0;
+                            02=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_FaceCur', f);
+                            03=int s=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Sel');
+                            04=str tok='Maloc'; if(s == 1) tok='Peleng'; else if(s == 2) tok='People'; else if(s == 3) tok='Fei'; else if(s == 4) tok='Gaal';
+                            05=if(s >= 0) InterfaceImage('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Captain', 'GI,Bm.Captain.2'+tok+f+'i');
+                        }
+                        Pos=296,212,50
+                        Size=39,94
+                        Style=Style.GB.SoundNormal
+                    }
+                    GraphButton ^{
+                        ImageDown=GI,Bm.FormMessageBox.2OkD
+                        ImageNormal=GI,Bm.FormMessageBox.2OkN
+                        ImageNormalA=GI,Bm.FormMessageBox.2OkA
+                        Kind=Normal
+                        KindHit=Graph
+                        Name=ExpPB_Confirm
+                        OnPressCode ^{
+                            01=int s=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Sel');
+                            02=int f=InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_FaceCur'); if(f < 0) f=0;
+                            03=str nm=UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Name', 'Text');
+                            04=int c=0; if(s >= 0) c=GalaxyMoney(3, s);
+                            05=int ok=0; if(s >= 0 && ShipMoney(Player()) >= c) ok=1;
+                            06=if(ok == 1)
+                            07 ^{
+                                01=ShipMoney(Player(), ShipMoney(Player()) - c);
+                                02=ShipPilotRace(Player(), s);
+                                03=ShipFace(Player(), f);
+                                04=Sound('Sound.Sell');
+                            }
+                            08=if(nm != '') SetName(Player(), nm);
+                            09=InterfaceState('RuinsTalk', 'ExpPB_RacePanel', 0);
+                            10=if(s >= 0 && ok == 0) MessageBox(Format(CT('FormRuins.PB.ChangeNationality.NoMoney'), '<Player'+'>', ShipName(Player()), '<Money'+'>', c), 10);
+                        }
+                        Pos=165,660,2
+                        Size=48,21
+                        Style=Style.GB.SoundNormal
+                    }
+                    GraphButton ^{
+                        ImageDown=GI,Bm.FormMessageBox.2CancelD
+                        ImageNormal=GI,Bm.FormMessageBox.2CancelN
+                        ImageNormalA=GI,Bm.FormMessageBox.2CancelA
+                        Kind=Normal
+                        KindHit=Graph
+                        Name=ExpPB_Cancel
+                        OnPressCode ^{
+                            01=InterfaceState('RuinsTalk', 'ExpPB_RacePanel', 0);
+                        }
+                        Pos=268,660,2
+                        Size=48,21
+                        Style=Style.GB.SoundNormal
+                    }
+                    Image ^{
+                        Image=GI,Bm.FormGameSet2.2Left
+                        Pos=0,0,100
+                        Size=481,665
+                    }
+                    Image ^{
+                        Name=ExpPB_Captain
+                        Pos=194,204,1
+                        Size=99,110
+                    }
+                    Image ^{
+                        Image=GI,Bm.FormGameSet2.2Name
+                        Name=ExpPB_NameBG
+                        Pos=181,516,50
+                        Size=122,21
+                    }
+                    Label ^{
+                        AlignX=Center
+                        AlignY=Center
+                        Font=Font.2Ranger
+                        Pos=192,28,2
+                        Size=100,20
+                        Text=FormGameSet2.Common.Race
+                        TextColor=88,229,255
+                    }
+                    Label ^{
+                        AlignX=Center
+                        AlignY=Center
+                        Font=Font.2Ranger
+                        Pos=42,208,2
+                        Size=100,20
+                        Text=FormGameSet2.Common.Maloc
+                        TextColor=88,229,255
+                    }
+                    Label ^{
+                        AlignX=Center
+                        AlignY=Center
+                        Font=Font.2Ranger
+                        Pos=100,135,2
+                        Size=100,20
+                        Text=FormGameSet2.Common.Peleng
+                        TextColor=88,229,255
+                    }
+                    Label ^{
+                        AlignX=Center
+                        AlignY=Center
+                        Font=Font.2Ranger
+                        Pos=190,111,2
+                        Size=100,20
+                        Text=FormGameSet2.Common.People
+                        TextColor=88,229,255
+                    }
+                    Label ^{
+                        AlignX=Center
+                        AlignY=Center
+                        Font=Font.2Ranger
+                        Pos=279,140,2
+                        Size=100,20
+                        Text=FormGameSet2.Common.Fei
+                        TextColor=88,229,255
+                    }
+                    Label ^{
+                        AlignX=Center
+                        AlignY=Center
+                        Font=Font.2Ranger
+                        Pos=342,204,2
+                        Size=100,20
+                        Text=FormGameSet2.Common.Gaal
+                        TextColor=88,229,255
+                    }
+                    Label ^{
+                        AlignX=Auto
+                        AlignY=Top
+                        Font=Font.2Normal
+                        Name=ExpPB_Contract
+                        Pos=121,543,2
+                        Size=300,170
+                        Text=FormRuins.PB.ChangeNationality.PactText
+                        TextColor=88,229,255
+                        WordWrap=True
+                    }
+                    Label ^{
+                        Active=False
+                        Name=ExpPB_Sel
+                        Pos=0,0,2
+                        Size=10,10
+                        Text=-1
+                    }
+                    Label ^{
+                        Active=False
+                        Name=ExpPB_FaceCur
+                        Pos=0,0,2
+                        Size=10,10
+                        Text=0
+                    }
+                    Name=ExpPB_RacePanel
+                    Pos=38,42,-50
+                    Size=481,685
+                }
+            }
+        }
+    }
+}

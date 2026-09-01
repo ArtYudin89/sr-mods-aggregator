@@ -3107,7 +3107,7 @@ DesignDepartmentModList ~{
                         01=int0=param[a,'AddParam',var,'min'];
                         02=var2=CustomInterfaceText(block_name+'_AddParam_Var');
                         03=var2=var2-int0;
-                        02=int0=param[a,'AddParam',var,'step'];
+                        04=int0=param[a,'AddParam',var,'step'];
                         05=var2=var2/int0;
                     }
                     03=else var2=1;
@@ -3137,17 +3137,17 @@ DesignDepartmentModList ~{
             07=for(a=0;a<cost_types;a=a+1)
             08 ^{
                 01=if(type[a]<=0)continue;
-                01=var_total = type[a]; var_last_add = var_total; koef = k_oth;
-                01=if(GetVariableName(type[a]) == 'Time') koef = k_time;
-                01=for(b=1;b<max_count_gun;b=b+1)
-                01 ^{
+                02=var_total = type[a]; var_last_add = var_total; koef = k_oth;
+                03=if(GetVariableName(type[a]) == 'Time') koef = k_time;
+                04=for(b=1;b<max_count_gun;b=b+1)
+                05 ^{
                     01=var_total = var_total + var_last_add / koef;
                     02=var_last_add =  var_last_add / koef;
                 }
-                01=type[a] = round (var_total);
-                02=str0=CT('Script.Mod_ArtiDesignDepartment.DesignDepartmentCreateEquipment.Cost.'+GetVariableName(type[a]));
-                03=str0=Format(str0,'[var]', type[a]);
-                05=text=text+str0+', ';
+                06=type[a] = round (var_total);
+                07=str0=CT('Script.Mod_ArtiDesignDepartment.DesignDepartmentCreateEquipment.Cost.'+GetVariableName(type[a]));
+                08=str0=Format(str0,'[var]', type[a]);
+                09=text=text+str0+', ';
             }
             09=text=substr(text,0,count(text)-2);
             10=text=DeleteTags(text)+'.';
@@ -4982,21 +4982,21 @@ DesignDepartmentModList ~{
             }
             FuelTank ~{
                 1 ~{
-                    BlueprintNum=5
+                    BlueprintNum=3
                     NoDrop=1
                 }
                 Count=1
             }
             Radar ~{
                 1 ~{
-                    BlueprintNum=6
+                    BlueprintNum=2
                     NoDrop=1
                 }
                 Count=1
             }
             Scanner ~{
                 1 ~{
-                    BlueprintNum=5
+                    BlueprintNum=2
                     NoDrop=1
                 }
                 Count=1
@@ -5010,14 +5010,14 @@ DesignDepartmentModList ~{
             }
             CargoHook ~{
                 1 ~{
-                    BlueprintNum=5
+                    BlueprintNum=3
                     NoDrop=1
                 }
                 Count=1
             }
             DefGenerator ~{
                 1 ~{
-                    BlueprintNum=5
+                    BlueprintNum=3
                     NoDrop=1
                 }
                 Count=1
@@ -5104,42 +5104,42 @@ DesignDepartmentModList ~{
             }
             Engine ~{
                 1 ~{
-                    BlueprintNum=8
+                    BlueprintNum=5
                     NoDrop=1
                 }
                 Count=1
             }
             FuelTank ~{
                 1 ~{
-                    BlueprintNum=6
+                    BlueprintNum=2
                     NoDrop=1
                 }
                 Count=1
             }
             Radar ~{
                 1 ~{
-                    BlueprintNum=7
+                    BlueprintNum=4
                     NoDrop=1
                 }
                 Count=1
             }
             Scanner ~{
                 1 ~{
-                    BlueprintNum=6
+                    BlueprintNum=4
                     NoDrop=1
                 }
                 Count=1
             }
             RepairDroid ~{
                 1 ~{
-                    BlueprintNum=9
+                    BlueprintNum=7
                     NoDrop=1
                 }
                 Count=1
             }
             CargoHook ~{
                 1 ~{
-                    BlueprintNum=5
+                    BlueprintNum=3
                     NoDrop=1
                 }
                 Count=1
@@ -9024,12 +9024,6 @@ MicroModuls ~{
 }
 Script ~{
     Mod_ArtiDesignDepartment ^{
-        BlueprintMap ^{
-            AlreadyChecked=Эта карта уже раскрыла свои секреты. Больше вы ничего от неё не узнаете
-            Info=Согласно этой карте бывший её владелец сделал тайник с чертежом на планете planet (система star). Обычные зонды его бы не обнаружили, а вот с наводкой - да.
-            Info=<clr><clrEnd>
-            Info=Чтобы не потерять столь важную информацию, вы записали её в <clr>бортовой журнал<clrEnd>.
-        }
         0=<0>
         1=<br>
         AboutDD ^{
@@ -9072,6 +9066,12 @@ Script ~{
             TextImprove=Название: [name]<br>Уровень: [LVL]<br>Цена улучшения: [ND] Ниргенд Азур и [CR] cr.<br>Улучшение: [text]
             TextImproveGTL=Название: [name]<br>Уровень: [LVL]<br>Улучшение: достигнут <color=255,20,20>предел</color> улучшения для текущего технологического уровня.
             TextImproveGTLMAX=Название: [name]<br>Уровень: [LVL]<br>Улучшение: дальнейшее улучшение <color=255,20,20>невозможно</color>.
+        }
+        BlueprintMap ^{
+            AlreadyChecked=Эта карта уже раскрыла свои секреты. Больше вы ничего от неё не узнаете
+            Info=Согласно этой карте бывший её владелец сделал тайник с чертежом на планете planet (система star). Обычные зонды его бы не обнаружили, а вот с наводкой - да.
+            Info=<clr><clrEnd>
+            Info=Чтобы не потерять столь важную информацию, вы записали её в <clr>бортовой журнал<clrEnd>.
         }
         BuyMM ~{
             AddText_Buy=Напоминаем, что эти микромодули можно установить только в оборудование компании "<clr>Стeллар<clrEnd>".
@@ -9598,14 +9598,6 @@ Script ~{
                 Restart=В другой раз
             }
         }
-        FollowerTalks ~{
-            PlayerIHaveNoMoney=Ну, может, я бы даже и подумал заплатить тебе, но есть проблема - Ниргенда у меня с собой столько нет!
-            PlayerTakeMyMoney=Ладно, ладно, сейчас сброшу, бандит несчастный.
-            PlayerNahuyIdi=Что?! Чей там голос из высокотехнологичной консервы? А ну-ка брысь, пока моргалы не выколол!
-            AskForPayment=О, посмотрите-ка, кто тут у нас! Ну здравствуй, рейнджер. Правда, ненадолго. Кажется мне, что нам... Тесновато, знаешь ли, в одной галактике. Но хотя, пожалуй, если ты внесёшь скромный вклад в cnt т. Ниргенд Азура, чтобы я смог прикупить себе новую пушку, то, наверное, я тебя пока что оставлю. Ну что, по рукам?
-            NoMoneyAnswer=Ну и ничего! Тогда я просто уничтожу тебя и сдам твои обломки в Бюро!
-            MoneyGivenAnswer=О-хо-хо, вот это я понимаю: конструктивный диалог! Ладно, мошкара, лети отсюда, пока я добрый.
-        }
         DesignDepartmentTalks ~{
             BlueprintCostAlcohol=Тонн алкоголя: <Cost>
             BlueprintCostArms=Тонн оружия: <Cost>
@@ -9742,6 +9734,14 @@ Script ~{
             AgreementText=6.1. Программа может время от времени автоматически загружать и устанавливать обновления, которые направлены на улучшение Программы и могут иметь различную форму, без ограничений. Лицензиат настоящим уведомлен и соглашается с автоматическим обновлением Программы, включая запрос, загрузку и установку обновлений Программы на устройство Лицензиата без каких-либо дополнительных уведомлений.
             AgreementText=6.2. Действие настоящего Соглашения распространяется на все последующие обновления/новые версии любой из Программ и/или всех Программ. Установка обновления/новой версии Программы означает принятие Лицензиатом условий настоящей Лицензии для соответствующих обновлений/новых версий Программы, если обновление/установка новой версии Программы не сопровождается иным лицензионным соглашением.
             AgreementText=6.3. Настоящее Соглашение может изменяться Лицензиаром в одностороннем порядке. Указанные изменения в условиях Соглашения вступают в силу с даты их публикации, если иное не оговорено в соответствующей публикации.
+        }
+        FollowerTalks ~{
+            PlayerIHaveNoMoney=Ну, может, я бы даже и подумал заплатить тебе, но есть проблема - Ниргенда у меня с собой столько нет!
+            PlayerTakeMyMoney=Ладно, ладно, сейчас сброшу, бандит несчастный.
+            PlayerNahuyIdi=Что?! Чей там голос из высокотехнологичной консервы? А ну-ка брысь, пока моргалы не выколол!
+            AskForPayment=О, посмотрите-ка, кто тут у нас! Ну здравствуй, рейнджер. Правда, ненадолго. Кажется мне, что нам... Тесновато, знаешь ли, в одной галактике. Но хотя, пожалуй, если ты внесёшь скромный вклад в cnt т. Ниргенд Азура, чтобы я смог прикупить себе новую пушку, то, наверное, я тебя пока что оставлю. Ну что, по рукам?
+            NoMoneyAnswer=Ну и ничего! Тогда я просто уничтожу тебя и сдам твои обломки в Бюро!
+            MoneyGivenAnswer=О-хо-хо, вот это я понимаю: конструктивный диалог! Ладно, мошкара, лети отсюда, пока я добрый.
         }
     }
 }
@@ -10172,17 +10172,6 @@ ShipType ~{
     }
 }
 UselessItems ^{
-    DesignDepartment_BlueprintMap ^{
-        Cost=Big
-        Name=Карта сокровищ
-        OnUseCode ^{
-            01=RunFunctionFromScript('Mod_ArtiDesignDepartment','BlueprintMapChecked',UselessItemData(CurItem(),1));
-            02=UselessItemData(CurItem(),1,1);
-        }
-        Owner=None
-        Size=1
-        Text=Кажется, на этой карте указаны координаты какой-то планеты. Куда они приведут?
-    }
     DesignDepartment_Accessory0 ^{
         BuyCostCr=50000
         BuyCostNirgend=20
@@ -10374,6 +10363,17 @@ UselessItems ^{
         Owner=None
         Size=1
         Text=Неиспользуемая в коде имитация чертежа. Нужна только для подмены собой реального чертежа в трюме любых других кораблей, кроме игрока.
+    }
+    DesignDepartment_BlueprintMap ^{
+        Cost=Big
+        Name=Карта сокровищ
+        OnUseCode ^{
+            01=RunFunctionFromScript('Mod_ArtiDesignDepartment','BlueprintMapChecked',UselessItemData(CurItem(),1));
+            02=UselessItemData(CurItem(),1,1);
+        }
+        Owner=None
+        Size=1
+        Text=Кажется, на этой карте указаны координаты какой-то планеты. Куда они приведут?
     }
     DesignDepartment_NirgendAzurBox1 ~{
         Cost=Huge

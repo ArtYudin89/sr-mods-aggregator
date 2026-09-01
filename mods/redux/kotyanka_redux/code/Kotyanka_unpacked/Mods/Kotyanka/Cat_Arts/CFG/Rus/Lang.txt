@@ -125,6 +125,8 @@ Artefacts ~{
                 11 ^{
                     01=if(EqModule(cur_item) == -1) exit;
                     02=dd = MissileOwner(dd);
+                    03=if(dd < 1) exit;
+                    04=if(ObjectType(dd) != 5) exit;
                 }
                 12=if(!ScriptItemActionType(t_OnTakingDamageMi) || ObjectType(ScriptItemActObject1()) != 7)
                 13 ^{
@@ -134,12 +136,15 @@ Artefacts ~{
                     }
                     03=if(ItemIsBroken(CurItem())) exit;
                     04=if(dd < 1) exit;
-                    05=int dmg = ScriptItemActParam();
-                    06=if(~EqModule(CurItem())) dmg = dmg + dmg;
-                    07=if(HullHP(dd) > dmg) ShowEffect('Weapon.10',2,dd,cur_ship,dmg);
-                    08=else ShowEffect('Weapon.10',2,dd,cur_ship,dmg,1);
-                    09=if(ScriptItemActionType(t_OnTakingDamageSp)) DealDamageToShip(dd,0,dmg,2);
-                    10=else DealDamageToShip(dd,0,dmg,1);
+                    05=if(ShipDestroy(dd,-1)) exit;
+                    06=if(HullHP(dd) < 1) exit;
+                    07=if(!ShipInNormalSpace(dd)) exit;
+                    08=int dmg = ScriptItemActParam();
+                    09=if(~EqModule(CurItem())) dmg = dmg + dmg;
+                    10=if(HullHP(dd) > dmg) ShowEffect('Weapon.10',2,dd,cur_ship,dmg);
+                    11=else ShowEffect('Weapon.10',2,dd,cur_ship,dmg,1);
+                    12=if(ScriptItemActionType(t_OnTakingDamageSp)) DealDamageToShip(dd,0,dmg,2);
+                    13=else DealDamageToShip(dd,0,dmg,1);
                 }
                 14=else
                 15 ^{
