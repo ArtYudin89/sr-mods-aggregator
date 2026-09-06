@@ -9593,8 +9593,8 @@
                         "//Пришло время сваливать обратно в ЧД",
                         "if(GetData(0))",
                         "{",
-                        "    if(!ShipInNormalSpace(CurShip)) ShipDestroy(CurShip, 1);",
-                        "    else OrderJumpHole(CurShip, IdToHole(GetData(0)));",
+                        "    if(ShipInNormalSpace(CurShip)) OrderJumpHole(CurShip, IdToHole(GetData(0)));",
+                        "    else if(ShipInHyperSpace(CurShip)) ShipDestroy(CurShip, 1);",
                         "}"
                     ]
                 },
