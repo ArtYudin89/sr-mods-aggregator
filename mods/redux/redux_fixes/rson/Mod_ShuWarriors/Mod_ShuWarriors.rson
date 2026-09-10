@@ -3355,7 +3355,7 @@
                     "Code.Type": "Turn",
                     "Code": [
                         "if(GetData() > 0) {",
-                        "    if(Name(GetData()) != 'NameError') {",
+                        "    if(Name(IdToShip(GetData())) != 'NameError') {",
                         "        //Проверяем, не сел ли куда военный",
                         "        if(!ShipInNormalSpace(CurShip)) {",
                         "            if(GetShipPlanet(CurShip) || GetShipRuins(CurShip)) {",
