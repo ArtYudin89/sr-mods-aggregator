@@ -6,15 +6,23 @@
     "ScriptName": "Mod_RefArts",
     "ScriptFileOut": "D:\\Mod_RefArts.scr",
     "ScriptTextOut": "D:\\Mod_RefArts.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
             "DialogAnswers": [
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "restart",
                     "Pos.x": 0,
-                    "Pos.y": 515,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 505,
                     "Parent": -1,
                     "#": 22,
                     "Msg": "Пока",
@@ -22,10 +30,10 @@
                     "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefArts.6\"))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "",
                     "Pos.x": 120,
-                    "Pos.y": 515,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 505,
                     "Parent": -1,
                     "#": 23,
                     "Msg": "Хочу приобрести мину",
@@ -33,10 +41,10 @@
                     "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefArts.7\"))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "block",
                     "Pos.x": 240,
-                    "Pos.y": 515,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 505,
                     "Parent": -1,
                     "#": 24,
                     "Msg": "Хочу приобрести мину",
@@ -46,10 +54,10 @@
             ],
             "DialogMessages": [
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 0,
-                    "Pos.y": 445,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 435,
                     "Parent": -1,
                     "#": 19,
                     "Msg": "Итак, ракетные мины - довольно удобный инструмент для минирования космического пространства наряду с обычными бомбами.\r\nПринцип работы максимально прост - при попадании или уничтожении автоматическая система выстреливает заложенный в неё заряд - <clr>восемь ракет<clrEnd>, обнаруживающих и уничтожающих цель.\r\n\r\n==================\r\nНа данный момент ваш лимит покупки мин составляет <0> шт.",
@@ -57,10 +65,10 @@
                     "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefArts.3\"),\"<0>\",(MinesLimit-(GalaxyTechLevel()*3))))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 150,
-                    "Pos.y": 445,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 435,
                     "Parent": -1,
                     "#": 20,
                     "Msg": "Итак, ракетные мины - довольно удобный инструмент для минирования космического пространства наряду с обычными бомбами.\r\nПринцип работы максимально прост - при попадании или уничтожении автоматическая система выстреливает заложенный в неё заряд - <clr>восемь ракет<clrEnd>, обнаруживающих и уничтожающих цель.\r\n\r\n==================\r\nНа данный момент ваш лимит покупки мин составляет <clr>0<clrEnd> шт., а это значит, что покупка мин для вас на данный момент, увы, <clr>недоступна<clrEnd>.",
@@ -68,10 +76,10 @@
                     "_orig_dtext": "DText(CT(\"Script.Mod_RefArts.4\"))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 300,
-                    "Pos.y": 445,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 435,
                     "Parent": -1,
                     "#": 21,
                     "Msg": "Отлично! Новенькая мина уже перенесена в трюм вашего корабля.\r\n\r\nЖелаете приобрести ещё одну?",
@@ -81,17 +89,22 @@
             ],
             "Dialogs": [
                 {
-                    "Name": "BuyMines",
                     "Type": "TDialog",
+                    "Name": "BuyMines",
                     "Pos.x": 0,
-                    "Pos.y": 375,
+                    "Pos.y": 365,
                     "Parent": -1,
                     "#": 18
                 }
             ],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "GroupNew",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 12,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -114,30 +127,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "PlanetNew",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 250,
-                    "Parent": -1,
-                    "#": 12
+                    "+State": 0
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 13,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 13,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 585
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 14,
                     "Code.Type": "Init",
                     "Code": [
                         "//Закапываем гиперблокиратор",
@@ -248,27 +261,27 @@
                         "    Sound('Sound.NewMsg');",
                         "    NewsAdd(Rnd(3450,9840)+'###-'+Rnd(3,9)+'sec-_-'+Name(StarToCon(PlanetToStar(tPlanet)))+'___-^-^-'+Name(PlanetToStar(tPlanet)));",
                         "}"
-                    ],
-                    "#": 14,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 585
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 15,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(CurTurn() % 250 == 1) MinesLimit = 0;"
-                    ],
-                    "#": 15,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 585
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 16,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "if(GetShipRuins(Player())) {",
@@ -279,15 +292,15 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 16,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 180,
-                    "Pos.y": 585
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 25,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(MinesLimit < GalaxyTechLevel() * 3) {",
@@ -298,15 +311,15 @@
                         "  DChange(1);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 25,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 375
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 26,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipMoney(Player()) >= cost) {",
@@ -316,27 +329,27 @@
                         "  DAdd(2);",
                         "}",
                         "DAdd(0);"
-                    ],
-                    "#": 26,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 445
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 27,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);"
-                    ],
-                    "#": 27,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 130,
-                    "Pos.y": 445
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 280,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 28,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(MinesLimit < GalaxyTechLevel() * 3) {",
@@ -348,15 +361,15 @@
                         "  }",
                         "}",
                         "DAdd(0);"
-                    ],
-                    "#": 28,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 280,
-                    "Pos.y": 445
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 29,
                     "Code.Type": "Turn",
                     "Code": [
                         "Sound('Sound.Buy');",
@@ -365,18 +378,18 @@
                         "MinesLimit = MinesLimit + 1;",
                         "DChange(2);",
                         "exit;"
-                    ],
-                    "#": 29,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 100,
-                    "Pos.y": 515
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "PlanetNew",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 11,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -384,17 +397,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "StarNew",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 160,
-                    "Parent": -1,
-                    "#": 11
+                    "+Star": "StarNew"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 10,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -413,47 +426,41 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "StarNew",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 70,
-                    "Parent": -1,
-                    "#": 10
+                    "+Star": "StarNew"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "StarNew",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "StarNew",
                     "Pos.x": 0,
-                    "Pos.y": 115,
+                    "Pos.y": 90,
                     "Parent": -1,
                     "#": 9,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "StateNew",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 17,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 17
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -482,7 +489,7 @@
                 {
                     "Type": "TVar",
                     "Name": "Terminal2",
-                    "Pos.x": 210,
+                    "Pos.x": 180,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 2,
@@ -493,7 +500,7 @@
                 {
                     "Type": "TVar",
                     "Name": "j",
-                    "Pos.x": 360,
+                    "Pos.x": 330,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 3,
@@ -504,7 +511,7 @@
                 {
                     "Type": "TVar",
                     "Name": "MinesLimit",
-                    "Pos.x": 450,
+                    "Pos.x": 390,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 4,
@@ -515,7 +522,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cost",
-                    "Pos.x": 600,
+                    "Pos.x": 540,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 5,
@@ -526,7 +533,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tempArr",
-                    "Pos.x": 690,
+                    "Pos.x": 600,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 6,
@@ -537,7 +544,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tStar",
-                    "Pos.x": 810,
+                    "Pos.x": 720,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 7,
@@ -548,7 +555,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tPlanet",
-                    "Pos.x": 900,
+                    "Pos.x": 810,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 8,
@@ -625,5 +632,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_RefArts\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

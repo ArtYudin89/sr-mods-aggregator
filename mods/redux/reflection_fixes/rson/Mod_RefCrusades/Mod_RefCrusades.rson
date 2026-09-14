@@ -6,6 +6,14 @@
     "ScriptName": "Mod_RefCrusades",
     "ScriptFileOut": "D:\\Mod_RefCrusades.scr",
     "ScriptTextOut": "D:\\Mod_RefCrusades.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
@@ -14,7 +22,12 @@
             "Dialogs": [],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "GroupNew",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 18,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -37,15 +50,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "PlanetNew",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 250,
-                    "Parent": -1,
-                    "#": 18
+                    "+State": 0
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "GroupTampliers",
+                    "Pos.x": 120,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 19,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -68,15 +81,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "PlanetNew",
-                    "+State": 1,
-                    "Type": "TGroup",
-                    "Pos.x": 90,
-                    "Pos.y": 250,
-                    "Parent": -1,
-                    "#": 19
+                    "+State": 1
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "GroupHospitaliers",
+                    "Pos.x": 0,
+                    "Pos.y": 240,
+                    "Parent": -1,
+                    "#": 20,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -99,15 +112,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "PlanetNew",
-                    "+State": 2,
-                    "Type": "TGroup",
-                    "Pos.x": 180,
-                    "Pos.y": 250,
-                    "Parent": -1,
-                    "#": 20
+                    "+State": 2
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "GroupLazar",
+                    "Pos.x": 240,
+                    "Pos.y": 240,
+                    "Parent": -1,
+                    "#": 21,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -130,30 +143,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "PlanetNew",
-                    "+State": 3,
-                    "Type": "TGroup",
-                    "Pos.x": 270,
-                    "Pos.y": 250,
-                    "Parent": -1,
-                    "#": 21
+                    "+State": 3
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 370,
+                    "Parent": -1,
+                    "#": 22,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 22,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 510
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 370,
+                    "Parent": -1,
+                    "#": 23,
                     "Code.Type": "Init",
                     "Code": [
                         "function g_SpawnLeader(dword plan, int type) {",
@@ -345,15 +358,15 @@
                         "}",
                         "",
                         "CrusSpent = 0;"
-                    ],
-                    "#": 23,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 510
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 370,
+                    "Parent": -1,
+                    "#": 24,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(CrusSpent < 9) {",
@@ -444,15 +457,15 @@
                         "        AllShipOut();",
                         "    }",
                         "}"
-                    ],
-                    "#": 24,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 510
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 29,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(StarBattle(ShipStar(CurShip))) {",
@@ -538,14 +551,15 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 29,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 80
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 265,
+                    "Parent": -1,
+                    "#": 30,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(StarBattle(ShipStar(CurShip))) {",
@@ -630,14 +644,15 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 30,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 160
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 220,
+                    "Pos.y": 265,
+                    "Parent": -1,
+                    "#": 31,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(StarBattle(ShipStar(CurShip))) {",
@@ -722,17 +737,18 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 31,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 240
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "PlanetNew",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 17,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -740,17 +756,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "StarNew",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 160,
-                    "Parent": -1,
-                    "#": 17
+                    "+Star": "StarNew"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 16,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -769,104 +785,95 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "StarNew",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 70,
-                    "Parent": -1,
-                    "#": 16
+                    "+Star": "StarNew"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "StarNew",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "StarNew",
                     "Pos.x": 0,
-                    "Pos.y": 115,
+                    "Pos.y": 90,
                     "Parent": -1,
                     "#": 15,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "StateNew",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 25,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 25
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "StateTampliers",
+                    "Pos.x": 120,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 26,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 90,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 26
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "StateHospitailers",
+                    "Pos.x": 0,
+                    "Pos.y": 265,
+                    "Parent": -1,
+                    "#": 27,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 180,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 27
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "StateLazar",
+                    "Pos.x": 240,
+                    "Pos.y": 265,
+                    "Parent": -1,
+                    "#": 28,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 270,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 28
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -917,7 +924,7 @@
                 {
                     "Type": "TVar",
                     "Name": "j",
-                    "Pos.x": 360,
+                    "Pos.x": 330,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 4,
@@ -928,7 +935,7 @@
                 {
                     "Type": "TVar",
                     "Name": "systems",
-                    "Pos.x": 450,
+                    "Pos.x": 390,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 5,
@@ -939,7 +946,7 @@
                 {
                     "Type": "TVar",
                     "Name": "CrusadeCD",
-                    "Pos.x": 570,
+                    "Pos.x": 510,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 6,
@@ -950,7 +957,7 @@
                 {
                     "Type": "TVar",
                     "Name": "CrusSpent",
-                    "Pos.x": 720,
+                    "Pos.x": 660,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 7,
@@ -961,7 +968,7 @@
                 {
                     "Type": "TVar",
                     "Name": "CrusFlag",
-                    "Pos.x": 870,
+                    "Pos.x": 810,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 8,
@@ -972,7 +979,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tstr",
-                    "Pos.x": 990,
+                    "Pos.x": 930,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 9,
@@ -983,7 +990,7 @@
                 {
                     "Type": "TVar",
                     "Name": "star",
-                    "Pos.x": 1080,
+                    "Pos.x": 990,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 10,
@@ -994,7 +1001,7 @@
                 {
                     "Type": "TVar",
                     "Name": "ship",
-                    "Pos.x": 1170,
+                    "Pos.x": 1050,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 11,
@@ -1005,7 +1012,7 @@
                 {
                     "Type": "TVar",
                     "Name": "was_t",
-                    "Pos.x": 1260,
+                    "Pos.x": 1110,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 12,
@@ -1016,7 +1023,7 @@
                 {
                     "Type": "TVar",
                     "Name": "was_h",
-                    "Pos.x": 1350,
+                    "Pos.x": 1200,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 13,
@@ -1027,7 +1034,7 @@
                 {
                     "Type": "TVar",
                     "Name": "was_l",
-                    "Pos.x": 1440,
+                    "Pos.x": 1290,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 14,
@@ -1132,5 +1139,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_RefCrusades\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

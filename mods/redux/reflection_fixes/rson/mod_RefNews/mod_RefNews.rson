@@ -6,6 +6,14 @@
     "ScriptName": "mod_RefNews",
     "ScriptFileOut": "D:\\mod_RefNews.scr",
     "ScriptTextOut": "D:\\mod_RefNews.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
@@ -14,7 +22,12 @@
             "Dialogs": [],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "PlayerGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 405,
+                    "Parent": -1,
+                    "#": 103,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -37,30 +50,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "InitPlanet",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 450,
-                    "Parent": -1,
-                    "#": 103
+                    "+State": 0
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 535,
+                    "Parent": -1,
+                    "#": 104,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 104,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 710
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 535,
+                    "Parent": -1,
+                    "#": 105,
                     "Code.Type": "Init",
                     "Code": [
                         "//Старые штуки, теперь они история",
@@ -97,6 +110,9 @@
                         "//Чтобы не требовало новой игры",
                         "StartSectorNews = 1;",
                         "",
+                        "//RefNews fix: расширяем SectorsArray под фактическое число секторов (моды на большее число секторов)",
+                        "while(ArrayDim(SectorsArray) < GalaxySectors()) { ArrayAdd(SectorsArray, 0); }",
+                        "",
                         "for(i=0;GalaxySectors()>i;i=i+1) {",
                         "    StarChoosed = GalaxySectors(i);",
                         "    for(j=0;ConStars(StarChoosed)>j;j=j+1) {",
@@ -115,15 +131,15 @@
                         "NewsCD = 0;",
                         "",
                         "Version = CT('AdditionalNews.RegularNewsVersion');"
-                    ],
-                    "#": 105,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 710
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 535,
+                    "Parent": -1,
+                    "#": 106,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ControlledSystems(0) > 0) {",
@@ -738,6 +754,9 @@
                         "}",
                         "if(StartSectorNews) {",
                         "  if(!CoalitionDefeated()) {",
+                        "    //RefNews fix: массив мог быть меньше числа секторов (моды на большее число секторов / рост галактики в рантайме)",
+                        "    while(ArrayDim(SectorsArray) < GalaxySectors()) { ArrayAdd(SectorsArray, 0); }",
+                        "    ",
                         "    for(i=0;GalaxySectors()>i;i=i+1) {",
                         "        StarChoosed = GalaxySectors(i);",
                         "    ",
@@ -1382,18 +1401,18 @@
                         "    InPris = 1;",
                         "}",
                         "if(!ShipInPrison(Player()) && InPris == 1) InPris = 0;"
-                    ],
-                    "#": 106,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 710
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "InitPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 360,
+                    "Parent": -1,
+                    "#": 102,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -1401,17 +1420,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "InitStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 360,
-                    "Parent": -1,
-                    "#": 102
+                    "+Star": "InitStar"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 270,
+                    "Parent": -1,
+                    "#": 101,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -1430,47 +1449,41 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "InitStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 270,
-                    "Parent": -1,
-                    "#": 101
+                    "+Star": "InitStar"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "InitStar",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "InitStar",
                     "Pos.x": 0,
                     "Pos.y": 315,
                     "Parent": -1,
                     "#": 100,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "PlayerState",
+                    "Pos.x": 0,
+                    "Pos.y": 430,
+                    "Parent": -1,
+                    "#": 107,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 475,
-                    "Parent": -1,
-                    "#": 107
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -1554,7 +1567,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_star",
-                    "Pos.x": 1020,
+                    "Pos.x": 990,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 7,
@@ -1565,7 +1578,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_planet",
-                    "Pos.x": 1140,
+                    "Pos.x": 1110,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 8,
@@ -1576,7 +1589,7 @@
                 {
                     "Type": "TVar",
                     "Name": "StarChoosed",
-                    "Pos.x": 1290,
+                    "Pos.x": 1260,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 9,
@@ -1587,7 +1600,7 @@
                 {
                     "Type": "TVar",
                     "Name": "StarChoosed1",
-                    "Pos.x": 1470,
+                    "Pos.x": 1440,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 10,
@@ -1598,8 +1611,8 @@
                 {
                     "Type": "TVar",
                     "Name": "PlanetChoosed",
-                    "Pos.x": 1650,
-                    "Pos.y": 0,
+                    "Pos.x": 0,
+                    "Pos.y": 25,
                     "Parent": -1,
                     "#": 11,
                     "Var.Type": "Dword",
@@ -1609,7 +1622,7 @@
                 {
                     "Type": "TVar",
                     "Name": "PlanetChoosed1",
-                    "Pos.x": 0,
+                    "Pos.x": 210,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 12,
@@ -1620,7 +1633,7 @@
                 {
                     "Type": "TVar",
                     "Name": "PlanetChoosed2",
-                    "Pos.x": 210,
+                    "Pos.x": 420,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 13,
@@ -1631,7 +1644,7 @@
                 {
                     "Type": "TVar",
                     "Name": "TryAgainPlanets",
-                    "Pos.x": 420,
+                    "Pos.x": 630,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 14,
@@ -1642,7 +1655,7 @@
                 {
                     "Type": "TVar",
                     "Name": "NakopitStar",
-                    "Pos.x": 630,
+                    "Pos.x": 840,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 15,
@@ -1653,7 +1666,7 @@
                 {
                     "Type": "TVar",
                     "Name": "i",
-                    "Pos.x": 810,
+                    "Pos.x": 1020,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 16,
@@ -1664,7 +1677,7 @@
                 {
                     "Type": "TVar",
                     "Name": "c",
-                    "Pos.x": 900,
+                    "Pos.x": 1080,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 17,
@@ -1675,7 +1688,7 @@
                 {
                     "Type": "TVar",
                     "Name": "date",
-                    "Pos.x": 990,
+                    "Pos.x": 1140,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 18,
@@ -1686,7 +1699,7 @@
                 {
                     "Type": "TVar",
                     "Name": "ForRandomCount",
-                    "Pos.x": 1080,
+                    "Pos.x": 1200,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 19,
@@ -1697,7 +1710,7 @@
                 {
                     "Type": "TVar",
                     "Name": "ForCombo1",
-                    "Pos.x": 1290,
+                    "Pos.x": 1410,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 20,
@@ -1708,7 +1721,7 @@
                 {
                     "Type": "TVar",
                     "Name": "NumberOfCombo",
-                    "Pos.x": 1440,
+                    "Pos.x": 1560,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 21,
@@ -1719,8 +1732,8 @@
                 {
                     "Type": "TVar",
                     "Name": "Number",
-                    "Pos.x": 1650,
-                    "Pos.y": 25,
+                    "Pos.x": 0,
+                    "Pos.y": 50,
                     "Parent": -1,
                     "#": 22,
                     "Var.Type": "Int",
@@ -1730,8 +1743,8 @@
                 {
                     "Type": "TVar",
                     "Name": "ForRandomCount2",
-                    "Pos.x": 1740,
-                    "Pos.y": 25,
+                    "Pos.x": 90,
+                    "Pos.y": 50,
                     "Parent": -1,
                     "#": 23,
                     "Var.Type": "Int",
@@ -1741,7 +1754,7 @@
                 {
                     "Type": "TVar",
                     "Name": "LastPlanet",
-                    "Pos.x": 0,
+                    "Pos.x": 300,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 24,
@@ -1752,7 +1765,7 @@
                 {
                     "Type": "TVar",
                     "Name": "choosed_planet",
-                    "Pos.x": 150,
+                    "Pos.x": 450,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 25,
@@ -1763,7 +1776,7 @@
                 {
                     "Type": "TVar",
                     "Name": "choosed_star",
-                    "Pos.x": 360,
+                    "Pos.x": 660,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 26,
@@ -1774,7 +1787,7 @@
                 {
                     "Type": "TVar",
                     "Name": "StartConsillium",
-                    "Pos.x": 540,
+                    "Pos.x": 840,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 27,
@@ -1785,7 +1798,7 @@
                 {
                     "Type": "TVar",
                     "Name": "ConsilliumTaimer",
-                    "Pos.x": 750,
+                    "Pos.x": 1050,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 28,
@@ -1796,7 +1809,7 @@
                 {
                     "Type": "TVar",
                     "Name": "FreeSystems",
-                    "Pos.x": 990,
+                    "Pos.x": 1290,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 29,
@@ -1807,7 +1820,7 @@
                 {
                     "Type": "TVar",
                     "Name": "WaitingForConsilium",
-                    "Pos.x": 1170,
+                    "Pos.x": 1470,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 30,
@@ -1818,8 +1831,8 @@
                 {
                     "Type": "TVar",
                     "Name": "InvestitionsBuff",
-                    "Pos.x": 1440,
-                    "Pos.y": 50,
+                    "Pos.x": 0,
+                    "Pos.y": 75,
                     "Parent": -1,
                     "#": 31,
                     "Var.Type": "Int",
@@ -1829,8 +1842,8 @@
                 {
                     "Type": "TVar",
                     "Name": "WarTimer",
-                    "Pos.x": 1680,
-                    "Pos.y": 50,
+                    "Pos.x": 240,
+                    "Pos.y": 75,
                     "Parent": -1,
                     "#": 32,
                     "Var.Type": "Int",
@@ -1840,7 +1853,7 @@
                 {
                     "Type": "TVar",
                     "Name": "WarStarted",
-                    "Pos.x": 0,
+                    "Pos.x": 360,
                     "Pos.y": 75,
                     "Parent": -1,
                     "#": 33,
@@ -1851,7 +1864,7 @@
                 {
                     "Type": "TVar",
                     "Name": "WarPlanet",
-                    "Pos.x": 150,
+                    "Pos.x": 510,
                     "Pos.y": 75,
                     "Parent": -1,
                     "#": 34,
@@ -1862,7 +1875,7 @@
                 {
                     "Type": "TVar",
                     "Name": "WarGoing",
-                    "Pos.x": 300,
+                    "Pos.x": 660,
                     "Pos.y": 75,
                     "Parent": -1,
                     "#": 35,
@@ -1873,7 +1886,7 @@
                 {
                     "Type": "TVar",
                     "Name": "WarStages",
-                    "Pos.x": 420,
+                    "Pos.x": 780,
                     "Pos.y": 75,
                     "Parent": -1,
                     "#": 36,
@@ -1884,7 +1897,7 @@
                 {
                     "Type": "TVar",
                     "Name": "BattlesOnStage1",
-                    "Pos.x": 570,
+                    "Pos.x": 930,
                     "Pos.y": 75,
                     "Parent": -1,
                     "#": 37,
@@ -1895,7 +1908,7 @@
                 {
                     "Type": "TVar",
                     "Name": "BattlesOnStage2",
-                    "Pos.x": 780,
+                    "Pos.x": 1140,
                     "Pos.y": 75,
                     "Parent": -1,
                     "#": 38,
@@ -1906,7 +1919,7 @@
                 {
                     "Type": "TVar",
                     "Name": "FromLastNews",
-                    "Pos.x": 990,
+                    "Pos.x": 1350,
                     "Pos.y": 75,
                     "Parent": -1,
                     "#": 39,
@@ -1917,7 +1930,7 @@
                 {
                     "Type": "TVar",
                     "Name": "PeopleSupport",
-                    "Pos.x": 1170,
+                    "Pos.x": 1530,
                     "Pos.y": 75,
                     "Parent": -1,
                     "#": 40,
@@ -1928,8 +1941,8 @@
                 {
                     "Type": "TVar",
                     "Name": "SU",
-                    "Pos.x": 1380,
-                    "Pos.y": 75,
+                    "Pos.x": 0,
+                    "Pos.y": 100,
                     "Parent": -1,
                     "#": 41,
                     "Var.Type": "Int",
@@ -1939,8 +1952,8 @@
                 {
                     "Type": "TVar",
                     "Name": "UntilNextWar",
-                    "Pos.x": 1470,
-                    "Pos.y": 75,
+                    "Pos.x": 60,
+                    "Pos.y": 100,
                     "Parent": -1,
                     "#": 42,
                     "Var.Type": "Int",
@@ -1950,8 +1963,8 @@
                 {
                     "Type": "TVar",
                     "Name": "BombingEvent",
-                    "Pos.x": 1650,
-                    "Pos.y": 75,
+                    "Pos.x": 240,
+                    "Pos.y": 100,
                     "Parent": -1,
                     "#": 43,
                     "Var.Type": "Int",
@@ -1961,7 +1974,7 @@
                 {
                     "Type": "TVar",
                     "Name": "l",
-                    "Pos.x": 0,
+                    "Pos.x": 420,
                     "Pos.y": 100,
                     "Parent": -1,
                     "#": 44,
@@ -1972,7 +1985,7 @@
                 {
                     "Type": "TVar",
                     "Name": "InterventionStarted",
-                    "Pos.x": 90,
+                    "Pos.x": 480,
                     "Pos.y": 100,
                     "Parent": -1,
                     "#": 45,
@@ -1983,7 +1996,7 @@
                 {
                     "Type": "TVar",
                     "Name": "SupportVar",
-                    "Pos.x": 360,
+                    "Pos.x": 750,
                     "Pos.y": 100,
                     "Parent": -1,
                     "#": 46,
@@ -1994,7 +2007,7 @@
                 {
                     "Type": "TVar",
                     "Name": "SUCYA",
-                    "Pos.x": 510,
+                    "Pos.x": 900,
                     "Pos.y": 100,
                     "Parent": -1,
                     "#": 47,
@@ -2005,7 +2018,7 @@
                 {
                     "Type": "TVar",
                     "Name": "SUCRN",
-                    "Pos.x": 600,
+                    "Pos.x": 990,
                     "Pos.y": 100,
                     "Parent": -1,
                     "#": 48,
@@ -2016,7 +2029,7 @@
                 {
                     "Type": "TVar",
                     "Name": "VPKpart",
-                    "Pos.x": 690,
+                    "Pos.x": 1080,
                     "Pos.y": 100,
                     "Parent": -1,
                     "#": 49,
@@ -2027,7 +2040,7 @@
                 {
                     "Type": "TVar",
                     "Name": "WhatsNow",
-                    "Pos.x": 810,
+                    "Pos.x": 1200,
                     "Pos.y": 100,
                     "Parent": -1,
                     "#": 50,
@@ -2038,7 +2051,7 @@
                 {
                     "Type": "TVar",
                     "Name": "Creditspart",
-                    "Pos.x": 930,
+                    "Pos.x": 1320,
                     "Pos.y": 100,
                     "Parent": -1,
                     "#": 51,
@@ -2049,7 +2062,7 @@
                 {
                     "Type": "TVar",
                     "Name": "Minfinpart",
-                    "Pos.x": 1110,
+                    "Pos.x": 1500,
                     "Pos.y": 100,
                     "Parent": -1,
                     "#": 52,
@@ -2060,8 +2073,8 @@
                 {
                     "Type": "TVar",
                     "Name": "AllSystems",
-                    "Pos.x": 1260,
-                    "Pos.y": 100,
+                    "Pos.x": 0,
+                    "Pos.y": 125,
                     "Parent": -1,
                     "#": 53,
                     "Var.Type": "Int",
@@ -2071,8 +2084,8 @@
                 {
                     "Type": "TVar",
                     "Name": "SUPRN",
-                    "Pos.x": 1410,
-                    "Pos.y": 100,
+                    "Pos.x": 150,
+                    "Pos.y": 125,
                     "Parent": -1,
                     "#": 54,
                     "Var.Type": "Int",
@@ -2082,8 +2095,8 @@
                 {
                     "Type": "TVar",
                     "Name": "LocalRND",
-                    "Pos.x": 1500,
-                    "Pos.y": 100,
+                    "Pos.x": 240,
+                    "Pos.y": 125,
                     "Parent": -1,
                     "#": 55,
                     "Var.Type": "Int",
@@ -2093,8 +2106,8 @@
                 {
                     "Type": "TVar",
                     "Name": "PlanetForConsilliumID",
-                    "Pos.x": 1620,
-                    "Pos.y": 100,
+                    "Pos.x": 360,
+                    "Pos.y": 125,
                     "Parent": -1,
                     "#": 56,
                     "Var.Type": "Dword",
@@ -2104,7 +2117,7 @@
                 {
                     "Type": "TVar",
                     "Name": "WarPlanetID",
-                    "Pos.x": 0,
+                    "Pos.x": 660,
                     "Pos.y": 125,
                     "Parent": -1,
                     "#": 57,
@@ -2115,7 +2128,7 @@
                 {
                     "Type": "TVar",
                     "Name": "ForRnd",
-                    "Pos.x": 180,
+                    "Pos.x": 840,
                     "Pos.y": 125,
                     "Parent": -1,
                     "#": 58,
@@ -2126,7 +2139,7 @@
                 {
                     "Type": "TVar",
                     "Name": "FlagDomDef",
-                    "Pos.x": 270,
+                    "Pos.x": 930,
                     "Pos.y": 125,
                     "Parent": -1,
                     "#": 59,
@@ -2137,7 +2150,7 @@
                 {
                     "Type": "TVar",
                     "Name": "FlagNoDoms",
-                    "Pos.x": 420,
+                    "Pos.x": 1080,
                     "Pos.y": 125,
                     "Parent": -1,
                     "#": 60,
@@ -2148,7 +2161,7 @@
                 {
                     "Type": "TVar",
                     "Name": "DomiksVictoryDate",
-                    "Pos.x": 570,
+                    "Pos.x": 1230,
                     "Pos.y": 125,
                     "Parent": -1,
                     "#": 61,
@@ -2159,7 +2172,7 @@
                 {
                     "Type": "TVar",
                     "Name": "FlagNoPirates",
-                    "Pos.x": 810,
+                    "Pos.x": 1470,
                     "Pos.y": 125,
                     "Parent": -1,
                     "#": 62,
@@ -2170,8 +2183,8 @@
                 {
                     "Type": "TVar",
                     "Name": "ClanDeathDate",
-                    "Pos.x": 1020,
-                    "Pos.y": 125,
+                    "Pos.x": 0,
+                    "Pos.y": 150,
                     "Parent": -1,
                     "#": 63,
                     "Var.Type": "Dword",
@@ -2181,8 +2194,8 @@
                 {
                     "Type": "TVar",
                     "Name": "CoalDeathDate",
-                    "Pos.x": 1230,
-                    "Pos.y": 125,
+                    "Pos.x": 210,
+                    "Pos.y": 150,
                     "Parent": -1,
                     "#": 64,
                     "Var.Type": "Dword",
@@ -2192,8 +2205,8 @@
                 {
                     "Type": "TVar",
                     "Name": "FlagNoCoal",
-                    "Pos.x": 1440,
-                    "Pos.y": 125,
+                    "Pos.x": 420,
+                    "Pos.y": 150,
                     "Parent": -1,
                     "#": 65,
                     "Var.Type": "Int",
@@ -2203,8 +2216,8 @@
                 {
                     "Type": "TVar",
                     "Name": "FlagPiratesDef",
-                    "Pos.x": 1590,
-                    "Pos.y": 125,
+                    "Pos.x": 570,
+                    "Pos.y": 150,
                     "Parent": -1,
                     "#": 66,
                     "Var.Type": "Int",
@@ -2214,7 +2227,7 @@
                 {
                     "Type": "TVar",
                     "Name": "RevoltCD",
-                    "Pos.x": 0,
+                    "Pos.x": 780,
                     "Pos.y": 150,
                     "Parent": -1,
                     "#": 67,
@@ -2225,7 +2238,7 @@
                 {
                     "Type": "TVar",
                     "Name": "LastPlanet1",
-                    "Pos.x": 120,
+                    "Pos.x": 900,
                     "Pos.y": 150,
                     "Parent": -1,
                     "#": 68,
@@ -2236,7 +2249,7 @@
                 {
                     "Type": "TVar",
                     "Name": "PlanetForRevoltID",
-                    "Pos.x": 300,
+                    "Pos.x": 1080,
                     "Pos.y": 150,
                     "Parent": -1,
                     "#": 69,
@@ -2247,7 +2260,7 @@
                 {
                     "Type": "TVar",
                     "Name": "choosed_planet1",
-                    "Pos.x": 540,
+                    "Pos.x": 1320,
                     "Pos.y": 150,
                     "Parent": -1,
                     "#": 70,
@@ -2258,7 +2271,7 @@
                 {
                     "Type": "TVar",
                     "Name": "choosed_star1",
-                    "Pos.x": 750,
+                    "Pos.x": 1530,
                     "Pos.y": 150,
                     "Parent": -1,
                     "#": 71,
@@ -2269,8 +2282,8 @@
                 {
                     "Type": "TVar",
                     "Name": "StartRevolt",
-                    "Pos.x": 960,
-                    "Pos.y": 150,
+                    "Pos.x": 0,
+                    "Pos.y": 175,
                     "Parent": -1,
                     "#": 72,
                     "Var.Type": "Int",
@@ -2280,8 +2293,8 @@
                 {
                     "Type": "TVar",
                     "Name": "temp_cd",
-                    "Pos.x": 1140,
-                    "Pos.y": 150,
+                    "Pos.x": 180,
+                    "Pos.y": 175,
                     "Parent": -1,
                     "#": 73,
                     "Var.Type": "Int",
@@ -2291,8 +2304,8 @@
                 {
                     "Type": "TVar",
                     "Name": "Angry",
-                    "Pos.x": 1260,
-                    "Pos.y": 150,
+                    "Pos.x": 300,
+                    "Pos.y": 175,
                     "Parent": -1,
                     "#": 74,
                     "Var.Type": "Int",
@@ -2302,8 +2315,8 @@
                 {
                     "Type": "TVar",
                     "Name": "TimeSpent",
-                    "Pos.x": 1350,
-                    "Pos.y": 150,
+                    "Pos.x": 390,
+                    "Pos.y": 175,
                     "Parent": -1,
                     "#": 75,
                     "Var.Type": "Int",
@@ -2313,8 +2326,8 @@
                 {
                     "Type": "TVar",
                     "Name": "InprisonmentArr",
-                    "Pos.x": 1500,
-                    "Pos.y": 150,
+                    "Pos.x": 540,
+                    "Pos.y": 175,
                     "Parent": -1,
                     "#": 76,
                     "Var.Type": "None",
@@ -2324,8 +2337,8 @@
                 {
                     "Type": "TVar",
                     "Name": "RangersArr",
-                    "Pos.x": 1710,
-                    "Pos.y": 150,
+                    "Pos.x": 750,
+                    "Pos.y": 175,
                     "Parent": -1,
                     "#": 77,
                     "Var.Type": "None",
@@ -2335,7 +2348,7 @@
                 {
                     "Type": "TVar",
                     "Name": "ChanceArr",
-                    "Pos.x": 0,
+                    "Pos.x": 900,
                     "Pos.y": 175,
                     "Parent": -1,
                     "#": 78,
@@ -2346,7 +2359,7 @@
                 {
                     "Type": "TVar",
                     "Name": "GlobalChance",
-                    "Pos.x": 150,
+                    "Pos.x": 1050,
                     "Pos.y": 175,
                     "Parent": -1,
                     "#": 79,
@@ -2357,7 +2370,7 @@
                 {
                     "Type": "TVar",
                     "Name": "MedalArr",
-                    "Pos.x": 330,
+                    "Pos.x": 1230,
                     "Pos.y": 175,
                     "Parent": -1,
                     "#": 80,
@@ -2368,7 +2381,7 @@
                 {
                     "Type": "TVar",
                     "Name": "RangersMedalsCD",
-                    "Pos.x": 450,
+                    "Pos.x": 1350,
                     "Pos.y": 175,
                     "Parent": -1,
                     "#": 81,
@@ -2379,7 +2392,7 @@
                 {
                     "Type": "TVar",
                     "Name": "InPris",
-                    "Pos.x": 660,
+                    "Pos.x": 1560,
                     "Pos.y": 175,
                     "Parent": -1,
                     "#": 82,
@@ -2390,8 +2403,8 @@
                 {
                     "Type": "TVar",
                     "Name": "nope",
-                    "Pos.x": 750,
-                    "Pos.y": 175,
+                    "Pos.x": 0,
+                    "Pos.y": 200,
                     "Parent": -1,
                     "#": 83,
                     "Var.Type": "Int",
@@ -2401,8 +2414,8 @@
                 {
                     "Type": "TVar",
                     "Name": "tstr",
-                    "Pos.x": 840,
-                    "Pos.y": 175,
+                    "Pos.x": 60,
+                    "Pos.y": 200,
                     "Parent": -1,
                     "#": 84,
                     "Var.Type": "Str",
@@ -2412,8 +2425,8 @@
                 {
                     "Type": "TVar",
                     "Name": "BertorsKilled",
-                    "Pos.x": 930,
-                    "Pos.y": 175,
+                    "Pos.x": 120,
+                    "Pos.y": 200,
                     "Parent": -1,
                     "#": 85,
                     "Var.Type": "Int",
@@ -2423,8 +2436,8 @@
                 {
                     "Type": "TVar",
                     "Name": "KillsCD",
-                    "Pos.x": 1140,
-                    "Pos.y": 175,
+                    "Pos.x": 330,
+                    "Pos.y": 200,
                     "Parent": -1,
                     "#": 86,
                     "Var.Type": "Int",
@@ -2434,8 +2447,8 @@
                 {
                     "Type": "TVar",
                     "Name": "TitleCD",
-                    "Pos.x": 1260,
-                    "Pos.y": 175,
+                    "Pos.x": 450,
+                    "Pos.y": 200,
                     "Parent": -1,
                     "#": 87,
                     "Var.Type": "Int",
@@ -2445,8 +2458,8 @@
                 {
                     "Type": "TVar",
                     "Name": "EqCD",
-                    "Pos.x": 1380,
-                    "Pos.y": 175,
+                    "Pos.x": 570,
+                    "Pos.y": 200,
                     "Parent": -1,
                     "#": 88,
                     "Var.Type": "Int",
@@ -2456,8 +2469,8 @@
                 {
                     "Type": "TVar",
                     "Name": "InvPlan",
-                    "Pos.x": 1470,
-                    "Pos.y": 175,
+                    "Pos.x": 630,
+                    "Pos.y": 200,
                     "Parent": -1,
                     "#": 89,
                     "Var.Type": "Dword",
@@ -2467,8 +2480,8 @@
                 {
                     "Type": "TVar",
                     "Name": "equip",
-                    "Pos.x": 1590,
-                    "Pos.y": 175,
+                    "Pos.x": 750,
+                    "Pos.y": 200,
                     "Parent": -1,
                     "#": 90,
                     "Var.Type": "Dword",
@@ -2478,8 +2491,8 @@
                 {
                     "Type": "TVar",
                     "Name": "StartSectorNews",
-                    "Pos.x": 1680,
-                    "Pos.y": 175,
+                    "Pos.x": 840,
+                    "Pos.y": 200,
                     "Parent": -1,
                     "#": 91,
                     "Var.Type": "Int",
@@ -2489,7 +2502,7 @@
                 {
                     "Type": "TVar",
                     "Name": "SectorsArray",
-                    "Pos.x": 0,
+                    "Pos.x": 1050,
                     "Pos.y": 200,
                     "Parent": -1,
                     "#": 92,
@@ -2500,7 +2513,7 @@
                 {
                     "Type": "TVar",
                     "Name": "NewsCD",
-                    "Pos.x": 180,
+                    "Pos.x": 1230,
                     "Pos.y": 200,
                     "Parent": -1,
                     "#": 93,
@@ -2511,7 +2524,7 @@
                 {
                     "Type": "TVar",
                     "Name": "Liberator",
-                    "Pos.x": 270,
+                    "Pos.x": 1320,
                     "Pos.y": 200,
                     "Parent": -1,
                     "#": 94,
@@ -2522,7 +2535,7 @@
                 {
                     "Type": "TVar",
                     "Name": "GreatVictory",
-                    "Pos.x": 420,
+                    "Pos.x": 1470,
                     "Pos.y": 200,
                     "Parent": -1,
                     "#": 95,
@@ -2533,8 +2546,8 @@
                 {
                     "Type": "TVar",
                     "Name": "BestWarrior",
-                    "Pos.x": 600,
-                    "Pos.y": 200,
+                    "Pos.x": 0,
+                    "Pos.y": 225,
                     "Parent": -1,
                     "#": 96,
                     "Var.Type": "Dword",
@@ -2544,8 +2557,8 @@
                 {
                     "Type": "TVar",
                     "Name": "timerNew",
-                    "Pos.x": 780,
-                    "Pos.y": 200,
+                    "Pos.x": 180,
+                    "Pos.y": 225,
                     "Parent": -1,
                     "#": 97,
                     "Var.Type": "Array",
@@ -2555,8 +2568,8 @@
                 {
                     "Type": "TVar",
                     "Name": "blacklistNew",
-                    "Pos.x": 900,
-                    "Pos.y": 200,
+                    "Pos.x": 300,
+                    "Pos.y": 225,
                     "Parent": -1,
                     "#": 98,
                     "Var.Type": "Array",
@@ -2566,8 +2579,8 @@
                 {
                     "Type": "TVar",
                     "Name": "Version",
-                    "Pos.x": 1080,
-                    "Pos.y": 200,
+                    "Pos.x": 480,
+                    "Pos.y": 225,
                     "Parent": -1,
                     "#": 99,
                     "Var.Type": "Str",
@@ -2608,5 +2621,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling mod_RefNews\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

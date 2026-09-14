@@ -6,15 +6,23 @@
     "ScriptName": "Mod_RefAskNotPickUp",
     "ScriptFileOut": "D:\\Mod_RefAskNotPickUp.scr",
     "ScriptTextOut": "D:\\Mod_RefAskNotPickUp.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
             "DialogAnswers": [
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "fastexit",
                     "Pos.x": 0,
-                    "Pos.y": 515,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 505,
                     "Parent": -1,
                     "#": 15,
                     "Msg": "",
@@ -22,10 +30,10 @@
                     "_orig_danswer": "DAnswer('fastexit~'+CT(\"Script.Mod_RefAskNotPickUp.3\"))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "fastexit",
                     "Pos.x": 120,
-                    "Pos.y": 515,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 505,
                     "Parent": -1,
                     "#": 16,
                     "Msg": "",
@@ -35,10 +43,10 @@
             ],
             "DialogMessages": [
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 0,
-                    "Pos.y": 445,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 435,
                     "Parent": -1,
                     "#": 13,
                     "Msg": "",
@@ -46,10 +54,10 @@
                     "_orig_dtext": "DText(CT(\"Script.Mod_RefAskNotPickUp.1\"))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 150,
-                    "Pos.y": 445,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 435,
                     "Parent": -1,
                     "#": 14,
                     "Msg": "",
@@ -59,17 +67,22 @@
             ],
             "Dialogs": [
                 {
-                    "Name": "DialogNew",
                     "Type": "TDialog",
+                    "Name": "DialogNew",
                     "Pos.x": 0,
-                    "Pos.y": 375,
+                    "Pos.y": 365,
                     "Parent": -1,
                     "#": 12
                 }
             ],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "GroupNew",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 8,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -92,30 +105,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "PlanetNew",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 250,
-                    "Parent": -1,
-                    "#": 8
+                    "+State": 0
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 9,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 9,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 585
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 10,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "if(ShipInNormalSpace(Player())) {",
@@ -134,15 +147,15 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 10,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 180,
-                    "Pos.y": 585
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 17,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(RelationToShip(GetTalkShip(),Player()) < 10) {",
@@ -193,27 +206,27 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 17,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 375
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 18,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);"
-                    ],
-                    "#": 18,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 445
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 19,
                     "Code.Type": "Turn",
                     "Code": [
                         "cur_ship = GetTalkShip();",
@@ -228,18 +241,18 @@
                         "    ShipFreeFlight(cur_ship);",
                         "}",
                         "DAdd(1);"
-                    ],
-                    "#": 19,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 130,
-                    "Pos.y": 445
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "PlanetNew",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 7,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -247,17 +260,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "StarNew",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 160,
-                    "Parent": -1,
-                    "#": 7
+                    "+Star": "StarNew"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 6,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -276,47 +289,41 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "StarNew",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 70,
-                    "Parent": -1,
-                    "#": 6
+                    "+Star": "StarNew"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "StarNew",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "StarNew",
                     "Pos.x": 0,
-                    "Pos.y": 115,
+                    "Pos.y": 90,
                     "Parent": -1,
                     "#": 5,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "StateNew",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 11,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 11
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -345,7 +352,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cost",
-                    "Pos.x": 210,
+                    "Pos.x": 180,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 2,
@@ -356,7 +363,7 @@
                 {
                     "Type": "TVar",
                     "Name": "i",
-                    "Pos.x": 300,
+                    "Pos.x": 240,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 3,
@@ -367,7 +374,7 @@
                 {
                     "Type": "TVar",
                     "Name": "item",
-                    "Pos.x": 390,
+                    "Pos.x": 300,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 4,
@@ -430,5 +437,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_RefAskNotPickUp\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

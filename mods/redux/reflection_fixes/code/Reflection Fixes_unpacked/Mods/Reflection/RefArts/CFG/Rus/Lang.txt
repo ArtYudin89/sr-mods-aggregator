@@ -1475,12 +1475,7 @@ UselessItems ~{
         Name=Забытый терминал
         OnActCode ~{
             01=if(UselessItemData(CurItem(),1)) UselessItemData(CurItem(),1,UselessItemData(CurItem(),1)-1);
-            02=else if(UselessItemData(CurItem(),2))
-            03 ^{
-                01=Sound('Sound.NewMsg');
-                02=NewsAdd('Терминал, панель ввода которого всё это время горела красным, теперь сменил цвет, и светит зелёным. А это значит, что есть ещё три попытки, чтобы ввести значения');
-                03=UselessItemData(CurItem(),3,1);
-            }
+            02=else UselessItemData(CurItem(),3,1);
         }
         OnActCodeTypes=t_OnStep
         OnActStepTypes=5
@@ -1491,16 +1486,16 @@ UselessItems ~{
                 02=str tstr = TextBox('Введите цифровой код');
                 03=if(tstr == '') exit;
                 04=int yes = 0;
-                05=if(tstr == GetValueFromScript('Mod_RefArts','Terminal','1') && GetValueFromScript('Mod_RefArts','Terminal2','1')) yes = 1;
-                06=if(tstr == GetValueFromScript('Mod_RefArts','Terminal','2') && GetValueFromScript('Mod_RefArts','Terminal2','2')) yes = 2;
-                07=if(tstr == GetValueFromScript('Mod_RefArts','Terminal','3') && GetValueFromScript('Mod_RefArts','Terminal2','3')) yes = 3;
-                08=if(tstr == GetValueFromScript('Mod_RefArts','Terminal','4') && GetValueFromScript('Mod_RefArts','Terminal2','4')) yes = 4;
-                09=if(tstr == GetValueFromScript('Mod_RefArts','Terminal','5') && GetValueFromScript('Mod_RefArts','Terminal2','5')) yes = 5;
-                10=if(tstr == GetValueFromScript('Mod_RefArts','Terminal','6') && GetValueFromScript('Mod_RefArts','Terminal2','6')) yes = 6;
-                11=if(tstr == GetValueFromScript('Mod_RefArts','Terminal','7') && GetValueFromScript('Mod_RefArts','Terminal2','7')) yes = 7;
-                12=if(tstr == GetValueFromScript('Mod_RefArts','Terminal','8') && GetValueFromScript('Mod_RefArts','Terminal2','8')) yes = 8;
-                13=if(tstr == GetValueFromScript('Mod_RefArts','Terminal','9') && GetValueFromScript('Mod_RefArts','Terminal2','9')) yes = 9;
-                14=if(tstr == GetValueFromScript('Mod_RefArts','Terminal','10') && GetValueFromScript('Mod_RefArts','Terminal2','10')) yes = 10;
+                05=if(tstr == GetValueFromScript('Mod_RefArts','Terminal',1) && GetValueFromScript('Mod_RefArts','Terminal2',1)) yes = 1;
+                06=if(tstr == GetValueFromScript('Mod_RefArts','Terminal',2) && GetValueFromScript('Mod_RefArts','Terminal2',2)) yes = 2;
+                07=if(tstr == GetValueFromScript('Mod_RefArts','Terminal',3) && GetValueFromScript('Mod_RefArts','Terminal2',3)) yes = 3;
+                08=if(tstr == GetValueFromScript('Mod_RefArts','Terminal',4) && GetValueFromScript('Mod_RefArts','Terminal2',4)) yes = 4;
+                09=if(tstr == GetValueFromScript('Mod_RefArts','Terminal',5) && GetValueFromScript('Mod_RefArts','Terminal2',5)) yes = 5;
+                10=if(tstr == GetValueFromScript('Mod_RefArts','Terminal',6) && GetValueFromScript('Mod_RefArts','Terminal2',6)) yes = 6;
+                11=if(tstr == GetValueFromScript('Mod_RefArts','Terminal',7) && GetValueFromScript('Mod_RefArts','Terminal2',7)) yes = 7;
+                12=if(tstr == GetValueFromScript('Mod_RefArts','Terminal',8) && GetValueFromScript('Mod_RefArts','Terminal2',8)) yes = 8;
+                13=if(tstr == GetValueFromScript('Mod_RefArts','Terminal',9) && GetValueFromScript('Mod_RefArts','Terminal2',9)) yes = 9;
+                14=if(tstr == GetValueFromScript('Mod_RefArts','Terminal',10) && GetValueFromScript('Mod_RefArts','Terminal2',10)) yes = 10;
                 15=if(yes)
                 16 ^{
                     01=RunFunctionFromScript('Mod_RefArts','TerminalTreasure',yes);
