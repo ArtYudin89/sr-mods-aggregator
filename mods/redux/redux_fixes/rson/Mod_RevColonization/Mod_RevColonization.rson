@@ -691,14 +691,14 @@
                 },
                 {
                     "Type": "TDialogAnswer",
-                    "Name": "fastexit",
+                    "Name": "restart",
                     "Pos.x": 120,
                     "Pos.y": 860,
                     "Parent": -1,
                     "#": 156,
                     "Msg": "Начинайте образовательный процесс.",
                     "AMsg.Num": "61",
-                    "_orig_danswer": "DAnswer('fastexit~'+CT(\"Script.Mod_RevColonization.105\"))"
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RevColonization.105\"))"
                 },
                 {
                     "Type": "TDialogAnswer",
@@ -1632,7 +1632,7 @@
                         "        //rewardStatus=1;",
                         "        rewardTimer=CurTurn()+Rnd(50,100);",
                         "        Sound('Sound.UserMsgAdd');",
-                        "        Ether(5,'4DD640F7-23DD-4A45-82F1-D5F7D32A877B',Format(CT(\"Script.Mod_RevColonization.138\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",rewardName));",
+                        "        Ether(3,'4DD640F7-23DD-4A45-82F1-D5F7D32A877B',Format(CT(\"Script.Mod_RevColonization.138\"),\"<0>\",Name(IdToPlanet(planetColonyId)),\"<1>\",rewardName));",
                         "        rewardsArray[curReward]=1;",
                         "    }",
                         "    ArrayClear(tempArray);",
