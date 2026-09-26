@@ -2546,7 +2546,7 @@
                         "",
                         "                    //Перекраска транка в цвет организации",
                         "                    EqCustomFaction(art_tranc, 'SubFactionPlayerMercsFixedStanding');",
-                        "                    ShipJoin(PlayerOrgTrancs, tranc);",
+                        "                    //ShipJoin(PlayerOrgTrancs, tranc); //группа PlayerOrgTrancs принадлежит скрипту ShuMercsHQ и отсюда не видна (ветка отключена if(0))",
                         "                    ShipCustomFaction(tranc, 'SubFactionPlayerMercsFixedStanding');",
                         "                    ShipAddCustomShipInfo(tranc, 'ShuMercsHQ_PlayerOrgTrancInfo');",
                         "                    Chameleon(tranc, 'Ship.TranclucatorCyan');",
@@ -12598,7 +12598,7 @@
                         "//Я Клаксон, и я буду в комментах писать всякую херню",
                         "//Ну и не подумаю даже исправить что-то, это для васянов всяких",
                         "",
-                        "tstr1 = '</color>' + CT('Script.Mod_ShuMercs.EscortAsk');",
+                        "tstr1 = '</color>' + CT('Script.Mod_ShuMercs.MercCenterDialogs.EscortAsk');",
                         "DChange(1);",
                         "exit;"
                     ]
@@ -14112,7 +14112,7 @@
                         "    }",
                         "",
                         "    if(tint2) {",
-                        "        tstr3 = '</color>' + CT('Talk.'+path+'.PlayerOk'+int(Rnd(1,4)));",
+                        "        tstr3 = '</color>' + CT('Talk.Goods.PlayerOk'+int(Rnd(1,4)));",
                         "    }",
                         "}",
                         "",

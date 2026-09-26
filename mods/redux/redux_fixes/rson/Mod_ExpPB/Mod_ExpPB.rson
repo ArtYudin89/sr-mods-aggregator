@@ -1040,24 +1040,7 @@
                     "#": 112,
                     "Code.Type": "Turn",
                     "Code": [
-                        "n2 = ShipFace(Player()); if(n2 < 0) n2 = 0;",
-                        "InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_FaceCur', n2);",
-                        "n3 = ShipPilotRace(Player());",
-                        "InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Sel', n3);",
-                        "UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Name', 'Text', ShipName(Player()));",
-                        "UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceMaloc', 'IsDown', 0);",
-                        "UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeleng', 'IsDown', 0);",
-                        "UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeople', 'IsDown', 0);",
-                        "UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceFei', 'IsDown', 0);",
-                        "UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceGaal', 'IsDown', 0);",
-                        "if(n3 == 0) { UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceMaloc', 'IsDown', 1); InterfaceImage('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Captain', 'GI,Bm.Captain.2Maloc'+n2+'i'); }",
-                        "if(n3 == 1) { UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeleng', 'IsDown', 1); InterfaceImage('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Captain', 'GI,Bm.Captain.2Peleng'+n2+'i'); }",
-                        "if(n3 == 2) { UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RacePeople', 'IsDown', 1); InterfaceImage('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Captain', 'GI,Bm.Captain.2People'+n2+'i'); }",
-                        "if(n3 == 3) { UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceFei', 'IsDown', 1); InterfaceImage('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Captain', 'GI,Bm.Captain.2Fei'+n2+'i'); }",
-                        "if(n3 == 4) { UICheckElement('RuinsTalk', 'ExpPB_RacePanel:ExpPB_RaceGaal', 'IsDown', 1); InterfaceImage('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Captain', 'GI,Bm.Captain.2Gaal'+n2+'i'); }",
-                        "InterfaceState('RuinsTalk', 'ExpPB_RacePanel', 1);",
-                        "InterfaceText('RuinsTalk', 'ExpPB_RacePanel:ExpPB_Contract', Format(CT('FormRuins.PB.ChangeNationality.PactText'), '<CurName'+'>', ShipName(Player()), '<br>', '\\\\r",
-                        "'));"
+                        "OpenCustomForm('CustomForm_ExpPB_ChangeRace');"
                     ]
                 },
                 {
@@ -1464,7 +1447,7 @@
                         "if(ShipMoney(Player()) >= ItemCost(dwd1))",
                         "{",
                         "    ShipMoney(Player(), ShipMoney(Player()) - ItemCost(dwd1));",
-                        "    AddItemToShip(Player(), dwd1);",
+                        "    AddItemToStorage(GetShipRuins(Player()), dwd1);",
                         "    dtext = '</color>' + Format(CT('FormRuins.PB.SpecialShip.AfterBuy'), '<Player'+'>', ShipName(Player()), '<CurName'+'>', ShipName(Player()));",
                         "}",
                         "else dtext = '</color>' + Format(CT('FormRuins.PB.SpecialShip.AfterNo'), '<Player'+'>', ShipName(Player()), '<CurName'+'>', ShipName(Player()));",
