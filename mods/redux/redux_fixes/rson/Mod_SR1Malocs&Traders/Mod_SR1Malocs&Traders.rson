@@ -1,0 +1,333 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_SR1Malocs&Traders",
+    "ScriptFileOut": "D:\\Mod_SR1Malocs&Traders.scr",
+    "ScriptTextOut": "D:\\Mod_SR1Malocs&Traders.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [],
+            "DialogMessages": [],
+            "Dialogs": [
+                {
+                    "Type": "TDialog",
+                    "Name": "\r",
+                    "Pos.x": 0,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 12
+                },
+                {
+                    "Type": "TDialog",
+                    "Name": "\u0003",
+                    "Pos.x": 120,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 13
+                },
+                {
+                    "Type": "TDialog",
+                    "Name": "✐",
+                    "Pos.x": 240,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 14
+                }
+            ],
+            "Groups": [],
+            "Items": [],
+            "Operations": [
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 8,
+                    "Code.Type": "Global",
+                    "Code": [
+                        "if(GRunFrom==3) {",
+                        "  if(GCntRun(GScriptName)<3) {",
+                        "    if((CurTurn()-GLastTurnRun(GScriptName,0))>620) {",
+                        "      if(ShipStrengthInAverageRanger(Player())>=1.5) {",
+                        "        if(RangerStatus(Player())==Trader) {",
+                        "          GRun();",
+                        "        }",
+                        "      }",
+                        "    }",
+                        "  }",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 9,
+                    "Code.Type": "Init",
+                    "Code": [
+                        "\u0002"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 10,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "MalocGroup"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 11,
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "Planet1"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 15,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "\u0002"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 16,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "d"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 220,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 17,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "\u0001"
+                    ]
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Type": "TPlanet",
+                    "Name": "Planet1",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 7,
+                    "Race": 2,
+                    "Owner": 3,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "Star1"
+                }
+            ],
+            "Ships": [
+                {
+                    "Type": "TStarShip",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 6,
+                    "Count": 1,
+                    "Owner": 61,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "Star1"
+                }
+            ],
+            "Stars": [
+                {
+                    "Type": "TStar",
+                    "Name": "Star1",
+                    "Pos.x": 0,
+                    "Pos.y": 90,
+                    "Parent": -1,
+                    "#": 4,
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": true,
+                    "NoComeKling": true
+                },
+                {
+                    "Type": "TStar",
+                    "Name": "Star2",
+                    "Pos.x": 90,
+                    "Pos.y": 90,
+                    "Parent": -1,
+                    "#": 5,
+                    "Constellation": 0,
+                    "Priority": 1,
+                    "NoKling": true,
+                    "NoComeKling": true
+                }
+            ],
+            "States": [],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "vMalocTalkState",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "MalocGroup",
+                    "Pos.x": 210,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "PlayerGroup",
+                    "Pos.x": 360,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Dword",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "dMalocTalk",
+                    "Pos.x": 540,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 15,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 16,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 17,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 6,
+            "End": 4,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 7,
+            "End": 4,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_SR1Malocs&Traders\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
+}
