@@ -6,15 +6,23 @@
     "ScriptName": "mod_merchant",
     "ScriptFileOut": "D:\\mod_merchant.scr",
     "ScriptTextOut": "D:\\mod_merchant.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
             "DialogAnswers": [
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "",
                     "Pos.x": 0,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 39,
                     "Msg": "",
@@ -22,10 +30,10 @@
                     "_orig_danswer": "DAnswer(CT(\"Script.mod_merchant.8\"))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "exit",
                     "Pos.x": 120,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 40,
                     "Msg": "",
@@ -33,10 +41,10 @@
                     "_orig_danswer": "DAnswer('exit')"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "exit",
                     "Pos.x": 240,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 41,
                     "Msg": "",
@@ -44,10 +52,10 @@
                     "_orig_danswer": "DAnswer('exit')"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "",
                     "Pos.x": 360,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 42,
                     "Msg": "",
@@ -55,10 +63,10 @@
                     "_orig_danswer": "DAnswer(CT(\"Script.mod_merchant.9\"))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "restart",
                     "Pos.x": 480,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 43,
                     "Msg": "",
@@ -66,10 +74,10 @@
                     "_orig_danswer": "DAnswer('restart~'+CT(\"Script.mod_merchant.12\"))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "block",
                     "Pos.x": 600,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 44,
                     "Msg": "",
@@ -79,10 +87,10 @@
             ],
             "DialogMessages": [
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 0,
-                    "Pos.y": 470,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 460,
                     "Parent": -1,
                     "#": 34,
                     "Msg": "",
@@ -90,10 +98,10 @@
                     "_orig_dtext": "DText(CT(\"Script.mod_merchant.3\"))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 150,
-                    "Pos.y": 470,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 460,
                     "Parent": -1,
                     "#": 35,
                     "Msg": "",
@@ -101,10 +109,10 @@
                     "_orig_dtext": "DText(Format(CT(\"Script.mod_merchant.4\"),\"<0>\",mod_merchantArr0[0,0]))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 300,
-                    "Pos.y": 470,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 460,
                     "Parent": -1,
                     "#": 36,
                     "Msg": "",
@@ -112,10 +120,10 @@
                     "_orig_dtext": "DText(CT(\"Script.mod_merchant.5\"))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 450,
-                    "Pos.y": 470,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 460,
                     "Parent": -1,
                     "#": 37,
                     "Msg": "",
@@ -123,10 +131,10 @@
                     "_orig_dtext": "DText(CT(\"Script.mod_merchant.6\"))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 600,
-                    "Pos.y": 470,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 460,
                     "Parent": -1,
                     "#": 38,
                     "Msg": "",
@@ -136,25 +144,30 @@
             ],
             "Dialogs": [
                 {
-                    "Name": "TdBK0",
                     "Type": "TDialog",
+                    "Name": "TdBK0",
                     "Pos.x": 0,
-                    "Pos.y": 400,
+                    "Pos.y": 390,
                     "Parent": -1,
                     "#": 32
                 },
                 {
-                    "Name": "mFleet",
                     "Type": "TDialog",
+                    "Name": "mFleet",
                     "Pos.x": 120,
-                    "Pos.y": 400,
+                    "Pos.y": 390,
                     "Parent": -1,
                     "#": 33
                 }
             ],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "GroupNew",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 24,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -177,15 +190,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "PlanetNew",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 24
+                    "+State": 0
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "MerchantFleet",
+                    "Pos.x": 120,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 25,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -208,30 +221,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "PlanetNew",
-                    "+State": 1,
-                    "Type": "TGroup",
-                    "Pos.x": 90,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 25
+                    "+State": 1
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 26,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 26,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 27,
                     "Code.Type": "Init",
                     "Code": [
                         "scrArr0 = newarray(1);",
@@ -301,15 +314,15 @@
                         "        turnCodeArray[j] = 0;",
                         "    }",
                         "}"
-                    ],
-                    "#": 27,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 28,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ShipIsTakeoff(Player())) {",
@@ -436,15 +449,15 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 28,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 29,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "if(GetShipRuins(Player())) {",
@@ -452,15 +465,15 @@
                         "    if(mod_merchant_scrState==0)AddDialogInject('TdBK0','',CT(\"Script.mod_merchant.1\"),0);",
                         "  }",
                         "}"
-                    ],
-                    "#": 29,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 180,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 45,
                     "Code.Type": "Turn",
                     "Code": [
                         "if (mod_merchantArr0[0, 4] == 0) {",
@@ -479,27 +492,28 @@
                         "        ShipDestroy(CurShip, 1);",
                         "    }",
                         "}"
-                    ],
-                    "#": 45,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 80
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 390,
+                    "Parent": -1,
+                    "#": 46,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(0);",
                         "exit;"
-                    ],
-                    "#": 46,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 390,
+                    "Parent": -1,
+                    "#": 47,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(RelationToRanger(GetTalkShip(),Player()) <= 29) {",
@@ -510,63 +524,63 @@
                         "  DChange(3);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 47,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 100,
-                    "Pos.y": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 460,
+                    "Parent": -1,
+                    "#": 48,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);"
-                    ],
-                    "#": 48,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 470
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 460,
+                    "Parent": -1,
+                    "#": 49,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(1);"
-                    ],
-                    "#": 49,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 130,
-                    "Pos.y": 470
+                    ]
                 },
                 {
-                    "Name": "",
-                    "Code.Type": "Turn",
-                    "Code": [
-                        "DAdd(2);"
-                    ],
-                    "#": 50,
                     "Type": "Top",
-                    "Parent": -1,
+                    "Name": "",
                     "Pos.x": 280,
-                    "Pos.y": 470
-                },
-                {
-                    "Name": "",
+                    "Pos.y": 460,
+                    "Parent": -1,
+                    "#": 50,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(2);"
-                    ],
-                    "#": 51,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 430,
-                    "Pos.y": 470
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 430,
+                    "Pos.y": 460,
+                    "Parent": -1,
+                    "#": 51,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(2);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 580,
+                    "Pos.y": 460,
+                    "Parent": -1,
+                    "#": 52,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipMoney(Player()) < int0) {",
@@ -576,29 +590,29 @@
                         "  DAdd(3);",
                         "}",
                         "DAdd(4);"
-                    ],
-                    "#": 52,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 580,
-                    "Pos.y": 470
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 530,
+                    "Parent": -1,
+                    "#": 53,
                     "Code.Type": "Turn",
                     "Code": [
                         "int0 = GalaxyMoney(4, 4) + GalaxyMoney(4, 3) + GalaxyMoney(4, 2) + GalaxyMoney(4, 1) + GalaxyMoney(4, 0);",
                         "DChange(4);",
                         "exit;"
-                    ],
-                    "#": 53,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 540
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 340,
+                    "Pos.y": 530,
+                    "Parent": -1,
+                    "#": 54,
                     "Code.Type": "Turn",
                     "Code": [
                         "ShipMoney(Player(), ShipMoney(Player()) - int0);",
@@ -629,18 +643,18 @@
                         "Sound('Sound.Sell');",
                         "DChange(1);",
                         "exit;"
-                    ],
-                    "#": 54,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 340,
-                    "Pos.y": 540
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "PlanetNew",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 23,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -648,17 +662,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "StarNew",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 185,
-                    "Parent": -1,
-                    "#": 23
+                    "+Star": "StarNew"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 22,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -677,66 +691,59 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "StarNew",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 95,
-                    "Parent": -1,
-                    "#": 22
+                    "+Star": "StarNew"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "StarNew",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "StarNew",
                     "Pos.x": 0,
-                    "Pos.y": 140,
+                    "Pos.y": 115,
                     "Parent": -1,
                     "#": 21,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "StateNew",
+                    "Pos.x": 0,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 30,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 30
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Free",
+                    "Pos.x": 120,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 31,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "mFleet",
                     "OnActCode": "mFleet",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 90,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 31
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -776,7 +783,7 @@
                 {
                     "Type": "TVar",
                     "Name": "j",
-                    "Pos.x": 630,
+                    "Pos.x": 600,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 3,
@@ -787,7 +794,7 @@
                 {
                     "Type": "TVar",
                     "Name": "dwd0",
-                    "Pos.x": 720,
+                    "Pos.x": 660,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 4,
@@ -798,7 +805,7 @@
                 {
                     "Type": "TVar",
                     "Name": "dwd1",
-                    "Pos.x": 810,
+                    "Pos.x": 720,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 5,
@@ -809,7 +816,7 @@
                 {
                     "Type": "TVar",
                     "Name": "int0",
-                    "Pos.x": 900,
+                    "Pos.x": 780,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 6,
@@ -820,7 +827,7 @@
                 {
                     "Type": "TVar",
                     "Name": "int1",
-                    "Pos.x": 990,
+                    "Pos.x": 840,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 7,
@@ -831,7 +838,7 @@
                 {
                     "Type": "TVar",
                     "Name": "answ0",
-                    "Pos.x": 1080,
+                    "Pos.x": 900,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 8,
@@ -842,7 +849,7 @@
                 {
                     "Type": "TVar",
                     "Name": "msg0",
-                    "Pos.x": 1170,
+                    "Pos.x": 990,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 9,
@@ -853,7 +860,7 @@
                 {
                     "Type": "TVar",
                     "Name": "str0",
-                    "Pos.x": 1260,
+                    "Pos.x": 1050,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 10,
@@ -864,7 +871,7 @@
                 {
                     "Type": "TVar",
                     "Name": "months",
-                    "Pos.x": 1350,
+                    "Pos.x": 1110,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 11,
@@ -875,7 +882,7 @@
                 {
                     "Type": "TVar",
                     "Name": "scrArr0",
-                    "Pos.x": 1440,
+                    "Pos.x": 1200,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 12,
@@ -886,7 +893,7 @@
                 {
                     "Type": "TVar",
                     "Name": "scrArr1",
-                    "Pos.x": 1560,
+                    "Pos.x": 1320,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 13,
@@ -897,7 +904,7 @@
                 {
                     "Type": "TVar",
                     "Name": "turnCodeArray",
-                    "Pos.x": 1680,
+                    "Pos.x": 1440,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 14,
@@ -919,7 +926,7 @@
                 {
                     "Type": "TVar",
                     "Name": "shipNumb",
-                    "Pos.x": 90,
+                    "Pos.x": 60,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 16,
@@ -930,7 +937,7 @@
                 {
                     "Type": "TVar",
                     "Name": "int2",
-                    "Pos.x": 210,
+                    "Pos.x": 180,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 17,
@@ -941,7 +948,7 @@
                 {
                     "Type": "TVar",
                     "Name": "answ1",
-                    "Pos.x": 300,
+                    "Pos.x": 240,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 18,
@@ -952,7 +959,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cStar",
-                    "Pos.x": 390,
+                    "Pos.x": 330,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 19,
@@ -963,7 +970,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cPlanet",
-                    "Pos.x": 480,
+                    "Pos.x": 420,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 20,
@@ -1089,5 +1096,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling mod_merchant\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }
