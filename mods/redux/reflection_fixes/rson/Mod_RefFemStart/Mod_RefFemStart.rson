@@ -1,0 +1,473 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefFemStart",
+    "ScriptFileOut": "D:\\Mod_RefFemStart.scr",
+    "ScriptTextOut": "D:\\Mod_RefFemStart.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "restart",
+                    "Pos.x": 0,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 14,
+                    "Msg": "",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefFemStart.5\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "block",
+                    "Pos.x": 120,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 15,
+                    "Msg": "",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer('block~'+CT(\"Script.Mod_RefFemStart.6\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 16,
+                    "Msg": "",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefFemStart.6\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 17,
+                    "Msg": "",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefFemStart.7\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 12,
+                    "Msg": "",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefFemStart.3\"),\"<0>\",tstr))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 13,
+                    "Msg": "",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefFemStart.4\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Type": "TDialog",
+                    "Name": "DialogNew",
+                    "Pos.x": 0,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 11
+                }
+            ],
+            "Groups": [
+                {
+                    "Type": "TGroup",
+                    "Name": "GroupNew",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 6,
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 7,
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 8,
+                    "Code.Type": "Init",
+                    "Code": [
+                        "if(ShipPilotRace(Player()) == People) {",
+                        "    ShipAddCustomShipInfo(Player(),'RefFemStart','NoShow');",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 9,
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(GetShipRuins(Player())) {",
+                        "    if(ShipType(GetShipRuins(Player())) == 'TC') {",
+                        "        if(ItemExtraSpecialsCountByType(ShipEqInSlot(Player(),t_Hull),FindBonusByNameInCfg('RefFemStart_Crutch')) || ItemExtraSpecialsCountByType(ShipEqInSlot(Player(),t_Hull),0)) { //0 - метка из старых сохранений (строка вместо номера бонуса)",
+                        "            AddDialogInject('DialogNew','',CT(\"Script.Mod_RefFemStart.0\"),20);",
+                        "        }",
+                        "    }",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 18,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Раньше: 4 висячих if подряд делали ветку 480 недостижимой, tint не сбрасывался",
+                        "tint = 0;",
+                        "if(BonusNumInCfg(HullSpecial(Player())) == '480' && GalaxyTechLevel() >= 2) tint = 1;",
+                        "if(BonusNumInCfg(HullSpecial(Player())) == '481' && GalaxyTechLevel() >= 4) tint = 1;",
+                        "if(BonusNumInCfg(HullSpecial(Player())) == '482' && GalaxyTechLevel() >= 6) tint = 1;",
+                        "if(BonusNumInCfg(HullSpecial(Player())) == '483' && GalaxyTechLevel() >= 8) tint = 1;",
+                        "",
+                        "money = GalaxyMoney(3,4);",
+                        "",
+                        "if(tint == 0) tstr = CT(\"Script.Mod_RefFemStart.2\");",
+                        "else tstr = CT(\"Script.Mod_RefFemStart.8\")+' '+money+' cr.';",
+                        "DChange(0);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 19,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(tint) {",
+                        "  if(money <= ShipMoney(Player())) {",
+                        "    DAdd(2);",
+                        "  }",
+                        "  if(money > ShipMoney(Player())) {",
+                        "    DAdd(1);",
+                        "  }",
+                        "}",
+                        "DAdd(0);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 20,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 220,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 21,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ShipMoney(Player(),ShipMoney(Player())-money);",
+                        "Sound('Sound.Buy');",
+                        "",
+                        "if(BonusNumInCfg(HullSpecial(Player())) == '480') { //на один уровень за покупку (раньше каскадом до 489)",
+                        "    HullSpecial(Player(),-1);",
+                        "    HullSpecial(Player(),FindBonusByNameInCfg('481'));",
+                        "}",
+                        "else if(BonusNumInCfg(HullSpecial(Player())) == '481') {",
+                        "    HullSpecial(Player(),-1);",
+                        "    HullSpecial(Player(),FindBonusByNameInCfg('482'));",
+                        "}",
+                        "else if(BonusNumInCfg(HullSpecial(Player())) == '482') {",
+                        "    HullSpecial(Player(),-1);",
+                        "    HullSpecial(Player(),FindBonusByNameInCfg('483'));",
+                        "}",
+                        "else if(BonusNumInCfg(HullSpecial(Player())) == '483') {",
+                        "    HullSpecial(Player(),-1);",
+                        "    HullSpecial(Player(),FindBonusByNameInCfg('489'));",
+                        "}",
+                        "Chameleon(Player());",
+                        "DChange(1);",
+                        "exit;"
+                    ]
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Type": "TPlanet",
+                    "Name": "PlanetNew",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 5,
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew"
+                }
+            ],
+            "Ships": [
+                {
+                    "Type": "TStarShip",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 4,
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew"
+                }
+            ],
+            "Stars": [
+                {
+                    "Type": "TStar",
+                    "Name": "StarNew",
+                    "Pos.x": 0,
+                    "Pos.y": 90,
+                    "Parent": -1,
+                    "#": 3,
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
+                }
+            ],
+            "States": [
+                {
+                    "Type": "TState",
+                    "Name": "StateNew",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 10,
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "tint",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tstr",
+                    "Pos.x": 60,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "money",
+                    "Pos.x": 120,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 11,
+            "End": 18,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 19,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 20,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 21,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 4,
+            "End": 3,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 5,
+            "End": 3,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 6,
+            "End": 5,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 6,
+            "End": 10,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_RefFemStart\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
+}

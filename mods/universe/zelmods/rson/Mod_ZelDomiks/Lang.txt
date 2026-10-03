@@ -1497,7 +1497,7 @@ ShipInfo ^{
 						03=else if (ScriptItemActionType(t_OnStep, 11)) ShipDeleteCustomShipInfo(ship, CurInfo());
 						04=else if (ScriptItemActionType(t_OnStep, 3))
                         05 ^{
-                            01=int healAmount = ItemSize(ShipItems(ship, 0)) / 100 * ShipCustomShipInfoData(0, CurInfo(), 3);
+                            01=int healAmount = ShipCustomShipInfoData(0, CurInfo(), 3) * ItemSize(ShipItems(ship, 0)) / 100;
 							02=if (healAmount > 0)
 							03 ^{
 								01=if (healAmount + HullHP(ship) >= ItemSize(ShipItems(ship, 0))) HullHP(ship, ItemSize(ShipItems(ship, 0)));

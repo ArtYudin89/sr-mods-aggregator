@@ -1,0 +1,489 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefCamoSelling",
+    "ScriptFileOut": "D:\\Mod_RefCamoSelling.scr",
+    "ScriptTextOut": "D:\\Mod_RefCamoSelling.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 12,
+                    "Msg": "",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefCamoSelling.4\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 13,
+                    "Msg": "",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefCamoSelling.5\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 14,
+                    "Msg": "",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefCamoSelling.6\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 15,
+                    "Msg": "",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefCamoSelling.7\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "restart",
+                    "Pos.x": 480,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 16,
+                    "Msg": "",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefCamoSelling.8\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 10,
+                    "Msg": "",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefCamoSelling.2\"),\"<0>\",tstr))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 11,
+                    "Msg": "",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefCamoSelling.3\"),\"<0>\",money))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Type": "TDialog",
+                    "Name": "CamoSell",
+                    "Pos.x": 0,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 9
+                }
+            ],
+            "Groups": [
+                {
+                    "Type": "TGroup",
+                    "Name": "GroupNew",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 5,
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 6,
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 7,
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(DomiksDefeated() == 1) {",
+                        "  if(PlayerChameleonCharges(0) > 0 || PlayerChameleonCharges(1) > 0 || PlayerChameleonCharges(2) > 0) {",
+                        "    if(GetTalkShip() == 0) {",
+                        "        if(GetShipRuins(Player())) {",
+                        "            if(!PlayerBridge()) {",
+                        "                if(ShipType(GetShipRuins(Player())) == 'WB' || ShipType(GetShipRuins(Player())) == 'CB') {",
+                        "                    AddDialogInject('CamoSell','',CT('Script.Mod_RefCamoSelling.9'),10);",
+                        "                }",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "  }",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 17,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ShipType(GetShipRuins(Player())) == 'WB') tstr = CT('Script.Mod_RefCamoSelling.11');",
+                        "else tstr = CT('Script.Mod_RefCamoSelling.10');",
+                        "DChange(0);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 18,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(PlayerChameleonCharges(1) > 0) { //ответ 0 - Келлер (серия 1; раньше продавался камуфляж Блазера)",
+                        "  DAdd(0);",
+                        "}",
+                        "if(PlayerChameleonCharges(0) > 0) { //ответ 1 - Блазер (серия 0)",
+                        "  DAdd(1);",
+                        "}",
+                        "if(PlayerChameleonCharges(2) > 0) {",
+                        "  DAdd(2);",
+                        "}",
+                        "DAdd(3);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 19,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(4);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 20,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Сумма для реплики «<money> cr. перечислены» (раньше money не задавался - всегда 0)",
+                        "money = PlayerChameleonCharges(1) * 30000;",
+                        "ShipMoney(Player(),ShipMoney(Player()) + money);",
+                        "PlayerChameleonCharges(1,0);",
+                        "DChange(1);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 21,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Сумма для реплики «<money> cr. перечислены» (раньше money не задавался - всегда 0)",
+                        "money = PlayerChameleonCharges(0) * 30000;",
+                        "ShipMoney(Player(),ShipMoney(Player()) + money);",
+                        "PlayerChameleonCharges(0,0);",
+                        "DChange(1);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 220,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 22,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Сумма для реплики «<money> cr. перечислены» (раньше money не задавался - всегда 0)",
+                        "money = PlayerChameleonCharges(2) * 30000;",
+                        "ShipMoney(Player(),ShipMoney(Player()) + money);",
+                        "PlayerChameleonCharges(2,0);",
+                        "DChange(1);",
+                        "exit;"
+                    ]
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Type": "TPlanet",
+                    "Name": "PlanetNew",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 4,
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew"
+                }
+            ],
+            "Ships": [
+                {
+                    "Type": "TStarShip",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 3,
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew"
+                }
+            ],
+            "Stars": [
+                {
+                    "Type": "TStar",
+                    "Name": "StarNew",
+                    "Pos.x": 0,
+                    "Pos.y": 90,
+                    "Parent": -1,
+                    "#": 2,
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
+                }
+            ],
+            "States": [
+                {
+                    "Type": "TState",
+                    "Name": "StateNew",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 8,
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "money",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tstr",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 9,
+            "End": 17,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 10,
+            "End": 18,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 11,
+            "End": 19,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 20,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 21,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 22,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 3,
+            "End": 2,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 4,
+            "End": 2,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 5,
+            "End": 4,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 5,
+            "End": 8,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_RefCamoSelling\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
+}

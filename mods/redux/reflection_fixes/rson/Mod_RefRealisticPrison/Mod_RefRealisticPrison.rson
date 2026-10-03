@@ -99,7 +99,7 @@
                     "Code.Type": "Turn",
                     "Code": [
                         "int y = 0;",
-                        "for(i=PlanetNews();i>0;i=i-1) {",
+                        "for(i=PlanetNews()-1;i>=0;i=i-1) { //новости с 0 до PlanetNews()-1 (раньше первая проверка уходила за список -> дата 0 -> break)",
                         "    if(PlanetNewsDate(i) < CurTurn()) break;",
                         "    if(PlanetNewsType(i) == 40) y = 1;",
                         "}",
@@ -110,7 +110,7 @@
                         "            dword ship = StarShips(star,j);",
                         "            if(ShipInScript(ship)) continue;",
                         "            if(ShipInPrison(ship)) {",
-                        "                if(ShipFindCustomShipInfoByType(ship,'RefImprisoned')) continue;",
+                        "                if(ShipFindCustomShipInfoByType(ship,'RefImprisoned') != -1) continue; //-1 = инфошки нет",
                         "                else {",
                         "                    if(PlanetGov(GetShipPlanet(ship)) == 2) {",
                         "                        if(Rnd(1,3) == 3) {",

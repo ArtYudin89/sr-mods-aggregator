@@ -26,7 +26,7 @@
                     "Pos.x": 0,
                     "Pos.y": 365,
                     "Parent": -1,
-                    "#": 13
+                    "#": 15
                 },
                 {
                     "Type": "TDialog",
@@ -34,7 +34,7 @@
                     "Pos.x": 180,
                     "Pos.y": 365,
                     "Parent": -1,
-                    "#": 14
+                    "#": 16
                 }
             ],
             "Groups": [
@@ -44,7 +44,7 @@
                     "Pos.x": 0,
                     "Pos.y": 180,
                     "Parent": -1,
-                    "#": 7,
+                    "#": 9,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -78,7 +78,7 @@
                     "Pos.x": 0,
                     "Pos.y": 435,
                     "Parent": -1,
-                    "#": 8,
+                    "#": 10,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
@@ -90,10 +90,10 @@
                     "Pos.x": 60,
                     "Pos.y": 435,
                     "Parent": -1,
-                    "#": 9,
+                    "#": 11,
                     "Code.Type": "Init",
                     "Code": [
-                        "ShipAddCustomShipInfo(Player(),'RefHyperMainInfo','NoShow');"
+                        "if(ShipFindCustomShipInfoByType(Player(),'RefHyperMainInfo') == -1) ShipAddCustomShipInfo(Player(),'RefHyperMainInfo','NoShow');"
                     ]
                 },
                 {
@@ -102,7 +102,7 @@
                     "Pos.x": 120,
                     "Pos.y": 435,
                     "Parent": -1,
-                    "#": 10,
+                    "#": 12,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipCustomShipInfoData(Player(),'RefHyperMainInfo',3)) {",
@@ -129,7 +129,11 @@
                         "    }",
                         "    else {",
                         "        if(!ShipInHyperSpace(Player())) {",
-                        "            if(ItemDurability(ShipEqInSlot(Player(),t_Engine)) < 50) {",
+                        "            //Без двигателя прочность 0 (ItemDurability(0) не вызываем)",
+                        "            eng = ShipEqInSlot(Player(),t_Engine);",
+                        "            engdur = 0;",
+                        "            if(eng) engdur = ItemDurability(eng);",
+                        "            if(engdur < 50) {",
                         "                ShipCustomShipInfoData(Player(),'RefHyperMainInfo',3,0);",
                         "                ShipSpecialBonuses(Player(),bonJump,ShipSpecialBonuses(Player(),bonJump) - ShipCustomShipInfoData(Player(),'RefHyperMainInfo',1));",
                         "                Sound('Sound.ForsageOff');",
@@ -145,7 +149,7 @@
                         "    }",
                         "}",
                         "",
-                        "if(ShipFindCustomShipInfoByType(Player(),'RefHyperMainInfo')<1) ShipAddCustomShipInfo(Player(),'RefHyperMainInfo','NoShow');"
+                        "if(ShipFindCustomShipInfoByType(Player(),'RefHyperMainInfo') == -1) ShipAddCustomShipInfo(Player(),'RefHyperMainInfo','NoShow'); //раньше < 1: при индексе 0 добавлялась ещё одна каждый ход;"
                     ]
                 },
                 {
@@ -154,7 +158,7 @@
                     "Pos.x": 180,
                     "Pos.y": 435,
                     "Parent": -1,
-                    "#": 11,
+                    "#": 13,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "if(PlayerBridge()==12) {",
@@ -177,11 +181,15 @@
                     "Pos.x": -20,
                     "Pos.y": 365,
                     "Parent": -1,
-                    "#": 15,
+                    "#": 17,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipInNormalSpace(Player())) {",
-                        "    if(ItemDurability(ShipEqInSlot(Player(),t_Engine)) > 60) {",
+                        "    //Без двигателя прочность 0 (ItemDurability(0) не вызываем)",
+                        "    eng = ShipEqInSlot(Player(),t_Engine);",
+                        "    engdur = 0;",
+                        "    if(eng) engdur = ItemDurability(eng);",
+                        "    if(engdur > 60) {",
                         "        Sound('Sound.ForsageOn');",
                         "        JumpSave = GetEquipmentStats(ShipEqInSlot(Player(),t_Engine),1);",
                         "        if(JumpSave < 20) JumpBon = 6;",
@@ -208,7 +216,7 @@
                     "Pos.x": 160,
                     "Pos.y": 365,
                     "Parent": -1,
-                    "#": 16,
+                    "#": 18,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAnswer('main');",
@@ -229,7 +237,7 @@
                     "Pos.x": 0,
                     "Pos.y": 135,
                     "Parent": -1,
-                    "#": 6,
+                    "#": 8,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -247,7 +255,7 @@
                     "Pos.x": 0,
                     "Pos.y": 45,
                     "Parent": -1,
-                    "#": 5,
+                    "#": 7,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -276,7 +284,7 @@
                     "Pos.x": 0,
                     "Pos.y": 90,
                     "Parent": -1,
-                    "#": 4,
+                    "#": 6,
                     "Constellation": 0,
                     "Priority": 0,
                     "NoKling": false,
@@ -290,7 +298,7 @@
                     "Pos.x": 0,
                     "Pos.y": 205,
                     "Parent": -1,
-                    "#": 12,
+                    "#": 14,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
@@ -347,6 +355,28 @@
                     "Var.Type": "Int",
                     "Init": "0",
                     "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "eng",
+                    "Pos.x": 450,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "engdur",
+                    "Pos.x": 510,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
                 }
             ]
         }
@@ -354,29 +384,15 @@
     "Visual.Links": [
         {
             "Type": "TGraphLink",
-            "Begin": 13,
-            "End": 15,
+            "Begin": 15,
+            "End": 17,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 14,
-            "End": 16,
-            "Nom": 0,
-            "Arrow": true
-        },
-        {
-            "Type": "TGraphLink",
-            "Begin": 5,
-            "End": 4,
-            "Nom": 0,
-            "Arrow": true
-        },
-        {
-            "Type": "TGraphLink",
-            "Begin": 6,
-            "End": 4,
+            "Begin": 16,
+            "End": 18,
             "Nom": 0,
             "Arrow": true
         },
@@ -389,8 +405,22 @@
         },
         {
             "Type": "TGraphLink",
-            "Begin": 7,
-            "End": 12,
+            "Begin": 8,
+            "End": 6,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 9,
+            "End": 8,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 9,
+            "End": 14,
             "Nom": 0,
             "Arrow": true
         }

@@ -1,0 +1,502 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefExpHullsAbilities",
+    "ScriptFileOut": "D:\\Mod_RefExpHullsAbilities.scr",
+    "ScriptTextOut": "D:\\Mod_RefExpHullsAbilities.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [],
+            "DialogMessages": [],
+            "Dialogs": [
+                {
+                    "Type": "TDialog",
+                    "Name": "MetDialogOff",
+                    "Pos.x": 0,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 12
+                },
+                {
+                    "Type": "TDialog",
+                    "Name": "MetDialogOn",
+                    "Pos.x": 180,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 13
+                },
+                {
+                    "Type": "TDialog",
+                    "Name": "BastDialogOff",
+                    "Pos.x": 360,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 14
+                },
+                {
+                    "Type": "TDialog",
+                    "Name": "BastDialogOn",
+                    "Pos.x": 570,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 15
+                }
+            ],
+            "Groups": [
+                {
+                    "Type": "TGroup",
+                    "Name": "GroupNew",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 6,
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 7,
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 8,
+                    "Code.Type": "Init",
+                    "Code": [
+                        "ShipAddCustomShipInfo(Player(),'RefAssasinInfo','NoShow');",
+                        "ShipAddCustomShipInfo(Player(),'RefGunBatteryLabelsSwitcher','NoShow');"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 9,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(!ShipInNormalSpace(Player())) {",
+                        "    if(HullSpecial(Player()) != FindBonusByCustomTag('Meteor') && HullSpecial(Player()) != FindBonusByCustomTag('SuperHullSB')) {",
+                        "        if(ShipFindCustomShipInfoByType(Player(),'RefMeteorFlag') != -1) {",
+                        "            ShipSpecialBonuses(Player(),bonWRadius,ShipSpecialBonuses(Player(),bonWRadius) + 1000);",
+                        "            ShipSpecialBonuses(Player(),bonSkill1,ShipSpecialBonuses(Player(),bonSkill1) + 10);",
+                        "            ShipSpecialBonuses(Player(),bonResistAsteroid,ShipSpecialBonuses(Player(),bonResistAsteroid) + 75);",
+                        "            ShipSpecialBonuses(Player(),bonHookRadius,ShipSpecialBonuses(Player(),bonHookRadius) + 275);",
+                        "            ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed) + 500);",
+                        "            ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar) + 10000);",
+                        "            ShipDeleteCustomShipInfo(Player(),'RefMeteorFlag');",
+                        "            Chameleon(Player());",
+                        "            MetFlag = 0;",
+                        "            if(ShipFindCustomShipInfoByType(Player(),'RefMeteorDef') != -1) ShipDeleteCustomShipInfo(Player(),'RefMeteorDef');",
+                        "            ShipVisibility(Player(),-1,255.0);",
+                        "            NoTalkToShip(Player(),0);",
+                        "            PlayerLogicChameleon(0,0);",
+                        "            PlayerLogicChameleon(1,0);",
+                        "            PlayerLogicChameleon(2,0);",
+                        "            NewsAdd(CT('Script.Mod_RefExpHullsAbilities.MeteorSwitchedOff'));",
+                        "            Sound('Sound.NewMsg');",
+                        "        }",
+                        "    }",
+                        "    if(HullSpecial(Player()) != FindBonusByCustomTag('Bastion') && HullSpecial(Player()) != FindBonusByCustomTag('SuperHullWB')) { //было ||: всегда истинно",
+                        "        if(ShipFindCustomShipInfoByType(Player(),'RefBastionFlag') != -1) {",
+                        "            int Speeda = ShipCustomShipInfoData(Player(),'RefBastionFlag',1) * 100;",
+                        "            ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed) + Speeda);",
+                        "            ShipSpecialBonuses(Player(),bonHull,ShipSpecialBonuses(Player(),bonHull) - 5);",
+                        "            MinusSpeed = 0;",
+                        "            ShipSpecialBonuses(Player(),bonAttacks,ShipSpecialBonuses(Player(),bonAttacks) - 1);",
+                        "            ShipDeleteCustomShipInfo(Player(),'RefBastionFlag');",
+                        "            NewsAdd(CT('Script.Mod_RefExpHullsAbilities.BastionSwitchedOff'));",
+                        "            Sound('Sound.NewMsg');",
+                        "            BastFlag = 0;",
+                        "        }",
+                        "    }",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 10,
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(PlayerBridge()==12) {",
+                        "  if(~EqSpecial(ShipEqInSlot(Player(),t_Hull))) {",
+                        "      if(EqSpecial(ShipEqInSlot(Player(),t_Hull)) == FindBonusByNameInCfg('ExpHulls_Bolide5') || EqSpecial(ShipEqInSlot(Player(),t_Hull)) == FindBonusByNameInCfg('352')) {",
+                        "          if(!MetFlag) {",
+                        "              AddDialogInject('MetDialogOff',CT(\"Script.Mod_RefExpHullsAbilities.14\"),CT(\"Script.Mod_RefExpHullsAbilities.10\"),13);",
+                        "          }",
+                        "          else if(MetFlag) {",
+                        "              AddDialogInject('MetDialogOn',CT(\"Script.Mod_RefExpHullsAbilities.13\"),CT(\"Script.Mod_RefExpHullsAbilities.8\"),13);",
+                        "          }",
+                        "      }",
+                        "      else if(EqSpecial(ShipEqInSlot(Player(),t_Hull)) == FindBonusByNameInCfg('ExpHulls_Rock5') || EqSpecial(ShipEqInSlot(Player(),t_Hull)) == FindBonusByNameInCfg('351')) {",
+                        "          if(!BastFlag) {",
+                        "              AddDialogInject('BastDialogOff',CT(\"Script.Mod_RefExpHullsAbilities.12\"),CT(\"Script.Mod_RefExpHullsAbilities.5\"),13);",
+                        "          }",
+                        "          else if(BastFlag) {",
+                        "              AddDialogInject('BastDialogOn',CT(\"Script.Mod_RefExpHullsAbilities.11\"),CT(\"Script.Mod_RefExpHullsAbilities.2\"),13);",
+                        "          }",
+                        "      }",
+                        "  }",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 16,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "MetFlag = 1;",
+                        "Sound('Sound.Repair');",
+                        "DAnswer('main');",
+                        "ShipAddCustomShipInfo(Player(),'RefMeteorFlag');",
+                        "Chameleon(Player(), 'Ship.Akrin.Invisible');",
+                        "ShipSpecialBonuses(Player(),bonWRadius,ShipSpecialBonuses(Player(),bonWRadius) - 1000);",
+                        "ShipSpecialBonuses(Player(),bonSkill1,ShipSpecialBonuses(Player(),bonSkill1) - 10);",
+                        "ShipSpecialBonuses(Player(),bonResistAsteroid,ShipSpecialBonuses(Player(),bonResistAsteroid) - 75);",
+                        "ShipSpecialBonuses(Player(),bonHookRadius,ShipSpecialBonuses(Player(),bonHookRadius) - 275);",
+                        "ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed) - 500);",
+                        "ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar) - 10000); //относительно, как остальные бонусы",
+                        "ShipAddCustomShipInfo(Player(),'RefMeteorDef');",
+                        "NoTalkToShip(Player(),1);",
+                        "ShipVisibility(Player(),-1,0.0);",
+                        "PlayerLogicChameleon(0,2);",
+                        "PlayerLogicChameleon(1,2);",
+                        "PlayerLogicChameleon(2,2);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 160,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 17,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "MetFlag = 0;",
+                        "Sound('Sound.Repair');",
+                        "DAnswer('main');",
+                        "ShipDeleteCustomShipInfo(Player(),'RefMeteorFlag');",
+                        "Chameleon(Player());",
+                        "ShipSpecialBonuses(Player(),bonWRadius,ShipSpecialBonuses(Player(),bonWRadius) + 1000);",
+                        "ShipSpecialBonuses(Player(),bonSkill1,ShipSpecialBonuses(Player(),bonSkill1) + 10);",
+                        "ShipSpecialBonuses(Player(),bonResistAsteroid,ShipSpecialBonuses(Player(),bonResistAsteroid) + 75);",
+                        "ShipSpecialBonuses(Player(),bonHookRadius,ShipSpecialBonuses(Player(),bonHookRadius) + 275);",
+                        "ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed) + 500);",
+                        "ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar) + 10000); //раньше ставилось ровно 10000",
+                        "if(ShipFindCustomShipInfoByType(Player(),'RefMeteorDef') != -1) ShipDeleteCustomShipInfo(Player(),'RefMeteorDef');",
+                        "NoTalkToShip(Player(),0);",
+                        "ShipVisibility(Player(),-1,255.0);",
+                        "PlayerLogicChameleon(0,0);",
+                        "PlayerLogicChameleon(1,0);",
+                        "PlayerLogicChameleon(2,0);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 340,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 18,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "int MinusSpeed,flagg;",
+                        "BastFlag = 1;",
+                        "Sound('Sound.Repair');",
+                        "DAnswer('main');",
+                        "ShipSpecialBonuses(Player(),bonHull,ShipSpecialBonuses(Player(),bonHull) + 5);",
+                        "MinusSpeed = 0;",
+                        "while(1) {",
+                        "    flagg = MinusSpeed * 100;",
+                        "    if(ShipSpeed(Player()) - flagg > 400) {",
+                        "        MinusSpeed = MinusSpeed + 1;",
+                        "        continue;",
+                        "    }",
+                        "    else break;",
+                        "}",
+                        "ShipAddCustomShipInfo(Player(),'RefBastionFlag','NoShow',MinusSpeed);",
+                        "ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed) - flagg);",
+                        "ShipSpecialBonuses(Player(),bonAttacks,ShipSpecialBonuses(Player(),bonAttacks) + 1);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 550,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 19,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "BastFlag = 0;",
+                        "Sound('Sound.Repair');",
+                        "DAnswer('main');",
+                        "ShipSpecialBonuses(Player(),bonHull,ShipSpecialBonuses(Player(),bonHull) - 5);",
+                        "int Speeda = ShipCustomShipInfoData(Player(),'RefBastionFlag',1) * 100;",
+                        "ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed) + Speeda);",
+                        "ShipSpecialBonuses(Player(),bonAttacks,ShipSpecialBonuses(Player(),bonAttacks) - 1);",
+                        "ShipDeleteCustomShipInfo(Player(),'RefBastionFlag');"
+                    ]
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Type": "TPlanet",
+                    "Name": "PlanetNew",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 5,
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew"
+                }
+            ],
+            "Ships": [
+                {
+                    "Type": "TStarShip",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 4,
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew"
+                }
+            ],
+            "Stars": [
+                {
+                    "Type": "TStar",
+                    "Name": "StarNew",
+                    "Pos.x": 0,
+                    "Pos.y": 90,
+                    "Parent": -1,
+                    "#": 3,
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
+                }
+            ],
+            "States": [
+                {
+                    "Type": "TState",
+                    "Name": "StateNew",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 11,
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "MetFlag",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "BastFlag",
+                    "Pos.x": 120,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "MinusSpeed",
+                    "Pos.x": 240,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 16,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 17,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 18,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 15,
+            "End": 19,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 4,
+            "End": 3,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 5,
+            "End": 3,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 6,
+            "End": 5,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 6,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_RefExpHullsAbilities\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
+}

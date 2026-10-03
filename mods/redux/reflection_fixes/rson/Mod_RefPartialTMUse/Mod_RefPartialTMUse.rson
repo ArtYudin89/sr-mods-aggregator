@@ -1,0 +1,771 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefPartialTMUse",
+    "ScriptFileOut": "D:\\Mod_RefPartialTMUse.scr",
+    "ScriptTextOut": "D:\\Mod_RefPartialTMUse.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 23,
+                    "Msg": "",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefPartialTMUse.7\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 24,
+                    "Msg": "",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefPartialTMUse.8\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "restart",
+                    "Pos.x": 240,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 25,
+                    "Msg": "",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefPartialTMUse.9\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "restart",
+                    "Pos.x": 360,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 26,
+                    "Msg": "",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefPartialTMUse.9\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "restart",
+                    "Pos.x": 480,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefPartialTMUse.9\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "restart",
+                    "Pos.x": 600,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_RefPartialTMUse.9\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "block",
+                    "Pos.x": 720,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "",
+                    "AMsg.Num": "6",
+                    "_orig_danswer": "DAnswer('block~'+CT(\"Script.Mod_RefPartialTMUse.10\"))"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 18,
+                    "Msg": "",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefPartialTMUse.2\"))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 19,
+                    "Msg": "",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefPartialTMUse.3\"),\"<0>\",mass,\"<1>\",charge,\"<2>\",race))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 20,
+                    "Msg": "",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefPartialTMUse.4\"))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 21,
+                    "Msg": "",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefPartialTMUse.5\"))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 22,
+                    "Msg": "",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefPartialTMUse.6\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Type": "TDialog",
+                    "Name": "TMUse",
+                    "Pos.x": 0,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 15
+                },
+                {
+                    "Type": "TDialog",
+                    "Name": "TMUsage",
+                    "Pos.x": 120,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 16
+                },
+                {
+                    "Type": "TDialog",
+                    "Name": "TMRefuel",
+                    "Pos.x": 240,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 17
+                }
+            ],
+            "Groups": [
+                {
+                    "Type": "TGroup",
+                    "Name": "GroupNew",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 11,
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 12,
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 13,
+                    "Code.Type": "DialogBegin",
+                    "Code": [
+                        "if(PlayerBridge() == 10) {",
+                        "  if(ShipArts(Player())) {",
+                        "      for(i=0;ShipArts(Player()) > i;i=i+1){ //было for(i=N;0>i;..) - не выполнялся ни разу",
+                        "          if(ItemType(ShipArts(Player(),i)) == t_ArtefactTransmitter) {",
+                        "              AddDialogInject('TMUse','',CT(\"Script.Mod_RefPartialTMUse.0\"),3);",
+                        "              break;",
+                        "          }",
+                        "      }",
+                        "  }",
+                        "  for(i=0;ShipItems(Player()) > i;i=i+1){",
+                        "      if(ItemType(ShipItems(Player(),i)) == t_ArtefactTransmitter) {",
+                        "          AddDialogInject('TMUse','',CT(\"Script.Mod_RefPartialTMUse.0\"),3);",
+                        "          break;",
+                        "      }",
+                        "  }",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 30,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(0);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 31,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tdwd = GAnswerData;",
+                        "mass = ItemSize(tdwd);",
+                        "charge = ItemCharge(tdwd);",
+                        "if(ItemOwner(tdwd) == 0) race = 'малокский';",
+                        "if(ItemOwner(tdwd) == 1) race = 'пеленгский';",
+                        "if(ItemOwner(tdwd) == 2) race = 'человеческий';",
+                        "if(ItemOwner(tdwd) == 3) race = 'фэянский';",
+                        "if(ItemOwner(tdwd) == 4) race = 'гаальский';",
+                        "if(ItemOwner(tdwd) == 5) race = 'доминаторский';",
+                        "if(ItemOwner(tdwd) == 6) race = 'неизвестного производителя';",
+                        "if(ItemOwner(tdwd) == 7) race = 'пиратский';",
+                        "DChange(1);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 220,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 32,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tdwd2 = GAnswerData;",
+                        "dword tdwd4 = NumberBox('Bm.Items.2ArtTransmitter_s','Выберите заряд, который хотите передать выбранному маяку',0,ItemCharge(tdwd));",
+                        "if(tdwd4 > 0) {",
+                        "    ItemCharge(tdwd,ItemCharge(tdwd) - tdwd4);",
+                        "    tdwd4 = round(tdwd4 * 90 / 100);",
+                        "    ItemCharge(tdwd2,ItemCharge(tdwd2) + tdwd4);",
+                        "}",
+                        "DChange(4);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 33,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i=0;ShipArts(Player()) > i;i=i+1){",
+                        "    if(ItemType(ShipArts(Player(),i)) == t_ArtefactTransmitter) {",
+                        "        if(ItemOwner(ShipArts(Player(),i)) == 0) race = 'малокский';",
+                        "        if(ItemOwner(ShipArts(Player(),i)) == 1) race = 'пеленгский';",
+                        "        if(ItemOwner(ShipArts(Player(),i)) == 2) race = 'человеческий';",
+                        "        if(ItemOwner(ShipArts(Player(),i)) == 3) race = 'фэянский';",
+                        "        if(ItemOwner(ShipArts(Player(),i)) == 4) race = 'гаальский';",
+                        "        if(ItemOwner(ShipArts(Player(),i)) == 5) race = 'доминаторский';",
+                        "        if(ItemOwner(ShipArts(Player(),i)) == 6) race = 'неизвестного производителя';",
+                        "        if(ItemOwner(ShipArts(Player(),i)) == 7) race = 'пиратский';",
+                        "        tstr = Format(CT(\"Script.Mod_RefPartialTMUse.1\"),'wt',ItemSize(ShipArts(Player(),i)),'race',race,'pw',ItemCharge(ShipArts(Player(),i)));",
+                        "        InjectAnswer('TMUsage',tstr,ShipArts(Player(),i));",
+                        "    }",
+                        "}",
+                        "for(i=0;ShipItems(Player()) > i;i=i+1){ //маяки из трюма (цикл не выполнялся)",
+                        "    if(ItemType(ShipItems(Player(),i)) == t_ArtefactTransmitter) {",
+                        "        if(ItemOwner(ShipItems(Player(),i)) == 0) race = 'малокский';",
+                        "        if(ItemOwner(ShipItems(Player(),i)) == 1) race = 'пеленгский';",
+                        "        if(ItemOwner(ShipItems(Player(),i)) == 2) race = 'человеческий';",
+                        "        if(ItemOwner(ShipItems(Player(),i)) == 3) race = 'фэянский';",
+                        "        if(ItemOwner(ShipItems(Player(),i)) == 4) race = 'гаальский';",
+                        "        if(ItemOwner(ShipItems(Player(),i)) == 5) race = 'доминаторский';",
+                        "        if(ItemOwner(ShipItems(Player(),i)) == 6) race = 'неизвестного производителя';",
+                        "        if(ItemOwner(ShipItems(Player(),i)) == 7) race = 'пиратский';",
+                        "        tstr = Format(CT(\"Script.Mod_RefPartialTMUse.1\"),'wt',ItemSize(ShipItems(Player(),i)),'race',race,'pw',ItemCharge(ShipItems(Player(),i)));",
+                        "        InjectAnswer('TMUsage',tstr,ShipItems(Player(),i));",
+                        "    }",
+                        "}",
+                        "DAdd(2);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 34,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(ItemCharge(tdwd) < 100) {",
+                        "  DAdd(6);",
+                        "}",
+                        "if(ItemCharge(tdwd) >= 100) {",
+                        "  DAdd(0);",
+                        "}",
+                        "DAdd(1);",
+                        "DAdd(3);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 280,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 35,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "InjectAnswer('TMUsage','Вернуться к выбору действий с данным маяком',tdwd); //без маяка дальше было ItemSize(0)",
+                        "for(i=0;ShipArts(Player()) > i;i=i+1){",
+                        "    if(ShipArts(Player(),i) == tdwd) continue;",
+                        "    if(ItemType(ShipArts(Player(),i)) == t_ArtefactTransmitter) {",
+                        "        tstr = Format(CT(\"Script.Mod_RefPartialTMUse.11\"),'wt',ItemSize(ShipArts(Player(),i)),'pw',ItemCharge(ShipArts(Player(),i)));",
+                        "        InjectAnswer('TMRefuel',tstr,ShipArts(Player(),i)); //передача - в TMRefuel (было TMUse)",
+                        "    }",
+                        "}",
+                        "for(i=0;ShipItems(Player()) > i;i=i+1){",
+                        "    if(ShipItems(Player(),i) == tdwd) continue;",
+                        "    if(ItemType(ShipItems(Player(),i)) == t_ArtefactTransmitter) {",
+                        "        tstr = Format(CT(\"Script.Mod_RefPartialTMUse.11\"),'wt',ItemSize(ShipItems(Player(),i)),'pw',ItemCharge(ShipItems(Player(),i)));",
+                        "        InjectAnswer('TMRefuel',tstr,ShipItems(Player(),i));",
+                        "    }",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 430,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 36,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "InjectAnswer('TMUse','Вернуться к управлению маяками');",
+                        "DAdd(4);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 580,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 37,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "InjectAnswer('TMUse','Вернуться к управлению маяками');",
+                        "DAdd(5);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 38,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "tcharge = ItemCharge(tdwd);",
+                        "dword tdwd3 = NumberBox('Bm.Items.2ArtTransmitter_s','Выберите заряд, который хотите использовать',100,1500,ItemCharge(tdwd),'',100);",
+                        "if(tdwd3 >= 100) {",
+                        "    ItemCharge(tdwd,tdwd3);",
+                        "    OnUseCodeTransmitter(tdwd);",
+                        "    ItemCharge(tdwd,tcharge - tdwd3);",
+                        "    if(CurrentMods('Evolution\\\\EvoOldBeacon')) {",
+                        "        int radiation = ShipHealthFactor(Player(), 0);",
+                        "        if(!radiation) {",
+                        "            ShipHealthFactor(Player(), 0, RndObject(30, 45, Player()));",
+                        "            ShipHealthFactorStatus(Player(), 0, 0.5);",
+                        "        }",
+                        "        else {",
+                        "            ShipHealthFactor(Player(), 0, radiation + RndObject(15, 25, Player()));",
+                        "            ShipHealthFactorStatus(Player(), 0, max(ShipHealthFactorStatus(Player(), 0) - 0.1, 0.1));",
+                        "        }",
+                        "    }",
+                        "}",
+                        "DChange(3);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 39,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "MessageBox('Учтите! В процессе данной операции 10% передаваемой энергии будет безвозвратно утеряно!');",
+                        "DChange(2);",
+                        "exit;"
+                    ]
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Type": "TPlanet",
+                    "Name": "PlanetNew",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 10,
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew"
+                }
+            ],
+            "Ships": [
+                {
+                    "Type": "TStarShip",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 9,
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew"
+                }
+            ],
+            "Stars": [
+                {
+                    "Type": "TStar",
+                    "Name": "StarNew",
+                    "Pos.x": 0,
+                    "Pos.y": 90,
+                    "Parent": -1,
+                    "#": 8,
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
+                }
+            ],
+            "States": [
+                {
+                    "Type": "TState",
+                    "Name": "StateNew",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 14,
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tdwd",
+                    "Pos.x": 60,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "race",
+                    "Pos.x": 120,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "mass",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "charge",
+                    "Pos.x": 240,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tdwd2",
+                    "Pos.x": 330,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tcharge",
+                    "Pos.x": 420,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tstr",
+                    "Pos.x": 540,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 15,
+            "End": 30,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 31,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 17,
+            "End": 32,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 33,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 19,
+            "End": 34,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 20,
+            "End": 35,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 21,
+            "End": 36,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 22,
+            "End": 37,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 23,
+            "End": 38,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 24,
+            "End": 39,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 9,
+            "End": 8,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 10,
+            "End": 8,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 11,
+            "End": 10,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 11,
+            "End": 14,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_RefPartialTMUse\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
+}

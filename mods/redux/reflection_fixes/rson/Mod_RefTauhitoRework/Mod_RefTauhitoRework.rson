@@ -456,8 +456,8 @@
                         "            }",
                         "        }",
                         "        //Станции тоже нельзя ни в коем случае забывать",
-                        "        for(i=0;StarShips(ShipStar(Player()))>j;j=j+1) {",
-                        "            t_plan = StarShips(ShipStar(Player()),j);",
+                        "        for(i=0;StarShips(ConStar(StarToCon(ShipStar(Player())),j))>i;i=i+1) {",
+                        "            t_plan = StarShips(ConStar(StarToCon(ShipStar(Player())),j),i);",
                         "            if(ShipType(t_plan) != 'RC' && ShipType(t_plan) != 'SB' && ShipType(t_plan) != 'WB' && ShipType(t_plan) != 'MC' && ShipType(t_plan) != 'BK' &&ShipType(t_plan) != 'PB' && ShipType(t_plan) != 'RC' && ShipType(t_plan) != 'CB' && ShipType(t_plan) != 'TC' && ShipType(t_plan) != 'MB' && ShipType(t_plan) != 'Manaan' && ShipType(t_plan) != 'PlayerMB' && ShipType(t_plan) != 'PlayerMB_licensed') continue;",
                         "            if(ShipType(t_plan) == 'CB' && !ShipOnSidePirateClan(Player())) continue; //пропускаем доминион, если игрок не в клане, потому что тогда его на доминион тупо не пустять",
                         "            if(RelationToShip(t_plan,Player()) < 30) continue; //пропускаем станции, которые ничего не продадут игроку",
@@ -885,7 +885,7 @@
                         "",
                         "    result = t_str;",
                         "}",
-                        "ShipAddCustomShipInfo(Player(),'RefTauhito_Removing','NoShow');"
+                        "if(ShipFindCustomShipInfoByType(Player(),'RefTauhito_Removing') == -1) ShipAddCustomShipInfo(Player(),'RefTauhito_Removing','NoShow');"
                     ]
                 },
                 {

@@ -62,7 +62,7 @@
                     "#": 19,
                     "Msg": "Итак, ракетные мины - довольно удобный инструмент для минирования космического пространства наряду с обычными бомбами.\r\nПринцип работы максимально прост - при попадании или уничтожении автоматическая система выстреливает заложенный в неё заряд - <clr>восемь ракет<clrEnd>, обнаруживающих и уничтожающих цель.\r\n\r\n==================\r\nНа данный момент ваш лимит покупки мин составляет <0> шт.",
                     "DMsg.Num": "0",
-                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefArts.3\"),\"<0>\",(MinesLimit-(GalaxyTechLevel()*3))))"
+                    "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefArts.3\"),\"<0>\",(GalaxyTechLevel()*3-MinesLimit)))"
                 },
                 {
                     "Type": "TDialogMsg",
@@ -167,10 +167,10 @@
                         "    }",
                         "}",
                         "ArrayRandomize(150,tempArr);",
-                        "AddItemToPlanet(IdToPlanet(tempArr[Rnd(0,ArrayDim(tempArr))]),CreateCustomArt('Giperblock_Art',CustomArtSizeCalc(80),CustomArtCostCalc(2500),None));",
+                        "AddItemToPlanet(IdToPlanet(tempArr[Rnd(0,ArrayDim(tempArr)-1)]),CreateCustomArt('Giperblock_Art',CustomArtSizeCalc(80),CustomArtCostCalc(2500),None));",
                         "//А ещё - закопаем Терминал",
                         "//Если кто не понял - это отсылка на артефакт из Стеллариса (или модов? Так трудно различать, когда начал играть уже с адовой сборкой от Кота)",
-                        "AddItemToPlanet(IdToPlanet(tempArr[Rnd(0,ArrayDim(tempArr))]),CreateQuestItem('Terminal'));",
+                        "AddItemToPlanet(IdToPlanet(tempArr[Rnd(0,ArrayDim(tempArr)-1)]),CreateQuestItem('Terminal'));",
                         "",
                         "ArrayClear(Terminal);",
                         "ArrayDelete(Terminal,0);",
@@ -200,7 +200,7 @@
                         "ArrayAdd(Terminal2,1);",
                         "",
                         "function g_TerminalTreasure(int yes){",
-                        "    Terminal2[yes,0];",
+                        "    Terminal2[yes] = 0; //код использован (раньше пустой оператор - один код давал клад бесконечно)",
                         "",
                         "    unknown dabby;",
                         "",

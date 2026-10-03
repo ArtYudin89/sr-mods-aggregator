@@ -248,8 +248,8 @@
                         "  if(PlayerChameleonCurType() == 0) temp_str = 'Блазероидной серии';",
                         "  if(PlayerChameleonCurType() == 1) temp_str = 'Келлероидной серии';",
                         "  if(PlayerChameleonCurType() == 2) temp_str = 'Терроноидной серии';",
-                        "  K = PlayerChameleonCharges(0);",
-                        "  B = PlayerChameleonCharges(1);",
+                        "  K = PlayerChameleonCharges(1); //серии: 0 - Блазер, 1 - Келлер, 2 - Террон (K и B были перепутаны)",
+                        "  B = PlayerChameleonCharges(0);",
                         "  T = PlayerChameleonCharges(2);",
                         "}"
                     ]
@@ -276,10 +276,10 @@
                     "#": 28,
                     "Code.Type": "Turn",
                     "Code": [
-                        "if(K > 0 && PlayerChameleonCurType() != 0) {",
+                        "if(K > 0 && PlayerChameleonCurType() != 1) {",
                         "  DAdd(0);",
                         "}",
-                        "if(K == 0 || PlayerChameleonCurType() == 0) {",
+                        "if(K == 0 || PlayerChameleonCurType() == 1) {",
                         "  DAdd(1);",
                         "}",
                         "if(T > 0 && PlayerChameleonCurType() != 2) {",
@@ -288,10 +288,10 @@
                         "if(T == 0 || PlayerChameleonCurType() == 2) {",
                         "  DAdd(3);",
                         "}",
-                        "if(B > 0 && PlayerChameleonCurType() != 1) {",
+                        "if(B > 0 && PlayerChameleonCurType() != 0) {",
                         "  DAdd(4);",
                         "}",
-                        "if(B == 0 || PlayerChameleonCurType() == 1) {",
+                        "if(B == 0 || PlayerChameleonCurType() == 0) {",
                         "  DAdd(5);",
                         "}",
                         "DAdd(6);"
@@ -345,10 +345,14 @@
                     "#": 32,
                     "Code.Type": "Turn",
                     "Code": [
-                        "PlayerChameleonCharges(0,PlayerChameleonCharges(0) - 1);",
-                        "K = PlayerChameleonCharges(0);",
-                        "Flag = 0;",
+                        "PlayerChameleonCharges(1,PlayerChameleonCharges(1) - 1);",
+                        "//Возврат заряда серии, выбранной ранее в этом же разговоре (раньше Flag менялся до возврата - заряд тут же возвращался,",
+                        "//а сам камуфляж не включался)",
                         "if(Flag != 3) PlayerChameleonCharges(Flag,PlayerChameleonCharges(Flag) + 1);",
+                        "Flag = 1;",
+                        "PlayerChameleonCurType(1);",
+                        "Chameleon(Player()); //обновить облик, как при включении камуфляжа в игре",
+                        "K = PlayerChameleonCharges(1);",
                         "DChange(1);",
                         "exit;"
                     ]
@@ -363,9 +367,13 @@
                     "Code.Type": "Turn",
                     "Code": [
                         "PlayerChameleonCharges(2,PlayerChameleonCharges(2) - 1);",
-                        "T = PlayerChameleonCharges(2);",
-                        "Flag = 2;",
+                        "//Возврат заряда серии, выбранной ранее в этом же разговоре (раньше Flag менялся до возврата - заряд тут же возвращался,",
+                        "//а сам камуфляж не включался)",
                         "if(Flag != 3) PlayerChameleonCharges(Flag,PlayerChameleonCharges(Flag) + 1);",
+                        "Flag = 2;",
+                        "PlayerChameleonCurType(2);",
+                        "Chameleon(Player()); //обновить облик, как при включении камуфляжа в игре",
+                        "T = PlayerChameleonCharges(2);",
                         "DChange(2);",
                         "exit;"
                     ]
@@ -379,10 +387,14 @@
                     "#": 34,
                     "Code.Type": "Turn",
                     "Code": [
-                        "PlayerChameleonCharges(1,PlayerChameleonCharges(1) - 1);",
-                        "B = PlayerChameleonCharges(1);",
-                        "Flag = 1;",
+                        "PlayerChameleonCharges(0,PlayerChameleonCharges(0) - 1);",
+                        "//Возврат заряда серии, выбранной ранее в этом же разговоре (раньше Flag менялся до возврата - заряд тут же возвращался,",
+                        "//а сам камуфляж не включался)",
                         "if(Flag != 3) PlayerChameleonCharges(Flag,PlayerChameleonCharges(Flag) + 1);",
+                        "Flag = 0;",
+                        "PlayerChameleonCurType(0);",
+                        "Chameleon(Player()); //обновить облик, как при включении камуфляжа в игре",
+                        "B = PlayerChameleonCharges(0);",
                         "DChange(3);",
                         "exit;"
                     ]
@@ -397,8 +409,8 @@
                     "Code.Type": "Turn",
                     "Code": [
                         "//визуальный костыль",
-                        "K = PlayerChameleonCharges(0);",
-                        "B = PlayerChameleonCharges(1);",
+                        "K = PlayerChameleonCharges(1); //серии: 0 - Блазер, 1 - Келлер, 2 - Террон (K и B были перепутаны)",
+                        "B = PlayerChameleonCharges(0);",
                         "T = PlayerChameleonCharges(2);",
                         "DChange(0);",
                         "exit;"
