@@ -358,7 +358,7 @@
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ArrayDim(BuildingList) > 1) {",
-                        "    for(i=1;i<(ArrayDim(BuildingList)-1);i=i+1) {",
+                        "    for(i=1;i<ArrayDim(BuildingList);i=i+1) {",
                         "        if(BuildingList[i] == 0) {",
                         "            continue;",
                         "        }",
@@ -370,7 +370,8 @@
                         "            else if(ShipFindCustomShipInfoByType(tdwd2,'Cat_SAS_Build') == -1) {",
                         "                ArrayDelete(BuildingList,i);",
                         "            }",
-                        "            else if(ShipCustomShipInfoData(tdwd2,'Cat_SAS_Build',2) <= 1) {",
+                        "            else if(ShipCustomShipInfoData(tdwd2,'Cat_SAS_Build',1) <= 0) {",
+                        "                NoLanding(tdwd2,0);",
                         "                ShipDeleteCustomShipInfo(tdwd2,'Cat_SAS_Build');",
                         "                ArrayDelete(BuildingList,i);",
                         "            }",

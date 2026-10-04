@@ -20,14 +20,14 @@
             "DialogAnswers": [
                 {
                     "Type": "TDialogAnswer",
-                    "Name": "fastexit",
+                    "Name": "restart",
                     "Pos.x": 0,
                     "Pos.y": 530,
                     "Parent": -1,
-                    "#": 31,
-                    "Msg": "",
+                    "#": 30,
+                    "Msg": "Нет, мне это не интересно",
                     "AMsg.Num": "0",
-                    "_orig_danswer": "DAnswer('fastexit')"
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_AsteroidStations.15\"))"
                 },
                 {
                     "Type": "TDialogAnswer",
@@ -35,10 +35,10 @@
                     "Pos.x": 120,
                     "Pos.y": 530,
                     "Parent": -1,
-                    "#": 32,
-                    "Msg": "",
+                    "#": 31,
+                    "Msg": "Да, я согласен!",
                     "AMsg.Num": "1",
-                    "_orig_danswer": "DAnswer('restart')"
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_AsteroidStations.12\"))"
                 },
                 {
                     "Type": "TDialogAnswer",
@@ -46,10 +46,10 @@
                     "Pos.x": 240,
                     "Pos.y": 530,
                     "Parent": -1,
-                    "#": 33,
-                    "Msg": "Да, я согласен!",
+                    "#": 32,
+                    "Msg": "Нет, пожалуй, нет",
                     "AMsg.Num": "2",
-                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_AsteroidStations.12\"))"
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_AsteroidStations.13\"))"
                 },
                 {
                     "Type": "TDialogAnswer",
@@ -57,20 +57,9 @@
                     "Pos.x": 360,
                     "Pos.y": 530,
                     "Parent": -1,
-                    "#": 34,
-                    "Msg": "Нет, пожалуй, нет",
-                    "AMsg.Num": "3",
-                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_AsteroidStations.13\"))"
-                },
-                {
-                    "Type": "TDialogAnswer",
-                    "Name": "restart",
-                    "Pos.x": 480,
-                    "Pos.y": 530,
-                    "Parent": -1,
-                    "#": 35,
+                    "#": 33,
                     "Msg": "Да, абсолютно точно",
-                    "AMsg.Num": "4",
+                    "AMsg.Num": "3",
                     "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Cat_AsteroidStations.14\"))"
                 }
             ],
@@ -82,9 +71,9 @@
                     "Pos.y": 460,
                     "Parent": -1,
                     "#": 28,
-                    "Msg": "",
+                    "Msg": "О, да, конечно. Специально для рейнджеров мы предлагаем возможность легко подзаработать! Смотрите сами:\r\n\r\n1) За каждый день, когда в нашей системе будет меньше определённого количества мусора, вы будете получать некоторую небольшую сумму:\r\n- Меньше 50 тонн: 25 cr./сутки\r\n- Меньше 20 тонн: 70 cr./сутки\r\n- 0 - 5 тонн: 150 cr./сутки\r\n\r\n2) Пока вы работаете на нас, для вас действуют особые условия в нашем магазине: мы\r\nскупаем минералы по особо выгодным ценам\r\n\r\n\r\nНо учтите: <clr>как только вы покинете систему, контракт будет автоматически расторгнут<clrEnd>.\r\nА во избежание мошеннических схем <clr>покупка минералов<clrEnd> на всех планетах и станциях системы приравнивается к контрабандным сделкам.\r\n\r\nНу что, идёт?",
                     "DMsg.Num": "0",
-                    "_orig_dtext": "DText(CT(\"Script.Cat_AsteroidStations.2\"))"
+                    "_orig_dtext": "DText(CT(\"Script.Cat_AsteroidStations.10\"))"
                 },
                 {
                     "Type": "TDialogMsg",
@@ -93,19 +82,8 @@
                     "Pos.y": 460,
                     "Parent": -1,
                     "#": 29,
-                    "Msg": "О, да, конечно. Специально для рейнджеров мы предлагаем возможность легко подзаработать! Смотрите сами:\r\n\r\n1) За каждый день, когда в нашей системе будет меньше определённого количества мусора, вы будете получать некоторую небольшую сумму:\r\n- Меньше 50 тонн: 25 cr./сутки\r\n- Меньше 20 тонн: 70 cr./сутки\r\n- 0 - 5 тонн: 150 cr./сутки\r\n\r\n2) Пока вы работаете на нас, для вас действуют особые условия в нашем магазине: мы\r\nскупаем минералы по особо выгодным ценам\r\n\r\n\r\nНо учтите: <clr>как только вы покинете систему, контракт будет автоматически расторгнут<clrEnd>.\r\nА во избежание мошеннических схем <clr>покупка минералов<clrEnd> на всех планетах и станциях системы приравнивается к контрабандным сделкам.\r\n\r\nНу что, идёт?",
-                    "DMsg.Num": "1",
-                    "_orig_dtext": "DText(CT(\"Script.Cat_AsteroidStations.10\"))"
-                },
-                {
-                    "Type": "TDialogMsg",
-                    "Name": "",
-                    "Pos.x": 300,
-                    "Pos.y": 460,
-                    "Parent": -1,
-                    "#": 30,
                     "Msg": "Уверены, что хотите разорвать контракт?",
-                    "DMsg.Num": "2",
+                    "DMsg.Num": "1",
                     "_orig_dtext": "DText(CT(\"Script.Cat_AsteroidStations.11\"))"
                 }
             ],
@@ -345,7 +323,7 @@
                     "Code.Type": "Turn",
                     "Code": [
                         "if(CurTurn() > 350) {",
-                        "    if(CurTurn() % 30) {",
+                        "    if(CurTurn() % 30 == 0) {",
                         "        //SFT('Cat_AS logging 1');",
                         "        SpawnAsteroidStation();",
                         "    }",
@@ -374,7 +352,7 @@
                         "    GoodsSellPrice(temp_dword,t_Minerals,1);",
                         "    GoodsBuyPrice(temp_dword,t_Minerals,3);",
                         "",
-                        "    if(CurTurn() % 15) {",
+                        "    if(CurTurn() % 15 == 0) {",
                         "        GoodsAdd(temp_dword,t_Minerals,200+(100*GalaxyTechLevel()));",
                         "    }",
                         "}",
@@ -422,8 +400,8 @@
                     "Code": [
                         "if(GetShipRuins(Player())) {",
                         "    if(ShipType(GetShipRuins(Player())) == 'AS') {",
-                        "        AddDialogInject('DialogAS',CT(\"Script.Cat_AsteroidStations.1\"),'Blocker',1);",
-                        "        AddDialogBlock('Blocker',2);",
+                        "        AddDialogInject('DialogAS',CT(\"Script.Cat_AsteroidStations.1\"),'CatAS_Blocker_NoClick',1);",
+                        "        AddDialogBlock('CatAS_Blocker_NoClick',2);",
                         "",
                         "        //Диалог о очистке систем",
                         "        if(~ShipFindCustomShipInfoByType(Player(),'CatAS_Main')) {",
@@ -442,7 +420,7 @@
                     "Pos.x": 100,
                     "Pos.y": 230,
                     "Parent": -1,
-                    "#": 36,
+                    "#": 34,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(GetShipRuins(CurShip)) {",
@@ -484,7 +462,7 @@
                     "Pos.x": -20,
                     "Pos.y": 390,
                     "Parent": -1,
-                    "#": 37,
+                    "#": 35,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(0);",
@@ -497,7 +475,7 @@
                     "Pos.x": 100,
                     "Pos.y": 390,
                     "Parent": -1,
-                    "#": 38,
+                    "#": 36,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(1);",
@@ -507,26 +485,14 @@
                 {
                     "Type": "Top",
                     "Name": "",
-                    "Pos.x": 310,
-                    "Pos.y": 390,
-                    "Parent": -1,
-                    "#": 39,
-                    "Code.Type": "Turn",
-                    "Code": [
-                        "DChange(2);",
-                        "exit;"
-                    ]
-                },
-                {
-                    "Type": "Top",
-                    "Name": "",
                     "Pos.x": -20,
                     "Pos.y": 460,
                     "Parent": -1,
-                    "#": 40,
+                    "#": 37,
                     "Code.Type": "Turn",
                     "Code": [
-                        "DAdd(0);"
+                        "DAdd(0);",
+                        "DAdd(1);"
                     ]
                 },
                 {
@@ -535,33 +501,20 @@
                     "Pos.x": 130,
                     "Pos.y": 460,
                     "Parent": -1,
-                    "#": 41,
+                    "#": 38,
                     "Code.Type": "Turn",
                     "Code": [
-                        "DAdd(1);",
-                        "DAdd(2);"
+                        "DAdd(2);",
+                        "DAdd(3);"
                     ]
                 },
                 {
                     "Type": "Top",
                     "Name": "",
-                    "Pos.x": 280,
-                    "Pos.y": 460,
-                    "Parent": -1,
-                    "#": 42,
-                    "Code.Type": "Turn",
-                    "Code": [
-                        "DAdd(3);",
-                        "DAdd(4);"
-                    ]
-                },
-                {
-                    "Type": "Top",
-                    "Name": "",
-                    "Pos.x": 220,
+                    "Pos.x": 100,
                     "Pos.y": 530,
                     "Parent": -1,
-                    "#": 43,
+                    "#": 39,
                     "Code.Type": "Turn",
                     "Code": [
                         "Sound('Sound.Buy');",
@@ -572,10 +525,10 @@
                 {
                     "Type": "Top",
                     "Name": "",
-                    "Pos.x": 460,
+                    "Pos.x": 340,
                     "Pos.y": 530,
                     "Parent": -1,
-                    "#": 44,
+                    "#": 40,
                     "Code.Type": "Turn",
                     "Code": [
                         "Sound('Sound.Buy');",
@@ -847,63 +800,49 @@
         {
             "Type": "TGraphLink",
             "Begin": 24,
-            "End": 36,
-            "Nom": 0,
-            "Arrow": true
-        },
-        {
-            "Type": "TGraphLink",
-            "Begin": 25,
-            "End": 37,
+            "End": 34,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
             "Begin": 26,
-            "End": 38,
+            "End": 35,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
             "Begin": 27,
-            "End": 39,
+            "End": 36,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
             "Begin": 28,
-            "End": 40,
+            "End": 37,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
             "Begin": 29,
-            "End": 41,
+            "End": 38,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 30,
-            "End": 42,
+            "Begin": 31,
+            "End": 39,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
             "Begin": 33,
-            "End": 43,
-            "Nom": 0,
-            "Arrow": true
-        },
-        {
-            "Type": "TGraphLink",
-            "Begin": 35,
-            "End": 44,
+            "End": 40,
             "Nom": 0,
             "Arrow": true
         },

@@ -3450,7 +3450,7 @@
                         "                    tstr9 = CT('Rank.Pilot.Name');",
                         "                }",
                         "                else tstr9 = CT('Rank.Cadet.Name'); //Новичок",
-                        "                AddDialogBlock(Format(CT('FormRuins.WB.NextRank.PlayerSend'),'<NextRank'+'>',tstr9), 2);",
+                        "                if(player_rank < 7) AddDialogBlock(Format(CT('FormRuins.WB.NextRank.PlayerSend'),'<NextRank'+'>',tstr9), 2);",
                         "",
                         "                //operation_lvl = 4; //Для отладки",
                         "                dialog_path = 'Script.Mod_ShuWarriors.MilitaryOperationWBDialog.OnLevel' + operation_lvl;",
@@ -6457,9 +6457,11 @@
                         "if(CurrentMods('ShusRangers\\\\ShuBounty')) {",
                         "    InjectAnswer('Mod_ShuBounty:AboutPirates', CT(\"Script.Mod_ShuWarriors.154\"), 0);",
                         "}",
+                        "if(player_rank < 7) {",
+                        "  DAdd(37);",
+                        "}",
                         "DAdd(35);",
-                        "DAdd(36);",
-                        "DAdd(37);"
+                        "DAdd(36);"
                     ]
                 },
                 {

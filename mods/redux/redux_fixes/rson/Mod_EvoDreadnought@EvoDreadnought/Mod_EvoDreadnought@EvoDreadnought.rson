@@ -2550,7 +2550,7 @@
                         "if(ShipInHyperSpace(CurShip)) exit;",
                         "",
                         "//Если в патрулируемой системе начался бой, переводим галеон в боевой (свободный) стейт",
-                        "if(StarBattle(ShipStar(CurShip)) || ShipGetBad(CurShip))",
+                        "if(StarBattle(ShipStar(CurShip)) || (ShipGetBad(CurShip) && ShipInStar(ShipGetBad(CurShip), ShipStar(CurShip))))",
                         "{",
                         "    OrderLock(CurShip, 0);",
                         "    ChangeState('GalleonInBattle');",

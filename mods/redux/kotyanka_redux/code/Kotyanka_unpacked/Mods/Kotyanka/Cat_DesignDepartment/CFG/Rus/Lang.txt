@@ -1195,7 +1195,7 @@ DesignDepartmentModList ~{
                 }
             }
             25 ~{
-                RequiredMod=OtherMods\ArtiUniqueShipsPack
+                RequiredMod=KotyankaPlus\ArtiUniqueShipsPack
                 ScriptDialogGet=Mod_ArtiUniqueShipsPack:ArtimisGetDialog
                 ScriptDialogGetDescription=Исследовательский корабль "Артимида" [1987]
                 ScriptDialogGetDescription=Техноуровень: неизвестно
@@ -1224,7 +1224,7 @@ DesignDepartmentModList ~{
                 }
             }
             26 ~{
-                RequiredMod=OtherMods\ArtiUniqueShipsPackPlus
+                RequiredMod=KotyankaPlus\ArtiUniqueShipsPackPlus
                 ScriptDialogGet=Mod_ArtiUniqueShipsPack:AscalonGetDialog
                 ScriptDialogGetDescription=Торговый корабль "Аскалон" [3000]
                 ScriptDialogGetDescription=Техноуровень: неизвестно
@@ -1253,7 +1253,7 @@ DesignDepartmentModList ~{
                 }
             }
             27 ~{
-                RequiredMod=OtherMods\ArtiUniqueShipsPackPlus
+                RequiredMod=KotyankaPlus\ArtiUniqueShipsPackPlus
                 ScriptDialogGet=Mod_ArtiUniqueShipsPack:BulwarkGetDialog
                 ScriptDialogGetDescription=Пиратский дредноут "Оплот" [2500]
                 ScriptDialogGetDescription=Техноуровень: неизвестно
@@ -1282,7 +1282,7 @@ DesignDepartmentModList ~{
                 }
             }
             28 ~{
-                RequiredMod=OtherMods\ArtiUniqueShipsPack
+                RequiredMod=KotyankaPlus\ArtiUniqueShipsPack
                 ScriptDialogGet=Mod_ArtiUniqueShipsPack:FistOfBroggGetDialog
                 ScriptDialogGetDescription=Боевой корабль "Кулак Брогга" [1000]
                 ScriptDialogGetDescription=Техноуровень: неизвестно
@@ -1311,7 +1311,7 @@ DesignDepartmentModList ~{
                 }
             }
             29 ~{
-                RequiredMod=OtherMods\ArtiUniqueShipsPack
+                RequiredMod=KotyankaPlus\ArtiUniqueShipsPack
                 ScriptDialogGet=Mod_ArtiUniqueShipsPack:FriendGetDialog
                 ScriptDialogGetDescription=Авианосец "Друг" [2000]
                 ScriptDialogGetDescription=Техноуровень: неизвестно
@@ -1340,7 +1340,7 @@ DesignDepartmentModList ~{
                 }
             }
             30 ~{
-                RequiredMod=OtherMods\ArtiUniqueShipsPackPlus
+                RequiredMod=KotyankaPlus\ArtiUniqueShipsPackPlus
                 ScriptDialogGet=Mod_ArtiUniqueShipsPack:IgniruvGetDialog
                 ScriptDialogGetDescription=Корпус "Игнирув" [2500]
                 ScriptDialogGetDescription=Техноуровень: неизвестно
@@ -1369,7 +1369,7 @@ DesignDepartmentModList ~{
                 }
             }
             31 ~{
-                RequiredMod=OtherMods\ArtiUniqueShipsPack
+                RequiredMod=KotyankaPlus\ArtiUniqueShipsPack
                 ScriptDialogGet=Mod_ArtiUniqueShipsPack:SaberGetDialog
                 ScriptDialogGetDescription=Истребитель "Сабля" [800]
                 ScriptDialogGetDescription=Техноуровень: неизвестно
@@ -1398,7 +1398,7 @@ DesignDepartmentModList ~{
                 }
             }
             32 ~{
-                RequiredMod=OtherMods\ArtiUniqueShipsPack
+                RequiredMod=KotyankaPlus\ArtiUniqueShipsPack
                 ScriptDialogGet=Mod_ArtiUniqueShipsPack:TechnotronGetDialog
                 ScriptDialogGetDescription=Пиратский линкор "Технотрон" [2000]
                 ScriptDialogGetDescription=Техноуровень: неизвестно
@@ -1427,7 +1427,7 @@ DesignDepartmentModList ~{
                 }
             }
             33 ~{
-                RequiredMod=OtherMods\ArtiUniqueShipsPack
+                RequiredMod=KotyankaPlus\ArtiUniqueShipsPack
                 ScriptDialogGet=Mod_ArtiUniqueShipsPack:TornadoGetDialog
                 ScriptDialogGetDescription=Корпус "Торнадо" [1984]
                 ScriptDialogGetDescription=Техноуровень: неизвестно
@@ -1456,7 +1456,7 @@ DesignDepartmentModList ~{
                 }
             }
             34 ~{
-                RequiredMod=OtherMods\ArtiUniqueShipsPack
+                RequiredMod=KotyankaPlus\ArtiUniqueShipsPack
                 ScriptDialogGet=Mod_ArtiUniqueShipsPack:ZionGetDialog
                 ScriptDialogGetDescription=Бомбардировщик "Зион" [1100]
                 ScriptDialogGetDescription=Техноуровень: неизвестно
@@ -10129,28 +10129,35 @@ ShipInfo ~{
                     01=dword target = ScriptItemActObject1();
                     02=while(1)
                     03 ~{
-                        01=if(ShipTypeN(target) != t_Pirate) continue;
-                        02=if(GetShipPirateRank(target) < 3) continue;
-                        03=int num = Rnd(1, ArrayDim(UninhabitedPlanetTreasuresArray) - 1);
-                        04=str plan_str = UninhabitedPlanetTreasuresArray[num];
-                        05=if(Rnd(1, 1000) > int(GetParFromString(plan_str, '_', 1, 0))) continue;
-                        06=dword planet = IdToPlanet(int(GetParFromString(plan_str, '_', 0, 0)));
-                        07=for(int i = 0; i <= 2; i = i + 1)
-                        08 ~{
+                        01=if(ShipTypeN(target) != t_Pirate) break;
+                        02=if(GetShipPirateRank(target) < 3) break;
+                        03=if(ArrayDim(UninhabitedPlanetTreasuresArray) < 2) break;
+                        04=int num = Rnd(1, ArrayDim(UninhabitedPlanetTreasuresArray) - 1);
+                        05=str plan_str = UninhabitedPlanetTreasuresArray[num];
+                        06=if(Rnd(1, 1000) > int(GetParFromString(plan_str, '_', 1, 0))) break;
+                        07=dword planet = IdToPlanet(int(GetParFromString(plan_str, '_', 0, 0)));
+                        08=if(!planet)
+                        09 ~{
+                            01=ArrayDelete(UninhabitedPlanetTreasuresArray, num);
+                            02=continue;
+                        }
+                        10=for(int i = 0; i <= 2; i = i + 1)
+                        11 ~{
                             01=int terr = PlanetTerrain(planet, i);
                             02=if(terr < PlanetTerrainExplored(planet, i)) continue;
                             03=i = -1;
                             04=break;
                         }
-                        09=if(~i)
-                        10 ~{
+                        12=if(~i)
+                        13 ~{
                             01=ArrayDelete(UninhabitedPlanetTreasuresArray, num);
                             02=continue;
                         }
-                        11=dword map = CreateQuestItem('DesignDepartment_TreasureMap', ShipOwner(target));
-                        12=UselessItemText(map, Format(CT('UselessItems.DesignDepartment_TreasureMap.Text'), '<Ship' + '>', Name(target), '<Planet' + '>', Name(planet), '255,240,100'));
-                        13=ItemSize(map, 1);
-                        14=ShipAddDropItem(target, map);
+                        14=dword map = CreateQuestItem('DesignDepartment_TreasureMap', ShipOwner(target));
+                        15=UselessItemText(map, Format(CT('UselessItems.DesignDepartment_TreasureMap.Text'), '<Ship' + '>', Name(target), '<Planet' + '>', Name(planet), '255,240,100'));
+                        16=ItemSize(map, 1);
+                        17=ShipAddDropItem(target, map);
+                        18=break;
                     }
                 }
                 OnActCodeTypes=t_OnDealingFatalDamage

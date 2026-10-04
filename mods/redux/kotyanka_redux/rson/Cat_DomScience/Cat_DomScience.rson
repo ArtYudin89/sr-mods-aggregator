@@ -730,7 +730,7 @@
                         "    int cnt2;",
                         "    result = 0;",
                         "    if(ArrayDim(Days) > 1) {",
-                        "        for(i=1;(ArrayDim(Days)-1)>i;i=i+1) {",
+                        "        for(i=1;ArrayDim(Days)>i;i=i+1) {",
                         "",
                         "            if(Days[i] == -1) {",
                         "                if(RuinType[i] == ShipType(GetShipRuins(Player()))) {",
@@ -770,7 +770,7 @@
                         "}",
                         "",
                         "if(ArrayDim(Days) > 1) {",
-                        "    for(i=1;(ArrayDim(Days)-1)>i;i=i+1) {",
+                        "    for(i=1;ArrayDim(Days)>i;i=i+1) {",
                         "        if(Days[i] > 0) Days[i] = Days[i] - 1;",
                         "        else if(!Days[i]) {",
                         "            Days[i] = -1;",
@@ -891,8 +891,7 @@
                         "}",
                         "else {",
                         "    money = GalaxyMoney(3,2) + ItemCost(ShipItems(Player(),GAnswerData));",
-                        "    //days = 120;",
-                        "    days = 1;",
+                        "    days = 120;",
                         "}",
                         "",
                         "Sound('Sound.Buy');",
@@ -913,7 +912,8 @@
                     "Code.Type": "Turn",
                     "Code": [
                         "if(CurrentMods('ShusRangers\\\\ShuDomiks')) {",
-                        "  tstr = CT('MicroModuls.'+CT('Script.Cat_DomScience.AcrynArchive.'+Acryn[GAnswerData])+'.Name');",
+                        "  if(Acryn[GAnswerData] < 1) Acryn[GAnswerData] = Rnd(1,CT('Script.Cat_DomScience.AcrynsArchive.Count'));",
+                        "  tstr = CT('MicroModuls.'+CT('Script.Cat_DomScience.AcrynsArchive.'+Acryn[GAnswerData])+'.Name');",
                         "  DChange(7);",
                         "  exit;",
                         "}",
@@ -948,7 +948,8 @@
                     "Code.Type": "Turn",
                     "Code": [
                         "if(CurrentMods('ShusRangers\\\\ShuDomiks')) {",
-                        "  tstr = CT('MicroModuls.'+CT('Script.Cat_DomScience.AcrynArchive.'+Acryn[GAnswerData])+'.Name');",
+                        "  if(Acryn[GAnswerData] < 1) Acryn[GAnswerData] = Rnd(1,CT('Script.Cat_DomScience.AcrynsArchive.Count'));",
+                        "  tstr = CT('MicroModuls.'+CT('Script.Cat_DomScience.AcrynsArchive.'+Acryn[GAnswerData])+'.Name');",
                         "  DChange(8);",
                         "  exit;",
                         "}",
@@ -1017,7 +1018,7 @@
                     "#": 87,
                     "Code.Type": "Turn",
                     "Code": [
-                        "for(i=1;(ArrayDim(Days)-1)>i;i=i+1) {",
+                        "for(i=1;ArrayDim(Days)>i;i=i+1) {",
                         "    if(Days[i] == -1) InjectAnswer('Reward'+ShipType(GetShipRuins(Player())),CT(\"Script.Cat_DomScience.9\")+' '+RndObject(10000,99999,GetShipRuins(Player())),i);",
                         "}",
                         "DAdd(4);"
@@ -1032,7 +1033,7 @@
                     "#": 88,
                     "Code.Type": "Turn",
                     "Code": [
-                        "for(i=1;(ArrayDim(Days)-1)>i;i=i+1) {",
+                        "for(i=1;ArrayDim(Days)>i;i=i+1) {",
                         "    if(Days[i] == -1) InjectAnswer('Reward'+ShipType(GetShipRuins(Player())),CT(\"Script.Cat_DomScience.9\")+' '+RndObject(10000,99999,GetShipRuins(Player())),i);",
                         "}",
                         "DAdd(3);"
@@ -1047,7 +1048,7 @@
                     "#": 89,
                     "Code.Type": "Turn",
                     "Code": [
-                        "for(i=1;(ArrayDim(Days)-1)>i;i=i+1) {",
+                        "for(i=1;ArrayDim(Days)>i;i=i+1) {",
                         "    if(Days[i] == -1) InjectAnswer('Reward'+ShipType(GetShipRuins(Player())),CT(\"Script.Cat_DomScience.9\")+' '+RndObject(10000,99999,GetShipRuins(Player())),i);",
                         "}",
                         "DAdd(2);"
