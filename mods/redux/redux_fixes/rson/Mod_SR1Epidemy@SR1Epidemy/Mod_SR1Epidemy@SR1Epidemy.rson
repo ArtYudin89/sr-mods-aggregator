@@ -633,8 +633,8 @@
                         "    dword s = GroupToShip(ill);",
                         "    if(EpiKey(vNewsKey) != '') {",
                         "        if(EpiKey(vNewsKey + 'Type') == '0') Ether(0, '', EpiText(vNewsKey));",
-                        "        else if(ShipInNormalSpace(s)) Ether(1, '', vShipName + '<br>' + EpiText(vNewsKey), s);",
-                        "        else Ether(1, '', vShipName + '<br>' + EpiText(vNewsKey));",
+                        "        else if(ShipInNormalSpace(s)) Ether(1, '', '<clr' + '>' + vShipName + '<clrEnd' + '>' + ' ' + EpiText(vNewsKey), s);",
+                        "        else Ether(1, '', '<clr' + '>' + vShipName + '<clrEnd' + '>' + ' ' + EpiText(vNewsKey));",
                         "    }",
                         "}",
                         "",
@@ -731,7 +731,7 @@
                         "}",
                         "EpiScanBuys(0);",
                         "if(vState == 0) {",
-                        "    if(CountTurn(Player(), tship) < 5) Ether(1, '', vShipName + '<br>' + EpiText('SendingEmail'), tship);",
+                        "    if(CountTurn(Player(), tship) < 5) Ether(1, '', '<clr' + '>' + vShipName + '<clrEnd' + '>' + ' ' + EpiText('SendingEmail'), tship);",
                         "    if(CurTurn() - vBegin > 9) { //Игрок так и не откликнулся",
                         "        EpiRelease();",
                         "        exit;",
@@ -756,12 +756,27 @@
                         "if(vState == 5) {",
                         "    EpiFateTick();",
                         "    exit;",
-                        "}",
-                        "if(vState == 0 || vState == 2) {",
-                        "    if(vState == 0 || GoodsCount(Player(), vGoods) >= vAmount) {",
-                        "        if(CurTurn() - vLastHail >= 3 && ShipInNormalSpace(tship) && ShipInNormalSpace(Player()) && ShipInStar(Player(), GalaxyStar(StarId1 - 1)) && Dist(tship, Player()) < 500) {",
-                        "            vLastHail = CurTurn();",
-                        "            Dialog(dTalk, ill);",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 160,
+                    "Pos.y": 255,
+                    "Parent": -1,
+                    "#": 66,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "//Приветствие дипломата - диалог из Turn-кода состояния корабля (как в оригинале), а не из скриптового Turn: иначе Dialog в начале дня вешает ход",
+                        "tship = GroupToShip(ill);",
+                        "if(tship) {",
+                        "    if(vState == 0 || vState == 2) {",
+                        "        if(vState == 0 || GoodsCount(Player(), vGoods) >= vAmount) {",
+                        "            if(CurTurn() - vLastHail >= 3 && ShipInNormalSpace(tship) && ShipInNormalSpace(Player()) && ShipInStar(Player(), GalaxyStar(StarId1 - 1)) && Dist(tship, Player()) < 500) {",
+                        "                vLastHail = CurTurn();",
+                        "                Dialog(dTalk, ill);",
+                        "            }",
                         "        }",
                         "    }",
                         "}"
@@ -773,7 +788,7 @@
                     "Pos.x": -20,
                     "Pos.y": 415,
                     "Parent": -1,
-                    "#": 66,
+                    "#": 67,
                     "Code.Type": "Turn",
                     "Code": [
                         "tship = GroupToShip(ill);",
@@ -809,6 +824,8 @@
                         "else tmsg = EpiDlgOr('TextDying', 'TextWrong');",
                         "EpiAns(4);",
                         "DChange(4);",
+                        "exit;",
+                        "DChange(0);",
                         "exit;"
                     ]
                 },
@@ -818,9 +835,11 @@
                     "Pos.x": -20,
                     "Pos.y": 485,
                     "Parent": -1,
-                    "#": 67,
+                    "#": 68,
                     "Code.Type": "Turn",
                     "Code": [
+                        "DAdd(0);",
+                        "DAdd(1);",
                         "DAdd(0);",
                         "DAdd(1);"
                     ]
@@ -831,7 +850,7 @@
                     "Pos.x": 130,
                     "Pos.y": 485,
                     "Parent": -1,
-                    "#": 68,
+                    "#": 69,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(vStep2) DAdd(2);",
@@ -839,7 +858,11 @@
                         "    DAdd(3);",
                         "    DAdd(4);",
                         "    if(vAlt) DAdd(5);",
-                        "}"
+                        "}",
+                        "DAdd(2);",
+                        "DAdd(3);",
+                        "DAdd(4);",
+                        "DAdd(5);"
                     ]
                 },
                 {
@@ -848,12 +871,15 @@
                     "Pos.x": 280,
                     "Pos.y": 485,
                     "Parent": -1,
-                    "#": 69,
+                    "#": 70,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(3);",
                         "DAdd(4);",
-                        "if(vAlt) DAdd(5);"
+                        "if(vAlt) DAdd(5);",
+                        "DAdd(3);",
+                        "DAdd(4);",
+                        "DAdd(5);"
                     ]
                 },
                 {
@@ -862,7 +888,7 @@
                     "Pos.x": 430,
                     "Pos.y": 485,
                     "Parent": -1,
-                    "#": 70,
+                    "#": 71,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(vState == 0) {",
@@ -870,7 +896,11 @@
                         "    DAdd(4);",
                         "}",
                         "if(vHasItem) DAdd(6);",
-                        "if(vState != 0) DAdd(7);"
+                        "if(vState != 0) DAdd(7);",
+                        "DAdd(3);",
+                        "DAdd(4);",
+                        "DAdd(6);",
+                        "DAdd(7);"
                     ]
                 },
                 {
@@ -879,9 +909,10 @@
                     "Pos.x": 580,
                     "Pos.y": 485,
                     "Parent": -1,
-                    "#": 71,
+                    "#": 72,
                     "Code.Type": "Turn",
                     "Code": [
+                        "DAdd(7);",
                         "DAdd(7);"
                     ]
                 },
@@ -891,11 +922,13 @@
                     "Pos.x": 730,
                     "Pos.y": 485,
                     "Parent": -1,
-                    "#": 72,
+                    "#": 73,
                     "Code.Type": "Turn",
                     "Code": [
-                        "if(vAlt) DAdd(5);",
+                        "//Вопрос про другой способ помочь только до принятия задания; после - лишь передача предмета, если он есть",
                         "if(vHasItem) DAdd(6);",
+                        "DAdd(7);",
+                        "DAdd(6);",
                         "DAdd(7);"
                     ]
                 },
@@ -905,13 +938,17 @@
                     "Pos.x": 880,
                     "Pos.y": 485,
                     "Parent": -1,
-                    "#": 73,
+                    "#": 74,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(8);",
                         "if(EpiKey('TextRefuse') != '') DAdd(9);",
                         "if(vHasItem) DAdd(6);",
-                        "DAdd(7);"
+                        "DAdd(7);",
+                        "DAdd(6);",
+                        "DAdd(7);",
+                        "DAdd(8);",
+                        "DAdd(9);"
                     ]
                 },
                 {
@@ -920,9 +957,10 @@
                     "Pos.x": 1030,
                     "Pos.y": 485,
                     "Parent": -1,
-                    "#": 74,
+                    "#": 75,
                     "Code.Type": "Turn",
                     "Code": [
+                        "DAdd(10);",
                         "DAdd(10);"
                     ]
                 },
@@ -932,11 +970,13 @@
                     "Pos.x": -20,
                     "Pos.y": 555,
                     "Parent": -1,
-                    "#": 75,
+                    "#": 76,
                     "Code.Type": "Turn",
                     "Code": [
                         "tmsg = EpiDlg('TextMainA2');",
                         "EpiAns(1);",
+                        "DChange(1);",
+                        "exit;",
                         "DChange(1);",
                         "exit;"
                     ]
@@ -947,7 +987,7 @@
                     "Pos.x": 100,
                     "Pos.y": 555,
                     "Parent": -1,
-                    "#": 76,
+                    "#": 77,
                     "Code.Type": "Turn",
                     "Code": [
                         "vState = 1;",
@@ -955,6 +995,8 @@
                         "vRefuseKey = 'TextRefuseEnd';",
                         "tmsg = EpiDlg(vRefuseKey);",
                         "EpiAns(4);",
+                        "DChange(4);",
+                        "exit;",
                         "DChange(4);",
                         "exit;"
                     ]
@@ -965,11 +1007,13 @@
                     "Pos.x": 220,
                     "Pos.y": 555,
                     "Parent": -1,
-                    "#": 77,
+                    "#": 78,
                     "Code.Type": "Turn",
                     "Code": [
                         "tmsg = EpiDlg('TextMainAskForHelp2');",
                         "EpiAns(2);",
+                        "DChange(2);",
+                        "exit;",
                         "DChange(2);",
                         "exit;"
                     ]
@@ -980,7 +1024,7 @@
                     "Pos.x": 340,
                     "Pos.y": 555,
                     "Parent": -1,
-                    "#": 78,
+                    "#": 79,
                     "Code.Type": "Turn",
                     "Code": [
                         "vState = 2;",
@@ -992,6 +1036,8 @@
                         "tmsg = EpiDlg('TextMainEnd1');",
                         "EpiAns(4);",
                         "DChange(4);",
+                        "exit;",
+                        "DChange(4);",
                         "exit;"
                     ]
                 },
@@ -1001,7 +1047,7 @@
                     "Pos.x": 460,
                     "Pos.y": 555,
                     "Parent": -1,
-                    "#": 79,
+                    "#": 80,
                     "Code.Type": "Turn",
                     "Code": [
                         "vState = 1;",
@@ -1010,6 +1056,8 @@
                         "if(EpiKey(vRefuseKey) == '') vRefuseKey = 'TextRefuseEnd';",
                         "tmsg = EpiDlg(vRefuseKey);",
                         "EpiAns(4);",
+                        "DChange(4);",
+                        "exit;",
                         "DChange(4);",
                         "exit;"
                     ]
@@ -1020,11 +1068,13 @@
                     "Pos.x": 580,
                     "Pos.y": 555,
                     "Parent": -1,
-                    "#": 80,
+                    "#": 81,
                     "Code.Type": "Turn",
                     "Code": [
                         "tmsg = EpiDlg('TextAltAnswer');",
                         "EpiAns(3);",
+                        "DChange(3);",
+                        "exit;",
                         "DChange(3);",
                         "exit;"
                     ]
@@ -1035,7 +1085,7 @@
                     "Pos.x": 700,
                     "Pos.y": 555,
                     "Parent": -1,
-                    "#": 81,
+                    "#": 82,
                     "Code.Type": "Turn",
                     "Code": [
                         "EpiTakeAlt();",
@@ -1044,6 +1094,8 @@
                         "vState = 3;",
                         "tmsg = EpiDlg('TextAltGiven');",
                         "EpiAns(4);",
+                        "DChange(4);",
+                        "exit;",
                         "DChange(4);",
                         "exit;"
                     ]
@@ -1054,7 +1106,7 @@
                     "Pos.x": 940,
                     "Pos.y": 555,
                     "Parent": -1,
-                    "#": 82,
+                    "#": 83,
                     "Code.Type": "Turn",
                     "Code": [
                         "EpiScanBuys(1);",
@@ -1072,6 +1124,8 @@
                         "EpiResult();",
                         "EpiAns(4);",
                         "DChange(4);",
+                        "exit;",
+                        "DChange(4);",
                         "exit;"
                     ]
                 },
@@ -1081,7 +1135,7 @@
                     "Pos.x": 1060,
                     "Pos.y": 555,
                     "Parent": -1,
-                    "#": 83,
+                    "#": 84,
                     "Code.Type": "Turn",
                     "Code": [
                         "Ether(5, 'E3394CE0-4B64-4300-AC59-484317DF4BD4', '', GroupToShip(ill));",
@@ -1089,6 +1143,8 @@
                         "vFateTurn = CurTurn();",
                         "tmsg = EpiDlg('TextPlayerIsRediska');",
                         "EpiAns(4);",
+                        "DChange(4);",
+                        "exit;",
                         "DChange(4);",
                         "exit;"
                     ]
@@ -1099,11 +1155,13 @@
                     "Pos.x": 1180,
                     "Pos.y": 555,
                     "Parent": -1,
-                    "#": 84,
+                    "#": 85,
                     "Code.Type": "Turn",
                     "Code": [
                         "EpiResult();",
                         "EpiAns(4);",
+                        "DChange(4);",
+                        "exit;",
                         "DChange(4);",
                         "exit;"
                     ]
@@ -1612,134 +1670,141 @@
     "Visual.Links": [
         {
             "Type": "TGraphLink",
-            "Begin": 46,
+            "Begin": 45,
             "End": 66,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 47,
+            "Begin": 46,
             "End": 67,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 48,
+            "Begin": 47,
             "End": 68,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 49,
+            "Begin": 48,
             "End": 69,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 50,
+            "Begin": 49,
             "End": 70,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 51,
+            "Begin": 50,
             "End": 71,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 52,
+            "Begin": 51,
             "End": 72,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 53,
+            "Begin": 52,
             "End": 73,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 54,
+            "Begin": 53,
             "End": 74,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 55,
+            "Begin": 54,
             "End": 75,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 56,
+            "Begin": 55,
             "End": 76,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 57,
+            "Begin": 56,
             "End": 77,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 58,
+            "Begin": 57,
             "End": 78,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 59,
+            "Begin": 58,
             "End": 79,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 60,
+            "Begin": 59,
             "End": 80,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 61,
+            "Begin": 60,
             "End": 81,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 63,
+            "Begin": 61,
             "End": 82,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 64,
+            "Begin": 63,
             "End": 83,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 65,
+            "Begin": 64,
             "End": 84,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 65,
+            "End": 85,
             "Nom": 0,
             "Arrow": true
         },
