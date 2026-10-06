@@ -6,15 +6,23 @@
     "ScriptName": "Mod_RevScientist",
     "ScriptFileOut": "D:\\Mod_RevScientist.scr",
     "ScriptTextOut": "D:\\Mod_RevScientist.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
             "DialogAnswers": [
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "",
                     "Pos.x": 0,
-                    "Pos.y": 515,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 595,
                     "Parent": -1,
                     "#": 32,
                     "Msg": "",
@@ -22,10 +30,10 @@
                     "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevScientist.13\"))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "",
                     "Pos.x": 120,
-                    "Pos.y": 515,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 595,
                     "Parent": -1,
                     "#": 33,
                     "Msg": "",
@@ -33,10 +41,10 @@
                     "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevScientist.34\"))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "",
                     "Pos.x": 240,
-                    "Pos.y": 515,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 595,
                     "Parent": -1,
                     "#": 34,
                     "Msg": "",
@@ -44,10 +52,10 @@
                     "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevScientist.30\"))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "hangar",
                     "Pos.x": 360,
-                    "Pos.y": 515,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 595,
                     "Parent": -1,
                     "#": 35,
                     "Msg": "",
@@ -55,10 +63,10 @@
                     "_orig_danswer": "DAnswer('hangar~'+CT(\"Script.Mod_RevScientist.35\"))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "exit",
                     "Pos.x": 480,
-                    "Pos.y": 515,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 595,
                     "Parent": -1,
                     "#": 36,
                     "Msg": "",
@@ -68,10 +76,10 @@
             ],
             "DialogMessages": [
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 0,
-                    "Pos.y": 445,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 525,
                     "Parent": -1,
                     "#": 27,
                     "Msg": "",
@@ -79,10 +87,10 @@
                     "_orig_dtext": "DText(CT(\"Script.Mod_RevScientist.31\"))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 150,
-                    "Pos.y": 445,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 525,
                     "Parent": -1,
                     "#": 28,
                     "Msg": "",
@@ -90,10 +98,10 @@
                     "_orig_dtext": "DText(CT(\"Script.Mod_RevScientist.32\"))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 300,
-                    "Pos.y": 445,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 525,
                     "Parent": -1,
                     "#": 29,
                     "Msg": "",
@@ -101,10 +109,10 @@
                     "_orig_dtext": "DText(CT(\"Script.Mod_RevScientist.33\"))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 450,
-                    "Pos.y": 445,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 525,
                     "Parent": -1,
                     "#": 30,
                     "Msg": "",
@@ -112,10 +120,10 @@
                     "_orig_dtext": "DText(CT(\"Script.Mod_RevScientist.28\"))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 600,
-                    "Pos.y": 445,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 525,
                     "Parent": -1,
                     "#": 31,
                     "Msg": "",
@@ -125,17 +133,22 @@
             ],
             "Dialogs": [
                 {
-                    "Name": "dDoctor",
                     "Type": "TDialog",
+                    "Name": "dDoctor",
                     "Pos.x": 0,
-                    "Pos.y": 375,
+                    "Pos.y": 455,
                     "Parent": -1,
                     "#": 26
                 }
             ],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "SBGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 270,
+                    "Parent": -1,
+                    "#": 16,
                     "Owner": 62,
                     "Group.Type": 1,
                     "CntShipMin": 1,
@@ -158,15 +171,15 @@
                     "StrengthMax": "0",
                     "Ruins": "SB",
                     "+Planet": "Planet",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 80,
-                    "Pos.y": 250,
-                    "Parent": -1,
-                    "#": 16
+                    "+State": 0
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "War",
+                    "Pos.x": 120,
+                    "Pos.y": 270,
+                    "Parent": -1,
+                    "#": 17,
                     "Owner": 63,
                     "Group.Type": 5,
                     "CntShipMin": 1,
@@ -189,15 +202,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "Planet",
-                    "+State": 1,
-                    "Type": "TGroup",
-                    "Pos.x": 170,
-                    "Pos.y": 250,
-                    "Parent": -1,
-                    "#": 17
+                    "+State": 1
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "PBGroup",
+                    "Pos.x": 210,
+                    "Pos.y": 270,
+                    "Parent": -1,
+                    "#": 18,
                     "Owner": 62,
                     "Group.Type": 1,
                     "CntShipMin": 1,
@@ -220,18 +233,17 @@
                     "StrengthMax": "0",
                     "Ruins": "PB",
                     "+Planet": "Planet",
-                    "+State": 3,
-                    "Type": "TGroup",
-                    "Pos.x": 180,
-                    "Pos.y": 250,
-                    "Parent": -1,
-                    "#": 18
+                    "+State": 3
                 }
             ],
             "Items": [
                 {
                     "Type": "TItem",
                     "Name": "iCapsuleP",
+                    "Pos.x": 0,
+                    "Pos.y": 225,
+                    "Parent": -1,
+                    "#": 14,
                     "Class": 4,
                     "Item.Type": 0,
                     "Size": 10,
@@ -239,15 +251,15 @@
                     "Radius": 150,
                     "Owner": 6,
                     "Useless": "Capsule",
-                    "+Place": "SBGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 205,
-                    "Parent": -1,
-                    "#": 14
+                    "+Place": "SBGroup"
                 },
                 {
                     "Type": "TItem",
                     "Name": "iFazer",
+                    "Pos.x": 90,
+                    "Pos.y": 225,
+                    "Parent": -1,
+                    "#": 15,
                     "Class": 5,
                     "Item.Type": 5,
                     "Size": 65,
@@ -255,16 +267,17 @@
                     "Radius": 150,
                     "Owner": 2,
                     "Useless": "",
-                    "+Place": "PBGroup",
-                    "Pos.x": 90,
-                    "Pos.y": 205,
-                    "Parent": -1,
-                    "#": 15
+                    "+Place": "PBGroup"
                 }
             ],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 665,
+                    "Parent": -1,
+                    "#": 19,
                     "Code.Type": "Global",
                     "Code": [
                         "if (!GCntRun(GScriptName)) {",
@@ -272,15 +285,15 @@
                         "    if (CurTurn() >= 900) GRun();",
                         "  }",
                         "}"
-                    ],
-                    "#": 19,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 585
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 665,
+                    "Parent": -1,
+                    "#": 20,
                     "Code.Type": "Init",
                     "Code": [
                         "//vState == 0 - начальный стейт",
@@ -293,15 +306,15 @@
                         "AddPlanetNews(Format(CT(\"Script.Mod_RevScientist.42\"),\"<0>\",vLastSBName,\"<1>\",Name(Star),\"<2>\",vNewSBName,\"<3>\",GalaxyMoney(2)));",
                         "SetName(GroupToShip(SBGroup), vNewSBName);",
                         "vTimer = CurTurn() + 10;"
-                    ],
-                    "#": 20,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 585
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 665,
+                    "Parent": -1,
+                    "#": 21,
                     "Code.Type": "Turn",
                     "Code": [
                         "if (ShipInStar(Player(), Star)) {",
@@ -313,15 +326,15 @@
                         "if (vState == 1 || vState == 2) {",
                         "  if(!ItemExist(iCapsuleP)) AllShipOut();",
                         "}"
-                    ],
-                    "#": 21,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 585
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 37,
                     "Code.Type": "Turn",
                     "Code": [
                         "if (!vState) {",
@@ -334,41 +347,44 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 37,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 80
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 38,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(iCapsuleP, GroupToShip(SBGroup))) {",
                         "  ChangeState(2);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 38,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 160
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 355,
+                    "Parent": -1,
+                    "#": 39,
                     "Code.Type": "Turn",
                     "Code": [
                         "if (!ItemExist(iCapsuleP)) ShipOut(CurShip);",
                         "else if (ItemIn(iCapsuleP, Player())) ShipOut(CurShip);",
                         "else if (ItemIn(iCapsuleP, War)) AllShipOut();"
-                    ],
-                    "#": 39,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 240
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 190,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 40,
                     "Code.Type": "Turn",
                     "Code": [
                         "if (vState == 3) {",
@@ -385,14 +401,15 @@
                         "  ReleaseItemFromScript(iFazer);",
                         "  AllShipOut();",
                         "}"
-                    ],
-                    "#": 40,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 320
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 455,
+                    "Parent": -1,
+                    "#": 41,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(vState == 2) {",
@@ -408,137 +425,132 @@
                         "    exit;",
                         "  }",
                         "}"
-                    ],
-                    "#": 41,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 375
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 42,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);"
-                    ],
-                    "#": 42,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 445
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 43,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(1);"
-                    ],
-                    "#": 43,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 130,
-                    "Pos.y": 445
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 280,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 44,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(2);"
-                    ],
-                    "#": 44,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 280,
-                    "Pos.y": 445
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 430,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 45,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(3);"
-                    ],
-                    "#": 45,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 430,
-                    "Pos.y": 445
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 580,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 46,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(4);"
-                    ],
-                    "#": 46,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 580,
-                    "Pos.y": 445
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 47,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(1);",
                         "exit;"
-                    ],
-                    "#": 47,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 515
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 48,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(2);",
                         "exit;"
-                    ],
-                    "#": 48,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 100,
-                    "Pos.y": 515
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 220,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 49,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(3);",
                         "exit;"
-                    ],
-                    "#": 49,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 220,
-                    "Pos.y": 515
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 340,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 50,
                     "Code.Type": "Turn",
                     "Code": [
                         "vState = 3;",
                         "vTimer = CurTurn() + 5;",
                         "ReleaseItemFromScript(iCapsuleP);"
-                    ],
-                    "#": 50,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 340,
-                    "Pos.y": 515
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 460,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 51,
                     "Code.Type": "Turn",
                     "Code": [
                         "vState = 4;"
-                    ],
-                    "#": 51,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 460,
-                    "Pos.y": 515
+                    ]
                 }
             ],
             "Places": [
@@ -546,7 +558,7 @@
                     "Type": "TPlace",
                     "Name": "PlaceSB",
                     "Pos.x": 0,
-                    "Pos.y": 250,
+                    "Pos.y": 135,
                     "Parent": -1,
                     "#": 12,
                     "Place.Type": 5,
@@ -561,7 +573,7 @@
                     "Type": "TPlace",
                     "Name": "pCapsule",
                     "Pos.x": 90,
-                    "Pos.y": 250,
+                    "Pos.y": 135,
                     "Parent": -1,
                     "#": 13,
                     "Place.Type": 4,
@@ -575,7 +587,12 @@
             ],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "Planet",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 11,
                     "Race": 63,
                     "Owner": 63,
                     "Economy": 14,
@@ -583,17 +600,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "Star",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 160,
-                    "Parent": -1,
-                    "#": 11
+                    "+Star": "Star"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 8,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 1,
@@ -612,15 +629,15 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "SB",
-                    "+Star": "Star",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 70,
-                    "Parent": -1,
-                    "#": 8
+                    "+Star": "Star"
                 },
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 90,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 9,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -639,15 +656,15 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "Star",
-                    "Type": "TStarShip",
-                    "Pos.x": 90,
-                    "Pos.y": 70,
-                    "Parent": -1,
-                    "#": 9
+                    "+Star": "Star"
                 },
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 10,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 1,
@@ -666,104 +683,95 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "PB",
-                    "+Star": "Star",
-                    "Type": "TStarShip",
-                    "Pos.x": 180,
-                    "Pos.y": 70,
-                    "Parent": -1,
-                    "#": 10
+                    "+Star": "Star"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "Star",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "Star",
                     "Pos.x": 0,
-                    "Pos.y": 115,
+                    "Pos.y": 90,
                     "Parent": -1,
                     "#": 7,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "SBState",
+                    "Pos.x": 0,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 22,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 22
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "WaitingState",
+                    "Pos.x": 120,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 23,
                     "Move": 4,
                     "MoveObj": 11,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 90,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 23
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "StateTake",
+                    "Pos.x": 0,
+                    "Pos.y": 355,
+                    "Parent": -1,
+                    "#": 24,
                     "Move": 1,
                     "MoveObj": 13,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": 14,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 180,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 24
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "PBState",
+                    "Pos.x": 210,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 25,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 270,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 25
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -1053,5 +1061,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_RevScientist\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

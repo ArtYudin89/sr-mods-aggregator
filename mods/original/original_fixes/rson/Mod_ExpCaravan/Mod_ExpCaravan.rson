@@ -6,15 +6,23 @@
     "ScriptName": "Mod_ExpCaravan",
     "ScriptFileOut": "D:\\Mod_ExpCaravan.scr",
     "ScriptTextOut": "D:\\Mod_ExpCaravan.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
             "DialogAnswers": [
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "fastexit",
                     "Pos.x": 0,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 905,
                     "Parent": -1,
                     "#": 83,
                     "Msg": "",
@@ -24,10 +32,10 @@
             ],
             "DialogMessages": [
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 0,
-                    "Pos.y": 470,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 835,
                     "Parent": -1,
                     "#": 82,
                     "Msg": "",
@@ -37,25 +45,30 @@
             ],
             "Dialogs": [
                 {
-                    "Name": "Kor_d",
                     "Type": "TDialog",
+                    "Name": "Kor_d",
                     "Pos.x": 0,
-                    "Pos.y": 400,
+                    "Pos.y": 765,
                     "Parent": -1,
                     "#": 80
                 },
                 {
-                    "Name": "Prot_d",
                     "Type": "TDialog",
+                    "Name": "Prot_d",
                     "Pos.x": 120,
-                    "Pos.y": 400,
+                    "Pos.y": 765,
                     "Parent": -1,
                     "#": 81
                 }
             ],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "PlayerGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 40,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -78,15 +91,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "KorovanStart",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 80,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 40
+                    "+State": 0
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "Korovan",
+                    "Pos.x": 180,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 41,
                     "Owner": 62,
                     "Group.Type": 16,
                     "CntShipMin": 0,
@@ -109,15 +122,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "KorovanStart",
-                    "+State": 1,
-                    "Type": "TGroup",
-                    "Pos.x": 170,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 41
+                    "+State": 1
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "Korovan_Prot",
+                    "Pos.x": 0,
+                    "Pos.y": 355,
+                    "Parent": -1,
+                    "#": 42,
                     "Owner": 62,
                     "Group.Type": 4,
                     "CntShipMin": 0,
@@ -140,15 +153,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "KorovanStart",
-                    "+State": 2,
-                    "Type": "TGroup",
-                    "Pos.x": 260,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 42
+                    "+State": 2
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "Pirates",
+                    "Pos.x": 180,
+                    "Pos.y": 355,
+                    "Parent": -1,
+                    "#": 43,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -171,18 +184,17 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "KorovanPlanetFinish",
-                    "+State": 18,
-                    "Type": "TGroup",
-                    "Pos.x": 350,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 43
+                    "+State": 18
                 }
             ],
             "Items": [
                 {
                     "Type": "TItem",
                     "Name": "Cargo_1",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 37,
                     "Class": 5,
                     "Item.Type": 0,
                     "Size": 10,
@@ -190,15 +202,15 @@
                     "Radius": 150,
                     "Owner": 6,
                     "Useless": "",
-                    "+Place": "",
-                    "Pos.x": 0,
-                    "Pos.y": 230,
-                    "Parent": -1,
-                    "#": 37
+                    "+Place": ""
                 },
                 {
                     "Type": "TItem",
                     "Name": "Cargo_2",
+                    "Pos.x": 90,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 38,
                     "Class": 5,
                     "Item.Type": 0,
                     "Size": 10,
@@ -206,15 +218,15 @@
                     "Radius": 150,
                     "Owner": 6,
                     "Useless": "",
-                    "+Place": "",
-                    "Pos.x": 90,
-                    "Pos.y": 230,
-                    "Parent": -1,
-                    "#": 38
+                    "+Place": ""
                 },
                 {
                     "Type": "TItem",
                     "Name": "Cargo_3",
+                    "Pos.x": 180,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 39,
                     "Class": 5,
                     "Item.Type": 0,
                     "Size": 10,
@@ -222,31 +234,32 @@
                     "Radius": 150,
                     "Owner": 6,
                     "Useless": "",
-                    "+Place": "",
-                    "Pos.x": 180,
-                    "Pos.y": 230,
-                    "Parent": -1,
-                    "#": 39
+                    "+Place": ""
                 }
             ],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 975,
+                    "Parent": -1,
+                    "#": 44,
                     "Code.Type": "Global",
                     "Code": [
                         "if(CurTurn()>820)",
                         "{",
                         "    if(CurTurn()-GLastTurnRun(GScriptName)>750)GRun();",
                         "}"
-                    ],
-                    "#": 44,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 975,
+                    "Parent": -1,
+                    "#": 45,
                     "Code.Type": "Init",
                     "Code": [
                         "groups = newarray(1);",
@@ -254,15 +267,15 @@
                         "pirates_ID = newarray(1);",
                         "tint = Rnd(1, 100);",
                         "if(GCntRun('Mod_ExpCaravan') && tint <= 50) vScst = -1;"
-                    ],
-                    "#": 45,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 975,
+                    "Parent": -1,
+                    "#": 46,
                     "Code.Type": "Turn",
                     "Code": [
                         "//Значения переменной vScst:",
@@ -854,15 +867,15 @@
                         "\t\t}",
                         "\t}",
                         "}"
-                    ],
-                    "#": 46,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 160,
+                    "Pos.y": 320,
+                    "Parent": -1,
+                    "#": 84,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(GroupCount(Korovan_Prot)) {",
@@ -879,14 +892,15 @@
                         "  ChangeState(9);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 84,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 80
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 380,
+                    "Parent": -1,
+                    "#": 85,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(GroupCount(Korovan)) {",
@@ -913,14 +927,15 @@
                         "    exit;",
                         "  }",
                         "}"
-                    ],
-                    "#": 85,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 160
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 86,
                     "Code.Type": "Turn",
                     "Code": [
                         "//Транспорт крутиться на месте, ожидая военных",
@@ -932,14 +947,15 @@
                         "  ChangeState(1);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 86,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 240
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 70,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 87,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!GroupCount(Korovan_Prot) && st_turn!=0) {",
@@ -952,14 +968,15 @@
                         "    exit;",
                         "  }",
                         "}"
-                    ],
-                    "#": 87,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 320
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 160,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 88,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(StarOwner(KorovanStarFinish)!=0) {",
@@ -971,14 +988,15 @@
                         "  if(ItemIn(Cargo_3,CurShip))cargoDelivered=cargoDelivered+1;",
                         "  ShipDestroy(CurShip);",
                         "}"
-                    ],
-                    "#": 88,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 250,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 89,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(EndState) {",
@@ -1003,14 +1021,15 @@
                         "    exit;",
                         "  }",
                         "}"
-                    ],
-                    "#": 89,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 480
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 465,
+                    "Parent": -1,
+                    "#": 90,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!GroupCount(Korovan)) {",
@@ -1040,14 +1059,15 @@
                         "    exit;",
                         "  }",
                         "}"
-                    ],
-                    "#": 90,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 560
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 465,
+                    "Parent": -1,
+                    "#": 91,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(GroupCount(Korovan)) {",
@@ -1074,40 +1094,43 @@
                         "    exit;",
                         "  }",
                         "}"
-                    ],
-                    "#": 91,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 640
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
-                    "Code.Type": "Turn",
-                    "Code": [
-                        "if(EndState) {",
-                        "  ShipDestroy(CurShip);",
-                        "}"
-                    ],
+                    "Pos.x": 190,
+                    "Pos.y": 465,
+                    "Parent": -1,
                     "#": 92,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 800
-                },
-                {
-                    "Name": "",
                     "Code.Type": "Turn",
                     "Code": [
                         "if(EndState) {",
                         "  ShipDestroy(CurShip);",
                         "}"
-                    ],
-                    "#": 93,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 880
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 280,
+                    "Pos.y": 465,
+                    "Parent": -1,
+                    "#": 93,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(EndState) {",
+                        "  ShipDestroy(CurShip);",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 490,
+                    "Parent": -1,
+                    "#": 94,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(StarOwner(KorovanStarFinish)!=0) {",
@@ -1119,14 +1142,15 @@
                         "  if(ItemIn(Cargo_3,CurShip))cargoDelivered=cargoDelivered+1;",
                         "  ShipDestroy(CurShip);",
                         "}"
-                    ],
-                    "#": 94,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 960
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 70,
+                    "Pos.y": 490,
+                    "Parent": -1,
+                    "#": 95,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_1,PlayerStar))",
@@ -1192,14 +1216,15 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 95,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 1040
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 160,
+                    "Pos.y": 490,
+                    "Parent": -1,
+                    "#": 96,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_2,PlayerStar))",
@@ -1265,14 +1290,15 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 96,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 1120
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 250,
+                    "Pos.y": 490,
+                    "Parent": -1,
+                    "#": 97,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_3,PlayerStar))",
@@ -1338,14 +1364,15 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 97,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 1200
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 340,
+                    "Pos.y": 490,
+                    "Parent": -1,
+                    "#": 98,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_3,KorovanStarFinish))",
@@ -1411,14 +1438,15 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 98,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 1280
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 515,
+                    "Parent": -1,
+                    "#": 99,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_2,KorovanStarFinish))",
@@ -1484,14 +1512,15 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 99,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 1360
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 70,
+                    "Pos.y": 515,
+                    "Parent": -1,
+                    "#": 100,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_1,KorovanStarFinish))",
@@ -1557,14 +1586,15 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 100,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 1440
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 160,
+                    "Pos.y": 380,
+                    "Parent": -1,
+                    "#": 101,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipInNormalSpace(CurShip)) {",
@@ -1592,14 +1622,15 @@
                         "    exit;",
                         "  }",
                         "}"
-                    ],
-                    "#": 101,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 1520
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 160,
+                    "Pos.y": 515,
+                    "Parent": -1,
+                    "#": 102,
                     "Code.Type": "Turn",
                     "Code": [
                         "j=ShipFreeSpace(CurShip);",
@@ -1621,14 +1652,15 @@
                         "    exit;",
                         "  }",
                         "}"
-                    ],
-                    "#": 102,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 1600
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 280,
+                    "Pos.y": 515,
+                    "Parent": -1,
+                    "#": 103,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_3,KorovanStarFinish)) {",
@@ -1652,14 +1684,15 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 103,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 1680
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 540,
+                    "Parent": -1,
+                    "#": 104,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_2,KorovanStarFinish)) {",
@@ -1683,14 +1716,15 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 104,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 1760
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 540,
+                    "Parent": -1,
+                    "#": 105,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_1,KorovanStarFinish)) {",
@@ -1714,25 +1748,27 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 105,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 1840
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 220,
+                    "Pos.y": 540,
+                    "Parent": -1,
+                    "#": 106,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipInHyperSpace(CurShip))ShipDestroy(CurShip);"
-                    ],
-                    "#": 106,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 1920
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 565,
+                    "Parent": -1,
+                    "#": 107,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_1,PlayerStar)) {",
@@ -1745,14 +1781,15 @@
                         "  }",
                         "  else ChangeState('Home');",
                         "}"
-                    ],
-                    "#": 107,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 2000
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 160,
+                    "Pos.y": 565,
+                    "Parent": -1,
+                    "#": 108,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_2,PlayerStar)) {",
@@ -1765,14 +1802,15 @@
                         "  }",
                         "  else ChangeState('Home');",
                         "}"
-                    ],
-                    "#": 108,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 2080
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 590,
+                    "Parent": -1,
+                    "#": 109,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_3,PlayerStar)) {",
@@ -1785,14 +1823,15 @@
                         "  }",
                         "  else ChangeState('Home');",
                         "}"
-                    ],
-                    "#": 109,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 2160
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 160,
+                    "Pos.y": 590,
+                    "Parent": -1,
+                    "#": 110,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_1,KorovanStarFinish)) {",
@@ -1805,14 +1844,15 @@
                         "  }",
                         "  else ChangeState('Home_2');",
                         "}"
-                    ],
-                    "#": 110,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 2240
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 615,
+                    "Parent": -1,
+                    "#": 111,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_2,KorovanStarFinish)) {",
@@ -1825,14 +1865,15 @@
                         "  }",
                         "  else ChangeState('Home_2');",
                         "}"
-                    ],
-                    "#": 111,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 2320
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 190,
+                    "Pos.y": 615,
+                    "Parent": -1,
+                    "#": 112,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ItemIn(Cargo_3,KorovanStarFinish)) {",
@@ -1845,14 +1886,15 @@
                         "  }",
                         "  else ChangeState('Home_2');",
                         "}"
-                    ],
-                    "#": 112,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 2400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 640,
+                    "Parent": -1,
+                    "#": 113,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipInHyperSpace(CurShip)) {",
@@ -1861,14 +1903,15 @@
                         "if(EndState) {",
                         "  ChangeState('Home');",
                         "}"
-                    ],
-                    "#": 113,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 2480
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 160,
+                    "Pos.y": 640,
+                    "Parent": -1,
+                    "#": 114,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipInHyperSpace(CurShip)) {",
@@ -1877,27 +1920,29 @@
                         "if(EndState) {",
                         "  ChangeState('LandHome');",
                         "}"
-                    ],
-                    "#": 114,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 2560
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 665,
+                    "Parent": -1,
+                    "#": 115,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(EndState) {",
                         "  ShipDestroy(CurShip);",
                         "}"
-                    ],
-                    "#": 115,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 2640
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 765,
+                    "Parent": -1,
+                    "#": 116,
                     "Code.Type": "Turn",
                     "Code": [
                         "tdw=GetTalkShip();",
@@ -1910,15 +1955,15 @@
                         "else tstr='</color>'+CT(\"Script.Mod_ExpCaravan.5\");",
                         "DChange(0);",
                         "exit;"
-                    ],
-                    "#": 116,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 765,
+                    "Parent": -1,
+                    "#": 117,
                     "Code.Type": "Turn",
                     "Code": [
                         "tdw=GetTalkShip();",
@@ -1931,24 +1976,19 @@
                         "else tstr='</color>'+CT(\"Script.Mod_ExpCaravan.15\");",
                         "DChange(0);",
                         "exit;"
-                    ],
-                    "#": 117,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 100,
-                    "Pos.y": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 835,
+                    "Parent": -1,
+                    "#": 118,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);"
-                    ],
-                    "#": 118,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 470
+                    ]
                 }
             ],
             "Places": [
@@ -1956,7 +1996,7 @@
                     "Type": "TPlace",
                     "Name": "ToFinishStar",
                     "Pos.x": 0,
-                    "Pos.y": 275,
+                    "Pos.y": 160,
                     "Parent": -1,
                     "#": 32,
                     "Place.Type": 3,
@@ -1971,7 +2011,7 @@
                     "Type": "TPlace",
                     "Name": "Near_Kor",
                     "Pos.x": 90,
-                    "Pos.y": 275,
+                    "Pos.y": 160,
                     "Parent": -1,
                     "#": 33,
                     "Place.Type": 5,
@@ -1986,7 +2026,7 @@
                     "Type": "TPlace",
                     "Name": "Near_C3",
                     "Pos.x": 180,
-                    "Pos.y": 275,
+                    "Pos.y": 160,
                     "Parent": -1,
                     "#": 34,
                     "Place.Type": 4,
@@ -2001,7 +2041,7 @@
                     "Type": "TPlace",
                     "Name": "Near_C2",
                     "Pos.x": 270,
-                    "Pos.y": 275,
+                    "Pos.y": 160,
                     "Parent": -1,
                     "#": 35,
                     "Place.Type": 4,
@@ -2016,7 +2056,7 @@
                     "Type": "TPlace",
                     "Name": "Near_C1",
                     "Pos.x": 360,
-                    "Pos.y": 275,
+                    "Pos.y": 160,
                     "Parent": -1,
                     "#": 36,
                     "Place.Type": 4,
@@ -2030,23 +2070,12 @@
             ],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "KorovanStart",
-                    "Race": 63,
-                    "Owner": 63,
-                    "Economy": 14,
-                    "Goverment": 62,
-                    "RangeMin": 0,
-                    "RangeMax": 100,
-                    "Dialog": -1,
-                    "+Star": "PlayerStar",
-                    "Type": "TPlanet",
                     "Pos.x": 0,
-                    "Pos.y": 185,
+                    "Pos.y": 205,
                     "Parent": -1,
-                    "#": 29
-                },
-                {
-                    "Name": "KorovanPlanetFinish",
+                    "#": 29,
                     "Race": 63,
                     "Owner": 63,
                     "Economy": 14,
@@ -2054,15 +2083,31 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "KorovanStarFinish",
-                    "Type": "TPlanet",
-                    "Pos.x": 90,
-                    "Pos.y": 185,
-                    "Parent": -1,
-                    "#": 30
+                    "+Star": "PlayerStar"
                 },
                 {
+                    "Type": "TPlanet",
+                    "Name": "KorovanPlanetFinish",
+                    "Pos.x": 90,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 30,
+                    "Race": 63,
+                    "Owner": 63,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "KorovanStarFinish"
+                },
+                {
+                    "Type": "TPlanet",
                     "Name": "PiratePlanet",
+                    "Pos.x": 180,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 31,
                     "Race": 63,
                     "Owner": 129,
                     "Economy": 14,
@@ -2070,17 +2115,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "PirateStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 180,
-                    "Pos.y": 185,
-                    "Parent": -1,
-                    "#": 31
+                    "+Star": "PirateStar"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 28,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -2099,150 +2144,145 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "PlayerStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 95,
-                    "Parent": -1,
-                    "#": 28
+                    "+Star": "PlayerStar"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "PlayerStar",
-                    "Priority": 0,
-                    "NoKling": true,
-                    "NoComeKling": true,
                     "Type": "TStar",
+                    "Name": "PlayerStar",
                     "Pos.x": 0,
-                    "Pos.y": 140,
+                    "Pos.y": 115,
                     "Parent": -1,
                     "#": 25,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": true,
+                    "NoComeKling": true
                 },
                 {
-                    "Name": "KorovanStarFinish",
-                    "Priority": 1,
-                    "NoKling": true,
-                    "NoComeKling": true,
                     "Type": "TStar",
+                    "Name": "KorovanStarFinish",
                     "Pos.x": 90,
-                    "Pos.y": 140,
+                    "Pos.y": 115,
                     "Parent": -1,
                     "#": 26,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 1,
+                    "NoKling": true,
+                    "NoComeKling": true
                 },
                 {
-                    "Name": "PirateStar",
-                    "Priority": 2,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "PirateStar",
                     "Pos.x": 180,
-                    "Pos.y": 140,
+                    "Pos.y": 115,
                     "Parent": -1,
                     "#": 27,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 2,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "PlayerState",
+                    "Pos.x": 0,
+                    "Pos.y": 320,
+                    "Parent": -1,
+                    "#": 47,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 47
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "To_Jump",
+                    "Pos.x": 180,
+                    "Pos.y": 320,
+                    "Parent": -1,
+                    "#": 48,
                     "Move": 1,
                     "MoveObj": 32,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "Kor_d",
                     "OnActCode": "Kor_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 90,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 48
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Flw_K",
+                    "Pos.x": 0,
+                    "Pos.y": 380,
+                    "Parent": -1,
+                    "#": 49,
                     "Move": 2,
                     "MoveObj": 41,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "Prot_d",
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 180,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 49
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Wait",
+                    "Pos.x": 0,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 50,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "Kor_d",
                     "OnActCode": "Kor_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 270,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 50
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Jump",
+                    "Pos.x": 90,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 51,
                     "Move": 3,
                     "MoveObj": 26,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "Kor_d",
                     "OnActCode": "Kor_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 360,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 51
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Land",
+                    "Pos.x": 180,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 52,
                     "Move": 4,
                     "MoveObj": 30,
                     "Attack.Count": 1,
@@ -2257,34 +2297,33 @@
                     "OnActCode": "Kor_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 450,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 52
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Jump_2",
+                    "Pos.x": 270,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 53,
                     "Move": 3,
                     "MoveObj": 26,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "Prot_d",
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 540,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 53
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Flw_K_2",
+                    "Pos.x": 0,
+                    "Pos.y": 465,
+                    "Parent": -1,
+                    "#": 54,
                     "Move": 2,
                     "MoveObj": 41,
                     "Attack.Count": 1,
@@ -2299,15 +2338,15 @@
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 630,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 54
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Wait_2",
+                    "Pos.x": 120,
+                    "Pos.y": 465,
+                    "Parent": -1,
+                    "#": 55,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 1,
@@ -2322,53 +2361,51 @@
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 720,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 55
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Run",
+                    "Pos.x": 210,
+                    "Pos.y": 465,
+                    "Parent": -1,
+                    "#": 56,
                     "Move": 4,
                     "MoveObj": 29,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "Kor_d",
                     "OnActCode": "Kor_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 810,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 56
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Home",
+                    "Pos.x": 300,
+                    "Pos.y": 465,
+                    "Parent": -1,
+                    "#": 57,
                     "Move": 4,
                     "MoveObj": 29,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "Prot_d",
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 900,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 57
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Home_2",
+                    "Pos.x": 0,
+                    "Pos.y": 490,
+                    "Parent": -1,
+                    "#": 58,
                     "Move": 4,
                     "MoveObj": 30,
                     "Attack.Count": 1,
@@ -2383,72 +2420,69 @@
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 990,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 58
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "TK_1",
+                    "Pos.x": 90,
+                    "Pos.y": 490,
+                    "Parent": -1,
+                    "#": 59,
                     "Move": 1,
                     "MoveObj": 36,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "Prot_d",
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 1080,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 59
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "TK_2",
+                    "Pos.x": 180,
+                    "Pos.y": 490,
+                    "Parent": -1,
+                    "#": 60,
                     "Move": 1,
                     "MoveObj": 35,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "Prot_d",
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 1170,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 60
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "TK_3",
+                    "Pos.x": 270,
+                    "Pos.y": 490,
+                    "Parent": -1,
+                    "#": 61,
                     "Move": 1,
                     "MoveObj": 34,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "Prot_d",
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 1260,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 61
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "TK_3_2",
+                    "Pos.x": 360,
+                    "Pos.y": 490,
+                    "Parent": -1,
+                    "#": 62,
                     "Move": 1,
                     "MoveObj": 34,
                     "Attack.Count": 1,
@@ -2463,15 +2497,15 @@
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 1350,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 62
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "TK_2_2",
+                    "Pos.x": 0,
+                    "Pos.y": 515,
+                    "Parent": -1,
+                    "#": 63,
                     "Move": 1,
                     "MoveObj": 35,
                     "Attack.Count": 1,
@@ -2486,15 +2520,15 @@
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 1440,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 63
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "TK_1_2",
+                    "Pos.x": 90,
+                    "Pos.y": 515,
+                    "Parent": -1,
+                    "#": 64,
                     "Move": 1,
                     "MoveObj": 36,
                     "Attack.Count": 1,
@@ -2509,34 +2543,33 @@
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 1530,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 64
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Wait_3",
+                    "Pos.x": 180,
+                    "Pos.y": 380,
+                    "Parent": -1,
+                    "#": 65,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 1620,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 65
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Pers_Kor",
+                    "Pos.x": 180,
+                    "Pos.y": 515,
+                    "Parent": -1,
+                    "#": 66,
                     "Move": 2,
                     "MoveObj": 41,
                     "Attack.Count": 2,
@@ -2552,15 +2585,15 @@
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 1710,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 66
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "TK_3_2_P",
+                    "Pos.x": 300,
+                    "Pos.y": 515,
+                    "Parent": -1,
+                    "#": 67,
                     "Move": 1,
                     "MoveObj": 34,
                     "Attack.Count": 1,
@@ -2575,15 +2608,15 @@
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 1800,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 67
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "TK_2_2_P",
+                    "Pos.x": 0,
+                    "Pos.y": 540,
+                    "Parent": -1,
+                    "#": 68,
                     "Move": 1,
                     "MoveObj": 35,
                     "Attack.Count": 1,
@@ -2598,15 +2631,15 @@
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 1890,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 68
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "TK_1_2_P",
+                    "Pos.x": 120,
+                    "Pos.y": 540,
+                    "Parent": -1,
+                    "#": 69,
                     "Move": 1,
                     "MoveObj": 36,
                     "Attack.Count": 1,
@@ -2621,15 +2654,15 @@
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 1980,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 69
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "PirateEscape",
+                    "Pos.x": 240,
+                    "Pos.y": 540,
+                    "Parent": -1,
+                    "#": 70,
                     "Move": 3,
                     "MoveObj": 27,
                     "Attack.Count": 1,
@@ -2644,72 +2677,69 @@
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 2070,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 70
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "WarriorGrab1",
+                    "Pos.x": 0,
+                    "Pos.y": 565,
+                    "Parent": -1,
+                    "#": 71,
                     "Move": 1,
                     "MoveObj": 36,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": 37,
                     "TakeAllItem": false,
                     "OnTalk": "Prot_d",
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 2160,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 71
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "WarriorGrab2",
+                    "Pos.x": 180,
+                    "Pos.y": 565,
+                    "Parent": -1,
+                    "#": 72,
                     "Move": 1,
                     "MoveObj": 35,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": 38,
                     "TakeAllItem": false,
                     "OnTalk": "Prot_d",
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 2250,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 72
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "WarriorGrab3",
+                    "Pos.x": 0,
+                    "Pos.y": 590,
+                    "Parent": -1,
+                    "#": 73,
                     "Move": 1,
                     "MoveObj": 34,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": 39,
                     "TakeAllItem": false,
                     "OnTalk": "Prot_d",
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 2340,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 73
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "WarriorGrab1_2",
+                    "Pos.x": 180,
+                    "Pos.y": 590,
+                    "Parent": -1,
+                    "#": 74,
                     "Move": 1,
                     "MoveObj": 36,
                     "Attack.Count": 1,
@@ -2724,15 +2754,15 @@
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 2430,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 74
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "WarriorGrab2_2",
+                    "Pos.x": 0,
+                    "Pos.y": 615,
+                    "Parent": -1,
+                    "#": 75,
                     "Move": 1,
                     "MoveObj": 35,
                     "Attack.Count": 1,
@@ -2747,15 +2777,15 @@
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 2520,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 75
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "WarriorGrab3_2",
+                    "Pos.x": 210,
+                    "Pos.y": 615,
+                    "Parent": -1,
+                    "#": 76,
                     "Move": 1,
                     "MoveObj": 34,
                     "Attack.Count": 1,
@@ -2770,15 +2800,15 @@
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 2610,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 76
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "ProtJumpHome",
+                    "Pos.x": 0,
+                    "Pos.y": 640,
+                    "Parent": -1,
+                    "#": 77,
                     "Move": 3,
                     "MoveObj": 25,
                     "Attack.Count": 1,
@@ -2793,15 +2823,15 @@
                     "OnActCode": "Prot_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 2700,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 77
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "KorJumpHome",
+                    "Pos.x": 180,
+                    "Pos.y": 640,
+                    "Parent": -1,
+                    "#": 78,
                     "Move": 3,
                     "MoveObj": 25,
                     "Attack.Count": 1,
@@ -2816,31 +2846,25 @@
                     "OnActCode": "Kor_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 2790,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 78
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "LandHome",
+                    "Pos.x": 0,
+                    "Pos.y": 665,
+                    "Parent": -1,
+                    "#": 79,
                     "Move": 4,
                     "MoveObj": 29,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "Kor_d",
                     "OnActCode": "Kor_d",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 2880,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 79
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -2858,7 +2882,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tdw2",
-                    "Pos.x": 90,
+                    "Pos.x": 60,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 1,
@@ -2869,7 +2893,7 @@
                 {
                     "Type": "TVar",
                     "Name": "i",
-                    "Pos.x": 180,
+                    "Pos.x": 120,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 2,
@@ -2880,7 +2904,7 @@
                 {
                     "Type": "TVar",
                     "Name": "j",
-                    "Pos.x": 270,
+                    "Pos.x": 180,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 3,
@@ -2891,7 +2915,7 @@
                 {
                     "Type": "TVar",
                     "Name": "vScst",
-                    "Pos.x": 360,
+                    "Pos.x": 240,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 4,
@@ -2902,7 +2926,7 @@
                 {
                     "Type": "TVar",
                     "Name": "groups",
-                    "Pos.x": 450,
+                    "Pos.x": 330,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 5,
@@ -2913,7 +2937,7 @@
                 {
                     "Type": "TVar",
                     "Name": "attack",
-                    "Pos.x": 540,
+                    "Pos.x": 420,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 6,
@@ -2924,7 +2948,7 @@
                 {
                     "Type": "TVar",
                     "Name": "enRad",
-                    "Pos.x": 630,
+                    "Pos.x": 510,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 7,
@@ -2935,7 +2959,7 @@
                 {
                     "Type": "TVar",
                     "Name": "st_turn",
-                    "Pos.x": 720,
+                    "Pos.x": 600,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 8,
@@ -2946,7 +2970,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tint",
-                    "Pos.x": 840,
+                    "Pos.x": 720,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 9,
@@ -2957,7 +2981,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tdw3",
-                    "Pos.x": 930,
+                    "Pos.x": 780,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 10,
@@ -2968,7 +2992,7 @@
                 {
                     "Type": "TVar",
                     "Name": "groups_ID",
-                    "Pos.x": 1020,
+                    "Pos.x": 840,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 11,
@@ -2979,7 +3003,7 @@
                 {
                     "Type": "TVar",
                     "Name": "PK",
-                    "Pos.x": 1170,
+                    "Pos.x": 990,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 12,
@@ -2990,7 +3014,7 @@
                 {
                     "Type": "TVar",
                     "Name": "Inventions_points",
-                    "Pos.x": 1260,
+                    "Pos.x": 1050,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 13,
@@ -3001,7 +3025,7 @@
                 {
                     "Type": "TVar",
                     "Name": "pirates_ID",
-                    "Pos.x": 1500,
+                    "Pos.x": 1290,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 14,
@@ -3012,7 +3036,7 @@
                 {
                     "Type": "TVar",
                     "Name": "PK_pirates",
-                    "Pos.x": 1650,
+                    "Pos.x": 1440,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 15,
@@ -3023,8 +3047,8 @@
                 {
                     "Type": "TVar",
                     "Name": "tstr",
-                    "Pos.x": 0,
-                    "Pos.y": 25,
+                    "Pos.x": 1590,
+                    "Pos.y": 0,
                     "Parent": -1,
                     "#": 16,
                     "Var.Type": "Str",
@@ -3034,7 +3058,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tfloat",
-                    "Pos.x": 90,
+                    "Pos.x": 0,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 17,
@@ -3045,7 +3069,7 @@
                 {
                     "Type": "TVar",
                     "Name": "planetOwner",
-                    "Pos.x": 180,
+                    "Pos.x": 90,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 18,
@@ -3056,7 +3080,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cargoSize1",
-                    "Pos.x": 360,
+                    "Pos.x": 270,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 19,
@@ -3067,7 +3091,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cargoSize2",
-                    "Pos.x": 510,
+                    "Pos.x": 420,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 20,
@@ -3078,7 +3102,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cargoSize3",
-                    "Pos.x": 660,
+                    "Pos.x": 570,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 21,
@@ -3089,7 +3113,7 @@
                 {
                     "Type": "TVar",
                     "Name": "ShotAtCargo",
-                    "Pos.x": 810,
+                    "Pos.x": 720,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 22,
@@ -3100,7 +3124,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cargoDelivered",
-                    "Pos.x": 990,
+                    "Pos.x": 900,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 23,
@@ -3111,7 +3135,7 @@
                 {
                     "Type": "TVar",
                     "Name": "planetRace",
-                    "Pos.x": 1200,
+                    "Pos.x": 1110,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 24,
@@ -3510,5 +3534,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_ExpCaravan\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }
