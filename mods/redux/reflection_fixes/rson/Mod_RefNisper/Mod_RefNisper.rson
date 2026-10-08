@@ -4436,7 +4436,7 @@
                     "#": 185,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -4784,7 +4784,7 @@
                         "",
                         "function GiveBossAllEq(ship, level) {",
                         "    ShipType(ship,'NisperBoss');",
-                        "    SetName(ship,'Ниспер');",
+                        "    SetName(ship,CT(\"Script.Mod_RefNisper.577\"));",
                         "    ShipCustomFaction(ship,'SubFaction.Nisper');",
                         "    ShipTechLevelKnowledge(ship,8);",
                         "    SpecialToEquipment(FindBonusByNameInCfg('ZelDomiks_Nisper5'),ShipItems(ship, 0));",
@@ -7168,7 +7168,7 @@
                         "if(domLevel==8&&completeTask==2&&doneMissions[3]==2) {",
                         "  if(!IdToItem(idFean)){",
                         "      completeTask=0;",
-                        "      CustomEther('NisperEther',5,'ZelDomiksQuest','Кто-то уничтожил капсулу с Абером. Задание провалено.');",
+                        "      CustomEther('NisperEther',5,'ZelDomiksQuest',CT(\"Script.Mod_RefNisper.578\"));",
                         "      Sound('Sound.QuestCancel');",
                         "  }",
                         "}",
@@ -7463,7 +7463,7 @@
                         "if(isStartedDomiks==1) {",
                         "    if(shipRuins) {",
                         "        if(ShipType(shipRuins) == 'DB') {",
-                        "            AddDialogInject('dBank', Format(CT(\"Script.Mod_RefNisper.512\"),\"<0>\",ShipName(shipRuins)), 'Пополнить банк', 1, 1);",
+                        "            AddDialogInject('dBank', Format(CT(\"Script.Mod_RefNisper.512\"),\"<0>\",ShipName(shipRuins)), CT(\"Script.Mod_RefNisper.579\"), 1, 1);",
                         "            AddDialogInject('dShipyard', '', CT(\"Script.Mod_RefNisper.511\"), 6);",
                         "            if(domLevel < 10) {",
                         "                  if(daysForResearch > 0) AddDialogInject('dUpgrade', '', CT(\"Script.Mod_RefNisper.510\"), 2);",
@@ -7534,7 +7534,7 @@
                         "                            else AddDialogInject('d8MissionHum', '', CT(\"Script.Mod_RefNisper.501\"), 1);",
                         "                        }",
                         "                        else {",
-                        "                            if(m8HumIs) AddDialogInject('d8MissionHumNo', '', 'Ну так что, вы согласны с предложением Научного совета?', 1);",
+                        "                            if(m8HumIs) AddDialogInject('d8MissionHumNo', '', CT(\"Script.Mod_RefNisper.502\"), 1);",
                         "                            else AddDialogInject('d8MissionHumN', '', CT(\"Script.Mod_RefNisper.501\"), 1);",
                         "                        }",
                         "                    }",
@@ -11824,7 +11824,7 @@
                         "for(i=1;i<ShipItems(Player());i=i+1){",
                         "  ourItemDomPlayer=ShipItems(Player(),i);",
                         "  if(ItemOwner(ourItemDomPlayer)==5&&!ItemIsInUse(ourItemDomPlayer)&&!ItemIsInSet(ourItemDomPlayer)){",
-                        "    InjectAnswer('dGiveItemOnSB',ItemFullName(ourItemDomPlayer)+Format(' (<0> тонн)',\"<0>\",ItemSize(ourItemDomPlayer)),ourItemDomPlayer);",
+                        "    InjectAnswer('dGiveItemOnSB',ItemFullName(ourItemDomPlayer)+Format(CT(\"Script.Mod_RefNisper.580\"),\"<0>\",ItemSize(ourItemDomPlayer)),ourItemDomPlayer);",
                         "    j=j+1;",
                         "  }",
                         "}",
@@ -12554,7 +12554,7 @@
                         "        completeTask=2;",
                         "        daysMission=0;",
                         "        daysMissionComplete=50+difficultOfPirates*4;",
-                        "        CustomEther('NisperEther',3,'ZelDomiksQuest',Format('Нужно защитить систему <0> и не дать ей перейти в руки пиратского клана до конца передачи информации. Осталось дней: <1>.',\"<0>\",StarName(targetStar),\"<1>\",daysMissionComplete-daysMission));",
+                        "        CustomEther('NisperEther',3,'ZelDomiksQuest',Format(CT(\"Script.Mod_RefNisper.581\"),\"<0>\",StarName(targetStar),\"<1>\",daysMissionComplete-daysMission));",
                         "        for(i=0;i<difficultOfPirates/2+10;i=i+1){",
                         "            dom=BuyWarrior(ourPlanet,50+20*difficultOfPirates);",
                         "            ourHullSize=300+25*difficultOfPirates;",

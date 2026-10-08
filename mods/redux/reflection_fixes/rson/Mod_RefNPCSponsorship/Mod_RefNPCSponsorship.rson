@@ -64,7 +64,7 @@
                     "#": 7,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -105,7 +105,7 @@
                         "}",
                         "if(ShipWealth(Player()) < GalaxyMoney(2) && PaymentCD == 0 && CurTurn() > 1000 + GalaxyDiffLevels() && !CoalitionDefeated() && ControlledSystems(0) > 5) {",
                         "    if(Rnd(1,5) == 5) {",
-                        "        NewsAdd('Вы не забыли про существование фонда бедных рейнджеров? Галактическому Совету не хочется, чтобы рейнджеры бедствовали, поэтому фонд перевёл вам небольшую субсидию.');",
+                        "        NewsAdd(CT(\"Script.Mod_RefNPCSponsorship.0\"));",
                         "        ShipMoney(Player(),ShipMoney(Player())+GalaxyMoney(3));",
                         "        Sound('Sound.NewMsg');",
                         "    }",

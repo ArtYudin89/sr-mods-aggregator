@@ -218,7 +218,7 @@
                     "#": 9,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -244,10 +244,10 @@
                     "Code": [
                         "if(PlayerBridge()==12) {",
                         "  AddDialogInject('CamoDialog',CT(\"Script.Mod_RefBridgeCamo.3\"),CT(\"Script.Mod_RefBridgeCamo.2\"),20);",
-                        "  if(PlayerChameleonCurType() == -1) temp_str = 'Неактивен';",
-                        "  if(PlayerChameleonCurType() == 0) temp_str = 'Блазероидной серии';",
-                        "  if(PlayerChameleonCurType() == 1) temp_str = 'Келлероидной серии';",
-                        "  if(PlayerChameleonCurType() == 2) temp_str = 'Терроноидной серии';",
+                        "  if(PlayerChameleonCurType() == -1) temp_str = CT(\"Script.Mod_RefBridgeCamo.17\");",
+                        "  if(PlayerChameleonCurType() == 0) temp_str = CT(\"Script.Mod_RefBridgeCamo.16\");",
+                        "  if(PlayerChameleonCurType() == 1) temp_str = CT(\"Script.Mod_RefBridgeCamo.15\");",
+                        "  if(PlayerChameleonCurType() == 2) temp_str = CT(\"Script.Mod_RefBridgeCamo.14\");",
                         "  K = PlayerChameleonCharges(1); //серии: 0 - Блазер, 1 - Келлер, 2 - Террон (K и B были перепутаны)",
                         "  B = PlayerChameleonCharges(0);",
                         "  T = PlayerChameleonCharges(2);",

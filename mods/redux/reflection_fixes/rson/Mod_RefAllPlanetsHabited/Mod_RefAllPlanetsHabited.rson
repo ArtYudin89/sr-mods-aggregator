@@ -64,7 +64,7 @@
                     "#": 6,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -82,11 +82,11 @@
                         "        if(PlanetOwner(StarPlanets(GalaxyStar(i),j)) == 6) {",
                         "            rand = Rnd(1,5);",
                         "            // В родных системах заселяем всё своими же (раньше случайная раса ниже перезаписывала родную)",
-                        "            if(Name(GalaxyStar(i)) == 'Тарон') rand = 1;",
-                        "            if(Name(GalaxyStar(i)) == 'Пхедок') rand = 2;",
-                        "            if(Name(GalaxyStar(i)) == 'Солнце') rand = 3;",
-                        "            if(Name(GalaxyStar(i)) == 'Атлан') rand = 4;",
-                        "            if(Name(GalaxyStar(i)) == 'Краа') rand = 5;",
+                        "            if(Name(GalaxyStar(i)) == substr(CT('Star.00'),0,findsubstr(CT('Star.00'),','))) rand = 1;",
+                        "            if(Name(GalaxyStar(i)) == substr(CT('Star.01'),0,findsubstr(CT('Star.01'),','))) rand = 2;",
+                        "            if(Name(GalaxyStar(i)) == substr(CT('Star.02'),0,findsubstr(CT('Star.02'),','))) rand = 3;",
+                        "            if(Name(GalaxyStar(i)) == substr(CT('Star.03'),0,findsubstr(CT('Star.03'),','))) rand = 4;",
+                        "            if(Name(GalaxyStar(i)) == substr(CT('Star.04'),0,findsubstr(CT('Star.04'),','))) rand = 5;",
                         "            PlanetRace(StarPlanets(GalaxyStar(i),j),rand - 1);",
                         "            if(StarOwner(GalaxyStar(i)) == 1) PlanetOwner(StarPlanets(GalaxyStar(i),j),5);",
                         "            if(StarOwner(GalaxyStar(i)) == 2) PlanetOwner(StarPlanets(GalaxyStar(i),j),7);",

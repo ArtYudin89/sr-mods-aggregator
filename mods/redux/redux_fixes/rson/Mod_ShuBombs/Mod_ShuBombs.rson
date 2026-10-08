@@ -116,7 +116,7 @@
                     "#": 15,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -248,7 +248,7 @@
                         "if (ArrayDim(tempArr) > 1) {",
                         "  for (int i = 1; i < ArrayDim(tempArr); i = i + 1) InjectAnswer('LaunchNuke', Name(tempArr[i]) + '<Object=' + tempArr[i] + ',23,17,0>', i);",
                         "}",
-                        "InjectAnswer('LaunchNuke', 'Отмена', -1);"
+                        "InjectAnswer('LaunchNuke', CT(\"Script.Mod_ShuBombs.6\"), -1);"
                     ]
                 },
                 {

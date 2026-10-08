@@ -512,7 +512,7 @@
                     "#": 20,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -924,7 +924,7 @@
                         "}",
                         "if(PlayerDebtCnt() == 0) {",
                         "  Sound('Sound.NewMsg');",
-                        "  NewsAdd('Вы погасили свою задолженность, и коллекторы вам больше не страшны');",
+                        "  NewsAdd(CT(\"Script.Mod_RefCollectors.27\"));",
                         "  SetRelationGroup(GroupCommander,PlayerGroup,2);",
                         "  SetRelationGroup(CollectorsGroup,PlayerGroup,2);",
                         "  End = 1;",

@@ -756,7 +756,7 @@
                     "Code.Type": "Turn",
                     "Code": [
                         "tmode = 0;",
-                        "InjectAnswer('PickColor','Поменять цвет',0);",
+                        "InjectAnswer('PickColor',CT(\"Script.Mod_ColorName.208\"),0);",
                         "if(DeleteTags(ShipName(Player())) != ShipName(Player())) {",
                         "  DAdd(6);",
                         "}",
@@ -889,7 +889,7 @@
                     "Code.Type": "Turn",
                     "Code": [
                         "tmode = 1;",
-                        "InjectAnswer('PickColor','Поменять цвет',0);",
+                        "InjectAnswer('PickColor',CT(\"Script.Mod_ColorName.208\"),0);",
                         "if(DeleteTags(ShipName(ShipPartners(Player(),tint1))) != ShipName(ShipPartners(Player(),tint1))) {",
                         "  DAdd(19);",
                         "}",

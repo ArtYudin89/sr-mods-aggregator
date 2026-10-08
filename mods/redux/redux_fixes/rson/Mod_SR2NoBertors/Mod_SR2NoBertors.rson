@@ -1,0 +1,333 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_SR2NoBertors",
+    "ScriptFileOut": "D:\\Mod_SR2NoBertors.scr",
+    "ScriptTextOut": "D:\\Mod_SR2NoBertors.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [],
+            "DialogMessages": [],
+            "Dialogs": [],
+            "Groups": [
+                {
+                    "Type": "TGroup",
+                    "Name": "GroupNew",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 9,
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 310,
+                    "Parent": -1,
+                    "#": 10,
+                    "Code.Type": "Global",
+                    "Code": [
+                        "GRun();"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 310,
+                    "Parent": -1,
+                    "#": 11,
+                    "Code.Type": "Init",
+                    "Code": [
+                        "for(j=0;GalaxyStars()>j;j=j+1) {",
+                        "    star = GalaxyStar(i);",
+                        "    for(i=0;StarShips(star)>i;i=i+1) {",
+                        "        ship = StarShips(star,i);",
+                        "        if(ShipOwner(ship) != 1) continue;",
+                        "        if(ShipCustomFaction(ship) != '') continue;",
+                        "        if(ShipSubType(ship) > 5) {",
+                        "            OrderNone(ship);",
+                        "            OrderLock(ship);",
+                        "            ShipDestroy(ship);",
+                        "        }",
+                        "    }",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 310,
+                    "Parent": -1,
+                    "#": 12,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(GalaxyShipId() > lastShipId) {",
+                        "    //Перебор Галактики, раздаём рейнджерам системы жизнеобеспечения капсул",
+                        "    int cnt=BuildListOfNewShips(tarr1,lastShipId,1,32,1,'');",
+                        "    if(cnt) {    //Если найден хотя бы один корабль",
+                        "        for(i=0;i<ArrayDim(tarr1);i=i+1) {",
+                        "            cnt=0;    //Обнуляем флаг",
+                        "            dword cur_ship=tarr1[i];    //Выбираем корабль",
+                        "            if(IsPlayer(cur_ship)) continue;",
+                        "            if(ShipSubType(cur_ship) > 5) {",
+                        "                OrderNone(cur_ship);",
+                        "                OrderLock(cur_ship);",
+                        "                ShipDestroy(cur_ship);",
+                        "            }",
+                        "        }",
+                        "    }",
+                        "    //Обновляем Id последнего рождённого корабля",
+                        "    lastShipId = GalaxyShipId();",
+                        "}"
+                    ]
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Type": "TPlanet",
+                    "Name": "PlanetNew",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 8,
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew"
+                }
+            ],
+            "Ships": [
+                {
+                    "Type": "TStarShip",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 7,
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew"
+                }
+            ],
+            "Stars": [
+                {
+                    "Type": "TStar",
+                    "Name": "StarNew",
+                    "Pos.x": 0,
+                    "Pos.y": 90,
+                    "Parent": -1,
+                    "#": 6,
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
+                }
+            ],
+            "States": [
+                {
+                    "Type": "TState",
+                    "Name": "StateNew",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 13,
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "ship",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 60,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "j",
+                    "Pos.x": 120,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "star",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "lastShipId",
+                    "Pos.x": 240,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tarr1",
+                    "Pos.x": 390,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 7,
+            "End": 6,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 8,
+            "End": 6,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 9,
+            "End": 8,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 9,
+            "End": 13,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_SR2NoBertors\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
+}

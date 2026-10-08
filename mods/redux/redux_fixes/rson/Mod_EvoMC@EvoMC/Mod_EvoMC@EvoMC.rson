@@ -605,7 +605,7 @@
                     "#": 40,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -914,7 +914,7 @@
                         "                    }",
                         "                }",
                         "            }",
-                        "            else ShipAddCustomShipInfo(cur_ship, 'EvoMC_Vaccination', '', RndObject(1200, 1700, cur_ship), 0, 0, ill_num, 0, 0);",
+                        "            else ShipAddCustomShipInfo(cur_ship, 'EvoMC_Vaccination', '', RndObject(1200, 1700, cur_ship), 0, 0, ill_num, '', '');",
                         "            ShipCustomShipInfoDescription(cur_ship, 'EvoMC_Vaccination', CT('ShipInfo.AddInfo.CustomInfos.EvoMC_Vaccination.Description') + tstr1);",
                         "        }",
                         "    }",
@@ -1105,7 +1105,7 @@
                         "    {",
                         "        if(i >= 5 && i <= 7) continue; //Нельзя привиться от лучевой болезни, ослепления, наркозависимости, вихревой контузии, мышечного растяжения и нового молизона (последнее вообще не болезнь, а гаальская беременность)",
                         "        if(i == illness1 || i == illness2 || i == illness3) continue; //Пропускаем болезни, от которых игрок уже сделал прививки",
-                        "        if(ShipHealthFactor(Player(), i)) continue; //Нельзя привиться от уже идущей болезни",
+                        "        if(ShipHealthFactor(Player(), i + 1)) continue; //Нельзя привиться от уже идущей болезни (i - номер в Lang, код болезни на 1 больше)",
                         "",
                         "        //Убираем прививки от тех болезней, которыми игрок не заболеет НИКОГДА (как и в списке ответов)",
                         "        if(i == 11 && ShipPilotRace(Player()) != Gaal) continue;",
@@ -1183,7 +1183,7 @@
                         "    ShipCustomShipInfoTextData(Player(), 'EvoMC_Vaccination', i, ill_num);",
                         "    ShipCustomShipInfoData(Player(), 'EvoMC_Vaccination', i, RndObject(350, 370, cur_ruin));",
                         "}",
-                        "else ShipAddCustomShipInfo(Player(), 'EvoMC_Vaccination', '', RndObject(350, 370, cur_ruin), -1, -1, ill_num, 0, 0);",
+                        "else ShipAddCustomShipInfo(Player(), 'EvoMC_Vaccination', '', RndObject(350, 370, cur_ruin), -1, -1, ill_num, '', '');",
                         "ShipCustomShipInfoDescription(Player(), 'EvoMC_Vaccination', CT('ShipInfo.AddInfo.CustomInfos.EvoMC_Vaccination.Description') + tstr1);",
                         "",
                         "cost = tarr1[ill_num];",
@@ -2352,7 +2352,7 @@
                         "  {",
                         "      if(i >= 5 && i <= 7) continue; //Нельзя привиться от лучевой болезни, ослепления, наркозависимости, вихревой контузии, мышечного растяжения и нового молизона (последнее вообще не болезнь, а гаальская беременность)",
                         "      if(i == illness1 || i == illness2 || i == illness3) continue; //Пропускаем болезни, от которых игрок уже сделал прививки",
-                        "      if(ShipHealthFactor(Player(), i)) continue; //Нельзя привиться от уже идущей болезни",
+                        "      if(ShipHealthFactor(Player(), i + 1)) continue; //Нельзя привиться от уже идущей болезни (i - номер в Lang, код болезни на 1 больше)",
                         "",
                         "      //Убираем прививки от тех болезней, которыми игрок не заболеет НИКОГДА",
                         "      if(i == 11 && ShipPilotRace(Player()) != Gaal) continue;",

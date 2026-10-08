@@ -270,7 +270,7 @@
                     "#": 13,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -723,11 +723,11 @@
                         "//Дать ли игроку доп бафф?",
                         "ForRace = ShipPilotRace(Player());",
                         "ForPlanet = -1; //TVar: без сброса оставалось значение с прошлой планеты (и 0 = малоки)",
-                        "if(Name(GetShipPlanet(Player())) == 'Земля') ForPlanet = 2;",
-                        "if(Name(GetShipPlanet(Player())) == 'Рамгатру') ForPlanet = 0;",
-                        "if(Name(GetShipPlanet(Player())) == 'Гаалдок') ForPlanet = 4;",
-                        "if(Name(GetShipPlanet(Player())) == 'Эйпентак') ForPlanet = 3;",
-                        "if(Name(GetShipPlanet(Player())) == 'Рахиш') ForPlanet = 1;",
+                        "if(Name(GetShipPlanet(Player())) == CT('PlanetName.Solar 2')) ForPlanet = 2;",
+                        "if(Name(GetShipPlanet(Player())) == CT('PlanetName.Maloc 02')) ForPlanet = 0;",
+                        "if(Name(GetShipPlanet(Player())) == CT('PlanetName.Gaal 02')) ForPlanet = 4;",
+                        "if(Name(GetShipPlanet(Player())) == CT('PlanetName.Fei 02')) ForPlanet = 3;",
+                        "if(Name(GetShipPlanet(Player())) == CT('PlanetName.Peleng 02')) ForPlanet = 1;",
                         "if(ForPlanet == ForRace) {",
                         "    ShipCustomShipInfoData(Player(),'RefCoffeeFlag',2,1);",
                         "}",
@@ -843,11 +843,11 @@
                         "//Дать ли игроку доп бафф?",
                         "ForRace = ShipPilotRace(Player());",
                         "ForPlanet = -1; //TVar: без сброса оставалось значение с прошлой планеты (и 0 = малоки)",
-                        "if(Name(GetShipPlanet(Player())) == 'Земля') ForPlanet = 2;",
-                        "if(Name(GetShipPlanet(Player())) == 'Рамгатру') ForPlanet = 0;",
-                        "if(Name(GetShipPlanet(Player())) == 'Гаалдок') ForPlanet = 4;",
-                        "if(Name(GetShipPlanet(Player())) == 'Эйпентак') ForPlanet = 3;",
-                        "if(Name(GetShipPlanet(Player())) == 'Рахиш') ForPlanet = 1;",
+                        "if(Name(GetShipPlanet(Player())) == CT('PlanetName.Solar 2')) ForPlanet = 2;",
+                        "if(Name(GetShipPlanet(Player())) == CT('PlanetName.Maloc 02')) ForPlanet = 0;",
+                        "if(Name(GetShipPlanet(Player())) == CT('PlanetName.Gaal 02')) ForPlanet = 4;",
+                        "if(Name(GetShipPlanet(Player())) == CT('PlanetName.Fei 02')) ForPlanet = 3;",
+                        "if(Name(GetShipPlanet(Player())) == CT('PlanetName.Peleng 02')) ForPlanet = 1;",
                         "if(ForPlanet == ForRace) {",
                         "    ShipCustomShipInfoData(Player(),'RefCoffeeFlag',2,1);",
                         "}",

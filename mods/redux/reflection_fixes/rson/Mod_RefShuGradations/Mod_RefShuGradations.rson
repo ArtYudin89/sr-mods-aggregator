@@ -64,7 +64,7 @@
                     "#": 10,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -83,7 +83,7 @@
                         "    {",
                         "        temp_int=0;",
                         "        temp_dword=tempArr[i];",
-                        "        if(ShipName(temp_dword) == 'Лякуша Шу') {",
+                        "        if(ShipName(temp_dword) == CT(\"Script.Mod_RefShuGradations.1\")) {",
                         "            ShipSkill(temp_dword,0,4);",
                         "            ShipSkill(temp_dword,1,3);",
                         "            ShipRefit(temp_dword,GalaxyTechLevel()*Rnd(100,160)+Rnd(100,200),1200000);",

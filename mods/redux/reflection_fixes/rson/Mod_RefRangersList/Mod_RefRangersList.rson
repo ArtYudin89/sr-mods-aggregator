@@ -512,7 +512,7 @@
                     "#": 16,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -1100,7 +1100,7 @@
                         "                    RangersList = RangersList + CT(\"Script.Mod_RefRangersList.33\") + ShipDroidRepair(cur_ship) + CT('FormInfo.br');",
                         "                    RangersList = RangersList + temp_str + CT('FormInfo.br');",
                         "                    CostIncrease = 1;",
-                        "                    AddDialogInject('DialNaim','','Связаться с '+Name(cur_ship),30,0,cur_ship); //GAnswerData - 6-й аргумент (было: i как приоритет, корабль не передавался)",
+                        "                    AddDialogInject('DialNaim','',CT(\"Script.Mod_RefRangersList.52\")+Name(cur_ship),30,0,cur_ship); //GAnswerData - 6-й аргумент (было: i как приоритет, корабль не передавался)",
                         "                }",
                         "            }",
                         "        }",
@@ -1129,7 +1129,7 @@
                         "    }",
                         "}",
                         "//Если никого не нашли :(",
-                        "if(cnt1 != 1) RangersList = RangersList + 'Подходящих кандидатур в текущем секторе не обнаружено';",
+                        "if(cnt1 != 1) RangersList = RangersList + CT(\"Script.Mod_RefRangersList.51\");",
                         "DChange(1);",
                         "exit;"
                     ]

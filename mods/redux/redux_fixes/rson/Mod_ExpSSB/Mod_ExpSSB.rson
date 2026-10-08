@@ -824,7 +824,7 @@
                     "#": 60,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -861,18 +861,18 @@
                         "    }",
                         "}",
                         "",
-                        "cur_art_sb2_srch_type_name[0] = 'Корпус';",
-                        "cur_art_sb2_srch_type_name[1] = 'Двигатель';",
-                        "cur_art_sb2_srch_type_name[2] = 'Топливный бак';",
-                        "cur_art_sb2_srch_type_name[3] = 'Ремонтный дроид';",
-                        "cur_art_sb2_srch_type_name[4] = 'Захват';",
-                        "cur_art_sb2_srch_type_name[5] = 'Защитный генератор';",
-                        "cur_art_sb2_srch_type_name[6] = 'Сканер';",
-                        "cur_art_sb2_srch_type_name[7] = 'Радар';",
-                        "cur_art_sb2_srch_type_name[8] = 'Энергетическое оружие';",
-                        "cur_art_sb2_srch_type_name[9] = 'Осколочное оружие';",
-                        "cur_art_sb2_srch_type_name[10] = 'Ракетное оружие';",
-                        "cur_art_sb2_srch_type_name[11] = 'Все типы';"
+                        "cur_art_sb2_srch_type_name[0] = CT('Items.Hull.ShortName');",
+                        "cur_art_sb2_srch_type_name[1] = CT('Items.Engine.ShortName');",
+                        "cur_art_sb2_srch_type_name[2] = CT('Items.FuelTanks.ShortName');",
+                        "cur_art_sb2_srch_type_name[3] = CT('Items.RepairRobot.ShortName');",
+                        "cur_art_sb2_srch_type_name[4] = CT('Items.CargoHook.ShortName');",
+                        "cur_art_sb2_srch_type_name[5] = CT('Items.DefGenerator.ShortName');",
+                        "cur_art_sb2_srch_type_name[6] = CT('Items.Scaner.ShortName');",
+                        "cur_art_sb2_srch_type_name[7] = CT('Items.Radar.ShortName');",
+                        "cur_art_sb2_srch_type_name[8] = CT('FormInfo.M12TypeEne') + ' ' + lowercase(CT('Items.Goods.Name.7'));",
+                        "cur_art_sb2_srch_type_name[9] = CT('FormInfo.M12TypeOsk') + ' ' + lowercase(CT('Items.Goods.Name.7'));",
+                        "cur_art_sb2_srch_type_name[10] = CT('FormInfo.M12TypeRak') + ' ' + lowercase(CT('Items.Goods.Name.7'));",
+                        "cur_art_sb2_srch_type_name[11] = CT(\"Script.Mod_ExpSSB.287\");"
                     ]
                 },
                 {
@@ -1479,7 +1479,7 @@
                         "{",
                         "    srch_type=cur_art_sb2_srch_type_name[11];",
                         "}",
-                        "if(ItemType(GAnswerData)==t_ArtefactMiniExpl)srch_type='Оружие';",
+                        "if(ItemType(GAnswerData)==t_ArtefactMiniExpl)srch_type=CT('Items.Goods.Name.7');",
                         "if(ItemType(GAnswerData)==t_ArtDefToEnergy)",
                         "{",
                         "    if(cur_art_sb2_srch_type[8]<100 && cur_art_sb2_srch_type[5]<100)",
@@ -1499,13 +1499,13 @@
                         "{",
                         "    if(cur_art_sb2_srch_type[5]<100 && cur_art_sb2_srch_type[8]<100 && cur_art_sb2_srch_type[9]<100 && cur_art_sb2_srch_type[10]<100)",
                         "    {",
-                        "        srch_type=cur_art_sb2_srch_type_name[5]+', '+'Оружие';",
+                        "        srch_type=cur_art_sb2_srch_type_name[5]+', '+CT('Items.Goods.Name.7');",
                         "    }",
                         "    if(cur_art_sb2_srch_type[5]<100 && cur_art_sb2_srch_type[8]==100 && cur_art_sb2_srch_type[9]==100 && cur_art_sb2_srch_type[10]==100)",
                         "    {",
                         "        srch_type=cur_art_sb2_srch_type_name[5];",
                         "    }",
-                        "    if(cur_art_sb2_srch_type[5]==100)srch_type='Оружие';",
+                        "    if(cur_art_sb2_srch_type[5]==100)srch_type=CT('Items.Goods.Name.7');",
                         "}",
                         "DChange(2);",
                         "exit;"
@@ -2176,7 +2176,7 @@
                         "            if(ItemType(cur_bh_item)<=t_Hull || ItemType(cur_bh_item)>=t_Protoplasm)continue;",
                         "            if(ItemType(cur_bh_item)<t_Weapon1 )",
                         "            {",
-                        "                InjectAnswer('CombiningMMChooseDialogSSB',DeleteTags(Format('<0> (транк)',\"<0>\",Name(cur_bh_item))),cur_bh_item);",
+                        "                InjectAnswer('CombiningMMChooseDialogSSB',DeleteTags(Format('<0>',\"<0>\",Name(cur_bh_item))+CT(\"Script.Mod_ExpSSB.158\")),cur_bh_item);",
                         "            }",
                         "            if(ItemType(cur_bh_item)>=t_Weapon1 )",
                         "            {",

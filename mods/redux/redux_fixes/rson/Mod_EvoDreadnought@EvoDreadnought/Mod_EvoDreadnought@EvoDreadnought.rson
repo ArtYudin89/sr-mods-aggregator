@@ -188,7 +188,7 @@
                     "#": 45,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -1042,7 +1042,7 @@
                         "                ItemExtraSpecialsAddByType(hull, FindBonusByNameInCfg('EvoArmada_ExtraSpecialsLineBreak'));",
                         "                tint = round((7.5 * GeneralDiffLevel) + (7.5 * PortionInDiapason(hull_level, 1, 8, 1, 10)));",
                         "                ItemExtraSpecialsAddByType(hull, FindBonusByNameInCfg('EvoArmada_bonWRadius'), tint);",
-                        "                tint = round((2.0 * GeneralDiffLevel) + (20.0 * PortionInDiapason(hull_level, 1, 8, 1, 10)));",
+                        "                tint = round((2.0 * GeneralDiffLevel) + (2.0 * PortionInDiapason(hull_level, 1, 8, 1, 10)));",
                         "                ItemExtraSpecialsAddByType(hull, FindBonusByNameInCfg('EvoArmada_bonHull'), tint);",
                         "                //Также увеличиваем скорость для компенсации замедления от возросших размеров базы",
                         "                tint = 400;",

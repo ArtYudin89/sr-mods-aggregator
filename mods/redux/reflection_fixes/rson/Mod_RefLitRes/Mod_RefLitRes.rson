@@ -135,7 +135,7 @@
                     "#": 10,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -194,7 +194,7 @@
                         "    temp_int2 = GAnswerData;",
                         "}",
                         "if(GAnswerData == 0) {",
-                        "    temp_int2 = CountBox('Bm.ItemsUseless.2Usl_Pilot_s','Выберите нужную страницу',1,CT('BooksCategory.Book'+temp_int+'.PagesCount'));",
+                        "    temp_int2 = CountBox('Bm.ItemsUseless.2Usl_Pilot_s',CT(\"Script.Mod_RefLitRes.10\"),1,CT('BooksCategory.Book'+temp_int+'.PagesCount'));",
                         "}",
                         "if(temp_int2 < 1) temp_int2 = 1; //отмена выбора страницы",
                         "temp_str = CT('BooksCategory.Book'+temp_int+'.Page'+temp_int2); //текст страницы (раньше не загружался - показывалось предисловие);",

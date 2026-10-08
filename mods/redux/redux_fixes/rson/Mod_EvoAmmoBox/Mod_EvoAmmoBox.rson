@@ -259,7 +259,7 @@
                     "#": 21,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -369,7 +369,7 @@
                         "        tdw2=UselessItemData(tdw,1)-UselessItemData(tdw,2);",
                         "        if(tdw2) {",
                         "            tint=tint+1;",
-                        "            tstr2=tstr2+'</color>'+tint+') '+Name(tdw)+Format(' <0></color>',\"<0>\",UselessItemData(tdw,2))+'/'+Format('<0></color>',\"<0>\",UselessItemData(tdw,1))+Format(' за <0> cr.',\"<0>\",rCost*tdw2)+CT(\"Script.Mod_EvoAmmoBox.64\");",
+                        "            tstr2=tstr2+'</color>'+tint+') '+Name(tdw)+Format(' <0></color>',\"<0>\",UselessItemData(tdw,2))+'/'+Format('<0></color>',\"<0>\",UselessItemData(tdw,1))+Format(CT(\"Script.Mod_EvoAmmoBox.77\"),\"<0>\",rCost*tdw2)+CT(\"Script.Mod_EvoAmmoBox.64\");",
                         "        }",
                         "    }",
                         "}",

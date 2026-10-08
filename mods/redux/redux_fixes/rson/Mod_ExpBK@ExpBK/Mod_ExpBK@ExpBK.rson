@@ -2971,7 +2971,7 @@
                     "#": 95,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -3618,7 +3618,7 @@
                         "    {",
                         "        //Маршал-вставка",
                         "        if(PlayerDebtCnt() > 0) {",
-                        "            AddDialogBlock('Я желаю поучаствовать в развитии вашей базы',1); //Ибо доверия к такому чуваку ноль, а то ещё продаст шмот базы для оплаты кредита",
+                        "            AddDialogBlock(CT('FormRuins.GN.Modern.PlayerAsk'),1); //Ибо доверия к такому чуваку ноль, а то ещё продаст шмот базы для оплаты кредита",
                         "            //В ванилле все услуги зависели от оплаты кредита, чё",
                         "        }",
                         "        else AddDialogInject('FinProducts', '', CT(\"Script.Mod_ExpBK.345\"), 5);",
@@ -7598,7 +7598,7 @@
                     "#": 539,
                     "Code.Type": "Turn",
                     "Code": [
-                        "temp_dword = NumberBox('Bm.Items.2Minerals','Выберите сумму для внесения на счёт',1,temp_int_4,ShipMoney(Player()));",
+                        "temp_dword = NumberBox('Bm.Items.2Minerals',CT(\"Script.Mod_ExpBK.358\"),1,temp_int_4,ShipMoney(Player()));",
                         "if(temp_dword > 0) {",
                         "    ShipMoney(Player(),ShipMoney(Player()) - temp_dword);",
                         "    UselessItemData(IdToItem(CardID),1,UselessItemData(IdToItem(CardID),1) - temp_dword);",

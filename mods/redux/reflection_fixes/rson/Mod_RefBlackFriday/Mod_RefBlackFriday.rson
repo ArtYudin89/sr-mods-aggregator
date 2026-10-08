@@ -1,0 +1,355 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RefBlackFriday",
+    "ScriptFileOut": "D:\\Mod_RefBlackFriday.scr",
+    "ScriptTextOut": "D:\\Mod_RefBlackFriday.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [],
+            "DialogMessages": [],
+            "Dialogs": [],
+            "Groups": [
+                {
+                    "Type": "TGroup",
+                    "Name": "GroupNew",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 13,
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "PlanetNew",
+                    "+State": 0
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 310,
+                    "Parent": -1,
+                    "#": 14,
+                    "Code.Type": "Global",
+                    "Code": [
+                        "if(!GCntRun(GScriptName)) GRun();"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 310,
+                    "Parent": -1,
+                    "#": 15,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(SaleCD != 0) SaleCD = SaleCD - 1;",
+                        "if(SaleCD == 0) {",
+                        "    ArrayClear(BKarr);",
+                        "    for(i=0;GalaxyStars()>i;i=i+1) {",
+                        "        for(j=0;StarShips(GalaxyStar(i))>j;j=j+1) {",
+                        "            if(ShipTypeN(StarShips(GalaxyStar(i),j)) == t_BK) ArrayAdd(BKarr,Id(StarShips(GalaxyStar(i),j)));",
+                        "        }",
+                        "    }",
+                        "    if(ArrayDim(BKarr)>1) {",
+                        "        int jopa = ArrayDim(BKarr);",
+                        "        //SFT(jopa);",
+                        "        ForRand = Rnd(1,jopa-1);",
+                        "        GoodsRuinsForBuy(IdToShip(BKarr[ForRand]),t_Alcohol);",
+                        "        GoodsRuinsForBuy(IdToShip(BKarr[ForRand]),t_Arms);",
+                        "        GoodsRuinsForBuy(IdToShip(BKarr[ForRand]),t_Technics);",
+                        "        GoodsRuinsForBuy(IdToShip(BKarr[ForRand]),t_Luxury);",
+                        "        SaleCD = Rnd(max(70,150-jopa*10),max(100,200-jopa*15));",
+                        "        AddPlanetNews(Format(CT('BlackFridayNews.'+Rnd(1,CT('BlackFridayNews.Count'))),'base',Name(IdToShip(BKarr[ForRand]))),100);",
+                        "    }",
+                        "}"
+                    ]
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Type": "TPlanet",
+                    "Name": "PlanetNew",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 12,
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "StarNew"
+                }
+            ],
+            "Ships": [
+                {
+                    "Type": "TStarShip",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 11,
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "StarNew"
+                }
+            ],
+            "Stars": [
+                {
+                    "Type": "TStar",
+                    "Name": "StarNew",
+                    "Pos.x": 0,
+                    "Pos.y": 90,
+                    "Parent": -1,
+                    "#": 10,
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
+                }
+            ],
+            "States": [
+                {
+                    "Type": "TState",
+                    "Name": "StateNew",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 16,
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "SaleCD",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "120",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "BKarr",
+                    "Pos.x": 90,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tempArr",
+                    "Pos.x": 180,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Array",
+                    "Init": "1",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 300,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tdwd",
+                    "Pos.x": 360,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tShip",
+                    "Pos.x": 420,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "j",
+                    "Pos.x": 510,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "tStr",
+                    "Pos.x": 570,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 7,
+                    "Var.Type": "Str",
+                    "Init": "",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "ForRand",
+                    "Pos.x": 630,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 8,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "lastShipId",
+                    "Pos.x": 750,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 9,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 11,
+            "End": 10,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 10,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 12,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 16,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_RefBlackFriday\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
+}

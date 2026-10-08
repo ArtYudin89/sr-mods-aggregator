@@ -105,7 +105,7 @@
                     "#": 16,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -185,6 +185,12 @@
                         "    tstr1 = tstr1 + Format('<br>') + '</color>' + CT('Script.Mod_EvoRepairBox.ForSet');",
                         "    tstr1 = Format(tstr1,'name',CT('UselessItems.'+tstr2+'.Name'));",
                         "    tstr1 = Format(tstr1,'desc',CT('UselessItems.'+tstr2+'.Text'));",
+                        "    //Процент ремонта вне боя (формулы из OnActCode наборов, Data1 в диалоге движок не подставляет)",
+                        "    tdwd = ShipSkill(Player(),2);",
+                        "    if(i==1) tdwd = 4+min(4*tdwd,22)/2;",
+                        "    if(i==2) tdwd = 14+6*tdwd;",
+                        "    if(i==3) tdwd = 7+3*tdwd;",
+                        "    tstr1 = Format(tstr1,'<Data1'+'>',tdwd);",
                         "    tstr1 = Format(tstr1,'cost',SetsArray[tstr2,'Cost']);",
                         "    tstr1 = Format(tstr1,'coun',SetsArray[tstr2,'Count']);",
                         "    tstr1 = tstr1 + Format('<br>') + '</color>' + DefSplt;",
@@ -244,6 +250,7 @@
                         "        AddDialogBlock(tstr1,1);",
                         "    }",
                         "}",
+                        "tstr2 = '</color>' + CT('Script.Mod_EvoRepairBox.PlayerNo');",
                         "DAdd(0);"
                     ]
                 }

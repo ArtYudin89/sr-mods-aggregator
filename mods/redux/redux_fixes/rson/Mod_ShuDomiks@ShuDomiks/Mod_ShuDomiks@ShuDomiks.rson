@@ -2552,7 +2552,7 @@
                     "#": 136,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -3477,7 +3477,7 @@
                         "                for(j = 1; j < from_cur_star; j = j + 1)",
                         "                {",
                         "                    //Мобилизуем келлероида в атаку на систему, в которой была уничтожена верфь",
-                        "                    ShipJoin('DomiksManualControl', temp_arr[j], 'DomikJumpToStar', Id(cur_star));",
+                        "                    ShipJoin(DomiksManualControl, temp_arr[j], 'DomikJumpToStar', Id(cur_star));",
                         "                    doms_to_send = doms_to_send - 1;",
                         "                }",
                         "",
@@ -3530,8 +3530,18 @@
                         "    }",
                         "}",
                         "",
-                        "function PlayerActCode() //t_OnEnteringForm, t_OnLeavingForm, t_OnShowingStarInfo",
+                        "function PlayerActCode() //t_OnEnteringForm, t_OnLeavingForm, t_OnShowingStarInfo, t_OnDealingFatalDamage",
                         "{",
+                        "    if(ScriptItemActionType(t_OnDealingFatalDamage))",
+                        "    {",
+                        "        //Очки военного лётчика ShuWarriors за убитого супердоминатора (шкала в Lang ShuWarriors: 70). Остальные типы начисляет сам ShuWarriors",
+                        "        if(ShipType(ScriptItemActObject1()) == 'Superdominator')",
+                        "        {",
+                        "            if(CurrentMods('ShusRangers\\\\ShuWarriors') && !ShipOnSidePirateClan(Player())) ShipRankPoints(Player(), ShipRankPoints(Player()) + 70);",
+                        "        }",
+                        "        exit;",
+                        "    }",
+                        "",
                         "    str form = CurrentForm();",
                         "    if(form == 'Galaxy')",
                         "    {",
@@ -14298,7 +14308,7 @@
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
-                    "OnActCode": "[t_OnEnteringForm,t_OnLeavingForm,t_OnShowingStarInfo|]\r\nPlayerActCode();",
+                    "OnActCode": "[t_OnEnteringForm,t_OnLeavingForm,t_OnShowingStarInfo,t_OnDealingFatalDamage|]\r\nPlayerActCode();",
                     "EType": 0,
                     "EUnique": "",
                     "EMsg": ""
