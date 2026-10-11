@@ -478,7 +478,7 @@
                     "#": 23,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -508,9 +508,7 @@
                     "#": 25,
                     "Code.Type": "Turn",
                     "Code": [
-                        "if(SB_countdown > 0) SB_countdown = SB_countdown - 1;",
-                        "if(PB_countdown > 0) PB_countdown = PB_countdown - 1;",
-                        "if(MB_countdown > 0) MB_countdown = MB_countdown - 1;"
+                        "//Таймеры *_countdown хранят номер хода (CurTurn() + N), уменьшать их каждый ход не нужно;"
                     ]
                 },
                 {
@@ -537,15 +535,19 @@
                         "            {",
                         "                if(GalaxyTechLevel() > 3)",
                         "                {",
-                        "                    if(!CurrentMods('Expansion\\\\ExpHulls')) {",
-                        "                        if(GalaxyTechLevel() > 7) bonus_name = GetParFromString(BonusName(FindBonusByNameInCfg('ExpHulls_Bolide5')), CT('FormInfo.DoubleQuote'), 1, 1);",
-                        "                        else bonus_name = GetParFromString(BonusName(FindBonusByNameInCfg('ExpHulls_Bolide1')), CT('FormInfo.DoubleQuote'), 1, 1);",
-                        "                        AddDialogBlock(CT('FormRuins.SB.SpecialShip.Ask'), 2);",
-                        "                        AddDialogInject('RBK_Dialog_SB',Format(CT('FormRuins.'+temp_str+'.BuyHull.DialogStart'),'bonus',bonus_name), Format(CT('FormRuins.'+temp_str+'.BuyHull.PlayerAsk'),'bonus',bonus_name), 0);",
+                        "                    i = GalaxyTechLevel() - 3; //Уровень корпуса по ТУ: 4..8+ -> I..V",
+                        "                    if(i > 5) i = 5;",
+                        "                    if(CurrentMods('Expansion\\\\ExpScienceRanks'))",
+                        "                    {",
+                        "                        //Научное звание ограничивает уровень: со 2-го звания - до II, с 3-го - до IV, с 4-го - все",
+                        "                        if(PlayerScienceRank['CurrentRank'] < 2) i = 0;",
+                        "                        else if(PlayerScienceRank['CurrentRank'] < 3 && i > 2) i = 2;",
+                        "                        else if(PlayerScienceRank['CurrentRank'] < 4 && i > 4) i = 4;",
                         "                    }",
-                        "                    else if(PlayerScienceRank['CurrentRank'] > 1) {",
-                        "                        if(GalaxyTechLevel() > 7) bonus_name = GetParFromString(BonusName(FindBonusByNameInCfg('ExpHulls_Bolide5')), CT('FormInfo.DoubleQuote'), 1, 1);",
-                        "                        else bonus_name = GetParFromString(BonusName(FindBonusByNameInCfg('ExpHulls_Bolide1')), CT('FormInfo.DoubleQuote'), 1, 1);",
+                        "                    if(i > 0)",
+                        "                    {",
+                        "                        bonus_type = FindBonusByNameInCfg('ExpHulls_Bolide' + i);",
+                        "                        bonus_name = GetParFromString(BonusName(bonus_type), CT('FormInfo.DoubleQuote'), 1, 1);",
                         "                        AddDialogBlock(CT('FormRuins.SB.SpecialShip.Ask'), 2);",
                         "                        AddDialogInject('RBK_Dialog_SB',Format(CT('FormRuins.'+temp_str+'.BuyHull.DialogStart'),'bonus',bonus_name), Format(CT('FormRuins.'+temp_str+'.BuyHull.PlayerAsk'),'bonus',bonus_name), 0);",
                         "                    }",
@@ -557,9 +559,9 @@
                         "        {",
                         "            if(PB_countdown <= CurTurn())",
                         "            {",
-                        "                if(GetShipPirateRank(Player()) > 2)",
+                        "                if(GetShipPirateRank(Player()) > 1)",
                         "                {",
-                        "                    if(GetShipPirateRank(Player()) > 6) bonus_name = GetParFromString(BonusName(FindBonusByNameInCfg('ExpHulls_Killer5')), CT('FormInfo.DoubleQuote'), 1, 1);",
+                        "                    if(GetShipPirateRank(Player()) > 5) bonus_name = GetParFromString(BonusName(FindBonusByNameInCfg('ExpHulls_Killer5')), CT('FormInfo.DoubleQuote'), 1, 1);",
                         "                    else bonus_name = GetParFromString(BonusName(FindBonusByNameInCfg('ExpHulls_Killer1')), CT('FormInfo.DoubleQuote'), 1, 1);",
                         "                    AddDialogBlock(CT('FormRuins.PB.SpecialShip.Ask'), 2);",
                         "                    AddDialogInject('RBK_Dialog_PB', Format(CT('FormRuins.'+temp_str+'.BuyHull.DialogStart'),'bonus',bonus_name), Format(CT('FormRuins.'+temp_str+'.BuyHull.PlayerAsk'),'bonus',bonus_name), 0);",
@@ -631,11 +633,17 @@
                     "#": 68,
                     "Code.Type": "Turn",
                     "Code": [
-                        "if(GalaxyTechLevel() == 4 && PlayerScienceRank['CurrentRank'] > 1) bonus_type = FindBonusByNameInCfg('ExpHulls_Bolide1');",
-                        "else if(GalaxyTechLevel() == 5 && PlayerScienceRank['CurrentRank'] > 1) bonus_type = FindBonusByNameInCfg('ExpHulls_Bolide2');",
-                        "else if(GalaxyTechLevel() == 6 && PlayerScienceRank['CurrentRank'] > 2) bonus_type = FindBonusByNameInCfg('ExpHulls_Bolide3');",
-                        "else if(GalaxyTechLevel() == 7 && PlayerScienceRank['CurrentRank'] > 2) bonus_type = FindBonusByNameInCfg('ExpHulls_Bolide4');",
-                        "else if(GalaxyTechLevel() >= 8 && PlayerScienceRank['CurrentRank'] > 3) bonus_type = FindBonusByNameInCfg('ExpHulls_Bolide5');",
+                        "i = GalaxyTechLevel() - 3; //Уровень корпуса по ТУ: 4..8+ -> I..V",
+                        "if(i > 5) i = 5;",
+                        "if(CurrentMods('Expansion\\\\ExpScienceRanks'))",
+                        "{",
+                        "    //Научное звание ограничивает уровень: со 2-го звания - до II, с 3-го - до IV, с 4-го - все",
+                        "    if(PlayerScienceRank['CurrentRank'] < 2) i = 0;",
+                        "    else if(PlayerScienceRank['CurrentRank'] < 3 && i > 2) i = 2;",
+                        "    else if(PlayerScienceRank['CurrentRank'] < 4 && i > 4) i = 4;",
+                        "}",
+                        "if(i < 1) i = 1;",
+                        "bonus_type = FindBonusByNameInCfg('ExpHulls_Bolide' + i);",
                         "",
                         "i = 0;",
                         "while(i < 3)",

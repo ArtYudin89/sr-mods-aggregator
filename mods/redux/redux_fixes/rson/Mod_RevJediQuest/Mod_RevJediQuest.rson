@@ -733,8 +733,8 @@
                     "#": 22,
                     "Code.Type": "Init",
                     "Code": [
-                        "SetName(GroupToShip(Target),'Люкс Небоходов');",
-                        "SetName(GroupToShip(Ranger),'Иван Кенобенко');",
+                        "SetName(GroupToShip(Target),CT(\"Script.Mod_RevJediQuest.86\"));",
+                        "SetName(GroupToShip(Ranger),CT(\"Script.Mod_RevJediQuest.85\"));",
                         "AddItemToShip(GroupToShip(Ranger),CreateEquipment(t_RepairRobot,Rnd(30,40),GalaxyTechLevel(),ShipOwner(GroupToShip(Ranger))));",
                         "AddItemToShip(GroupToShip(Ranger),CreateEquipment(t_DefGenerator,Rnd(30,40),GalaxyTechLevel(),ShipOwner(GroupToShip(Ranger))));",
                         "ItemLevel(ShipEqInSlot(GroupToShip(Ranger),t_Engine),GalaxyTechLevel());",

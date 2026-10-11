@@ -3359,7 +3359,7 @@
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "if(GetShipRuins(Player())) {",
-                        "    if(ShipType(GetShipRuins(Player())) == 'BC') {",
+                        "    if(ShipType(GetShipRuins(Player())) == 'BK') {",
                         "        AddDialogOverride('dBC',99);",
                         "    }",
                         "}"
@@ -5976,9 +5976,9 @@
                         "vState=4;",
                         "Sound('Sound.Buy');",
                         "ShipMoney(Player(),ShipMoney(Player())+(GalaxyMoney(3)*20));",
-                        "tdwd = iCapsule;",
+                        "tdwd = ScriptItemToItem(iCapsule);",
                         "ReleaseItemFromScript(iCapsule);",
-                        "FreeItem(GetItemFromShip(Player(),tdwd));",
+                        "if(tdwd) FreeItem(GetItemFromShip(Player(),tdwd));",
                         "DAdd(129);"
                     ]
                 },
@@ -6040,7 +6040,7 @@
                         "",
                         "for(i=0;StarPlanets(ShipStar(Player()))>i;i=i+1) {",
                         "    tdwd = StarPlanets(ShipStar(Player()),i);",
-                        "    if(PlanetOwner(tdwd) < 5) continue;",
+                        "    if(PlanetOwner(tdwd) >= 5) continue;",
                         "    if(GoodsAdd(tdwd,t_Technics,0) < 20) GoodsAdd(tdwd,t_Technics,20);",
                         "    if(GoodsAdd(tdwd,t_Narcotics,0) < 10) GoodsAdd(tdwd,t_Narcotics,10);",
                         "}",
