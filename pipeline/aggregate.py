@@ -838,6 +838,10 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
 
         arc = _cached_archive(name, unit.get('kind'))
         if not arc:
+            if not unit.get('gdrive'):
+                print(f'  {name}: разовая выкладка — архива нет в cache/, скачать его '
+                      f'неоткуда — пропуск')
+                continue
             if not fetch:
                 print(f'  {name}: нет в cache/ (нужен --fetch) — пропуск')
                 continue
@@ -1181,14 +1185,38 @@ def fill_missing(cfg, dry=False):
 # Корень игры (НЕ моды): эти имена при роутинге уходят в папку игры, не в Mods.
 # Должно совпадать с install_route в лаунчере (launcher_core.py) — иначе агрегатор
 # каталогизирует не те папки, что лаунчер кладёт на диск.
-_ROOT_DIRS = {'cfg', 'data', 'matrix', 'soundtrack', 'help', 'man', 'build', 'dist'}
+# xenonative / xenonative.ini — загрузчик нативных плагинов XenoNative (Xenomorphchyma):
+# лежит рядом с Rangers.exe вместе с dsound.dll и XenoCore.dll.
+_ROOT_DIRS = {'cfg', 'data', 'matrix', 'soundtrack', 'help', 'man', 'build', 'dist',
+              'xenonative'}
 _ROOT_FILES = {
     'rangers.exe', 'cassandra.exe', 'manualrus.exe', 'matrixgame.dll',
     'build version.txt', 'cachedata.txt', 'cfg.txt', 'cfg.dat', 'lang.txt',
     'main.txt', 'changelog_rus.txt', 'generatemergedcfg.bat',
-    'install.txt', 'install_russian.txt', 'readme_ru_ru.txt',
+    'install.txt', 'install_russian.txt', 'readme_ru_ru.txt', 'xenonative.ini',
 }
 _ROOT_EXTS = {'.dll'}
+
+
+def _is_game_root_file(relpath):
+    """Ляжет ли файл в корень игры (Rangers.exe, DATA/…, XenoNative/…, *.dll сверху) —
+    ветка 'root' в install_route() лаунчера."""
+    parts = [p for p in relpath.replace('\\', '/').split('/') if p]
+    if any(p.startswith('.') for p in parts):
+        return False
+    while parts and parts[0].lower().endswith('_unpacked'):
+        parts = parts[1:]
+    if parts and parts[0] == '{app}':
+        parts = parts[1:]
+    if not parts or any(p.lower() == 'mods' for p in parts):
+        return False
+    base = parts[-1].lower()
+    ext = os.path.splitext(base)[1]
+    if ext == '.iss' or (ext == '.exe' and base not in _ROOT_FILES):
+        return False
+    if parts[0].lower() in _ROOT_DIRS:
+        return True
+    return len(parts) == 1 and (base in _ROOT_FILES or ext in _ROOT_EXTS)
 
 
 def _after_mods(relpath):
@@ -1722,6 +1750,13 @@ def build_descriptors(cfg):
             'asset_bytes': asset_bytes,
             'bytes': code_bytes + asset_bytes,
         }
+        if u.get('addon'):
+            # пак по выбору (лаунчер с 0.28.0): в установку сборки не входит, а его файлы
+            # игры (свой Rangers.exe, загрузчик) ложатся поверх сборки. Пометку «патчит
+            # игру» даём только ему: у движка и исправлений к нему это видно и так.
+            packs[f'{camp}/{name}']['addon'] = True
+            packs[f'{camp}/{name}']['touches_game_root'] = any(
+                _is_game_root_file(k) for k in {**cm, **am})
     save_json(REPO / 'state' / 'packs.json', {'schema': 'srmod-packs/1', 'packs': packs})
     n_base = sum(1 for p in packs.values() if p['tier'] == 'base')
     n_fix = sum(1 for p in packs.values() if p['tier'] == 'fix')
@@ -2102,9 +2137,18 @@ def main():
 
         prev = lock_before.get(name, {})
 
+        # Разовая выкладка: ссылки на раздачу нет (gdrive пуст) — автор прислал архив
+        # один раз. Облаку взять его неоткуда; локально архив лежит в cache/<имя>.<ext>,
+        # куда его кладут руками (см. README, «Разовая выкладка»).
+        oneoff = not unit.get('gdrive')
+        if oneoff and a.cloud:
+            print('  разовая выкладка без ссылки — облако пропускает')
+            continue
+        no_download = a.no_download or oneoff
+
         # Предзагрузочная проверка: спрашиваем у GDrive контрольную сумму/отпечаток
         # БЕЗ скачивания. Если совпал с локом — не качаем вообще.
-        sig = None if a.no_download else remote_signature(unit, rclone_exe, remote)
+        sig = None if no_download else remote_signature(unit, rclone_exe, remote)
 
         # Облако: тяжёлые manual-юниты НЕ обрабатываем — только детектим изменение
         # (lock не трогаем, останется pending до локального прогона).
@@ -2122,7 +2166,7 @@ def main():
             continue
 
         try:
-            archive, digest = download(unit, a.no_download, remote)
+            archive, digest = download(unit, no_download, remote)
         except Exception as e:
             print(f'  FAIL download: {e}')
             continue
@@ -2162,7 +2206,7 @@ def main():
                 'display_name': unit.get('display_name', name),
                 'load_order': unit.get('load_order'),
                 'known_version': unit.get('known_version') or None,
-                'source_url': unit['gdrive'], 'kind': unit.get('kind'),
+                'source_url': unit.get('gdrive') or None, 'kind': unit.get('kind'),
                 'sha256': digest,
                 'rson_count': n_rson,
                 'code_files': cn, 'code_bytes': cb,

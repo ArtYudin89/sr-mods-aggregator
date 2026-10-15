@@ -105,11 +105,24 @@ GitHub Actions (`.github/workflows/`, подробно — `docs/CI_AUTOUPDATE.m
       "fix_parent": "...",             // опц. (для fixes): родительский пак
       "include": ["*For_Redux*"],      // опц. (kind=folder): брать ТОЛЬКО эти архивы
       "exclude": ["ZelDomiksOld*"],    // опц. (kind=folder): эти архивы НЕ брать
-      "access": "shared"               // опц.: "shared" -> скачивание через rclone
+      "access": "shared",              // опц.: "shared" -> скачивание через rclone
+      "addon": true                    // опц.: пак по выбору со своими файлами игры
     }
   ]
 }
 ```
+
+**Разовая выкладка** — юнит с пустым `"gdrive": ""`: автор прислал архив один раз, постоянной
+ссылки нет (так добавлен `solar`). Облако такой юнит пропускает; обновляют его локально:
+положить архив в `cache/<name>.<ext>` и прогнать
+`--only <name> --force` → `--assets --only <name>` → `--code-track` → `--descriptors` →
+`--publish-index` → commit/push. `manual: true` у такого юнита обязателен: его описи пишет
+только локальный прогон (живая распаковка с датами автора).
+
+**`addon: true`** — пак по выбору (лаунчер с 0.28.0): в установку сборки и быстрый старт не
+входит, а его файлы игры (у `solar` — свой `Rangers.exe` и загрузчик XenoNative) лаунчер кладёт
+поверх движка и исправлений сборки. В `state/packs.json` у такого пака `addon` и
+`touches_game_root`.
 
 `include`/`exclude` — glob-маски по имени архива, применяются к архивам-братьям в
 раздаче-папке. `include` нужен, когда в одной папке лежат варианты пака под разные базы
@@ -170,6 +183,12 @@ Copyright (C) 2026 ArtYudin89.
   спрашивайте у авторов модов;
 - **ресурсы игры** — принадлежат правообладателям, в репозитории их нет и быть не должно;
 - **вендоренные утилиты** (`tools/innounp/` и подобные) — под своими лицензиями.
+
+Пак `shared/solar` раздаётся так, как его собрал автор, и включает загрузчик XenoNativeLoader
+(`dsound.dll`, `XenoCore.dll`, `XenoNative.ini`, `XenoNative\`) из
+[Xenomorphchyma/XenoMods](https://github.com/Xenomorphchyma/XenoMods): Copyright 2026
+Xenomorphchyma, лицензия [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)
+— только некоммерческое использование.
 
 ## Поддержать
 
