@@ -24063,6 +24063,329 @@
         }
       ]
     },
+    "Solar/SolBigGalaxy": {
+      "name": "SolBigGalaxy",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Большая галактика: 300 звёзд, 82 сектора, карта 294x203",
+      "full_description": "Заменяет ванильную галактику увеличенной: 300 звёзд, 82 сектора, размер карты 294x203. Значения фиксированы.",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1792018030,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "e6923146c6afbcd8",
+          "name": "SolBigGalaxy",
+          "depends": [
+            "SolUtilities"
+          ],
+          "conflicts": [
+            "SolCustomGalaxy",
+            "XenoBigGalaxy",
+            "RefGalaxyUpgrade",
+            "RefGalaxyUpgradeExtended",
+            "RefABitMoreStars10",
+            "RefABitMoreStars15",
+            "RefABitMoreStars20",
+            "AModGalaxyLite"
+          ],
+          "code_files": 4,
+          "asset_files": 0,
+          "path": "descriptors/shared/solar/Solar/SolBigGalaxy.json",
+          "mtime": 1792018030
+        }
+      ]
+    },
+    "Solar/SolCountKeypad": {
+      "name": "SolCountKeypad",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Ввод числа с клавиатуры и экранная цифровая клавиатура в окне CountBox",
+      "full_description": "В окне выбора количества (CountBox: покупка/продажа, выброс товаров и т.п.) можно набирать число цифрами 0-9 (основной ряд и цифровой блок), Backspace стирает последнюю цифру, Delete обнуляет. Справа от окна добавлена экранная клавиатура 3x4 (1-9, стрелка-стёрка, 0, C). Набранное число ограничивается диапазоном окна; слайдер, красные счётчики и блокировка кнопки OK работают как обычно.",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1792018216,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "1a1bbb98262f81ae",
+          "name": "SolCountKeypad",
+          "depends": [
+            "SolUtilities"
+          ],
+          "conflicts": [],
+          "code_files": 3,
+          "asset_files": 10,
+          "path": "descriptors/shared/solar/Solar/SolCountKeypad.json",
+          "mtime": 1792018216
+        }
+      ]
+    },
+    "Solar/SolCustomGalaxy": {
+      "name": "SolCustomGalaxy",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Настраиваемая галактика: число звёзд, секторов и размеры карты выбираются перед игрой",
+      "full_description": "Добавляет в \"Тонкую настройку\" новой игры четвёртую вкладку \"Генерация\": количество звёзд (73..300), количество секторов (20..82) и размеры карты (145x100..400x280). Минимум - ванильная галактика. Флаг \"Сохранять пропорции\" сам считает сектора и размеры карты от числа звёзд. Выбранные значения запоминаются между играми. Заменяет SolBigGalaxy (одновременно включать нельзя).",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1792017844,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "7f2aa0e9bc4724f2",
+          "name": "SolCustomGalaxy",
+          "depends": [
+            "SolUtilities"
+          ],
+          "conflicts": [
+            "SolBigGalaxy",
+            "XenoBigGalaxy",
+            "RefGalaxyUpgrade",
+            "RefGalaxyUpgradeExtended",
+            "RefABitMoreStars10",
+            "RefABitMoreStars15",
+            "RefABitMoreStars20",
+            "AModGalaxy",
+            "AModGalaxyLite",
+            "AModGalaxyLiteGG"
+          ],
+          "code_files": 3,
+          "asset_files": 0,
+          "path": "descriptors/shared/solar/Solar/SolCustomGalaxy.json",
+          "mtime": 1792017844
+        }
+      ]
+    },
+    "Solar/SolFastGen": {
+      "name": "SolFastGen",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Быстрый и устойчивый генератор секторов галактики",
+      "full_description": "Включает альтернативный генератор раскладки секторов вместо ванильного/классического: сектора считаются как дискретная диаграмма Вороного (O(клетки)), а не прогоном лучей по цепочке из ~2400 клеток; раскладка проверяется заранее и при неудаче центры сдвигаются (релаксация Ллойда), а не перебрасываются. Генерация 82 секторов занимает ~0.05 с вместо 1-23 с, карта никогда не увеличивается. Звёзды, сюжетный сектор, Гралгар, рукава и кластеры работают как раньше. Если быстрый путь не справился, автоматически запускается классический генератор. Настройки (CFG\\Rus\\Lang.txt, блок Constellations): GalaxyFastGen (0/1), GalaxyFastVerify (0 выкл, 1 проверка движком, 2 полная), GalaxyFastBandLo/Hi (допуск площади сектора в % от средней, по умолчанию 50/160), GalaxyFastSpread (1..32, равномерность центров, по умолчанию 6). Лог: galaxy_gen.log (метки FAST_*).",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1792018274,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "7c28e2f2b6431bb8",
+          "name": "SolFastGen",
+          "depends": [
+            "SolUtilities"
+          ],
+          "conflicts": [],
+          "code_files": 2,
+          "asset_files": 0,
+          "path": "descriptors/shared/solar/Solar/SolFastGen.json",
+          "mtime": 1792018274
+        }
+      ]
+    },
+    "Solar/SolGalamapFullHD": {
+      "name": "SolGalamapFullHD",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Интерфейс галакарты для экрана 1920x1080",
+      "full_description": "Чисто интерфейсный мод без игровой логики: форма галакарты под разрешение 1920x1080.",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1792018312,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "d1cb94f9db1c4893",
+          "name": "SolGalamapFullHD",
+          "depends": [],
+          "conflicts": [
+            "SolGalamapHD",
+            "SolGalamap1280x1024"
+          ],
+          "code_files": 3,
+          "asset_files": 21,
+          "path": "descriptors/shared/solar/Solar/SolGalamapFullHD.json",
+          "mtime": 1792018312
+        }
+      ]
+    },
+    "Solar/SolGalamapHD": {
+      "name": "SolGalamapHD",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Интерфейс галакарты для экрана 1024x768",
+      "full_description": "Чисто интерфейсный мод без игровой логики: форма галакарты под разрешение 1024x768.",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1792018342,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "8a5fd030a541d21a",
+          "name": "SolGalamapHD",
+          "depends": [],
+          "conflicts": [
+            "SolGalamapFullHD",
+            "SolGalamap1280x1024"
+          ],
+          "code_files": 3,
+          "asset_files": 23,
+          "path": "descriptors/shared/solar/Solar/SolGalamapHD.json",
+          "mtime": 1792018342
+        }
+      ]
+    },
+    "Solar/SolMapMarker": {
+      "name": "SolMapMarker",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Метка системы на галакарте: поиск звезды/планеты по имени. Собственная реализация мода с функционалом, аналогичным MapMarker-у от Huk",
+      "full_description": "Две кнопки в верхней панели галакарты: поиск системы/планеты по имени и снятие метки. Не зависит от AMod_MapMarker и не включается вместе с ним.",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1792018398,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "eb0f5f2f4162de70",
+          "name": "SolMapMarker",
+          "depends": [
+            "SolUtilities",
+            "SolGalamapHD"
+          ],
+          "conflicts": [
+            "AMod_MapMarker"
+          ],
+          "code_files": 3,
+          "asset_files": 7,
+          "path": "descriptors/shared/solar/Solar/SolMapMarker.json",
+          "mtime": 1792018398
+        }
+      ]
+    },
+    "Solar/SolMapZoom": {
+      "name": "SolMapZoom",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Зум колесом мыши и перемещение камеры на галакарте с помощью клавиш-стрелок. А также режим лупы при зажатии Shift с курсором на галакарте.",
+      "full_description": "Колесо мыши - приближение/отдаление галакарты вокруг курсора. Стрелки и край экрана - перемещение камеры, как в космосе. C - центр на игроке, Home - вся карта. Лупа: пока зажат Shift, над картой показывается увеличенный квадрат вокруг курсора",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1792018512,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "b688f304de0564c3",
+          "name": "SolMapZoom",
+          "depends": [
+            "SolUtilities"
+          ],
+          "conflicts": [],
+          "code_files": 2,
+          "asset_files": 0,
+          "path": "descriptors/shared/solar/Solar/SolMapZoom.json",
+          "mtime": 1792018512
+        }
+      ]
+    },
+    "Solar/SolNextDayFast": {
+      "name": "SolNextDayFast",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Ускорение дневного хода (NextDay) и стартовой симуляции галактики",
+      "full_description": "Ускорение дневного хода (NextDay) и стартовой симуляции галактики",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1792018550,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "4d75ab0c050d07ac",
+          "name": "SolNextDayFast",
+          "depends": [
+            "SolUtilities"
+          ],
+          "conflicts": [],
+          "code_files": 2,
+          "asset_files": 0,
+          "path": "descriptors/shared/solar/Solar/SolNextDayFast.json",
+          "mtime": 1792018550
+        }
+      ]
+    },
+    "Solar/SolShopCompare": {
+      "name": "SolShopCompare",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Сравнение оборудования в магазине с установленным на корабле. Мод можно подключать/отключать в течение партии",
+      "full_description": "В магазине оборудования рядом с карточкой товара показывается вторая карточка — предмет, установленный на вашем корабле в том же слоте (двигатель, баки, радар, сканер, ремонтный робот, захват, генератор защиты, оружие). Также добавлен блок «Сравнение».",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1792018606,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "7565f341fb1c693f",
+          "name": "SolShopCompare",
+          "depends": [
+            "SolUtilities"
+          ],
+          "conflicts": [],
+          "code_files": 3,
+          "asset_files": 0,
+          "path": "descriptors/shared/solar/Solar/SolShopCompare.json",
+          "mtime": 1792018606
+        }
+      ]
+    },
+    "Solar/SolSpaceZoom": {
+      "name": "SolSpaceZoom",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Масштабирование космоса колесом мыши (Мод нуждается в тестировании)",
+      "full_description": "Колесо мыши - приближение/отдаление космоса (интерфейс не масштабируется). Home - вернуть обычный масштаб.",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1792018646,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "630e9592a5ff3b26",
+          "name": "SolSpaceZoom",
+          "depends": [
+            "SolUtilities"
+          ],
+          "conflicts": [],
+          "code_files": 2,
+          "asset_files": 0,
+          "path": "descriptors/shared/solar/Solar/SolSpaceZoom.json",
+          "mtime": 1792018646
+        }
+      ]
+    },
+    "Solar/SolUtilities": {
+      "name": "SolUtilities",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Утилитпак для модов Solar, использует XenoNative-плагины от автора Xenomorphchyma",
+      "full_description": "Утилитпак с DLL для модов Solar.",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1792019124,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "06204908030a16da",
+          "name": "SolUtilities",
+          "depends": [],
+          "conflicts": [],
+          "code_files": 4,
+          "asset_files": 4,
+          "path": "descriptors/shared/solar/Solar/SolUtilities.json",
+          "mtime": 1792019124
+        }
+      ]
+    },
     "OtherMods/ArtiDesignDepartment": {
       "name": "ArtiDesignDepartment",
       "author": "Huk, MLG кошка, Klaxons, Elemental Games, Fairan, Arti",

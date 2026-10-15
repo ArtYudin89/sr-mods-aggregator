@@ -1,0 +1,35 @@
+{
+  "schema": "srmod/1",
+  "id": "Solar/SolFastGen",
+  "source": "shared/solar",
+  "name": "SolFastGen",
+  "title": "SolFastGen",
+  "author": "FC_Fan",
+  "section": "Solar",
+  "priority": "10",
+  "description": "Быстрый и устойчивый генератор секторов галактики",
+  "full_description": "Включает альтернативный генератор раскладки секторов вместо ванильного/классического: сектора считаются как дискретная диаграмма Вороного (O(клетки)), а не прогоном лучей по цепочке из ~2400 клеток; раскладка проверяется заранее и при неудаче центры сдвигаются (релаксация Ллойда), а не перебрасываются. Генерация 82 секторов занимает ~0.05 с вместо 1-23 с, карта никогда не увеличивается. Звёзды, сюжетный сектор, Гралгар, рукава и кластеры работают как раньше. Если быстрый путь не справился, автоматически запускается классический генератор. Настройки (CFG\\Rus\\Lang.txt, блок Constellations): GalaxyFastGen (0/1), GalaxyFastVerify (0 выкл, 1 проверка движком, 2 полная), GalaxyFastBandLo/Hi (допуск площади сектора в % от средней, по умолчанию 50/160), GalaxyFastSpread (1..32, равномерность центров, по умолчанию 6). Лог: galaxy_gen.log (метки FAST_*).",
+  "version": "7c28e2f2b6431bb8",
+  "depends": [
+    "SolUtilities"
+  ],
+  "conflicts": [],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "cosmetic": [],
+  "mtime": 1792018274,
+  "files": {
+    "code": {
+      "Mods/Solar/SolFastGen/ModuleInfo.txt": {
+        "sha256": "df2917464a98791659a41a3c58de21398605432af42a34bbf268a901025845eb",
+        "size": 3812,
+        "mtime": 1792018274
+      },
+      "Mods/Solar/SolFastGen/CFG/Rus/Lang.dat": {
+        "sha256": "16a5c7886936399b432ad2548d3cdfca7e7155f1f29c6a3f7680faf470de8afa",
+        "size": 133,
+        "mtime": 1791122024
+      }
+    },
+    "assets": {}
+  }
+}
