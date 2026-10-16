@@ -24071,7 +24071,7 @@
       "full_description": "Заменяет ванильную галактику увеличенной: 300 звёзд, 82 сектора, размер карты 294x203. Значения фиксированы.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792018030,
+      "mtime": 1792028830,
       "variants": [
         {
           "source": "shared/solar",
@@ -24093,7 +24093,7 @@
           "code_files": 4,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolBigGalaxy.json",
-          "mtime": 1792018030
+          "mtime": 1792028830
         }
       ]
     },
@@ -24101,15 +24101,15 @@
       "name": "SolCountKeypad",
       "author": "FC_Fan",
       "default_source": "shared/solar",
-      "description": "Ввод числа с клавиатуры и экранная цифровая клавиатура в окне CountBox",
-      "full_description": "В окне выбора количества (CountBox: покупка/продажа, выброс товаров и т.п.) можно набирать число цифрами 0-9 (основной ряд и цифровой блок), Backspace стирает последнюю цифру, Delete обнуляет. Справа от окна добавлена экранная клавиатура 3x4 (1-9, стрелка-стёрка, 0, C). Набранное число ограничивается диапазоном окна; слайдер, красные счётчики и блокировка кнопки OK работают как обычно.",
+      "description": "Ввод числа с клавиатуры и экранная цифровая клавиатура в окнах CountBox и NumberBox",
+      "full_description": "В окнах выбора количества CountBox (покупка/продажа, выброс товаров и т.п.) и NumberBox (числа в окнах модов) можно набирать число клавишами 0-9 (основной ряд и цифровой блок), Backspace стирает последнюю цифру, Delete обнуляет. Окно расширяется вправо, в нём экранная клавиатура 3x4 (1-9, стрелка-забой, 0, C). Набранное число ограничивается диапазоном окна; ползунок, красные счётчики и блокировка кнопки OK работают как обычно. В режиме выбора NumberBox из списка строк клавиатура скрыта.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792018216,
+      "mtime": 1792084228,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "1a1bbb98262f81ae",
+          "version": "32a4a47691ccc12f",
           "name": "SolCountKeypad",
           "depends": [
             "SolUtilities"
@@ -24118,7 +24118,7 @@
           "code_files": 3,
           "asset_files": 10,
           "path": "descriptors/shared/solar/Solar/SolCountKeypad.json",
-          "mtime": 1792018216
+          "mtime": 1792084228
         }
       ]
     },
@@ -24130,7 +24130,7 @@
       "full_description": "Добавляет в \"Тонкую настройку\" новой игры четвёртую вкладку \"Генерация\": количество звёзд (73..300), количество секторов (20..82) и размеры карты (145x100..400x280). Минимум - ванильная галактика. Флаг \"Сохранять пропорции\" сам считает сектора и размеры карты от числа звёзд. Выбранные значения запоминаются между играми. Заменяет SolBigGalaxy (одновременно включать нельзя).",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792017844,
+      "mtime": 1792028644,
       "variants": [
         {
           "source": "shared/solar",
@@ -24154,7 +24154,7 @@
           "code_files": 3,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolCustomGalaxy.json",
-          "mtime": 1792017844
+          "mtime": 1792028644
         }
       ]
     },
@@ -24166,7 +24166,7 @@
       "full_description": "Включает альтернативный генератор раскладки секторов вместо ванильного/классического: сектора считаются как дискретная диаграмма Вороного (O(клетки)), а не прогоном лучей по цепочке из ~2400 клеток; раскладка проверяется заранее и при неудаче центры сдвигаются (релаксация Ллойда), а не перебрасываются. Генерация 82 секторов занимает ~0.05 с вместо 1-23 с, карта никогда не увеличивается. Звёзды, сюжетный сектор, Гралгар, рукава и кластеры работают как раньше. Если быстрый путь не справился, автоматически запускается классический генератор. Настройки (CFG\\Rus\\Lang.txt, блок Constellations): GalaxyFastGen (0/1), GalaxyFastVerify (0 выкл, 1 проверка движком, 2 полная), GalaxyFastBandLo/Hi (допуск площади сектора в % от средней, по умолчанию 50/160), GalaxyFastSpread (1..32, равномерность центров, по умолчанию 6). Лог: galaxy_gen.log (метки FAST_*).",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792018274,
+      "mtime": 1792029074,
       "variants": [
         {
           "source": "shared/solar",
@@ -24179,7 +24179,7 @@
           "code_files": 2,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolFastGen.json",
-          "mtime": 1792018274
+          "mtime": 1792029074
         }
       ]
     },
@@ -24191,7 +24191,7 @@
       "full_description": "Чисто интерфейсный мод без игровой логики: форма галакарты под разрешение 1920x1080.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792018312,
+      "mtime": 1792029112,
       "variants": [
         {
           "source": "shared/solar",
@@ -24205,7 +24205,7 @@
           "code_files": 3,
           "asset_files": 21,
           "path": "descriptors/shared/solar/Solar/SolGalamapFullHD.json",
-          "mtime": 1792018312
+          "mtime": 1792029112
         }
       ]
     },
@@ -24217,7 +24217,7 @@
       "full_description": "Чисто интерфейсный мод без игровой логики: форма галакарты под разрешение 1024x768.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792018342,
+      "mtime": 1792029142,
       "variants": [
         {
           "source": "shared/solar",
@@ -24231,7 +24231,7 @@
           "code_files": 3,
           "asset_files": 23,
           "path": "descriptors/shared/solar/Solar/SolGalamapHD.json",
-          "mtime": 1792018342
+          "mtime": 1792029142
         }
       ]
     },
@@ -24243,7 +24243,7 @@
       "full_description": "Две кнопки в верхней панели галакарты: поиск системы/планеты по имени и снятие метки. Не зависит от AMod_MapMarker и не включается вместе с ним.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792018398,
+      "mtime": 1792029198,
       "variants": [
         {
           "source": "shared/solar",
@@ -24259,7 +24259,7 @@
           "code_files": 3,
           "asset_files": 7,
           "path": "descriptors/shared/solar/Solar/SolMapMarker.json",
-          "mtime": 1792018398
+          "mtime": 1792029198
         }
       ]
     },
@@ -24271,7 +24271,7 @@
       "full_description": "Колесо мыши - приближение/отдаление галакарты вокруг курсора. Стрелки и край экрана - перемещение камеры, как в космосе. C - центр на игроке, Home - вся карта. Лупа: пока зажат Shift, над картой показывается увеличенный квадрат вокруг курсора",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792018512,
+      "mtime": 1792029312,
       "variants": [
         {
           "source": "shared/solar",
@@ -24284,7 +24284,7 @@
           "code_files": 2,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolMapZoom.json",
-          "mtime": 1792018512
+          "mtime": 1792029312
         }
       ]
     },
@@ -24296,7 +24296,7 @@
       "full_description": "Ускорение дневного хода (NextDay) и стартовой симуляции галактики",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792018550,
+      "mtime": 1792029350,
       "variants": [
         {
           "source": "shared/solar",
@@ -24309,7 +24309,7 @@
           "code_files": 2,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolNextDayFast.json",
-          "mtime": 1792018550
+          "mtime": 1792029350
         }
       ]
     },
@@ -24321,7 +24321,7 @@
       "full_description": "В магазине оборудования рядом с карточкой товара показывается вторая карточка — предмет, установленный на вашем корабле в том же слоте (двигатель, баки, радар, сканер, ремонтный робот, захват, генератор защиты, оружие). Также добавлен блок «Сравнение».",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792018606,
+      "mtime": 1792029406,
       "variants": [
         {
           "source": "shared/solar",
@@ -24334,7 +24334,7 @@
           "code_files": 3,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolShopCompare.json",
-          "mtime": 1792018606
+          "mtime": 1792029406
         }
       ]
     },
@@ -24346,7 +24346,7 @@
       "full_description": "Колесо мыши - приближение/отдаление космоса (интерфейс не масштабируется). Home - вернуть обычный масштаб.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792018646,
+      "mtime": 1792029446,
       "variants": [
         {
           "source": "shared/solar",
@@ -24359,7 +24359,7 @@
           "code_files": 2,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolSpaceZoom.json",
-          "mtime": 1792018646
+          "mtime": 1792029446
         }
       ]
     },
@@ -24371,18 +24371,18 @@
       "full_description": "Утилитпак с DLL для модов Solar.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792019124,
+      "mtime": 1792078712,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "06204908030a16da",
+          "version": "5a6eac234744ba01",
           "name": "SolUtilities",
           "depends": [],
           "conflicts": [],
           "code_files": 4,
           "asset_files": 4,
           "path": "descriptors/shared/solar/Solar/SolUtilities.json",
-          "mtime": 1792019124
+          "mtime": 1792078712
         }
       ]
     },
