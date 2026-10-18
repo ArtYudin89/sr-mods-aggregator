@@ -24,7 +24,7 @@
                     "Pos.x": 0,
                     "Pos.y": 705,
                     "Parent": -1,
-                    "#": 48,
+                    "#": 49,
                     "Msg": "",
                     "AMsg.Num": "0",
                     "_orig_danswer": "DAnswer('hangar~'+Format(CT(\"Script.Mod_RevWarriorsVsPirates.19\"),\"<0>\",tStr2))"
@@ -37,7 +37,7 @@
                     "Pos.x": 0,
                     "Pos.y": 635,
                     "Parent": -1,
-                    "#": 47,
+                    "#": 48,
                     "Msg": "",
                     "DMsg.Num": "0",
                     "_orig_dtext": "DText(Format(CT(\"Script.Mod_RevWarriorsVsPirates.19\"),\"<0>\",tStr1))"
@@ -50,7 +50,7 @@
                     "Pos.x": 0,
                     "Pos.y": 565,
                     "Parent": -1,
-                    "#": 46
+                    "#": 47
                 }
             ],
             "Groups": [
@@ -60,7 +60,7 @@
                     "Pos.x": 0,
                     "Pos.y": 295,
                     "Parent": -1,
-                    "#": 29,
+                    "#": 30,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -91,7 +91,7 @@
                     "Pos.x": 120,
                     "Pos.y": 295,
                     "Parent": -1,
-                    "#": 30,
+                    "#": 31,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -122,7 +122,7 @@
                     "Pos.x": 240,
                     "Pos.y": 295,
                     "Parent": -1,
-                    "#": 31,
+                    "#": 32,
                     "Owner": 62,
                     "Group.Type": 1,
                     "CntShipMin": 0,
@@ -153,7 +153,7 @@
                     "Pos.x": 0,
                     "Pos.y": 355,
                     "Parent": -1,
-                    "#": 32,
+                    "#": 33,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -186,7 +186,7 @@
                     "Pos.x": 0,
                     "Pos.y": 250,
                     "Parent": -1,
-                    "#": 26,
+                    "#": 27,
                     "Class": 5,
                     "Item.Type": 0,
                     "Size": 10,
@@ -202,7 +202,7 @@
                     "Pos.x": 90,
                     "Pos.y": 250,
                     "Parent": -1,
-                    "#": 27,
+                    "#": 28,
                     "Class": 5,
                     "Item.Type": 0,
                     "Size": 10,
@@ -218,7 +218,7 @@
                     "Pos.x": 180,
                     "Pos.y": 250,
                     "Parent": -1,
-                    "#": 28,
+                    "#": 29,
                     "Class": 5,
                     "Item.Type": 0,
                     "Size": 10,
@@ -236,11 +236,28 @@
                     "Pos.x": 0,
                     "Pos.y": 775,
                     "Parent": -1,
-                    "#": 33,
+                    "#": 34,
                     "Code.Type": "Global",
                     "Code": [
                         "if(PirateWin()!=3 && PirateWin()!=4) {",
-                        "  if(GLastTurnRun(GScriptName)+2430<CurTurn()) GRun();",
+                        "  int i;",
+                        "  int ok;",
+                        "  dword wb;",
+                        "  ok=0;",
+                        "  if(GLastTurnRun(GScriptName)+2430<CurTurn()) {",
+                        "      //Не запускаем скрипт, если в галактике нет свободной ВБ: ShipJoin молча отобрал бы занятую базу у другого скрипта",
+                        "      //(занята = в скриптовой группе, под OrderLock, в событии освобождения системы или с висящей целью прыжка)",
+                        "      for(i=GalaxyStars()-1; i>=0; i=i-1) {",
+                        "          wb=StarRuins(GalaxyStar(i),'WB');",
+                        "          if(!wb) continue;",
+                        "          if(ShipInScript(wb)) continue;",
+                        "          if(ShipInGameEvent(wb)) continue;",
+                        "          if(ShipDestination(wb)) continue;",
+                        "          ok=1;",
+                        "          break;",
+                        "      }",
+                        "      if(ok) GRun();",
+                        "  }",
                         "}"
                     ]
                 },
@@ -250,7 +267,7 @@
                     "Pos.x": 60,
                     "Pos.y": 775,
                     "Parent": -1,
-                    "#": 34,
+                    "#": 35,
                     "Code.Type": "Init",
                     "Code": [
                         "//NewsAdd(ScriptRun(ShipStar(Player()),GetShipPlanet(Player()),'Mod_RevWarriorsVsPirates'));",
@@ -324,7 +341,7 @@
                     "Pos.x": 120,
                     "Pos.y": 775,
                     "Parent": -1,
-                    "#": 35,
+                    "#": 36,
                     "Code.Type": "Turn",
                     "Code": [
                         "//Значения переменной sst:",
@@ -332,10 +349,39 @@
                         "//sst==1: скриптовые группы сформированы, формируются данные для алгоритма выбора ближайшего к ВБ пирата",
                         "//sst==2: нормальная работа алгоритма, ВБ не сбрасывала бомбы",
                         "//sst==3: значения первой ячейки второго индекса массива перезаписано, бомбы сброшены",
+                        "//sst==5: скрипт прерван (ВБ не нашлась за отведённое время либо вышла из скрипта, пока пираты живы)",
+                        "//Если ВБ вышла из скрипта раньше времени (её забрал другой скрипт или ванильное событие), а пираты ещё живы,",
+                        "//группы остались бы без дела: военные ждут пиратов в системе, пираты висят в гиперпространстве. Прерываем скрипт.",
+                        "//Если ВБ уничтожена (IdToShip==0), это штатный проигрыш военных, его обрабатывает граф. Нормальный выход ВБ",
+                        "//(пираты побеждены, sst==4) тоже не трогаем.",
+                        "if(sst>0 && sst<4 && wbId) {",
+                        "    tmp=IdToShip(wbId);",
+                        "    if(tmp) {",
+                        "        if(!ShipInCurScript(tmp) && GroupCount(Pirates)) {",
+                        "            sst=5;",
+                        "            AllShipOut();",
+                        "            exit;",
+                        "        }",
+                        "    }",
+                        "}",
                         "//Формируются группы военных и пиратов",
                         "if(!sst) {",
                         "    tmp=StarRuins(CoalStar,'WB'); //Ищем в системе военную базу",
+                        "    //ShipJoin молча снимает чужую привязку, поэтому занятую ВБ не берём: ждём, пока освободится",
+                        "    //(ВБ в операции ШуВарриорс, под OrderLock, в ванильном событии или с висящей целью прыжка)",
+                        "    tint=0;",
+                        "    if(!tmp) tint=1;",
+                        "    else if(ShipInScript(tmp)) tint=1;",
+                        "    else if(ShipInGameEvent(tmp)) tint=1;",
+                        "    else if(ShipDestination(tmp)) tint=1;",
+                        "    if(tint) {",
+                        "        //Запуск выбрал занятую ВБ (глобальная проверка не знает, какую именно систему выберет движок): не стартуем",
+                        "        sst=5;",
+                        "        AllShipOut();",
+                        "        exit;",
+                        "    }",
                         "    ShipJoin(WarBase, tmp); //Присоединяем военную базу к отдельной группе",
+                        "    wbId=Id(tmp); //Запоминаем ВБ, чтобы заметить, если её заберёт другой скрипт",
                         "    wbCoordX=CoordX(tmp); //Запоминаем начальные координаты военной базы",
                         "    wbCoordY=CoordY(tmp);",
                         "    //Выводим начальную новость",
@@ -448,7 +494,7 @@
                     "Pos.x": 180,
                     "Pos.y": 775,
                     "Parent": -1,
-                    "#": 36,
+                    "#": 37,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "if(GetShipRuins(Player())>0) {",
@@ -464,7 +510,7 @@
                     "Pos.x": -20,
                     "Pos.y": 320,
                     "Parent": -1,
-                    "#": 49,
+                    "#": 50,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipInNormalSpace(GroupToShip(Pirates)) && CountIn(Pirates,CoalStar)) {",
@@ -483,7 +529,7 @@
                     "Pos.x": -20,
                     "Pos.y": 440,
                     "Parent": -1,
-                    "#": 50,
+                    "#": 51,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(Hit(CurShip)) {",
@@ -502,7 +548,7 @@
                     "Pos.x": 220,
                     "Pos.y": 320,
                     "Parent": -1,
-                    "#": 51,
+                    "#": 52,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(Hit(CurShip)) {",
@@ -515,11 +561,12 @@
                         "  tStr1=Format(CT('Script.Mod_RevWarriorsVsPirates.N3'),'#0#',ShortName(GroupToShip(WarBase)),'#1#',Name(CoalPlanet));",
                         "  AddPlanetNews(tStr1,62);",
                         "  //Изымаем уцелевшие бомбы",
-                        "  for(i=ArrayDim(bombsId)-1;i>=0;i=i-1)",
+                        "  for(i=ArrayDim(bombsId)-1;i>=0;i=i-1) {",
                         "  //Проверка на существование бомбы",
                         "  if(IdToItem(bombsId[i,0])) {",
                         "      if(IsScriptActive('Mod_ExpArts')) FreeItem(GetItemFromShip(CurShip,bombsId[i,1]));",
                         "      else FreeItem(GetArtFromShip(CurShip,bombsId[i,1]));",
+                        "  }",
                         "  }",
                         "  ShipOut(CurShip);",
                         "}",
@@ -535,7 +582,7 @@
                     "Pos.x": 100,
                     "Pos.y": 320,
                     "Parent": -1,
-                    "#": 52,
+                    "#": 53,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!GroupCount(Warriors)) {",
@@ -553,7 +600,7 @@
                     "Pos.x": 160,
                     "Pos.y": 440,
                     "Parent": -1,
-                    "#": 53,
+                    "#": 54,
                     "Code.Type": "Turn",
                     "Code": [
                         "//Вычисляем точку сброса бомбы",
@@ -679,12 +726,13 @@
                         "        sst=4;",
                         "    }",
                         "    //Изымаем неиспользованные бомбы",
-                        "    for(i=ArrayDim(bombsId)-1;i>=0;i=i-1)",
+                        "    for(i=ArrayDim(bombsId)-1;i>=0;i=i-1) {",
                         "    //Проверка на существование бомбы",
                         "    if(IdToItem(bombsId[i,0])) {",
                         "        if(IsScriptActive('Mod_ExpArts')) FreeItem(GetItemFromShip(CurShip,bombsId[i,1]));",
                         "        else FreeItem(GetArtFromShip(CurShip,bombsId[i,1]));",
                         "    }",
+                        "}",
                         "    OrderMove(CurShip,wbCoordX,wbCoordY);",
                         "    //Блокируем другие приказы, потому что в противном случае база остановится, если на нее попытаются сесть",
                         "    OrderLock(CurShip,1);",
@@ -703,7 +751,7 @@
                     "Pos.x": 280,
                     "Pos.y": 440,
                     "Parent": -1,
-                    "#": 54,
+                    "#": 55,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(Hit(CurShip)) {",
@@ -725,7 +773,7 @@
                     "Pos.x": -20,
                     "Pos.y": 465,
                     "Parent": -1,
-                    "#": 55,
+                    "#": 56,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipStar(CurShip)==CoalStar) OrderJump(CurShip, PlanetToStar(PlanetPirateClan()));",
@@ -740,7 +788,7 @@
                     "Pos.x": 220,
                     "Pos.y": 465,
                     "Parent": -1,
-                    "#": 56,
+                    "#": 57,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(EndState) ShipOut(CurShip); //Выводим из скрипта военных, если они выжили;"
@@ -752,7 +800,7 @@
                     "Pos.x": -20,
                     "Pos.y": 565,
                     "Parent": -1,
-                    "#": 57,
+                    "#": 58,
                     "Code.Type": "Turn",
                     "Code": [
                         "tStr1='</color>'+CT('Script.Mod_RevWarriorsVsPirates.D1');",
@@ -768,7 +816,7 @@
                     "Pos.x": -20,
                     "Pos.y": 635,
                     "Parent": -1,
-                    "#": 58,
+                    "#": 59,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);"
@@ -782,12 +830,12 @@
                     "Pos.x": 0,
                     "Pos.y": 160,
                     "Parent": -1,
-                    "#": 25,
+                    "#": 26,
                     "Place.Type": 3,
                     "Angle": "0",
                     "Dist": "-0.8999998",
                     "Radius": 200,
-                    "Obj1": 20,
+                    "Obj1": 21,
                     "Obj2": -1,
                     "+Star": "CoalStar"
                 }
@@ -799,7 +847,7 @@
                     "Pos.x": 0,
                     "Pos.y": 205,
                     "Parent": -1,
-                    "#": 23,
+                    "#": 24,
                     "Race": 63,
                     "Owner": 63,
                     "Economy": 14,
@@ -815,7 +863,7 @@
                     "Pos.x": 90,
                     "Pos.y": 205,
                     "Parent": -1,
-                    "#": 24,
+                    "#": 25,
                     "Race": 63,
                     "Owner": 63,
                     "Economy": 14,
@@ -833,7 +881,7 @@
                     "Pos.x": 0,
                     "Pos.y": 70,
                     "Parent": -1,
-                    "#": 21,
+                    "#": 22,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -860,7 +908,7 @@
                     "Pos.x": 90,
                     "Pos.y": 70,
                     "Parent": -1,
-                    "#": 22,
+                    "#": 23,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 1,
@@ -889,7 +937,7 @@
                     "Pos.x": 0,
                     "Pos.y": 115,
                     "Parent": -1,
-                    "#": 19,
+                    "#": 20,
                     "Constellation": 0,
                     "Priority": 0,
                     "NoKling": true,
@@ -901,7 +949,7 @@
                     "Pos.x": 90,
                     "Pos.y": 115,
                     "Parent": -1,
-                    "#": 20,
+                    "#": 21,
                     "Constellation": 0,
                     "Priority": 1,
                     "NoKling": true,
@@ -915,7 +963,7 @@
                     "Pos.x": 0,
                     "Pos.y": 320,
                     "Parent": -1,
-                    "#": 37,
+                    "#": 38,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
@@ -933,99 +981,7 @@
                     "Pos.x": 0,
                     "Pos.y": 440,
                     "Parent": -1,
-                    "#": 38,
-                    "Move": 2,
-                    "MoveObj": 30,
-                    "Attack.Count": 1,
-                    "Attack.Items": [
-                        {
-                            "Target.0": 30
-                        }
-                    ],
-                    "TakeItem": -1,
-                    "TakeAllItem": false,
-                    "OnTalk": "",
-                    "OnActCode": "",
-                    "EType": 0,
-                    "EUnique": "",
-                    "EMsg": ""
-                },
-                {
-                    "Type": "TState",
-                    "Name": "WBState",
-                    "Pos.x": 240,
-                    "Pos.y": 320,
-                    "Parent": -1,
                     "#": 39,
-                    "Move": 0,
-                    "MoveObj": -1,
-                    "Attack.Count": 1,
-                    "Attack.Items": [
-                        {
-                            "Target.0": 30
-                        }
-                    ],
-                    "TakeItem": -1,
-                    "TakeAllItem": false,
-                    "OnTalk": "",
-                    "OnActCode": "",
-                    "EType": 0,
-                    "EUnique": "",
-                    "EMsg": ""
-                },
-                {
-                    "Type": "TState",
-                    "Name": "AttackWarriors",
-                    "Pos.x": 120,
-                    "Pos.y": 320,
-                    "Parent": -1,
-                    "#": 40,
-                    "Move": 2,
-                    "MoveObj": 29,
-                    "Attack.Count": 1,
-                    "Attack.Items": [
-                        {
-                            "Target.0": 29
-                        }
-                    ],
-                    "TakeItem": -1,
-                    "TakeAllItem": false,
-                    "OnTalk": "",
-                    "OnActCode": "",
-                    "EType": 0,
-                    "EUnique": "",
-                    "EMsg": ""
-                },
-                {
-                    "Type": "TState",
-                    "Name": "Retreat",
-                    "Pos.x": 180,
-                    "Pos.y": 440,
-                    "Parent": -1,
-                    "#": 41,
-                    "Move": 1,
-                    "MoveObj": 25,
-                    "Attack.Count": 1,
-                    "Attack.Items": [
-                        {
-                            "Target.0": 30
-                        }
-                    ],
-                    "TakeItem": -1,
-                    "TakeAllItem": false,
-                    "OnTalk": "",
-                    "OnActCode": "",
-                    "EType": 0,
-                    "EUnique": "",
-                    "EMsg": ""
-                },
-                {
-                    "Type": "TState",
-                    "Name": "AttackWB",
-                    "Pos.x": 300,
-                    "Pos.y": 440,
-                    "Parent": -1,
-                    "#": 42,
                     "Move": 2,
                     "MoveObj": 31,
                     "Attack.Count": 1,
@@ -1044,11 +1000,103 @@
                 },
                 {
                     "Type": "TState",
+                    "Name": "WBState",
+                    "Pos.x": 240,
+                    "Pos.y": 320,
+                    "Parent": -1,
+                    "#": 40,
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 1,
+                    "Attack.Items": [
+                        {
+                            "Target.0": 31
+                        }
+                    ],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                },
+                {
+                    "Type": "TState",
+                    "Name": "AttackWarriors",
+                    "Pos.x": 120,
+                    "Pos.y": 320,
+                    "Parent": -1,
+                    "#": 41,
+                    "Move": 2,
+                    "MoveObj": 30,
+                    "Attack.Count": 1,
+                    "Attack.Items": [
+                        {
+                            "Target.0": 30
+                        }
+                    ],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                },
+                {
+                    "Type": "TState",
+                    "Name": "Retreat",
+                    "Pos.x": 180,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 42,
+                    "Move": 1,
+                    "MoveObj": 26,
+                    "Attack.Count": 1,
+                    "Attack.Items": [
+                        {
+                            "Target.0": 31
+                        }
+                    ],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                },
+                {
+                    "Type": "TState",
+                    "Name": "AttackWB",
+                    "Pos.x": 300,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 43,
+                    "Move": 2,
+                    "MoveObj": 32,
+                    "Attack.Count": 1,
+                    "Attack.Items": [
+                        {
+                            "Target.0": 32
+                        }
+                    ],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                },
+                {
+                    "Type": "TState",
                     "Name": "EscapeFromSystem",
                     "Pos.x": 0,
                     "Pos.y": 465,
                     "Parent": -1,
-                    "#": 43,
+                    "#": 44,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
@@ -1066,9 +1114,9 @@
                     "Pos.x": 240,
                     "Pos.y": 465,
                     "Parent": -1,
-                    "#": 44,
+                    "#": 45,
                     "Move": 4,
-                    "MoveObj": 23,
+                    "MoveObj": 24,
                     "Attack.Count": 0,
                     "TakeItem": -1,
                     "TakeAllItem": false,
@@ -1084,7 +1132,7 @@
                     "Pos.x": 0,
                     "Pos.y": 380,
                     "Parent": -1,
-                    "#": 45,
+                    "#": 46,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
@@ -1306,18 +1354,22 @@
                     "Var.Type": "Str",
                     "Init": "",
                     "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "wbId",
+                    "Pos.x": 330,
+                    "Pos.y": 25,
+                    "Parent": -1,
+                    "#": 19,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
                 }
             ]
         }
     ],
     "Visual.Links": [
-        {
-            "Type": "TGraphLink",
-            "Begin": 37,
-            "End": 49,
-            "Nom": 0,
-            "Arrow": true
-        },
         {
             "Type": "TGraphLink",
             "Begin": 38,
@@ -1369,7 +1421,7 @@
         },
         {
             "Type": "TGraphLink",
-            "Begin": 46,
+            "Begin": 45,
             "End": 57,
             "Nom": 0,
             "Arrow": true
@@ -1383,22 +1435,22 @@
         },
         {
             "Type": "TGraphLink",
-            "Begin": 21,
-            "End": 19,
+            "Begin": 48,
+            "End": 59,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
             "Begin": 22,
-            "End": 19,
+            "End": 20,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
             "Begin": 23,
-            "End": 19,
+            "End": 20,
             "Nom": 0,
             "Arrow": true
         },
@@ -1411,7 +1463,7 @@
         },
         {
             "Type": "TGraphLink",
-            "Begin": 26,
+            "Begin": 25,
             "End": 21,
             "Nom": 0,
             "Arrow": true
@@ -1419,37 +1471,40 @@
         {
             "Type": "TGraphLink",
             "Begin": 27,
-            "End": 21,
+            "End": 22,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
             "Begin": 28,
-            "End": 21,
-            "Nom": 0,
-            "Arrow": true
-        },
-        {
-            "Type": "TGraphLink",
-            "Begin": 25,
-            "End": 19,
+            "End": 22,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
             "Begin": 29,
-            "End": 23,
+            "End": 22,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 29,
-            "End": 37,
+            "Begin": 26,
+            "End": 20,
             "Nom": 0,
             "Arrow": true
+        },
+        {
+            "Type": "TStarLink",
+            "Begin": 21,
+            "End": 20,
+            "Nom": 0,
+            "Arrow": false,
+            "DistMin": 10,
+            "DistMax": 150,
+            "Hole": false
         },
         {
             "Type": "TGraphLink",
@@ -1461,35 +1516,49 @@
         {
             "Type": "TGraphLink",
             "Begin": 30,
+            "End": 38,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 31,
+            "End": 25,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 31,
+            "End": 41,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 32,
+            "End": 24,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 32,
             "End": 40,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 31,
-            "End": 23,
+            "Begin": 33,
+            "End": 24,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 31,
-            "End": 39,
-            "Nom": 0,
-            "Arrow": true
-        },
-        {
-            "Type": "TGraphLink",
-            "Begin": 32,
-            "End": 23,
-            "Nom": 0,
-            "Arrow": true
-        },
-        {
-            "Type": "TGraphLink",
-            "Begin": 32,
-            "End": 45,
+            "Begin": 33,
+            "End": 46,
             "Nom": 0,
             "Arrow": true
         }

@@ -1183,7 +1183,7 @@
                         "    //Переносим транка и отправляем его в скриптогруппу",
                         "    TransferShip(tranc,Player());",
                         "    OrderTakeOff(tranc);",
-                        "    ShipJoin('GroupSturmer',tranc);",
+                        "    ShipJoin(GroupSturmer,tranc);",
                         "    ShipFace(tranc,99);",
                         "    ShipType(tranc, 'Sturmer');",
                         "",
@@ -1825,7 +1825,7 @@
                     "#": 158,
                     "Code.Type": "Turn",
                     "Code": [
-                        "if(!StateIs(FollowState)) {",
+                        "if(!StateIs(GetTalkShip(),'FollowState')) {",
                         "  DAdd(35);",
                         "}",
                         "DAdd(36);",

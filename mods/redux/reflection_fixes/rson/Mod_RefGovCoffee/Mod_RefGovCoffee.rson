@@ -630,6 +630,7 @@
                         "    ShipCustomShipInfoData(Player(),'RefCoffeeFlag',3,1);",
                         "}",
                         "ShipCustomShipInfoData(Player(),'RefCoffeeFlag',1,30);",
+                        "if(ShipFindCustomShipInfoByType(Player(),'RefMainCoffeeInfo') == -1) ShipAddCustomShipInfo(Player(),'RefMainCoffeeInfo');",
                         "",
                         "ManiaCount = ManiaCount + Rnd(25,40);",
                         "if(ShipFindCustomShipInfoByType(Player(),'RefCoffeeIllness') != -1) ManiaCount = ManiaCount + Rnd(30,60);",

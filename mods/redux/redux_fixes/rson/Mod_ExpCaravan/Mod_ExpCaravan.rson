@@ -248,14 +248,14 @@
                     "Code.Type": "Global",
                     "Code": [
                         "//Первое событие случиться не раньше, чем через два с половиной года после старта",
-                        " if(CurTurn() > 1030)",
-                        " {",
-                        "     //Событие будет повторяться не чаще, чем раз в три года",
-                        "     if(CurTurn() - GLastTurnRun(GScriptName) > 912) {",
-                        "         GRun();",
-                        "         //NewsAdd('Внимание! Мод ExpCaravan начал свою работу. Сообщите Marshalska Rokossovsky на сервере Discord или Telegram');",
-                        "     }",
-                        " }"
+                        "if(CurTurn() > 1030)",
+                        "{",
+                        "    //Событие будет повторяться не чаще, чем раз в три года",
+                        "    if(CurTurn() - GLastTurnRun(GScriptName) > 912) {",
+                        "        GRun();",
+                        "        //NewsAdd('Внимание! Мод ExpCaravan начал свою работу. Сообщите Marshalska Rokossovsky на сервере Discord или Telegram');",
+                        "    }",
+                        "}"
                     ]
                 },
                 {

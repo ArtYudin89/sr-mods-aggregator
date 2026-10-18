@@ -170,7 +170,7 @@
                         "        if(GetShipRuins(Player())) {",
                         "            if(!PlayerBridge()) {",
                         "                if(ShipType(GetShipRuins(Player())) == 'WB' || ShipType(GetShipRuins(Player())) == 'CB') {",
-                        "                    AddDialogInject('CamoSell','',CT('Script.Mod_RefCamoSelling.9'),10);",
+                        "                    AddDialogInject('CamoSell','',CT('Script.Mod_RefCamoSelling.Str9'),10);",
                         "                }",
                         "            }",
                         "        }",
@@ -188,8 +188,8 @@
                     "#": 17,
                     "Code.Type": "Turn",
                     "Code": [
-                        "if(ShipType(GetShipRuins(Player())) == 'WB') tstr = CT('Script.Mod_RefCamoSelling.11');",
-                        "else tstr = CT('Script.Mod_RefCamoSelling.10');",
+                        "if(ShipType(GetShipRuins(Player())) == 'WB') tstr = CT('Script.Mod_RefCamoSelling.Str11');",
+                        "else tstr = CT('Script.Mod_RefCamoSelling.Str10');",
                         "DChange(0);",
                         "exit;"
                     ]

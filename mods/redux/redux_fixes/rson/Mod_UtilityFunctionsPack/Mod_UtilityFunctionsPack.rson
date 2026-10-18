@@ -27,7 +27,7 @@
                     "Pos.x": 0,
                     "Pos.y": 330,
                     "Parent": -1,
-                    "#": 47,
+                    "#": 48,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -61,7 +61,7 @@
                     "Pos.x": 0,
                     "Pos.y": 460,
                     "Parent": -1,
-                    "#": 48,
+                    "#": 49,
                     "Code.Type": "Global",
                     "Code": [
                         "//;"
@@ -73,7 +73,7 @@
                     "Pos.x": 60,
                     "Pos.y": 460,
                     "Parent": -1,
-                    "#": 49,
+                    "#": 50,
                     "Code.Type": "Init",
                     "Code": [
                         "//Объявляем один раз при загрузке скрипта, и затем каждый раз заново при каждой загрузке игры",
@@ -121,6 +121,7 @@
                         "HullExtraSettings = ImportedFunction('UtilityFunctions', 'HullExtraSettings');",
                         "CustomArtCostCalc = ImportedFunction('UtilityFunctions', 'CustomArtCostCalc');",
                         "CustomArtSizeCalc = ImportedFunction('UtilityFunctions', 'CustomArtSizeCalc');",
+                        "PlanetTextQuestId = ImportedFunction('UtilityFunctions', 'PlanetTextQuestId');",
                         "",
                         "//Скрипт продолжит работать ещё минимум ход, поэтому инициализировать функции его запуском рисково",
                         "//Игрок может два раза перезагрузиться за один ход, и тогда функции перезаписаны не будут",
@@ -136,7 +137,7 @@
                     "Pos.x": 0,
                     "Pos.y": 285,
                     "Parent": -1,
-                    "#": 46,
+                    "#": 47,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -154,7 +155,7 @@
                     "Pos.x": 0,
                     "Pos.y": 195,
                     "Parent": -1,
-                    "#": 45,
+                    "#": 46,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -183,7 +184,7 @@
                     "Pos.x": 0,
                     "Pos.y": 240,
                     "Parent": -1,
-                    "#": 44,
+                    "#": 45,
                     "Constellation": 0,
                     "Priority": 0,
                     "NoKling": false,
@@ -197,7 +198,7 @@
                     "Pos.x": 0,
                     "Pos.y": 355,
                     "Parent": -1,
-                    "#": 50,
+                    "#": 51,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
@@ -694,6 +695,17 @@
                     "Var.Type": "None",
                     "Init": "",
                     "Global": true
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "PlanetTextQuestId",
+                    "Pos.x": 0,
+                    "Pos.y": 150,
+                    "Parent": -1,
+                    "#": 44,
+                    "Var.Type": "None",
+                    "Init": "",
+                    "Global": true
                 }
             ]
         }
@@ -701,29 +713,29 @@
     "Visual.Links": [
         {
             "Type": "TGraphLink",
-            "Begin": 45,
-            "End": 44,
-            "Nom": 0,
-            "Arrow": true
-        },
-        {
-            "Type": "TGraphLink",
             "Begin": 46,
-            "End": 44,
+            "End": 45,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
             "Begin": 47,
-            "End": 46,
+            "End": 45,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 47,
-            "End": 50,
+            "Begin": 48,
+            "End": 47,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 48,
+            "End": 51,
             "Nom": 0,
             "Arrow": true
         }

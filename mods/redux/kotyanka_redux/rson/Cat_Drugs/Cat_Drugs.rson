@@ -804,7 +804,7 @@
                     "Code.Type": "Turn",
                     "Code": [
                         "int cnt = ShipItems(Player());",
-                        "for(i = 1; i < cnt; i = i + 1) {",
+                        "for(int i = 1; i < cnt; i = i + 1) {",
                         "    dword item = ShipItems(Player(), i);",
                         "    if(ItemType(item) != t_UselessItem) continue;",
                         "    if(EquipmentImageName(item) == 'Usl_Drug06') InjectAnswer('Sell',CT(\"Script.Cat_Drugs.7\")+' '+Name(item)+' ('+(ItemCost(item)*125/100)+' cr.)',item);",

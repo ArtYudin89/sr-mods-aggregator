@@ -308,7 +308,7 @@
                         "}",
                         "",
                         "//Уничтожаем всех флагманов и рейнджеров с корпусом \"Таухито\"",
-                        "GetRidOfAnachronisms();",
+                        "GetRidOfAnachronisms(0); //0 - все типы кораблей",
                         "function GetRidOfAnachronisms(int types)",
                         "{",
                         "    i = BuildListOfNewShips(tarr1, lastShipId, types, 1+2+4+8+16, 1, '', '');",

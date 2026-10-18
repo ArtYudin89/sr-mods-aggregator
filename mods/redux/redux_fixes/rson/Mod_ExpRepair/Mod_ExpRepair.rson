@@ -4433,7 +4433,7 @@
                         "",
                         "//Ремонт оборудования в комплектациях (если ещё не созданы, то заблокирован)",
                         "check = 0;",
-                        "for(int i = 1; i <= 9; i = i + 1) if(PlayerEqSet(i)) check = check + 1;",
+                        "for(int i = 1; i <= 9; i = i + 1) { if(PlayerEqSet(i)) check = check + 1; }",
                         "tstr1 = CT('Script.Mod_ExpRepair.' + CurRuinTypeStr + '.PlayerAskRepairSets');",
                         "if(check <= 1) AddDialogBlock(tstr1, 1);",
                         "InjectAnswer('RepairPlayer', tstr1, 1);",

@@ -3566,6 +3566,11 @@
                     "Code": [
                         "ShipSetBad(GetTalkShip(),0);",
                         "TranclucatorData(GetTalkShip(),'Proprietor',Player());",
+                        "//Снимаем запрет NoDropItem с артефактов (GiveArt), иначе игрок не сможет их вынуть: Предмет нужен для задания",
+                        "int nd_k;",
+                        "for(nd_k=1;nd_k<ShipItems(GetTalkShip());nd_k=nd_k+1) {",
+                        "    if(NoDropItem(ShipItems(GetTalkShip(),nd_k))) NoDropItem(ShipItems(GetTalkShip(),nd_k),0);",
+                        "}",
                         "Sound('Sound.Repair');",
                         "ShipOut(GetTalkShip());",
                         "SetProgramm(11,GetProgramm(11)-1);",
@@ -5027,6 +5032,28 @@
             "End": 61,
             "Nom": 0,
             "Arrow": true
+        },
+        {
+            "Type": "TGroupLink",
+            "Begin": 40,
+            "End": 39,
+            "Nom": 0,
+            "Arrow": true,
+            "Rel1": 4,
+            "Rel2": 4,
+            "WarWeightMin": "0",
+            "WarWeightMax": "1000"
+        },
+        {
+            "Type": "TGroupLink",
+            "Begin": 39,
+            "End": 40,
+            "Nom": 1,
+            "Arrow": true,
+            "Rel1": 4,
+            "Rel2": 4,
+            "WarWeightMin": "0",
+            "WarWeightMax": "1000"
         }
     ],
     "BlockPar.EC.Total.Strings": 0,

@@ -1,0 +1,698 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_SR1RedSkullPart3",
+    "ScriptFileOut": "D:\\Mod_SR1RedSkullPart3.scr",
+    "ScriptTextOut": "D:\\Mod_SR1RedSkullPart3.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "exit",
+                    "Pos.x": 0,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 17,
+                    "Msg": "",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer('exit')"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": " ",
+                    "Pos.x": 120,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 18,
+                    "Msg": "",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer(' ~'+CT(\"Script.Mod_SR1RedSkullPart3.6\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 19,
+                    "Msg": "",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_SR1RedSkullPart3.7\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "",
+                    "Pos.x": 360,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 20,
+                    "Msg": "",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_SR1RedSkullPart3.8\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "",
+                    "Pos.x": 480,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 21,
+                    "Msg": "",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_SR1RedSkullPart3.9\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "exit",
+                    "Pos.x": 600,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 22,
+                    "Msg": "",
+                    "AMsg.Num": "5",
+                    "_orig_danswer": "DAnswer('exit')"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 12,
+                    "Msg": "",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_SR1RedSkullPart3.1\"))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 13,
+                    "Msg": "",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_SR1RedSkullPart3.2\"))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 14,
+                    "Msg": "",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_SR1RedSkullPart3.3\"))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 15,
+                    "Msg": "",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_SR1RedSkullPart3.4\"))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 16,
+                    "Msg": "",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_SR1RedSkullPart3.5\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Type": "TDialog",
+                    "Name": "dRedSkullTalk",
+                    "Pos.x": 0,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 11
+                }
+            ],
+            "Groups": [
+                {
+                    "Type": "TGroup",
+                    "Name": "PlayerGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 4,
+                    "Owner": 62,
+                    "Group.Type": 126,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": true,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "Planet1",
+                    "+State": 0
+                },
+                {
+                    "Type": "TGroup",
+                    "Name": "RedSkull",
+                    "Pos.x": 180,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 5,
+                    "Owner": 9,
+                    "Group.Type": 9,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 1,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "1.9",
+                    "StrengthMax": "2.2",
+                    "Ruins": "",
+                    "+Planet": "Planet1",
+                    "+State": 1
+                }
+            ],
+            "Items": [],
+            "Operations": [
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 6,
+                    "Code.Type": "Global",
+                    "Code": [
+                        "if(GRunFrom==3) {",
+                        "  if(RedSkull_Star==Id(GRunStar)) {",
+                        "    if(RedSkull_PlayerIs==0) {",
+                        "      if(!GCntRun(GScriptName)) {",
+                        "        GRun();",
+                        "      }",
+                        "    }",
+                        "  }",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 7,
+                    "Code.Type": "Init",
+                    "Code": [
+                        "SetName(GroupToShip(RedSkull),CT(\"Script.Mod_SR1RedSkullPart3.0\"));"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 8,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(!CountIn(RedSkull)) {",
+                        "  ShipOut(Player());",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 160,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 23,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "ChangeGlobalRelationsShips(Player(),CurShip,0,0,ffffh,ffffh);",
+                        "if(!ShipInStar(Player(),Star1)) {",
+                        "  ShipOut(CurShip);",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 24,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(vRedSkullTalkNum==1) {",
+                        "  DChange(0);",
+                        "  exit;",
+                        "}",
+                        "if(vRedSkullTalkNum==2) {",
+                        "  DChange(1);",
+                        "  exit;",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 25,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(1);",
+                        "DAdd(2);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 26,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(0);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 280,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 27,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);",
+                        "DAdd(4);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 430,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 28,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(5);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 580,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 29,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(5);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 30,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(2);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 220,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 31,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "vRedSkullTalkNum=2;",
+                        "DChange(4);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 340,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 32,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "vRedSkullTalkNum=2;",
+                        "DChange(3);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 460,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 33,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "vRedSkullTalkNum=2;",
+                        "DChange(4);",
+                        "exit;"
+                    ]
+                }
+            ],
+            "Places": [],
+            "Planets": [
+                {
+                    "Type": "TPlanet",
+                    "Name": "Planet1",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 3,
+                    "Race": 62,
+                    "Owner": 62,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "Star1"
+                }
+            ],
+            "Ships": [
+                {
+                    "Type": "TStarShip",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 2,
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "Star1"
+                }
+            ],
+            "Stars": [
+                {
+                    "Type": "TStar",
+                    "Name": "Star1",
+                    "Pos.x": 0,
+                    "Pos.y": 90,
+                    "Parent": -1,
+                    "#": 1,
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": true,
+                    "NoComeKling": true
+                }
+            ],
+            "States": [
+                {
+                    "Type": "TState",
+                    "Name": "PlayerState",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 9,
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                },
+                {
+                    "Type": "TState",
+                    "Name": "StateNew",
+                    "Pos.x": 180,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 10,
+                    "Move": 2,
+                    "MoveObj": 4,
+                    "Attack.Count": 1,
+                    "Attack.Items": [
+                        {
+                            "Target.0": 4
+                        }
+                    ],
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "dRedSkullTalk",
+                    "OnActCode": "dRedSkullTalk",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "vRedSkullTalkNum",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "1",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 10,
+            "End": 23,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 11,
+            "End": 24,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 25,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 26,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 27,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 15,
+            "End": 28,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 29,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 30,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 19,
+            "End": 31,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 20,
+            "End": 32,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 21,
+            "End": 33,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 2,
+            "End": 1,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 3,
+            "End": 1,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 4,
+            "End": 3,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 4,
+            "End": 9,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 5,
+            "End": 3,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 5,
+            "End": 10,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGroupLink",
+            "Begin": 5,
+            "End": 4,
+            "Nom": 0,
+            "Arrow": true,
+            "Rel1": 0,
+            "Rel2": 2,
+            "WarWeightMin": "0",
+            "WarWeightMax": "1000"
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_SR1RedSkullPart3\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
+}

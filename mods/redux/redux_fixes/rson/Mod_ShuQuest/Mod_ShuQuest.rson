@@ -70,21 +70,21 @@
                 {
                     "Type": "Top",
                     "Name": "",
-                    "Pos.x": 60,
+                    "Pos.x": 120,
                     "Pos.y": 335,
                     "Parent": -1,
                     "#": 11,
-                    "Code.Type": "Init",
+                    "Code.Type": "Turn",
                     "Code": [
                         "//Если текстовый квест \"Колонизация\" был успешно завершён (получение награды на планете заказчика не обязательно)",
-                        " //Игроком был взят текстовый квест \"Колонизация\" (находится в процессе выполнения)",
-                        " if(QuestsStatusByNom(2, 46) == 1)",
-                        " {",
-                        "     if(ShipFindCustomShipInfoByType(Player(), 'ShuQuest_Colonization') == -1)",
-                        "     {",
-                        "         ShipAddCustomShipInfo(Player(), 'ShuQuest_Colonization');",
-                        "     }",
-                        " }"
+                        "//Игроком был взят текстовый квест \"Колонизация\" (находится в процессе выполнения)",
+                        "if(QuestsStatusByNom(2, 46) == 1)",
+                        "{",
+                        "    if(ShipFindCustomShipInfoByType(Player(), 'ShuQuest_Colonization') == -1)",
+                        "    {",
+                        "        ShipAddCustomShipInfo(Player(), 'ShuQuest_Colonization');",
+                        "    }",
+                        "}"
                     ]
                 }
             ],

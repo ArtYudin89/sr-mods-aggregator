@@ -58,9 +58,9 @@
                     "Pos.y": 530,
                     "Parent": -1,
                     "#": 41,
-                    "Msg": "Нет, мне ничего не надо",
+                    "Msg": "",
                     "AMsg.Num": "3",
-                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_StationSuperintendent.19\"))"
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_StationSuperintendent.30\"))"
                 },
                 {
                     "Type": "TDialogAnswer",
@@ -102,9 +102,9 @@
                     "Pos.y": 530,
                     "Parent": -1,
                     "#": 45,
-                    "Msg": "Нет, спасибо",
+                    "Msg": "",
                     "AMsg.Num": "7",
-                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_StationSuperintendent.28\"))"
+                    "_orig_danswer": "DAnswer(CT(\"Script.Cat_StationSuperintendent.31\"))"
                 },
                 {
                     "Type": "TDialogAnswer",
@@ -295,7 +295,7 @@
                     "#": 19,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -369,6 +369,10 @@
                         "            }",
                         "            else if(ShipFindCustomShipInfoByType(tdwd2,'Cat_SAS_Build') == -1) {",
                         "                ArrayDelete(BuildingList,i);",
+                        "            }",
+                        "            else if(GetShipPlanet(tdwd2)) {",
+                        "                //Станция, перенесённая на планету (ТЦ через BuyTC), должна взлететь, иначе строителям не на что садиться",
+                        "                OrderTakeOff(tdwd2);",
                         "            }",
                         "            else if(ShipCustomShipInfoData(tdwd2,'Cat_SAS_Build',1) <= 0) {",
                         "                NoLanding(tdwd2,0);",
@@ -459,8 +463,9 @@
                         "        if(!OrderLock(CurShip)) OrderLanding(CurShip, IdToShip(ShipData()));",
                         "        OrderLock(CurShip,1);",
                         "        if(ShipFindCustomShipInfoByType(IdToShip(ShipData()),'Cat_SAS_Build') == -1) {",
+                        "            //Стройка закончена: строитель не должен остаться жить своей жизнью",
                         "            OrderLock(CurShip,0);",
-                        "            ShipOut(CurShip);",
+                        "            DeleteTranc(CurShip);",
                         "        }",
                         "    }",
                         "    else {",
@@ -512,16 +517,9 @@
                     "#": 50,
                     "Code.Type": "Turn",
                     "Code": [
-                        "if(ShipInNormalSpace(CurShip)) {",
-                        "    if(~IdToShip(ShipData())) {",
-                        "        if(!OrderLock(CurShip)) OrderLanding(CurShip, NearCivilPlanet(CurShip));",
-                        "        OrderLock(CurShip, 1);",
-                        "    }",
-                        "    else {",
-                        "        OrderLock(CurShip,0);",
-                        "        ShipDestroy(CurShip,1);",
-                        "    }",
-                        "}"
+                        "//DestroyIt: строитель всегда уничтожается (раньше при живой станции он садился на планету и оставался навсегда)",
+                        "OrderLock(CurShip,0);",
+                        "ShipDestroy(CurShip,1);"
                     ]
                 },
                 {

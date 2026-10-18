@@ -663,7 +663,7 @@
                     "#": 33,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -734,7 +734,7 @@
                         "  if(PlayerQuestsCompleted(0) >= Delivers && !CallFlag && RaceFlag) {",
                         "      for(i=0;i<GalaxyStars();i=i+1) {",
                         "          if(StarOwner(GalaxyStar(i)) == 1) continue;",
-                        "          if(findsubstr(CT('Star.02'),Name(GalaxyStar(i)))) SolarFreeFlag = 1;",
+                        "          if(findsubstr(CT('Star.02'),Name(GalaxyStar(i))) >= 0) SolarFreeFlag = 1;",
                         "      }",
                         "      if(SolarFreeFlag) {",
                         "          CallFlag = 1;",

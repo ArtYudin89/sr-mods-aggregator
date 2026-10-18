@@ -688,7 +688,7 @@
                     "#": 17,
                     "Code.Type": "Global",
                     "Code": [
-                        "GRun();"
+                        "if(!GCntRun(GScriptName)) GRun();"
                     ]
                 },
                 {
@@ -739,12 +739,14 @@
                     "#": 20,
                     "Code.Type": "DialogBegin",
                     "Code": [
+                        "casino_BK = CT(\"Script.Mod_Casino.144\");",
+                        "casino_Pirate = CT(\"Script.Mod_Casino.143\");",
                         "if(GetShipRuins(Player())) {",
                         "    if(ShipType(GetShipRuins(Player()))=='BK') {",
-                        "        AddDialogInject('Casino_BK',Format(CT(\"Script.Mod_Casino.137\"),\"<0>\",casino_BK),CT(\"Script.Mod_Casino.83\"),0);",
+                        "        AddDialogInject('Casino_BK',Format(CT(\"Script.Mod_Casino.142\"),\"<0>\",casino_BK),CT(\"Script.Mod_Casino.83\"),0);",
                         "    }",
                         "    if(ShipType(GetShipRuins(Player()))=='PB' || ShipType(GetShipRuins(Player()))=='CB') {",
-                        "        AddDialogInject('Casino_Pirate',Format(CT(\"Script.Mod_Casino.136\"),\"<0>\",casino_Pirate),CT(\"Script.Mod_Casino.83\"),0);",
+                        "        AddDialogInject('Casino_Pirate',Format(CT(\"Script.Mod_Casino.141\"),\"<0>\",casino_Pirate),CT(\"Script.Mod_Casino.83\"),0);",
                         "    }",
                         "}"
                     ]
@@ -1677,7 +1679,7 @@
                     "Parent": -1,
                     "#": 8,
                     "Var.Type": "Str",
-                    "Init": "\"Козырный туз\"",
+                    "Init": "",
                     "Global": false
                 },
                 {
@@ -1688,7 +1690,7 @@
                     "Parent": -1,
                     "#": 9,
                     "Var.Type": "Str",
-                    "Init": "\"Крупный куш\"",
+                    "Init": "",
                     "Global": false
                 },
                 {
