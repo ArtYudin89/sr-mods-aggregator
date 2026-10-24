@@ -189,9 +189,20 @@ Copyright (C) 2026 ArtYudin89.
 
 Пак `shared/solar` раздаётся так, как его собрал автор, и включает загрузчик XenoNativeLoader
 (`dsound.dll`, `XenoCore.dll`, `XenoNative.ini`, `XenoNative\`) из
-[Xenomorphchyma/XenoMods](https://github.com/Xenomorphchyma/XenoMods): Copyright 2026
-Xenomorphchyma, лицензия [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)
-— только некоммерческое использование.
+[Xenomorphchyma/XenoMods](https://github.com/Xenomorphchyma/XenoMods), лицензия
+[PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)
+— только некоммерческое использование. Текст условий — в
+[third_party/XenoNative/LICENSE.txt](third_party/XenoNative/LICENSE.txt) (копия `LICENSE`
+из XenoMods), строки Required Notice из него:
+
+```text
+Required Notice: Copyright 2026 Xenomorphchyma.
+
+Required Notice: This license applies only to copyright and other rights owned
+or licensable by Xenomorphchyma. Space Rangers HD game assets, materials based
+on the game, and third-party contributions remain subject to the rights and
+terms of their respective owners.
+```
 
 ## Поддержать
 

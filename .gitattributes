@@ -7,3 +7,7 @@
 # после такого checkout записывала sha CRLF-версии (iface.txt: 2432 -> 2595 байт,
 # 9 модов в 5 юнитах).
 mods/**/code/** -text
+#
+# Тексты чужих лицензий в third_party/ — тоже побайтные копии оригиналов,
+# их sha256 записан в third_party/notices.json.
+third_party/** -text
