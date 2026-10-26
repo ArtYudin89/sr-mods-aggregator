@@ -10,7 +10,7 @@ Public `ArtYudin89/sr-mods-aggregator`, ПРОД: ночной cron GitHub Actio
 - **НЕ удалять старое (HF/git), пока новое не проверено залитым** (инцидент −22 ГБ; предохранитель <90% есть, но правило главнее).
 
 ## Данные
-- `mods.config.json`: units (1 unit = 1 раздача GDrive; name/camp/role/load_order/kind/enabled/manual/fix_parent). Мод = папка с `ModuleInfo.txt` (не mod_key).
+- `mods.config.json`: units (1 unit = 1 раздача: GDrive `gdrive` или прямая ссылка `url`; name/camp/role/load_order/kind/enabled/manual/fix_parent). `load_order` — всегда число: null роняет сортировку паков в лаунчере. Мод = папка с `ModuleInfo.txt` (не mod_key).
 - `redux_base` (~12 ГБ) `manual:true` → TG-алерт → локальный `update_base.bat`.
 - Фолд фикс-оверлеев: `_fold_fix_overlays` вшивает файлы role=fixes в дескриптор родителя (`overlaid_fixes:true`); аудит `pipeline/_audit_fixes.py`.
 

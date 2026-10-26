@@ -116,6 +116,12 @@ def gdrive_id(url):
     return m.group(1) if m else None
 
 
+def unit_source(unit):
+    """Ссылка на раздачу юнита: GDrive (`gdrive`) или прямая (`url`, напр. последний релиз
+    GitHub). Пусто — разовая выкладка (архив кладут в cache/ руками)."""
+    return unit.get('gdrive') or unit.get('url') or ''
+
+
 def dir_hash(d):
     """Стабильный хэш каталога по (относительный путь, размер)."""
     h = hashlib.sha256()
@@ -176,8 +182,9 @@ def remote_signature(unit, rclone_exe, remote):
     """Отпечаток источника GDrive БЕЗ скачивания — для skip-if-unchanged.
       * файл  -> sha256Checksum (Drive API);
       * папка -> sha256 от строк '<path>|<size>|<sha256>' всех файлов (rclone lsjson).
-    Возвращает строку или None (метаданные недоступны -> откат к download-then-compare)."""
-    if not rclone_exe:
+    Возвращает строку или None (метаданные недоступны -> откат к download-then-compare).
+    У юнита с прямой ссылкой (`url`) отпечатка нет: он маленький, его сравнивают по хэшу."""
+    if not rclone_exe or not unit.get('gdrive'):
         return None
     gid = gdrive_id(unit['gdrive'])
     if not gid:
@@ -324,7 +331,7 @@ def download_rclone(unit, remote, no_download):
 def download(unit, no_download, rclone_remote='gdrive'):
     """Скачать юнит в cache/. Возвращает (path, digest). path = файл или каталог.
     Папки и 'shared'-юниты — через rclone (надёжно для сотен файлов и для приватных);
-    одиночные публичные файлы — через gdown."""
+    одиночные публичные файлы — через gdown; прямая ссылка (`url`) — обычным HTTP."""
     name = unit['name']
     is_folder = unit.get('kind') == 'folder'
     if is_folder or unit.get('access') == 'shared':
@@ -342,8 +349,17 @@ def download(unit, no_download, rclone_remote='gdrive'):
             raise FileNotFoundError(f'--no-download, нет cache/{name}.*')
         return cached[0], sha256_file(cached[0])
 
-    import gdown
     CACHE.mkdir(parents=True, exist_ok=True)
+    if unit.get('url'):
+        tmp = CACHE / f'{name}.part'
+        if tmp.exists():
+            tmp.unlink()
+        download_url(unit['url'], tmp)
+        if tmp.stat().st_size == 0:
+            raise RuntimeError(f'по ссылке {name} пришёл пустой файл')
+        return _settle_download(name, tmp)
+
+    import gdown
 
     if is_folder:
         out = CACHE / f'{name}.folder'
@@ -390,6 +406,12 @@ def download(unit, no_download, rclone_remote='gdrive'):
     res = _gdown_file(gid, tmp)
     if not tmp.exists() or tmp.stat().st_size == 0:
         raise RuntimeError(f'gdown не скачал {name}: {(res.stderr or res.stdout or "")[:200]}')
+    return _settle_download(name, tmp)
+
+
+def _settle_download(name, tmp):
+    """Скачанный cache/<name>.part -> cache/<name><расширение по сигнатуре>, (path, sha256).
+    Тот же архив, что уже лежит в cache/, не перекладывается."""
     ext = _sniff_ext(tmp)
     final = CACHE / f'{name}{ext}'
     digest = sha256_file(tmp)
@@ -838,7 +860,7 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
 
         arc = _cached_archive(name, unit.get('kind'))
         if not arc:
-            if not unit.get('gdrive'):
+            if not unit_source(unit):
                 print(f'  {name}: разовая выкладка — архива нет в cache/, скачать его '
                       f'неоткуда — пропуск')
                 continue
@@ -1618,6 +1640,14 @@ def build_descriptors(cfg):
             _mts = [m['mtime'] for m in allmeta.values() if m.get('mtime')]
             mtime = max(_mts) if _mts else None
             raw_title = mi.get('Name', root.split('/')[-1])
+            # drop_depends: зависимости мода в каталог не пишем. Лаунчер (0.28.0) ставит
+            # зависимости из той же сборки, что и вариант мода, а вариант берёт по
+            # default_source: мод, лежащий одним архивом в нескольких сборках (YartMods),
+            # притянул бы игроку Universe UtilityFunctionsPack из Redux поверх своего.
+            # Игра всё равно требует зависимость (ModuleInfo на диске), и лаунчер включает
+            # её с диска; файлы есть в базе каждой сборки.
+            depends = ([] if (unit_cfg or {}).get('drop_depends')
+                       else _split_modlist(mi.get('Dependence', '')))
             desc = {
                 'schema': 'srmod/1',
                 'id': root,
@@ -1630,7 +1660,7 @@ def build_descriptors(cfg):
                 'description': _mi_localized(mi, 'SmallDescription', 'SmallDescriptionEng'),
                 'full_description': _mi_localized(mi, 'FullDescription', 'FullDescriptionEng'),
                 'version': version,
-                'depends': _split_modlist(mi.get('Dependence', '')),
+                'depends': depends,
                 'conflicts': _split_modlist(mi.get('Conflict', '')),
                 'chunk_index_url': chunk_index_url,
                 'cosmetic': _cosmetic_installs(files),
@@ -2137,10 +2167,10 @@ def main():
 
         prev = lock_before.get(name, {})
 
-        # Разовая выкладка: ссылки на раздачу нет (gdrive пуст) — автор прислал архив
+        # Разовая выкладка: ссылки на раздачу нет (ни gdrive, ни url) — автор прислал архив
         # один раз. Облаку взять его неоткуда; локально архив лежит в cache/<имя>.<ext>,
         # куда его кладут руками (см. README, «Разовая выкладка»).
-        oneoff = not unit.get('gdrive')
+        oneoff = not unit_source(unit)
         if oneoff and a.cloud:
             print('  разовая выкладка без ссылки — облако пропускает')
             continue
@@ -2206,7 +2236,7 @@ def main():
                 'display_name': unit.get('display_name', name),
                 'load_order': unit.get('load_order'),
                 'known_version': unit.get('known_version') or None,
-                'source_url': unit.get('gdrive') or None, 'kind': unit.get('kind'),
+                'source_url': unit_source(unit) or None, 'kind': unit.get('kind'),
                 'sha256': digest,
                 'rson_count': n_rson,
                 'code_files': cn, 'code_bytes': cb,

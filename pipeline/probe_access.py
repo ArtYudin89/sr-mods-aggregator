@@ -47,10 +47,12 @@ def main():
     rows = []
     for u in cfg['units']:
         name, kind = u['name'], u.get('kind')
-        url = u['gdrive']
+        url = u.get('gdrive') or ''
         status, detail = '?', ''
         try:
-            if kind == 'folder':
+            if u.get('url'):             # прямая ссылка (релиз GitHub) — не GDrive
+                status, detail = 'direct', u['url']
+            elif kind == 'folder':
                 files = gdown.download_folder(url=url, skip_download=True,
                                               quiet=True, use_cookies=False,
                                               remaining_ok=True)

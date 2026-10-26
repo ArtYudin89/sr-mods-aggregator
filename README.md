@@ -99,6 +99,7 @@ GitHub Actions (`.github/workflows/`, подробно — `docs/CI_AUTOUPDATE.m
       "role": "pack",                  // pack | mod | fixes | assets
       "load_order": 10,
       "gdrive": "https://drive.google.com/file/d/<ID>",
+      "url": "https://…/x.zip",        // вместо gdrive: прямая ссылка на архив (только kind=file)
       "kind": "file",                  // file | folder
       "enabled": true,
       "manual": true,                  // опц.: тяжёлый — в облаке только детект+уведомление
@@ -106,7 +107,8 @@ GitHub Actions (`.github/workflows/`, подробно — `docs/CI_AUTOUPDATE.m
       "include": ["*For_Redux*"],      // опц. (kind=folder): брать ТОЛЬКО эти архивы
       "exclude": ["ZelDomiksOld*"],    // опц. (kind=folder): эти архивы НЕ брать
       "access": "shared",              // опц.: "shared" -> скачивание через rclone
-      "addon": true                    // опц.: пак по выбору со своими файлами игры
+      "addon": true,                   // опц.: пак по выбору со своими файлами игры
+      "drop_depends": true             // опц.: зависимости мода не писать в каталог (см. ниже)
     }
   ]
 }
@@ -121,6 +123,20 @@ GitHub Actions (`.github/workflows/`, подробно — `docs/CI_AUTOUPDATE.m
 постоянная раздача, юниту ставят ссылку и `kind`, а `manual` снимают — дальше его ведёт ночной
 прогон. Первый облачный прогон пересоберёт юнит сам: отпечаток раздачи не совпадёт с хэшем
 прежнего архива в локе. Так 16.10.2026 стало с `solar` (папка автора на GDrive).
+
+**Прямая ссылка** — юнит с `"url"` вместо `"gdrive"`: один архив по обычной HTTP-ссылке, например
+последний релиз на GitHub (`https://github.com/<owner>/<repo>/releases/latest/download/<архив>.zip` —
+GitHub сам ведёт её на новый релиз, если имя архива в релизах одно). Отпечатка без скачивания у такой
+ссылки нет: облако качает архив каждый прогон и сравнивает sha256 с локом — годится для небольших
+архивов. Так подключены моды [YartMods](https://github.com/ArtYudin89/YartMods): один архив юнитами в
+сборках Redux и Universe (`yartmods_redux`, `yartmods_universe`), с `addon` — чтобы мод не ставился вместе
+со сборкой целиком — и `drop_depends`.
+
+**`drop_depends: true`** — зависимости мода (`Dependence` из `ModuleInfo.txt`) не попадают в дескриптор и
+каталог. Нужен, когда один архив лежит юнитами в нескольких сборках: лаунчер 0.28.0 ставит зависимости из
+сборки выбранного варианта мода, а вариант мода, добавленного поиском, берёт по `default_source` — игроку
+Universe приехал бы UtilityFunctionsPack из Redux поверх своего. Игра зависимость всё равно требует, и
+лаунчер включает её по `ModuleInfo.txt` с диска; её файлы есть в базе каждой сборки.
 
 **`addon: true`** — пак по выбору (лаунчер с 0.28.0): в установку сборки и быстрый старт не
 входит, а его файлы игры (у `solar` — свой `Rangers.exe` и загрузчик XenoNative) лаунчер кладёт
