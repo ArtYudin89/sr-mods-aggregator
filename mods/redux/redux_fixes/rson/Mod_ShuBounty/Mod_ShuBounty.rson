@@ -1585,6 +1585,8 @@
                         "{",
                         "    dword cur_item = CurItem();",
                         "",
+                        "    if((ScriptItemActionType(t_OnStep) || ScriptItemActionType(t_OnShowingItemInfo)) && !ItemCost(cur_item)) exit; //Капсула ещё не инициализирована при дропе (цена 0, данные пилота пусты) - иначе nil-строка pilot_name роняет игру",
+                        "",
                         "    //Тикает таймер времени жизни гуманоида в капсуле",
                         "    if(ScriptItemActionType(t_OnStep))",
                         "    {",

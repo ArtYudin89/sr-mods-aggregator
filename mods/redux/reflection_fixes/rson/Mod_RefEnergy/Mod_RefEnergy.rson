@@ -336,6 +336,10 @@
                     "#": 21,
                     "Code.Type": "Turn",
                     "Code": [
+                        "//Инфошки игрока ставит Init, но его верхнеуровневый код не выполняется на загруженном сейве, а смена корабля игрока их теряет",
+                        "if(ShipFindCustomShipInfoByType(Player(),'RefEnergyInfo') == -1) ShipAddCustomShipInfo(Player(),'RefEnergyInfo');",
+                        "if(ShipFindCustomShipInfoByType(Player(),'RefEnergyBuffInfo') == -1) ShipAddCustomShipInfo(Player(),'RefEnergyBuffInfo','NoShow');",
+                        "",
                         "//Раздаём новым кораблям энергоблоки и инфошку третона",
                         "if(GalaxyShipId() > lastShipId) {",
                         "    int cnt=BuildListOfNewShips(tarr1,lastShipId,1+2+4+8+16+256+4096+8192,1+2+4+8+16+128,1,'');",
