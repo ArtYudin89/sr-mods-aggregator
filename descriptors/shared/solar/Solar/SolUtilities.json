@@ -7,57 +7,67 @@
   "author": "FC_Fan",
   "section": "Solar",
   "priority": "6",
-  "description": "Утилитпак для модов Solar, использует XenoNative-плагины от автора Xenomorphchyma",
-  "full_description": "Утилитпак с DLL для модов Solar.",
-  "version": "5a6eac234744ba01",
+  "description": "Утилитпак с DLL для модов Solar: режимы и экономики планет, нативные порты, ядро хуков\n(Мод можно подключать/отключать в течение партии)",
+  "full_description": "Основа сборника Solar: нативные DLL (SolHook — ядро хуков, SolEngine — сущности и порты NextDay) и общие настройки Lang. Без него моды Solar с пометкой «нужен SolUtilities» не работают. При запуске SolHook сверяет таблицу символов с версией Rangers.exe и проверяет отпечатки хукаемых функций; несовпавшая группа хуков отключается с сообщением (лог SolHook.log).\n<clr><clrEnd>\nПолитические режимы планет: блок Lang GovRegime (Enable=1; Regime.<n>, n = 0..4 правит ванильные режимы — отношения после революции, шансы квестов, цены и запасы товаров, легальность, доли режимов по расам в процентах GovRegime.Roll.<раса>.<режим>, сумма долей расы = 100). Ванильная таблица вероятностей уже лежит в Lang этого мода; новые режимы добавляются в мод SolPlanets.\nЭкономики планет: блоки Economy (факторы по товарам, изобретения, магазин, события, значок, доли генерации; до пяти новых экономик в слотах 3..7) и PirateEconomy (фактор пиратских планет, включая Роджерию). Числа рас в Main (Race.<Параметр>.<Имя>). Вкладка «Экономика» в тонкой настройке заменяет ванильные ползунки аграрных / смешанных / индустриальных планет.\nТехнический уровень галактики: блок GalaxyTech в Lang (Mode 0/1/2, RefPlanets, Top/Mid/Sum, Quantile, MinCount) — кворум масштабируется с размером галактики. Подробно: src\\engine\\GOV_REGIMES.md.\nОтключать мод посреди партии нельзя: данные режимов и экономик записаны в планеты.",
+  "version": "18ac28c1a21d803d",
   "depends": [],
   "conflicts": [],
   "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
   "cosmetic": [],
-  "mtime": 1792078712,
+  "mtime": 1793085258,
   "files": {
     "code": {
-      "Solar_Release_unpacked/Mods/Solar/SolUtilities/ModuleInfo.txt": {
-        "sha256": "155cc667510840a7f789ee8b5c5329639222e26b2c81861c27c8fa5190b328b1",
-        "size": 4552,
-        "mtime": 1792029924
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolUtilities/ModuleInfo.txt": {
+        "sha256": "c3b1f4aeb2325ca3b108d60d6dde52db9dd37d42f6d75136cedadf5af738a87e",
+        "size": 7360,
+        "mtime": 1793085258
       },
-      "Solar_Release_unpacked/Mods/Solar/SolUtilities/CFG/Main.dat": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolUtilities/CFG/Main.dat": {
         "sha256": "bd0487769672889d6c12d6c7929e540ecf7e00f81546cd6d7b82f0d7c5d656f2",
         "size": 1060,
         "mtime": 1791818352
       },
-      "Solar_Release_unpacked/Mods/Solar/SolUtilities/CFG/Rus/Lang.dat": {
-        "sha256": "ba1596b1312644c357bbf98d399d2f7ae7193a2bec5d184208b2dd4a6a2a8062",
-        "size": 878,
-        "mtime": 1791820978
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolUtilities/CFG/Eng/Lang.dat": {
+        "sha256": "f1f2787506d90f229af681a3f630258a0111d5b93d6843372baa43b39f8e589d",
+        "size": 1036,
+        "mtime": 1793045154
       },
-      "Solar_Release_unpacked/Mods/Solar/SolUtilities/Native/SolHook.XenoPlugin.ini": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolUtilities/CFG/Rus/Lang.dat": {
+        "sha256": "a6c8aa6405c8dcba9e33ea3d48dee51302e4bc1925ecf9425b7ff68ca8d57396",
+        "size": 1115,
+        "mtime": 1793045154
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolUtilities/Native/SolHook.XenoPlugin.ini": {
         "sha256": "5a4f7c11ce8eafa26f39d3d3080ad408b9e4d7358d2f7524e301ef9b1826558c",
         "size": 1560,
         "mtime": 1791957176
       }
     },
     "assets": {
-      "Solar_Release_unpacked/Mods/Solar/SolUtilities/Native/SolEngine.XenoPlugin.dll": {
-        "sha256": "b860e3989262384018810f78a5b8c511603e49a9a0f978f8c9b435a96c154896",
-        "size": 603648,
-        "mtime": 1792078712
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolUtilities/Native/SolEngine.XenoPlugin.dll": {
+        "sha256": "3fc9092865dbaf89d90bae1941cdb58a5b6195eec6e70edbe244a197639bb342",
+        "size": 743424,
+        "mtime": 1793054558
       },
-      "Solar_Release_unpacked/Mods/Solar/SolUtilities/Native/SolHook.XenoPlugin.dll": {
-        "sha256": "130ac407b012935941b5a19bcaf9497df158b05d6814e772e36e5fe0a00ca190",
-        "size": 92672,
-        "mtime": 1791958422
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolUtilities/Native/SolHook.XenoPlugin.dll": {
+        "sha256": "2031354f10c1c1ca8b0b77a7c1a005f850085acd1a540f446ba9a43abba36f74",
+        "size": 97280,
+        "mtime": 1793054558
       },
-      "Solar_Release_unpacked/Mods/Solar/SolUtilities/Native/SolSymbols.6A7AFC5C.gsym": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolUtilities/Native/SolSymbols.6A7AFC5C.gsym": {
         "sha256": "da89116944f7e1afcf6a8c5edb2dffe0e51133929f8cb3f4a333b7e5afb20463",
         "size": 101032,
         "mtime": 1791953374
       },
-      "Solar_Release_unpacked/Mods/Solar/SolUtilities/Native/SolSymbols.6AC53B97.gsym": {
-        "sha256": "79ee8685155a25890e27caf4e71e9e326823bb423463bb8cd11472e6bbae2fb3",
-        "size": 97076,
-        "mtime": 1792078712
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolUtilities/Native/SolSymbols.6AC53B97.gsym": {
+        "sha256": "982a9754b90ef9e6d715d43ee4fe13040194b3da66a7b7f74f08d38be6cadf6b",
+        "size": 114707,
+        "mtime": 1792996054
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolUtilities/Native/SolSymbols.6ADF851C.gsym": {
+        "sha256": "01f2c8f5ca23b546195ae4f13702c0a2db6b798f770a6e385e775b5089f7c44d",
+        "size": 156199,
+        "mtime": 1793054342
       }
     }
   }

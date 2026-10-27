@@ -1,0 +1,3003 @@
+{
+  "schema": "srmod/1",
+  "id": "Solar/SolABWeapons",
+  "source": "shared/solar",
+  "name": "SolABWeapons",
+  "title": "SolABWeapons",
+  "author": "FC_Fan",
+  "section": "Solar",
+  "priority": "12",
+  "description": "Бонусы и модификации оружия игрока в аркадных боях (гипер, чёрные дыры): урон, дальность, темп, залпы, броня, ГЗП; цвета выстрелов по модификациям, кольцо custom_01, ББГ-6174\n(Мод можно подключать/отключать в течение партии)",
+  "full_description": "Бонусы кампании работают и в аркадных боях: модификации оружия (Special=1: Дифрод, Лифокар, Адроптер, Стилермейн, Инвейтер, Армолок, Джавитор), бонусы микромодулей и корабля к урону, дальности, темпу стрельбы, числу выстрелов и атак (бонус боезапаса не переносится), а также броня корпуса и ГЗП, которых в ванильной аркаде нет. Ничего не перечисляется по модификациям: значения берутся из игры, в Main задаётся только графика (CFG\\Main.txt, блок ABWeapons.Variants.<флаг>: Tag, Hue, Sat, Val) и CacheData.txt. Перекрашены снаряды, следы и вспышки всех ванильных орудий. Настройки (CFG\\Rus\\Lang.txt, блок ABWeapons): Enable (0/1 - без него мод не действует), StatBonuses, Defence, ShipBonuses (скорость двигателя с акринами и артефактами - коэффициентом), ConvertedShips (корабли кампании, превращённые скриптом в аркадные), EffectsOnPlayer (замедление/блок оружия действуют и на игрока), BonusPct, DamagedPct, DropLuckPct, CargoLuckPct, LockTicks, SlowTicks, ArmorPct, ArmorMaxPct, VolleyDelay, MaxExtraVolleys. Цвета выстрелов задаются так же, как в оригинале: код палитры = ShotVisual модификации (без неё - DefaultPalette оружия), в Main ABWeapons.Weapon.<n>.Palettes.<p>.{ABSprite,AB_Sound}; KindPalettes.<KindGraph> отправляет модификации с одним KindGraph в свою палитру. Таблица цветов ванильных модификаций - в исходниках (ab_colors.py). Поддержаны кастомные орудия: ББГ-6174 (FairanWeapons, акрины Дишот, Пирокар, Экстремум, Дифрод, Эйзуро и RefAcrynsBBG: Энергос, Солнцепёк, Дементор; двойной выстрел Дишота) и тип выстрела custom_01 (лазерное кольцо, Lang Items.Weapon.OriginalWeaponType.custom_01=19, настройки ABWeapons.Custom01). Тень W16_S тоже перекрашена.",
+  "version": "ed27b09870017774",
+  "depends": [
+    "SolUtilities"
+  ],
+  "conflicts": [],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "cosmetic": [
+    "Solar/SolABWeapons/CFG/CacheData.dat"
+  ],
+  "mtime": 1793085258,
+  "files": {
+    "code": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/ModuleInfo.txt": {
+        "sha256": "c18a38efe8e18b0d6d1dbaaf5a1dc05908f1e0a39d159c9bc8bbd13998ef9e00",
+        "size": 8212,
+        "mtime": 1793085258
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/CFG/CacheData.dat": {
+        "sha256": "42d2c502b5cf8ff39de907c52e76d20ee9e5e422d744509c986315c8b9d2705d",
+        "size": 3849,
+        "mtime": 1792676374
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/CFG/Main.dat": {
+        "sha256": "7badf36f4507f210f4dc51f0f614d9a37e3447b012f80626174055fccfad85c5",
+        "size": 1384,
+        "mtime": 1792676372
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/CFG/Eng/Lang.dat": {
+        "sha256": "759a663e82238938530b71298d223f05fb9ea9d9943a1197268abeefb5d3d225",
+        "size": 372,
+        "mtime": 1792643084
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/CFG/Rus/Lang.dat": {
+        "sha256": "dc77027bed44d63c9bf777f9fe13fbcc6a3a3b0046f475aa35cbb6347d0836be",
+        "size": 372,
+        "mtime": 1792643084
+      }
+    },
+    "assets": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_bbg_a_f.gai": {
+        "sha256": "afe7de8561b154a9e4a80759e5ae171a71c451274e7a196042c6e695e4e817b9",
+        "size": 18499,
+        "mtime": 1792667842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_bbg_a_s.gai": {
+        "sha256": "249c3a785f5c29fe85a6ce5378cdc49076808c3fa132e9f2bd8503dfdde2ecda",
+        "size": 5379,
+        "mtime": 1792667842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_bbg_b_f.gai": {
+        "sha256": "78ca9a142ed1bbf245f8fd5876ded96e5d42693838e08f194d000ec614429dce",
+        "size": 3590,
+        "mtime": 1792667842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_bbg_b_s.gai": {
+        "sha256": "89ed2fe465798ac8b430ee1e188248518547e191120d66eba80b421b1ba20e49",
+        "size": 864,
+        "mtime": 1792667842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_bbg_c_f.gai": {
+        "sha256": "249c3a785f5c29fe85a6ce5378cdc49076808c3fa132e9f2bd8503dfdde2ecda",
+        "size": 5379,
+        "mtime": 1792667842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_bbg_c_s.gai": {
+        "sha256": "4c5fb17c65960043b172dce94b04ab9bb75583b88d12bd45deb1e2b973b92d00",
+        "size": 659,
+        "mtime": 1792667842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_bbg_f.gai": {
+        "sha256": "9492df0a0b2a7e055ff2405f143687c74d2c88b07b2dcd4fbe7f221972cd1f11",
+        "size": 180146,
+        "mtime": 1792667842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_bbg_s.gai": {
+        "sha256": "ae1f9fa7f7bc0bbe7d03031febceb0b0f7cb93678311831af9dab097613974a1",
+        "size": 55798,
+        "mtime": 1792667842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dementor_a_f.gai": {
+        "sha256": "9224669953a393d99535f0c9509e99ad26352b4fb7bc355e4afa262f3d8baa71",
+        "size": 18499,
+        "mtime": 1792667854
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dementor_a_s.gai": {
+        "sha256": "b0b3362768e8ea99f9e6a9c961c0e3d828c1b0b881865e639aacfe5397253051",
+        "size": 5379,
+        "mtime": 1792667854
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dementor_b_f.gai": {
+        "sha256": "403cd0e6973c6ca23858abaad8e23f4fd48e9021dc9289f13d0c61f8502dc451",
+        "size": 3590,
+        "mtime": 1792667854
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dementor_b_s.gai": {
+        "sha256": "db31c87d08de6c4d58ca50cf1bc66598ca352cdced1a14b450a25c7d61ca64aa",
+        "size": 864,
+        "mtime": 1792667854
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dementor_c_f.gai": {
+        "sha256": "b0b3362768e8ea99f9e6a9c961c0e3d828c1b0b881865e639aacfe5397253051",
+        "size": 5379,
+        "mtime": 1792667854
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dementor_c_s.gai": {
+        "sha256": "472c6e42c6d75c63e6a8e4b0e6432142f1c19ca7661eb7e97253fccb1a49fbc7",
+        "size": 659,
+        "mtime": 1792667854
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dementor_f.gai": {
+        "sha256": "16af75e9f6269462eaaf8275da4a055fd297cdfceb1550bb619b292edc303f79",
+        "size": 180146,
+        "mtime": 1792667854
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dementor_s.gai": {
+        "sha256": "982d5cf054343c686c31e4cf0b238589309c2f3e97d0cf42765ad5c8c4c2f50b",
+        "size": 55798,
+        "mtime": 1792667854
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_diphrod_a_f.gai": {
+        "sha256": "618c9db6be0700dc3ff1cdf81926970566129a95f77fd6700faa453ce26d3dc5",
+        "size": 18499,
+        "mtime": 1792667846
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_diphrod_a_s.gai": {
+        "sha256": "64a7eb6140b1bb5fda5a9c093b4353dfb5a75f83c31b69add9b8fc1de6ced59b",
+        "size": 5379,
+        "mtime": 1792667846
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_diphrod_b_f.gai": {
+        "sha256": "18a88a80af56a0f1ad4cd493e373a4623ed6cdb8c0971e87acc96fad607b930e",
+        "size": 3590,
+        "mtime": 1792667848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_diphrod_b_s.gai": {
+        "sha256": "6745712b8d5c37e394d12289386270ea7072adf5082f7309fd1f9eda6e7e2fea",
+        "size": 864,
+        "mtime": 1792667848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_diphrod_c_f.gai": {
+        "sha256": "64a7eb6140b1bb5fda5a9c093b4353dfb5a75f83c31b69add9b8fc1de6ced59b",
+        "size": 5379,
+        "mtime": 1792667848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_diphrod_c_s.gai": {
+        "sha256": "0852a2b555fc51c472d06e56c5e11487133741403d15a8e506fb9b6f7d8c63c3",
+        "size": 659,
+        "mtime": 1792667848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_diphrod_f.gai": {
+        "sha256": "5c8e507c9b1f2873c6c1a20bca82e541e0a5ab75c19423e970108a6bce31619e",
+        "size": 180146,
+        "mtime": 1792667848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_diphrod_s.gai": {
+        "sha256": "dfcc7b84c7ca5fc28f6bf726716fd10f60eed113c35d7c8c3d0a6234c4008171",
+        "size": 55798,
+        "mtime": 1792667848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dishot_a_f.gai": {
+        "sha256": "349f5cc7ee5f6316a4977334433f2a4ae8ad8f35f1253b3f1f1419fb98a1574c",
+        "size": 12305,
+        "mtime": 1792667842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dishot_a_s.gai": {
+        "sha256": "38cf19d899d76fb033e2a7b0f23df98519408ba0beee3f3944c3018a1e94abfc",
+        "size": 4204,
+        "mtime": 1792667842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dishot_b_f.gai": {
+        "sha256": "aedb54fadc19ed3e87244b54a6f6e5dc44c260fe909cdf08ca9cc9f531d3a98a",
+        "size": 2356,
+        "mtime": 1792667842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dishot_b_s.gai": {
+        "sha256": "d39449f154cf11d2287917414237280977392725a06318a2a59e2c885d7d85c1",
+        "size": 726,
+        "mtime": 1792667844
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dishot_c_f.gai": {
+        "sha256": "38cf19d899d76fb033e2a7b0f23df98519408ba0beee3f3944c3018a1e94abfc",
+        "size": 4204,
+        "mtime": 1792667844
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dishot_c_s.gai": {
+        "sha256": "fd586889c7177b33c92e2f55442ef270aa564643a32352c65aff9be633739457",
+        "size": 794,
+        "mtime": 1792667844
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dishot_f.gai": {
+        "sha256": "8a4d46ded2192964df418439f13ff2b0f911809b449215bcf7fd0b7d6473cb3c",
+        "size": 108760,
+        "mtime": 1792667842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_dishot_s.gai": {
+        "sha256": "bceb459b264afd5026384fa07d16c4e8587f094d58e6c99bf61098c8563a3d2d",
+        "size": 35347,
+        "mtime": 1792667842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_energos_a_f.gai": {
+        "sha256": "9b45c25a0deff2d0942a6bf1135eb2ce53562fb994e175de01f2686130d1c15a",
+        "size": 18499,
+        "mtime": 1792667850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_energos_a_s.gai": {
+        "sha256": "2bc859e7eb2dc1709046cba5529105d4e86a9e2d9499244eccb565f57370a996",
+        "size": 5379,
+        "mtime": 1792667850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_energos_b_f.gai": {
+        "sha256": "8d2498af09d0b784ed8932d6d337c713651a8cbba86694e99f1cb95317a70314",
+        "size": 3590,
+        "mtime": 1792667850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_energos_b_s.gai": {
+        "sha256": "520945e4a63cdc3f742758b09f4ec2a8b961966c0602f951c4bcd645854d0709",
+        "size": 864,
+        "mtime": 1792667850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_energos_c_f.gai": {
+        "sha256": "2bc859e7eb2dc1709046cba5529105d4e86a9e2d9499244eccb565f57370a996",
+        "size": 5379,
+        "mtime": 1792667850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_energos_c_s.gai": {
+        "sha256": "95513fd6d7735f1b483b1a085450cf257724658a77b0c5fc34e189082e420b9b",
+        "size": 659,
+        "mtime": 1792667850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_energos_f.gai": {
+        "sha256": "ab6ebe850a4c29b5bd8b49198072755e1306504d09f963c59cf71f364ebc2b19",
+        "size": 180146,
+        "mtime": 1792667850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_energos_s.gai": {
+        "sha256": "5f5ec7d3014a514ea9856381f9badf610e6bd66b6365b95f3e0c8ad7689422ac",
+        "size": 55798,
+        "mtime": 1792667850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_extremum_a_f.gai": {
+        "sha256": "6f57d003b80b9afb2a7547b068c866bd801b8778b9223269c59ab8919b77ad8a",
+        "size": 18499,
+        "mtime": 1792667846
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_extremum_a_s.gai": {
+        "sha256": "8a73b1e9b096d3165a3b8bd7e5226f82a62f0ca13dcb0e23738de82d35114e4f",
+        "size": 5379,
+        "mtime": 1792667846
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_extremum_b_f.gai": {
+        "sha256": "2ad3a8606076b4c3d2e6ce7dfe679b121c9472d18c5df75870ec6f41c76548f5",
+        "size": 3590,
+        "mtime": 1792667846
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_extremum_b_s.gai": {
+        "sha256": "72dbbee6bdefba8ca133fd51f461c5206c290218debfc8b2ac54635f802e51b9",
+        "size": 864,
+        "mtime": 1792667846
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_extremum_c_f.gai": {
+        "sha256": "8a73b1e9b096d3165a3b8bd7e5226f82a62f0ca13dcb0e23738de82d35114e4f",
+        "size": 5379,
+        "mtime": 1792667846
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_extremum_c_s.gai": {
+        "sha256": "86d76510b9c1b581132a36ac0e5537262f545a9028c5806df0c9fa613ca6d747",
+        "size": 659,
+        "mtime": 1792667846
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_extremum_f.gai": {
+        "sha256": "50f02fa1a70491e85e7c9cdcdacdef3be4069b31328e1c991f02aebc0729ca86",
+        "size": 180146,
+        "mtime": 1792667846
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_extremum_s.gai": {
+        "sha256": "03e7ee8cdadd5477586baa2fe9629060642ecd7e5d62f0f5cd8512744add8529",
+        "size": 55798,
+        "mtime": 1792667846
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_ezuro_a_f.gai": {
+        "sha256": "c2d9be7f2a0cd29198dda309dfb43211021df6d31b18d78920194e922d22ec04",
+        "size": 18499,
+        "mtime": 1792667848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_ezuro_a_s.gai": {
+        "sha256": "05d842f422660ac8f34c3c907ab19093184f4d3abb73fc65dd1ba6dbebb8e818",
+        "size": 5379,
+        "mtime": 1792667848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_ezuro_b_f.gai": {
+        "sha256": "13bd324173c52310db979155d8aba310ad9d06458c0cfc3fa6f75040e6e7ba7d",
+        "size": 3590,
+        "mtime": 1792667848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_ezuro_b_s.gai": {
+        "sha256": "11a8faf05e5003208c76873987008e191268dcb55261c48c54761e587b59dc17",
+        "size": 864,
+        "mtime": 1792667848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_ezuro_c_f.gai": {
+        "sha256": "05d842f422660ac8f34c3c907ab19093184f4d3abb73fc65dd1ba6dbebb8e818",
+        "size": 5379,
+        "mtime": 1792667850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_ezuro_c_s.gai": {
+        "sha256": "6d2785ee50d75ae334f74dda0ccbd7f0b1e3bc589622b189d52960d9d2233fc9",
+        "size": 659,
+        "mtime": 1792667850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_ezuro_f.gai": {
+        "sha256": "e02c92ceef1db1ea7b73105dbf1c4984d0494eafa437af8de926b2a0639dd80d",
+        "size": 180146,
+        "mtime": 1792667848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_ezuro_s.gai": {
+        "sha256": "39e48176a9649f04ed11d102c01d920676e1ffc034905fc875f37e245af28e98",
+        "size": 55798,
+        "mtime": 1792667848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_pirokar_a_f.gai": {
+        "sha256": "bc5b84b3a8c8b614ddf4717d746d5db97fa243571b88aab8af199c9f9324ce41",
+        "size": 18499,
+        "mtime": 1792667844
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_pirokar_a_s.gai": {
+        "sha256": "7bc8589feca866b94756f4e305fff4b2d4068f9129fc81ddcd555c67ecafa117",
+        "size": 5379,
+        "mtime": 1792667844
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_pirokar_b_f.gai": {
+        "sha256": "e42982f11ce072bdbe5325914e1c9dc87265b3cc0f0b62cd6e8cf19c96a43fab",
+        "size": 3590,
+        "mtime": 1792667844
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_pirokar_b_s.gai": {
+        "sha256": "c6114737238bafc9a19205b28d6bacc3921e28b5fcad4ec3cb8b14689f4759fa",
+        "size": 864,
+        "mtime": 1792667844
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_pirokar_c_f.gai": {
+        "sha256": "7bc8589feca866b94756f4e305fff4b2d4068f9129fc81ddcd555c67ecafa117",
+        "size": 5379,
+        "mtime": 1792667844
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_pirokar_c_s.gai": {
+        "sha256": "04d8dfaaea73bf37af7366abcedb153cfc3fb5fb636eef24d3e114012be2ecaf",
+        "size": 659,
+        "mtime": 1792667844
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_pirokar_f.gai": {
+        "sha256": "4e6721535631e1b7d0d8ccf2464f009df673f6aeedf6a421a1c3960c46875306",
+        "size": 180146,
+        "mtime": 1792667844
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_pirokar_s.gai": {
+        "sha256": "c4fe655c862dcf5a35c1afb07b2140b0a146fd7a4ccb649f6d263dcac130cb19",
+        "size": 55798,
+        "mtime": 1792667844
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_sunny_a_f.gai": {
+        "sha256": "ed70e4e5880afaec0b33d261526e84c30e9cc36610c53ed1ff8058bafae7034c",
+        "size": 18499,
+        "mtime": 1792667852
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_sunny_a_s.gai": {
+        "sha256": "2a1008519d1646f39de6b366e1dd9081250e18c28971be4544b29a677308d5a6",
+        "size": 5379,
+        "mtime": 1792667852
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_sunny_b_f.gai": {
+        "sha256": "286415acd721787f2a16b8fd95d595ef0386e2d3b1a83856a24d376ee914159d",
+        "size": 3590,
+        "mtime": 1792667852
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_sunny_b_s.gai": {
+        "sha256": "4b89a6a5a0519810499a318bc6b4e2200f0df3a688be06280d8770140c1afa7c",
+        "size": 864,
+        "mtime": 1792667852
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_sunny_c_f.gai": {
+        "sha256": "2a1008519d1646f39de6b366e1dd9081250e18c28971be4544b29a677308d5a6",
+        "size": 5379,
+        "mtime": 1792667852
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_sunny_c_s.gai": {
+        "sha256": "1cf6cca77277ad3758aeac68185ed0a85fce96dc1dbd02be87bbb5f00267eaf5",
+        "size": 659,
+        "mtime": 1792667852
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_sunny_f.gai": {
+        "sha256": "076694a25d11abf8d5856b0c8529a33ba4d68096e36f114aebf5e703c730d184",
+        "size": 180146,
+        "mtime": 1792667852
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/bbg_w16_sunny_s.gai": {
+        "sha256": "028426110a6c8cd5cc3f9ba86159031430671fc492cf99496f4e3f9d243f4af1",
+        "size": 55798,
+        "mtime": 1792667852
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/custom_01_a_f.gai": {
+        "sha256": "e6393416f84d73e684cbe1d3a8d211e270b129f4eff4e45b8108c518a10f5634",
+        "size": 51242,
+        "mtime": 1792639712
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/custom_01_a_s.gai": {
+        "sha256": "d9aa4c56943ef8d769bdd21a82c1f2a8fb0432146b3a056d5dfa428d1d152bcd",
+        "size": 14462,
+        "mtime": 1792639714
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/custom_01_f.gai": {
+        "sha256": "1fef43b566407a02d5a88a9efeaa87e5584673e699a78ab766643819dbaa3ffb",
+        "size": 155010,
+        "mtime": 1792639710
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/custom_01_s.gai": {
+        "sha256": "c78bfc19ad76fb9c5ac4e89e3362e7e4dc092885d38cb829fb302ad616cc6aa5",
+        "size": 49082,
+        "mtime": 1792639712
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w08_gluon_a_f.gai": {
+        "sha256": "7cfc6a827f87318f3806a6f5c53bf0138e2aca025efacc542cd00bd21b17d1b0",
+        "size": 55958,
+        "mtime": 1792670136
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w08_gluon_a_s.gai": {
+        "sha256": "7fea0fd6c45f01c99444d29abd7387d9524a177323904837004b6434b6228e40",
+        "size": 16761,
+        "mtime": 1792670136
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w08_gluon_b_f.gai": {
+        "sha256": "8e491866a1bf6654bf706f0231cbe8b750fa2bf9b7bf4012ad4e7865f729942a",
+        "size": 35735,
+        "mtime": 1792670136
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w08_gluon_b_s.gai": {
+        "sha256": "2afb5e046e3c688ba739d1c2ab27956d65bae07fcfddda148e351e6aa1957819",
+        "size": 13951,
+        "mtime": 1792670136
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w08_gluon_f.gai": {
+        "sha256": "8e491866a1bf6654bf706f0231cbe8b750fa2bf9b7bf4012ad4e7865f729942a",
+        "size": 35735,
+        "mtime": 1792670136
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w08_gluon_s.gai": {
+        "sha256": "2afb5e046e3c688ba739d1c2ab27956d65bae07fcfddda148e351e6aa1957819",
+        "size": 13951,
+        "mtime": 1792670136
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w15_gluon_a_f.gai": {
+        "sha256": "7cfc6a827f87318f3806a6f5c53bf0138e2aca025efacc542cd00bd21b17d1b0",
+        "size": 55958,
+        "mtime": 1792670138
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w15_gluon_a_s.gai": {
+        "sha256": "7fea0fd6c45f01c99444d29abd7387d9524a177323904837004b6434b6228e40",
+        "size": 16761,
+        "mtime": 1792670138
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w15_gluon_f.gai": {
+        "sha256": "8df211ca8890501356f11bad2943e57e33e78f5b84317ac5e211684f90b033a1",
+        "size": 76107,
+        "mtime": 1792670140
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w15_gluon_s.gai": {
+        "sha256": "fa41d7c8ae3fcfd22e61fd406e71ab9a1e53b9631f91ecddab39ea3497c5da8d",
+        "size": 24976,
+        "mtime": 1792670140
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w16_gluon_a_f.gai": {
+        "sha256": "7df7dc44ce69de6b1f00e07de76203094bdbc2954f74d87c897398b78897fc14",
+        "size": 18499,
+        "mtime": 1792670142
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w16_gluon_a_s.gai": {
+        "sha256": "1c4fc5bb7e0dc57dbbb24ebc2d86c7c7a6b56f0465a899b550b5bcb98a9d476d",
+        "size": 5379,
+        "mtime": 1792670140
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w16_gluon_b_f.gai": {
+        "sha256": "30a83febe8437e7531d2209e1014eb85b697399ee0b4a8a98d00eaa8c3eaf3a6",
+        "size": 3590,
+        "mtime": 1792670140
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w16_gluon_b_s.gai": {
+        "sha256": "cd8355a87fa4e792a7029068f630541468bdfd2d54fc773828fa535767edd2f1",
+        "size": 864,
+        "mtime": 1792670140
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w16_gluon_c_f.gai": {
+        "sha256": "1c4fc5bb7e0dc57dbbb24ebc2d86c7c7a6b56f0465a899b550b5bcb98a9d476d",
+        "size": 5379,
+        "mtime": 1792670142
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w16_gluon_c_s.gai": {
+        "sha256": "0a9cc040743728790dfaae1c604e825197c782b5acb690f94eba6e0f782e77a5",
+        "size": 659,
+        "mtime": 1792670142
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w16_gluon_f.gai": {
+        "sha256": "4d9b68df5027114f16babb6e2de0e1133e164f140d57bc479b39efdbf5ee59f5",
+        "size": 180146,
+        "mtime": 1792670142
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/gluon_w16_gluon_s.gai": {
+        "sha256": "9e39add5449592b2cbb86f10509874a8c327804c0e008ba4c02195b4d4f4617c",
+        "size": 55798,
+        "mtime": 1792670142
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/mabokit_w04_a_f.gai": {
+        "sha256": "04bfb256606ec6f5833b1381210d27d04d14efe5ea7b4f923e2eec1b3e04aee4",
+        "size": 167764,
+        "mtime": 1792673368
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/mabokit_w04_a_s.gai": {
+        "sha256": "5e036db174683d63c221c23ffcf56921d7e1d2e5d516ed442646d4136dc9d58f",
+        "size": 47324,
+        "mtime": 1792673368
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/mabokit_w04_b_f.gai": {
+        "sha256": "43742b97be700dbe9c1449a24f58906accb225f1d88ba80b2c0e98bf02621f5d",
+        "size": 10086,
+        "mtime": 1792673370
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/mabokit_w04_b_s.gai": {
+        "sha256": "dea2946ee6f04ed4ec55e8b085df14ee8671b831fb379f5f1942e93af23f230a",
+        "size": 3126,
+        "mtime": 1792673370
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/mabokit_w04_c_f.gai": {
+        "sha256": "52a4594685b259b952ce3db9916798b210e897b5b1e3be00143360c20001ead2",
+        "size": 8409,
+        "mtime": 1792673370
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/mabokit_w04_c_s.gai": {
+        "sha256": "50b43b99ac7ec909297ba89af5a9d8fe9ccb8b29972bb15f5326bb2fc7ef5527",
+        "size": 2930,
+        "mtime": 1792673370
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/mabokit_w04_f.gai": {
+        "sha256": "9982a5a5c54a5123b85e708fd7a89e8967c0fba2503e278846b7bfd6e6bbfe22",
+        "size": 3529,
+        "mtime": 1792673366
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/mabokit_w04_s.gai": {
+        "sha256": "c63f5c673384a1ed1fbe3248af1be8c140bbb28e0ea47ae788c98833b58138cb",
+        "size": 1106,
+        "mtime": 1792673366
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_colada_a_f.gai": {
+        "sha256": "d55553f3fde36f2da8ab76da8838cfc13ede88d1b341034ffec891474861119a",
+        "size": 51242,
+        "mtime": 1792671178
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_colada_a_s.gai": {
+        "sha256": "db18aafe9c38ce0ea3a7b5747a08d05722c6c406df04c9783c157823b0f3fc7e",
+        "size": 14462,
+        "mtime": 1792671180
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_colada_f.gai": {
+        "sha256": "d1ee207711357b7cf2307e9d525eb4f7725c63bbf5d244acc2b67fe4adbdd938",
+        "size": 155010,
+        "mtime": 1792671174
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_colada_s.gai": {
+        "sha256": "b3edea5ac94b568bb382d506ee740b26f097162beb514924c1d2534a52ec4793",
+        "size": 49082,
+        "mtime": 1792671178
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_corruptor_a_f.gai": {
+        "sha256": "806e32bd1f8416f99659986d03f2d0781634aa69f434749898285d2b6950f7b8",
+        "size": 51242,
+        "mtime": 1792671170
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_corruptor_a_s.gai": {
+        "sha256": "ed68d542ec2ff0e9531f0453a455833d47882f06345b174bfcb4f840c9ddb629",
+        "size": 14462,
+        "mtime": 1792671172
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_corruptor_f.gai": {
+        "sha256": "88a73677210e144e195c7779c3a6221b99560afc5f806de2eaa24988060ccd4b",
+        "size": 155010,
+        "mtime": 1792671168
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_corruptor_s.gai": {
+        "sha256": "8569c4664e24fec791e1b2a8a5adeb4ebba142ed2c80a46a08de74b2855ea014",
+        "size": 49082,
+        "mtime": 1792671170
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_difrod_a_f.gai": {
+        "sha256": "475dcc0799349a98eecc65bced66a3c120b3107e16a8479072f431d8ae44260e",
+        "size": 51242,
+        "mtime": 1792671164
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_difrod_a_s.gai": {
+        "sha256": "755806831180172e37b1aabef4fdffd8196415174afda7d357935e4b1e0a4d97",
+        "size": 14462,
+        "mtime": 1792671164
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_difrod_f.gai": {
+        "sha256": "60f8558efa6a4bf2d8add6174d00c546c4ac08a42123756acd029e1df6b0b097",
+        "size": 155010,
+        "mtime": 1792671160
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_difrod_s.gai": {
+        "sha256": "08739801f84d4ebd87a6fe82acf771430d0bdde73ff7596ebc07e5ea3ee55005",
+        "size": 49082,
+        "mtime": 1792671162
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_electro_a_f.gai": {
+        "sha256": "ccf853aded02e58815823373d34540a3dbdb2bcdae63989aff133b5e783807d1",
+        "size": 51242,
+        "mtime": 1792671156
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_electro_a_s.gai": {
+        "sha256": "b9296a4cd05918b6f70df1bbc0b917cf5259b1c4dbd9dc48bd2d0e25f3bc1f34",
+        "size": 14462,
+        "mtime": 1792671156
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_electro_f.gai": {
+        "sha256": "5acb2b11d8e61b05fe4c07415d2afdf3ff8d9ef3a8c71984c63662d2b29333be",
+        "size": 155010,
+        "mtime": 1792671152
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_electro_s.gai": {
+        "sha256": "45d02a762381e502a70d0572b0635c051a8aa7d01ef6493b9a83cb6a047b5f2c",
+        "size": 49082,
+        "mtime": 1792671154
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_grinch_a_f.gai": {
+        "sha256": "a6379f8a3762a262b4c449338d077be852e16b5757817fedb57f49b0eddea4cf",
+        "size": 51242,
+        "mtime": 1792671140
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_grinch_a_s.gai": {
+        "sha256": "e4b31049f292b5b551032ba1fa6ce0bd5228c55d826be6fc5b5f1b805507f770",
+        "size": 14462,
+        "mtime": 1792671140
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_grinch_f.gai": {
+        "sha256": "da719df3d5406d78342bb1f7a6f84e3746c6d38340b90d6ee1618cd82c75a81e",
+        "size": 155010,
+        "mtime": 1792671136
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_grinch_s.gai": {
+        "sha256": "917456fcacd3d584bd101dc7bd1eb5b0d5db8a2bb339b8259ed68750c50c2098",
+        "size": 49082,
+        "mtime": 1792671138
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_meon_a_f.gai": {
+        "sha256": "70ea5faa806440fddf800dd607c108ec1ca63ae85e37887893f0d11a15d88d54",
+        "size": 51242,
+        "mtime": 1792671124
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_meon_a_s.gai": {
+        "sha256": "fd30219fff04ce70fb2895c9cc45813d0cc5532fd0a6258001e86791945d5758",
+        "size": 14462,
+        "mtime": 1792671124
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_meon_f.gai": {
+        "sha256": "14d966f489289cf77e3d533886bb207403624e8f6118a9dcf29c31052a32b4aa",
+        "size": 155010,
+        "mtime": 1792671120
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_meon_s.gai": {
+        "sha256": "d85aeaa3fef0f07cc3f5442cfae79ed7553881f57c16e8fc167c1d707d373d48",
+        "size": 49082,
+        "mtime": 1792671122
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_plasmaroll_a_f.gai": {
+        "sha256": "9938f242b9340c45a48ac023b127e09c6ab10af567975ed7016f7381a56ce22d",
+        "size": 51242,
+        "mtime": 1792671132
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_plasmaroll_a_s.gai": {
+        "sha256": "16ad8d47abb001c799786183361d3a91c74cbce647e4d161418ea6ebf197fd84",
+        "size": 14462,
+        "mtime": 1792671134
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_plasmaroll_f.gai": {
+        "sha256": "58f6875a62369a59df710a1f7bca13a1173b9cabe05eacb0c7772ee5d76ebf7f",
+        "size": 155010,
+        "mtime": 1792671128
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_plasmaroll_s.gai": {
+        "sha256": "90a2752f9e81ba7f941c4413a28f3b9caa3a57d3020ffc76332785c4167f61ed",
+        "size": 49082,
+        "mtime": 1792671132
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_stealermein_a_f.gai": {
+        "sha256": "b2c455c45bbcec1975e803b63f57aecd57f0cbb73c1fdc67d354533a307d532c",
+        "size": 51242,
+        "mtime": 1792671148
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_stealermein_a_s.gai": {
+        "sha256": "01809b0b7734eb8ed5af11e1309fc949181a6521d02c9d9def9b8d408279b134",
+        "size": 14462,
+        "mtime": 1792671150
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_stealermein_f.gai": {
+        "sha256": "f9b6fdac2de93f9a10cdbba1e5b2c1a624f8eaff8e6dd87f7e74005683cbb090",
+        "size": 155010,
+        "mtime": 1792671144
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/newgun_ring_stealermein_s.gai": {
+        "sha256": "c1c65b94e34a4148f10e38dec8338d66260e9099e5be470bef0812d676337280",
+        "size": 49082,
+        "mtime": 1792671148
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_involute_a_f.gai": {
+        "sha256": "f608401016cba9b04b3a628aa4c6aac9236bcfbc486c2d467225c24acbd65c3e",
+        "size": 6831,
+        "mtime": 1792669056
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_involute_a_s.gai": {
+        "sha256": "05633b20c82955245c9f4826d42f24f9586f26741d5c2ae48a03b59b166feabe",
+        "size": 3278,
+        "mtime": 1792669056
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_involute_b_f.gai": {
+        "sha256": "a4020f237870db28f905766010c260e18c1f191367e45cf2ce99458edebcd702",
+        "size": 6284,
+        "mtime": 1792669056
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_involute_b_s.gai": {
+        "sha256": "c302fa86356252ece642c1913fbc156251762e77beed236f7cbbd719d2ddcf28",
+        "size": 4705,
+        "mtime": 1792669056
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_involute_f.gai": {
+        "sha256": "141b469a505c0fd0dff43273e176c651232acee5fe1051086c8e469947763e23",
+        "size": 39823,
+        "mtime": 1792669058
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_involute_s.gai": {
+        "sha256": "b3ebdd48e0df6c17b9946656c81545e464afb3b0030cda03a09b3c9c3dd92f05",
+        "size": 27606,
+        "mtime": 1792669058
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_lifokar_a_f.gai": {
+        "sha256": "1af944408d741ff87461293542749f2d4cac837dc439c4e8d7cd96e68dc08c72",
+        "size": 6831,
+        "mtime": 1792669056
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_lifokar_a_s.gai": {
+        "sha256": "35f42ad6f719b2a959b8f48c6407e9d0994523dab079d6559f64fa5161c2af08",
+        "size": 3278,
+        "mtime": 1792669056
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_lifokar_b_f.gai": {
+        "sha256": "952e222b92441782970fdc7a11c420eeb72da6114c9b7dd3846bbc6a7611792e",
+        "size": 6284,
+        "mtime": 1792669056
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_lifokar_b_s.gai": {
+        "sha256": "8b6045de352f33d86a670545cd6786e45845972643b52915bfc98a14bb433d10",
+        "size": 4705,
+        "mtime": 1792669056
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_lifokar_f.gai": {
+        "sha256": "b2cc458a9c9c85883254605b9ce6dd7d0bc15d98e3f31ce2e6e34e8cbf32a1e4",
+        "size": 39823,
+        "mtime": 1792669056
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_lifokar_s.gai": {
+        "sha256": "f36f4f184b9daa7f74a9af9837e85f4459e5d7f7591eb1fd9275b026ff1494f0",
+        "size": 27606,
+        "mtime": 1792669056
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_white_a_f.gai": {
+        "sha256": "01f4c5539fe1468d05f882f483ef764c73096ce5a6d20659af17add924022370",
+        "size": 6831,
+        "mtime": 1792669054
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_white_a_s.gai": {
+        "sha256": "24591295e9fc11665fb066fec02dce511d2796410d5369868cfacd5c7c50f7f7",
+        "size": 3278,
+        "mtime": 1792669054
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_white_b_f.gai": {
+        "sha256": "7c77b800987919a0669e709dd32f9f4231f59d77358b1840f33a0a7368e646cf",
+        "size": 6284,
+        "mtime": 1792669054
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_white_b_s.gai": {
+        "sha256": "947c4979b596ccfc52090b874224af051231e6a63a14feb9b606d0e9417e8d51",
+        "size": 4705,
+        "mtime": 1792669054
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_white_f.gai": {
+        "sha256": "a5f5ace2a6c3edec8a4de41a13938ec4eb53a27c3e38ab5ca23573c7daa594b1",
+        "size": 39823,
+        "mtime": 1792669054
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/plasmagun_w07_white_s.gai": {
+        "sha256": "8f94a102857b26e6d878a4bf2e54536ec3ed138f0abb02a9802060d50257dd43",
+        "size": 27606,
+        "mtime": 1792669054
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w01_domcyan_a_f.gai": {
+        "sha256": "43ae72c3127cba56c28b05279919f699177130aa290d850d37760c5f6f552ecf",
+        "size": 4387,
+        "mtime": 1792674640
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w01_domcyan_a_s.gai": {
+        "sha256": "ffedeb7b34ae00a56f31496e9f2dae60c65ccdffd62a90d1ce9bbc0d628ea5c9",
+        "size": 2600,
+        "mtime": 1792674640
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w01_domcyan_b_f.gai": {
+        "sha256": "5899e5cff4f5e19594a6c41a96f20208f465c7f8b912c5f82778288b1de5de55",
+        "size": 6284,
+        "mtime": 1792674640
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w01_domcyan_b_s.gai": {
+        "sha256": "1fbf90e352fa14680205edb0ea9ba8a8e3ef612da93918524749f6e644192610",
+        "size": 4705,
+        "mtime": 1792674640
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w01_domcyan_f.gai": {
+        "sha256": "de5cf3bf66b634b337605d6fb0852852936c74187cd68914f25cc4ae0bbc26cc",
+        "size": 6933,
+        "mtime": 1792674640
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w01_domcyan_s.gai": {
+        "sha256": "9b67d887827ed5bf15e983eacb964024b47b5b89216d36cc7b14ca148dfc3bd2",
+        "size": 2665,
+        "mtime": 1792674640
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w04_domrocket_a_f.gai": {
+        "sha256": "f6561231024c745a65042d75169cfb1a4081dc301ce6697a435b7033c1b8bf2d",
+        "size": 72807,
+        "mtime": 1792674652
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w04_domrocket_a_s.gai": {
+        "sha256": "3754eab5360e81c66e3b6540b76556f1837b47695da14f94f573b86031294ff9",
+        "size": 24156,
+        "mtime": 1792674652
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w04_domrocket_b_f.gai": {
+        "sha256": "850ba3edfb14fbdbe29d755720865a27eb1069a97faf57a2a0c96f2753cce9e0",
+        "size": 2838,
+        "mtime": 1792674652
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w04_domrocket_b_s.gai": {
+        "sha256": "429adbcdf00a92191caa4e56da0dd94fff98cca991d42fd81dd7aed1bb9128ce",
+        "size": 1368,
+        "mtime": 1792674652
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w04_domrocket_c_f.gai": {
+        "sha256": "70fb5c0ea129b6dbc1a5c6321b749cce9f2ab0f95a499ea3cba46aaa1301fa22",
+        "size": 6170,
+        "mtime": 1792674652
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w04_domrocket_c_s.gai": {
+        "sha256": "41212e07cc2016746c317da59de6f8501c85476a99158f6ff1a0fe88fcb083e6",
+        "size": 2287,
+        "mtime": 1792674652
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w04_domrocket_f.gai": {
+        "sha256": "69b84659fe32328f674a43b538bc64828d9aa5c4f617c378a7923e6457f8e12e",
+        "size": 2181,
+        "mtime": 1792674652
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w04_domrocket_s.gai": {
+        "sha256": "b8404f8335f03fa363f553326ebe7f4891b40ddd2315b9390c1412f3eb89c210",
+        "size": 1302,
+        "mtime": 1792674652
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w07_domred_a_f.gai": {
+        "sha256": "6ae852f6ed501a59d95c0165110e26786eb8b697cb82acc30234997e7d8fc982",
+        "size": 6831,
+        "mtime": 1792674642
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w07_domred_a_s.gai": {
+        "sha256": "d07cc997bfe1355434af2ff22448371e947898f9ed340777542e749a52604d06",
+        "size": 3278,
+        "mtime": 1792674642
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w07_domred_b_f.gai": {
+        "sha256": "a21d858f17bbcf4c9b732ae2a0a646054c5ee3f95713ce3a914aa13163fb766b",
+        "size": 6284,
+        "mtime": 1792674642
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w07_domred_b_s.gai": {
+        "sha256": "db7fb08feda1c2c4cdd0fe437d80c32b2a73b5b67712ca1330c82be8b11749c3",
+        "size": 4705,
+        "mtime": 1792674642
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w07_domred_f.gai": {
+        "sha256": "25f3bd79dac3d9d86af4d25771064a79fb1ee4249f9abd9cf5434ced38bc4ed6",
+        "size": 39823,
+        "mtime": 1792674642
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w07_domred_s.gai": {
+        "sha256": "5b9a3037f1285114f94a7f9d256f3a61bf426d0fc3b3103282affc5d71dd9b38",
+        "size": 27606,
+        "mtime": 1792674642
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w10_domcyan_a_f.gai": {
+        "sha256": "4d53fdc9498be3d7343250fb93353998a58275743f0c42f39773c5ff8fe6a7ee",
+        "size": 14744,
+        "mtime": 1792674646
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w10_domcyan_a_s.gai": {
+        "sha256": "7aefdbfa726a09217348428b4a15ee2a48d212a9bb630c5d655ec5c3db0f2d04",
+        "size": 6353,
+        "mtime": 1792674646
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w10_domcyan_b_f.gai": {
+        "sha256": "97002dc780a56ef47d11f8ff2b217d388f354e02d4876e6aea3d19643b811c8b",
+        "size": 20752,
+        "mtime": 1792674646
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w10_domcyan_b_s.gai": {
+        "sha256": "4f8310c040a386ba8699d17278558abc536b8d3940ab456ec4d7ab2788c0468b",
+        "size": 7607,
+        "mtime": 1792674646
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w10_domcyan_f.gai": {
+        "sha256": "7d81d47365592b379ff230c8fd838e91bf94e29fc9cdce366e6c3a56dad3130e",
+        "size": 494,
+        "mtime": 1792674644
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w10_domcyan_s.gai": {
+        "sha256": "53925724b0f77596a1b8069651615eb5cb6c0f0a25b4e5b9dd5b4b7dba7cd3d6",
+        "size": 338,
+        "mtime": 1792674644
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w10_inveiter_a_f.gai": {
+        "sha256": "b42013dd101baa6a5f3794f06a0dd89b97675a8e0ca94e2d7f0db2b9707f88e0",
+        "size": 14744,
+        "mtime": 1792674646
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w10_inveiter_a_s.gai": {
+        "sha256": "5a86613678f4b9c88f0dcb6312f280b57d6ba617cd217955afefd5f877619161",
+        "size": 6353,
+        "mtime": 1792674646
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w10_inveiter_b_f.gai": {
+        "sha256": "bef9616eef6d9d9a52acd2ba5f05c4ba225da590f0f515fccbd2da57853d5159",
+        "size": 20752,
+        "mtime": 1792674646
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w10_inveiter_b_s.gai": {
+        "sha256": "e6f8314772cc93615bae002b464c3f5cd2f57b760a1ad8fb0666b801d5fd5f27",
+        "size": 7607,
+        "mtime": 1792674646
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w10_inveiter_f.gai": {
+        "sha256": "bbf529b9d035f2fceb3c4471029571f104486802579e73c4a90aca198fc9592e",
+        "size": 494,
+        "mtime": 1792674646
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w10_inveiter_s.gai": {
+        "sha256": "f5c77b76a34c5ffdcf9cb84aa8c669b0cc61b289b8e8a5a5164d4cebbe8dfb95",
+        "size": 338,
+        "mtime": 1792674646
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w11_railgun_a_f.gai": {
+        "sha256": "2477ac14fee37f51d3aa7c40db7e345430178b08c9bac7e216d90907efd7cefc",
+        "size": 1968,
+        "mtime": 1792674654
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w11_railgun_a_s.gai": {
+        "sha256": "fcdd35785036d63042e0f73792686ffcc1619b69a891ed6e748bdea6cc815876",
+        "size": 1536,
+        "mtime": 1792674654
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w11_railgun_b_f.gai": {
+        "sha256": "c70ff6cd0e28d0a33e0603b54600a6a8c2d8bc328559b29999ec710c069c04f2",
+        "size": 20752,
+        "mtime": 1792674654
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w11_railgun_b_s.gai": {
+        "sha256": "ef2b808c1487e28baaa4e681767acfa2e84233bf31d65542de0038cf10b26223",
+        "size": 7607,
+        "mtime": 1792674654
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w11_railgun_f.gai": {
+        "sha256": "2477ac14fee37f51d3aa7c40db7e345430178b08c9bac7e216d90907efd7cefc",
+        "size": 1968,
+        "mtime": 1792674654
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w11_railgun_s.gai": {
+        "sha256": "fcdd35785036d63042e0f73792686ffcc1619b69a891ed6e748bdea6cc815876",
+        "size": 1536,
+        "mtime": 1792674654
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domgreen_a_f.gai": {
+        "sha256": "43600034e5c92b4c07fa8b41d157dc685c640cbf966d9490830aec1d80183f67",
+        "size": 55958,
+        "mtime": 1792674656
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domgreen_a_s.gai": {
+        "sha256": "5923ac11a2e1a08020c4ea719d740c9b487f545157066b1318986f837b6698fb",
+        "size": 16761,
+        "mtime": 1792674656
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domgreen_b_f.gai": {
+        "sha256": "55352e59953e2418ce6113b80fab329250dc5f63d0a33c9987733e1018655e8d",
+        "size": 1241,
+        "mtime": 1792674656
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domgreen_b_s.gai": {
+        "sha256": "cf69dfea77ce7d6972746f5b2bf58f6a5cf1dc7b12d32e694dba51ed1dc6d274",
+        "size": 522,
+        "mtime": 1792674656
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domgreen_f.gai": {
+        "sha256": "d82f1007de704487f8a731ac169d41ff34457eac9abd2a5aeb9b7c7aafa08a64",
+        "size": 3216,
+        "mtime": 1792674656
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domgreen_s.gai": {
+        "sha256": "e82a0b89453e27b1af8d62215ba15207cc2d68c1c2a44bb80ae5e90679206438",
+        "size": 1052,
+        "mtime": 1792674656
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domturq_a_f.gai": {
+        "sha256": "eb1cae6c870bd0c70c5d4c519132fb86567e36fc1c97e32b5a37520b0d6515db",
+        "size": 55958,
+        "mtime": 1792674658
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domturq_a_s.gai": {
+        "sha256": "7b95510abe9ed7feae6ee780fd0cd83d08166cd689e32cd60708198ea5c64cc3",
+        "size": 16761,
+        "mtime": 1792674658
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domturq_b_f.gai": {
+        "sha256": "f6649a3ff9a69f0f630bb99c2f47ea884ddfd0eab30f2f57cb209896599f3c7c",
+        "size": 1241,
+        "mtime": 1792674658
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domturq_b_s.gai": {
+        "sha256": "93baf111003440027fb299f99dee609f894b1236c29b5b357493a0fb304b4a3f",
+        "size": 522,
+        "mtime": 1792674658
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domturq_f.gai": {
+        "sha256": "de5de25af1ca46a430ecee357138ea888312b1a0ff69445ad8fdbcc98e8afd19",
+        "size": 3216,
+        "mtime": 1792674658
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domturq_s.gai": {
+        "sha256": "892af58ca2d145beae3af17db687690fa0bcb55622d0a880da192fe04af7d511",
+        "size": 1052,
+        "mtime": 1792674658
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domviolet_a_f.gai": {
+        "sha256": "6ec814684e8d378ec6fe1d03481edb878e79189df13ad50f2e154044e24e2ad4",
+        "size": 55958,
+        "mtime": 1792674658
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domviolet_a_s.gai": {
+        "sha256": "e4b7ad7e2571c0e7c37400138997d32ae9bdaf829fcf5a3bbedf4a383985164c",
+        "size": 16761,
+        "mtime": 1792674658
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domviolet_b_f.gai": {
+        "sha256": "a28e9fea8dca84c195840764a20686bc407c2b92b8525fb6946c1bd73475e2b3",
+        "size": 1241,
+        "mtime": 1792674658
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domviolet_b_s.gai": {
+        "sha256": "09e9ad24f7ef2924fe250d523b4dd402b913773fb15213b9c0019a5557bd652d",
+        "size": 522,
+        "mtime": 1792674658
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domviolet_f.gai": {
+        "sha256": "88a07b9df8f16a11fc3ee23187803c9a26e8b64d8ef1535d1e3136a9e5579467",
+        "size": 3216,
+        "mtime": 1792674656
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w13_domviolet_s.gai": {
+        "sha256": "2b480dc723e76c5d203de1dcd5edc415a0f41356b63dee7a981edc1100c549ad",
+        "size": 1052,
+        "mtime": 1792674656
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w14_domgreen_a_f.gai": {
+        "sha256": "43600034e5c92b4c07fa8b41d157dc685c640cbf966d9490830aec1d80183f67",
+        "size": 55958,
+        "mtime": 1792674662
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w14_domgreen_a_s.gai": {
+        "sha256": "5923ac11a2e1a08020c4ea719d740c9b487f545157066b1318986f837b6698fb",
+        "size": 16761,
+        "mtime": 1792674662
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w14_domgreen_f.gai": {
+        "sha256": "cbee8778e0369b4aee29bc432b84e0510fd22ba1539461ecffc689296e59e317",
+        "size": 56155,
+        "mtime": 1792674662
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w14_domgreen_s.gai": {
+        "sha256": "2ee91d05aa3b571ad0963a6f4849e7bb49e42fb49d30f3f31c4d89ed3778ff15",
+        "size": 18928,
+        "mtime": 1792674662
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w14_domturq_a_f.gai": {
+        "sha256": "eb1cae6c870bd0c70c5d4c519132fb86567e36fc1c97e32b5a37520b0d6515db",
+        "size": 55958,
+        "mtime": 1792674662
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w14_domturq_a_s.gai": {
+        "sha256": "7b95510abe9ed7feae6ee780fd0cd83d08166cd689e32cd60708198ea5c64cc3",
+        "size": 16761,
+        "mtime": 1792674662
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w14_domturq_f.gai": {
+        "sha256": "aa758fd4930606b3a038f3c8cada03e01ef8d5deefcef8cc5eb56b9c5d6adafa",
+        "size": 56155,
+        "mtime": 1792674664
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w14_domturq_s.gai": {
+        "sha256": "3a7c96b42153c0faf3fcc4038d0acce50e397d9c42629a4248c5fc4164329e5e",
+        "size": 18928,
+        "mtime": 1792674664
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w14_domviolet_a_f.gai": {
+        "sha256": "6ec814684e8d378ec6fe1d03481edb878e79189df13ad50f2e154044e24e2ad4",
+        "size": 55958,
+        "mtime": 1792674662
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w14_domviolet_a_s.gai": {
+        "sha256": "e4b7ad7e2571c0e7c37400138997d32ae9bdaf829fcf5a3bbedf4a383985164c",
+        "size": 16761,
+        "mtime": 1792674662
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w14_domviolet_f.gai": {
+        "sha256": "e0e74d77e101722f029ef0e749ed3ead61b1ca2d9b97bec9efd57e9581677221",
+        "size": 56155,
+        "mtime": 1792674664
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w14_domviolet_s.gai": {
+        "sha256": "41b495b08ecab5c935c25dd4ecb33cac2c96d78cfb44b52b33b67b8b8c7aa231",
+        "size": 18928,
+        "mtime": 1792674662
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w15_javelin_a_f.gai": {
+        "sha256": "7ed1e466ac7a29ab43190187ad77ec4086e01c7be12e1287a38dd21c9c9bc0d3",
+        "size": 55958,
+        "mtime": 1792674666
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w15_javelin_a_s.gai": {
+        "sha256": "b4563f050e7473155aad9c96f556b983218475dbbc8ebb09083a60797c8ed876",
+        "size": 16761,
+        "mtime": 1792674666
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w15_javelin_f.gai": {
+        "sha256": "28a10ee7d74f468df43b91ff15bee5056eba088664475e6ac7361c37a12c36a2",
+        "size": 76107,
+        "mtime": 1792674666
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w15_javelin_s.gai": {
+        "sha256": "b818db41ad92dfdef3632acc976d105d3cb43a5c32fddf3e2df38e5d8b3a6a17",
+        "size": 24976,
+        "mtime": 1792674666
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w17_domlight_a_f.gai": {
+        "sha256": "6d85dc6c638793121244d0d5945bc721bb756bab3064e6897826605a097cfac1",
+        "size": 67398,
+        "mtime": 1792674648
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w17_domlight_a_s.gai": {
+        "sha256": "98503055d82a7673c72340a76b7e5569a101e59642f763375e42f2cd50650211",
+        "size": 20030,
+        "mtime": 1792674648
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w17_domlight_b_f.gai": {
+        "sha256": "3537dabe980ac8e45dc76b90d7755c6f9ec73f4fd51c66051e9a754a5e5e287c",
+        "size": 137843,
+        "mtime": 1792674648
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w17_domlight_b_s.gai": {
+        "sha256": "47a9b2e4d03ae63ad8bcdbe81c108a1f77d4f61cfe8e3c96eef67818ba75af53",
+        "size": 39354,
+        "mtime": 1792674648
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w17_domlight_c_f.gai": {
+        "sha256": "b09c715555772f76129c2933f1a5c03db8ccceeb686501753fd26872b7696758",
+        "size": 67398,
+        "mtime": 1792674650
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w17_domlight_c_s.gai": {
+        "sha256": "a5cb040a64b4d59c983a284f88616b9098af2ba1b9d50af5fe27aa436185a37a",
+        "size": 20619,
+        "mtime": 1792674650
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w17_domlight_f.gai": {
+        "sha256": "7c39b80ece095a99600851f27f7aa70c34de90e38afb4c7da4f2ffd2c902dde9",
+        "size": 166434,
+        "mtime": 1792674648
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shudom_w17_domlight_s.gai": {
+        "sha256": "473d09f792dd3287e900a3d2c88735c7787d1f4359504570a0c9352a64bc5a41",
+        "size": 45944,
+        "mtime": 1792674648
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w01_emorange_a_f.gai": {
+        "sha256": "24366118ec2585d7d864df250191573b107ea7574a98bc1d5b4d6b9471c55e35",
+        "size": 4387,
+        "mtime": 1792675992
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w01_emorange_a_s.gai": {
+        "sha256": "e1a3b624b45e891e3b1b0bf4db19a58dec63592786d8aea1c8be60dad90b1969",
+        "size": 2600,
+        "mtime": 1792675992
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w01_emorange_b_f.gai": {
+        "sha256": "49b8ba58a53d0f15a3cb3ad11eb65d7c16770434d29b47f12277bdab236b7143",
+        "size": 6284,
+        "mtime": 1792675992
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w01_emorange_b_s.gai": {
+        "sha256": "156fec04ab6ec4a876b59968b11d6af2d94776edc376797e83dbcb914856aa87",
+        "size": 4705,
+        "mtime": 1792675992
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w01_emorange_f.gai": {
+        "sha256": "3bef483acd067029bd7bedb18fde9446815791f1517782aebdf1498179d3cf99",
+        "size": 6933,
+        "mtime": 1792675992
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w01_emorange_s.gai": {
+        "sha256": "7f234a02c1e04fe01fe5de8e1dd4190fd9b00f097e048e211e84d8d589ea4a08",
+        "size": 2665,
+        "mtime": 1792675992
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w02_emfrag_a_f.gai": {
+        "sha256": "91ac6168df59d7cb907fd73b4706aea2bd7e6df2950ba4c98efb87fcfc9de6b7",
+        "size": 9509,
+        "mtime": 1792675994
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w02_emfrag_a_s.gai": {
+        "sha256": "4e071e2d29a25728aca218eebc50285cc9c5fb1480590d112818f45e91337f99",
+        "size": 3374,
+        "mtime": 1792675994
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w02_emfrag_f.gai": {
+        "sha256": "3f08da1023f15e5cf8b556ae0e34abbf32be3d4d289b3ce2c2f8f728d0745374",
+        "size": 107551,
+        "mtime": 1792675994
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w02_emfrag_s.gai": {
+        "sha256": "a43eb2bbe76480f36f4f25758ae88979b48598c6c709cad7415f0a5e91f9128b",
+        "size": 32646,
+        "mtime": 1792675994
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w02_empulse_a_f.gai": {
+        "sha256": "22707ffea0b342593cdaaf7668f0da1bbddad515ddd92068ae6968bd046ede8f",
+        "size": 9509,
+        "mtime": 1792675994
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w02_empulse_a_s.gai": {
+        "sha256": "92c13b3b181c65474f8406fa35cf9e1045a7819613c9d8c9c569e46cc59ed75b",
+        "size": 3374,
+        "mtime": 1792675994
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w02_empulse_f.gai": {
+        "sha256": "9f966a992d88c9b70d34e007efca0d031c688732c484371eb8fbb1b90e2f239e",
+        "size": 107551,
+        "mtime": 1792675994
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w02_empulse_s.gai": {
+        "sha256": "ac1b4f1ae9d7d4c2249fea155f8cf76e4de7d9d5f4821c12dd2e215c2bae0d47",
+        "size": 32646,
+        "mtime": 1792675994
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w03_gravbeam_a_f.gai": {
+        "sha256": "60eb36fefc532fdfd4c99edfbfb1090a33233e8cd985743ba5c33c15cc578ce5",
+        "size": 67682,
+        "mtime": 1792675996
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w03_gravbeam_a_s.gai": {
+        "sha256": "84af48099bde2bbc2d882b360a99cb5ef817aa3ebd75bf95a4a3c26243944ed7",
+        "size": 22458,
+        "mtime": 1792675996
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w03_gravbeam_f.gai": {
+        "sha256": "b38f0e26070e79c9dc39d67e2c70473497cf9ede1025c16ce428f368b9ceca94",
+        "size": 28636,
+        "mtime": 1792675996
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w03_gravbeam_s.gai": {
+        "sha256": "c3f2351e8e60bbc6aecdd866008bcabdf87e9d60522876a9db2cd9fa25c35682",
+        "size": 9587,
+        "mtime": 1792675996
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w03_maloc_a_f.gai": {
+        "sha256": "0f7ed55dde84977fb3950a7e026e1c94e38903ee8a322d84cc7c070e83a6b84c",
+        "size": 67682,
+        "mtime": 1792675998
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w03_maloc_a_s.gai": {
+        "sha256": "0a5a8aa7e98a04bdb9b9f78277332abcc4cda2ec9b46333af7b275cecd9535ec",
+        "size": 22458,
+        "mtime": 1792675998
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w03_maloc_f.gai": {
+        "sha256": "1e86094c669195c2e1cf3320af2e3d0cdab8b0008095641b034bcaa5e5e0f0d9",
+        "size": 28636,
+        "mtime": 1792675996
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w03_maloc_s.gai": {
+        "sha256": "b83e4b78fbc3c8f37ea73e7e24013e984bf62ea8deaffd5316d6213cb79a5774",
+        "size": 9587,
+        "mtime": 1792675996
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w05_slowlime_a_f.gai": {
+        "sha256": "c3d41086b9e42b3240a2e3c76cf2eddfdc85ec54b646e9c5ba7e9831528a1479",
+        "size": 4387,
+        "mtime": 1792676000
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w05_slowlime_a_s.gai": {
+        "sha256": "eaa1d3da34c8b8562a537b830592a3da76246822a5886b54b664bc6c87316190",
+        "size": 2600,
+        "mtime": 1792676000
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w05_slowlime_b_f.gai": {
+        "sha256": "7bf0422ada1be06d331367f2dc7156513b6c7c576cd218191b0dbb208e9a1eca",
+        "size": 6284,
+        "mtime": 1792676000
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w05_slowlime_b_s.gai": {
+        "sha256": "71ddd27dc653ab1d31856fd503e0699b5f3297149e5c7bdcf6216f855b589fe7",
+        "size": 4705,
+        "mtime": 1792676000
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w05_slowlime_f.gai": {
+        "sha256": "8b41b8be3f094f3b853b87c6960cd64633972c4509f1896a29a602c02a75f447",
+        "size": 443,
+        "mtime": 1792676000
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w05_slowlime_s.gai": {
+        "sha256": "0815a9f3965f791dad0d8a497ba57e8cf8656f5bdad5553ec7397bab5b1956ad",
+        "size": 368,
+        "mtime": 1792676000
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w07_emorange_a_f.gai": {
+        "sha256": "d6e1873b2ddff6ae3ce12345f0c6859a6477ecf2a538cbd97489a1f1aa100781",
+        "size": 6831,
+        "mtime": 1792676002
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w07_emorange_a_s.gai": {
+        "sha256": "8408f0121717f7f2a2145ab81bc2ac026764f958d9726f242ca168a4bcedb8c3",
+        "size": 3278,
+        "mtime": 1792676002
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w07_emorange_b_f.gai": {
+        "sha256": "49b8ba58a53d0f15a3cb3ad11eb65d7c16770434d29b47f12277bdab236b7143",
+        "size": 6284,
+        "mtime": 1792676002
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w07_emorange_b_s.gai": {
+        "sha256": "156fec04ab6ec4a876b59968b11d6af2d94776edc376797e83dbcb914856aa87",
+        "size": 4705,
+        "mtime": 1792676002
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w07_emorange_f.gai": {
+        "sha256": "b36a64d11054d96b5105ed50a504e7e93e0929e26d3f6fabe36f4d4bff97fe56",
+        "size": 39823,
+        "mtime": 1792676002
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w07_emorange_s.gai": {
+        "sha256": "f61bd59f1e882803be78c72c4ee788661691c3bc23874f666e0aa3234d365869",
+        "size": 27606,
+        "mtime": 1792676002
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_emgreen_a_f.gai": {
+        "sha256": "1094fb052aed463616f6d1628779d0303937a991c050a5c79a621b17261d5ca4",
+        "size": 19541,
+        "mtime": 1792676006
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_emgreen_a_s.gai": {
+        "sha256": "9417b96cf5d11e6d788260551c130d76d590b16b3aa5fb29c75befe235d4201e",
+        "size": 5767,
+        "mtime": 1792676006
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_emgreen_b_f.gai": {
+        "sha256": "d434a1e8589fc59019dd0c8012f98032d90b5f01784e6a6024e68373c2ec4f7a",
+        "size": 829,
+        "mtime": 1792676006
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_emgreen_b_s.gai": {
+        "sha256": "e1181c3446eb8788b34f90242c4541df3de2a6d0d76cf92776ef4b462397e7da",
+        "size": 399,
+        "mtime": 1792676006
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_emgreen_c_f.gai": {
+        "sha256": "af8203ca8d9cd43d000dca5ffa919cbded00769b577cbfb77b9f92cda9c0341b",
+        "size": 659,
+        "mtime": 1792676006
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_emgreen_c_s.gai": {
+        "sha256": "9f61943f8c474be6b843fdfb809063ac5372eba8da123a9cfa23d10ee9f0149a",
+        "size": 550,
+        "mtime": 1792676006
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_emgreen_f.gai": {
+        "sha256": "a1045db7ab5790fcd6f7b88bcf23e1a75d1d60b6d531f8b29134a3d12d552e1f",
+        "size": 147304,
+        "mtime": 1792676006
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_emgreen_s.gai": {
+        "sha256": "626a1a998262ff50e301d5f337b6caf421fec773ee48338a8c00644f8151c70f",
+        "size": 37682,
+        "mtime": 1792676006
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_faserblue_a_f.gai": {
+        "sha256": "93f10c193e0ac5177a1fe89d17a304e2468e405eefaf20a6a114b2321c709d7f",
+        "size": 19541,
+        "mtime": 1792676004
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_faserblue_a_s.gai": {
+        "sha256": "40535da3d16d17fb99a85d63fff34ff89b3114067d7d3e4ed09f2bec720776a3",
+        "size": 5767,
+        "mtime": 1792676004
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_faserblue_b_f.gai": {
+        "sha256": "b81a8a0855e61530b5f8d431aee65d7cadfb2ab8dd3771e41bad7c65220d8da3",
+        "size": 829,
+        "mtime": 1792676004
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_faserblue_b_s.gai": {
+        "sha256": "ca926b2862c3bc59182051fe9cb7c03049cf0fe240ad7e7c4564c184fd2cce7c",
+        "size": 399,
+        "mtime": 1792676004
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_faserblue_c_f.gai": {
+        "sha256": "a021bc86759cf90ca9acbb12929d7b9c9aee47beef3e75f8ba7bba217c5b2f70",
+        "size": 659,
+        "mtime": 1792676004
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_faserblue_c_s.gai": {
+        "sha256": "f5d893b4944c2a1e29720f5dfb536959adc94c26748154b45d2caa009ad78daa",
+        "size": 550,
+        "mtime": 1792676004
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_faserblue_f.gai": {
+        "sha256": "da108a8b2584fd3969c9fdc05a834bd69a35636f823bc9f6e9885ddba15a6a83",
+        "size": 147304,
+        "mtime": 1792676004
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w09_faserblue_s.gai": {
+        "sha256": "bd0069efb9111903501959f517ad5e890fc0011a6b16fe39641dc9aa1cf55e0b",
+        "size": 37682,
+        "mtime": 1792676004
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_emgreen_a_f.gai": {
+        "sha256": "089d0b6b4f4480544f8e26deb1ffa86c7a77dd9638d91427e939b90c2ea37b06",
+        "size": 14744,
+        "mtime": 1792676008
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_emgreen_a_s.gai": {
+        "sha256": "61a777c31bde4a73b4d3f1f6631a2c898106ddca1cdda9b72188dcda666f0714",
+        "size": 6353,
+        "mtime": 1792676008
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_emgreen_b_f.gai": {
+        "sha256": "9d07b83206abfe84ec0082e58edd992b054ddf01420faba1a4e8ac6d767abe64",
+        "size": 20752,
+        "mtime": 1792676008
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_emgreen_b_s.gai": {
+        "sha256": "36fca666af550a114c17a32f049358bc3e6dd7e3f8d02d5d4f0308fbe3f2f85d",
+        "size": 7607,
+        "mtime": 1792676008
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_emgreen_f.gai": {
+        "sha256": "49d8653a38f474f793c0a139f778aed928125e8991f546d907547d8b095dcb0e",
+        "size": 494,
+        "mtime": 1792676008
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_emgreen_s.gai": {
+        "sha256": "872dcdee5b16365da9cf0f243bb38b9c39237af8b996f7b7b2255d946ba1ad99",
+        "size": 338,
+        "mtime": 1792676008
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_emorange_a_f.gai": {
+        "sha256": "feee7da50c42d95987728fe4500fed2841a54db1fffed0da9cb4f2d85aafd521",
+        "size": 14744,
+        "mtime": 1792676008
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_emorange_a_s.gai": {
+        "sha256": "9c19315c1fcb78775b9fc0f80adbde8118ad4e235660679817144a4db3c203d8",
+        "size": 6353,
+        "mtime": 1792676008
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_emorange_b_f.gai": {
+        "sha256": "216a6c5d1622f14bdeff6ba0dc634fb170980b5d74a2b3ff50ed37de2071cc0f",
+        "size": 20752,
+        "mtime": 1792676008
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_emorange_b_s.gai": {
+        "sha256": "0c780f994eae0e9a75306212b7fe8f7c6f2776c71fbad24ccfc28ff7b8cac93e",
+        "size": 7607,
+        "mtime": 1792676008
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_emorange_f.gai": {
+        "sha256": "773d16bc48e33fa0ff1c222460439804b4e4a9d8bac78bb8053e789e8c202068",
+        "size": 494,
+        "mtime": 1792676008
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_emorange_s.gai": {
+        "sha256": "e32edd75e1c02cfea55fb827cf8af7d106ce1f90ee6906f5c4ae83fe2c443e03",
+        "size": 338,
+        "mtime": 1792676008
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_empurple_a_f.gai": {
+        "sha256": "cda2b650a7257af9b653557e0ae0a2dcaba77b0c20ac808165c93d4275cad7a7",
+        "size": 14744,
+        "mtime": 1792676010
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_empurple_a_s.gai": {
+        "sha256": "332814fe9e90cca4607db7c914964d918d1e9538fd307f0342103aa42778143c",
+        "size": 6353,
+        "mtime": 1792676010
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_empurple_b_f.gai": {
+        "sha256": "e92565bf4628515e1908905d5e998edd97ce1655723cac0d073014391125a9b9",
+        "size": 20752,
+        "mtime": 1792676010
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_empurple_b_s.gai": {
+        "sha256": "9779a7bd7f62142014a2d9662bec59986a4609155c01d928c9bd9272025b7766",
+        "size": 7607,
+        "mtime": 1792676010
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_empurple_f.gai": {
+        "sha256": "fe201f9247c7da4c1ea84533774cd1b75b31e7c2a6accf90524aa04d72094fb4",
+        "size": 494,
+        "mtime": 1792676010
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w10_empurple_s.gai": {
+        "sha256": "2780665dff0b697e7e241559a4ce3d94423c468cdcfba60199b68f660ce9d8c8",
+        "size": 338,
+        "mtime": 1792676010
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w12_sphere_a_f.gai": {
+        "sha256": "d733a0b7757a73b1683219dc724d10fd2e1bead42f4393a0b335055af9592af5",
+        "size": 13926,
+        "mtime": 1792676012
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w12_sphere_a_s.gai": {
+        "sha256": "07e148c137f5e489a636f3d768a7c0c60f89a248bcfb218cff32190c607107e4",
+        "size": 6587,
+        "mtime": 1792676012
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w12_sphere_b_f.gai": {
+        "sha256": "8d69f4f9a10b0a916154d5c6d6e042244a899db3782f2b4b5adf2144fd430380",
+        "size": 66370,
+        "mtime": 1792676012
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w12_sphere_b_s.gai": {
+        "sha256": "43dac4466c0f20bfede1dab79ff14fd11468e72928fbb2a7a916102ed691fd76",
+        "size": 21832,
+        "mtime": 1792676012
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w12_sphere_f.gai": {
+        "sha256": "4ecb1bced51582edbc8b9185d7136ee63b7f7b849d9eaad8549e92198c1c72d3",
+        "size": 494,
+        "mtime": 1792676012
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w12_sphere_s.gai": {
+        "sha256": "77761558f70db78bd24aaeb465ad41d992fbd0e3033871ed984f153556c3b300",
+        "size": 338,
+        "mtime": 1792676012
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w17_subblue_a_f.gai": {
+        "sha256": "1ddaba89b2bdd5fb7061f909de7c73dc1e20bc14bff4cece1b22918105513162",
+        "size": 67398,
+        "mtime": 1792676014
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w17_subblue_a_s.gai": {
+        "sha256": "ad2e272fd47c89296ddcbd77240dcec9ff3438da53404b29048071d7e9bab11c",
+        "size": 20030,
+        "mtime": 1792676014
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w17_subblue_b_f.gai": {
+        "sha256": "73c86598d71a2d20fbeb68d2f2fc6d5d3eee3ab33096625408b1b8555000ee4a",
+        "size": 137843,
+        "mtime": 1792676014
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w17_subblue_b_s.gai": {
+        "sha256": "fc8dde54af6993fbd1d4ead9dff92b17f2decf25bc1938d7d235b8c939f536cf",
+        "size": 39354,
+        "mtime": 1792676014
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w17_subblue_c_f.gai": {
+        "sha256": "94e1f0adc29caba243f265a230921cc1948786db47f7b0f8ee7cbd1d071cb3b8",
+        "size": 67398,
+        "mtime": 1792676016
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w17_subblue_c_s.gai": {
+        "sha256": "d4f63bac42bdeda1bcf53310eb35c08051206955c4e4eba6ab5edee705227920",
+        "size": 20619,
+        "mtime": 1792676016
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w17_subblue_f.gai": {
+        "sha256": "9b827bccd3801edc9c1b804030786ec71d4478bbedba08c0561a9cdbcafd38aa",
+        "size": 166434,
+        "mtime": 1792676014
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/shuem_w17_subblue_s.gai": {
+        "sha256": "fe45c7655388b65dbd568d28c478a651bfed39ade1d622b5c7a5d3141e4a8a42",
+        "size": 45944,
+        "mtime": 1792676014
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_adropter_a_f.gai": {
+        "sha256": "b1a9ff2dc4c6ef4fa68d650b3d442a9d9b1d16f892bc3ef577094417ed21e7f8",
+        "size": 4387,
+        "mtime": 1792664370
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_adropter_a_s.gai": {
+        "sha256": "7becd876f667dc4518305333c2b1b515b1c7387bd6631fec9218e3a0da85d6e8",
+        "size": 2600,
+        "mtime": 1792664370
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_adropter_b_f.gai": {
+        "sha256": "de3181071504f4837401279dc17be78a69f17616439b553e83bdeca20aa197b6",
+        "size": 6284,
+        "mtime": 1792664374
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_adropter_b_s.gai": {
+        "sha256": "b58b4572f9f4b87bafdf27850ae9ecf54cdd9f0f4d6034ff247f2bfb1b631b98",
+        "size": 4705,
+        "mtime": 1792664374
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_adropter_f.gai": {
+        "sha256": "c27a15dba02ef5f6f2b76e0ecd437c478e6448e8e9562b732ca87af6f721734a",
+        "size": 6933,
+        "mtime": 1792664370
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_adropter_s.gai": {
+        "sha256": "899b9896891f6da51f54aba488e68f27bcae763252538c0f83a509c1ee89618e",
+        "size": 2665,
+        "mtime": 1792664370
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_difrod_a_f.gai": {
+        "sha256": "1ad6ab08507d463ef05737eec2a67e2dd52b8d510320a2bd3b4f68a989ade4c7",
+        "size": 4387,
+        "mtime": 1792664368
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_difrod_a_s.gai": {
+        "sha256": "9a54feeb2e4bffb5dfbf4e3f462c51febbc2fb224925e2a5e2d983e1abdaa1e0",
+        "size": 2600,
+        "mtime": 1792664368
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_difrod_b_f.gai": {
+        "sha256": "cbb6c50ac5ef2997d092231574c355bd163e7570e4584d2a6eabf35f269017d8",
+        "size": 6284,
+        "mtime": 1792664372
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_difrod_b_s.gai": {
+        "sha256": "2b83747b142768b98138b7278f051a6bfe01452755c67e656e2cd54dcba94ebd",
+        "size": 4705,
+        "mtime": 1792664370
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_difrod_f.gai": {
+        "sha256": "049580ca3e7799fab170c4d181fd9c8f52decf1b8a4188b94fade280a9ea89c1",
+        "size": 6933,
+        "mtime": 1792664368
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_difrod_s.gai": {
+        "sha256": "2893e8b49b5ae4a927d01fe30708889beb7d24d601e2ccd54445cbe3fd649f05",
+        "size": 2665,
+        "mtime": 1792664368
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_lifokar_a_f.gai": {
+        "sha256": "2df9c3dee9dc16ce8e665c9c74edfd02c18b387cdb540fdbdcdf351d046821e3",
+        "size": 4387,
+        "mtime": 1792664370
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_lifokar_a_s.gai": {
+        "sha256": "c23d4815c7fb4a362c1164746f3235e85fdb0af43a1d1dba89b2dfa2a61109a3",
+        "size": 2600,
+        "mtime": 1792664370
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_lifokar_b_f.gai": {
+        "sha256": "22d0e3a857b6c773bf6de5ec0990e4a7c6f388d3235835b44fc032358675f1bb",
+        "size": 6284,
+        "mtime": 1792664372
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_lifokar_b_s.gai": {
+        "sha256": "d17357de765d55f8a50d7f0b1e7e85c0b0ca47596752a48db9ebf0262ab172c3",
+        "size": 4705,
+        "mtime": 1792664372
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_lifokar_f.gai": {
+        "sha256": "460430c8a06b0c80974bf62b533b677b58d725290a47e52b5773ce7215a7095d",
+        "size": 6933,
+        "mtime": 1792664370
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w01_lifokar_s.gai": {
+        "sha256": "6897e715956f4758e90003ffba907c1fdb875b2cc0f28c38f3c072745710644b",
+        "size": 2665,
+        "mtime": 1792664370
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w02_inveiter_a_f.gai": {
+        "sha256": "2235b9e4e68cb0ce052307f01b3cc1d757a768f3be6856b00c9748885a5992a3",
+        "size": 9509,
+        "mtime": 1792664834
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w02_inveiter_a_s.gai": {
+        "sha256": "2e96134ac10d9000e6b67cdca1a6793e4c669f3d1c9f15f461b8cae9d150a619",
+        "size": 3374,
+        "mtime": 1792664834
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w02_inveiter_f.gai": {
+        "sha256": "d129451e2a99f99bf51e14a141fae43a9db2242ae9fb52e04d449e77cc67ed19",
+        "size": 107551,
+        "mtime": 1792664852
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w02_inveiter_s.gai": {
+        "sha256": "713c9d23d5b92c069929bb690258bc49809dee49605d1acdf52ab733e224307c",
+        "size": 32646,
+        "mtime": 1792664850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w02_javitor_a_f.gai": {
+        "sha256": "9f14f05f384658be421ab6f03a453c72fc528b644b4b437a8af997bf382671e5",
+        "size": 9509,
+        "mtime": 1792664832
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w02_javitor_a_s.gai": {
+        "sha256": "f2e71adb98f2ee0d4cb3ff265f595248a0a539008ad6dfb02be0b8bd05f411e7",
+        "size": 3374,
+        "mtime": 1792664832
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w02_javitor_f.gai": {
+        "sha256": "2f090ffbcffa46ccba19ade7f8914fe99900f7868c03cb94014f99f8609d5f90",
+        "size": 107551,
+        "mtime": 1792664850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w02_javitor_s.gai": {
+        "sha256": "3e71445e5be016ebb17b205370d4ac5305885d95e4dbaa59eea37d38572dc8a9",
+        "size": 32646,
+        "mtime": 1792664848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w02_stilermein_a_f.gai": {
+        "sha256": "218961aae6dcd2eaf8629c03ca3176248200a088092ebd6a738663fb81ee289e",
+        "size": 9509,
+        "mtime": 1792664830
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w02_stilermein_a_s.gai": {
+        "sha256": "a803e31a7a865b289876a90bdd447d151ad139fb868e8a151ef539b5a2bf6191",
+        "size": 3374,
+        "mtime": 1792664830
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w02_stilermein_f.gai": {
+        "sha256": "6a33370df10d49a4d0a52aefc550c96b7736f6233e04aeb19f020402224b01ad",
+        "size": 107551,
+        "mtime": 1792664848
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w02_stilermein_s.gai": {
+        "sha256": "e3373ab547abc1dc385b373252790f23effca88c3fd16ef2c8e4c3339201b88f",
+        "size": 32646,
+        "mtime": 1792664846
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_armolok_a_f.gai": {
+        "sha256": "88e98ba8d2946a4e67194c381de1fac20931107ffb20bffa27e11958f16d8a1d",
+        "size": 67682,
+        "mtime": 1792664394
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_armolok_a_s.gai": {
+        "sha256": "423983a3cee8149adc0a525351c9b35d7e0d942c4041fcdacd64f794030924db",
+        "size": 22458,
+        "mtime": 1792664394
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_armolok_f.gai": {
+        "sha256": "374304a6a505a4c3d41a35e1784fcfd96112211a92e78eb280fe95e43bc35f4c",
+        "size": 28636,
+        "mtime": 1792664384
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_armolok_s.gai": {
+        "sha256": "f8d1a729cf40d3c66c1c582b1b37693da826f50e0478a4d9a31362d961f44e28",
+        "size": 9587,
+        "mtime": 1792664384
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_difrod_a_f.gai": {
+        "sha256": "547a05cf8fcdfdae5101ab4690ca208a7fdc7dfcbd4b4dac8b7a15377ac4d026",
+        "size": 67682,
+        "mtime": 1792664390
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_difrod_a_s.gai": {
+        "sha256": "b9179843361879b79b2093901f20060f74a53d434ef3965dcf65999c948c850a",
+        "size": 22458,
+        "mtime": 1792664390
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_difrod_f.gai": {
+        "sha256": "561a58c7a0dc014fd5a0b1b5ee1bb7eecc61a54a17299255ee83bbc7215e090f",
+        "size": 28636,
+        "mtime": 1792664380
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_difrod_s.gai": {
+        "sha256": "16450c67dd68022c070d6f21e5396d68df20acee179e7eb395a05379134535b1",
+        "size": 9587,
+        "mtime": 1792664380
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_javitor_a_f.gai": {
+        "sha256": "aba30e39021b045808a36a16b1a7ab8da3be027fe0cf99163e84666543b9ab43",
+        "size": 67682,
+        "mtime": 1792664842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_javitor_a_s.gai": {
+        "sha256": "c11d75b09a8ba976fde8e94392f87ce878440c1088868626d43c237955643c38",
+        "size": 22458,
+        "mtime": 1792664842
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_javitor_f.gai": {
+        "sha256": "e28f70e714c53e0371e30e0b62cde628f7ccca3004ddc723c1ebf94a2333470c",
+        "size": 28636,
+        "mtime": 1792664836
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_javitor_s.gai": {
+        "sha256": "0e1e9318bb2eb963ac25690caa0241a996321b97e5cfc4208cc0ca916399f8ac",
+        "size": 9587,
+        "mtime": 1792664836
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_lifokar_a_f.gai": {
+        "sha256": "d79bdab6ba4798ca96a60253ad9e2ebdb8f5101d5986318f74c13ae3c4153847",
+        "size": 67682,
+        "mtime": 1792664392
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_lifokar_a_s.gai": {
+        "sha256": "0d4e35e458202324a6064ae67e9376f8f88afd16c067301ddb213d0cdef8a3af",
+        "size": 22458,
+        "mtime": 1792664392
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_lifokar_f.gai": {
+        "sha256": "779a678925b9c08e06c865322161fd8bad0e4df440a4f4b6b2eced9a34f71fb3",
+        "size": 28636,
+        "mtime": 1792664382
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w03_lifokar_s.gai": {
+        "sha256": "133dfaee8dc3a97976292ec2a2e76e43fefa2bb08b61e02e96b7c2a4a5ceea7d",
+        "size": 9587,
+        "mtime": 1792664382
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_adropter_a_f.gai": {
+        "sha256": "ea0ad2f183baa89fe59081907cd8dc3029cce38ea4ea0ec19313e5121ea5bfff",
+        "size": 72807,
+        "mtime": 1792664404
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_adropter_a_s.gai": {
+        "sha256": "a16afa2fa55dcca195f85d752f87cc4667ae4fc8cedf08092ca9ea0c7927e09e",
+        "size": 24156,
+        "mtime": 1792664402
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_adropter_b_f.gai": {
+        "sha256": "a6976194b91a3b3f85a67a32144ad1f4ca96d605f624e857434ed772acf53a63",
+        "size": 2838,
+        "mtime": 1792664390
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_adropter_b_s.gai": {
+        "sha256": "3f18edb954acdf0ac2d20c21877400b9cc2096c515a88c645dfcb9790feb9b5b",
+        "size": 1368,
+        "mtime": 1792664390
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_adropter_c_f.gai": {
+        "sha256": "f9f04ffed824f04191859b39efa8ffdc53bb3524dd3fe43a0aef94e27085ce2f",
+        "size": 6170,
+        "mtime": 1792664392
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_adropter_c_s.gai": {
+        "sha256": "814fecfc083248142a00d73b64d1dbc963506f883fee81d23cf60969e662b0d9",
+        "size": 2287,
+        "mtime": 1792664394
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_adropter_f.gai": {
+        "sha256": "73e4fc796ae40aa84eb7db0fc8a152d2a4d3c488727b8beabb8233b72565120f",
+        "size": 2181,
+        "mtime": 1792664384
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_adropter_s.gai": {
+        "sha256": "f3eb93717b13c4e57c0b9e3c66e9620ceb739ec6620dc516d8054938488709b4",
+        "size": 1302,
+        "mtime": 1792664384
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_difrod_a_f.gai": {
+        "sha256": "fb3ae4b57b299f61b9837971db8df00b36adc2629fbfae02df7ab2af13b647a9",
+        "size": 72807,
+        "mtime": 1792664400
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_difrod_a_s.gai": {
+        "sha256": "360d3a016c982ef4a30c345977f11cc363678e101c022ca0127a13fc5c71828e",
+        "size": 24156,
+        "mtime": 1792664400
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_difrod_b_f.gai": {
+        "sha256": "0a3380ad14bab2efdd61c60b00544a68a6e4c687c07987fb782518a5f6cc5e0a",
+        "size": 2838,
+        "mtime": 1792664388
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_difrod_b_s.gai": {
+        "sha256": "2ad7ea21d18ac288b31585c049f84838eaddcb3158e6a55868b2f2bd2316e0fc",
+        "size": 1368,
+        "mtime": 1792664388
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_difrod_c_f.gai": {
+        "sha256": "5600d53f058555780c2291464737d464389d735d7ec70cd31cf5f65e514bc708",
+        "size": 6170,
+        "mtime": 1792664390
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_difrod_c_s.gai": {
+        "sha256": "026762b28e6b3ca6e0bc610abeade379fca258f2102a64b6fa05c1997fc12cc7",
+        "size": 2287,
+        "mtime": 1792664392
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_difrod_f.gai": {
+        "sha256": "14d5e31a768cf23d74a31c435c4d992e723da8c4bbe6191afdc8a29ffba994ec",
+        "size": 2181,
+        "mtime": 1792664380
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_difrod_s.gai": {
+        "sha256": "3065874c65482756f0606b5d30c59937241481ebc61f3daafb461d5b89f1821d",
+        "size": 1302,
+        "mtime": 1792664382
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_inveiter_a_f.gai": {
+        "sha256": "094d1110bb198541ab2889cb5d60298abdcd0750f7bff522acadb8da05bd2f20",
+        "size": 72807,
+        "mtime": 1792664854
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_inveiter_a_s.gai": {
+        "sha256": "4437f34b70d5fef5fc5685112c8f5fe6388c195e303955aa0b6bf201fb043190",
+        "size": 24156,
+        "mtime": 1792664854
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_inveiter_b_f.gai": {
+        "sha256": "9f3f6c7bc1053e95e9fbb44915eb8a1b93c6d51d05a002d270ce31ee6b09b3a0",
+        "size": 2838,
+        "mtime": 1792664840
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_inveiter_b_s.gai": {
+        "sha256": "d431ad70047b2a46936d46c7a0be4999452f8fc5a5c69a3adb07a66c525f1bbe",
+        "size": 1368,
+        "mtime": 1792664840
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_inveiter_c_f.gai": {
+        "sha256": "fc80bcef760407afa186b3c9a5c7a7215fb101f2920789c05407d4efe72bb7e1",
+        "size": 6170,
+        "mtime": 1792664844
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_inveiter_c_s.gai": {
+        "sha256": "a87e41a7e26c55e3d09d13f0ccbe62aef15006f727eadf3469983ee2e755b8e9",
+        "size": 2287,
+        "mtime": 1792664844
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_inveiter_f.gai": {
+        "sha256": "6a2b63cb5abe4e36f51fe13cd374ef02db03230bc6323aa99e1d6c0b9108f979",
+        "size": 2181,
+        "mtime": 1792664836
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_inveiter_s.gai": {
+        "sha256": "e91979fe9728b34eac8725cea45adb42a44143f8e835cf91599928d27550a1f7",
+        "size": 1302,
+        "mtime": 1792664836
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_lifokar_a_f.gai": {
+        "sha256": "59b6c34ef81883a8a4a1362576d713a162c2d1aca1c9a18e117de8e22e87a622",
+        "size": 72807,
+        "mtime": 1792664402
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_lifokar_a_s.gai": {
+        "sha256": "d43143729af45b1d7711dea4c751d1d05ad11f998890154ac15dc4103de59ec0",
+        "size": 24156,
+        "mtime": 1792664400
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_lifokar_b_f.gai": {
+        "sha256": "e7e6fb66214a84067b8ae79ecfceee691bb6d8c619ee5a3d8572a032098eaa60",
+        "size": 2838,
+        "mtime": 1792664390
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_lifokar_b_s.gai": {
+        "sha256": "ecbd1749bf46bd397bcfe87c9908a748182f742ca1e7570543dd7deaafe94cae",
+        "size": 1368,
+        "mtime": 1792664390
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_lifokar_c_f.gai": {
+        "sha256": "fbcf227074f12b32b75ad632f5819e87534c69bd1494a92e31684a992d1aa358",
+        "size": 6170,
+        "mtime": 1792664392
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_lifokar_c_s.gai": {
+        "sha256": "8a4547ffb1a2334a107152e7039aeed2a6697b9ee143558a23e5da49fd43e623",
+        "size": 2287,
+        "mtime": 1792664392
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_lifokar_f.gai": {
+        "sha256": "e43272be2f1dc1880758509a0aac0c0ca07185e9e0bf1c35455c9608cc05635f",
+        "size": 2181,
+        "mtime": 1792664382
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w04_lifokar_s.gai": {
+        "sha256": "a38c88cc5ad48acb5358eba66453bfae9c6b193315b40b92562751b0e4ad7a10",
+        "size": 1302,
+        "mtime": 1792664382
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_adropter_a_f.gai": {
+        "sha256": "b1a9ff2dc4c6ef4fa68d650b3d442a9d9b1d16f892bc3ef577094417ed21e7f8",
+        "size": 4387,
+        "mtime": 1792664400
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_adropter_a_s.gai": {
+        "sha256": "7becd876f667dc4518305333c2b1b515b1c7387bd6631fec9218e3a0da85d6e8",
+        "size": 2600,
+        "mtime": 1792664400
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_adropter_b_f.gai": {
+        "sha256": "de3181071504f4837401279dc17be78a69f17616439b553e83bdeca20aa197b6",
+        "size": 6284,
+        "mtime": 1792664404
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_adropter_b_s.gai": {
+        "sha256": "b58b4572f9f4b87bafdf27850ae9ecf54cdd9f0f4d6034ff247f2bfb1b631b98",
+        "size": 4705,
+        "mtime": 1792664406
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_adropter_f.gai": {
+        "sha256": "df10ea6ac9eac302da3918ab8528900ec7c378aa6529c3f8f4b9c97b037e105f",
+        "size": 443,
+        "mtime": 1792664398
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_adropter_s.gai": {
+        "sha256": "b27e4082aae8371905b682e7dd1b42c1327ec126220dd20eece03717c13e75c4",
+        "size": 368,
+        "mtime": 1792664398
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_armolok_a_f.gai": {
+        "sha256": "d40fcdd0d10f0c65b43022d1df85b12983edbfa2025509b406accb6efd7375ac",
+        "size": 4387,
+        "mtime": 1792664398
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_armolok_a_s.gai": {
+        "sha256": "6868ec7e39a81a8dc0edbc4be52cd695eb7a5baa615f5a7adf68e20d2d53018c",
+        "size": 2600,
+        "mtime": 1792664398
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_armolok_b_f.gai": {
+        "sha256": "921fc3f075289cd489f2ae062f225df9af30b3ae04499f85ecb8782d912dabc4",
+        "size": 6284,
+        "mtime": 1792664402
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_armolok_b_s.gai": {
+        "sha256": "8dd014cb947f30d5f22f416e8e7487f79dbf0c2403a24f6512c97ce36d4feced",
+        "size": 4705,
+        "mtime": 1792664404
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_armolok_f.gai": {
+        "sha256": "8e4aebc16bc36f633f71efce711b983dfd07dc5c8f69ea3b31d70630bd9b75e2",
+        "size": 443,
+        "mtime": 1792664396
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_armolok_s.gai": {
+        "sha256": "057626d1f0f94ebc3f226c598a69eaecc1ff8ad46332c9d7cfc19a62b6cc1ac1",
+        "size": 368,
+        "mtime": 1792664398
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_stilermein_a_f.gai": {
+        "sha256": "9f8c58ed6aba68970f8e1869d27f437ab875c2799dc63c0bd6ee30d5da8e0f51",
+        "size": 4387,
+        "mtime": 1792664850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_stilermein_a_s.gai": {
+        "sha256": "9790212263515421229d60a74be149ae56f3a887819bf4ed1571fd785ade401c",
+        "size": 2600,
+        "mtime": 1792664850
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_stilermein_b_f.gai": {
+        "sha256": "426cafba94b4287a9d96e08016c22a034dd42995200104da3a774436f5088a13",
+        "size": 6284,
+        "mtime": 1792664856
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_stilermein_b_s.gai": {
+        "sha256": "7b2b9689bcabc7e7560226c7478b17cb1fd6b766e82484f09a7a2d3de73a1b3c",
+        "size": 4705,
+        "mtime": 1792664856
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_stilermein_f.gai": {
+        "sha256": "09d1ac4ec7b398d827b95d97f5c5aeaa36bf18748fe9a6c221ac1841a2e4fa5c",
+        "size": 443,
+        "mtime": 1792664852
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w05_stilermein_s.gai": {
+        "sha256": "b749fb54ce470d424dee0fbb30c47cbaa0803c91853a6c29927fa4ecbe668b98",
+        "size": 368,
+        "mtime": 1792664854
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w06_armolok_a_f.gai": {
+        "sha256": "921fc3f075289cd489f2ae062f225df9af30b3ae04499f85ecb8782d912dabc4",
+        "size": 6284,
+        "mtime": 1792664412
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w06_armolok_a_s.gai": {
+        "sha256": "8dd014cb947f30d5f22f416e8e7487f79dbf0c2403a24f6512c97ce36d4feced",
+        "size": 4705,
+        "mtime": 1792664412
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w06_armolok_f.gai": {
+        "sha256": "56c8f98ecfe8394e7cd243b83bb3de73159491c862ecd78de1567c3e0987160a",
+        "size": 736,
+        "mtime": 1792664402
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w06_armolok_s.gai": {
+        "sha256": "391e4afd994f32aa698733e69522816808da24528449e48fe6e2f5dd574f096b",
+        "size": 422,
+        "mtime": 1792664402
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w06_javitor_a_f.gai": {
+        "sha256": "11061891d4bb47362a7fcce88938e3b59b92350e058b37bb1a0a065906818a08",
+        "size": 6284,
+        "mtime": 1792664864
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w06_javitor_a_s.gai": {
+        "sha256": "72b75c043628b30e5ad848de689f524e500d21bec16b0bd2362bbe5433a9a8dc",
+        "size": 4705,
+        "mtime": 1792664864
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w06_javitor_f.gai": {
+        "sha256": "a89d0bc20f014ef08d97e953829b40903a349eca2348210f137451020dbe6ab6",
+        "size": 736,
+        "mtime": 1792664856
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w06_javitor_s.gai": {
+        "sha256": "80efb86b1a53711d54f6dc5ed7e11f276ff462ea4cf3e17183cbd00575c026ae",
+        "size": 422,
+        "mtime": 1792664856
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w06_stilermein_a_f.gai": {
+        "sha256": "426cafba94b4287a9d96e08016c22a034dd42995200104da3a774436f5088a13",
+        "size": 6284,
+        "mtime": 1792664864
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w06_stilermein_a_s.gai": {
+        "sha256": "7b2b9689bcabc7e7560226c7478b17cb1fd6b766e82484f09a7a2d3de73a1b3c",
+        "size": 4705,
+        "mtime": 1792664864
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w06_stilermein_f.gai": {
+        "sha256": "4e93ce87a78f585548a410b2f6a1ac60d362cb076477d5c5eb3097da8bc27ac2",
+        "size": 736,
+        "mtime": 1792664856
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w06_stilermein_s.gai": {
+        "sha256": "17d6ec8023a9d181320d16db0d02a1290f0004593cd0955f4a5d6a46729be5ff",
+        "size": 422,
+        "mtime": 1792664856
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_armolok_a_f.gai": {
+        "sha256": "cd8a7514170df4830303fbe660d19b52c4026ccdcbf2e1e032345b6c3180d608",
+        "size": 6831,
+        "mtime": 1792664414
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_armolok_a_s.gai": {
+        "sha256": "213ea7c26a84728029342d24fdf01c02826e86c7c3dbdc23676ef760c08dff2d",
+        "size": 3278,
+        "mtime": 1792664414
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_armolok_b_f.gai": {
+        "sha256": "921fc3f075289cd489f2ae062f225df9af30b3ae04499f85ecb8782d912dabc4",
+        "size": 6284,
+        "mtime": 1792664416
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_armolok_b_s.gai": {
+        "sha256": "8dd014cb947f30d5f22f416e8e7487f79dbf0c2403a24f6512c97ce36d4feced",
+        "size": 4705,
+        "mtime": 1792664416
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_armolok_f.gai": {
+        "sha256": "fa9b752d4e19d72d6a1b2d678e91fff7b896c8216c4aeac2d1bf7d5083b31450",
+        "size": 39823,
+        "mtime": 1792664428
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_armolok_s.gai": {
+        "sha256": "74ba29600d65b800ab12614d78fe2915d863c2276247ab64e26f3bff02dc1e7c",
+        "size": 27606,
+        "mtime": 1792664428
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_difrod_a_f.gai": {
+        "sha256": "08f1958e381b24b2a49d84b4737510a5fc21c8f2581d6e3b62868546feea2ef1",
+        "size": 6831,
+        "mtime": 1792664412
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_difrod_a_s.gai": {
+        "sha256": "af007356bce6e313046b56cce9c674bb24c37d688a66d56940b65232d2f50e97",
+        "size": 3278,
+        "mtime": 1792664412
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_difrod_b_f.gai": {
+        "sha256": "cbb6c50ac5ef2997d092231574c355bd163e7570e4584d2a6eabf35f269017d8",
+        "size": 6284,
+        "mtime": 1792664416
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_difrod_b_s.gai": {
+        "sha256": "2b83747b142768b98138b7278f051a6bfe01452755c67e656e2cd54dcba94ebd",
+        "size": 4705,
+        "mtime": 1792664416
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_difrod_f.gai": {
+        "sha256": "660bf41cfed622104bf3f038de87b055c7388c12ef03fc3ac958508448804811",
+        "size": 39823,
+        "mtime": 1792664426
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_difrod_s.gai": {
+        "sha256": "52f80eb1a80c1cfa16c995ebed16a60c38097a4c15333ca4c28fff9f2355ff35",
+        "size": 27606,
+        "mtime": 1792664426
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_javitor_a_f.gai": {
+        "sha256": "a6e72a2d357ef5f3aa6ba9b1fb3e1dd8916e3244272d58320ce56cdf9c9c0a15",
+        "size": 6831,
+        "mtime": 1792664862
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_javitor_a_s.gai": {
+        "sha256": "f4c99ffc6cbef2bcb299e9773ecb6750890b1ffc4984f6cffb7500c4ef86ed10",
+        "size": 3278,
+        "mtime": 1792664862
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_javitor_b_f.gai": {
+        "sha256": "11061891d4bb47362a7fcce88938e3b59b92350e058b37bb1a0a065906818a08",
+        "size": 6284,
+        "mtime": 1792664866
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_javitor_b_s.gai": {
+        "sha256": "72b75c043628b30e5ad848de689f524e500d21bec16b0bd2362bbe5433a9a8dc",
+        "size": 4705,
+        "mtime": 1792664866
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_javitor_f.gai": {
+        "sha256": "ff82d1a6e2eca18b015aaffa42ecd2ad9e622934ed516ef3ea80b3142d3cc538",
+        "size": 39823,
+        "mtime": 1792664878
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w07_javitor_s.gai": {
+        "sha256": "39dad493ecb93b55cfcfcfe14902c8ca5ff0ef40ec8899f99ffed7699f151521",
+        "size": 27606,
+        "mtime": 1792664878
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_armolok_a_f.gai": {
+        "sha256": "3aaf8809217e0bdc823bdf9b096aed14bc901dd71cd8b6c4fc3e4b24169daf44",
+        "size": 55958,
+        "mtime": 1792664426
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_armolok_a_s.gai": {
+        "sha256": "9a4e33c7e613fb363c3f9f7711c793bf57738ee81a859fd72e4b6bcb75d86711",
+        "size": 16761,
+        "mtime": 1792664426
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_armolok_b_f.gai": {
+        "sha256": "66c544729d874b5be0f4023b356988a00dc1ca1ac5b649c5287685c87306612f",
+        "size": 35735,
+        "mtime": 1792664432
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_armolok_b_s.gai": {
+        "sha256": "9c62496316cec24be2a7d251500bd0be2610fefcf11814c2be6893f7fe1edce2",
+        "size": 13951,
+        "mtime": 1792664432
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_armolok_f.gai": {
+        "sha256": "66c544729d874b5be0f4023b356988a00dc1ca1ac5b649c5287685c87306612f",
+        "size": 35735,
+        "mtime": 1792664428
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_armolok_s.gai": {
+        "sha256": "9c62496316cec24be2a7d251500bd0be2610fefcf11814c2be6893f7fe1edce2",
+        "size": 13951,
+        "mtime": 1792664428
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_inveiter_a_f.gai": {
+        "sha256": "1c9665dbda42d8fc528ef571b46c2df2f5664311b446299e97d3e444c97d7a21",
+        "size": 55958,
+        "mtime": 1792664878
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_inveiter_a_s.gai": {
+        "sha256": "e3b31c7ba6f29c518b2d9369255701315f26874549f0c2626dc68c2456ac756a",
+        "size": 16761,
+        "mtime": 1792664878
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_inveiter_b_f.gai": {
+        "sha256": "13dab3f0f33c893724e9b541b78be601e1d207dcff8a0c64f65ea5e24b27144c",
+        "size": 35735,
+        "mtime": 1792664884
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_inveiter_b_s.gai": {
+        "sha256": "af044a40b9215405aee1704d07b92d0f28cc933c503cb21d87439606afffb867",
+        "size": 13951,
+        "mtime": 1792664884
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_inveiter_f.gai": {
+        "sha256": "13dab3f0f33c893724e9b541b78be601e1d207dcff8a0c64f65ea5e24b27144c",
+        "size": 35735,
+        "mtime": 1792664880
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_inveiter_s.gai": {
+        "sha256": "af044a40b9215405aee1704d07b92d0f28cc933c503cb21d87439606afffb867",
+        "size": 13951,
+        "mtime": 1792664880
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_javitor_a_f.gai": {
+        "sha256": "a749bbb2c0c4247529f7765df7e8831222f4751c7090f4d3b0479aee64b0082f",
+        "size": 55958,
+        "mtime": 1792664876
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_javitor_a_s.gai": {
+        "sha256": "bfcb1f240496edea0db704c4a626d690857cc2b07900eaac58e5249029f73368",
+        "size": 16761,
+        "mtime": 1792664876
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_javitor_b_f.gai": {
+        "sha256": "4c29075d9807067a03da2eb905a605ec0821406c00625a7ff1a4dc8c3bef5b50",
+        "size": 35735,
+        "mtime": 1792664882
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_javitor_b_s.gai": {
+        "sha256": "e9e71d06a4d2913b2d40f1f25d0a6dd002edd916f2074002ff19f71ca5a84698",
+        "size": 13951,
+        "mtime": 1792664882
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_javitor_f.gai": {
+        "sha256": "4c29075d9807067a03da2eb905a605ec0821406c00625a7ff1a4dc8c3bef5b50",
+        "size": 35735,
+        "mtime": 1792664878
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w08_javitor_s.gai": {
+        "sha256": "e9e71d06a4d2913b2d40f1f25d0a6dd002edd916f2074002ff19f71ca5a84698",
+        "size": 13951,
+        "mtime": 1792664878
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_armolok_a_f.gai": {
+        "sha256": "666593187cf8c49fa976113288208bfe9bafba6522401f36772c9f384be51c03",
+        "size": 19541,
+        "mtime": 1792664440
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_armolok_a_s.gai": {
+        "sha256": "ec679902a1583a956791612bc7e47155768ecd2bb564a44ee57a1272d38343e7",
+        "size": 5767,
+        "mtime": 1792664440
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_armolok_b_f.gai": {
+        "sha256": "3261abc14e4ce2156cb29aa8a90e2c0b4400de8d698a71cd0aadc5cee58ce2d9",
+        "size": 829,
+        "mtime": 1792664436
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_armolok_b_s.gai": {
+        "sha256": "3d901e103fde9ed70de53b3ba0ffc530fac89d063d7ca5707245f494f48f1e15",
+        "size": 399,
+        "mtime": 1792664436
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_armolok_c_f.gai": {
+        "sha256": "b5bfd0ad883b814c109cf23a848534ec45b421fe12bd459d4eae506849514d19",
+        "size": 659,
+        "mtime": 1792664442
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_armolok_c_s.gai": {
+        "sha256": "14ecd7f60e85b3c28ae1fd90f2146ad0ed93a8ac0ff77ab9c992434dfbfdf3a3",
+        "size": 550,
+        "mtime": 1792664442
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_armolok_f.gai": {
+        "sha256": "cca1f1958d10a81e32ddefb6f501daa3c15131d00a7b2c700a35b2a300d47ebb",
+        "size": 147304,
+        "mtime": 1792664454
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_armolok_s.gai": {
+        "sha256": "da1d71bd0feb0e18fde63032e6a51564257d9e0bc78f86d154ece8c7ab2789ed",
+        "size": 37682,
+        "mtime": 1792664454
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_javitor_a_f.gai": {
+        "sha256": "e229488d4b5f2128d11e6a288c55684c5520541c452c3598b6ff13ac9d796da1",
+        "size": 19541,
+        "mtime": 1792664884
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_javitor_a_s.gai": {
+        "sha256": "c49c2fa7d651930c907cb1944bc6ba8c89d2c1c561e3552a0483c6e02b8ae51d",
+        "size": 5767,
+        "mtime": 1792664886
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_javitor_b_f.gai": {
+        "sha256": "4d47489b9e630d1d568d67c6e78c6046cf01c78584c40fa7f3d485d26ae6d4e4",
+        "size": 829,
+        "mtime": 1792664882
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_javitor_b_s.gai": {
+        "sha256": "4af4ed1a4ee6688669e118972f28f2c0cb53907c845c9d9ed033757a0782a176",
+        "size": 399,
+        "mtime": 1792664882
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_javitor_c_f.gai": {
+        "sha256": "3bc272fb612fc9870e12ffb3f5db32de4d3435f73b2051d33ba2f18f2bc03ae9",
+        "size": 659,
+        "mtime": 1792664886
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_javitor_c_s.gai": {
+        "sha256": "cc16e1a690c6a64109ecee714be5179ea61ca8c54ae925fdd8962911daf87117",
+        "size": 550,
+        "mtime": 1792664886
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_javitor_f.gai": {
+        "sha256": "05230116244592b07fb9d89996fe3d5e42e85178b8e351c51a81b1a6d1f36740",
+        "size": 147304,
+        "mtime": 1792664900
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_javitor_s.gai": {
+        "sha256": "85dffce07ea9925e1d5233fbbe36b2ab432854576a52672bae3164721ce06df8",
+        "size": 37682,
+        "mtime": 1792664900
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_lifokar_a_f.gai": {
+        "sha256": "4ffb776fcd0cd630ff2850cae121de19e996af13c61cee79ccdb766291f1a404",
+        "size": 19541,
+        "mtime": 1792664438
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_lifokar_a_s.gai": {
+        "sha256": "1e1486c581a9ebba0f2d98631ebe15013b78279b0423e50016110efcaf2a4e27",
+        "size": 5767,
+        "mtime": 1792664438
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_lifokar_b_f.gai": {
+        "sha256": "f14da86ca590cecdd45e152147018ab6a0b1176a537cfd49c710fd43e649a665",
+        "size": 829,
+        "mtime": 1792664434
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_lifokar_b_s.gai": {
+        "sha256": "fbe493b43cfc73c2c139e02465df37b850e618390caa1d392f65a9b55b6b3410",
+        "size": 399,
+        "mtime": 1792664434
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_lifokar_c_f.gai": {
+        "sha256": "4e949dae67b9f6fc475be41eabb042db7da870427594c0bc71aec6f9f50f25b4",
+        "size": 659,
+        "mtime": 1792664440
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_lifokar_c_s.gai": {
+        "sha256": "a0b7603706c93af392667b1604ae869eee4af696862be69d49a18d51876f3b4a",
+        "size": 550,
+        "mtime": 1792664442
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_lifokar_f.gai": {
+        "sha256": "5a507007780b2eab51e9a4b1c6d4f70f12ed1cb1fa01465afa339330ac2d3c79",
+        "size": 147304,
+        "mtime": 1792664452
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w09_lifokar_s.gai": {
+        "sha256": "e028548e3580649c001246c88be1a91cb421f4d85fdd32549e509373893a077e",
+        "size": 37682,
+        "mtime": 1792664452
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w10_javitor_a_f.gai": {
+        "sha256": "3d8661274135429e3babfe09dabcaac47425eb7d9e13d858aa99cde71f4778df",
+        "size": 14744,
+        "mtime": 1792664896
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w10_javitor_a_s.gai": {
+        "sha256": "84248dda1c6087b2e9bfad804525c373dd797beedd671a8ad0892388d36933bb",
+        "size": 6353,
+        "mtime": 1792664896
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w10_javitor_b_f.gai": {
+        "sha256": "cb037e2923e7c47fd1b1c3ee41e2581af28a8647280392979d52a9c398194888",
+        "size": 20752,
+        "mtime": 1792664896
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w10_javitor_b_s.gai": {
+        "sha256": "5d4ba34426272aa6c36d653ca0bc9b699e28673ff91835e1071d99f33003fc66",
+        "size": 7607,
+        "mtime": 1792664896
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w10_javitor_f.gai": {
+        "sha256": "d256753c5db522e4de24363ef64d0d3188f70af49caa68fc5c1644d7153ee397",
+        "size": 494,
+        "mtime": 1792664888
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w10_javitor_s.gai": {
+        "sha256": "22c9cad093d392f8029f9f3c74bd5f883fc12cff4721db0ac191f9f6611e3228",
+        "size": 338,
+        "mtime": 1792664890
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w10_lifokar_a_f.gai": {
+        "sha256": "c22095ddf78dfe7909b79b812cad8c14c98cdf649356dea27aed1bb7aebad5e7",
+        "size": 14744,
+        "mtime": 1792664448
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w10_lifokar_a_s.gai": {
+        "sha256": "ea6f6c63531320623f7f0f1b08c3394561407072ba0eb0a1b1234f6eadf55a1b",
+        "size": 6353,
+        "mtime": 1792664450
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w10_lifokar_b_f.gai": {
+        "sha256": "44a22af1aca805720907ee6886e11353bb0d77e3085bca0f07f35fb7892fadad",
+        "size": 20752,
+        "mtime": 1792664452
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w10_lifokar_b_s.gai": {
+        "sha256": "07307d62fefe755720de6786510079400bee5eabae51c4bf61cd212d02219c3d",
+        "size": 7607,
+        "mtime": 1792664452
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w10_lifokar_f.gai": {
+        "sha256": "66e1571d9235b7c0efd00f05e42d43c932396f7fefda5c6aa184e7781e37732c",
+        "size": 494,
+        "mtime": 1792664446
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w10_lifokar_s.gai": {
+        "sha256": "2041fe301a5d759abc0ddd974c3ab59627d4943fea4371705be497db983ee44b",
+        "size": 338,
+        "mtime": 1792664448
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_adropter_a_f.gai": {
+        "sha256": "81f2db0289088fcfeea4517f261b06c4b92f4891f8307b20521db5ef6a251783",
+        "size": 1968,
+        "mtime": 1792664462
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_adropter_a_s.gai": {
+        "sha256": "717e5bb8b71c0c5fcde8a4b1a92a6abd54095dc32e0d667f8b3019986637b36a",
+        "size": 1536,
+        "mtime": 1792664462
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_adropter_b_f.gai": {
+        "sha256": "f30cdcf91f138d298b087acaa886395f8ec631570a30087beebe80c16d277405",
+        "size": 20752,
+        "mtime": 1792664460
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_adropter_b_s.gai": {
+        "sha256": "284fee38e829d80abe868ce7f7d7a0743a0baa594b6b53c068c323bbdf7c589c",
+        "size": 7607,
+        "mtime": 1792664462
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_adropter_f.gai": {
+        "sha256": "81f2db0289088fcfeea4517f261b06c4b92f4891f8307b20521db5ef6a251783",
+        "size": 1968,
+        "mtime": 1792664458
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_adropter_s.gai": {
+        "sha256": "717e5bb8b71c0c5fcde8a4b1a92a6abd54095dc32e0d667f8b3019986637b36a",
+        "size": 1536,
+        "mtime": 1792664458
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_armolok_a_f.gai": {
+        "sha256": "1ea3877a79ddc51c84513a2789140d74dc14c6eb7c7b150cebe73d856f23bdb8",
+        "size": 1968,
+        "mtime": 1792664460
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_armolok_a_s.gai": {
+        "sha256": "7e0a01b90b7b3b28bcb841449a2abc0d60ee376fe466eb0be0e54883c66b3eb3",
+        "size": 1536,
+        "mtime": 1792664460
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_armolok_b_f.gai": {
+        "sha256": "cbcc6dc273c110c5640e4542f860c9cf844227b5a339b96a63433714266397d9",
+        "size": 20752,
+        "mtime": 1792664458
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_armolok_b_s.gai": {
+        "sha256": "409fd16d62a51f66edf3158fb685b52c7a4b39c0991fbc937a1e533a9d4484da",
+        "size": 7607,
+        "mtime": 1792664460
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_armolok_f.gai": {
+        "sha256": "1ea3877a79ddc51c84513a2789140d74dc14c6eb7c7b150cebe73d856f23bdb8",
+        "size": 1968,
+        "mtime": 1792664458
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_armolok_s.gai": {
+        "sha256": "7e0a01b90b7b3b28bcb841449a2abc0d60ee376fe466eb0be0e54883c66b3eb3",
+        "size": 1536,
+        "mtime": 1792664458
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_difrod_a_f.gai": {
+        "sha256": "47e6e75e16455c7962f4e79f9e4bdd8e09abfb31b5b52382c26a1650b9a3c22a",
+        "size": 1968,
+        "mtime": 1792664460
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_difrod_a_s.gai": {
+        "sha256": "a8bdfd6d1ab0dfc0391cd79c83a3366a2d084d415c6c1bd5f8cf0bfd762e9c0a",
+        "size": 1536,
+        "mtime": 1792664460
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_difrod_b_f.gai": {
+        "sha256": "6f3cf394339b7e550c85b68222d15eca26f6bfb8db5d2a16909a0f5d0334abf7",
+        "size": 20752,
+        "mtime": 1792664458
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_difrod_b_s.gai": {
+        "sha256": "fa49f0f044a2581560b5fb0b8352bc9eed9246a6194214bdfc6d76c8266403b6",
+        "size": 7607,
+        "mtime": 1792664458
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_difrod_f.gai": {
+        "sha256": "47e6e75e16455c7962f4e79f9e4bdd8e09abfb31b5b52382c26a1650b9a3c22a",
+        "size": 1968,
+        "mtime": 1792664456
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w11_difrod_s.gai": {
+        "sha256": "a8bdfd6d1ab0dfc0391cd79c83a3366a2d084d415c6c1bd5f8cf0bfd762e9c0a",
+        "size": 1536,
+        "mtime": 1792664456
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_difrod_a_f.gai": {
+        "sha256": "0456d49248f029bcbff67e57847c1bddc562d4102ec8f072d875047b2b78cd1c",
+        "size": 13926,
+        "mtime": 1792664466
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_difrod_a_s.gai": {
+        "sha256": "35eb30c693fa81cdd4088d0188623ca7a4ff9dd75fbb1eeb75cf1c0d4f8fb910",
+        "size": 6587,
+        "mtime": 1792664468
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_difrod_b_f.gai": {
+        "sha256": "a43d5d587e37fb7e0719f7213af46aff2a8c0ebac263cc20d8bd282af50b36c5",
+        "size": 66370,
+        "mtime": 1792664476
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_difrod_b_s.gai": {
+        "sha256": "a425ddc5af291745df4bdd7269a477e6621205976de92a1917a10b4fdd6f680c",
+        "size": 21832,
+        "mtime": 1792664474
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_difrod_f.gai": {
+        "sha256": "1ad142f913dea7644c214bebb89321beab2c32338043f776c58766315602c4b1",
+        "size": 494,
+        "mtime": 1792664464
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_difrod_s.gai": {
+        "sha256": "e0b6ebb95106766868446f3a1bc620ff7816b30879b08c69fd1d838eeb0597d7",
+        "size": 338,
+        "mtime": 1792664464
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_inveiter_a_f.gai": {
+        "sha256": "cd9511bd04e0ad45c9b5cae83900f1c6c71133829671685653f1f71e290dc91a",
+        "size": 13926,
+        "mtime": 1792664900
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_inveiter_a_s.gai": {
+        "sha256": "329e1c0969848857ac1ee1cb30f0777a0fa1eb09779d7e5a9faeaf7bd9219f0b",
+        "size": 6587,
+        "mtime": 1792664902
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_inveiter_b_f.gai": {
+        "sha256": "3e098f2b08ae32715c760625cae6c146f1f8fb4753eba4699722995be79dfab4",
+        "size": 66370,
+        "mtime": 1792664914
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_inveiter_b_s.gai": {
+        "sha256": "93369806e4b278b0cfec0fb2f396bf46e6da78467599e8493f0ea4413f08466c",
+        "size": 21832,
+        "mtime": 1792664914
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_inveiter_f.gai": {
+        "sha256": "0c418b160b2148c8d52eb6d6d816d72d16ada570c26d283e1689ec4b6508703a",
+        "size": 494,
+        "mtime": 1792664898
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_inveiter_s.gai": {
+        "sha256": "43b84c59782e846a72646ba22d84272edb1156578c242e566f30d5f038f00a61",
+        "size": 338,
+        "mtime": 1792664898
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_lifokar_a_f.gai": {
+        "sha256": "68690d9e9cbb392dd52fa73bff156826649c815581fb13b9415c5ad8614df243",
+        "size": 13926,
+        "mtime": 1792664468
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_lifokar_a_s.gai": {
+        "sha256": "1992498763393d64e52c739d0366a5ab098fa596dbb62003afe9152d3dc0e8de",
+        "size": 6587,
+        "mtime": 1792664468
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_lifokar_b_f.gai": {
+        "sha256": "9daf4461d8f68b07b2e9e07c6cce0f86767ef53af2915c1d3995ac921c64df69",
+        "size": 66370,
+        "mtime": 1792664478
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_lifokar_b_s.gai": {
+        "sha256": "3fed9437aad915b9b813a47dd7975c39ec98aea5b5cb37f1ef578c9d594fe1dd",
+        "size": 21832,
+        "mtime": 1792664476
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_lifokar_f.gai": {
+        "sha256": "66e1571d9235b7c0efd00f05e42d43c932396f7fefda5c6aa184e7781e37732c",
+        "size": 494,
+        "mtime": 1792664464
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w12_lifokar_s.gai": {
+        "sha256": "2041fe301a5d759abc0ddd974c3ab59627d4943fea4371705be497db983ee44b",
+        "size": 338,
+        "mtime": 1792664464
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_inveiter_a_f.gai": {
+        "sha256": "29be62a25b84fabce58e3414d85437540c28c73cf854b3cc03d1e6ec2a908716",
+        "size": 18499,
+        "mtime": 1792664908
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_inveiter_a_s.gai": {
+        "sha256": "642be335132195d0f11186cc758ef7773459602f17fda3b8bbfb3c856035f7da",
+        "size": 5379,
+        "mtime": 1792664908
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_inveiter_b_f.gai": {
+        "sha256": "5f22ee84f8d9f9e48228b01da0026ee69b525656ef9ce0e56acfaec407f1068c",
+        "size": 3590,
+        "mtime": 1792664906
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_inveiter_b_s.gai": {
+        "sha256": "560e853127d8107061f6d700dc1d8bc44f855f94b9619084349bed24894caf47",
+        "size": 864,
+        "mtime": 1792664906
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_inveiter_c_f.gai": {
+        "sha256": "642be335132195d0f11186cc758ef7773459602f17fda3b8bbfb3c856035f7da",
+        "size": 5379,
+        "mtime": 1792664914
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_inveiter_c_s.gai": {
+        "sha256": "68111338e75a4baf7ddd018bd5ce46ed3ff0e89ad2e8bebb15a055df0fabf28f",
+        "size": 659,
+        "mtime": 1792664910
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_inveiter_f.gai": {
+        "sha256": "216b56276a3e6fc105688cc7870ae6814ae087af98c1bceffb8041929cf00771",
+        "size": 180146,
+        "mtime": 1792664922
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_inveiter_s.gai": {
+        "sha256": "3c1b1fc643d2c083516cdd930bf1b0ccebfd087bc864972dc6b6c826d45f75fc",
+        "size": 55798,
+        "mtime": 1792664938
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_javitor_a_f.gai": {
+        "sha256": "43962b4f00dd6940325e32227c26d1f34ad032f90f23676acf8320c89786e154",
+        "size": 18499,
+        "mtime": 1792664906
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_javitor_a_s.gai": {
+        "sha256": "d859b98bb38cd3fd53162a7c638cc53371a07ebccf1c92f6b03c691b2879b538",
+        "size": 5379,
+        "mtime": 1792664906
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_javitor_b_f.gai": {
+        "sha256": "9d4e58ab77532cd833b98189e18c421284dee76ca8d919f668b7fa6c6c1a16e5",
+        "size": 3590,
+        "mtime": 1792664904
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_javitor_b_s.gai": {
+        "sha256": "a3c4dbc163c0741192ccd2c00a6e777fb774882097e96e424af219d2ead356c1",
+        "size": 864,
+        "mtime": 1792664904
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_javitor_c_f.gai": {
+        "sha256": "d859b98bb38cd3fd53162a7c638cc53371a07ebccf1c92f6b03c691b2879b538",
+        "size": 5379,
+        "mtime": 1792664912
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_javitor_c_s.gai": {
+        "sha256": "3bc272fb612fc9870e12ffb3f5db32de4d3435f73b2051d33ba2f18f2bc03ae9",
+        "size": 659,
+        "mtime": 1792664908
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_javitor_f.gai": {
+        "sha256": "e8bf12cfd1ef204b130afda9424bf2e5980e78a587be5f06e64497cfbe01b2d5",
+        "size": 180146,
+        "mtime": 1792664920
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_javitor_s.gai": {
+        "sha256": "8d6a6f385bbb0f942657197ac9ef9c3b4741ac512a016368e7a7bd36cec6b4a3",
+        "size": 55798,
+        "mtime": 1792664940
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_lifokar_a_f.gai": {
+        "sha256": "0922612cb5381e99edfb90ea2459c186b1f5982b69fbbdfb833abdf22ab95ac6",
+        "size": 18499,
+        "mtime": 1792664472
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_lifokar_a_s.gai": {
+        "sha256": "7f0f85c092be93ccf30638c1dbadcf322e3432339a08c040194ee8f095931d14",
+        "size": 5379,
+        "mtime": 1792664472
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_lifokar_b_f.gai": {
+        "sha256": "58e4b6a99329e510adcc65b3e5e3fe049d9cfad45dd110790d5d35a6f16cc4df",
+        "size": 3590,
+        "mtime": 1792664472
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_lifokar_b_s.gai": {
+        "sha256": "7edc45378bd04c14de2d7a9090a80d4a374caa302cba07508547907d971b2b5d",
+        "size": 864,
+        "mtime": 1792664474
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_lifokar_c_f.gai": {
+        "sha256": "7f0f85c092be93ccf30638c1dbadcf322e3432339a08c040194ee8f095931d14",
+        "size": 5379,
+        "mtime": 1792664480
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_lifokar_c_s.gai": {
+        "sha256": "4e949dae67b9f6fc475be41eabb042db7da870427594c0bc71aec6f9f50f25b4",
+        "size": 659,
+        "mtime": 1792664478
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_lifokar_f.gai": {
+        "sha256": "38e2701037ce45b58765ddb0d8bdd3d27c793f8368ea429a6d03c50ce5a27c65",
+        "size": 180146,
+        "mtime": 1792664480
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w16_lifokar_s.gai": {
+        "sha256": "e2f546ed953d2a11986b6f1d3eb027cb365586c55343f06d21d62048e4b9bac5",
+        "size": 55798,
+        "mtime": 1792664942
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_javitor_a_f.gai": {
+        "sha256": "0d509915f69890950cf152c15040b0203be2b9f50b83803407be5bba5c59d060",
+        "size": 67398,
+        "mtime": 1792664922
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_javitor_a_s.gai": {
+        "sha256": "4d74795baea2d32d2bac5c7624cfc99326a51d31b3be0638a96f60c32d69d2cc",
+        "size": 20030,
+        "mtime": 1792664926
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_javitor_b_f.gai": {
+        "sha256": "70f386f25f63cd424a21e84fbd632d5def23b0a447bbf14cc651b8333b71fc77",
+        "size": 137843,
+        "mtime": 1792664930
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_javitor_b_s.gai": {
+        "sha256": "f5c95567860d7ae5bf6850d2b38f7e5757836e11d64bc95198284041358d7d16",
+        "size": 39354,
+        "mtime": 1792664930
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_javitor_c_f.gai": {
+        "sha256": "523b3abb321b8bd17cd8441d8732d0ca82b4a2d66b6aa5276086a4f3cc7a30b0",
+        "size": 67398,
+        "mtime": 1792664928
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_javitor_c_s.gai": {
+        "sha256": "13fc8d772184bd2f4289e31b68bbdf088e9a98473db68494937d77c350d15641",
+        "size": 20619,
+        "mtime": 1792664934
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_javitor_f.gai": {
+        "sha256": "b2a7c17e9fb3a03f45419f6c32a6269a6d9a189c59285a4f6eb0aa92e693f46c",
+        "size": 166434,
+        "mtime": 1792664926
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_javitor_s.gai": {
+        "sha256": "06af9a4ab4e429d23671f6f880c8639f26845743501d2dd0b12d8805f47e5dc7",
+        "size": 45944,
+        "mtime": 1792664924
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_lifokar_a_f.gai": {
+        "sha256": "43f56e1e2ea80582d42394503112f2b07697b0f057c29cc2ccb66d4aa9855a50",
+        "size": 67398,
+        "mtime": 1792664492
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_lifokar_a_s.gai": {
+        "sha256": "56f9ab68454d4f5e323a5165d72af634a210ea538af806b9cba4b3f2065cf4d2",
+        "size": 20030,
+        "mtime": 1792664492
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_lifokar_b_f.gai": {
+        "sha256": "37f2f20f3026c9a72602cc8a17e00eecb3ff152b1a3d90a1c80afa265437c09c",
+        "size": 137843,
+        "mtime": 1792664498
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_lifokar_b_s.gai": {
+        "sha256": "753bd7b74eb00e8261ed799f8e06a7e1069ca9d7d004b3de9b494ae9a2e9e146",
+        "size": 39354,
+        "mtime": 1792664498
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_lifokar_c_f.gai": {
+        "sha256": "7cb4b392049e1ce2a2d509ff436d044bd1cb2dc521ce5e869cd1d34873d96ed2",
+        "size": 67398,
+        "mtime": 1792664498
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_lifokar_c_s.gai": {
+        "sha256": "bb95aee454856dd5b3e750e9215ad53794c76914536dc2882dff841e7d0fc158",
+        "size": 20619,
+        "mtime": 1792664500
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_lifokar_f.gai": {
+        "sha256": "17f35536035608ac3e333537846b402d727eac228e41e15c5d922ca6db651750",
+        "size": 166434,
+        "mtime": 1792664494
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_lifokar_s.gai": {
+        "sha256": "f297d7d6dfdc51944d7fbe060f8f0bd58302abc21c9eea03b623f0b5216b65e1",
+        "size": 45944,
+        "mtime": 1792664494
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_stilermein_a_f.gai": {
+        "sha256": "2a65d47d42d93d3a66e5afb2a971ba6208b08dfb27eff2af391bd4c49e70750a",
+        "size": 67398,
+        "mtime": 1792664924
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_stilermein_a_s.gai": {
+        "sha256": "71c2054a0ad5315846d65f05aa9fde12d2fd24a74f5db019987042b19afc97a1",
+        "size": 20030,
+        "mtime": 1792664926
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_stilermein_b_f.gai": {
+        "sha256": "1054239c7f81cfd74de86fe168a9466af2a7027fa5c521ecf7a30ad1224bd2e9",
+        "size": 137843,
+        "mtime": 1792664932
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_stilermein_b_s.gai": {
+        "sha256": "fd01834b5bac0477971e4a0e2390b79818652b9ecfbaafc70bff54eab3657a58",
+        "size": 39354,
+        "mtime": 1792664932
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_stilermein_c_f.gai": {
+        "sha256": "d9eef7d9c14263fe55d60edd46c14d087fcaa1f506693312c5dc6b31de5a5e13",
+        "size": 67398,
+        "mtime": 1792664930
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_stilermein_c_s.gai": {
+        "sha256": "c5dc539c9685067f1ae36524229acbe94ebbbbc462c831a9ad27063c558b3518",
+        "size": 20619,
+        "mtime": 1792664934
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_stilermein_f.gai": {
+        "sha256": "e4ab27413a72fc69a195c859c21cb823c3ac0413eef5d43be9086df2c1c3117b",
+        "size": 166434,
+        "mtime": 1792664928
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w17_stilermein_s.gai": {
+        "sha256": "5db34932172bac87fdde87ad40d82da97acd0192227b63fdb9db39081171b5df",
+        "size": 45944,
+        "mtime": 1792664926
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w18_adropter_a_f.gai": {
+        "sha256": "862d6a290bd1fe758d1694114860eb4cc2f89439fd7b492bebc59240c024bf8e",
+        "size": 74418,
+        "mtime": 1792664508
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w18_adropter_a_s.gai": {
+        "sha256": "cf3a971fca5c9fb0452b4716712fc1a190f98e449978cf7534aa604e53f1bdd3",
+        "size": 27907,
+        "mtime": 1792664510
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w18_adropter_f.gai": {
+        "sha256": "729c0eb7c4a0f352666955fa1f855a2b17bc36891b9dc166c8b1ca82e20c1c24",
+        "size": 113934,
+        "mtime": 1792664508
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w18_adropter_s.gai": {
+        "sha256": "f8171a0172e7efce91d8d9fa350ce813a42696055483b2c88ea6990bf5165f93",
+        "size": 16027,
+        "mtime": 1792664506
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w18_inveiter_a_f.gai": {
+        "sha256": "347828cde2ce838e7dc345192317d42c50180d299252dc36f77644ff1c04a1ae",
+        "size": 74418,
+        "mtime": 1792664936
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w18_inveiter_a_s.gai": {
+        "sha256": "431d8ff2a2e1a376e65a624944103b2b9d0616997418306f63e58378e6aa9e7d",
+        "size": 27907,
+        "mtime": 1792664936
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w18_inveiter_f.gai": {
+        "sha256": "3f9161f18b428f48076eddfa590dd34fc0520386f04ab5e1bd3746270928ac4b",
+        "size": 113934,
+        "mtime": 1792664936
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w18_inveiter_s.gai": {
+        "sha256": "e620f7536a402b49610bbac22043d663f50c0b13376f8a02acc4c3cb07753fa2",
+        "size": 16027,
+        "mtime": 1792664934
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w18_lifokar_a_f.gai": {
+        "sha256": "bc4e60380ddadc58391a942c3aa9a5f3f1e2dba494e072754ed9868b36151f6c",
+        "size": 74418,
+        "mtime": 1792664508
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w18_lifokar_a_s.gai": {
+        "sha256": "c1ff88def0175f27ca7c2a7d040688607dfe12f792925030f97a140b4c302254",
+        "size": 27907,
+        "mtime": 1792664508
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w18_lifokar_f.gai": {
+        "sha256": "690681aaea6086115fe7a89f2848d4f66025ccdc0ddd04cef7568181eb0d44b5",
+        "size": 113934,
+        "mtime": 1792664506
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABWeapons/Data/AB/vanilla_w18_lifokar_s.gai": {
+        "sha256": "e7c2215bc036f3c3311c15e4fcba3392924fdcd831b92b38af61b791f9424aab",
+        "size": 16027,
+        "mtime": 1792664504
+      }
+    }
+  }
+}

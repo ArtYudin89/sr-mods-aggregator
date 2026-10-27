@@ -1,0 +1,41 @@
+{
+  "schema": "srmod/1",
+  "id": "Solar/SolABTranc",
+  "source": "shared/solar",
+  "name": "SolABTranc",
+  "title": "SolABTranc",
+  "author": "FC_Fan",
+  "section": "Solar",
+  "priority": "14",
+  "description": "Транклюкатор в аркадном бою: «Активировать» в гиперпространстве выпускает его союзником\n(Мод можно подключать/отключать в течение партии)",
+  "full_description": "Ванильная кнопка «Активировать» на артефакте-транклюкаторе в гиперпространстве не работает («В ангаре нет места»). Мод перехватывает её во время аркадного боя (пузырь гиперпространства, чёрная дыра): запасённый корабль транклюкатора превращается в аркадного союзника игрока (корпус = здоровье, пять орудий по типам предметов; бонусы предметов учитывает SolABWeapons) и вступает в бой. Артефакт остаётся в трюме и не теряется; после боя здоровье союзника возвращается в корпус запасённого транклюкатора (если союзник погиб, корпус остаётся с 1 очком). Один союзник на бой. Настройки (CFG\\Rus\\Lang.txt, блок ABTranc): Enable (0/1), Speed и Turn (скорость и поворот, десятые), Offset (сдвиг от игрока, десятые). Нужен SolABWeapons.",
+  "version": "5d920bc49e5caa8e",
+  "depends": [
+    "SolUtilities",
+    "SolABWeapons"
+  ],
+  "conflicts": [],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "cosmetic": [],
+  "mtime": 1793085258,
+  "files": {
+    "code": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABTranc/ModuleInfo.txt": {
+        "sha256": "095e3b91a2ffbec39b7bf8681ec409bc9386fefd033830d7e18422a9a4f31322",
+        "size": 4146,
+        "mtime": 1793085258
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABTranc/CFG/Eng/Lang.dat": {
+        "sha256": "430277d908fbe75767d2ae0e8f4cf59e058aa63217d46a71e9ab46a54c21398c",
+        "size": 103,
+        "mtime": 1792629870
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolABTranc/CFG/Rus/Lang.dat": {
+        "sha256": "6765c4b9b6ff9f86784065fe81fdcfa6a09a45b7cf52d66dd0880f7a55335f1c",
+        "size": 103,
+        "mtime": 1792629870
+      }
+    },
+    "assets": {}
+  }
+}

@@ -7652,7 +7652,7 @@
         },
         {
           "source": "redux/redux_base_installer",
-          "version": "9f647733932ab40a",
+          "version": "2402911e32f668d0",
           "name": "UtilityFunctionsPack",
           "depends": [],
           "conflicts": [],
@@ -7793,7 +7793,7 @@
         },
         {
           "source": "universe/universe_community",
-          "version": "7576ff210cd12aef",
+          "version": "b58cf58a304e9c45",
           "name": "ShuMercsHQ",
           "depends": [
             "ShuMercs",
@@ -7807,7 +7807,7 @@
           "code_files": 4,
           "asset_files": 593,
           "path": "descriptors/universe/universe_community/ShusRangers/ShuMercsHQ.json",
-          "mtime": 1792946480
+          "mtime": 1792974322
         }
       ]
     },
@@ -24182,25 +24182,103 @@
         }
       ]
     },
+    "Solar/SolABLoadouts": {
+      "name": "SolABLoadouts",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Модификации (акрины) на оружии врагов аркадных боёв по образцу снаряжения кораблей кампании\n(Мод можно подключать/отключать в течение партии)",
+      "full_description": "Враги аркадных боёв (пузыри гиперпространства, чёрные дыры) собираются «из воздуха»: без предметов, а значит без акринов. Мод даёт их оружию модификации (Special=1) по правилам кампании для кораблей, снаряжающихся на планетах: допустимая доля оружия с модификациями растёт с техуровнем галактики (от 0 до 100% между 1 и 8), на каждое орудие бросок (по умолчанию 30%), кандидаты - модификации для этого типа оружия и расы-владельца (по умолчанию пиратский клан), с приоритетом не выше потолка техуровня; выбор как на планете. Действие модификаций - мод SolABWeapons (нужен, Enable=1). Настройки (CFG\\Rus\\Lang.txt, блок ABLoadouts): Enable (0/1), ChancePct, Owner (0..7, 7 = пираты), TechShare (0/1), OnPlanetsOnly (0/1).",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1793085258,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "567efbf14c19752f",
+          "name": "SolABLoadouts",
+          "depends": [
+            "SolUtilities",
+            "SolABWeapons"
+          ],
+          "conflicts": [],
+          "code_files": 3,
+          "asset_files": 0,
+          "path": "descriptors/shared/solar/Solar/SolABLoadouts.json",
+          "mtime": 1793085258
+        }
+      ]
+    },
+    "Solar/SolABTranc": {
+      "name": "SolABTranc",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Транклюкатор в аркадном бою: «Активировать» в гиперпространстве выпускает его союзником\n(Мод можно подключать/отключать в течение партии)",
+      "full_description": "Ванильная кнопка «Активировать» на артефакте-транклюкаторе в гиперпространстве не работает («В ангаре нет места»). Мод перехватывает её во время аркадного боя (пузырь гиперпространства, чёрная дыра): запасённый корабль транклюкатора превращается в аркадного союзника игрока (корпус = здоровье, пять орудий по типам предметов; бонусы предметов учитывает SolABWeapons) и вступает в бой. Артефакт остаётся в трюме и не теряется; после боя здоровье союзника возвращается в корпус запасённого транклюкатора (если союзник погиб, корпус остаётся с 1 очком). Один союзник на бой. Настройки (CFG\\Rus\\Lang.txt, блок ABTranc): Enable (0/1), Speed и Turn (скорость и поворот, десятые), Offset (сдвиг от игрока, десятые). Нужен SolABWeapons.",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1793085258,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "5d920bc49e5caa8e",
+          "name": "SolABTranc",
+          "depends": [
+            "SolUtilities",
+            "SolABWeapons"
+          ],
+          "conflicts": [],
+          "code_files": 3,
+          "asset_files": 0,
+          "path": "descriptors/shared/solar/Solar/SolABTranc.json",
+          "mtime": 1793085258
+        }
+      ]
+    },
+    "Solar/SolABWeapons": {
+      "name": "SolABWeapons",
+      "author": "FC_Fan",
+      "default_source": "shared/solar",
+      "description": "Бонусы и модификации оружия игрока в аркадных боях (гипер, чёрные дыры): урон, дальность, темп, залпы, броня, ГЗП; цвета выстрелов по модификациям, кольцо custom_01, ББГ-6174\n(Мод можно подключать/отключать в течение партии)",
+      "full_description": "Бонусы кампании работают и в аркадных боях: модификации оружия (Special=1: Дифрод, Лифокар, Адроптер, Стилермейн, Инвейтер, Армолок, Джавитор), бонусы микромодулей и корабля к урону, дальности, темпу стрельбы, числу выстрелов и атак (бонус боезапаса не переносится), а также броня корпуса и ГЗП, которых в ванильной аркаде нет. Ничего не перечисляется по модификациям: значения берутся из игры, в Main задаётся только графика (CFG\\Main.txt, блок ABWeapons.Variants.<флаг>: Tag, Hue, Sat, Val) и CacheData.txt. Перекрашены снаряды, следы и вспышки всех ванильных орудий. Настройки (CFG\\Rus\\Lang.txt, блок ABWeapons): Enable (0/1 - без него мод не действует), StatBonuses, Defence, ShipBonuses (скорость двигателя с акринами и артефактами - коэффициентом), ConvertedShips (корабли кампании, превращённые скриптом в аркадные), EffectsOnPlayer (замедление/блок оружия действуют и на игрока), BonusPct, DamagedPct, DropLuckPct, CargoLuckPct, LockTicks, SlowTicks, ArmorPct, ArmorMaxPct, VolleyDelay, MaxExtraVolleys. Цвета выстрелов задаются так же, как в оригинале: код палитры = ShotVisual модификации (без неё - DefaultPalette оружия), в Main ABWeapons.Weapon.<n>.Palettes.<p>.{ABSprite,AB_Sound}; KindPalettes.<KindGraph> отправляет модификации с одним KindGraph в свою палитру. Таблица цветов ванильных модификаций - в исходниках (ab_colors.py). Поддержаны кастомные орудия: ББГ-6174 (FairanWeapons, акрины Дишот, Пирокар, Экстремум, Дифрод, Эйзуро и RefAcrynsBBG: Энергос, Солнцепёк, Дементор; двойной выстрел Дишота) и тип выстрела custom_01 (лазерное кольцо, Lang Items.Weapon.OriginalWeaponType.custom_01=19, настройки ABWeapons.Custom01). Тень W16_S тоже перекрашена.",
+      "section": "Solar",
+      "versions_differ": false,
+      "mtime": 1793085258,
+      "variants": [
+        {
+          "source": "shared/solar",
+          "version": "ed27b09870017774",
+          "name": "SolABWeapons",
+          "depends": [
+            "SolUtilities"
+          ],
+          "conflicts": [],
+          "code_files": 5,
+          "asset_files": 590,
+          "path": "descriptors/shared/solar/Solar/SolABWeapons.json",
+          "mtime": 1793085258
+        }
+      ]
+    },
     "Solar/SolBigGalaxy": {
       "name": "SolBigGalaxy",
       "author": "FC_Fan",
       "default_source": "shared/solar",
-      "description": "Большая галактика: 300 звёзд, 82 сектора, карта 294x203",
-      "full_description": "Заменяет ванильную галактику увеличенной: 300 звёзд, 82 сектора, размер карты 294x203. Значения фиксированы.",
+      "description": "Большая галактика: 300 звёзд, 82 сектора, карта 294x203\n(Мод можно подключать/отключать в течение партии)",
+      "full_description": "Заменяет ванильную галактику увеличенной: 300 звёзд, 82 сектора, размер карты 294x203. Значения фиксированы; свои числа — в SolCustomGalaxy.\nДействует только при создании новой игры. Нельзя включать вместе с SolCustomGalaxy, ChildrenOfEltan и другими модами, меняющими размер галактики. Нужен SolUtilities.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792028830,
+      "mtime": 1793085258,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "e6923146c6afbcd8",
+          "version": "14c8421b9cff0f41",
           "name": "SolBigGalaxy",
           "depends": [
             "SolUtilities"
           ],
           "conflicts": [
             "SolCustomGalaxy",
+            "ChildrenOfEltan",
             "XenoBigGalaxy",
             "RefGalaxyUpgrade",
             "RefGalaxyUpgradeExtended",
@@ -24209,10 +24287,10 @@
             "RefABitMoreStars20",
             "AModGalaxyLite"
           ],
-          "code_files": 4,
+          "code_files": 5,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolBigGalaxy.json",
-          "mtime": 1792028830
+          "mtime": 1793085258
         }
       ]
     },
@@ -24220,15 +24298,15 @@
       "name": "SolCountKeypad",
       "author": "FC_Fan",
       "default_source": "shared/solar",
-      "description": "Ввод числа с клавиатуры и экранная цифровая клавиатура в окнах CountBox и NumberBox",
+      "description": "Ввод числа с клавиатуры и экранная цифровая клавиатура в окнах CountBox и NumberBox\n(Мод можно подключать/отключать в течение партии)",
       "full_description": "В окнах выбора количества CountBox (покупка/продажа, выброс товаров и т.п.) и NumberBox (числа в окнах модов) можно набирать число клавишами 0-9 (основной ряд и цифровой блок), Backspace стирает последнюю цифру, Delete обнуляет. Окно расширяется вправо, в нём экранная клавиатура 3x4 (1-9, стрелка-забой, 0, C). Набранное число ограничивается диапазоном окна; ползунок, красные счётчики и блокировка кнопки OK работают как обычно. В режиме выбора NumberBox из списка строк клавиатура скрыта.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792084228,
+      "mtime": 1793085258,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "32a4a47691ccc12f",
+          "version": "ef7e6bead9bdcb69",
           "name": "SolCountKeypad",
           "depends": [
             "SolUtilities"
@@ -24237,7 +24315,7 @@
           "code_files": 3,
           "asset_files": 10,
           "path": "descriptors/shared/solar/Solar/SolCountKeypad.json",
-          "mtime": 1792084228
+          "mtime": 1793085258
         }
       ]
     },
@@ -24245,21 +24323,22 @@
       "name": "SolCustomGalaxy",
       "author": "FC_Fan",
       "default_source": "shared/solar",
-      "description": "Настраиваемая галактика: число звёзд, секторов и размеры карты выбираются перед игрой",
-      "full_description": "Добавляет в \"Тонкую настройку\" новой игры четвёртую вкладку \"Генерация\": количество звёзд (73..300), количество секторов (20..82) и размеры карты (145x100..400x280). Минимум - ванильная галактика. Флаг \"Сохранять пропорции\" сам считает сектора и размеры карты от числа звёзд. Выбранные значения запоминаются между играми. Заменяет SolBigGalaxy (одновременно включать нельзя).",
+      "description": "Настраиваемая галактика: число звёзд, секторов и размеры карты выбираются перед игрой\n(Мод можно подключать/отключать в течение партии)",
+      "full_description": "Добавляет в «Тонкую настройку» новой игры четвёртую вкладку «Генерация»: количество звёзд (73..300), количество секторов (20..82) и размеры карты (145x100..400x280). Минимум — ванильная галактика. Флаг «Сохранять пропорции» сам считает сектора и размеры карты от числа звёзд. Выбранные значения запоминаются между играми.\nДействует только при создании новой игры. Заменяет SolBigGalaxy и ChildrenOfEltan (одновременно включать нельзя). Нужен SolUtilities.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792028644,
+      "mtime": 1793085258,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "7f2aa0e9bc4724f2",
+          "version": "a15758ea135d03f8",
           "name": "SolCustomGalaxy",
           "depends": [
             "SolUtilities"
           ],
           "conflicts": [
             "SolBigGalaxy",
+            "ChildrenOfEltan",
             "XenoBigGalaxy",
             "RefGalaxyUpgrade",
             "RefGalaxyUpgradeExtended",
@@ -24270,10 +24349,10 @@
             "AModGalaxyLite",
             "AModGalaxyLiteGG"
           ],
-          "code_files": 3,
+          "code_files": 4,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolCustomGalaxy.json",
-          "mtime": 1792028644
+          "mtime": 1793085258
         }
       ]
     },
@@ -24281,15 +24360,15 @@
       "name": "SolFastGen",
       "author": "FC_Fan",
       "default_source": "shared/solar",
-      "description": "Быстрый и устойчивый генератор секторов галактики",
+      "description": "Быстрый и устойчивый генератор секторов галактики\n(Мод можно подключать/отключать в течение партии)",
       "full_description": "Включает альтернативный генератор раскладки секторов вместо ванильного/классического: сектора считаются как дискретная диаграмма Вороного (O(клетки)), а не прогоном лучей по цепочке из ~2400 клеток; раскладка проверяется заранее и при неудаче центры сдвигаются (релаксация Ллойда), а не перебрасываются. Генерация 82 секторов занимает ~0.05 с вместо 1-23 с, карта никогда не увеличивается. Звёзды, сюжетный сектор, Гралгар, рукава и кластеры работают как раньше. Если быстрый путь не справился, автоматически запускается классический генератор. Настройки (CFG\\Rus\\Lang.txt, блок Constellations): GalaxyFastGen (0/1), GalaxyFastVerify (0 выкл, 1 проверка движком, 2 полная), GalaxyFastBandLo/Hi (допуск площади сектора в % от средней, по умолчанию 50/160), GalaxyFastSpread (1..32, равномерность центров, по умолчанию 6). Лог: galaxy_gen.log (метки FAST_*).",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792029074,
+      "mtime": 1793085258,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "7c28e2f2b6431bb8",
+          "version": "3f73c3c4ee4ea5a6",
           "name": "SolFastGen",
           "depends": [
             "SolUtilities"
@@ -24298,7 +24377,7 @@
           "code_files": 2,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolFastGen.json",
-          "mtime": 1792029074
+          "mtime": 1793085258
         }
       ]
     },
@@ -24306,25 +24385,26 @@
       "name": "SolGalamapFullHD",
       "author": "FC_Fan",
       "default_source": "shared/solar",
-      "description": "Интерфейс галакарты для экрана 1920x1080",
-      "full_description": "Чисто интерфейсный мод без игровой логики: форма галакарты под разрешение 1920x1080.",
+      "description": "Интерфейс галакарты для экрана 1920x1080\n(Мод можно подключать/отключать в течение партии)",
+      "full_description": "Чисто интерфейсный мод без игровой логики: форма галакарты (рамка, панель, правитель, вступление, руины) под разрешение 1920x1080. Подгоняет соотношение сторон галактики под поле карты (1916x1015): в Lang мода флаг DLLSettings.GalaxyAspect.Width/Height; размер, заданный игрой или другим модом (SolBigGalaxy, SolCustomGalaxy, ChildrenOfEltan), пересчитывается с сохранением площади (плотность и расстояния между звёздами те же), у второго рукава тот же размер, ClusterGap не меняется. Нужен SolUtilities. Действует на новую галактику. При включённой своей галактике (SolCustomGalaxy) размер выбирает игрок. Одновременно можно включить только одну раскладку галакарты: SolGalamapHD или SolGalamapFullHD.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792029112,
+      "mtime": 1793085258,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "d1cb94f9db1c4893",
+          "version": "092342cf8a366de0",
           "name": "SolGalamapFullHD",
-          "depends": [],
-          "conflicts": [
-            "SolGalamapHD",
-            "SolGalamap1280x1024"
+          "depends": [
+            "SolUtilities"
           ],
-          "code_files": 3,
+          "conflicts": [
+            "SolGalamapHD"
+          ],
+          "code_files": 5,
           "asset_files": 21,
           "path": "descriptors/shared/solar/Solar/SolGalamapFullHD.json",
-          "mtime": 1792029112
+          "mtime": 1793085258
         }
       ]
     },
@@ -24332,25 +24412,24 @@
       "name": "SolGalamapHD",
       "author": "FC_Fan",
       "default_source": "shared/solar",
-      "description": "Интерфейс галакарты для экрана 1024x768",
-      "full_description": "Чисто интерфейсный мод без игровой логики: форма галакарты под разрешение 1024x768.",
+      "description": "Интерфейс галакарты для экрана 1024x768\n(Мод можно подключать/отключать в течение партии)",
+      "full_description": "Чисто интерфейсный мод без игровой логики: форма галакарты под разрешение 1024x768.\nОдновременно можно включить только одну раскладку галакарты: SolGalamapHD или SolGalamapFullHD.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792029142,
+      "mtime": 1793085258,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "8a5fd030a541d21a",
+          "version": "4842ad22a3709b1e",
           "name": "SolGalamapHD",
           "depends": [],
           "conflicts": [
-            "SolGalamapFullHD",
-            "SolGalamap1280x1024"
+            "SolGalamapFullHD"
           ],
           "code_files": 3,
           "asset_files": 23,
           "path": "descriptors/shared/solar/Solar/SolGalamapHD.json",
-          "mtime": 1792029142
+          "mtime": 1793085258
         }
       ]
     },
@@ -24358,27 +24437,24 @@
       "name": "SolMapMarker",
       "author": "FC_Fan",
       "default_source": "shared/solar",
-      "description": "Метка системы на галакарте: поиск звезды/планеты по имени. Собственная реализация мода с функционалом, аналогичным MapMarker-у от Huk",
-      "full_description": "Две кнопки в верхней панели галакарты: поиск системы/планеты по имени и снятие метки. Не зависит от AMod_MapMarker и не включается вместе с ним.",
+      "description": "Метка системы на галакарте: поиск звезды/планеты по имени. Собственная реализация мода с функционалом, аналогичным MapMarker-у от Huk\n(Мод можно подключать/отключать в течение партии)",
+      "full_description": "Две кнопки в верхней панели галакарты: поиск системы/планеты по имени и снятие метки. Не зависит от AMod_MapMarker и не включается вместе с ним. Кнопки стоят в верхней полосе рамки окна галакарты, одинаковой во всех раскладках SolGalamap*, поэтому мод работает с любой из них.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792029198,
+      "mtime": 1793085258,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "eb0f5f2f4162de70",
+          "version": "8b8b29b453517c44",
           "name": "SolMapMarker",
-          "depends": [
-            "SolUtilities",
-            "SolGalamapHD"
-          ],
+          "depends": [],
           "conflicts": [
             "AMod_MapMarker"
           ],
           "code_files": 3,
           "asset_files": 7,
           "path": "descriptors/shared/solar/Solar/SolMapMarker.json",
-          "mtime": 1792029198
+          "mtime": 1793085258
         }
       ]
     },
@@ -24386,15 +24462,15 @@
       "name": "SolMapZoom",
       "author": "FC_Fan",
       "default_source": "shared/solar",
-      "description": "Зум колесом мыши и перемещение камеры на галакарте с помощью клавиш-стрелок. А также режим лупы при зажатии Shift с курсором на галакарте.",
+      "description": "Зум колесом мыши и перемещение камеры на галакарте с помощью клавиш-стрелок. А также режим лупы при зажатии Shift с курсором на галакарте.\n(Мод можно подключать/отключать в течение партии)",
       "full_description": "Колесо мыши - приближение/отдаление галакарты вокруг курсора. Стрелки и край экрана - перемещение камеры, как в космосе. C - центр на игроке, Home - вся карта. Лупа: пока зажат Shift, над картой показывается увеличенный квадрат вокруг курсора",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792029312,
+      "mtime": 1793085258,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "b688f304de0564c3",
+          "version": "1d5208699e154fa9",
           "name": "SolMapZoom",
           "depends": [
             "SolUtilities"
@@ -24403,7 +24479,7 @@
           "code_files": 2,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolMapZoom.json",
-          "mtime": 1792029312
+          "mtime": 1793085258
         }
       ]
     },
@@ -24411,15 +24487,15 @@
       "name": "SolNextDayFast",
       "author": "FC_Fan",
       "default_source": "shared/solar",
-      "description": "Ускорение дневного хода (NextDay) и стартовой симуляции галактики",
-      "full_description": "Ускорение дневного хода (NextDay) и стартовой симуляции галактики",
+      "description": "Ускорение дневного хода (NextDay) и стартовой симуляции галактики\n(Мод можно подключать/отключать в течение партии)",
+      "full_description": "Включает нативные порты дневного хода NextDay (планеты, галактика, корабли, игрок) и оптимизации StatBonusFast / RepelOptimized; результаты симуляции не меняются. Ускоряет и стартовую симуляцию галактики.\nНастройки (CFG\\Rus\\Lang.txt, блок DLLSettings.NextDay): Planet, Star, Galaxy, Ship, Player, ShipSubclasses, RepelOptimized, StatBonusFast, StarOptimized (0/1); диагностика DayProfile, ExceptionTrace, TransitDiag, GameLog; профайлер Sampler (пишет nextday_sampler.log). Изменения применяются после перезагрузки конфигов (новая игра / загрузка). Нужен SolUtilities.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792029350,
+      "mtime": 1793085258,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "4d75ab0c050d07ac",
+          "version": "781ccb324d1e5f35",
           "name": "SolNextDayFast",
           "depends": [
             "SolUtilities"
@@ -24428,7 +24504,7 @@
           "code_files": 2,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolNextDayFast.json",
-          "mtime": 1792029350
+          "mtime": 1793085258
         }
       ]
     },
@@ -24436,24 +24512,24 @@
       "name": "SolShopCompare",
       "author": "FC_Fan",
       "default_source": "shared/solar",
-      "description": "Сравнение оборудования в магазине с установленным на корабле. Мод можно подключать/отключать в течение партии",
+      "description": "Сравнение оборудования в магазине с установленным на корабле\n(Мод можно подключать/отключать в течение партии)",
       "full_description": "В магазине оборудования рядом с карточкой товара показывается вторая карточка — предмет, установленный на вашем корабле в том же слоте (двигатель, баки, радар, сканер, ремонтный робот, захват, генератор защиты, оружие). Также добавлен блок «Сравнение».",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792029406,
+      "mtime": 1793085258,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "7565f341fb1c693f",
+          "version": "7150a58b2aa9fc5f",
           "name": "SolShopCompare",
           "depends": [
             "SolUtilities"
           ],
           "conflicts": [],
-          "code_files": 3,
+          "code_files": 4,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolShopCompare.json",
-          "mtime": 1792029406
+          "mtime": 1793085258
         }
       ]
     },
@@ -24461,15 +24537,15 @@
       "name": "SolSpaceZoom",
       "author": "FC_Fan",
       "default_source": "shared/solar",
-      "description": "Масштабирование космоса колесом мыши (Мод нуждается в тестировании)",
+      "description": "Масштабирование космоса колесом мыши (мод нуждается в тестировании)\n(Мод можно подключать/отключать в течение партии)",
       "full_description": "Колесо мыши - приближение/отдаление космоса (интерфейс не масштабируется). Home - вернуть обычный масштаб.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792029446,
+      "mtime": 1793085258,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "630e9592a5ff3b26",
+          "version": "cee9aca160ffe9af",
           "name": "SolSpaceZoom",
           "depends": [
             "SolUtilities"
@@ -24478,7 +24554,7 @@
           "code_files": 2,
           "asset_files": 0,
           "path": "descriptors/shared/solar/Solar/SolSpaceZoom.json",
-          "mtime": 1792029446
+          "mtime": 1793085258
         }
       ]
     },
@@ -24486,22 +24562,22 @@
       "name": "SolUtilities",
       "author": "FC_Fan",
       "default_source": "shared/solar",
-      "description": "Утилитпак для модов Solar, использует XenoNative-плагины от автора Xenomorphchyma",
-      "full_description": "Утилитпак с DLL для модов Solar.",
+      "description": "Утилитпак с DLL для модов Solar: режимы и экономики планет, нативные порты, ядро хуков\n(Мод можно подключать/отключать в течение партии)",
+      "full_description": "Основа сборника Solar: нативные DLL (SolHook — ядро хуков, SolEngine — сущности и порты NextDay) и общие настройки Lang. Без него моды Solar с пометкой «нужен SolUtilities» не работают. При запуске SolHook сверяет таблицу символов с версией Rangers.exe и проверяет отпечатки хукаемых функций; несовпавшая группа хуков отключается с сообщением (лог SolHook.log).\n<clr><clrEnd>\nПолитические режимы планет: блок Lang GovRegime (Enable=1; Regime.<n>, n = 0..4 правит ванильные режимы — отношения после революции, шансы квестов, цены и запасы товаров, легальность, доли режимов по расам в процентах GovRegime.Roll.<раса>.<режим>, сумма долей расы = 100). Ванильная таблица вероятностей уже лежит в Lang этого мода; новые режимы добавляются в мод SolPlanets.\nЭкономики планет: блоки Economy (факторы по товарам, изобретения, магазин, события, значок, доли генерации; до пяти новых экономик в слотах 3..7) и PirateEconomy (фактор пиратских планет, включая Роджерию). Числа рас в Main (Race.<Параметр>.<Имя>). Вкладка «Экономика» в тонкой настройке заменяет ванильные ползунки аграрных / смешанных / индустриальных планет.\nТехнический уровень галактики: блок GalaxyTech в Lang (Mode 0/1/2, RefPlanets, Top/Mid/Sum, Quantile, MinCount) — кворум масштабируется с размером галактики. Подробно: src\\engine\\GOV_REGIMES.md.\nОтключать мод посреди партии нельзя: данные режимов и экономик записаны в планеты.",
       "section": "Solar",
       "versions_differ": false,
-      "mtime": 1792078712,
+      "mtime": 1793085258,
       "variants": [
         {
           "source": "shared/solar",
-          "version": "5a6eac234744ba01",
+          "version": "18ac28c1a21d803d",
           "name": "SolUtilities",
           "depends": [],
           "conflicts": [],
-          "code_files": 4,
-          "asset_files": 4,
+          "code_files": 5,
+          "asset_files": 5,
           "path": "descriptors/shared/solar/Solar/SolUtilities.json",
-          "mtime": 1792078712
+          "mtime": 1793085258
         }
       ]
     },

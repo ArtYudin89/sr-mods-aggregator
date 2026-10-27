@@ -7,139 +7,150 @@
   "author": "FC_Fan",
   "section": "Solar",
   "priority": "12",
-  "description": "Интерфейс галакарты для экрана 1920x1080",
-  "full_description": "Чисто интерфейсный мод без игровой логики: форма галакарты под разрешение 1920x1080.",
-  "version": "d1cb94f9db1c4893",
-  "depends": [],
+  "description": "Интерфейс галакарты для экрана 1920x1080\n(Мод можно подключать/отключать в течение партии)",
+  "full_description": "Чисто интерфейсный мод без игровой логики: форма галакарты (рамка, панель, правитель, вступление, руины) под разрешение 1920x1080. Подгоняет соотношение сторон галактики под поле карты (1916x1015): в Lang мода флаг DLLSettings.GalaxyAspect.Width/Height; размер, заданный игрой или другим модом (SolBigGalaxy, SolCustomGalaxy, ChildrenOfEltan), пересчитывается с сохранением площади (плотность и расстояния между звёздами те же), у второго рукава тот же размер, ClusterGap не меняется. Нужен SolUtilities. Действует на новую галактику. При включённой своей галактике (SolCustomGalaxy) размер выбирает игрок. Одновременно можно включить только одну раскладку галакарты: SolGalamapHD или SolGalamapFullHD.",
+  "version": "092342cf8a366de0",
+  "depends": [
+    "SolUtilities"
+  ],
   "conflicts": [
-    "SolGalamapHD",
-    "SolGalamap1280x1024"
+    "SolGalamapHD"
   ],
   "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
   "cosmetic": [
     "Solar/SolGalamapFullHD/CFG/CacheData.dat"
   ],
-  "mtime": 1792029112,
+  "mtime": 1793085258,
   "files": {
     "code": {
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/ModuleInfo.txt": {
-        "sha256": "6cfc591090fbfb6ef9b77cc1c4269044a084ae72c515b7826e236f4cc8451881",
-        "size": 1226,
-        "mtime": 1792029112
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/ModuleInfo.txt": {
+        "sha256": "50ee2baf298de58f08ffbcf90ca6fb8c1cf9dde78106b6781629ea70a98fb4f6",
+        "size": 3790,
+        "mtime": 1793085258
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/CFG/CacheData.dat": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/CFG/CacheData.dat": {
         "sha256": "e3261629d8b528db1257026febf5c0b2828dcdd1fefed6cd573dd39a9dca3f87",
         "size": 370,
         "mtime": 1791446328
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/CFG/Main.dat": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/CFG/Main.dat": {
         "sha256": "113eaf6390e687d8bdb9d47fc52661aa6b57f44dd499225fb8ebcf831a196093",
         "size": 7650,
         "mtime": 1791446328
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/CFG/Eng/Lang.dat": {
+        "sha256": "e9d4275e03a8481d82a90f970f6ea1ebc8a8f3e42a7b99b06f284dbb5d95ddf4",
+        "size": 109,
+        "mtime": 1792872732
+      },
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/CFG/Rus/Lang.dat": {
+        "sha256": "fc9344ec3385d72c34ad9e1ee8b274a8f8343fa356967d0543ea46ccd6269d76",
+        "size": 109,
+        "mtime": 1792872732
       }
     },
     "assets": {
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2BG.gi": {
-        "sha256": "775fbbbeedc758ec6f3e9423c093b09989109e6cc601fff07f815a04c873c903",
-        "size": 3022776,
-        "mtime": 1790966548
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2BG.gi": {
+        "sha256": "1d5cc2a9c461976ffa2e1bcb12dec8aa5b4390eb4ba1e61bf2e09b1c19fd4d07",
+        "size": 4202511,
+        "mtime": 1792968808
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2BG.png": {
-        "sha256": "0870c7b89937b05c795c6ce840aadef04b548f30456f453bcb3cfa97f5bff8a6",
-        "size": 1937960,
-        "mtime": 1791040662
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2BG.png": {
+        "sha256": "d5663093f3acb5cbf29ae70ebb13e7ae5fe8ee936c66e8be0ab15c7917383635",
+        "size": 1136989,
+        "mtime": 1792966544
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2CancelA.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2CancelA.gi": {
         "sha256": "1c6bb28b82a1415a50e47d9f4280c34374d16a5a5aa4c8cc31683facd4651d5e",
         "size": 3922,
         "mtime": 1791446318
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2CancelD.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2CancelD.gi": {
         "sha256": "6ce4bf670f89fc68fc32b4648337d6709e288e77bbfc2a274010aee99bda03b1",
         "size": 3922,
         "mtime": 1791446318
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2CancelN.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2CancelN.gi": {
         "sha256": "38223ee306fd200d44c5155931c9e64de902bec97ad60c8e37dcde2590de5635",
         "size": 3922,
         "mtime": 1791446318
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2IMG.png": {
-        "sha256": "8789304561d7ab14b68d2c6768b689cdd23ad1887d47705ab985ceb380724f81",
-        "size": 3330076,
-        "mtime": 1791040664
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2IMG.png": {
+        "sha256": "88eb1529755b9518f5f01f72dff79b0def416d70f636a56d9feadebf064e446b",
+        "size": 2316422,
+        "mtime": 1792967356
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2OkA.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2OkA.gi": {
         "sha256": "75eb68609850e3327ffda706d42df0b10583d78e0cf3c1243766a5f15340e115",
         "size": 5002,
         "mtime": 1791446318
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2OkD.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2OkD.gi": {
         "sha256": "4326497e51082fcc9517690ec5dcc3c42fb30241fdccfd824ee3b33073f8d426",
         "size": 5002,
         "mtime": 1791446318
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2OkH.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2OkH.gi": {
         "sha256": "308631df7d7653e431a1a71fbc5639f1a0cc57c5add1473cc2f064e92901aa79",
         "size": 5002,
         "mtime": 1791446318
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2OkN.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2OkN.gi": {
         "sha256": "8fbd03e1a86cbaf2212e861d844a975172aa438e5dd69077dfc446ceaa285572",
         "size": 5002,
         "mtime": 1791446318
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2Panel.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2Panel.gi": {
         "sha256": "0c80a1ac3073eab3eaec87c2d43d773e0e493184ab2335c6a51929d69c01ebe4",
         "size": 448966,
         "mtime": 1791446316
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2Panel.png": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/2Panel.png": {
         "sha256": "a7887befd8ec30b76110184a489106ad2d4b12843213314c7bfeefbd61c2c8ee",
         "size": 35143,
         "mtime": 1791446316
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/CreateA.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/CreateA.gi": {
         "sha256": "69815fbdd63eff42f3f4f3e3f5c3900283ee360585e59c5d27cae2bf7375ea65",
         "size": 1340,
         "mtime": 1791446316
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/CreateD.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/CreateD.gi": {
         "sha256": "b3abb756c64afac1e515a2aaf4ea3ddb1647530ba1668c739c8250376f2bd15a",
         "size": 1340,
         "mtime": 1791446316
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/CreateN.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/CreateN.gi": {
         "sha256": "0c9bf8dd2c2496f55e4a5f4cefafb428b52c44384792496dd746e665303fc80a",
         "size": 1340,
         "mtime": 1791446316
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/DelA.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/DelA.gi": {
         "sha256": "75bf1c566f2ef29d2b23151bcc2244a1e41989c5b56cc54bf97d2c081650b008",
         "size": 1340,
         "mtime": 1791446316
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/DelD.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/DelD.gi": {
         "sha256": "eaa9a9e1d76bdac95685698036c295a5d149f5b5b40b049e14292ef7b36bb359",
         "size": 1340,
         "mtime": 1791446316
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/DelN.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/DelN.gi": {
         "sha256": "0983282f33556438bbaa9988b4b5088dbbc24020a123939d6acd1dcb68122720",
         "size": 1340,
         "mtime": 1791446316
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/UndoA.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/UndoA.gi": {
         "sha256": "e20157f9998db2bfd7c7033a88316c48702f82690682ddc304632bc4d2baa75c",
         "size": 1340,
         "mtime": 1791446318
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/UndoD.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/UndoD.gi": {
         "sha256": "1236a5d080e081cf6f72b24d1cbf31057fe0a2d5680727031d7af04e4d7ea65c",
         "size": 1340,
         "mtime": 1791446318
       },
-      "Solar_Release_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/UndoN.gi": {
+      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolGalamapFullHD/Data/FormGalaxy2/UndoN.gi": {
         "sha256": "77b44222b9693ff853629a6270221aba77861cb7d6f3a130ca9203ec384dfb6d",
         "size": 1340,
         "mtime": 1791446316
