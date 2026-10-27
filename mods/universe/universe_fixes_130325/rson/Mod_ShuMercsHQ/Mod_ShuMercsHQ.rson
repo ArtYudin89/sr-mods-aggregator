@@ -7110,7 +7110,7 @@
                         "            {",
                         "                blist_ = ExpListRemove(blist_, bi);",
                         "                PlayerHQMainArray['Expansion', 'DonePlanets'] = ExpListAdd(PlayerHQMainArray['Expansion', 'DonePlanets'], '' + int(GetParFromString(item_, ':', 0, 0)) + ':' + bonus_);",
-                        "                ExpMessage('BranchReadyMsg', 1, bplanet_);",
+                        "                //25.10: донесение штаба BranchReadyMsg убрано - достаточно галочки задания со звуком (ExpNotify ниже)",
                         "                ExpNotify('Complete', bplanet_, 0);",
                         "                Sound('Sound.QuestOk');",
                         "            }",
