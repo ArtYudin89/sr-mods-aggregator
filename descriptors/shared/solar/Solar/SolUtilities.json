@@ -9,12 +9,12 @@
   "priority": "6",
   "description": "Утилитпак с DLL для модов Solar: режимы и экономики планет, нативные порты, ядро хуков\n(Мод можно подключать/отключать в течение партии)",
   "full_description": "Основа сборника Solar: нативные DLL (SolHook — ядро хуков, SolEngine — сущности и порты NextDay) и общие настройки Lang. Без него моды Solar с пометкой «нужен SolUtilities» не работают. При запуске SolHook сверяет таблицу символов с версией Rangers.exe и проверяет отпечатки хукаемых функций; несовпавшая группа хуков отключается с сообщением (лог SolHook.log).\n<clr><clrEnd>\nПолитические режимы планет: блок Lang GovRegime (Enable=1; Regime.<n>, n = 0..4 правит ванильные режимы — отношения после революции, шансы квестов, цены и запасы товаров, легальность, доли режимов по расам в процентах GovRegime.Roll.<раса>.<режим>, сумма долей расы = 100). Ванильная таблица вероятностей уже лежит в Lang этого мода; новые режимы добавляются в мод SolPlanets.\nЭкономики планет: блоки Economy (факторы по товарам, изобретения, магазин, события, значок, доли генерации; до пяти новых экономик в слотах 3..7) и PirateEconomy (фактор пиратских планет, включая Роджерию). Числа рас в Main (Race.<Параметр>.<Имя>). Вкладка «Экономика» в тонкой настройке заменяет ванильные ползунки аграрных / смешанных / индустриальных планет.\nТехнический уровень галактики: блок GalaxyTech в Lang (Mode 0/1/2, RefPlanets, Top/Mid/Sum, Quantile, MinCount) — кворум масштабируется с размером галактики. Подробно: src\\engine\\GOV_REGIMES.md.\nОтключать мод посреди партии нельзя: данные режимов и экономик записаны в планеты.",
-  "version": "18ac28c1a21d803d",
+  "version": "739c64f911ffed41",
   "depends": [],
   "conflicts": [],
   "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
   "cosmetic": [],
-  "mtime": 1793085258,
+  "mtime": 1793134216,
   "files": {
     "code": {
       "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolUtilities/ModuleInfo.txt": {
@@ -45,9 +45,9 @@
     },
     "assets": {
       "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolUtilities/Native/SolEngine.XenoPlugin.dll": {
-        "sha256": "3fc9092865dbaf89d90bae1941cdb58a5b6195eec6e70edbe244a197639bb342",
-        "size": 743424,
-        "mtime": 1793054558
+        "sha256": "320ddc76c4ce3146966f6e6492edc204e48d026c13e8628a3290b9926cd6ae41",
+        "size": 745984,
+        "mtime": 1793134216
       },
       "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolUtilities/Native/SolHook.XenoPlugin.dll": {
         "sha256": "2031354f10c1c1ca8b0b77a7c1a005f850085acd1a540f446ba9a43abba36f74",
