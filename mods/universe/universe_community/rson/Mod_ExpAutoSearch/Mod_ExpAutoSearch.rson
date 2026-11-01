@@ -6,15 +6,23 @@
     "ScriptName": "Mod_ExpAutoSearch",
     "ScriptFileOut": "D:\\Mod_ExpAutoSearch.scr",
     "ScriptTextOut": "D:\\Mod_ExpAutoSearch.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
             "DialogAnswers": [
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "restart",
                     "Pos.x": 0,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 39,
                     "Msg": "",
@@ -22,10 +30,10 @@
                     "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ExpAutoSearch.2\"),\"<0>\",tstr3))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "",
                     "Pos.x": 120,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 40,
                     "Msg": "",
@@ -33,10 +41,10 @@
                     "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_ExpAutoSearch.2\"),\"<0>\",tstr1))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "block",
                     "Pos.x": 240,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 41,
                     "Msg": "",
@@ -44,10 +52,10 @@
                     "_orig_danswer": "DAnswer('block~'+Format(CT(\"Script.Mod_ExpAutoSearch.2\"),\"<0>\",tstr1))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "",
                     "Pos.x": 360,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 42,
                     "Msg": "",
@@ -55,10 +63,10 @@
                     "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_ExpAutoSearch.2\"),\"<0>\",tstr2))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "block",
                     "Pos.x": 480,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 43,
                     "Msg": "",
@@ -66,10 +74,10 @@
                     "_orig_danswer": "DAnswer('block~'+Format(CT(\"Script.Mod_ExpAutoSearch.2\"),\"<0>\",tstr2))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "",
                     "Pos.x": 600,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 44,
                     "Msg": "",
@@ -79,10 +87,10 @@
             ],
             "DialogMessages": [
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 0,
-                    "Pos.y": 470,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 460,
                     "Parent": -1,
                     "#": 37,
                     "Msg": "",
@@ -90,10 +98,10 @@
                     "_orig_dtext": "DText(Format(CT(\"Script.Mod_ExpAutoSearch.2\"),\"<0>\",tstr1))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 150,
-                    "Pos.y": 470,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 460,
                     "Parent": -1,
                     "#": 38,
                     "Msg": "",
@@ -103,25 +111,30 @@
             ],
             "Dialogs": [
                 {
-                    "Name": "AutoSearch",
                     "Type": "TDialog",
+                    "Name": "AutoSearch",
                     "Pos.x": 0,
-                    "Pos.y": 400,
+                    "Pos.y": 390,
                     "Parent": -1,
                     "#": 35
                 },
                 {
-                    "Name": "AutoSearchChange",
                     "Type": "TDialog",
+                    "Name": "AutoSearchChange",
                     "Pos.x": 150,
-                    "Pos.y": 400,
+                    "Pos.y": 390,
                     "Parent": -1,
                     "#": 36
                 }
             ],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "PlayerGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 29,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -144,30 +157,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "InitPlanet",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 29
+                    "+State": 0
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 30,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 30,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 31,
                     "Code.Type": "Init",
                     "Code": [
                         "//GItemsToSearchArr[0,0] == число текущих активных запросов;",
@@ -584,15 +597,15 @@
                         "    if(!StarRuins(cur_star, 'BK')) continue;",
                         "    TotalBKCount = TotalBKCount + 1;",
                         "}"
-                    ],
-                    "#": 31,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 32,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ShipIsTakeoff(Player())) {",
@@ -920,15 +933,15 @@
                         "      }",
                         "  }",
                         "}"
-                    ],
-                    "#": 32,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 33,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "cur_shop = GetShipRuins(Player());",
@@ -957,29 +970,29 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 33,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 180,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 390,
+                    "Parent": -1,
+                    "#": 45,
                     "Code.Type": "Turn",
                     "Code": [
                         "tstr1 = '</color>' + Format(CT('Script.Mod_ExpAutoSearch.GreetingsText'), '#0#', maxRequestCount, '#1#', maxResultsCount, '#2#', requestCreateCost, '#3#', requestRollCost);",
                         "DChange(0);",
                         "exit;"
-                    ],
-                    "#": 45,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 390,
+                    "Parent": -1,
+                    "#": 46,
                     "Code.Type": "Turn",
                     "Code": [
                         "GAcrynListTempArr = newarray(2);",
@@ -1003,15 +1016,15 @@
                         "  DChange(1);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 46,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 130,
-                    "Pos.y": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 460,
+                    "Parent": -1,
+                    "#": 47,
                     "Code.Type": "Turn",
                     "Code": [
                         "tstr1 = '</color>' + CT('Script.Mod_ExpAutoSearch.CreateNewRequest');",
@@ -1030,15 +1043,15 @@
                         "  DAdd(4);",
                         "}",
                         "DAdd(0);"
-                    ],
-                    "#": 47,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 470
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 460,
+                    "Parent": -1,
+                    "#": 48,
                     "Code.Type": "Turn",
                     "Code": [
                         "//Выводим в ответы список активных запросов",
@@ -1050,15 +1063,15 @@
                         "}",
                         "tstr2 = '</color>' + CT('Script.Mod_ExpAutoSearch.GetBack');",
                         "DAdd(5);"
-                    ],
-                    "#": 48,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 130,
-                    "Pos.y": 470
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 530,
+                    "Parent": -1,
+                    "#": 49,
                     "Code.Type": "Turn",
                     "Code": [
                         "GAcrynListTempArr = newarray(2);",
@@ -1072,45 +1085,45 @@
                         "arraychange(GAcrynListTempArr, 1);",
                         "DChange(0);",
                         "exit;"
-                    ],
-                    "#": 49,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 100,
-                    "Pos.y": 540
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 340,
+                    "Pos.y": 530,
+                    "Parent": -1,
+                    "#": 50,
                     "Code.Type": "Turn",
                     "Code": [
                         "tstr1 = '</color>' + CT('Script.Mod_ExpAutoSearch.RequestChangeList');",
                         "DChange(1);",
                         "exit;"
-                    ],
-                    "#": 50,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 340,
-                    "Pos.y": 540
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 580,
+                    "Pos.y": 530,
+                    "Parent": -1,
+                    "#": 51,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(0);",
                         "exit;"
-                    ],
-                    "#": 51,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 580,
-                    "Pos.y": 540
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "InitPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 28,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -1118,17 +1131,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "InitStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 185,
-                    "Parent": -1,
-                    "#": 28
+                    "+Star": "InitStar"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 27,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -1147,47 +1160,41 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "InitStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 95,
-                    "Parent": -1,
-                    "#": 27
+                    "+Star": "InitStar"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "InitStar",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "InitStar",
                     "Pos.x": 0,
-                    "Pos.y": 140,
+                    "Pos.y": 115,
                     "Parent": -1,
                     "#": 26,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "PlayerState",
+                    "Pos.x": 0,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 34,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 34
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -1227,7 +1234,7 @@
                 {
                     "Type": "TVar",
                     "Name": "requestNum",
-                    "Pos.x": 570,
+                    "Pos.x": 540,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 3,
@@ -1238,7 +1245,7 @@
                 {
                     "Type": "TVar",
                     "Name": "j",
-                    "Pos.x": 720,
+                    "Pos.x": 690,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 4,
@@ -1249,7 +1256,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_shop",
-                    "Pos.x": 810,
+                    "Pos.x": 750,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 5,
@@ -1260,7 +1267,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_item",
-                    "Pos.x": 930,
+                    "Pos.x": 870,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 6,
@@ -1271,7 +1278,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tstr1",
-                    "Pos.x": 1050,
+                    "Pos.x": 990,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 7,
@@ -1282,7 +1289,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tint1",
-                    "Pos.x": 1140,
+                    "Pos.x": 1080,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 8,
@@ -1293,7 +1300,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tint2",
-                    "Pos.x": 1230,
+                    "Pos.x": 1170,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 9,
@@ -1304,7 +1311,7 @@
                 {
                     "Type": "TVar",
                     "Name": "clear",
-                    "Pos.x": 1320,
+                    "Pos.x": 1260,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 10,
@@ -1315,7 +1322,7 @@
                 {
                     "Type": "TVar",
                     "Name": "maxResultsCount",
-                    "Pos.x": 1410,
+                    "Pos.x": 1350,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 11,
@@ -1326,7 +1333,7 @@
                 {
                     "Type": "TVar",
                     "Name": "maxRequestCount",
-                    "Pos.x": 1620,
+                    "Pos.x": 1560,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 12,
@@ -1436,7 +1443,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tflt1",
-                    "Pos.x": 1200,
+                    "Pos.x": 1170,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 22,
@@ -1447,7 +1454,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tflt2",
-                    "Pos.x": 1290,
+                    "Pos.x": 1260,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 23,
@@ -1458,7 +1465,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tflt3",
-                    "Pos.x": 1380,
+                    "Pos.x": 1350,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 24,
@@ -1469,7 +1476,7 @@
                 {
                     "Type": "TVar",
                     "Name": "item_type",
-                    "Pos.x": 1470,
+                    "Pos.x": 1440,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 25,
@@ -1560,5 +1567,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_ExpAutoSearch\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

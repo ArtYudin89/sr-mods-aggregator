@@ -6,15 +6,23 @@
     "ScriptName": "spawnkeller",
     "ScriptFileOut": "D:\\spawnkeller.scr",
     "ScriptTextOut": "D:\\spawnkeller.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
             "DialogAnswers": [
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "exit",
                     "Pos.x": 0,
-                    "Pos.y": 565,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 530,
                     "Parent": -1,
                     "#": 51,
                     "Msg": "",
@@ -24,10 +32,10 @@
             ],
             "DialogMessages": [
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 0,
-                    "Pos.y": 495,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 460,
                     "Parent": -1,
                     "#": 50,
                     "Msg": "",
@@ -37,17 +45,22 @@
             ],
             "Dialogs": [
                 {
-                    "Name": "dialog",
                     "Type": "TDialog",
+                    "Name": "dialog",
                     "Pos.x": 0,
-                    "Pos.y": 425,
+                    "Pos.y": 390,
                     "Parent": -1,
                     "#": 49
                 }
             ],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "HanPirates",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 41,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -70,15 +83,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "SpawnPlanet",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 41
+                    "+State": 0
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "thatone",
+                    "Pos.x": 150,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 42,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -101,42 +114,42 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "SpawnPlanet",
-                    "+State": 1,
-                    "Type": "TGroup",
-                    "Pos.x": 90,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 42
+                    "+State": 1
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 43,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 43,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 635
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 44,
                     "Code.Type": "Init",
                     "Code": [
                         "pirate_planets=newarray(1);"
-                    ],
-                    "#": 44,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 635
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 45,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!massiv_ok)",
@@ -286,15 +299,15 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 45,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 635
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 600,
+                    "Parent": -1,
+                    "#": 46,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "if(GetTalkShip())",
@@ -308,54 +321,55 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 46,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 180,
-                    "Pos.y": 635
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 52,
                     "Code.Type": "Turn",
                     "Code": [
                         "NoTalkToShip(CurShip, 0);"
-                    ],
-                    "#": 52,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 80
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 390,
+                    "Parent": -1,
+                    "#": 53,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(0);",
                         "exit;"
-                    ],
-                    "#": 53,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 425
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 460,
+                    "Parent": -1,
+                    "#": 54,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);"
-                    ],
-                    "#": 54,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 495
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "SpawnPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 40,
                     "Race": 62,
                     "Owner": 256,
                     "Economy": 14,
@@ -363,17 +377,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "SpawnStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 210,
-                    "Parent": -1,
-                    "#": 40
+                    "+Star": "SpawnStar"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 39,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -392,66 +406,59 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "SpawnStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 120,
-                    "Parent": -1,
-                    "#": 39
+                    "+Star": "SpawnStar"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "SpawnStar",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "SpawnStar",
                     "Pos.x": 0,
-                    "Pos.y": 165,
+                    "Pos.y": 115,
                     "Parent": -1,
                     "#": 38,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "StateFree",
+                    "Pos.x": 0,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 47,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 47
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "notthatone",
+                    "Pos.x": 150,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 48,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 90,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 48
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -480,7 +487,7 @@
                 {
                     "Type": "TVar",
                     "Name": "st_num",
-                    "Pos.x": 300,
+                    "Pos.x": 270,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 2,
@@ -491,7 +498,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_star",
-                    "Pos.x": 390,
+                    "Pos.x": 360,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 3,
@@ -502,7 +509,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_pl",
-                    "Pos.x": 510,
+                    "Pos.x": 480,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 4,
@@ -513,7 +520,7 @@
                 {
                     "Type": "TVar",
                     "Name": "pl",
-                    "Pos.x": 600,
+                    "Pos.x": 570,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 5,
@@ -524,7 +531,7 @@
                 {
                     "Type": "TVar",
                     "Name": "st",
-                    "Pos.x": 690,
+                    "Pos.x": 630,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 6,
@@ -535,7 +542,7 @@
                 {
                     "Type": "TVar",
                     "Name": "a",
-                    "Pos.x": 780,
+                    "Pos.x": 690,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 7,
@@ -546,7 +553,7 @@
                 {
                     "Type": "TVar",
                     "Name": "a2",
-                    "Pos.x": 870,
+                    "Pos.x": 750,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 8,
@@ -557,7 +564,7 @@
                 {
                     "Type": "TVar",
                     "Name": "a3",
-                    "Pos.x": 960,
+                    "Pos.x": 810,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 9,
@@ -568,7 +575,7 @@
                 {
                     "Type": "TVar",
                     "Name": "a4",
-                    "Pos.x": 1050,
+                    "Pos.x": 870,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 10,
@@ -579,7 +586,7 @@
                 {
                     "Type": "TVar",
                     "Name": "a5",
-                    "Pos.x": 1140,
+                    "Pos.x": 930,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 11,
@@ -590,7 +597,7 @@
                 {
                     "Type": "TVar",
                     "Name": "a6",
-                    "Pos.x": 1230,
+                    "Pos.x": 990,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 12,
@@ -601,7 +608,7 @@
                 {
                     "Type": "TVar",
                     "Name": "a7",
-                    "Pos.x": 1320,
+                    "Pos.x": 1050,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 13,
@@ -612,7 +619,7 @@
                 {
                     "Type": "TVar",
                     "Name": "a8",
-                    "Pos.x": 1410,
+                    "Pos.x": 1110,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 14,
@@ -623,7 +630,7 @@
                 {
                     "Type": "TVar",
                     "Name": "a10",
-                    "Pos.x": 1500,
+                    "Pos.x": 1170,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 15,
@@ -634,7 +641,7 @@
                 {
                     "Type": "TVar",
                     "Name": "a9",
-                    "Pos.x": 1590,
+                    "Pos.x": 1230,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 16,
@@ -645,7 +652,7 @@
                 {
                     "Type": "TVar",
                     "Name": "a11",
-                    "Pos.x": 1680,
+                    "Pos.x": 1290,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 17,
@@ -656,7 +663,7 @@
                 {
                     "Type": "TVar",
                     "Name": "a12",
-                    "Pos.x": 1770,
+                    "Pos.x": 1350,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 18,
@@ -667,8 +674,8 @@
                 {
                     "Type": "TVar",
                     "Name": "a13",
-                    "Pos.x": 0,
-                    "Pos.y": 25,
+                    "Pos.x": 1410,
+                    "Pos.y": 0,
                     "Parent": -1,
                     "#": 19,
                     "Var.Type": "Dword",
@@ -678,8 +685,8 @@
                 {
                     "Type": "TVar",
                     "Name": "str_hull",
-                    "Pos.x": 90,
-                    "Pos.y": 25,
+                    "Pos.x": 1470,
+                    "Pos.y": 0,
                     "Parent": -1,
                     "#": 20,
                     "Var.Type": "Str",
@@ -689,8 +696,8 @@
                 {
                     "Type": "TVar",
                     "Name": "str_chameleon",
-                    "Pos.x": 210,
-                    "Pos.y": 25,
+                    "Pos.x": 1590,
+                    "Pos.y": 0,
                     "Parent": -1,
                     "#": 21,
                     "Var.Type": "Str",
@@ -700,7 +707,7 @@
                 {
                     "Type": "TVar",
                     "Name": "rand",
-                    "Pos.x": 420,
+                    "Pos.x": 0,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 22,
@@ -711,7 +718,7 @@
                 {
                     "Type": "TVar",
                     "Name": "trank",
-                    "Pos.x": 510,
+                    "Pos.x": 60,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 23,
@@ -722,7 +729,7 @@
                 {
                     "Type": "TVar",
                     "Name": "turn",
-                    "Pos.x": 600,
+                    "Pos.x": 150,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 24,
@@ -733,7 +740,7 @@
                 {
                     "Type": "TVar",
                     "Name": "s",
-                    "Pos.x": 690,
+                    "Pos.x": 210,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 25,
@@ -744,7 +751,7 @@
                 {
                     "Type": "TVar",
                     "Name": "v1",
-                    "Pos.x": 780,
+                    "Pos.x": 270,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 26,
@@ -755,7 +762,7 @@
                 {
                     "Type": "TVar",
                     "Name": "v2",
-                    "Pos.x": 870,
+                    "Pos.x": 330,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 27,
@@ -766,7 +773,7 @@
                 {
                     "Type": "TVar",
                     "Name": "v3",
-                    "Pos.x": 960,
+                    "Pos.x": 390,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 28,
@@ -777,7 +784,7 @@
                 {
                     "Type": "TVar",
                     "Name": "t1",
-                    "Pos.x": 1050,
+                    "Pos.x": 450,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 29,
@@ -788,7 +795,7 @@
                 {
                     "Type": "TVar",
                     "Name": "v4",
-                    "Pos.x": 1140,
+                    "Pos.x": 510,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 30,
@@ -799,7 +806,7 @@
                 {
                     "Type": "TVar",
                     "Name": "v5",
-                    "Pos.x": 1230,
+                    "Pos.x": 570,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 31,
@@ -810,7 +817,7 @@
                 {
                     "Type": "TVar",
                     "Name": "it",
-                    "Pos.x": 1320,
+                    "Pos.x": 630,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 32,
@@ -821,7 +828,7 @@
                 {
                     "Type": "TVar",
                     "Name": "massiv_ok",
-                    "Pos.x": 1410,
+                    "Pos.x": 690,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 33,
@@ -832,7 +839,7 @@
                 {
                     "Type": "TVar",
                     "Name": "massiv",
-                    "Pos.x": 1560,
+                    "Pos.x": 840,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 34,
@@ -843,7 +850,7 @@
                 {
                     "Type": "TVar",
                     "Name": "upg_day",
-                    "Pos.x": 1650,
+                    "Pos.x": 930,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 35,
@@ -854,7 +861,7 @@
                 {
                     "Type": "TVar",
                     "Name": "upg",
-                    "Pos.x": 1770,
+                    "Pos.x": 1050,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 36,
@@ -865,8 +872,8 @@
                 {
                     "Type": "TVar",
                     "Name": "shu_shit",
-                    "Pos.x": 0,
-                    "Pos.y": 50,
+                    "Pos.x": 1110,
+                    "Pos.y": 25,
                     "Parent": -1,
                     "#": 37,
                     "Var.Type": "Int",
@@ -942,5 +949,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling spawnkeller\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

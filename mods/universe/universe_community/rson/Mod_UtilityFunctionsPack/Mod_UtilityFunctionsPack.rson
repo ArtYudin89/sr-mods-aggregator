@@ -6,6 +6,14 @@
     "ScriptName": "Mod_UtilityFunctionsPack",
     "ScriptFileOut": "D:\\Mod_UtilityFunctionsPack.scr",
     "ScriptTextOut": "D:\\Mod_UtilityFunctionsPack.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
@@ -14,7 +22,12 @@
             "Dialogs": [],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "PlayerGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 305,
+                    "Parent": -1,
+                    "#": 46,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -37,30 +50,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "InitPlanet",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 375,
-                    "Parent": -1,
-                    "#": 45
+                    "+State": 0
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 47,
                     "Code.Type": "Global",
                     "Code": [
                         "//"
-                    ],
-                    "#": 46,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 635
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 48,
                     "Code.Type": "Init",
                     "Code": [
                         "//Объявляем один раз при загрузке скрипта, и затем каждый раз заново при каждой загрузке игры",
@@ -102,6 +115,7 @@
                         "GetScriptNoKlingMarksFromStar = ImportedFunction('UtilityFunctions', 'GetScriptNoKlingMarksFromStar');",
                         "AdjustRuinsGoodsPricesToStorage = ImportedFunction('UtilityFunctions', 'AdjustRuinsGoodsPricesToStorage');",
                         "GetPlanetOrbitProbe = ImportedFunction('UtilityFunctions', 'GetPlanetOrbitProbe');",
+                        "SetPlanetOrbitProbe = ImportedFunction('UtilityFunctions', 'SetPlanetOrbitProbe');",
                         "PlanetItemsHiddency = ImportedFunction('UtilityFunctions', 'PlanetItemsHiddency');",
                         "HullExtraSettings = ImportedFunction('UtilityFunctions', 'HullExtraSettings');",
                         "CustomArtCostCalc = ImportedFunction('UtilityFunctions', 'CustomArtCostCalc');",
@@ -110,18 +124,18 @@
                         "//Скрипт продолжит работать ещё минимум ход, поэтому инициализировать функции его запуском рисково",
                         "//Игрок может два раза перезагрузиться за один ход, и тогда функции перезаписаны не будут",
                         "AllShipOut();"
-                    ],
-                    "#": 47,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 635
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "InitPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 260,
+                    "Parent": -1,
+                    "#": 45,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -129,17 +143,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "InitStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 285,
-                    "Parent": -1,
-                    "#": 44
+                    "+Star": "InitStar"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 170,
+                    "Parent": -1,
+                    "#": 44,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -158,47 +172,41 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "InitStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 195,
-                    "Parent": -1,
-                    "#": 43
+                    "+Star": "InitStar"
                 }
             ],
             "Stars": [
                 {
+                    "Type": "TStar",
                     "Name": "InitStar",
+                    "Pos.x": 0,
+                    "Pos.y": 215,
+                    "Parent": -1,
+                    "#": 43,
+                    "Constellation": 0,
                     "Priority": 0,
                     "NoKling": false,
-                    "NoComeKling": false,
-                    "Type": "TStar",
-                    "Pos.x": 0,
-                    "Pos.y": 240,
-                    "Parent": -1,
-                    "#": 42,
-                    "Constellation": 0
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "PlayerState",
+                    "Pos.x": 0,
+                    "Pos.y": 330,
+                    "Parent": -1,
+                    "#": 49,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 400,
-                    "Parent": -1,
-                    "#": 48
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -370,8 +378,8 @@
                 {
                     "Type": "TVar",
                     "Name": "GetStringFromClipboard",
-                    "Pos.x": 1710,
-                    "Pos.y": 25,
+                    "Pos.x": 0,
+                    "Pos.y": 50,
                     "Parent": -1,
                     "#": 15,
                     "Var.Type": "None",
@@ -381,7 +389,7 @@
                 {
                     "Type": "TVar",
                     "Name": "SendStringToClipboard",
-                    "Pos.x": 0,
+                    "Pos.x": 330,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 16,
@@ -392,7 +400,7 @@
                 {
                     "Type": "TVar",
                     "Name": "IsShiftCtrlPressed",
-                    "Pos.x": 300,
+                    "Pos.x": 630,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 17,
@@ -403,7 +411,7 @@
                 {
                     "Type": "TVar",
                     "Name": "RndObject",
-                    "Pos.x": 570,
+                    "Pos.x": 900,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 18,
@@ -414,7 +422,7 @@
                 {
                     "Type": "TVar",
                     "Name": "IdToHole",
-                    "Pos.x": 720,
+                    "Pos.x": 1050,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 19,
@@ -425,7 +433,7 @@
                 {
                     "Type": "TVar",
                     "Name": "ShipSubrace",
-                    "Pos.x": 840,
+                    "Pos.x": 1170,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 20,
@@ -436,7 +444,7 @@
                 {
                     "Type": "TVar",
                     "Name": "ShipNearbyShips",
-                    "Pos.x": 1020,
+                    "Pos.x": 1350,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 21,
@@ -447,7 +455,7 @@
                 {
                     "Type": "TVar",
                     "Name": "GetShipScriptName",
-                    "Pos.x": 1230,
+                    "Pos.x": 1560,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 22,
@@ -458,8 +466,8 @@
                 {
                     "Type": "TVar",
                     "Name": "ShipJoinToScript",
-                    "Pos.x": 1470,
-                    "Pos.y": 50,
+                    "Pos.x": 0,
+                    "Pos.y": 75,
                     "Parent": -1,
                     "#": 23,
                     "Var.Type": "None",
@@ -469,8 +477,8 @@
                 {
                     "Type": "TVar",
                     "Name": "GetScriptNoKlingMarksFromStar",
-                    "Pos.x": 1710,
-                    "Pos.y": 50,
+                    "Pos.x": 240,
+                    "Pos.y": 75,
                     "Parent": -1,
                     "#": 24,
                     "Var.Type": "None",
@@ -480,7 +488,7 @@
                 {
                     "Type": "TVar",
                     "Name": "GetPlanetOrbitProbe",
-                    "Pos.x": 0,
+                    "Pos.x": 660,
                     "Pos.y": 75,
                     "Parent": -1,
                     "#": 25,
@@ -491,7 +499,7 @@
                 {
                     "Type": "TVar",
                     "Name": "HullExtraSettings",
-                    "Pos.x": 270,
+                    "Pos.x": 930,
                     "Pos.y": 75,
                     "Parent": -1,
                     "#": 26,
@@ -502,7 +510,7 @@
                 {
                     "Type": "TVar",
                     "Name": "CustomArtCostCalc",
-                    "Pos.x": 510,
+                    "Pos.x": 1170,
                     "Pos.y": 75,
                     "Parent": -1,
                     "#": 27,
@@ -513,7 +521,7 @@
                 {
                     "Type": "TVar",
                     "Name": "CustomArtSizeCalc",
-                    "Pos.x": 750,
+                    "Pos.x": 1410,
                     "Pos.y": 75,
                     "Parent": -1,
                     "#": 28,
@@ -524,8 +532,8 @@
                 {
                     "Type": "TVar",
                     "Name": "AdjustRuinsGoodsPricesToStorage",
-                    "Pos.x": 990,
-                    "Pos.y": 75,
+                    "Pos.x": 0,
+                    "Pos.y": 100,
                     "Parent": -1,
                     "#": 29,
                     "Var.Type": "None",
@@ -535,8 +543,8 @@
                 {
                     "Type": "TVar",
                     "Name": "KeyCodesToKeyVals",
-                    "Pos.x": 1440,
-                    "Pos.y": 75,
+                    "Pos.x": 450,
+                    "Pos.y": 100,
                     "Parent": -1,
                     "#": 30,
                     "Var.Type": "Str",
@@ -546,8 +554,8 @@
                 {
                     "Type": "TVar",
                     "Name": "ShipPrevStar",
-                    "Pos.x": 1680,
-                    "Pos.y": 75,
+                    "Pos.x": 690,
+                    "Pos.y": 100,
                     "Parent": -1,
                     "#": 31,
                     "Var.Type": "None",
@@ -557,7 +565,7 @@
                 {
                     "Type": "TVar",
                     "Name": "SetShipExpByType",
-                    "Pos.x": 0,
+                    "Pos.x": 870,
                     "Pos.y": 100,
                     "Parent": -1,
                     "#": 32,
@@ -568,7 +576,7 @@
                 {
                     "Type": "TVar",
                     "Name": "GetShipPath",
-                    "Pos.x": 240,
+                    "Pos.x": 1110,
                     "Pos.y": 100,
                     "Parent": -1,
                     "#": 33,
@@ -579,7 +587,7 @@
                 {
                     "Type": "TVar",
                     "Name": "SetShipPath",
-                    "Pos.x": 420,
+                    "Pos.x": 1290,
                     "Pos.y": 100,
                     "Parent": -1,
                     "#": 34,
@@ -590,7 +598,7 @@
                 {
                     "Type": "TVar",
                     "Name": "ShipVisibility",
-                    "Pos.x": 600,
+                    "Pos.x": 1470,
                     "Pos.y": 100,
                     "Parent": -1,
                     "#": 35,
@@ -601,8 +609,8 @@
                 {
                     "Type": "TVar",
                     "Name": "ShipExchangeToShip",
-                    "Pos.x": 810,
-                    "Pos.y": 100,
+                    "Pos.x": 0,
+                    "Pos.y": 125,
                     "Parent": -1,
                     "#": 36,
                     "Var.Type": "None",
@@ -612,8 +620,8 @@
                 {
                     "Type": "TVar",
                     "Name": "RndFloat",
-                    "Pos.x": 1080,
-                    "Pos.y": 100,
+                    "Pos.x": 270,
+                    "Pos.y": 125,
                     "Parent": -1,
                     "#": 37,
                     "Var.Type": "None",
@@ -623,8 +631,8 @@
                 {
                     "Type": "TVar",
                     "Name": "HoleStatus",
-                    "Pos.x": 1200,
-                    "Pos.y": 100,
+                    "Pos.x": 390,
+                    "Pos.y": 125,
                     "Parent": -1,
                     "#": 38,
                     "Var.Type": "None",
@@ -634,8 +642,8 @@
                 {
                     "Type": "TVar",
                     "Name": "FloatToString",
-                    "Pos.x": 1350,
-                    "Pos.y": 100,
+                    "Pos.x": 540,
+                    "Pos.y": 125,
                     "Parent": -1,
                     "#": 39,
                     "Var.Type": "None",
@@ -645,8 +653,8 @@
                 {
                     "Type": "TVar",
                     "Name": "PlanetItemsHiddency",
-                    "Pos.x": 1560,
-                    "Pos.y": 100,
+                    "Pos.x": 750,
+                    "Pos.y": 125,
                     "Parent": -1,
                     "#": 40,
                     "Var.Type": "None",
@@ -656,10 +664,21 @@
                 {
                     "Type": "TVar",
                     "Name": "OpenExternalLink",
-                    "Pos.x": 0,
+                    "Pos.x": 1020,
                     "Pos.y": 125,
                     "Parent": -1,
                     "#": 41,
+                    "Var.Type": "None",
+                    "Init": "",
+                    "Global": true
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "SetPlanetOrbitProbe",
+                    "Pos.x": 1260,
+                    "Pos.y": 125,
+                    "Parent": -1,
+                    "#": 42,
                     "Var.Type": "None",
                     "Init": "",
                     "Global": true
@@ -670,33 +689,58 @@
     "Visual.Links": [
         {
             "Type": "TGraphLink",
-            "Begin": 43,
-            "End": 42,
-            "Nom": 0,
-            "Arrow": true
-        },
-        {
-            "Type": "TGraphLink",
             "Begin": 44,
-            "End": 42,
+            "End": 43,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
             "Begin": 45,
-            "End": 44,
+            "End": 43,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 45,
-            "End": 48,
+            "Begin": 46,
+            "End": 45,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 46,
+            "End": 49,
             "Nom": 0,
             "Arrow": true
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_UtilityFunctionsPack\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

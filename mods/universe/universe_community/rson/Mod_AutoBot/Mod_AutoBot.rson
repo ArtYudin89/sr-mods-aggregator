@@ -6,6 +6,14 @@
     "ScriptName": "Mod_AutoBot",
     "ScriptFileOut": "D:\\Mod_AutoBot.scr",
     "ScriptTextOut": "D:\\Mod_AutoBot.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
@@ -14,7 +22,12 @@
             "Dialogs": [],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "PlayerGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 8,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -37,30 +50,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "InitPlanet",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 250,
-                    "Parent": -1,
-                    "#": 8
+                    "+State": 0
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 335,
+                    "Parent": -1,
+                    "#": 9,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 9,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 510
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 335,
+                    "Parent": -1,
+                    "#": 10,
                     "Code.Type": "Init",
                     "Code": [
                         "if(CurrentMods('Expansion\\\\ExpPanel')) IsExpPanelActive = 1;",
@@ -154,15 +167,15 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 10,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 510
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 335,
+                    "Parent": -1,
+                    "#": 11,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(IsAutoBotCheatOn)",
@@ -174,15 +187,15 @@
                         "",
                         "    if(CurrentForm() == 'StarMap') ButtonClick('StarMap', 'CenterShip');",
                         "}"
-                    ],
-                    "#": 11,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 510
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 17,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(IsAutoBotCheatOn == 1) {",
@@ -201,14 +214,15 @@
                         "  ChangeState(4);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 17,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 80
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 265,
+                    "Parent": -1,
+                    "#": 18,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ModAutoBot_TakeOffFlag) exit; //Временно лочим выставление приказов (т.к. это в любом случае будет приказ на взлёт) до завершения корректной процедуры взлёта корабля игрока",
@@ -221,14 +235,15 @@
                         "",
                         "ShipFreeFlight(CurShip);",
                         "if(ShipOrder(CurShip) == 5) OrderNone(CurShip); //Приказ бота на взлёт регулярно проверяется из акткода;"
-                    ],
-                    "#": 18,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 160
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 265,
+                    "Parent": -1,
+                    "#": 19,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ModAutoBot_TakeOffFlag) exit; //Временно лочим выставление приказов (т.к. это в любом случае будет приказ на взлёт) до завершения корректной процедуры взлёта корабля игрока",
@@ -256,14 +271,15 @@
                         "",
                         "ShipFreeFlight(CurShip);",
                         "if(ShipOrder(CurShip) == 5) OrderNone(CurShip); //Приказ бота на взлёт регулярно проверяется из акткода;"
-                    ],
-                    "#": 19,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 320
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 290,
+                    "Parent": -1,
+                    "#": 20,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ModAutoBot_TakeOffFlag) exit; //Временно лочим выставление приказов (т.к. это в любом случае будет приказ на взлёт) до завершения корректной процедуры взлёта корабля игрока",
@@ -291,14 +307,15 @@
                         "",
                         "ShipFreeFlight(CurShip);",
                         "if(ShipOrder(CurShip) == 5) OrderNone(CurShip); //Приказ бота на взлёт регулярно проверяется из акткода;"
-                    ],
-                    "#": 20,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 190,
+                    "Pos.y": 290,
+                    "Parent": -1,
+                    "#": 21,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ModAutoBot_TakeOffFlag) exit; //Временно лочим выставление приказов (т.к. это в любом случае будет приказ на взлёт) до завершения корректной процедуры взлёта корабля игрока",
@@ -326,17 +343,18 @@
                         "",
                         "ShipFreeFlight(CurShip);",
                         "if(ShipOrder(CurShip) == 5) OrderNone(CurShip); //Приказ бота на взлёт регулярно проверяется из акткода;"
-                    ],
-                    "#": 21,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 480
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "InitPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 7,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -344,17 +362,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "InitStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 160,
-                    "Parent": -1,
-                    "#": 7
+                    "+Star": "InitStar"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 6,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -373,123 +391,113 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "InitStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 70,
-                    "Parent": -1,
-                    "#": 6
+                    "+Star": "InitStar"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "InitStar",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "InitStar",
                     "Pos.x": 0,
-                    "Pos.y": 115,
+                    "Pos.y": 90,
                     "Parent": -1,
                     "#": 5,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "NormalState",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 12,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 12
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "AutoState",
+                    "Pos.x": 0,
+                    "Pos.y": 265,
+                    "Parent": -1,
+                    "#": 13,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "[t_OnItemPickUp,t_OnEnteringForm,t_OnStep|0]\r\nPlayerBotActCode();",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 90,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 13
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "AutoTraderState",
+                    "Pos.x": 150,
+                    "Pos.y": 265,
+                    "Parent": -1,
+                    "#": 14,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "[t_OnItemPickUp,t_OnEnteringForm,t_OnStep|0]\r\nPlayerBotActCode();",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 180,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 14
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "AutoPirateState",
+                    "Pos.x": 0,
+                    "Pos.y": 290,
+                    "Parent": -1,
+                    "#": 15,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "[t_OnItemPickUp,t_OnEnteringForm,t_OnStep|0]\r\nPlayerBotActCode();",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 270,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 15
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "AutoWarriorState",
+                    "Pos.x": 210,
+                    "Pos.y": 290,
+                    "Parent": -1,
+                    "#": 16,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "[t_OnItemPickUp,t_OnEnteringForm,t_OnStep|0]\r\nPlayerBotActCode();",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 360,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 16
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -529,7 +537,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_behavior",
-                    "Pos.x": 660,
+                    "Pos.x": 630,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 3,
@@ -540,7 +548,7 @@
                 {
                     "Type": "TVar",
                     "Name": "IsExpPanelActive",
-                    "Pos.x": 840,
+                    "Pos.x": 810,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 4,
@@ -617,5 +625,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_AutoBot\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

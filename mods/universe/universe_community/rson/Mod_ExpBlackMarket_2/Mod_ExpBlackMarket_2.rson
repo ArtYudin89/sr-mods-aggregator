@@ -6,15 +6,23 @@
     "ScriptName": "Mod_ExpBlackMarket_2",
     "ScriptFileOut": "D:\\Mod_ExpBlackMarket_2.scr",
     "ScriptTextOut": "D:\\Mod_ExpBlackMarket_2.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
             "DialogAnswers": [
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "restart",
                     "Pos.x": 0,
-                    "Pos.y": 590,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 580,
                     "Parent": -1,
                     "#": 61,
                     "Msg": "",
@@ -22,10 +30,10 @@
                     "_orig_danswer": "DAnswer('restart')"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "",
                     "Pos.x": 120,
-                    "Pos.y": 590,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 580,
                     "Parent": -1,
                     "#": 62,
                     "Msg": "",
@@ -33,10 +41,10 @@
                     "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_ExpBlackMarket_2.1\"),\"<0>\",str1))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "",
                     "Pos.x": 240,
-                    "Pos.y": 590,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 580,
                     "Parent": -1,
                     "#": 63,
                     "Msg": "",
@@ -44,10 +52,10 @@
                     "_orig_danswer": "DAnswer(Format(CT(\"Script.Mod_ExpBlackMarket_2.1\"),\"<0>\",str2))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "exit",
                     "Pos.x": 360,
-                    "Pos.y": 590,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 580,
                     "Parent": -1,
                     "#": 64,
                     "Msg": "",
@@ -55,10 +63,10 @@
                     "_orig_danswer": "DAnswer('exit')"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "restart",
                     "Pos.x": 480,
-                    "Pos.y": 590,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 580,
                     "Parent": -1,
                     "#": 65,
                     "Msg": "",
@@ -66,10 +74,10 @@
                     "_orig_danswer": "DAnswer('restart~'+Format(CT(\"Script.Mod_ExpBlackMarket_2.1\"),\"<0>\",str1))"
                 },
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "block",
                     "Pos.x": 600,
-                    "Pos.y": 590,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 580,
                     "Parent": -1,
                     "#": 66,
                     "Msg": "",
@@ -79,10 +87,10 @@
             ],
             "DialogMessages": [
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 0,
-                    "Pos.y": 520,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 510,
                     "Parent": -1,
                     "#": 57,
                     "Msg": "",
@@ -90,10 +98,10 @@
                     "_orig_dtext": "DText(CT(\"Script.Mod_ExpBlackMarket_2.0\"))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 150,
-                    "Pos.y": 520,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 510,
                     "Parent": -1,
                     "#": 58,
                     "Msg": "",
@@ -101,10 +109,10 @@
                     "_orig_dtext": "DText(Format(CT(\"Script.Mod_ExpBlackMarket_2.1\"),\"<0>\",str0))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 300,
-                    "Pos.y": 520,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 510,
                     "Parent": -1,
                     "#": 59,
                     "Msg": "",
@@ -112,10 +120,10 @@
                     "_orig_dtext": "DText(Format(CT(\"Script.Mod_ExpBlackMarket_2.1\"),\"<0>\",str3))"
                 },
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 450,
-                    "Pos.y": 520,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 510,
                     "Parent": -1,
                     "#": 60,
                     "Msg": "",
@@ -125,25 +133,30 @@
             ],
             "Dialogs": [
                 {
-                    "Name": "BMLock",
                     "Type": "TDialog",
+                    "Name": "BMLock",
                     "Pos.x": 0,
-                    "Pos.y": 450,
+                    "Pos.y": 440,
                     "Parent": -1,
                     "#": 55
                 },
                 {
-                    "Name": "BuyBMAccess",
                     "Type": "TDialog",
+                    "Name": "BuyBMAccess",
                     "Pos.x": 120,
-                    "Pos.y": 450,
+                    "Pos.y": 440,
                     "Parent": -1,
                     "#": 56
                 }
             ],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "BM",
+                    "Pos.x": 0,
+                    "Pos.y": 255,
+                    "Parent": -1,
+                    "#": 47,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -166,15 +179,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "InitPlanet",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 47
+                    "+State": 0
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "PlayerGroup",
+                    "Pos.x": 90,
+                    "Pos.y": 255,
+                    "Parent": -1,
+                    "#": 48,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -197,30 +210,33 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "InitPlanet",
-                    "+State": 1,
-                    "Type": "TGroup",
-                    "Pos.x": 90,
-                    "Pos.y": 325,
-                    "Parent": -1,
-                    "#": 48
+                    "+State": 1
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 650,
+                    "Parent": -1,
+                    "#": 49,
                     "Code.Type": "Global",
                     "Code": [
-                        "if(!GLastTurnRun(GScriptName)) GRun();"
-                    ],
-                    "#": 49,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 660
+                        "if(!GCntRun(GScriptName))",
+                        "{",
+                        "    GRun();",
+                        "}"
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 650,
+                    "Parent": -1,
+                    "#": 50,
                     "Code.Type": "Init",
                     "Code": [
                         "//Задаём стартовое имя для станции ЧР",
@@ -291,9 +307,9 @@
                         "",
                         "    OrderLock(BlackMarket, 1);",
                         "    //Переносим станцию на Меркурий, чтобы скрыть от назойливого поиска",
-                        "    TransferShip(BlackMarket, StarPlanets(GalaxyStar(2), 0));",
+                        "    TransferShip(BlackMarket, StarPlanets(GalaxyStar(People), 0));",
                         "",
-                        "    //Вешаем на ЧР вспомогательную инфошку для вывода уведомлений и автоматического переноса на меркурий после телепортации",
+                        "    //Вешаем на ЧР вспомогательную инфошку для вывода уведомлений и автоматического переноса на Меркурий после телепортации",
                         "    ShipAddCustomShipInfo(BlackMarket, 'BlackMarketJumpControlInfo', 'NoShow', 0, 0, 0, '');",
                         "    GBlackMarketId = Id(BlackMarket);",
                         "    result = BlackMarket;",
@@ -475,8 +491,10 @@
                         "            else if(GetMainData('Data.Script.' + str0) != '') ArrayAdd(tempArray, i);",
                         "        }",
                         "    }",
+                        "",
                         "    int1 = ArrayDim(tempArray);",
                         "    free(BMWeaponArray);",
+                        "",
                         "    //Внимание!!! Устройство данного массива довольно ебануто, так что вникайте на свой страх и риск! Закодил как смог.",
                         "    //Самый нулевой элемент (разделы [0, 0, 1-8]) используется под \"мету\" (число оборудования для каждого ГТУ)",
                         "    //Весь раздел [N, 0, 0-8] занят под информацию по основному орудию",
@@ -487,6 +505,7 @@
                         "    innerCount = 0;",
                         "    //Выстраиваем орудия в массиве по их ГТУ для последующей возможности удобной выборки при выставлении пушек в магазине",
                         "    tCheck = 1; //Проверка для исключения лишних проходов цикла, если все бонусы уже и так распределились по своим ГТУ",
+                        "",
                         "    while(GTL <= 8)",
                         "    {",
                         "        if(tCheck)",
@@ -656,6 +675,7 @@
                         "                else if(int0 > GTL) tCheck = 1;",
                         "            }",
                         "        }",
+                        "",
                         "        //Заносим сквозной счётчик в мету после каждого полного прохода списка орудий для конкретного ГТУ",
                         "        BMWeaponArray[0, 0, GTL] = innerCount;",
                         "        GTL = GTL + 1;",
@@ -758,6 +778,7 @@
                         "                else if(int0 > GTL) tCheck = 1;",
                         "            }",
                         "        }",
+                        "",
                         "        //Заносим сквозной счётчик в мету после каждого полного прохода списка артефактов для конкретного ГТУ",
                         "        BMArtsArray[0, GTL] = innerCount;",
                         "        GTL = GTL + 1;",
@@ -778,6 +799,7 @@
                         "            }",
                         "        }",
                         "    }",
+                        "",
                         "    int1 = ArrayDim(tempArray);",
                         "    free(BMModificationsArray);",
                         "    BMModificationsArray = newarray(int1, 9); //Нулевой элемент используется под \"мету\" (число наборов для каждого ГТУ)",
@@ -939,6 +961,75 @@
                         "",
                         "    result = set;",
                         "}",
+                        "",
+                        "//Принудительно открываем и выдаём игроку доступ к чёрному рынку в обход всех стандартных способов",
+                        "function g_OpenBlackMarketOverride(int BM_turn_count = 0, dword star_to_spawn = 0)",
+                        "{",
+                        "    //Выдаём игроку символический значок доступа и запускаем таймер до первого появления ЧР (также создаём сам ЧР, если нужно)",
+                        "    if(!CountRewardByNom(Player(), 48))",
+                        "    {",
+                        "        GiveRewardByNom(Player(), 48);",
+                        "    }",
+                        "",
+                        "    dword BlackMarket = GroupToShip(BM);",
+                        "    if(!BlackMarket) BlackMarket = SpawnBMStation(StarNearbyStars(ShipStar(Player()), 1), -1);",
+                        "",
+                        "    //Ставим в инфошку ЧР маркер, что рынок в данный момент закрыт",
+                        "    ShipCustomShipInfoData(BlackMarket, 'BlackMarketJumpControlInfo', 1, 1);",
+                        "    initEvent = 2;",
+                        "",
+                        "    //Делаем пометку для другого скрипта, чтобы исключить случайное исполнение сразу двух разных условий на получение доступа к ЧР (иначе всё, скорее всего, пошло бы криво-косо)",
+                        "    ExpBlackMarketGlobal = 1;",
+                        "",
+                        "    if(star_to_spawn)",
+                        "    {",
+                        "        BMIsOpen = 1;",
+                        "        TransferShip(BlackMarket, star_to_spawn);",
+                        "",
+                        "        //Вычисляем новые координаты для ЧР",
+                        "        int check = 0;",
+                        "        while(!check)",
+                        "        {",
+                        "            float angle = 0.01 * RndObject(0, 200, BlackMarket); //Вычислили угол",
+                        "",
+                        "            //Вычислили радиус",
+                        "            int coordX = PlanetOrbitRadius(StarPlanets(star_to_spawn, StarPlanets(star_to_spawn) - 1)) + RndObject(150, 400, BlackMarket); //Расстояние от самой дальней планеты",
+                        "            coordX = round(sin(angle * pi) * coordX); //Координата X",
+                        "            int coordY = round(cos(angle * pi) * coordX); //Координата Y",
+                        "    ",
+                        "            //Убеждаемся, что позиция ЧР не пересекается с позицией другой станции в системе",
+                        "            if(!StarRuins(star_to_spawn)) check = 1;",
+                        "            else for(int i = StarRuins(star_to_spawn) - 1; i >= 0; i = i - 1)",
+                        "            {",
+                        "                dword ruins = StarRuins(star_to_spawn, i);",
+                        "                if(DistCoords(CoordX(ruins), CoordY(ruins), coordX, coordY) > 200)",
+                        "                {",
+                        "                    check = 1;",
+                        "                    break;",
+                        "                }",
+                        "            }",
+                        "        }",
+                        "",
+                        "        ShipSetCoords(BlackMarket, coordX, coordY);",
+                        "    }",
+                        "",
+                        "    if(BM_turn_count)",
+                        "    {",
+                        "        BMTurnCount = BM_turn_count;",
+                        "    }",
+                        "    else",
+                        "    {",
+                        "        BMTurnCount = CurTurn() + RndObject(CT('BlackMarketShopList.BlackMarketTurnDelays.MinClosingAfterBuyAccessDays'), CT('BlackMarketShopList.BlackMarketTurnDelays.MaxClosingAfterBuyAccessDays'), BlackMarket);",
+                        "    }",
+                        "",
+                        "    result = BlackMarket;",
+                        "}",
+                        "",
+                        "//Принудительно открываем и выдаём игроку доступ к чёрному рынку в обход всех стандартных способов",
+                        "function g_SetBlackMarketTurnCount(int BM_turn_count)",
+                        "{",
+                        "    BMTurnCount = BM_turn_count;",
+                        "}",
                         "//Функция для заполнения магазинов ЧР различными товарами и оборудованием",
                         "function UpdateBMShop(shop)",
                         "{",
@@ -1093,7 +1184,6 @@
                         "                //Для транспортов и лайнеров вместо константы 200 используется 300 (а при продаже на БЦ даже 400), для дипломатов 50, а для всех остальных типов корпусов всегда 200",
                         "                int2 = min(int2, 1750) + RndObject(-50, 50, shop); //Ограничение до 1500, а то будут наращивать размеры до бесконечности",
                         "",
-                        "",
                         "                //Определяем базовый размер (по умолчанию рандомится для рейнджерских/пиратских)",
                         "                //if(GTL <= 3) int2 = RndObject(253, 356, shop);",
                         "                //else if(GTL == 4) int2 = RndObject(407, 537, shop);",
@@ -1114,8 +1204,10 @@
                         "                int3 = -1;",
                         "                int5 = BMHullsArray[itemNum, 4];",
                         "                while(!(int5 & (1 << int3))) int3 = RndObject(0, 7, shop);",
+                        "",
                         "                //Определяем возможную серию корпуса",
                         "                int4 = -1;",
+                        "",
                         "                //Сперва делаем бросок на шанс наложения серии в принципе",
                         "                if(RndObject(1, 100, shop) <= BMHullsArray[itemNum, 2])",
                         "                {",
@@ -1145,6 +1237,7 @@
                         "                                tCheck = 1;",
                         "                            }",
                         "                        }",
+                        "",
                         "                        //Выбираем случайную серию из возможных (если серия всего одна, то выберется она)",
                         "                        if(ArrayDim(tempArray) > 1)",
                         "                        {",
@@ -1153,20 +1246,22 @@
                         "                        }",
                         "                    }",
                         "                }",
+                        "",
                         "                //И вот, наконец, создаём корпус",
                         "                dwd1 = CreateHull(int1, int2, GTL, int3, int4, BMHullsArray[itemNum, 5]);",
                         "                //Накладываем на корпус его акрин",
                         "                SpecialToEquipment(int6, dwd1);",
                         "                //Если корпус оказался доминаторским, то выбираем и подставляем ему ещё и серию",
-                        "                if (int2 == 5)",
+                        "                if(int2 == 5)",
                         "                {",
                         "                    int6 = -1;",
                         "                    int5 = BMHullsArray[itemNum, 8];",
                         "                    while (!(int5 & (1 << int6)))int6 = RndObject(0, 2, shop);",
                         "                    ItemSubrace(dwd1, int6);",
                         "                }",
+                        "",
                         "                //После чего проверяем, будет ли на него установлена кастомная раса(ы)",
-                        "                if (RndObject(1, 100, shop) <= BMHullsArray[itemNum, 6])",
+                        "                if(RndObject(1, 100, shop) <= BMHullsArray[itemNum, 6])",
                         "                {",
                         "                    tCheck = 0;",
                         "                    str1 = BMHullsArray[itemNum, 7];",
@@ -1309,6 +1404,7 @@
                         "                    while(!(int5 & (1 << int6))) int6 = RndObject(0, 2, shop);",
                         "                    ItemSubrace(dwd1, int6);",
                         "                }",
+                        "",
                         "                //Приступаем к определению, будет ли в магазин добавлен обычный предмет, либо с акрином",
                         "                //Если бросок успешен (либо вместо акрина было задано 'None'), добавляем готовое неакринированное оборудование в магазин",
                         "                if(RndObject(1, 100, shop) <= int4 || BMEquipmentArray[itemNum, 0] == 'None') AddItemToShop(shop, dwd1);",
@@ -1951,15 +2047,15 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 50,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 660
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 650,
+                    "Parent": -1,
+                    "#": 51,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ShipIsTakeoff(Player())) {",
@@ -2141,6 +2237,7 @@
                         "      else",
                         "      {",
                         "          BlackMarket = GroupToShip(BM);",
+                        "  ",
                         "          //Если ЧР ещё жив",
                         "          if(BlackMarket)",
                         "          {",
@@ -2378,15 +2475,15 @@
                         "    }",
                         "  }",
                         "}"
-                    ],
-                    "#": 51,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 660
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 650,
+                    "Parent": -1,
+                    "#": 52,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "dword cur_ruin = GetShipRuins(Player());",
@@ -2444,28 +2541,28 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 52,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 180,
-                    "Pos.y": 660
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 67,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(0);",
                         "exit;"
-                    ],
-                    "#": 67,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 450
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 440,
+                    "Parent": -1,
+                    "#": 68,
                     "Code.Type": "Turn",
                     "Code": [
                         "str0 = '</color>' + Format(CT('Script.Mod_ExpBlackMarket_2.BMAccessExplain'), '#0#', int6);",
@@ -2474,27 +2571,27 @@
                         "str3 = '</color>' + CT('Script.Mod_ExpBlackMarket_2.BMAccessAsYourWish');",
                         "DChange(1);",
                         "exit;"
-                    ],
-                    "#": 68,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 100,
-                    "Pos.y": 450
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 510,
+                    "Parent": -1,
+                    "#": 69,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);"
-                    ],
-                    "#": 69,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 520
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 510,
+                    "Parent": -1,
+                    "#": 70,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipMoney(Player()) >= int6) {",
@@ -2504,39 +2601,39 @@
                         "  DAdd(5);",
                         "}",
                         "DAdd(2);"
-                    ],
-                    "#": 70,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 130,
-                    "Pos.y": 520
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 280,
+                    "Pos.y": 510,
+                    "Parent": -1,
+                    "#": 71,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(3);"
-                    ],
-                    "#": 71,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 280,
-                    "Pos.y": 520
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 430,
+                    "Pos.y": 510,
+                    "Parent": -1,
+                    "#": 72,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(4);"
-                    ],
-                    "#": 72,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 430,
-                    "Pos.y": 520
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 580,
+                    "Parent": -1,
+                    "#": 73,
                     "Code.Type": "Turn",
                     "Code": [
                         "ShipMoney(Player(), ShipMoney(Player()) - int6);",
@@ -2555,31 +2652,31 @@
                         "str1 = '</color>' + CT('Script.Mod_ExpBlackMarket_2.BMAccessThanks');",
                         "DChange(3);",
                         "exit;"
-                    ],
-                    "#": 73,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 100,
-                    "Pos.y": 590
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 220,
+                    "Pos.y": 580,
+                    "Parent": -1,
+                    "#": 74,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(2);",
                         "exit;"
-                    ],
-                    "#": 74,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 220,
-                    "Pos.y": 590
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "InitPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 210,
+                    "Parent": -1,
+                    "#": 46,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -2587,17 +2684,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "InitStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 235,
-                    "Parent": -1,
-                    "#": 46
+                    "+Star": "InitStar"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 120,
+                    "Parent": -1,
+                    "#": 45,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -2616,66 +2713,59 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "InitStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 145,
-                    "Parent": -1,
-                    "#": 45
+                    "+Star": "InitStar"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "InitStar",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "InitStar",
                     "Pos.x": 0,
-                    "Pos.y": 190,
+                    "Pos.y": 165,
                     "Parent": -1,
                     "#": 44,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "BMState",
+                    "Pos.x": 0,
+                    "Pos.y": 280,
+                    "Parent": -1,
+                    "#": 53,
                     "Move": 5,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 350,
-                    "Parent": -1,
-                    "#": 53
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "PlayerState",
+                    "Pos.x": 90,
+                    "Pos.y": 280,
+                    "Parent": -1,
+                    "#": 54,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 90,
-                    "Pos.y": 350,
-                    "Parent": -1,
-                    "#": 54
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -2770,8 +2860,8 @@
                 {
                     "Type": "TVar",
                     "Name": "BMModificationsArray",
-                    "Pos.x": 1650,
-                    "Pos.y": 0,
+                    "Pos.x": 0,
+                    "Pos.y": 25,
                     "Parent": -1,
                     "#": 8,
                     "Var.Type": "Array",
@@ -2781,7 +2871,7 @@
                 {
                     "Type": "TVar",
                     "Name": "flt",
-                    "Pos.x": 0,
+                    "Pos.x": 300,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 9,
@@ -2792,7 +2882,7 @@
                 {
                     "Type": "TVar",
                     "Name": "flt2",
-                    "Pos.x": 90,
+                    "Pos.x": 360,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 10,
@@ -2803,7 +2893,7 @@
                 {
                     "Type": "TVar",
                     "Name": "int0",
-                    "Pos.x": 180,
+                    "Pos.x": 420,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 11,
@@ -2814,7 +2904,7 @@
                 {
                     "Type": "TVar",
                     "Name": "int1",
-                    "Pos.x": 270,
+                    "Pos.x": 480,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 12,
@@ -2825,7 +2915,7 @@
                 {
                     "Type": "TVar",
                     "Name": "int2",
-                    "Pos.x": 360,
+                    "Pos.x": 540,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 13,
@@ -2836,7 +2926,7 @@
                 {
                     "Type": "TVar",
                     "Name": "int3",
-                    "Pos.x": 450,
+                    "Pos.x": 600,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 14,
@@ -2847,7 +2937,7 @@
                 {
                     "Type": "TVar",
                     "Name": "int5",
-                    "Pos.x": 540,
+                    "Pos.x": 660,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 15,
@@ -2858,7 +2948,7 @@
                 {
                     "Type": "TVar",
                     "Name": "int4",
-                    "Pos.x": 630,
+                    "Pos.x": 720,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 16,
@@ -2869,7 +2959,7 @@
                 {
                     "Type": "TVar",
                     "Name": "dwd0",
-                    "Pos.x": 720,
+                    "Pos.x": 780,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 17,
@@ -2880,7 +2970,7 @@
                 {
                     "Type": "TVar",
                     "Name": "int6",
-                    "Pos.x": 810,
+                    "Pos.x": 840,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 18,
@@ -2902,7 +2992,7 @@
                 {
                     "Type": "TVar",
                     "Name": "dwd2",
-                    "Pos.x": 990,
+                    "Pos.x": 960,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 20,
@@ -2913,7 +3003,7 @@
                 {
                     "Type": "TVar",
                     "Name": "str0",
-                    "Pos.x": 1080,
+                    "Pos.x": 1020,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 21,
@@ -2924,7 +3014,7 @@
                 {
                     "Type": "TVar",
                     "Name": "str1",
-                    "Pos.x": 1170,
+                    "Pos.x": 1080,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 22,
@@ -2935,7 +3025,7 @@
                 {
                     "Type": "TVar",
                     "Name": "str3",
-                    "Pos.x": 1260,
+                    "Pos.x": 1140,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 23,
@@ -2946,7 +3036,7 @@
                 {
                     "Type": "TVar",
                     "Name": "str2",
-                    "Pos.x": 1350,
+                    "Pos.x": 1200,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 24,
@@ -2957,7 +3047,7 @@
                 {
                     "Type": "TVar",
                     "Name": "GTL",
-                    "Pos.x": 1440,
+                    "Pos.x": 1260,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 25,
@@ -2968,7 +3058,7 @@
                 {
                     "Type": "TVar",
                     "Name": "GTL_M",
-                    "Pos.x": 1530,
+                    "Pos.x": 1320,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 26,
@@ -2979,7 +3069,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tCheck",
-                    "Pos.x": 1620,
+                    "Pos.x": 1410,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 27,
@@ -2990,7 +3080,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tCheck_M",
-                    "Pos.x": 1710,
+                    "Pos.x": 1500,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 28,
@@ -3045,7 +3135,7 @@
                 {
                     "Type": "TVar",
                     "Name": "j",
-                    "Pos.x": 480,
+                    "Pos.x": 450,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 33,
@@ -3056,7 +3146,7 @@
                 {
                     "Type": "TVar",
                     "Name": "innerCount",
-                    "Pos.x": 570,
+                    "Pos.x": 510,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 34,
@@ -3067,7 +3157,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tempArray",
-                    "Pos.x": 720,
+                    "Pos.x": 660,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 35,
@@ -3078,7 +3168,7 @@
                 {
                     "Type": "TVar",
                     "Name": "BlackMarket",
-                    "Pos.x": 870,
+                    "Pos.x": 810,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 36,
@@ -3089,7 +3179,7 @@
                 {
                     "Type": "TVar",
                     "Name": "initEvent",
-                    "Pos.x": 1050,
+                    "Pos.x": 990,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 37,
@@ -3100,7 +3190,7 @@
                 {
                     "Type": "TVar",
                     "Name": "BMIsOpen",
-                    "Pos.x": 1200,
+                    "Pos.x": 1140,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 38,
@@ -3111,7 +3201,7 @@
                 {
                     "Type": "TVar",
                     "Name": "BMCurStar",
-                    "Pos.x": 1320,
+                    "Pos.x": 1260,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 39,
@@ -3122,7 +3212,7 @@
                 {
                     "Type": "TVar",
                     "Name": "BMLastStar",
-                    "Pos.x": 1470,
+                    "Pos.x": 1410,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 40,
@@ -3133,7 +3223,7 @@
                 {
                     "Type": "TVar",
                     "Name": "BlackMarketStorageCount",
-                    "Pos.x": 1620,
+                    "Pos.x": 1560,
                     "Pos.y": 50,
                     "Parent": -1,
                     "#": 41,
@@ -3267,5 +3357,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_ExpBlackMarket_2\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

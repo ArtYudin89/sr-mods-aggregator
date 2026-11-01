@@ -6,15 +6,23 @@
     "ScriptName": "Mod_EvoComfyCamo",
     "ScriptFileOut": "D:\\Mod_EvoComfyCamo.scr",
     "ScriptTextOut": "D:\\Mod_EvoComfyCamo.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
             "DialogAnswers": [
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "fastexit",
                     "Pos.x": 0,
-                    "Pos.y": 515,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 505,
                     "Parent": -1,
                     "#": 15,
                     "Msg": "",
@@ -24,10 +32,10 @@
             ],
             "DialogMessages": [
                 {
+                    "Type": "TDialogMsg",
                     "Name": "",
                     "Pos.x": 0,
-                    "Pos.y": 445,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 435,
                     "Parent": -1,
                     "#": 14,
                     "Msg": "",
@@ -37,17 +45,22 @@
             ],
             "Dialogs": [
                 {
-                    "Name": "OnConfusedDialog",
                     "Type": "TDialog",
+                    "Name": "OnConfusedDialog",
                     "Pos.x": 0,
-                    "Pos.y": 375,
+                    "Pos.y": 365,
                     "Parent": -1,
                     "#": 13
                 }
             ],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "PlayerGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 8,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -70,30 +83,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "InitPlanet",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 250,
-                    "Parent": -1,
-                    "#": 8
+                    "+State": 0
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 9,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 9,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 585
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 10,
                     "Code.Type": "Init",
                     "Code": [
                         "function PlayerActCode() //t_OnChameleonConfusion",
@@ -129,15 +142,15 @@
                         "",
                         "    confusedShip = cur_ship;",
                         "}"
-                    ],
-                    "#": 10,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 585
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 11,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "dword cur_ship = GetTalkShip();",
@@ -160,15 +173,15 @@
                         "        AddDialogInject('OnConfusedDialog', add_text, 'BlockedAnswer', 0);",
                         "    }",
                         "}"
-                    ],
-                    "#": 11,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 180,
-                    "Pos.y": 585
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 365,
+                    "Parent": -1,
+                    "#": 16,
                     "Code.Type": "Turn",
                     "Code": [
                         "dword cur_ship = GetTalkShip();",
@@ -194,30 +207,30 @@
                         "confusedShip = 0;",
                         "DChange(0);",
                         "exit;"
-                    ],
-                    "#": 16,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 375
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 17,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);"
-                    ],
-                    "#": 17,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 445
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "InitPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 7,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -225,17 +238,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "InitStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 160,
-                    "Parent": -1,
-                    "#": 7
+                    "+Star": "InitStar"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 6,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -254,47 +267,41 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "InitStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 70,
-                    "Parent": -1,
-                    "#": 6
+                    "+Star": "InitStar"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "InitStar",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "InitStar",
                     "Pos.x": 0,
-                    "Pos.y": 115,
+                    "Pos.y": 90,
                     "Parent": -1,
                     "#": 5,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "PlayerState",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 12,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "[t_OnChameleonConfusion|]\r\nPlayerActCode();",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 12
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -401,5 +408,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_EvoComfyCamo\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

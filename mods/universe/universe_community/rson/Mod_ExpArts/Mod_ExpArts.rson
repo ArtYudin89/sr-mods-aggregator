@@ -6,6 +6,14 @@
     "ScriptName": "Mod_ExpArts",
     "ScriptFileOut": "D:\\Mod_ExpArts.scr",
     "ScriptTextOut": "D:\\Mod_ExpArts.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
@@ -14,7 +22,12 @@
             "Dialogs": [],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "PlayerGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 15,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -37,30 +50,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "InitPlanet",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 250,
-                    "Parent": -1,
-                    "#": 15
+                    "+State": 0
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 310,
+                    "Parent": -1,
+                    "#": 16,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 16,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 510
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 310,
+                    "Parent": -1,
+                    "#": 17,
                     "Code.Type": "Init",
                     "Code": [
                         "//Этот список полезен для быстрого получения имён артов из других модов",
@@ -290,15 +303,15 @@
                         "",
                         "ArrayClear(tarr1);",
                         "tin4 = 4;"
-                    ],
-                    "#": 17,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 510
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 310,
+                    "Parent": -1,
+                    "#": 18,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ShipIsTakeoff(Player())) {",
@@ -409,18 +422,18 @@
                         "  //Стартовый счётчик",
                         "  else if(!ShipIsTakeoff(Player())) tin4 = tin4 - 1;",
                         "}"
-                    ],
-                    "#": 18,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 510
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "InitPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 14,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -428,17 +441,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "InitStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 160,
-                    "Parent": -1,
-                    "#": 14
+                    "+Star": "InitStar"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 13,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -457,47 +470,41 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "InitStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 70,
-                    "Parent": -1,
-                    "#": 13
+                    "+Star": "InitStar"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "InitStar",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "InitStar",
                     "Pos.x": 0,
-                    "Pos.y": 115,
+                    "Pos.y": 90,
                     "Parent": -1,
                     "#": 12,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "PlayerState",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 19,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 19
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -515,7 +522,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tst",
-                    "Pos.x": 90,
+                    "Pos.x": 60,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 1,
@@ -526,7 +533,7 @@
                 {
                     "Type": "TVar",
                     "Name": "i",
-                    "Pos.x": 180,
+                    "Pos.x": 120,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 2,
@@ -537,7 +544,7 @@
                 {
                     "Type": "TVar",
                     "Name": "j",
-                    "Pos.x": 270,
+                    "Pos.x": 180,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 3,
@@ -548,7 +555,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tin2",
-                    "Pos.x": 360,
+                    "Pos.x": 240,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 4,
@@ -559,7 +566,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tin3",
-                    "Pos.x": 450,
+                    "Pos.x": 300,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 5,
@@ -570,7 +577,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tin4",
-                    "Pos.x": 540,
+                    "Pos.x": 360,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 6,
@@ -581,7 +588,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tin5",
-                    "Pos.x": 630,
+                    "Pos.x": 420,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 7,
@@ -592,7 +599,7 @@
                 {
                     "Type": "TVar",
                     "Name": "CustomArtsLangNames",
-                    "Pos.x": 720,
+                    "Pos.x": 480,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 8,
@@ -603,7 +610,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tarr1",
-                    "Pos.x": 990,
+                    "Pos.x": 750,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 9,
@@ -614,7 +621,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_item",
-                    "Pos.x": 1080,
+                    "Pos.x": 840,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 10,
@@ -625,7 +632,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_ship",
-                    "Pos.x": 1200,
+                    "Pos.x": 960,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 11,
@@ -667,5 +674,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_ExpArts\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

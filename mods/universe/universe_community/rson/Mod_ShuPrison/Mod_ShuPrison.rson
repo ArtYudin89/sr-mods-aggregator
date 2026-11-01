@@ -6,6 +6,14 @@
     "ScriptName": "Mod_ShuPrison",
     "ScriptFileOut": "D:\\Mod_ShuPrison.scr",
     "ScriptTextOut": "D:\\Mod_ShuPrison.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
@@ -14,7 +22,12 @@
             "Dialogs": [],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "PlayerGroup",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 16,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -37,30 +50,30 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "InitPlanet",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 0,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 16
+                    "+State": 0
                 }
             ],
             "Items": [],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 335,
+                    "Parent": -1,
+                    "#": 17,
                     "Code.Type": "Global",
                     "Code": [
                         "GRun();"
-                    ],
-                    "#": 17,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 535
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 335,
+                    "Parent": -1,
+                    "#": 18,
                     "Code.Type": "Init",
                     "Code": [
                         "//Задаём игроку стартовые параметры силы и ума",
@@ -233,15 +246,15 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 18,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 535
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 335,
+                    "Parent": -1,
+                    "#": 19,
                     "Code.Type": "Turn",
                     "Code": [
                         "i = BuildListOfNewShips(tarr1, 0, 2+8, 1+2+4+8+16+128, 1, ',SubFactionPlayerMercsFixedStanding', ',Rebel,PirateRunner,Thug,Khan,RangerExplorer,RangerPirate,RangerPirateExplorer,Merc,PlayerMerc,Freelancer');",
@@ -302,18 +315,18 @@
                         "        }",
                         "    }",
                         "}"
-                    ],
-                    "#": 19,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 535
+                    ]
                 }
             ],
             "Places": [],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "InitPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 160,
+                    "Parent": -1,
+                    "#": 15,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -321,17 +334,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "InitStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 185,
-                    "Parent": -1,
-                    "#": 15
+                    "+Star": "InitStar"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 14,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -350,47 +363,41 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "InitStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 95,
-                    "Parent": -1,
-                    "#": 14
+                    "+Star": "InitStar"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "InitStar",
-                    "Priority": 0,
-                    "NoKling": false,
-                    "NoComeKling": false,
                     "Type": "TStar",
+                    "Name": "InitStar",
                     "Pos.x": 0,
-                    "Pos.y": 140,
+                    "Pos.y": 115,
                     "Parent": -1,
                     "#": 13,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "PlayerState",
+                    "Pos.x": 0,
+                    "Pos.y": 230,
+                    "Parent": -1,
+                    "#": 20,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "[t_OnEnteringForm,t_OnLeavingForm,t_OnStep|11]\r\nPlayerActCode();",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 20
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -452,7 +459,7 @@
                 {
                     "Type": "TVar",
                     "Name": "rand",
-                    "Pos.x": 90,
+                    "Pos.x": 60,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 5,
@@ -463,7 +470,7 @@
                 {
                     "Type": "TVar",
                     "Name": "penalty",
-                    "Pos.x": 180,
+                    "Pos.x": 120,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 6,
@@ -474,7 +481,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_ship",
-                    "Pos.x": 300,
+                    "Pos.x": 240,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 7,
@@ -485,7 +492,7 @@
                 {
                     "Type": "TVar",
                     "Name": "j",
-                    "Pos.x": 420,
+                    "Pos.x": 360,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 8,
@@ -496,7 +503,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tarr1",
-                    "Pos.x": 510,
+                    "Pos.x": 420,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 9,
@@ -507,7 +514,7 @@
                 {
                     "Type": "TVar",
                     "Name": "cur_planet",
-                    "Pos.x": 600,
+                    "Pos.x": 510,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 10,
@@ -518,7 +525,7 @@
                 {
                     "Type": "TVar",
                     "Name": "last_turn_in_prison",
-                    "Pos.x": 750,
+                    "Pos.x": 660,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 11,
@@ -529,7 +536,7 @@
                 {
                     "Type": "TVar",
                     "Name": "CockroachesArray",
-                    "Pos.x": 1020,
+                    "Pos.x": 930,
                     "Pos.y": 25,
                     "Parent": -1,
                     "#": 12,
@@ -571,5 +578,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_ShuPrison\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

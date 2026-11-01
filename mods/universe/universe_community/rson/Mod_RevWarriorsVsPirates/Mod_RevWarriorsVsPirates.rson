@@ -6,15 +6,23 @@
     "ScriptName": "Mod_RevWarriorsVsPirates",
     "ScriptFileOut": "D:\\Mod_RevWarriorsVsPirates.scr",
     "ScriptTextOut": "D:\\Mod_RevWarriorsVsPirates.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
     "Visual.Objects": [
         {
             "ConstellationCount": 0,
             "DialogAnswers": [
                 {
+                    "Type": "TDialogAnswer",
                     "Name": "hangar",
                     "Pos.x": 0,
-                    "Pos.y": 540,
-                    "Type": "TDialogAnswer",
+                    "Pos.y": 645,
                     "Parent": -1,
                     "#": 46,
                     "Msg": "",
@@ -24,10 +32,10 @@
             ],
             "DialogMessages": [
                 {
+                    "Type": "TDialogMsg",
                     "Name": "DialogMsg1",
                     "Pos.x": 0,
-                    "Pos.y": 470,
-                    "Type": "TDialogMsg",
+                    "Pos.y": 575,
                     "Parent": -1,
                     "#": 45,
                     "Msg": "",
@@ -37,17 +45,22 @@
             ],
             "Dialogs": [
                 {
-                    "Name": "DialogWBSpecial",
                     "Type": "TDialog",
+                    "Name": "DialogWBSpecial",
                     "Pos.x": 0,
-                    "Pos.y": 400,
+                    "Pos.y": 505,
                     "Parent": -1,
                     "#": 44
                 }
             ],
             "Groups": [
                 {
+                    "Type": "TGroup",
                     "Name": "Warriors",
+                    "Pos.x": 0,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 29,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -70,15 +83,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "CoalPlanet",
-                    "+State": 0,
-                    "Type": "TGroup",
-                    "Pos.x": 80,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 29
+                    "+State": 0
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "Pirates",
+                    "Pos.x": 120,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 30,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 0,
@@ -101,15 +114,15 @@
                     "StrengthMax": "0",
                     "Ruins": "",
                     "+Planet": "PiratePlanet",
-                    "+State": 3,
-                    "Type": "TGroup",
-                    "Pos.x": 90,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 30
+                    "+State": 3
                 },
                 {
+                    "Type": "TGroup",
                     "Name": "WarBase",
+                    "Pos.x": 240,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 31,
                     "Owner": 62,
                     "Group.Type": 1,
                     "CntShipMin": 0,
@@ -132,18 +145,17 @@
                     "StrengthMax": "0",
                     "Ruins": "WB",
                     "+Planet": "CoalPlanet",
-                    "+State": 2,
-                    "Type": "TGroup",
-                    "Pos.x": 180,
-                    "Pos.y": 275,
-                    "Parent": -1,
-                    "#": 31
+                    "+State": 2
                 }
             ],
             "Items": [
                 {
                     "Type": "TItem",
                     "Name": "qBomb1",
+                    "Pos.x": 0,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 26,
                     "Class": 5,
                     "Item.Type": 0,
                     "Size": 10,
@@ -151,15 +163,15 @@
                     "Radius": 150,
                     "Owner": 6,
                     "Useless": "",
-                    "+Place": "",
-                    "Pos.x": 0,
-                    "Pos.y": 230,
-                    "Parent": -1,
-                    "#": 26
+                    "+Place": ""
                 },
                 {
                     "Type": "TItem",
                     "Name": "qBomb2",
+                    "Pos.x": 90,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 27,
                     "Class": 5,
                     "Item.Type": 0,
                     "Size": 10,
@@ -167,15 +179,15 @@
                     "Radius": 150,
                     "Owner": 6,
                     "Useless": "",
-                    "+Place": "",
-                    "Pos.x": 90,
-                    "Pos.y": 230,
-                    "Parent": -1,
-                    "#": 27
+                    "+Place": ""
                 },
                 {
                     "Type": "TItem",
                     "Name": "qBomb3",
+                    "Pos.x": 180,
+                    "Pos.y": 250,
+                    "Parent": -1,
+                    "#": 28,
                     "Class": 5,
                     "Item.Type": 0,
                     "Size": 10,
@@ -183,31 +195,32 @@
                     "Radius": 150,
                     "Owner": 6,
                     "Useless": "",
-                    "+Place": "",
-                    "Pos.x": 180,
-                    "Pos.y": 230,
-                    "Parent": -1,
-                    "#": 28
+                    "+Place": ""
                 }
             ],
             "Operations": [
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 715,
+                    "Parent": -1,
+                    "#": 32,
                     "Code.Type": "Global",
                     "Code": [
                         "if(PirateWin() != 3 && PirateWin() != 4)",
                         "{",
                         "    if(GLastTurnRun(GScriptName) + 2430 < CurTurn()) GRun();",
                         "}"
-                    ],
-                    "#": 32,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 0,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 715,
+                    "Parent": -1,
+                    "#": 33,
                     "Code.Type": "Init",
                     "Code": [
                         "//В игре расчет углов через функции идет от оси Y (!) по часовой стрелке (!!)",
@@ -221,15 +234,15 @@
                         "",
                         "    result = a;",
                         "}"
-                    ],
-                    "#": 33,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 60,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 715,
+                    "Parent": -1,
+                    "#": 34,
                     "Code.Type": "Turn",
                     "Code": [
                         "//Значения переменной sst:",
@@ -621,58 +634,60 @@
                         "        if(sst == 1) sst = 2;",
                         "    }",
                         "}"
-                    ],
-                    "#": 34,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 120,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 715,
+                    "Parent": -1,
+                    "#": 35,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "if(GetShipRuins(Player()))",
                         "{",
                         "    if(GetShipRuins(Player()) == GroupToShip(WarBase) && GroupCount(Pirates)) AddDialogOverride('DialogWBSpecial', 10);",
                         "}"
-                    ],
-                    "#": 35,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 180,
-                    "Pos.y": 610
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 320,
+                    "Parent": -1,
+                    "#": 47,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(ShipInNormalSpace(GroupToShip(Pirates)) && CountIn(Pirates, CoalStar)) {",
                         "  ChangeState(1);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 47,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 80
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 380,
+                    "Parent": -1,
+                    "#": 48,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!GroupCount(Pirates)) {",
                         "  ChangeState(7);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 48,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 160
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 220,
+                    "Pos.y": 320,
+                    "Parent": -1,
+                    "#": 49,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!GroupCount(Pirates) && sst) {",
@@ -699,28 +714,30 @@
                         "  ChangeState(4);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 49,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 240
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 320,
+                    "Parent": -1,
+                    "#": 50,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!GroupCount(Warriors)) {",
                         "  ChangeState(5);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 50,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 320
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 160,
+                    "Pos.y": 380,
+                    "Parent": -1,
+                    "#": 51,
                     "Code.Type": "Turn",
                     "Code": [
                         "//Вычисляем точку сброса бомбы",
@@ -844,14 +861,15 @@
                         "        ShipOut(CurShip);",
                         "    }",
                         "}"
-                    ],
-                    "#": 51,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 280,
+                    "Pos.y": 380,
+                    "Parent": -1,
+                    "#": 52,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!GroupCount(WarBase) && !GroupCount(Warriors)) {",
@@ -862,38 +880,41 @@
                         "  ChangeState(6);",
                         "  exit;",
                         "}"
-                    ],
-                    "#": 52,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 480
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 405,
+                    "Parent": -1,
+                    "#": 53,
                     "Code.Type": "Turn",
                     "Code": [
                         "//Пираты выполнили свой долг, время уйти на покой",
                         "if(ShipInHyperSpace(CurShip)) ShipDestroy(CurShip);"
-                    ],
-                    "#": 53,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 560
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": 220,
+                    "Pos.y": 405,
+                    "Parent": -1,
+                    "#": 54,
                     "Code.Type": "Turn",
                     "Code": [
                         "//Выводим из скрипта военных, если они выжили",
                         "if(EndState) ShipOut(CurShip);"
-                    ],
-                    "#": 54,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": 640
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 505,
+                    "Parent": -1,
+                    "#": 55,
                     "Code.Type": "Turn",
                     "Code": [
                         "tStr1 = '</color>' + CT('Script.Mod_RevWarriorsVsPirates.D1');",
@@ -901,24 +922,19 @@
                         "SkipGreeting();",
                         "DChange(0);",
                         "exit;"
-                    ],
-                    "#": 55,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 400
+                    ]
                 },
                 {
+                    "Type": "Top",
                     "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 575,
+                    "Parent": -1,
+                    "#": 56,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);"
-                    ],
-                    "#": 56,
-                    "Type": "Top",
-                    "Parent": -1,
-                    "Pos.x": -20,
-                    "Pos.y": 470
+                    ]
                 }
             ],
             "Places": [
@@ -926,7 +942,7 @@
                     "Type": "TPlace",
                     "Name": "RetreatPoint",
                     "Pos.x": 0,
-                    "Pos.y": 275,
+                    "Pos.y": 160,
                     "Parent": -1,
                     "#": 25,
                     "Place.Type": 3,
@@ -940,7 +956,12 @@
             ],
             "Planets": [
                 {
+                    "Type": "TPlanet",
                     "Name": "CoalPlanet",
+                    "Pos.x": 0,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 23,
                     "Race": 63,
                     "Owner": 63,
                     "Economy": 14,
@@ -948,15 +969,15 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "CoalStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 0,
-                    "Pos.y": 185,
-                    "Parent": -1,
-                    "#": 23
+                    "+Star": "CoalStar"
                 },
                 {
+                    "Type": "TPlanet",
                     "Name": "PiratePlanet",
+                    "Pos.x": 90,
+                    "Pos.y": 205,
+                    "Parent": -1,
+                    "#": 24,
                     "Race": 63,
                     "Owner": 63,
                     "Economy": 14,
@@ -964,17 +985,17 @@
                     "RangeMin": 0,
                     "RangeMax": 100,
                     "Dialog": -1,
-                    "+Star": "PirateStar",
-                    "Type": "TPlanet",
-                    "Pos.x": 90,
-                    "Pos.y": 185,
-                    "Parent": -1,
-                    "#": 24
+                    "+Star": "PirateStar"
                 }
             ],
             "Ships": [
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 21,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -993,15 +1014,15 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "",
-                    "+Star": "CoalStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 0,
-                    "Pos.y": 95,
-                    "Parent": -1,
-                    "#": 21
+                    "+Star": "CoalStar"
                 },
                 {
+                    "Type": "TStarShip",
                     "Name": "",
+                    "Pos.x": 90,
+                    "Pos.y": 70,
+                    "Parent": -1,
+                    "#": 22,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 1,
@@ -1020,62 +1041,61 @@
                     "StrengthMin": "0",
                     "StrengthMax": "0",
                     "Ruins": "WB",
-                    "+Star": "CoalStar",
-                    "Type": "TStarShip",
-                    "Pos.x": 90,
-                    "Pos.y": 95,
-                    "Parent": -1,
-                    "#": 22
+                    "+Star": "CoalStar"
                 }
             ],
             "Stars": [
                 {
-                    "Name": "CoalStar",
-                    "Priority": 0,
-                    "NoKling": true,
-                    "NoComeKling": true,
                     "Type": "TStar",
+                    "Name": "CoalStar",
                     "Pos.x": 0,
-                    "Pos.y": 140,
+                    "Pos.y": 115,
                     "Parent": -1,
                     "#": 19,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": true,
+                    "NoComeKling": true
                 },
                 {
-                    "Name": "PirateStar",
-                    "Priority": 1,
-                    "NoKling": true,
-                    "NoComeKling": true,
                     "Type": "TStar",
+                    "Name": "PirateStar",
                     "Pos.x": 90,
-                    "Pos.y": 140,
+                    "Pos.y": 115,
                     "Parent": -1,
                     "#": 20,
-                    "Constellation": 0
+                    "Constellation": 0,
+                    "Priority": 1,
+                    "NoKling": true,
+                    "NoComeKling": true
                 }
             ],
             "States": [
                 {
+                    "Type": "TState",
                     "Name": "DoNothing",
+                    "Pos.x": 0,
+                    "Pos.y": 320,
+                    "Parent": -1,
+                    "#": 36,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 0,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 36
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Interception",
+                    "Pos.x": 0,
+                    "Pos.y": 380,
+                    "Parent": -1,
+                    "#": 37,
                     "Move": 2,
                     "MoveObj": 30,
                     "Attack.Count": 1,
@@ -1090,15 +1110,15 @@
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 90,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 37
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "WBState",
+                    "Pos.x": 240,
+                    "Pos.y": 320,
+                    "Parent": -1,
+                    "#": 38,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 1,
@@ -1113,15 +1133,15 @@
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 180,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 38
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "AttackWarriors",
+                    "Pos.x": 120,
+                    "Pos.y": 320,
+                    "Parent": -1,
+                    "#": 39,
                     "Move": 2,
                     "MoveObj": 29,
                     "Attack.Count": 1,
@@ -1136,15 +1156,15 @@
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 270,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 39
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "Retreat",
+                    "Pos.x": 180,
+                    "Pos.y": 380,
+                    "Parent": -1,
+                    "#": 40,
                     "Move": 1,
                     "MoveObj": 25,
                     "Attack.Count": 1,
@@ -1159,15 +1179,15 @@
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 360,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 40
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "AttackWB",
+                    "Pos.x": 300,
+                    "Pos.y": 380,
+                    "Parent": -1,
+                    "#": 41,
                     "Move": 2,
                     "MoveObj": 31,
                     "Attack.Count": 1,
@@ -1182,50 +1202,43 @@
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 450,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 41
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "EscapeFromSystem",
+                    "Pos.x": 0,
+                    "Pos.y": 405,
+                    "Parent": -1,
+                    "#": 42,
                     "Move": 3,
                     "MoveObj": 20,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 540,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 42
+                    "EMsg": ""
                 },
                 {
+                    "Type": "TState",
                     "Name": "LandToPlanet",
+                    "Pos.x": 240,
+                    "Pos.y": 405,
+                    "Parent": -1,
+                    "#": 43,
                     "Move": 4,
                     "MoveObj": 23,
                     "Attack.Count": 0,
-                    "Attack.Items": [],
                     "TakeItem": -1,
                     "TakeAllItem": false,
                     "OnTalk": "",
                     "OnActCode": "",
                     "EType": 0,
                     "EUnique": "",
-                    "EMsg": "",
-                    "Type": "TState",
-                    "Pos.x": 630,
-                    "Pos.y": 300,
-                    "Parent": -1,
-                    "#": 43
+                    "EMsg": ""
                 }
             ],
             "Variables": [
@@ -1243,7 +1256,7 @@
                 {
                     "Type": "TVar",
                     "Name": "j",
-                    "Pos.x": 90,
+                    "Pos.x": 60,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 1,
@@ -1254,7 +1267,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tmp",
-                    "Pos.x": 180,
+                    "Pos.x": 120,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 2,
@@ -1265,7 +1278,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tmp2",
-                    "Pos.x": 270,
+                    "Pos.x": 180,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 3,
@@ -1276,7 +1289,7 @@
                 {
                     "Type": "TVar",
                     "Name": "sst",
-                    "Pos.x": 360,
+                    "Pos.x": 240,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 4,
@@ -1287,7 +1300,7 @@
                 {
                     "Type": "TVar",
                     "Name": "planetOwner",
-                    "Pos.x": 450,
+                    "Pos.x": 300,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 5,
@@ -1298,7 +1311,7 @@
                 {
                     "Type": "TVar",
                     "Name": "planetRace",
-                    "Pos.x": 630,
+                    "Pos.x": 480,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 6,
@@ -1309,7 +1322,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tint",
-                    "Pos.x": 780,
+                    "Pos.x": 630,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 7,
@@ -1320,7 +1333,7 @@
                 {
                     "Type": "TVar",
                     "Name": "piratesId",
-                    "Pos.x": 870,
+                    "Pos.x": 690,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 8,
@@ -1331,7 +1344,7 @@
                 {
                     "Type": "TVar",
                     "Name": "distance",
-                    "Pos.x": 1020,
+                    "Pos.x": 840,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 9,
@@ -1342,7 +1355,7 @@
                 {
                     "Type": "TVar",
                     "Name": "nearestShip",
-                    "Pos.x": 1140,
+                    "Pos.x": 960,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 10,
@@ -1353,7 +1366,7 @@
                 {
                     "Type": "TVar",
                     "Name": "wbCoordX",
-                    "Pos.x": 1320,
+                    "Pos.x": 1140,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 11,
@@ -1364,7 +1377,7 @@
                 {
                     "Type": "TVar",
                     "Name": "wbCoordY",
-                    "Pos.x": 1440,
+                    "Pos.x": 1260,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 12,
@@ -1375,7 +1388,7 @@
                 {
                     "Type": "TVar",
                     "Name": "tmp3",
-                    "Pos.x": 1560,
+                    "Pos.x": 1380,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 13,
@@ -1386,7 +1399,7 @@
                 {
                     "Type": "TVar",
                     "Name": "bombsId",
-                    "Pos.x": 1650,
+                    "Pos.x": 1440,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 14,
@@ -1397,7 +1410,7 @@
                 {
                     "Type": "TVar",
                     "Name": "dropCoordX",
-                    "Pos.x": 1770,
+                    "Pos.x": 1560,
                     "Pos.y": 0,
                     "Parent": -1,
                     "#": 15,
@@ -1569,6 +1582,16 @@
             "Arrow": true
         },
         {
+            "Type": "TStarLink",
+            "Begin": 20,
+            "End": 19,
+            "Nom": 0,
+            "Arrow": false,
+            "DistMin": 10,
+            "DistMax": 150,
+            "Hole": false
+        },
+        {
             "Type": "TGraphLink",
             "Begin": 29,
             "End": 23,
@@ -1612,5 +1635,30 @@
         }
     ],
     "BlockPar.EC.Total.Strings": 0,
-    "BlockPar.EC": []
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_RevWarriorsVsPirates\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
 }

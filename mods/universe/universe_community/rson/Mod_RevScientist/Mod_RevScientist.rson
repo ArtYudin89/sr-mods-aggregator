@@ -1,0 +1,1103 @@
+{
+    "FileID": 573785173,
+    "FileVersion": 8,
+    "ViewPos.x": -75,
+    "ViewPos.y": -186,
+    "ScriptName": "Mod_RevScientist",
+    "ScriptFileOut": "D:\\Mod_RevScientist.scr",
+    "ScriptTextOut": "D:\\Mod_RevScientist.txt",
+    "LangDatIn": "",
+    "LangDatOut": "",
+    "MainDatIn": "",
+    "MainDatOut": "",
+    "CacheDatIn": "",
+    "CacheDatOut": "",
+    "ExportLangTxt": false,
+    "ExportLangDat": false,
+    "Visual.Objects": [
+        {
+            "ConstellationCount": 0,
+            "DialogAnswers": [
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 32,
+                    "Msg": "",
+                    "AMsg.Num": "0",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevScientist.13\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 33,
+                    "Msg": "",
+                    "AMsg.Num": "1",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevScientist.34\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "",
+                    "Pos.x": 240,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 34,
+                    "Msg": "",
+                    "AMsg.Num": "2",
+                    "_orig_danswer": "DAnswer(CT(\"Script.Mod_RevScientist.30\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "hangar",
+                    "Pos.x": 360,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 35,
+                    "Msg": "",
+                    "AMsg.Num": "3",
+                    "_orig_danswer": "DAnswer('hangar~'+CT(\"Script.Mod_RevScientist.35\"))"
+                },
+                {
+                    "Type": "TDialogAnswer",
+                    "Name": "exit",
+                    "Pos.x": 480,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 36,
+                    "Msg": "",
+                    "AMsg.Num": "4",
+                    "_orig_danswer": "DAnswer('exit')"
+                }
+            ],
+            "DialogMessages": [
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 27,
+                    "Msg": "",
+                    "DMsg.Num": "0",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RevScientist.31\"))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 150,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 28,
+                    "Msg": "",
+                    "DMsg.Num": "1",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RevScientist.32\"))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 300,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 29,
+                    "Msg": "",
+                    "DMsg.Num": "2",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RevScientist.33\"))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 30,
+                    "Msg": "",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RevScientist.28\"))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 600,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 31,
+                    "Msg": "",
+                    "DMsg.Num": "4",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RevScientist.12\"))"
+                }
+            ],
+            "Dialogs": [
+                {
+                    "Type": "TDialog",
+                    "Name": "dDoctor",
+                    "Pos.x": 0,
+                    "Pos.y": 455,
+                    "Parent": -1,
+                    "#": 26
+                }
+            ],
+            "Groups": [
+                {
+                    "Type": "TGroup",
+                    "Name": "SBgro",
+                    "Pos.x": 0,
+                    "Pos.y": 270,
+                    "Parent": -1,
+                    "#": 16,
+                    "Owner": 62,
+                    "Group.Type": 1,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "SB",
+                    "+Planet": "Planet",
+                    "+State": 0
+                },
+                {
+                    "Type": "TGroup",
+                    "Name": "War",
+                    "Pos.x": 90,
+                    "Pos.y": 270,
+                    "Parent": -1,
+                    "#": 17,
+                    "Owner": 63,
+                    "Group.Type": 5,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 1,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": -1,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Planet": "Planet",
+                    "+State": 1
+                },
+                {
+                    "Type": "TGroup",
+                    "Name": "PBgr",
+                    "Pos.x": 180,
+                    "Pos.y": 270,
+                    "Parent": -1,
+                    "#": 18,
+                    "Owner": 62,
+                    "Group.Type": 1,
+                    "CntShipMin": 1,
+                    "CntShipMax": 1,
+                    "SpeedMin": 100,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "AddPlayer": false,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "DistSearch": 10000,
+                    "Dialog": 26,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "PB",
+                    "+Planet": "Planet",
+                    "+State": 3
+                }
+            ],
+            "Items": [
+                {
+                    "Type": "TItem",
+                    "Name": "iCapsuleP",
+                    "Pos.x": 0,
+                    "Pos.y": 225,
+                    "Parent": -1,
+                    "#": 14,
+                    "Class": 4,
+                    "Item.Type": 0,
+                    "Size": 10,
+                    "Level": 1,
+                    "Radius": 150,
+                    "Owner": 6,
+                    "Useless": "Capsule",
+                    "+Place": "SBgro"
+                },
+                {
+                    "Type": "TItem",
+                    "Name": "iFazer",
+                    "Pos.x": 90,
+                    "Pos.y": 225,
+                    "Parent": -1,
+                    "#": 15,
+                    "Class": 1,
+                    "Item.Type": 5,
+                    "Size": 65,
+                    "Level": 1,
+                    "Radius": 150,
+                    "Owner": 2,
+                    "Useless": "",
+                    "+Place": "PBgr"
+                }
+            ],
+            "Operations": [
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 665,
+                    "Parent": -1,
+                    "#": 19,
+                    "Code.Type": "Global",
+                    "Code": [
+                        "if(vDoctorGState==0) {",
+                        "  if((CurTurn()+1)>900) {",
+                        "    GRun();",
+                        "  }",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 60,
+                    "Pos.y": 665,
+                    "Parent": -1,
+                    "#": 20,
+                    "Code.Type": "Init",
+                    "Code": [
+                        "vLastSBName=Name(GroupToShip(SBgro));",
+                        "AddPlanetNews(Format(CT(\"Script.Mod_RevScientist.37\"),\"<0>\",vLastSBName,\"<1>\",Name(Star),\"<2>\",vNewSBName,\"<3>\",GalaxyMoney(2)));",
+                        "SetName(GroupToShip(SBgro),CT(\"Script.Mod_RevScientist.36\"));"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 120,
+                    "Pos.y": 665,
+                    "Parent": -1,
+                    "#": 21,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "vTimer=vTimer+1;",
+                        "if(ShipInStar(Player(),Star)) {",
+                        "  if(vState==0) {",
+                        "    if(!ItemIn(iCapsuleP,SBgro)) {",
+                        "      Ether(1,'8E4B1F72-8A0A-441E-9C5F-49AF80B98E36',Format(CT(\"Script.Mod_RevScientist.25\"),\"<0>\",vNewSBName));",
+                        "    }",
+                        "  }",
+                        "}",
+                        "if(vNews==0) {",
+                        "  if(!CountIn(SBgro)) {",
+                        "    AddPlanetNews(Format(CT(\"Script.Mod_RevScientist.38\"),\"<0>\",Name(Star),\"<1>\",vNewSBName));",
+                        "    vNews=1;",
+                        "  }",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 37,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(vState==0) {",
+                        "  if(vTimer>=10) {",
+                        "    if(Dist(Player(),PlaceSB)>200) {",
+                        "      DropScriptItem(CurShip,iCapsuleP);",
+                        "      ShipDestroy(GroupToShip(SBgro));",
+                        "    }",
+                        "  }",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 70,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 38,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(!ItemIn(iCapsuleP,GroupToShip(SBgro))) {",
+                        "  ChangeState(2);",
+                        "  exit;",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 355,
+                    "Parent": -1,
+                    "#": 39,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(!ItemExist(iCapsuleP)) {",
+                        "  ShipOut();",
+                        "  vDoctorGState=1;",
+                        "  vState=1;",
+                        "}",
+                        "if(ItemIn(iCapsuleP,Player())) {",
+                        "  ShipOut();",
+                        "  vDoctorGState=1;",
+                        "  vState=1;",
+                        "}",
+                        "if(ItemIn(iCapsuleP,War)) {",
+                        "  vState=1;",
+                        "  AllShipOut();",
+                        "  vDoctorGState=1;",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 160,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 40,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(vState==2) {",
+                        "  if(vTimer>=5) {",
+                        "    Dialog(dDoctor,PBgr);",
+                        "  }",
+                        "}",
+                        "if(vState==3) {",
+                        "  i=CreateEquipment(t_Weapon6,1,GalaxyTechLevel(),PirateClan);",
+                        "  ModuleToEquipment(FindBonusByName(CT(\"Script.Mod_RevScientist.40\")),i);",
+                        "  SpecialToEquipment(FindBonusByCustomTag('DishotEnergy'),i);",
+                        "  ItemSize(i,10);",
+                        "  SetName(i,'<color=255,167,84>'+CT(\"Script.Mod_RevScientist.41\")+'</color>');",
+                        "  AddItemToShip(GroupToShip(PBgr),i);",
+                        "  LinkItemToScript(i,iFazer);",
+                        "  DropScriptItem(CurShip,iFazer);",
+                        "  ReleaseItemFromScript(iFazer);",
+                        "  ReleaseItemFromScript(iCapsuleP);",
+                        "  AllShipOut();",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 455,
+                    "Parent": -1,
+                    "#": 41,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "if(vTimer>=5) {",
+                        "  if(vState==2) {",
+                        "    DChange(4);",
+                        "    exit;",
+                        "  }",
+                        "}",
+                        "if(vState==1) {",
+                        "  if(ItemIn(iCapsuleP,Player())) {",
+                        "    SkipGreeting();",
+                        "    DChange(0);",
+                        "    exit;",
+                        "  }",
+                        "}"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 42,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(0);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 130,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 43,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(1);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 280,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 44,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(2);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 430,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 45,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(3);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 580,
+                    "Pos.y": 525,
+                    "Parent": -1,
+                    "#": 46,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(4);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": -20,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 47,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(1);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 100,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 48,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(2);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 220,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 49,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DChange(3);",
+                        "exit;"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 340,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 50,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "vState=2;",
+                        "vTimer=0;",
+                        "CanSellItem(iCapsuleP,1);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 460,
+                    "Pos.y": 595,
+                    "Parent": -1,
+                    "#": 51,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "vState=3;",
+                        "vDoctorGState=1;"
+                    ]
+                }
+            ],
+            "Places": [
+                {
+                    "Type": "TPlace",
+                    "Name": "PlaceSB",
+                    "Pos.x": 0,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 12,
+                    "Place.Type": 5,
+                    "Angle": "0",
+                    "Dist": "0.01",
+                    "Radius": 100,
+                    "Obj1": 16,
+                    "Obj2": -1,
+                    "+Star": "Star"
+                },
+                {
+                    "Type": "TPlace",
+                    "Name": "pCapsule",
+                    "Pos.x": 90,
+                    "Pos.y": 135,
+                    "Parent": -1,
+                    "#": 13,
+                    "Place.Type": 4,
+                    "Angle": "0",
+                    "Dist": "0.5",
+                    "Radius": 50,
+                    "Obj1": 14,
+                    "Obj2": -1,
+                    "+Star": "Star"
+                }
+            ],
+            "Planets": [
+                {
+                    "Type": "TPlanet",
+                    "Name": "Planet",
+                    "Pos.x": 0,
+                    "Pos.y": 180,
+                    "Parent": -1,
+                    "#": 11,
+                    "Race": 63,
+                    "Owner": 63,
+                    "Economy": 14,
+                    "Goverment": 62,
+                    "RangeMin": 0,
+                    "RangeMax": 100,
+                    "Dialog": -1,
+                    "+Star": "Star"
+                }
+            ],
+            "Ships": [
+                {
+                    "Type": "TStarShip",
+                    "Name": "",
+                    "Pos.x": 0,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 8,
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 1,
+                    "Player": false,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "SB",
+                    "+Star": "Star"
+                },
+                {
+                    "Type": "TStarShip",
+                    "Name": "",
+                    "Pos.x": 90,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 9,
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 126,
+                    "Player": true,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "",
+                    "+Star": "Star"
+                },
+                {
+                    "Type": "TStarShip",
+                    "Name": "",
+                    "Pos.x": 180,
+                    "Pos.y": 45,
+                    "Parent": -1,
+                    "#": 10,
+                    "Count": 1,
+                    "Owner": 62,
+                    "Ship.Type": 1,
+                    "Player": false,
+                    "SpeedMin": 0,
+                    "SpeedMax": 10000,
+                    "Weapon": 0,
+                    "CargoHook": 0,
+                    "EmptySpace": 0,
+                    "StatusTraderMin": 0,
+                    "StatusTraderMax": 100,
+                    "StatusWarriorMin": 0,
+                    "StatusWarriorMax": 100,
+                    "StatusPirateMin": 0,
+                    "StatusPirateMax": 100,
+                    "StrengthMin": "0",
+                    "StrengthMax": "0",
+                    "Ruins": "PB",
+                    "+Star": "Star"
+                }
+            ],
+            "Stars": [
+                {
+                    "Type": "TStar",
+                    "Name": "Star",
+                    "Pos.x": 0,
+                    "Pos.y": 90,
+                    "Parent": -1,
+                    "#": 7,
+                    "Constellation": 0,
+                    "Priority": 0,
+                    "NoKling": false,
+                    "NoComeKling": false
+                }
+            ],
+            "States": [
+                {
+                    "Type": "TState",
+                    "Name": "121",
+                    "Pos.x": 0,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 22,
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                },
+                {
+                    "Type": "TState",
+                    "Name": "13",
+                    "Pos.x": 90,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 23,
+                    "Move": 4,
+                    "MoveObj": 11,
+                    "Attack.Count": 0,
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                },
+                {
+                    "Type": "TState",
+                    "Name": "StateTake",
+                    "Pos.x": 0,
+                    "Pos.y": 355,
+                    "Parent": -1,
+                    "#": 24,
+                    "Move": 1,
+                    "MoveObj": 13,
+                    "Attack.Count": 0,
+                    "TakeItem": 14,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                },
+                {
+                    "Type": "TState",
+                    "Name": "StateNone",
+                    "Pos.x": 180,
+                    "Pos.y": 295,
+                    "Parent": -1,
+                    "#": 25,
+                    "Move": 0,
+                    "MoveObj": -1,
+                    "Attack.Count": 0,
+                    "TakeItem": -1,
+                    "TakeAllItem": false,
+                    "OnTalk": "",
+                    "OnActCode": "",
+                    "EType": 0,
+                    "EUnique": "",
+                    "EMsg": ""
+                }
+            ],
+            "Variables": [
+                {
+                    "Type": "TVar",
+                    "Name": "vDoctorGState",
+                    "Pos.x": 0,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 0,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": true
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "vLastSBName",
+                    "Pos.x": 210,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 1,
+                    "Var.Type": "Str",
+                    "Init": "Пыщь!",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "vNewSBName",
+                    "Pos.x": 390,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 2,
+                    "Var.Type": "Str",
+                    "Init": "Аннигиляции",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "vState",
+                    "Pos.x": 540,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 3,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "vTimer",
+                    "Pos.x": 630,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 4,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "vNews",
+                    "Pos.x": 720,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 5,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "i",
+                    "Pos.x": 810,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 6,
+                    "Var.Type": "Dword",
+                    "Init": "0",
+                    "Global": false
+                }
+            ]
+        }
+    ],
+    "Visual.Links": [
+        {
+            "Type": "TGraphLink",
+            "Begin": 22,
+            "End": 37,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 23,
+            "End": 38,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 24,
+            "End": 39,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 25,
+            "End": 40,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 26,
+            "End": 41,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 27,
+            "End": 42,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 28,
+            "End": 43,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 29,
+            "End": 44,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 30,
+            "End": 45,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 31,
+            "End": 46,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 32,
+            "End": 47,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 33,
+            "End": 48,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 34,
+            "End": 49,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 35,
+            "End": 50,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 36,
+            "End": 51,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 8,
+            "End": 7,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 9,
+            "End": 7,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 10,
+            "End": 7,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 11,
+            "End": 7,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 14,
+            "End": 16,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 15,
+            "End": 18,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 12,
+            "End": 7,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 13,
+            "End": 7,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 16,
+            "End": 22,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 17,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 17,
+            "End": 23,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 11,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 25,
+            "Nom": 0,
+            "Arrow": true
+        }
+    ],
+    "BlockPar.EC.Total.Strings": 0,
+    "BlockPar.EC": [],
+    "Rect.Text": [
+        {
+            "Type": "TGraphRectText",
+            "Rect.Left": 632,
+            "Rect.Top": -268,
+            "Rect.Right": 1339,
+            "Rect.Bottom": -80,
+            "FStyle": 0,
+            "FColor": 10710818,
+            "BStyle": 0,
+            "BColor": 14474460,
+            "BSize": 1,
+            "BCoef": "0.300000011920929",
+            "AlignX": 0,
+            "AlignY": 0,
+            "AlignRect": false,
+            "Text": "SCR Decompiling Mod_RevScientist\r\n\r\nChangeState(...) -> Link to StateName\r\nDChange(...) -> Link to DMsg.Num\r\nDAdd(...) -> Link to AMsg.Num",
+            "Color": 16777215,
+            "Font": "Segoe UI",
+            "FontSize": 10,
+            "fsBold": true,
+            "fsItalic": false,
+            "fsUnderline": false
+        }
+    ]
+}
