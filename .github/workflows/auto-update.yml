@@ -56,10 +56,14 @@ jobs:
         shell: pwsh
         run: git config --global core.longpaths true
 
+      # ref: master — конец ветки на момент СТАРТА задания, а не SHA события. Прогон,
+      # ждавший в очереди concurrency, иначе брал SHA момента запуска, не видел пуш
+      # предыдущего прогона и терял свой коммит на конфликте (SR-67).
       - name: Checkout aggregator
         uses: actions/checkout@v4
         with:
           path: sr-mods-aggregator
+          ref: master
           token: ${{ secrets.REPO_PAT }}
 
       - name: Checkout decompiler (sibling ../rson_decompiler)
@@ -110,16 +114,11 @@ jobs:
           python pipeline/aggregate.py $ARGS
 
       # 2) Закрепить доказательство СРАЗУ (push коммитов детекции), даже если ниже упадёт.
+      #    Не прошёл после повторов — шаг падает (pipeline/push_master.sh).
       - name: Push detected changes
         working-directory: sr-mods-aggregator
         shell: bash
-        run: |
-          for i in 1 2 3; do
-            git push && break || {
-              echo "push retry $i (fetch+rebase)";
-              git fetch origin master && git rebase origin/master || git rebase --abort;
-            }
-          done
+        run: bash pipeline/push_master.sh
 
       # 2b) Уведомить в Telegram, если тяжёлый manual-юнит (redux_base) изменился на GDrive.
       - name: Notify heavy unit changed (Telegram)
@@ -185,12 +184,7 @@ jobs:
             echo "Изменений для коммита нет."
           else
             git commit -m "auto-update: $(date -u +%Y-%m-%d) (изменённые юниты + дескрипторы)"
-            for i in 1 2 3; do
-              git push && break || {
-                echo "push retry $i (fetch+rebase)";
-                git fetch origin master && git rebase origin/master || git rebase --abort;
-              }
-            done
+            bash pipeline/push_master.sh
           fi
 
       # 7) Итоговое Telegram-уведомление об обычном автообновлении (если что-то обновилось).
