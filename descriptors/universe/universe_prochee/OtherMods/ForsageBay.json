@@ -1,0 +1,238 @@
+{
+  "schema": "srmod/1",
+  "id": "OtherMods/ForsageBay",
+  "source": "universe/universe_prochee",
+  "name": "ForsageBay",
+  "title": "ForsageBay",
+  "author": "Zloy_Odessit",
+  "section": "Zloy_Odessit",
+  "priority": "21",
+  "description": "Форсажный отсек: отдельные двигатели для форсажа, их износ вместо основного; ремонт в ангаре одним щелчком",
+  "full_description": "Форсажный отсек - малое отделение бардачка на 3 двигателя (нужен мод \"Бардачок\").\n- На экране корабля под кнопкой форсажа - второй такой же выступ с кнопкой отсека: она открывает и прячет столбик из 3 мест слева. Возьмите двигатель курсором и щёлкните по месту - двигатель ложится туда (на занятом месте - меняется с лежащим); щелчок по двигателю с пустым курсором возвращает его в трюм. Под каждым местом - состояние двигателя.\n- Лампа на выступе отсека показывает состояние его двигателей: зелёная - целы, жёлтая - износ, оранжевая - сильный износ, красная - есть сломанные; не горит - отсек пуст.\n- Скорость на форсаже - основной двигатель плюс рабочий двигатель отсека (самый целый): вместо удвоения скорости основного. Двигатель отсека тормозит масса корабля так же, как основной; быстрый двигатель в отсеке разгоняет сильнее.\n- На форсаже изнашиваются двигатели отсека (самый целый из них), а не основной. Без исправного двигателя в отсеке форсаж не включается: кнопка форсажа на экране корабля погашена, а включённый клавишей F сразу гаснет с сообщением.\n- Когда двигатель отсека ломается или форсаж не включается, слышно, как не заводится дизель. Кнопка с динамиком внизу столбика отсека выключает и включает этот звук. Поломка двигателя отсека прерывает долгий перелёт, как это делает игра при износе основного двигателя.\n- Нанитоиды чинят и двигатели отсека (это делает мод \"Бардачок\" вместе с вещами бардачка): как в игре, один ремонт в день за каждый активный артефакт - самая изношенная вещь (60% и ниже), когда на корабле чинить нечего.\n- Настройка игры \"выключать форсаж при состоянии двигателя\" проверяет двигатели отсека, а не основной: форсаж не гаснет каждый ход, пока в отсеке есть двигатель выше порога, и не прерывает долгий перелёт.\n- Двигатели в отсеке занимают место в трюме (в весе бардачка). Комплектации корабля берут их из отсека, как вещи из бардачка. При пересадке на корпус без форсажа двигатели отсека переносятся в трюм.\n- В ангаре - строки \"Форсаж\" (на кораблях с форсажем) и \"Артефакты\" (на базах, где ремонтируют артефакты, и на своей станции с лицензией на ремонт) с лампой состояния. Щелчок по строке чинит: двигатели - по цене ремонта в магазине, артефакты - по цене ремонта на базе.\n- Строки корпуса и топлива в ангаре тоже нажимаются: ремонт корпуса и заправка по ценам ангара.\n<br>\nОтключение: включить можно в любой момент. Чтобы отключить посреди игры: в DevKit выполнить RunFunctionFromScript('Mod_ForsageBay','Off',0);, сделать один ход, сохраниться, отключить мод и загрузить это сохранение (двигатели из форсажного отсека вернутся в трюм)",
+  "version": "37c22624c9e9b335",
+  "depends": [
+    "Glovebox"
+  ],
+  "conflicts": [],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "cosmetic": [
+    "OtherMods/ForsageBay/CFG/CacheData.dat"
+  ],
+  "mtime": 1791501104,
+  "files": {
+    "code": {
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/ModuleInfo.txt": {
+        "sha256": "ab6c6aaa690904ea17887ef5556f9293bb44284fc51d934ba120482405d541e1",
+        "size": 6308,
+        "mtime": 1791497368
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/CFG/CacheData.dat": {
+        "sha256": "56c5601261b739347d6a1e8316b93c3531e55401edfc7008ac32e210ce1a07c0",
+        "size": 459,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/CFG/Main.dat": {
+        "sha256": "16a7f63383b58781be61ad5484b189495814aefaa0c789b229db5e3f47f03277",
+        "size": 1823,
+        "mtime": 1791497368
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/CFG/Rus/Lang.dat": {
+        "sha256": "5fb29d33095010c55447b169db9209c919de4ca9027474338a9a0377eb9e9ea2",
+        "size": 2697,
+        "mtime": 1791497368
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Script/Mod_ForsageBay.scr": {
+        "sha256": "91bcfebd821ea5ea1e8572794277bcf822566c603c246cbb0cf0c33ba8d18dd1",
+        "size": 81302,
+        "mtime": 1791501104
+      }
+    },
+    "assets": {
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/Ball.gi": {
+        "sha256": "52cf97e4cbc3ec7f73fe0028a454093d0df4019d96f77dc0b2868f41bca0fbb8",
+        "size": 1252,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/Ball_D.gi": {
+        "sha256": "c1460953161da5f11c35538569d12eb61eb5ccd7d2ccb0665b0ee20c6c9df429",
+        "size": 1252,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/Board.gi": {
+        "sha256": "8a34cf6862413a387bbd3a01f9aa555a54d05fca552820b49637cce201efc9eb",
+        "size": 16104,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/Board_D.gi": {
+        "sha256": "6816597c677373546cb9cd6917587c9ddb667f380d9140858c78e677f5e8a037",
+        "size": 16104,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/Col.gi": {
+        "sha256": "4146ca57f6e79d8d923c61d93855d56f2b715ffadda8609a68c89df3933fbfeb",
+        "size": 40896,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/Col_D.gi": {
+        "sha256": "b2a5872277425e291f9fc58e88117a25b9cdcca0b28d4ac6ceafd563674e4980",
+        "size": 40896,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/FLightG.gi": {
+        "sha256": "0669036329feeb4793ab184899a1f3641e62ef4956f58b05119151e9374af1e1",
+        "size": 1776,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/FLightG_D.gi": {
+        "sha256": "70c0982faaa39e0646203a299c03f312e57a39b6088f1d7a6f151ac1bf21eef3",
+        "size": 1776,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/FLightO.gi": {
+        "sha256": "92375d838f30c8a37c0c5273d05e4f03315f393f7461a68530360e09cf3da781",
+        "size": 1776,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/FLightO_D.gi": {
+        "sha256": "f16e8b3dff6bbbec326a2e38ac8929cbb315805268afc08e8baaf38392244127",
+        "size": 1776,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/FLightR.gi": {
+        "sha256": "b8f760e9d8e04ce58f3ba772222793fc7dff288252ca17a5a918f7f86edcd38c",
+        "size": 1776,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/FLightR_D.gi": {
+        "sha256": "48eff73201c9b2d9bf563d0f41a4e7dee16ab93b55c8dcf24646ea6b7adf3f1e",
+        "size": 1776,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/FLightY.gi": {
+        "sha256": "8c925d1168ab23f7e31f676aff249bd092c6badc270d5ad9498de1e83a31978c",
+        "size": 1776,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/FLightY_D.gi": {
+        "sha256": "db2023428e4cf7572a5daa55777d9eef777732966018333e11509a7e261c1b7e",
+        "size": 1776,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/LampG.gi": {
+        "sha256": "b3817684ef8491ffdb84d5c819e692e7e4878badf4616cb7562d35cd518bbeca",
+        "size": 2496,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/LampG_D.gi": {
+        "sha256": "b8aa06758b8c9e00c99a7a0ee261619a40f01b068c0288b41bd9c6129b449750",
+        "size": 2496,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/LampO.gi": {
+        "sha256": "86a436ef54233a55af8608617f3f82e42a92d34f30e1713f85ae7730ae6be8a2",
+        "size": 2496,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/LampO_D.gi": {
+        "sha256": "cd693e44f8527b8a559cfdab3b00bbba351b3fb1109c4c679b7df212a19352a8",
+        "size": 2496,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/LampOff.gi": {
+        "sha256": "01d331f4e14782f5f25bffead7d37808fa8adfb47de2397b5711324fd897f737",
+        "size": 2496,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/LampOff_D.gi": {
+        "sha256": "77d728d5fd468ade710cfeee6b3f3b4c5ed9e9780f4c88d12d01afd82271a911",
+        "size": 2496,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/LampR.gi": {
+        "sha256": "9242d2923df91137f6ed8ca3faf7ac4f2e6b135c89eacfedd44f87726af8bbfa",
+        "size": 2496,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/LampR_D.gi": {
+        "sha256": "d5e9c8bb2212e6226157189e6bd0650099658e94b10e86c3c246d2a0a2e70ed6",
+        "size": 2496,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/LampY.gi": {
+        "sha256": "eae6e6cd2ed34f0d6bb0ceeef1d90cfa16dfbcb71dc1578fd677ce9d040c95cc",
+        "size": 2496,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/LampY_D.gi": {
+        "sha256": "73671481a12ca4a571071a557bf618f37736ce598d73d7ed92c825a292bcf539",
+        "size": 2496,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/LineA.gi": {
+        "sha256": "eb762ac2a45e4c168d260e4866242e215f6267bed1e1a762c449fdb4ea3ef59a",
+        "size": 16280,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/LineD.gi": {
+        "sha256": "68419a549868a22d625d265f951127c9e462b33a5218878111c0bd1cca4d999c",
+        "size": 16280,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/LineN.gi": {
+        "sha256": "0fc37b6b2fdec95561dffb968c251a898b7afaef62e40afd0c71b37bc61caef6",
+        "size": 16280,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/OvA.gi": {
+        "sha256": "5c2b8696c750478a3f622106ca6293fb79e1970b9abe9f941d35a4d39a75488a",
+        "size": 1252,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/OvD.gi": {
+        "sha256": "20ca9e53bcb48b901c2b2aacfcf1e594ed793e5f9c605430b08ff01b39ff7424",
+        "size": 1252,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/OvN.gi": {
+        "sha256": "c3ef48cafa39c7cc97f8b49eb1596a798868740df70ff53c334572b5f850adf5",
+        "size": 1252,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/SndOff.gi": {
+        "sha256": "03f7e621b2948b84d9ceafae32ebe96de94026919d845a1412a0fae5a89ad0c4",
+        "size": 1252,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/SndOff_D.gi": {
+        "sha256": "960d76cd3967b0fe5959522866b1d35fdee647d4198003263e86253d7424bef4",
+        "size": 1252,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/SndOn.gi": {
+        "sha256": "90f84d6ad33df4f61e49bb97ebecee214dbf5e0bd27f3c3cd8c5e53ba1e89f72",
+        "size": 1252,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Art/SndOn_D.gi": {
+        "sha256": "00c1633370bebbb085c5616bab6826adc1d25dbce6f15af8a12f6d3efb51868a",
+        "size": 1252,
+        "mtime": 1791494602
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Items/FE_Fan.gi": {
+        "sha256": "a7f8b5a5ae11c0a785c618cea9e1f3eacb0f9e7ceb6b0c67e2ab1eb2449e55d8",
+        "size": 5872,
+        "mtime": 1791490644
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Items/FE_Fan_ab.gi": {
+        "sha256": "30547f0840535cb1928c4630c6661092ba611ffc89d84ad4bfc2292e5464e1aa",
+        "size": 1860,
+        "mtime": 1791490644
+      },
+      "Miscellaneous_unpacked/Mods/OtherMods/ForsageBay/DATA/Sound/FE_NoStart.wav": {
+        "sha256": "f5aa5232300811a3a5d79da34ba8119bfc6bc02c6a8909447f91b95a14d7d29b",
+        "size": 158804,
+        "mtime": 1791491608
+      }
+    }
+  }
+}

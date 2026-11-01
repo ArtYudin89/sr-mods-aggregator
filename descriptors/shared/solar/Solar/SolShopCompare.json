@@ -8,36 +8,36 @@
   "section": "Solar",
   "priority": "12",
   "description": "Сравнение оборудования в магазине с установленным на корабле\n(Мод можно подключать/отключать в течение партии)",
-  "full_description": "В магазине оборудования рядом с карточкой товара показывается вторая карточка — предмет, установленный на вашем корабле в том же слоте (двигатель, баки, радар, сканер, ремонтный робот, захват, генератор защиты, оружие). Также добавлен блок «Сравнение».",
-  "version": "7150a58b2aa9fc5f",
+  "full_description": "Сравнение товара с установленным оборудованием или корпусом: характеристики с собственными бонусами, вместимость корпуса, слоты, состояние и стоимость с ремонтом. Зелёный — лучше, красный — хуже; разница от -5% до 0% включительно выделяется жёлтым. Для оборудования меньший размер лучше, для корпуса — большая вместимость. Оценка качества и выгодности ориентировочная и не учитывает все особенности оружия и оборудования.\nВеса оценки настраиваются в CFG\\Rus\\Lang.txt, блок ShopCompare.Weight. Каждый коэффициент: 0..1000 процентов; 0 выключает влияние, 100 — обычное, 200 — двойное. EquipmentSize=25 уменьшает влияние размера оборудования; вместимость корпуса настраивается отдельно через Hull.Capacity=100. Строки сравнения и их цвета не зависят от весов. После изменения TXT нужно пересобрать Lang.dat и загрузить конфиги заново.\nОсновные коэффициенты (по умолчанию 100): FuelTanks.Capacity; Engine.Speed/Jump; Radar.Range; Scanner.Power; RepairRobot.Repair; CargoHook.Pickup/Range; DefGenerator.Defense; Weapon.Range/MinDamage/MaxDamage. Корпус: Hull.Capacity, Hull.Armor, Hull.SlotFuel/SlotEngine/SlotRadar/SlotScanner/SlotRepair/SlotHook/SlotDefense/SlotWeapon/SlotArtefact/SlotAfterburner. Для корпуса по умолчанию учитываются вместимость, оружейные и артефактные слоты (100), остальные коэффициенты 0.\nWeight.Condition=0 задаёт влияние состояния. Weight.Bonus.<n>=0 — веса остальных бонусов, номера 0..28 и 31..40 соответствуют ShopCompare.Bon.<n>. Бонус, уже включённый в основную характеристику или число слотов, повторно не учитывается. Weight.Cost=100 задаёт влияние полной стоимости с ремонтом: выгодность = качество / (отношение стоимости в степени Cost/100). Отдельные строки цены и ремонта не добавляют вторую оценку стоимости. Качество — взвешенное геометрическое среднее; неизменившаяся ненулевая характеристика тоже учитывается, отсутствующая у обоих — нет.",
+  "version": "4b807fe95bb2307a",
   "depends": [
     "SolUtilities"
   ],
   "conflicts": [],
   "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
   "cosmetic": [],
-  "mtime": 1793085258,
+  "mtime": 1793510240,
   "files": {
     "code": {
-      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolShopCompare/ModuleInfo.txt": {
-        "sha256": "986cdc9094e02b0c89ef37822739be4083958ee3b13d5548f7805e2522019c40",
-        "size": 2550,
-        "mtime": 1793085258
+      "Solar_Release_2026-11-01_unpacked/Mods/Solar/SolShopCompare/ModuleInfo.txt": {
+        "sha256": "e70333c36d58506f1a83f615ac71b2d22123bcb16027b04db918af7c0bf27357",
+        "size": 8606,
+        "mtime": 1793510240
       },
-      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolShopCompare/CFG/Main.dat": {
+      "Solar_Release_2026-11-01_unpacked/Mods/Solar/SolShopCompare/CFG/Main.dat": {
         "sha256": "d82b9cc565785b2d63a32cd881e860e43ced0183e5d84b11c6c5769d53be105a",
         "size": 1219,
-        "mtime": 1791224394
+        "mtime": 1793510240
       },
-      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolShopCompare/CFG/Eng/Lang.dat": {
-        "sha256": "b76fb72e367a391dac5a123cf970480a4eeaa3bb41da88b30b86c4b45d30bd53",
-        "size": 779,
-        "mtime": 1792121930
+      "Solar_Release_2026-11-01_unpacked/Mods/Solar/SolShopCompare/CFG/Eng/Lang.dat": {
+        "sha256": "376772e90516f6791df1adbc76b62ae85227652f068cfe3074507b4d60a78ad4",
+        "size": 1107,
+        "mtime": 1793510240
       },
-      "Solar_Release_2026-10-27_unpacked/Mods/Solar/SolShopCompare/CFG/Rus/Lang.dat": {
-        "sha256": "5a60c8104592f842e965baddc97a8fd6c63e7d193096ddc063415b0a2fde6e71",
-        "size": 916,
-        "mtime": 1791224394
+      "Solar_Release_2026-11-01_unpacked/Mods/Solar/SolShopCompare/CFG/Rus/Lang.dat": {
+        "sha256": "8f80e2ea791fd3e7c166ec8b271f12fa4dc2511251fb639a1f13e7b576e0f8dd",
+        "size": 1251,
+        "mtime": 1793510240
       }
     },
     "assets": {}
