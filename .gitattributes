@@ -11,3 +11,7 @@ mods/**/code/** -text
 # Тексты чужих лицензий в third_party/ — тоже побайтные копии оригиналов,
 # их sha256 записан в third_party/notices.json.
 third_party/** -text
+#
+# Скрипты шагов workflow: на Windows-раннере core.autocrlf=true дал бы CRLF, а bash на
+# CRLF падает (`set: -\r: invalid option`).
+pipeline/*.sh text eol=lf
