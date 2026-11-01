@@ -47,7 +47,7 @@ concurrency:
 
 jobs:
   update:
-    runs-on: windows-latest        # innounp.exe (Inno Setup 6.4) — Windows
+    runs-on: windows-latest        # innounp.exe (Inno Setup до 7.1) — Windows
     timeout-minutes: 350
     env:
       RCLONE_CONFIG: ${{ github.workspace }}\rclone.conf   # rclone берёт конфиг отсюда

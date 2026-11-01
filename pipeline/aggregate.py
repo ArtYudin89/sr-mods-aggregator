@@ -447,36 +447,91 @@ def _settle_download(name, tmp):
 ARCHIVE_EXT = ('.zip', '.rar', '.7z')
 
 
+# innounp (J. Rathlev, MIT) в репозитории не храним — чужой бинарник в публичном репо:
+# закреплённая сборка скачивается при первом обращении в tools/innounp/ (в .gitignore)
+# и сверяется по sha256. 2.71.x знает Inno Setup до 7.1.1; прежний вендоренный 2.67.9
+# знал только до 6.7, и установщик Universe 18.09.26 (Inno Setup 7) с ним каждую ночь
+# падал «неизвестный формат» (SR-4). Обновить: свежий коммит
+# jrathlev/InnoUnpacker-Windows-GUI → INNOUNP_URL, версия и обе суммы.
+INNOUNP_VERSION = '2.71.3'
+INNOUNP_URL = ('https://raw.githubusercontent.com/jrathlev/InnoUnpacker-Windows-GUI/'
+               '75ded58da3a81c029db4f73ab803b9b4154400e9/innounp-2/bin/innounp-2.zip')
+INNOUNP_ZIP_SHA256 = 'f8e45c9676bebc7d7570108ab572673b541fcf7a7d3d24a04319ac6b5315b4e8'
+INNOUNP_EXE_SHA256 = 'ab58400460cfda503ec88702dd3d82f6ee207b28e0548c9f8861ef008f85b644'
+INNOUNP_DIR = REPO / 'tools' / 'innounp'
+# Коды выхода innounp (innounp.htm, «Exit codes»).
+INNOUNP_EXIT = {1: 'версия не поддерживается', 2: 'установщик повреждён или несовместим',
+                3: 'прочая ошибка'}
+# -b: не ждать ответа (пароль, следующий диск) — без него прогон висел бы до таймаута;
+# -h -o -u: без заголовка и цвета, вывод в UTF-8 — чтобы текст ошибки читался.
+INNOUNP_FLAGS = ['-b', '-h', '-o', '-u']
+
+
 def _find_innounp():
-    """innounp для распаковки Inno Setup (в т.ч. 6.4.x)."""
-    p = REPO / 'tools' / 'innounp' / 'innounp.exe'
-    if p.exists():
-        return str(p)
-    return shutil.which('innounp')
+    """Путь к innounp закреплённой версии (INNOUNP_*): из tools/innounp/, а если файла
+    нет или сумма не та (старая версия) — скачать. Не вышло — RuntimeError с причиной:
+    раньше без innounp установщик молча становился «неизвестным форматом»."""
+    exe = INNOUNP_DIR / 'innounp.exe'
+    if exe.exists() and sha256_file(exe) == INNOUNP_EXE_SHA256:
+        return str(exe)
+    INNOUNP_DIR.mkdir(parents=True, exist_ok=True)
+    zpath = INNOUNP_DIR / 'innounp.zip'
+    try:
+        download_url(INNOUNP_URL, zpath, timeout=120)
+    except Exception as e:
+        raise RuntimeError(f'innounp {INNOUNP_VERSION} не скачался ({e}): {INNOUNP_URL}')
+    try:
+        got = sha256_file(zpath)
+        if got != INNOUNP_ZIP_SHA256:
+            raise RuntimeError(f'innounp {INNOUNP_VERSION}: sha256 архива {got}, '
+                               f'ожидался {INNOUNP_ZIP_SHA256}')
+        with zipfile.ZipFile(zpath) as z:
+            data = z.read('innounp.exe')
+    finally:
+        zpath.unlink()
+    got = hashlib.sha256(data).hexdigest()
+    if got != INNOUNP_EXE_SHA256:
+        raise RuntimeError(f'innounp {INNOUNP_VERSION}: sha256 innounp.exe {got}, '
+                           f'ожидался {INNOUNP_EXE_SHA256}')
+    exe.write_bytes(data)
+    print(f'    innounp {INNOUNP_VERSION} скачан: {exe.relative_to(REPO)}')
+    return str(exe)
 
 
 def _inno_exes(path):
     """ВСЕ Inno Setup установщики в path (файл/папка). Папка может содержать
     несколько инсталляторов (напр. большой пак + патч) — извлекать надо ВСЕ.
-    Возвращает список .exe, отсортированный по размеру УБЫВ. (база → патч поверх)."""
-    iu = _find_innounp()
-    if not iu:
-        return []
+    Возвращает список .exe, отсортированный по размеру УБЫВ. (база → патч поверх).
+    Установщик Inno незнакомой innounp версии — RuntimeError, а не «не Inno»."""
     cands = []
     p = Path(path)
     if p.is_dir():
         cands = sorted(p.glob('*.exe')) + sorted(p.glob('*.[0-9]'))  # exe или setup.0
     elif p.suffix.lower() == '.exe' or _sniff_ext(p) == '.bin':
         cands = [p]
+    if not cands:
+        return []
+    iu = _find_innounp()
     inno = []
     for c in cands:
         try:
-            r = subprocess.run([iu, '-v', str(c)], capture_output=True, text=True,
-                               encoding='utf-8', errors='replace', timeout=LIST_TIMEOUT)
-            if 'Inno Setup version detected' in (r.stdout or ''):
-                inno.append(c)
+            r = subprocess.run([iu, '-v', *INNOUNP_FLAGS, str(c)], capture_output=True,
+                               text=True, encoding='utf-8', errors='replace',
+                               timeout=LIST_TIMEOUT)
         except Exception:
             continue
+        out = r.stdout or ''
+        # «=> Signature detected:» innounp пишет, только когда узнал загрузчик Inno, но
+        # не версию его данных (innounp.dpr): так 2.67.9 видел Inno Setup 7. Распаковку
+        # наугад не пробуем — пусть юнит упадёт с понятной причиной.
+        sig = re.search(r'Signature detected:\s*(.+)', out)
+        if sig:
+            raise RuntimeError(
+                f'{c.name}: установщик Inno Setup незнакомой версии ({sig.group(1).strip()}) — '
+                f'innounp {INNOUNP_VERSION} его не распакует; нужен новый innounp '
+                f'(INNOUNP_* в pipeline/aggregate.py)')
+        if 'Inno Setup version detected' in out:
+            inno.append(c)
     inno.sort(key=lambda c: c.stat().st_size, reverse=True)
     return inno
 
@@ -490,12 +545,17 @@ def _inno_exe(path):
 def _innounp_extract(exe, dest):
     """Извлечь Inno-установщик через innounp в dest (создаёт dest/{app}/...)."""
     iu = _find_innounp()
-    if not iu:
-        raise RuntimeError('innounp не найден (tools/innounp/innounp.exe)')
     dest.mkdir(parents=True, exist_ok=True)
-    r = subprocess.run([iu, '-x', '-y', f'-d{dest}', str(exe)],
+    r = subprocess.run([iu, '-x', '-y', '-q', *INNOUNP_FLAGS, f'-d{dest}', str(exe)],
                        capture_output=True, text=True, encoding='utf-8',
                        errors='replace', timeout=RCLONE_TIMEOUT)
+    # Код возврата раньше не смотрели: частичная распаковка (код 2/3) проходила, если
+    # в dest хоть что-то легло, — а у патча поверх базы dest не пуст никогда.
+    if r.returncode != 0:
+        why = INNOUNP_EXIT.get(r.returncode, 'неизвестный код')
+        tail = ' | '.join((r.stdout or '').strip().splitlines()[-3:] +
+                          (r.stderr or '').strip().splitlines()[-3:])
+        raise RuntimeError(f'innounp {exe.name}: {why} (код {r.returncode}): {tail[:300]}')
     if not any(dest.rglob('*')):
         raise RuntimeError(f'innounp ничего не извлёк: {(r.stderr or r.stdout or "")[:200]}')
 

@@ -185,7 +185,9 @@ python pipeline/probe_access.py                # карта доступност
 
 - Python 3.9+, `gdown` (публичный GDrive), `requests`, `huggingface_hub`
 - `rclone` (OAuth-remote `gdrive`) — для `access:shared` и метаданных skip-if-unchanged
-- 7-Zip / `tools/innounp/innounp.exe` (вендорен) — для `.rar`/`.7z` и Inno Setup 6.4.x
+- 7-Zip — для `.rar`/`.7z`; innounp (J. Rathlev, MIT) — для Inno Setup до 7.1.1: в репозитории
+  его нет, закреплённую версию (`INNOUNP_*` в `pipeline/aggregate.py`) пайплайн сам скачивает
+  в `tools/innounp/` и сверяет по sha256
 - `gh` CLI — для git-операций/секретов
 
 ## Идемпотентность
@@ -208,7 +210,7 @@ Copyright (C) 2026 ArtYudin89.
   лежат здесь как зеркало ради воспроизводимости каталога; условия распространения
   спрашивайте у авторов модов;
 - **ресурсы игры** — принадлежат правообладателям, в репозитории их нет и быть не должно;
-- **вендоренные утилиты** (`tools/innounp/` и подобные) — под своими лицензиями.
+- **сторонние утилиты**, которые пайплайн скачивает сам (innounp в `tools/innounp/`), — под своими лицензиями.
 
 Пак `shared/solar` раздаётся так, как его собрал автор, и включает загрузчик XenoNativeLoader
 (`dsound.dll`, `XenoCore.dll`, `XenoNative.ini`, `XenoNative\`) из
