@@ -21,6 +21,8 @@ state/asset_index.json    карта блобов: sha256 -> {chunk, size}; ча
 state/packs.json          тиры юнитов: base / fix (+fix_parent) / mod / assets (для совместимости)
 state/manual_pending.json  тяжёлые юниты, ждущие локального прогона
 state/cloud_summary.json   сводка облачного прогона (для Telegram-итога)
+state/content_check.json   находки проверки содержимого по юнитам (последняя проверка каждого)
+state/failures.log        сбои юнитов за прогон (не коммитится; читает notify.py)
 descriptors/<camp>/<unit>/<modid>.json   дескриптор каждого (источник, мод)
 descriptors/catalog.json  каталог: мод -> варианты (из разных паков) + дефолт
 mods/<camp>/<unit>/
@@ -69,7 +71,12 @@ GitHub Actions (`.github/workflows/`, подробно — `docs/CI_AUTOUPDATE.m
   индекс на HF.
 - **`auto-update`** — ежедневный (cron 03:00 UTC) инкрементальный прогон: детектит изменения
   на GDrive по `remote_sig`, качает/декомпилирует только изменённые, заливает на HF,
-  пересобирает дескрипторы, пушит. Шлёт **Telegram-итог** обновлённых паков.
+  пересобирает дескрипторы, пушит. Шлёт **Telegram-итог**: обновлённые паки, юниты и шаги со
+  сбоем, находки проверки содержимого. Не прошёл push в master — прогон красный.
+- **Проверка содержимого** (только отчёт, файлы авторов не правим): `CacheData.dat` и
+  `Main.dat` в `CFG` каждого обработанного юнита — `cache-wrong-kind` (CacheData упакован
+  ключом Main.dat) и `dat-unreadable` (не датник игры); движок такие файлы считает пустыми.
+  Уже разложенные юниты — `python pipeline/aggregate.py --check-content [--only <юнит>]`.
 - **Тяжёлые юниты** (`manual:true`, напр. `redux_base` ~12 ГБ — не влезает в раннер): облако их
   не качает, только детектит и шлёт **Telegram-уведомление**; обновляешь локально через
   **`update_base.bat`**.

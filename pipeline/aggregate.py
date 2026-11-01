@@ -46,6 +46,12 @@ EXTRACT = REPO / '_extract'
 RSON_TMP = REPO / '_rson_tmp'
 DIST = REPO / 'dist'
 MODS = REPO / 'mods'
+# Сбои юнитов за прогон (не коммитится: /state/*.log). Шаги workflow — отдельные запуски
+# aggregate.py, каждый дописывает сюда; notify.py summary шлёт итог в Telegram. Раньше сбой
+# только печатался, прогон оставался зелёным и до Артёма не доходил (аудит F1015-A2-2).
+FAILURES = REPO / 'state' / 'failures.log'
+# Находки проверки содержимого по юнитам (check_content) — последняя проверка каждого.
+CONTENT_REPORT = REPO / 'state' / 'content_check.json'
 
 SEVENZIP = r'C:\Program Files\7-Zip\7z.exe'
 
@@ -100,6 +106,15 @@ def load_json(path, default):
 def save_json(path, data):
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding='utf-8')
+
+
+def record_failure(name, stage, err):
+    """Напечатать «FAIL» юнита (как раньше) и дописать его в state/failures.log."""
+    print(f'  {name}: FAIL {stage}: {err}')
+    FAILURES.parent.mkdir(parents=True, exist_ok=True)
+    with open(FAILURES, 'a', encoding='utf-8') as f:
+        f.write(json.dumps({'name': name, 'stage': stage, 'error': str(err)[:400],
+                            'at': now_iso()}, ensure_ascii=False) + '\n')
 
 
 def human(n):
@@ -871,12 +886,12 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
                 print(f'  {name}: скачивание ...')
                 arc, _ = download(unit, False, remote)
             except Exception as e:
-                print(f'  {name}: FAIL download: {e}')
+                record_failure(name, 'ассеты: скачивание', e)
                 continue
         try:
             ext = extract(arc, ex_tmp)
         except Exception as e:
-            print(f'  {name}: FAIL extract: {e}')
+            record_failure(name, 'ассеты: распаковка', e)
             if lean:
                 _drop_cache(name)
             continue
@@ -925,8 +940,8 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
                 if stype == 'hf':
                     ok = _hf_put_folder(hf_repo, uchunks, hf_token)
                     if not ok:
-                        print(f'  {name}: FAIL upload папки после ретраев — '
-                              f'юнит переедет в следующий прогон')
+                        record_failure(name, 'ассеты: заливка на HF',
+                                       'после ретраев — юнит переедет в следующий прогон')
                     else:
                         for cn, shas, grp in pending:
                             url = (f'https://huggingface.co/datasets/{hf_repo}/'
@@ -955,7 +970,7 @@ def build_asset_track(cfg, units, do_upload, repo_slug, fetch=False, lean=False,
                   f'({len(by_mod)} мод-групп, {len(pending)} чанков)')
             total_new += uploaded; total_bytes += nbytes
         except Exception as e:
-            print(f'  {name}: FAIL upload: {e}')
+            record_failure(name, 'ассеты: заливка на HF', e)
         finally:
             shutil.rmtree(ext, ignore_errors=True)
             shutil.rmtree(uchunks, ignore_errors=True)
@@ -1093,7 +1108,7 @@ def code_track(cfg):
             print(f'  {name}: код залит — {len(need)} блобов, {len(pending)} чанков '
                   f'({len(by_mod)} мод-групп)')
         else:
-            print(f'  {name}: FAIL заливка кода после ретраев')
+            record_failure(name, 'код: заливка на HF', 'после ретраев')
         shutil.rmtree(uchunks, ignore_errors=True)
 
     print(f'Код-трек: новых код-блобов {total}; в индексе {len(index["blobs"])} блобов, '
@@ -1198,8 +1213,73 @@ def fill_missing(cfg, dry=False):
         print(f'  залито {len(need)} код-блобов в {len(pending)} чанках; '
               f'в индексе теперь {len(index["blobs"])} блобов')
     else:
-        print('  FAIL заливка после ретраев')
+        record_failure('—', 'долив код-блобов на HF', 'после ретраев')
     shutil.rmtree(uchunks, ignore_errors=True)
+
+
+# ---- Проверка содержимого: датники CFG, которые движок читает при старте ----
+# Только отчёт: файлы авторов не правим (решение Артёма 13.10.2026), находки уходят в
+# state/content_check.json, в сводку прогона и в Telegram. Образец — sr-lab
+# srscript/registry.read_cache (правило cache-wrong-kind); читатель .dat — srblockpar из
+# декомпилятора (он и так лежит рядом: ../rson_decompiler/vendor).
+
+def dat_reader(run_py):
+    """Модуль srblockpar.datfile из декомпилятора или None (нет — проверка пропускается)."""
+    vendor = Path(run_py).parent / 'vendor'
+    if str(vendor) not in sys.path:
+        sys.path.insert(0, str(vendor))
+    try:
+        from srblockpar import datfile
+    except ImportError as e:
+        print(f'  проверка содержимого недоступна — нет srblockpar ({vendor}): {e}')
+        return None
+    return datfile
+
+
+def check_content(root, datfile):
+    """Находки по файлам юнита в root: [{'file', 'rule', 'message'}].
+
+    Смотрим только то, что движок читает при старте: Main.dat и CacheData.dat прямо в
+    папке CFG (GR_Main.LoadDatConfigAndModOverrides: `Mods\\<мод>\\CFG\\…`; CFG\\Rus\\ и
+    прочие подпапки он не грузит). Оба файла он открывает LoadFromEncryptedDatFile: не
+    сошлась сумма после расшифровки — дерево остаётся пустым («… is empty!» в журнале).
+
+    * cache-wrong-kind — CacheData.dat упакован ключом Main.dat: ключи мода пропадают, новая
+      игра не строится (TDataEC.PathGetBuf; 12.10.2026 — ExpPilotBridge, ExpTraitors,
+      ShuKlissan, RefSpAgHybrid);
+    * dat-unreadable — файл не датник игры вовсе (напр. дерево без шифра и рамки)."""
+    found = []
+    root = Path(root)
+    for p in sorted(root.rglob('*')):
+        low = p.name.lower()
+        if (low not in ('cachedata.dat', 'main.dat') or p.parent.name.lower() != 'cfg'
+                or not p.is_file()):
+            continue
+        rel = p.relative_to(root).as_posix()
+        try:
+            kind = datfile.unpack(p.read_bytes()).kind
+        except Exception as e:  # чужой файл может быть любым
+            found.append({'file': rel, 'rule': 'dat-unreadable',
+                          'message': f'не датник игры ({e}): движок сочтёт его пустым'})
+            continue
+        if low == 'cachedata.dat' and kind != datfile.KIND_DATA:
+            found.append({'file': rel, 'rule': 'cache-wrong-kind',
+                          'message': 'упакован ключом Main.dat, а не CacheData: движок считает '
+                                     'его пустым, ключи мода пропадут, новая игра не построится'})
+    return found
+
+
+def save_content_report(results):
+    """results: {юнит: {'sha256', 'findings'}} — дописать в CONTENT_REPORT."""
+    report = load_json(CONTENT_REPORT, {})
+    for name, r in results.items():
+        report[name] = dict(r, checked_at=now_iso())
+    save_json(CONTENT_REPORT, dict(sorted(report.items())))
+
+
+def print_findings(name, findings):
+    for f in findings:
+        print(f'  [CONTENT] {name}: {f["rule"]} — {f["file"]}: {f["message"]}')
 
 
 # ---- Фаза 1: дескрипторы модов (мод = пакет по URL) ----
@@ -2075,6 +2155,10 @@ def main():
     ap.add_argument('--cloud', action='store_true',
                     help='облачный режим: manual-юниты (тяжёлые, manual:true) НЕ обрабатывать, '
                          'только детектить изменения -> state/manual_pending.json (для уведомления)')
+    ap.add_argument('--check-content', action='store_true',
+                    help='проверить датники CFG уже разложенных юнитов (mods/<юнит>/code/; '
+                         'файлы крупнее порога кода лежат только на HF и не проверяются) '
+                         '-> state/content_check.json. Обычный прогон проверяет распаковку сам')
     a = ap.parse_args()
 
     cfg = load_json(a.config, None)
@@ -2112,6 +2196,8 @@ def main():
             print('publish-index: нет hf_repo/HF_TOKEN'); return
         ok = _hf_put(repo_id, str(ASSET_INDEX), token)
         print(f'asset_index.json -> HF ({repo_id}): {"OK" if ok else "FAIL"}')
+        if not ok:
+            record_failure('—', 'индекс на HF', f'asset_index.json не залит ({repo_id})')
         return
 
     run_py = (REPO / cfg['decompiler_run_py']).resolve()
@@ -2135,6 +2221,26 @@ def main():
             units = [u for u in units if u['camp'] == a.camp]
     if not units:
         print('Нет включённых юнитов под выбранные фильтры.')
+        return
+
+    datfile = dat_reader(run_py)
+
+    if a.check_content:
+        if datfile is None:
+            sys.exit(1)
+        print(f'=== Проверка содержимого: {len(units)} юнитов (mods/<юнит>/code/) ===')
+        results = {}
+        for unit in units:
+            code_dir = MODS / unit['camp'] / unit['name'] / 'code'
+            if not code_dir.is_dir():
+                continue
+            findings = check_content(code_dir, datfile)
+            print_findings(unit['name'], findings)
+            results[unit['name']] = {'sha256': lock.get(unit['name'], {}).get('sha256'),
+                                     'findings': findings}
+        save_content_report(results)
+        bad = sum(1 for r in results.values() if r['findings'])
+        print(f'--- юнитов с находками: {bad} из {len(results)} ---')
         return
 
     if a.code_release:
@@ -2161,6 +2267,7 @@ def main():
         return
 
     manual_pending = []
+    content_results = {}
     for unit in units:
         name, camp = unit['name'], unit['camp']
         print(f'\n=== [{camp}] {name} — {unit.get("display_name", name)} ===')
@@ -2198,7 +2305,7 @@ def main():
         try:
             archive, digest = download(unit, no_download, remote)
         except Exception as e:
-            print(f'  FAIL download: {e}')
+            record_failure(name, 'скачивание', e)
             continue
 
         # Откат для случая, когда метаданные недоступны (sig is None): сравниваем
@@ -2211,6 +2318,9 @@ def main():
         try:
             extracted = extract(archive, EXTRACT / name, unit.get('include'),
                                 unit.get('exclude'))
+            # По живой распаковке: здесь все файлы, и крупные, что уйдут только на HF.
+            findings = check_content(extracted, datfile) if datfile else []
+            print_findings(name, findings)
 
             rson_tmp = RSON_TMP / name
             decompile(extracted, rson_tmp, run_py, a.check)
@@ -2249,10 +2359,11 @@ def main():
                           'code_files': cn, 'asset_files': an, 'updated_at': now_iso()}
             save_json(LOCK, lock)            # инкрементально — crash-safe прогресс
             changed_by_camp.setdefault(camp, []).append(name)
+            content_results[name] = {'sha256': digest, 'findings': findings}
             print(f'  код: {cn} файлов / {human(cb)} (+{n_rson} .rson)  |  '
                   f'ассеты: {an} / {human(ab)} (в манифесте)')
         except Exception as e:
-            print(f'  FAIL обработка {name}: {e}')
+            record_failure(name, 'обработка', e)
         finally:
             shutil.rmtree(EXTRACT / name, ignore_errors=True)
             shutil.rmtree(RSON_TMP / name, ignore_errors=True)
@@ -2268,9 +2379,12 @@ def main():
                         p.unlink()
 
     save_json(LOCK, lock)
+    if content_results:
+        save_content_report(content_results)
 
     # Облако: сводка прогона для Telegram-уведомлений (changed = обработанные авто-юниты,
-    # manual = тяжёлые, требующие локального прогона).
+    # manual = тяжёлые, требующие локального прогона, content = находки проверки содержимого
+    # у обработанных; сбои юнитов — в state/failures.log).
     if a.cloud:
         changed_names = [n for names in changed_by_camp.values() for n in names]
         save_json(REPO / 'state' / 'manual_pending.json',
@@ -2278,6 +2392,8 @@ def main():
         save_json(REPO / 'state' / 'cloud_summary.json',
                   {'changed': changed_names,
                    'manual': [m['name'] for m in manual_pending],
+                   'content': {n: r['findings'] for n, r in content_results.items()
+                               if r['findings']},
                    'checked_at': now_iso()})
         if manual_pending:
             names = ', '.join(m['name'] for m in manual_pending)

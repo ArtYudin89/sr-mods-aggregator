@@ -134,6 +134,7 @@ jobs:
 
       # 3) Ассеты изменённых юнитов на HF (тяжёлый шаг; не валит весь прогон).
       - name: Assets to HF
+        id: assets
         continue-on-error: true
         working-directory: sr-mods-aggregator
         env:
@@ -148,6 +149,7 @@ jobs:
 
       # 4) Код изменённых юнитов на HF.
       - name: Code to HF
+        id: code
         continue-on-error: true
         working-directory: sr-mods-aggregator
         env:
@@ -158,6 +160,7 @@ jobs:
 
       # 5) Дескрипторы + публикация индекса.
       - name: Descriptors + index
+        id: descriptors
         continue-on-error: true
         working-directory: sr-mods-aggregator
         env:
@@ -187,7 +190,9 @@ jobs:
             bash pipeline/push_master.sh
           fi
 
-      # 7) Итоговое Telegram-уведомление об обычном автообновлении (если что-то обновилось).
+      # 7) Итоговое Telegram-уведомление: обновлённые паки, сбои юнитов (state/failures.log),
+      #    находки проверки содержимого, упавшие шаги. continue-on-error прячет провал шага
+      #    в итоге прогона, поэтому исходы передаём явно.
       - name: Notify auto-update result (Telegram)
         if: ${{ always() }}
         working-directory: sr-mods-aggregator
@@ -196,4 +201,6 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           NOTIFY_TEST: ${{ github.event.inputs.notify_test }}
+          JOB_STATUS: ${{ job.status }}
+          STEP_OUTCOMES: "assets=${{ steps.assets.outcome }};code=${{ steps.code.outcome }};descriptors=${{ steps.descriptors.outcome }}"
         run: python pipeline/notify.py summary
