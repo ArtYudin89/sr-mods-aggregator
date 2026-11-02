@@ -4,7 +4,7 @@
 Загрузчик XenoNative из Xenomorphchyma/XenoMods раздаётся в паке shared/solar под
 PolyForm Noncommercial 1.0.0. Раздел Notices требует, чтобы каждый получатель получил
 текст условий (или их URL) и строки «Required Notice:» (находка аудита F1024-crit-2-1).
-Тесты читают только файлы репозитория: без сети и без импорта aggregate.
+Тесты не требуют сети: проверяют реестр и подмешивание условий в распаковку.
 
 Запускать: python -m unittest discover -s tests -t .
 """
@@ -13,9 +13,14 @@ import hashlib
 import json
 import os
 import re
+import sys
+import tempfile
 import unittest
+from pathlib import Path
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, 'pipeline'))
+import aggregate  # noqa: E402
 NOTICES = os.path.join(ROOT, 'third_party', 'notices.json')
 MANIFESTS = ('code.manifest.json', 'assets.manifest.json')
 
@@ -64,6 +69,25 @@ class RegistryTests(unittest.TestCase):
             self.assertIn(c['license_url'], text, c['id'])
 
 
+class InjectionTests(unittest.TestCase):
+    def test_notices_follow_loaders_at_any_depth_verbatim_and_repeatably(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for name in ('XenoCore.DLL', 'Wrapper/XenoNative.ini',
+                         'Mods/Solar/Native/XenoCore.dll', 'Other/normal.dll'):
+                file = root / name
+                file.parent.mkdir(parents=True, exist_ok=True)
+                file.write_bytes(b'loader')
+            aggregate._inject_notices(root)
+            aggregate._inject_notices(root)
+            expected = _read_bytes('third_party/XenoNative/LICENSE.txt')
+            found = sorted(root.rglob('LICENSE-XenoNative.txt'))
+            self.assertEqual(len(found), 3)
+            for file in found:
+                self.assertEqual(file.read_bytes(), expected)
+            self.assertFalse((root / 'Other/XenoNative').exists())
+
+
 class DistributionTests(unittest.TestCase):
     def test_readme_has_required_notices(self):
         with open(os.path.join(ROOT, 'README.md'), encoding='utf-8') as f:
@@ -78,12 +102,6 @@ class DistributionTests(unittest.TestCase):
                         if '](%s)' % url not in readme]
         self.assertEqual(missing, [])
 
-    # Пак shared/solar пока раздаётся без файла условий: хука, который кладёт его в паки
-    # с загрузчиком, и разового файла в mods/shared/solar/code/ ещё нет (вариант 1 аудита
-    # F1024-crit-2-1 ждёт решения). Когда они появятся и ночной --code-track пересоберёт
-    # code.manifest.json, тест пройдёт, unittest засчитает неожиданный успех и прогон
-    # упадёт — тогда снять декоратор.
-    @unittest.expectedFailure
     def test_repo_units_carry_notices(self):
         missing = []
         for unit_dir in sorted(glob.glob(os.path.join(ROOT, 'mods', '*', '*'))):
@@ -96,9 +114,7 @@ class DistributionTests(unittest.TestCase):
                            if p.rpartition('/')[2].lower() in markers}
                 for folder in sorted(folders):
                     want = (folder + '/' if folder else '') + c['install_as']
-                    lic_dir = want.rpartition('/')[0].lower() + '/'
-                    if not any(p.startswith(lic_dir) and '/' not in p[len(lic_dir):]
-                               and p[len(lic_dir):].startswith('licen') for p in lowered):
+                    if want.lower() not in lowered:
                         missing.append('%s: %s' % (unit, want))
         self.assertEqual(missing, [])
 

@@ -728,6 +728,25 @@ def collect_rson(out_dir, dest):
 # Шаг 4: Классификатор код/ассет
 # ---------------------------------------------------------------------------
 
+def _inject_notices(extracted):
+    """Положить закреплённые условия рядом с найденными сторонними загрузчиками."""
+    root = Path(extracted)
+    components = load_json(REPO / 'third_party' / 'notices.json', [])
+    for component in components:
+        markers = {name.lower() for name in component['markers']}
+        folders = {p.parent for p in root.rglob('*')
+                   if p.name.lower() in markers and p.is_file()}
+        if not folders:
+            continue
+        source = REPO / component['license_file']
+        if sha256_file(source) != component['license_sha256']:
+            raise ValueError(f"неверная сумма условий {component['id']}")
+        for folder in sorted(folders):
+            target = folder / component['install_as']
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, target)
+
+
 def classify(extracted, code_dir, policy):
     """Разложить распакованное дерево:
       * код-файлы (ext в code_ext И размер<=code_max) -> копия в code_dir (verbatim);
@@ -2328,6 +2347,8 @@ def main():
 
     manual_pending = []
     content_results = {}
+    failed_units = set()
+    by_name = {u['name']: u for u in cfg['units']}
     for unit in units:
         name, camp = unit['name'], unit['camp']
         print(f'\n=== [{camp}] {name} — {unit.get("display_name", name)} ===')
@@ -2362,10 +2383,31 @@ def main():
             print('  без изменений (метаданные GDrive) — не качаем')
             continue
 
+        parent = unit.get('fix_parent') or FIX_PARENT.get(name)
+        if parent:
+            parent_unit = by_name.get(parent)
+            parent_lock = lock.get(parent, {})
+            reason = None
+            if parent in failed_units:
+                reason = f'база {parent} не обработана в этом прогоне'
+            elif not parent_unit or not parent_lock:
+                reason = f'нет обработанной базы {parent}'
+            else:
+                parent_sig = remote_signature(parent_unit, rclone_exe, remote)
+                if not parent_sig:
+                    reason = f'не удалось проверить отпечаток базы {parent}'
+                elif parent_sig != parent_lock.get('remote_sig'):
+                    reason = f'база {parent} изменилась, сначала обновите её'
+            if reason:
+                record_failure(name, 'проверка базы', reason)
+                failed_units.add(name)
+                continue
+
         try:
             archive, digest = download(unit, no_download, remote)
         except Exception as e:
             record_failure(name, 'скачивание', e)
+            failed_units.add(name)
             continue
 
         # Откат для случая, когда метаданные недоступны (sig is None): сравниваем
@@ -2378,6 +2420,7 @@ def main():
         try:
             extracted = extract(archive, EXTRACT / name, unit.get('include'),
                                 unit.get('exclude'))
+            _inject_notices(extracted)
             # По живой распаковке: здесь все файлы, и крупные, что уйдут только на HF.
             findings = check_content(extracted, datfile) if datfile else []
             print_findings(name, findings)
@@ -2424,6 +2467,7 @@ def main():
                   f'ассеты: {an} / {human(ab)} (в манифесте)')
         except Exception as e:
             record_failure(name, 'обработка', e)
+            failed_units.add(name)
         finally:
             shutil.rmtree(EXTRACT / name, ignore_errors=True)
             shutil.rmtree(RSON_TMP / name, ignore_errors=True)
