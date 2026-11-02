@@ -122,6 +122,10 @@
                     "#": 9,
                     "Code.Type": "Turn",
                     "Code": [
+                        "if(ShipFindCustomShipInfoByType(Player(),'RefAssasinInfo') == -1) ShipAddCustomShipInfo(Player(),'RefAssasinInfo','NoShow');",
+                        "if(ShipFindCustomShipInfoByType(Player(),'RefGunBatteryLabelsSwitcher') == -1) ShipAddCustomShipInfo(Player(),'RefGunBatteryLabelsSwitcher','NoShow');",
+                        "if(MetFlag && ShipFindCustomShipInfoByType(Player(),'RefMeteorFlag') == -1) MetFlag = 0;",
+                        "if(BastFlag && ShipFindCustomShipInfoByType(Player(),'RefBastionFlag') == -1) BastFlag = 0;",
                         "if(!ShipInNormalSpace(Player())) {",
                         "    if(HullSpecial(Player()) != FindBonusByCustomTag('Meteor') && HullSpecial(Player()) != FindBonusByCustomTag('SuperHullSB')) {",
                         "        if(ShipFindCustomShipInfoByType(Player(),'RefMeteorFlag') != -1) {",

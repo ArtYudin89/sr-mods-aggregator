@@ -306,7 +306,7 @@
                         "    if(ShipInNormalSpace(Player())) {",
                         "        if(GroupCount(BombCarrier)) {",
                         "            if(ShipInNormalSpace(GroupToShip(BombCarrier))) {",
-                        "                if(ShipStar(GroupToShip(BombCarrier))==ShipStar(Player())) {",
+                        "                if(ShipStar(GroupToShip(BombCarrier))==ShipStar(Player()) && ShipRank(Player()) >= 3 && Dist(GroupToShip(BombCarrier),Player()) <= ShipRadarRange(GroupToShip(BombCarrier))) {",
                         "                    Ether(10, '', Format(CT('Script.Mod_RevWarriorsAttack.D1'), '<'+'Star>', Name(TargetSystem), '<'+'Date>', GameDateTxtByTurn(jumpTimer)), GroupToShip(BombCarrier));",
                         "                    dialogStr=Format(CT('ShipGreetings.Group.WarriorLiberatorBefore'), '<'+'StarEnemy>', Name(TargetSystem), '<'+'Date>', GameDateTxtByTurn(jumpTimer));",
                         "                    etherFlag=1;",
