@@ -9,25 +9,30 @@
   "priority": "10",
   "description": "Быстрый и устойчивый генератор секторов галактики\n(Мод можно подключать/отключать в течение партии)",
   "full_description": "Включает альтернативный генератор раскладки секторов вместо ванильного/классического: сектора считаются как дискретная диаграмма Вороного (O(клетки)), а не прогоном лучей по цепочке из ~2400 клеток; раскладка проверяется заранее и при неудаче центры сдвигаются (релаксация Ллойда), а не перебрасываются. Генерация 82 секторов занимает ~0.05 с вместо 1-23 с, карта никогда не увеличивается. Звёзды, сюжетный сектор, Гралгар, рукава и кластеры работают как раньше. Если быстрый путь не справился, автоматически запускается классический генератор. Настройки (CFG\\Rus\\Lang.txt, блок Constellations): GalaxyFastGen (0/1), GalaxyFastVerify (0 выкл, 1 проверка движком, 2 полная), GalaxyFastBandLo/Hi (допуск площади сектора в % от средней, по умолчанию 50/160), GalaxyFastSpread (1..32, равномерность центров, по умолчанию 6). Лог: galaxy_gen.log (метки FAST_*).",
-  "version": "3f73c3c4ee4ea5a6",
+  "version": "77d5c5a47ad8ac2e",
   "depends": [
     "SolUtilities"
   ],
   "conflicts": [],
   "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
   "cosmetic": [],
-  "mtime": 1793510240,
+  "mtime": 1793756874,
   "files": {
     "code": {
-      "Solar_Release_2026-11-01_unpacked/Mods/Solar/SolFastGen/ModuleInfo.txt": {
+      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolFastGen/ModuleInfo.txt": {
         "sha256": "c7848fc36eee40fdfd0b58945c49f0fa28cd02287c6fbd6d6c5becec06c13ab6",
         "size": 4292,
-        "mtime": 1793510240
+        "mtime": 1793756874
       },
-      "Solar_Release_2026-11-01_unpacked/Mods/Solar/SolFastGen/CFG/Rus/Lang.dat": {
-        "sha256": "16a5c7886936399b432ad2548d3cdfca7e7155f1f29c6a3f7680faf470de8afa",
-        "size": 133,
-        "mtime": 1793510240
+      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolFastGen/CFG/Eng/Lang.dat": {
+        "sha256": "04e18d74e7539fbadd0514117ad88da7823be745b204733f61f3ca29d89a782b",
+        "size": 138,
+        "mtime": 1793756874
+      },
+      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolFastGen/CFG/Rus/Lang.dat": {
+        "sha256": "04e18d74e7539fbadd0514117ad88da7823be745b204733f61f3ca29d89a782b",
+        "size": 138,
+        "mtime": 1793756874
       }
     },
     "assets": {}
