@@ -27,7 +27,7 @@
                     "#": 70,
                     "Msg": "",
                     "AMsg.Num": "0",
-                    "_orig_danswer": "DAnswer('restart')"
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ExpBlackMarket_2.2\"))"
                 },
                 {
                     "Type": "TDialogAnswer",
@@ -60,7 +60,7 @@
                     "#": 73,
                     "Msg": "",
                     "AMsg.Num": "3",
-                    "_orig_danswer": "DAnswer('exit')"
+                    "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_ExpBlackMarket_2.2\"))"
                 },
                 {
                     "Type": "TDialogAnswer",
@@ -95,7 +95,7 @@
                     "#": 66,
                     "Msg": "",
                     "DMsg.Num": "0",
-                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpBlackMarket_2.0\"))"
+                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpBlackMarket_2.2\"))"
                 },
                 {
                     "Type": "TDialogMsg",
@@ -260,7 +260,8 @@
                         "    ShipOwner(BlackMarket, 1);",
                         "    ShipPilotRace(BlackMarket, 1);",
                         "    RelationToRanger(BlackMarket, Player(), 55);",
-                        "    ShipJoinsClan(BlackMarket);",
+                        "    //Пиратская станция не вступает в клан",
+                        "    ShipStanding(BlackMarket, 6);",
                         "    ShipJoin(BM, BlackMarket);",
                         "",
                         "    //Запрещаем автообновление магазинов оборудования и товаров",
@@ -2397,7 +2398,7 @@
                         "  //Если ещё ни одно из условий на получение доступа к ЧР не выполнено",
                         "  else",
                         "  {",
-                        "      //Если включён Tweaks\\\\RevolutionDelayed, ЧР не запускается, пока не появятся пираты (иначе он пиратского клана и уничтожается/мешает задержке)",
+                        "      //При RevolutionDelayed сохраняем исходную задержку появления рынка до выступления пиратов",
                         "      dwd0 = 0;",
                         "      if(CurrentMods('Tweaks\\\\RevolutionDelayed'))",
                         "      {",
@@ -2467,7 +2468,7 @@
                         "          }",
                         "      }",
                         "  }",
-                        "  if(PirateWin()) {",
+                        "  if(0) {",
                         "    //Экстренно завершаем скрипт, если пиратский клан потерпел поражение в войне",
                         "    if(PirateWin() == 3 || PirateWin() == 4)",
                         "    {",

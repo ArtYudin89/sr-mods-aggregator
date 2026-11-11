@@ -423,11 +423,12 @@
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "if(GetTalkShip()) {",
+                        "    if(dialogStr == '' && TargetSystem) dialogStr=Format(CT('ShipGreetings.Group.WarriorLiberatorBefore'), '<'+'StarEnemy>', Name(TargetSystem), '<'+'Date>', GameDateTxtByTurn(jumpTimer));",
                         "    if(ShipGroup(GetTalkShip())==BombCarrier) {",
-                        "        if(StateIs(GetTalkShip(), 'Move', 'Jump')) DText(dialogStr);",
+                        "        if(StateIs(GetTalkShip(), 'Move', 'Jump') && dialogStr != '') DText(dialogStr);",
                         "    }",
                         "    else if(ShipGroup(GetTalkShip())==Warriors) {",
-                        "        if(StateIs(GetTalkShip(), 'Follow', 'Jump2')) DText(dialogStr);",
+                        "        if(StateIs(GetTalkShip(), 'Follow', 'Jump2') && dialogStr != '') DText(dialogStr);",
                         "    }",
                         "}"
                     ]

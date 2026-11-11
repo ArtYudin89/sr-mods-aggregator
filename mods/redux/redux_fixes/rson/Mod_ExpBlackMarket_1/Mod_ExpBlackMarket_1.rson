@@ -115,7 +115,7 @@
                     "#": 59,
                     "Msg": "",
                     "AMsg.Num": "8",
-                    "_orig_danswer": "DAnswer('restart')"
+                    "_orig_danswer": "DAnswer('restart~'+CT(\"Script.Mod_ExpBlackMarket_1.49\"))"
                 },
                 {
                     "Type": "TDialogAnswer",
@@ -126,7 +126,7 @@
                     "#": 60,
                     "Msg": "",
                     "AMsg.Num": "9",
-                    "_orig_danswer": "DAnswer('exit')"
+                    "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_ExpBlackMarket_1.49\"))"
                 }
             ],
             "DialogMessages": [
@@ -205,7 +205,7 @@
                     "#": 49,
                     "Msg": "",
                     "DMsg.Num": "6",
-                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpBlackMarket_1.48\"))"
+                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpBlackMarket_1.49\"))"
                 },
                 {
                     "Type": "TDialogMsg",
@@ -216,7 +216,7 @@
                     "#": 50,
                     "Msg": "",
                     "DMsg.Num": "7",
-                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpBlackMarket_1.48\"))"
+                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpBlackMarket_1.49\"))"
                 }
             ],
             "Dialogs": [
@@ -446,23 +446,20 @@
                         "        //Если соблюдены все прочие условия для старта скрипта",
                         "        if(ExpBlackMarketGlobal == -1)",
                         "        {",
-                        "            //Если пираты не были окончательно побеждены",
-                        "            if(PirateWin() == 0 || PirateWin() == 1 || PirateWin() == 2 || PirateWin() == 5)",
+                        "            //Чёрный рынок не зависит от исхода войны с пиратским кланом",
+                        "            //Если от начала игры прошло не менее трёх лет",
+                        "            //Если включён Tweaks\\\\RevolutionDelayed, ситуация не стартует, пока не появятся пираты",
+                        "            int bmHold = 0;",
+                        "            if(CurrentMods('Tweaks\\\\RevolutionDelayed'))",
                         "            {",
-                        "                //Если от начала игры прошло не менее трёх лет",
-                        "                //Если включён Tweaks\\\\RevolutionDelayed, ситуация не стартует, пока не появятся пираты",
-                        "                int bmHold = 0;",
-                        "                if(CurrentMods('Tweaks\\\\RevolutionDelayed'))",
-                        "                {",
-                        "                    if(GetValueFromScript('Mod_RevolutionDelayed', 'pirates_begin_turn') > CurTurn()) bmHold = 1;",
-                        "                }",
-                        "                if(CurTurn() > 1432 && !bmHold)",
-                        "                {",
-                        "                    //Если игроком извлечено достаточно чистой прибыли за контрабандную торговлю",
-                        "                    if(ShipCustomShipInfoData(Player(), 'SmugglingCountInfo', 3) >= 7500 * (GalaxyDiffLevels(7) / 50)) {",
-                        "                        if(ShipStatus(Player(),0) < 20) GRun();",
-                        "                        else if(ShipCustomShipInfoData(Player(), 'SmugglingCountInfo', 3) >= (7500 * (GalaxyDiffLevels(7) / 50) + (ShipStatus(Player(),0) - 20) * 10000)) GRun();",
-                        "                    }",
+                        "                if(GetValueFromScript('Mod_RevolutionDelayed', 'pirates_begin_turn') > CurTurn()) bmHold = 1;",
+                        "            }",
+                        "            if(CurTurn() > 1432 && !bmHold)",
+                        "            {",
+                        "                //Если игроком извлечено достаточно чистой прибыли за контрабандную торговлю",
+                        "                if(ShipCustomShipInfoData(Player(), 'SmugglingCountInfo', 3) >= 7500 * (GalaxyDiffLevels(7) / 50)) {",
+                        "                    if(ShipStatus(Player(),0) < 20) GRun();",
+                        "                    else if(ShipCustomShipInfoData(Player(), 'SmugglingCountInfo', 3) >= (7500 * (GalaxyDiffLevels(7) / 50) + (ShipStatus(Player(),0) - 20) * 10000)) GRun();",
                         "                }",
                         "            }",
                         "        }",
@@ -540,7 +537,8 @@
                         "    //ShipFace(dwd0,0);",
                         "    SpecialToEquipment(FindBonusByCustomTag('ExpBlackMarket_SmugglerPeleng'), dwd1);",
                         "    HullSeries(dwd1, FindSeriesByName(CT('HullType.ExpBlackMarket_Solo.Name')));",
-                        "    ShipJoinsClan(dwd0);",
+                        "    //Контрабандист действует независимо от пиратского клана",
+                        "    ShipStanding(dwd0, 6);",
                         "    ShipRefit(dwd0);",
                         "    ShipRefit(dwd0);",
                         "    ShipRefit(dwd0);",

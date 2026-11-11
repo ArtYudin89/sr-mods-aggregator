@@ -24,7 +24,7 @@
                     "Pos.x": 0,
                     "Pos.y": 505,
                     "Parent": -1,
-                    "#": 25,
+                    "#": 26,
                     "Msg": "Конец связи",
                     "AMsg.Num": "0",
                     "_orig_danswer": "DAnswer('fastexit~'+CT(\"Script.Mod_ExpArts.2\"))"
@@ -37,7 +37,7 @@
                     "Pos.x": 0,
                     "Pos.y": 435,
                     "Parent": -1,
-                    "#": 24,
+                    "#": 25,
                     "Msg": "Эй, ты что там делаешь?! Ну держись!",
                     "DMsg.Num": "0",
                     "_orig_dtext": "DText(CT(\"Script.Mod_ExpArts.1\"))"
@@ -50,7 +50,7 @@
                     "Pos.x": 0,
                     "Pos.y": 365,
                     "Parent": -1,
-                    "#": 23
+                    "#": 24
                 }
             ],
             "Groups": [
@@ -60,7 +60,7 @@
                     "Pos.x": 0,
                     "Pos.y": 180,
                     "Parent": -1,
-                    "#": 17,
+                    "#": 18,
                     "Owner": 62,
                     "Group.Type": 126,
                     "CntShipMin": 1,
@@ -94,7 +94,7 @@
                     "Pos.x": 0,
                     "Pos.y": 575,
                     "Parent": -1,
-                    "#": 18,
+                    "#": 19,
                     "Code.Type": "Global",
                     "Code": [
                         "if(!GCntRun(GScriptName)) GRun();"
@@ -106,7 +106,7 @@
                     "Pos.x": 60,
                     "Pos.y": 575,
                     "Parent": -1,
-                    "#": 19,
+                    "#": 20,
                     "Code.Type": "Init",
                     "Code": [
                         "//Этот список полезен для быстрого получения имён артов из других модов",
@@ -700,7 +700,7 @@
                     "Pos.x": 120,
                     "Pos.y": 575,
                     "Parent": -1,
-                    "#": 20,
+                    "#": 21,
                     "Code.Type": "Turn",
                     "Code": [
                         "if(!ShipIsTakeoff(Player())) {",
@@ -911,7 +911,7 @@
                     "Pos.x": 180,
                     "Pos.y": 575,
                     "Parent": -1,
-                    "#": 21,
+                    "#": 22,
                     "Code.Type": "DialogBegin",
                     "Code": [
                         "dword ship = GetTalkShip();",
@@ -930,7 +930,7 @@
                     "Pos.x": -20,
                     "Pos.y": 365,
                     "Parent": -1,
-                    "#": 26,
+                    "#": 27,
                     "Code.Type": "Turn",
                     "Code": [
                         "cur_ship = GetTalkShip();",
@@ -953,7 +953,12 @@
                         "        if(type == t_FuelTanks) continue;",
                         "    }",
                         "",
-                        "    DropItem(cur_ship,ShipEqInSlot(cur_ship,type));",
+                        "    dword raDropped = ShipEqInSlot(cur_ship,type);",
+                        "    DropItem(cur_ship,raDropped);",
+                        "    if(ReduxAchHasker < 1000000) {",
+                        "        LinkItemToScript(raDropped);",
+                        "        ItemOnActCode(raDropped, 'if(IsPlayer(ScriptItemActShip())) ReduxAchHasker = min(1000000, ReduxAchHasker + ItemCost(CurItem())); ReleaseItemFromScript(CurItem());', 't_OnItemPickUp');",
+                        "    }",
                         "    check = 1;",
                         "",
                         "    for(i=0;ShipArts(Player())>i;i=i+1) {",
@@ -974,7 +979,7 @@
                     "Pos.x": -20,
                     "Pos.y": 435,
                     "Parent": -1,
-                    "#": 27,
+                    "#": 28,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);"
@@ -989,7 +994,7 @@
                     "Pos.x": 0,
                     "Pos.y": 135,
                     "Parent": -1,
-                    "#": 16,
+                    "#": 17,
                     "Race": 62,
                     "Owner": 62,
                     "Economy": 14,
@@ -1007,7 +1012,7 @@
                     "Pos.x": 0,
                     "Pos.y": 45,
                     "Parent": -1,
-                    "#": 15,
+                    "#": 16,
                     "Count": 1,
                     "Owner": 62,
                     "Ship.Type": 126,
@@ -1036,7 +1041,7 @@
                     "Pos.x": 0,
                     "Pos.y": 90,
                     "Parent": -1,
-                    "#": 14,
+                    "#": 15,
                     "Constellation": 0,
                     "Priority": 0,
                     "NoKling": false,
@@ -1050,7 +1055,7 @@
                     "Pos.x": 0,
                     "Pos.y": 205,
                     "Parent": -1,
-                    "#": 22,
+                    "#": 23,
                     "Move": 0,
                     "MoveObj": -1,
                     "Attack.Count": 0,
@@ -1217,18 +1222,22 @@
                     "Var.Type": "Int",
                     "Init": "0",
                     "Global": false
+                },
+                {
+                    "Type": "TVar",
+                    "Name": "ReduxAchHasker",
+                    "Pos.x": 1290,
+                    "Pos.y": 0,
+                    "Parent": -1,
+                    "#": 14,
+                    "Var.Type": "Int",
+                    "Init": "0",
+                    "Global": false
                 }
             ]
         }
     ],
     "Visual.Links": [
-        {
-            "Type": "TGraphLink",
-            "Begin": 23,
-            "End": 26,
-            "Nom": 0,
-            "Arrow": true
-        },
         {
             "Type": "TGraphLink",
             "Begin": 24,
@@ -1238,29 +1247,36 @@
         },
         {
             "Type": "TGraphLink",
-            "Begin": 15,
-            "End": 14,
+            "Begin": 25,
+            "End": 28,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
             "Begin": 16,
-            "End": 14,
+            "End": 15,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
             "Begin": 17,
-            "End": 16,
+            "End": 15,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 17,
-            "End": 22,
+            "Begin": 18,
+            "End": 17,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 18,
+            "End": 23,
             "Nom": 0,
             "Arrow": true
         }

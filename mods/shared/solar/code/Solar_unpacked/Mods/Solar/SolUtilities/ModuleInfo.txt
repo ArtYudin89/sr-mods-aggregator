@@ -1,0 +1,65 @@
+Name=SolUtilities
+
+Author=FC_Fan, zauronix
+
+Conflict=
+
+Dependence=
+
+Priority=6
+
+Section=Solar
+
+SectionEng=Solar
+
+Languages=Rus,Eng
+
+
+
+SmallDescription=Утилитпак с DLL для модов Solar: режимы и экономики планет, нативные порты, ядро хуков
+
+SmallDescription=(Мод можно <color=150,0,15>подключать</color>/<color=150,0,15>отключать</color> в течение партии)
+
+FullDescription=Основа сборника Solar. Нужен для работы модов, у которых SolUtilities указан в зависимостях. Исправляет отдельные ошибки игры и поддерживает возможности других модов: новые режимы и экономики планет, оборудование и изменения карты.
+
+FullDescription=Во время диалога F1 открывает бортовой журнал. Настройка: DLLSettings.Dialog.Journal=1; значение 0 выключает возможность.
+FullDescriptionEng=F1 opens the ship journal during a dialog. Setting: DLLSettings.Dialog.Journal=1; set it to 0 to disable this feature.
+
+FullDescription=Ответы в диалогах можно выбирать цифрами 1–9 на клавиатуре и NumPad. Для ответа с номером 10 и выше удерживайте Shift, наберите номер и отпустите Shift. Эту возможность можно выключить в тонких настройках игры.
+
+FullDescription=Подключайте мод перед началом новой партии. Не отключайте его для сохранения, созданного с новыми режимами, экономиками или оборудованием из модов Solar: такое сохранение может не загрузиться.
+
+
+
+SmallDescriptionEng=Utility pack with the DLLs for the Solar mods: planet regimes and economies, native ports, the hook core
+
+SmallDescriptionEng=(The mod can be <color=150,0,15>enabled</color>/<color=150,0,15>disabled</color> during a playthrough)
+
+FullDescriptionEng=The foundation of the Solar collection. Required by Solar mods that list SolUtilities as a dependency. Fixes some game bugs and supports features provided by other mods, including new planet regimes and economies, equipment, and map changes.
+
+FullDescriptionEng=You can choose dialog answers with keys 1–9 on the keyboard or numpad. For answer 10 or higher, hold Shift, type the full number, then release Shift. You can turn this feature off in the fine settings.
+
+FullDescriptionEng=Enable the mod before starting a new game. Do not disable it for a save created with new regimes, economies, or equipment from Solar mods: that save may fail to load.
+
+FullDescription=Счётчик симуляции включён отдельно от журнала генерации. Настройки в Lang: DLLSettings.Galaxy.SimCounter=1, DLLSettings.Console.Journal=0, DLLSettings.Console.Wheel=0.
+
+FullDescriptionEng=The simulation counter is enabled separately from the generation journal. Lang settings: DLLSettings.Galaxy.SimCounter=1, DLLSettings.Console.Journal=0, DLLSettings.Console.Wheel=0.
+
+
+FullDescription=Диагностика выполнения: DLLSettings.ScriptProfile.Enable (0/1); Detail=0 — скрипты и выборка стеков, 1 — также выражения и привязка, 2 — также значения и поиск имён. ReportTurns — интервал отчёта в ходах; SampleMs — запрашиваемая пауза выборки в мс, 0 отключает её. F8 на карте выводит промежуточный отчёт в SolHook.log. Подробные режимы замедляют игру; после измерений отключите Enable.
+FullDescriptionEng=Execution diagnostics: DLLSettings.ScriptProfile.Enable (0/1); Detail=0 measures scripts and samples stacks, 1 also measures expressions and binding, 2 also values and name lookup. ReportTurns sets the report interval in turns; SampleMs requests the sampling delay in ms, 0 disables sampling. F8 on the map writes an interim report to SolHook.log. Detailed modes slow the game; disable Enable after measuring.
+
+FullDescription=Полный экспериментальный скриптовый движок подключается отдельным модом SolScriptEngine; в SolUtilities его DLL нет. Точечные ускорения скриптов предназначены для SolScriptsOptimizations и не требуют полного реимплемента.
+FullDescriptionEng=The experimental script engine is enabled by the separate SolScriptEngine mod; its DLL is not bundled in SolUtilities. Targeted script optimizations belong to SolScriptsOptimizations and do not require the full reimplementation.
+
+FullDescription=В тонких настройках новой игры, в существующей группе доминаторов, можно включить победу над Келлером в обычном космосе. При его поражении откроется скриптовый диалог с выбором исхода. Lang-флаг DLLSettings.Keller.SpaceKill=1 разрешает эту возможность; 0 выключает её независимо от выбора игрока. По умолчанию выбор выключен.
+FullDescriptionEng=The existing Dominators group of the new-game fine settings can enable defeating Keller in normal space. His defeat opens the scripted dialogue with the original outcomes. DLLSettings.Keller.SpaceKill=1 makes this feature available; 0 disables it regardless of the player setting. The player setting defaults to off.
+
+FullDescription=В тонких настройках новой игры для серий Келлера, Блазера и Террона есть отдельные разделы: оснащение, агрессивность, темп воспроизводства и ограничение оружия своей серией. «Авто» использует соответствующую общую настройку доминаторов. Выбранные значения сохраняются в партии.
+FullDescriptionEng=New-game fine settings have separate sections for the Keller, Blazer and Terron series: equipment, aggression, reproduction rate and own-series weapons. Auto uses the corresponding general Dominator setting. Selected values are stored in the save.
+
+FullDescription=Ползунок «Скорость роста урона в боях с Келлером» в тонких настройках новой партии задаёт 0–200%: 0% оставляет начальные 10% получаемого урона, 100% — исходный рост до 70 убийств, 200% — рост вдвое быстрее. Значение сохраняется в партии. Доступность: DLLSettings.ArcadeProgress.Enable=1.
+FullDescriptionEng=The Keller battle damage progression slider in new-game fine settings is 0–200%: 0% keeps the initial 10% damage taken, 100% preserves the original rise to 70 kills, 200% doubles the progression speed. The value is saved with the game. Availability: DLLSettings.ArcadeProgress.Enable=1.
+
+FullDescription=Во вкладке «Управление» настроек игры можно переназначить клавиши по разделам. Одинаковая клавиша допустима в разных разделах; конфликт проверяется внутри раздела. Изменения сохраняются кнопкой «Применить».
+FullDescriptionEng=The Controls tab in game settings lets you rebind keys by category. The same key can be used in different categories; conflicts are checked within a category. Use Apply to save changes.

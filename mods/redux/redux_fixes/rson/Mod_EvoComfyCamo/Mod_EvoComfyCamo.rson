@@ -200,6 +200,7 @@
                         "",
                         "if(IsPlayer(ShipGetBad(cur_ship)))",
                         "{",
+                        "    OrderNone(cur_ship);",
                         "    ShipSetBad(cur_ship, 0);",
                         "    ShipFreeFlight(cur_ship);",
                         "}",

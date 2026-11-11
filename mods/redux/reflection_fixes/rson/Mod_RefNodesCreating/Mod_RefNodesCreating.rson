@@ -24,7 +24,7 @@
                     "Pos.x": 0,
                     "Pos.y": 505,
                     "Parent": -1,
-                    "#": 19,
+                    "#": 20,
                     "Msg": "",
                     "AMsg.Num": "0",
                     "_orig_danswer": "DAnswer(CT(\"Script.Mod_RefNodesCreating.5\"))"
@@ -35,7 +35,7 @@
                     "Pos.x": 120,
                     "Pos.y": 505,
                     "Parent": -1,
-                    "#": 20,
+                    "#": 21,
                     "Msg": "",
                     "AMsg.Num": "1",
                     "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_RefNodesCreating.6\"))"
@@ -46,7 +46,7 @@
                     "Pos.x": 240,
                     "Pos.y": 505,
                     "Parent": -1,
-                    "#": 21,
+                    "#": 22,
                     "Msg": "",
                     "AMsg.Num": "2",
                     "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_RefNodesCreating.7\"))"
@@ -85,6 +85,17 @@
                     "Msg": "",
                     "DMsg.Num": "2",
                     "_orig_dtext": "DText(Format(CT(\"Script.Mod_RefNodesCreating.4\"),\"<0>\",nods))"
+                },
+                {
+                    "Type": "TDialogMsg",
+                    "Name": "",
+                    "Pos.x": 450,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 19,
+                    "Msg": "",
+                    "DMsg.Num": "3",
+                    "_orig_dtext": "DText(CT(\"Script.Mod_RefNodesCreating.8\"))"
                 }
             ],
             "Dialogs": [
@@ -177,7 +188,7 @@
                     "Pos.x": -20,
                     "Pos.y": 365,
                     "Parent": -1,
-                    "#": 22,
+                    "#": 23,
                     "Code.Type": "Turn",
                     "Code": [
                         "DChange(0);",
@@ -190,7 +201,7 @@
                     "Pos.x": 190,
                     "Pos.y": 365,
                     "Parent": -1,
-                    "#": 23,
+                    "#": 24,
                     "Code.Type": "Turn",
                     "Code": [
                         "dword item = tarr1[GAnswerData, 0];",
@@ -211,7 +222,7 @@
                     "Pos.x": -20,
                     "Pos.y": 435,
                     "Parent": -1,
-                    "#": 24,
+                    "#": 25,
                     "Code.Type": "Turn",
                     "Code": [
                         "DAdd(0);",
@@ -222,25 +233,6 @@
                     "Type": "Top",
                     "Name": "",
                     "Pos.x": 130,
-                    "Pos.y": 435,
-                    "Parent": -1,
-                    "#": 25,
-                    "Code.Type": "Turn",
-                    "Code": [
-                        "for(i = 0; i < ArrayDim(tarr1); i = i + 1)",
-                        "{",
-                        "    dword item = tarr1[i, 0];",
-                        "    str item_name = DeleteTags(Name(item));",
-                        "    str tstr1 = Format(CT('FormRuins.SB.Scn.PlayerSale'), '<ItemName'+'>', CT('FormRuins.SB.Scn.SectionColor' + ItemSubrace(item)) + item_name, '') + '</color>' + tarr1[i, 2];",
-                        "    InjectAnswer('DialogGave', 'snap~' + tstr1, i);",
-                        "}",
-                        "DAdd(2);"
-                    ]
-                },
-                {
-                    "Type": "Top",
-                    "Name": "",
-                    "Pos.x": 280,
                     "Pos.y": 435,
                     "Parent": -1,
                     "#": 26,
@@ -259,10 +251,41 @@
                 {
                     "Type": "Top",
                     "Name": "",
+                    "Pos.x": 280,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 27,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "for(i = 0; i < ArrayDim(tarr1); i = i + 1)",
+                        "{",
+                        "    dword item = tarr1[i, 0];",
+                        "    str item_name = DeleteTags(Name(item));",
+                        "    str tstr1 = Format(CT('FormRuins.SB.Scn.PlayerSale'), '<ItemName'+'>', CT('FormRuins.SB.Scn.SectionColor' + ItemSubrace(item)) + item_name, '') + '</color>' + tarr1[i, 2];",
+                        "    InjectAnswer('DialogGave', 'snap~' + tstr1, i);",
+                        "}",
+                        "DAdd(2);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
+                    "Pos.x": 430,
+                    "Pos.y": 435,
+                    "Parent": -1,
+                    "#": 28,
+                    "Code.Type": "Turn",
+                    "Code": [
+                        "DAdd(2);"
+                    ]
+                },
+                {
+                    "Type": "Top",
+                    "Name": "",
                     "Pos.x": -20,
                     "Pos.y": 505,
                     "Parent": -1,
-                    "#": 27,
+                    "#": 29,
                     "Code.Type": "Turn",
                     "Code": [
                         "ArrayClear(tarr1);",
@@ -274,8 +297,6 @@
                         "    dword item = ShipItems(Player(), i);",
                         "    if(ItemOwner(item) != Kling) continue;",
                         "    if(EqCustomFaction(item) != '') continue;",
-                        "    if(ItemIsInUse(item)) continue;",
-                        "    if(ItemIsInSet(item)) continue;",
                         "    if(NoDropItem(item)) continue;",
                         "    if(ItemInScript(item) == 1) continue;",
                         "",
@@ -291,7 +312,8 @@
                         "    tarr1[j, 2] = '';",
                         "}",
                         "",
-                        "if(ArrayDim(tarr1)) ArraySort(tarr2, tarr1); //пустой список оставляем пустым (раньше [0] -> ответ с Name(0));",
+                        "if(ArrayDim(tarr1)) ArraySort(tarr2, tarr1);",
+                        "else { DChange(3); exit; } //нет подходящих предметов — показываем объяснение;",
                         "DChange(1);",
                         "exit;"
                     ]
@@ -464,42 +486,49 @@
         {
             "Type": "TGraphLink",
             "Begin": 14,
-            "End": 22,
-            "Nom": 0,
-            "Arrow": true
-        },
-        {
-            "Type": "TGraphLink",
-            "Begin": 15,
             "End": 23,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 16,
+            "Begin": 15,
             "End": 24,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 17,
+            "Begin": 16,
             "End": 25,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 18,
+            "Begin": 17,
             "End": 26,
             "Nom": 0,
             "Arrow": true
         },
         {
             "Type": "TGraphLink",
-            "Begin": 19,
+            "Begin": 18,
             "End": 27,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 19,
+            "End": 28,
+            "Nom": 0,
+            "Arrow": true
+        },
+        {
+            "Type": "TGraphLink",
+            "Begin": 20,
+            "End": 29,
             "Nom": 0,
             "Arrow": true
         },
