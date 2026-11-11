@@ -1441,6 +1441,86 @@ def _after_mods(relpath):
     return '/'.join(parts)
 
 
+def _excluded_mod_ids(cfg):
+    return tuple(mid.replace('\\', '/').strip('/').casefold()
+                 for mid in cfg.get('excluded_mods', []))
+
+
+def _is_excluded_mod_file(relpath, excluded):
+    inst = _after_mods(relpath)
+    if inst is None:
+        return False
+    inst = inst.casefold()
+    return any(inst == mid or inst.startswith(mid + '/') for mid in excluded)
+
+
+def _remove_excluded_mod_files(root, excluded):
+    """Remove files by their mod folder, never by a script's historical name."""
+    if not excluded:
+        return 0
+    root = Path(root).resolve()
+    removed = 0
+    for path in root.rglob('*'):
+        if path.is_file() and _is_excluded_mod_file(path.relative_to(root).as_posix(), excluded):
+            path.resolve().relative_to(root)
+            path.unlink()
+            removed += 1
+    return removed
+
+
+def prune_excluded_mods(cfg):
+    """Apply exclusions to stored units even when their source archive is unchanged."""
+    excluded = _excluded_mod_ids(cfg)
+    if not excluded:
+        return
+    lock = load_json(LOCK, {})
+    lock_changed = False
+    for unit_dir in sorted(MODS.glob('*/*')):
+        cm_path, am_path = (unit_dir / name for name in
+                            ('code.manifest.json', 'assets.manifest.json'))
+        cm, am = load_json(cm_path, {}), load_json(am_path, {})
+        old_code, old_assets = cm.get('files', {}), am.get('files', {})
+        code = {rel: meta for rel, meta in old_code.items()
+                if not _is_excluded_mod_file(rel, excluded)}
+        assets = {rel: meta for rel, meta in old_assets.items()
+                  if not _is_excluded_mod_file(rel, excluded)}
+        removed = len(old_code) + len(old_assets) - len(code) - len(assets)
+        if not removed:
+            continue
+        _remove_excluded_mod_files(unit_dir / 'code', excluded)
+        # RSON folders use script stems. Keep one if a supported mod in this unit
+        # still uses that script (RefRangers contains Mod_ExpRangers.scr).
+        scripts = {Path(rel).stem.casefold() for rel in code if rel.lower().endswith('.scr')}
+        retired_scripts = {Path(rel).stem.casefold() for rel in old_code
+                           if rel not in code and rel.lower().endswith('.scr')} - scripts
+        rson_dir = (unit_dir / 'rson').resolve()
+        for path in rson_dir.rglob('*'):
+            if path.is_file() and path.relative_to(rson_dir).parts[0].casefold() in retired_scripts:
+                path.resolve().relative_to(rson_dir)
+                path.unlink()
+        if code != old_code:
+            cm['files'] = code
+            save_json(cm_path, cm)
+        if assets != old_assets:
+            am.update(files=assets, asset_count=len(assets),
+                      asset_bytes=sum(m['size'] for m in assets.values()))
+            save_json(am_path, am)
+        counts = {'code_files': len(code), 'asset_files': len(assets),
+                  'rson_count': len(list(rson_dir.rglob('*.rson')))}
+        meta_path = unit_dir / 'meta.json'
+        meta = load_json(meta_path, None)
+        if meta is not None:
+            meta.update(counts, code_bytes=sum(m['size'] for m in code.values()),
+                        asset_bytes=sum(m['size'] for m in assets.values()))
+            save_json(meta_path, meta)
+        if unit_dir.name in lock:
+            lock[unit_dir.name].update(counts)
+            lock_changed = True
+        print(f'  excluded mods: {unit_dir.parent.name}/{unit_dir.name}: removed {removed} files')
+    if lock_changed:
+        save_json(LOCK, lock)
+
+
 def _safe_mtime(path):
     """mtime файла или None, если файла нет/недоступен (для дедупа по свежести)."""
     try:
@@ -2245,6 +2325,8 @@ def main():
         print(f'ERROR: конфиг не найден: {a.config}', file=sys.stderr)
         sys.exit(1)
 
+    prune_excluded_mods(cfg)
+
     # Автономные подкоманды (НЕ требуют декомпилятора/GDrive/юнитов) — диспатчим первыми,
     # чтобы они работали и в облаке (workflow без репо декомпилятора).
     if a.regroup:
@@ -2420,6 +2502,7 @@ def main():
         try:
             extracted = extract(archive, EXTRACT / name, unit.get('include'),
                                 unit.get('exclude'))
+            _remove_excluded_mod_files(extracted, _excluded_mod_ids(cfg))
             _inject_notices(extracted)
             # По живой распаковке: здесь все файлы, и крупные, что уйдут только на HF.
             findings = check_content(extracted, datfile) if datfile else []
