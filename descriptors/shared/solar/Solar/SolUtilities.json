@@ -4,85 +4,87 @@
   "source": "shared/solar",
   "name": "SolUtilities",
   "title": "SolUtilities",
-  "author": "FC_Fan",
+  "author": "FC_Fan, zauronix",
   "section": "Solar",
   "priority": "6",
   "description": "Утилитпак с DLL для модов Solar: режимы и экономики планет, нативные порты, ядро хуков\n(Мод можно подключать/отключать в течение партии)",
-  "full_description": "DLLSettings.BugFix.MapPreviewBounds=1: безопасное копирование превью сохранения с карты галактики по фактическим границам захвата экрана, в том числе в оконном режиме. Основа сборника Solar: нативные DLL (SolHook — ядро хуков, SolEngine — сущности и порты NextDay) и общие настройки Lang. Без него моды Solar с пометкой «нужен SolUtilities» не работают. При запуске SolHook сверяет таблицу символов с версией Rangers.exe и проверяет отпечатки хукаемых функций; несовпавшая группа хуков отключается с сообщением (лог SolHook.log).\nDLLSettings.BugFix.MapPreviewBounds=1: безопасное копирование превью сохранения с карты галактики по фактическим границам захвата экрана, в том числе в оконном режиме. <clr><clrEnd>\nDLLSettings.BugFix.MapPreviewBounds=1: безопасное копирование превью сохранения с карты галактики по фактическим границам захвата экрана, в том числе в оконном режиме. Политические режимы планет: блок Lang GovRegime (Enable=1; Regime.<n>, n = 0..4 правит ванильные режимы — отношения после революции, шансы квестов, цены и запасы товаров, легальность, доли режимов по расам в процентах GovRegime.Roll.<раса>.<режим>, сумма долей расы = 100). Ванильная таблица вероятностей уже лежит в Lang этого мода; новые режимы добавляются в мод SolPlanets.\nDLLSettings.BugFix.MapPreviewBounds=1: безопасное копирование превью сохранения с карты галактики по фактическим границам захвата экрана, в том числе в оконном режиме. Экономики планет: блоки Economy (факторы по товарам, изобретения, магазин, события, значок, доли генерации; до пяти новых экономик в слотах 3..7) и PirateEconomy (фактор пиратских планет, включая Роджерию). Числа рас в Main (Race.<Параметр>.<Имя>). Вкладка «Экономика» в тонкой настройке заменяет ванильные ползунки аграрных / смешанных / индустриальных планет.\nDLLSettings.BugFix.MapPreviewBounds=1: безопасное копирование превью сохранения с карты галактики по фактическим границам захвата экрана, в том числе в оконном режиме. Технический уровень галактики: блок GalaxyTech в Lang (Mode 0/1/2, RefPlanets, Top/Mid/Sum, Quantile, MinCount) — кворум масштабируется с размером галактики. Подробно: src\\engine\\GOV_REGIMES.md.\nDLLSettings.BugFix.MapPreviewBounds=1: безопасное копирование превью сохранения с карты галактики по фактическим границам захвата экрана, в том числе в оконном режиме. Отключать мод посреди партии нельзя: данные режимов и экономик записаны в планеты.\nDLLSettings.BugFix.MapPreviewBounds=1: безопасное копирование превью сохранения с карты галактики по фактическим границам захвата экрана, в том числе в оконном режиме. Оборудование от модов (DLLSettings.Equipment.Enable=1 включает механизм; ставят его сами моды). Мод добавляет в Lang блок CustomEquipment.<Имя> (имя блока - идентификатор, у разных модов не пересекается): Slot - слот (CargoHook, Engine, FuelTanks, Radar, Scaner, RepairRobot, DefGenerator); Block - блок Items.<имя> с данными, устроенный как ванильный Items.<Слот> (AverageSize, Name с <Type>, KlingName, Type.1-8, Text, Broken*, таблицы из восьми значений по уровням: захват mMass/mRadius/mSpeedFar/mSpeedClose, двигатель mSpeed/mJump, топливо mCapacity, радар mRadius, сканер mScan, дроид mRepair, генератор mDef); Chance - процент создаваемых предметов слота, которые станут этим (ChanceShop - магазин игрока, ChanceNpc - NPC); MinGTL/MaxGTL - ГТУ, на которых предлагается (1-8); Owners - производители (Maloc, Peleng, People, Fei, Gaal, Kling, None, PirateClan); CostFactor - цена в процентах от обычной; NoPickup=1 - захват не принимает предметы в трюм; Special - блок MicroModuls, спецмодуль-носитель бонусов (BlockMM/BlockImp запрещают акрины и улучшение); OnActCode (+OnActCodeTypes/OnActStepTypes) - ActCode предмета, как у артефактов. Акрины, подходящие предмету, называют его в Equipments=<слот>,<Имя>. Скрипту доступны SolEquipIs(предмет, имя), SolEquipDef, SolEquipSetDef. Сохранение с таким предметом без мода не загрузится.\nDLLSettings.BugFix.MapPreviewBounds=1: безопасное копирование превью сохранения с карты галактики по фактическим границам захвата экрана, в том числе в оконном режиме. Юзкод кастомного оборудования: CustomEquipment.<Name>.OnUseCode — блок кода для штатного действия «Активировать». CurItem() — активируемый предмет, ScriptItemActShip() — корабль-владелец. UseRequiresEquipped=1 запрещает активацию снятого оборудования; UseInSpace=1 разрешает её только в космосе и исполняет код после возврата с экрана корабля в StarMap. Существующий предметный скриптовый юзкод сохраняет приоритет.\nDLLSettings.BugFix.MapPreviewBounds=1: безопасное копирование превью сохранения с карты галактики по фактическим границам захвата экрана, в том числе в оконном режиме. Ответы в диалогах планет, станций, кораблей и текстовых квестах нумеруются сверху вниз с 1, включая ванильные и модовые ответы. Выбор клавишами 1–9 (основной ряд и NumPad); для 10 и выше удерживайте Shift, наберите полный номер и отпустите Shift. DLLSettings.Dialog.NumberKeys=1 задаёт исходное включение, 0 — выключение; без ключа возможность отсутствует. Пункт в тонкой настройке игры сохраняет личный выбор обычной кнопкой OK; «Отмена» его не меняет. Недоступные ответы сохраняют свои номера и ограничения.\nDLLSettings.BugFix.HyperspaceCargo=1 (или BugFix.All=1): разгрузка перегруженного корабля откладывается до выхода из гиперпространства; предотвращает Error in TShip.ShopGoods на метке 2976. Значение 0 возвращает исходное поведение.\nСовместимость с XenoMusicFlow: DLLSettings.MusicInterop.Enable=1 разрешает его фильтр музыки через API SolEngine; 0 или отсутствие ключа сохраняет прежнюю обработку Solar. Имена дополнительных секторов задаются Lang.dat активного мода галактики и обрабатываются штатным кодом игры.",
-  "version": "4da02a3c122bf13e",
+  "full_description": "Основа сборника Solar. Нужен для работы модов, у которых SolUtilities указан в зависимостях. Исправляет отдельные ошибки игры и поддерживает возможности других модов: новые режимы и экономики планет, оборудование и изменения карты.\nВо время диалога F1 открывает бортовой журнал. Настройка: DLLSettings.Dialog.Journal=1; значение 0 выключает возможность.\nОтветы в диалогах можно выбирать цифрами 1–9 на клавиатуре и NumPad. Для ответа с номером 10 и выше удерживайте Shift, наберите номер и отпустите Shift. Эту возможность можно выключить в тонких настройках игры.\nПодключайте мод перед началом новой партии. Не отключайте его для сохранения, созданного с новыми режимами, экономиками или оборудованием из модов Solar: такое сохранение может не загрузиться.\nСчётчик симуляции включён отдельно от журнала генерации. Настройки в Lang: DLLSettings.Galaxy.SimCounter=1, DLLSettings.Console.Journal=0, DLLSettings.Console.Wheel=0.\nДиагностика выполнения: DLLSettings.ScriptProfile.Enable (0/1); Detail=0 — скрипты и выборка стеков, 1 — также выражения и привязка, 2 — также значения и поиск имён. ReportTurns — интервал отчёта в ходах; SampleMs — запрашиваемая пауза выборки в мс, 0 отключает её. F8 на карте выводит промежуточный отчёт в SolHook.log. Подробные режимы замедляют игру; после измерений отключите Enable.\nПолный экспериментальный скриптовый движок подключается отдельным модом SolScriptEngine; в SolUtilities его DLL нет. Точечные ускорения скриптов предназначены для SolScriptsOptimizations и не требуют полного реимплемента.\nВ тонких настройках новой игры, в существующей группе доминаторов, можно включить победу над Келлером в обычном космосе. При его поражении откроется скриптовый диалог с выбором исхода. Lang-флаг DLLSettings.Keller.SpaceKill=1 разрешает эту возможность; 0 выключает её независимо от выбора игрока. По умолчанию выбор выключен.\nВ тонких настройках новой игры для серий Келлера, Блазера и Террона есть отдельные разделы: оснащение, агрессивность, темп воспроизводства и ограничение оружия своей серией. «Авто» использует соответствующую общую настройку доминаторов. Выбранные значения сохраняются в партии.\nПолзунок «Скорость роста урона в боях с Келлером» в тонких настройках новой партии задаёт 0–200%: 0% оставляет начальные 10% получаемого урона, 100% — исходный рост до 70 убийств, 200% — рост вдвое быстрее. Значение сохраняется в партии. Доступность: DLLSettings.ArcadeProgress.Enable=1.\nВо вкладке «Управление» настроек игры можно переназначить клавиши по разделам. Одинаковая клавиша допустима в разных разделах; конфликт проверяется внутри раздела. Изменения сохраняются кнопкой «Применить».",
+  "version": "3af7f5bcc3cc8075",
   "depends": [],
   "conflicts": [],
   "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
-  "cosmetic": [],
-  "mtime": 1793756874,
+  "cosmetic": [
+    "Solar/SolUtilities/CFG/CacheData.dat"
+  ],
+  "mtime": 1794389330,
   "files": {
     "code": {
-      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolUtilities/ModuleInfo.txt": {
-        "sha256": "0c5253a3b4fd822e0b9d9130250fd91e7b48a86282b87ba8c63592d1dd57b793",
-        "size": 23968,
-        "mtime": 1793756874
+      "Solar_unpacked/Mods/Solar/SolUtilities/ModuleInfo.txt": {
+        "sha256": "7844dd80ef8eb6eee6089b8d7fa7d5f75570f436bed0754f0447f6537246d8e9",
+        "size": 6296,
+        "mtime": 1794389330
       },
-      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolUtilities/CFG/Main.dat": {
-        "sha256": "bd0487769672889d6c12d6c7929e540ecf7e00f81546cd6d7b82f0d7c5d656f2",
-        "size": 1060,
-        "mtime": 1793756874
+      "Solar_unpacked/Mods/Solar/SolUtilities/CFG/CacheData.dat": {
+        "sha256": "8e2f41b913ef69e9bd9453645b279b261bb455658d9fcf0d36b241148dce4a8a",
+        "size": 110,
+        "mtime": 1794389330
       },
-      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolUtilities/CFG/Eng/Lang.dat": {
-        "sha256": "0337680301740d321da523f1606a35307df0ce8388f5bdb597aec7348e838399",
-        "size": 1102,
-        "mtime": 1793756874
+      "Solar_unpacked/Mods/Solar/SolUtilities/CFG/Main.dat": {
+        "sha256": "00e8c73d112480f9a915b03e5d1a6098c7e4f1cb38100b430c04af66ef8aed88",
+        "size": 6814,
+        "mtime": 1794389330
       },
-      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolUtilities/CFG/Rus/Lang.dat": {
-        "sha256": "8e8044f277f3f963f4277b06a9ccb6d3574506deaedb12240c323bd728202f83",
-        "size": 1188,
-        "mtime": 1793756874
+      "Solar_unpacked/Mods/Solar/SolUtilities/CFG/Eng/Lang.dat": {
+        "sha256": "e6347a54c7ff10ef822f62efbd4c1ba3628c48e013d28d262b5c9e52d330dc81",
+        "size": 4478,
+        "mtime": 1794389330
       },
-      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolUtilities/Native/SolHook.XenoPlugin.ini": {
+      "Solar_unpacked/Mods/Solar/SolUtilities/CFG/Rus/Lang.dat": {
+        "sha256": "29085e10a4de63242bb11559173bd987e259def4c3b321f9ba2129face2ce2cf",
+        "size": 5096,
+        "mtime": 1794389330
+      },
+      "Solar_unpacked/Mods/Solar/SolUtilities/DATA/Script/MS_Keller.scr": {
+        "sha256": "8be5778c7f4cb13769ee0f333ae37bff018247dc1c1c11e1a22a27901a07b8ad",
+        "size": 72536,
+        "mtime": 1794389330
+      },
+      "Solar_unpacked/Mods/Solar/SolUtilities/Native/SolHook.XenoPlugin.ini": {
         "sha256": "5a4f7c11ce8eafa26f39d3d3080ad408b9e4d7358d2f7524e301ef9b1826558c",
         "size": 1560,
-        "mtime": 1793756874
+        "mtime": 1794389330
       }
     },
     "assets": {
-      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolUtilities/CFG/Main.txt.bak_barpos": {
-        "sha256": "f8e9c3bc9acf7927991f7b6f664e6f6ce9a5b9afbfa125fec5839e1bc8da9f9f",
-        "size": 10496,
-        "mtime": 1793756874
+      "Solar_unpacked/Mods/Solar/SolUtilities/Native/SolEngine.XenoPlugin.dll": {
+        "sha256": "0e47557289c26a245b660831992efaae9c97df96755e7af7e7cf3c87ababf118",
+        "size": 1026560,
+        "mtime": 1794389330
       },
-      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolUtilities/CFG/Main.txt.bak_barpos2": {
-        "sha256": "cb40ad6c725a6cf268257110184ad555e1d2d68dfa223a0023959c254e97125c",
-        "size": 10498,
-        "mtime": 1793756874
-      },
-      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolUtilities/CFG/Main.txt.bak_up10": {
-        "sha256": "99a763a3f0b188107bf912efdc2eb3f5f87f58e4b00c742629d57d127c77e833",
-        "size": 10498,
-        "mtime": 1793756874
-      },
-      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolUtilities/Native/SolEngine.XenoPlugin.dll": {
-        "sha256": "da7ad9cd124017251ecc07131b4520cbf372e29898704ae81f84d681770e08eb",
-        "size": 940544,
-        "mtime": 1793756874
-      },
-      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolUtilities/Native/SolHook.XenoPlugin.dll": {
+      "Solar_unpacked/Mods/Solar/SolUtilities/Native/SolHook.XenoPlugin.dll": {
         "sha256": "fd6b29a17c53118e0d488dd80409b663878b2fa934a9f61813d41486bfffa0a6",
         "size": 98816,
-        "mtime": 1793756874
+        "mtime": 1794389330
       },
-      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolUtilities/Native/SolSymbols.6A7AFC5C.gsym": {
+      "Solar_unpacked/Mods/Solar/SolUtilities/Native/SolScriptProfile.XenoPlugin.dll": {
+        "sha256": "86abafaece5155629334f986b7433754457ea95e7a92e180a8120f877459dbfe",
+        "size": 124928,
+        "mtime": 1794389330
+      },
+      "Solar_unpacked/Mods/Solar/SolUtilities/Native/SolSymbols.6A7AFC5C.gsym": {
         "sha256": "da89116944f7e1afcf6a8c5edb2dffe0e51133929f8cb3f4a333b7e5afb20463",
         "size": 101032,
-        "mtime": 1793756874
+        "mtime": 1794389330
       },
-      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolUtilities/Native/SolSymbols.6AC53B97.gsym": {
+      "Solar_unpacked/Mods/Solar/SolUtilities/Native/SolSymbols.6AC53B97.gsym": {
         "sha256": "982a9754b90ef9e6d715d43ee4fe13040194b3da66a7b7f74f08d38be6cadf6b",
         "size": 114707,
-        "mtime": 1793756874
+        "mtime": 1794389330
       },
-      "Solar_Release_2026-11-04_unpacked/Mods/Solar/SolUtilities/Native/SolSymbols.6ADF851C.gsym": {
-        "sha256": "14e2466e5eb92409cefb919dc6062391ad9b3c23552f17c7ddd71f937647e2ed",
-        "size": 210259,
-        "mtime": 1793756874
+      "Solar_unpacked/Mods/Solar/SolUtilities/Native/SolSymbols.6ADF851C.gsym": {
+        "sha256": "cb2726708a2dbfc504e059114c6400758a870e430239857a6363957b2d30ec09",
+        "size": 281930,
+        "mtime": 1794389330
       }
     }
   }

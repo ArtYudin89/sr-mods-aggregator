@@ -1,0 +1,40 @@
+{
+  "schema": "srmod/1",
+  "id": "Solar/SolScriptOptimizations",
+  "source": "shared/solar",
+  "name": "SolScriptOptimizations",
+  "title": "SolScriptOptimizations",
+  "author": "cheniska",
+  "section": "Solar",
+  "priority": "10",
+  "description": "Оптимизации скриптов: проверочный режим",
+  "full_description": "Точечные оптимизации оригинального движка в SolEngine из SolUtilities. Не требует SolScriptEngine. Реализованы CopyFromFast и CopyFrom (переназначение переходов), ArraySort (устойчивая сортировка), ArrayCreate (пустые листовые массивы), LinkAllLookup (кеш на один вызов), ShipBinding (прямой обход списка), ScalarLogic (целочисленные &&/|| с сохранением вычисления обоих операндов). По умолчанию режим 2: оригинал исполняется, прогноз ускоренного пути сравнивается с ним; результат оригинала сохраняется. Все ключи в DLLSettings.ScriptOptimizations: 0 — оригинал, 1 — ускорение, 2 — сравнение. Для измерения скорости сравнивайте 0 и 1 после полного перезапуска. Для проверки на копии сейва дополнительно включите SolScriptEngineTest и используйте его тестовый предмет.",
+  "version": "910dfb58d2c1d469",
+  "depends": [
+    "SolUtilities"
+  ],
+  "conflicts": [],
+  "chunk_index_url": "https://huggingface.co/datasets/Artyudin/sr-mods-assets/resolve/main/asset_index.json",
+  "cosmetic": [],
+  "mtime": 1794389330,
+  "files": {
+    "code": {
+      "Solar_unpacked/Mods/Solar/SolScriptOptimizations/ModuleInfo.txt": {
+        "sha256": "263e599dccf3798aa25911d91c29d46b38b3be0249ea81ab6d94a241c5973ec0",
+        "size": 3410,
+        "mtime": 1794389330
+      },
+      "Solar_unpacked/Mods/Solar/SolScriptOptimizations/CFG/Eng/Lang.dat": {
+        "sha256": "ab06b4295c3d34764861d1d1d5a67fcc439fa302ff5d55d8b2e91c54ff1b309c",
+        "size": 178,
+        "mtime": 1794389330
+      },
+      "Solar_unpacked/Mods/Solar/SolScriptOptimizations/CFG/Rus/Lang.dat": {
+        "sha256": "ab06b4295c3d34764861d1d1d5a67fcc439fa302ff5d55d8b2e91c54ff1b309c",
+        "size": 178,
+        "mtime": 1794389330
+      }
+    },
+    "assets": {}
+  }
+}
