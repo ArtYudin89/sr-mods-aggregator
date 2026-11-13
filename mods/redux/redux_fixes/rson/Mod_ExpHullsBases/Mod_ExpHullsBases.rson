@@ -731,7 +731,7 @@
                     "#": 250,
                     "Msg": "",
                     "AMsg.Num": "64",
-                    "_orig_danswer": "DAnswer('exit')"
+                    "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_ExpHullsBases.1072\"))"
                 },
                 {
                     "Type": "TDialogAnswer",
@@ -742,7 +742,7 @@
                     "#": 251,
                     "Msg": "",
                     "AMsg.Num": "65",
-                    "_orig_danswer": "DAnswer('exit')"
+                    "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_ExpHullsBases.1072\"))"
                 },
                 {
                     "Type": "TDialogAnswer",
@@ -753,7 +753,7 @@
                     "#": 252,
                     "Msg": "",
                     "AMsg.Num": "66",
-                    "_orig_danswer": "DAnswer('exit')"
+                    "_orig_danswer": "DAnswer('exit~'+CT(\"Script.Mod_ExpHullsBases.1072\"))"
                 },
                 {
                     "Type": "TDialogAnswer",
@@ -1492,7 +1492,7 @@
                     "#": 170,
                     "Msg": "",
                     "DMsg.Num": "59",
-                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpHullsBases.674\"))"
+                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpHullsBases.1072\"))"
                 },
                 {
                     "Type": "TDialogMsg",
@@ -1503,7 +1503,7 @@
                     "#": 171,
                     "Msg": "",
                     "DMsg.Num": "60",
-                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpHullsBases.674\"))"
+                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpHullsBases.1072\"))"
                 },
                 {
                     "Type": "TDialogMsg",
@@ -1514,7 +1514,7 @@
                     "#": 172,
                     "Msg": "",
                     "DMsg.Num": "61",
-                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpHullsBases.674\"))"
+                    "_orig_dtext": "DText(CT(\"Script.Mod_ExpHullsBases.1072\"))"
                 },
                 {
                     "Type": "TDialogMsg",
@@ -2121,7 +2121,7 @@
                         "",
                         "            if(ShipOwner(Player()) <= 4)",
                         "            {",
-                        "                AddDialogInject('DialogModernizations',CT(\"Script.Mod_ExpHullsBases.674\"),CT(\"Script.Mod_ExpHullsBases.1065\"),0);",
+                        "                AddDialogInject('DialogModernizations','',CT(\"Script.Mod_ExpHullsBases.1065\"),0);",
                         "            }",
                         "            //Если игрок на стороне клана, то улучшить ВБ он не сможет",
                         "            else if(ShipOwner(Player()) == 7)",
@@ -2278,8 +2278,8 @@
                         "cur_ruin_cost = ItemCost(ruin_hull);",
                         "if(ruin_str_type == 'WB') max_ruin_size = ((cur_ruin_techlevel * 400 + 800) * 3) / 2;",
                         "else max_ruin_size = cur_ruin_techlevel * 400 + 800;",
-                        "//Расширяем лимит размера станций для мода EvoArmada",
-                        "if(IsScriptActive('Mod_EvoArmada')) max_ruin_size = round(1.0 * max_ruin_size * (1.0 + (1.0 * (GalaxyDiffLevels() / 50))));",
+                        "//Расширяем лимит размера станций для EvoDreadnought",
+                        "if(IsScriptActive('Mod_EvoDreadnought')) max_ruin_size = round(1.0 * max_ruin_size * (1.0 + (1.0 * (GalaxyDiffLevels() / 50))));",
                         "",
                         "if(max_ruin_size < ItemSize(ruin_hull)) max_ruin_size = ItemSize(ruin_hull);",
                         "",
@@ -3388,8 +3388,8 @@
                         "    SpecialToEquipment(FindBonusByNameInCfg(tempStr4), cur_item);",
                         "    HullType(cur_item, 8); //Возвращаем станционный тип корпуса, т.к. SpecialToEquipment превратила его в акриновый",
                         "",
-                        "    //Удаляем лишние выводы строчек бонусов из EvoArmada, если она подключена",
-                        "    if(CurrentMods('Evolution\\\\EvoArmada') || IsScriptActive('Mod_EvoDreadnought'))",
+                        "    //Удаляем лишние строки бонусов EvoDreadnought",
+                        "    if(IsScriptActive('Mod_EvoDreadnought'))",
                         "    {",
                         "        for(i = ItemExtraSpecials(cur_item) - 1; i >= 0; i = i - 1)",
                         "        {",
@@ -3438,8 +3438,8 @@
                         "    SpecialToEquipment(FindBonusByNameInCfg(tempStr4), cur_item);",
                         "    HullType(cur_item, 8); //Возвращаем станционный тип корпуса, т.к. SpecialToEquipment превратила его в акриновый",
                         "",
-                        "    //Удаляем лишние выводы строчек бонусов из EvoArmada, если она подключена",
-                        "    if(CurrentMods('Evolution\\\\EvoArmada') || IsScriptActive('Mod_EvoDreadnought'))",
+                        "    //Удаляем лишние строки бонусов EvoDreadnought",
+                        "    if(IsScriptActive('Mod_EvoDreadnought'))",
                         "    {",
                         "        for(i = ItemExtraSpecials(cur_item) - 1; i >= 0; i = i - 1)",
                         "        {",
@@ -3485,8 +3485,8 @@
                         "    SpecialToEquipment(FindBonusByNameInCfg('ExpHullsBases_Polyxen'), cur_item);",
                         "    HullType(cur_item, 8); //Возвращаем станционный тип корпуса, т.к. SpecialToEquipment превратила его в акриновый",
                         "",
-                        "    //Удаляем лишние выводы строчек бонусов из EvoArmada, если она подключена",
-                        "    if(CurrentMods('Evolution\\\\EvoArmada') || IsScriptActive('Mod_EvoDreadnought'))",
+                        "    //Удаляем лишние строки бонусов EvoDreadnought",
+                        "    if(IsScriptActive('Mod_EvoDreadnought'))",
                         "    {",
                         "        for(i = ItemExtraSpecials(cur_item) - 1; i >= 0; i = i - 1)",
                         "        {",
@@ -3740,8 +3740,8 @@
                         "cur_ruin_cost = ItemCost(ruin_hull);",
                         "if(ruin_str_type == 'WB') max_ruin_size = ((cur_ruin_techlevel * 400 + 800) * 3) / 2;",
                         "else max_ruin_size = cur_ruin_techlevel * 400 + 800;",
-                        "//Расширяем лимит размера станций для мода EvoArmada",
-                        "if(IsScriptActive('Mod_EvoArmada')) max_ruin_size = round(1.0 * max_ruin_size * (1.0 + (1.0 * (GalaxyDiffLevels() / 50))));",
+                        "//Расширяем лимит размера станций для EvoDreadnought",
+                        "if(IsScriptActive('Mod_EvoDreadnought')) max_ruin_size = round(1.0 * max_ruin_size * (1.0 + (1.0 * (GalaxyDiffLevels() / 50))));",
                         "",
                         "if(max_ruin_size < ItemSize(ruin_hull)) max_ruin_size = ItemSize(ruin_hull);",
                         "",
@@ -5473,8 +5473,7 @@
                         "    //Добавляем диалог для приказа смены дислокации ВБ (игрока могут позже послать, если его звание недостаточно высоко)",
                         "    if(!StarOwner(cur_star)) {",
                         "        if(!ShipOnSidePirateClan(Player())) {",
-                        "            if(~ShipFindCustomShipInfoByType(cur_ruin, 'WB_move')) int u;",
-                        "            else InjectAnswer('ruin_movement', CT(\"Script.Mod_ExpHullsBases.553\"), 1);",
+                        "            if(ShipFindCustomShipInfoByType(cur_ruin, 'WB_move') < 0) InjectAnswer('ruin_movement', CT(\"Script.Mod_ExpHullsBases.553\"), 1);",
                         "        }",
                         "    }",
                         "",
@@ -5590,8 +5589,8 @@
                         "'<AddText'+'>', TextCorr2,",
                         "'');",
                         "//Акрин закрывает слоты под артефакты: 2 в ваниле и 8 при ExtraArtSlots (пропорционально расширению 4 -> 16)",
-                        "if(CurrentMods('Tweaks\\\\ExtraArtSlots')) tempStr2 = tempStr2 + CT(\"Script.Mod_ExpHullsBases.1073\");",
-                        "else tempStr2 = tempStr2 + CT(\"Script.Mod_ExpHullsBases.1072\");",
+                        "if(CurrentMods('Tweaks\\\\ExtraArtSlots')) tempStr2 = tempStr2 + CT(\"Script.Mod_ExpHullsBases.1074\");",
+                        "else tempStr2 = tempStr2 + CT(\"Script.Mod_ExpHullsBases.1073\");",
                         "DChange(0);",
                         "exit;"
                     ]
@@ -5621,8 +5620,8 @@
                         "'<AddText'+'>', TextCorr2,",
                         "'');",
                         "//Акрин закрывает слоты под артефакты: 2 в ваниле и 8 при ExtraArtSlots (пропорционально расширению 4 -> 16)",
-                        "if(CurrentMods('Tweaks\\\\ExtraArtSlots')) tempStr1 = tempStr1 + CT(\"Script.Mod_ExpHullsBases.1073\");",
-                        "else tempStr1 = tempStr1 + CT(\"Script.Mod_ExpHullsBases.1072\");",
+                        "if(CurrentMods('Tweaks\\\\ExtraArtSlots')) tempStr1 = tempStr1 + CT(\"Script.Mod_ExpHullsBases.1074\");",
+                        "else tempStr1 = tempStr1 + CT(\"Script.Mod_ExpHullsBases.1073\");",
                         "DChange(1);",
                         "exit;"
                     ]
@@ -6257,7 +6256,7 @@
                         "",
                         "//Собираем итоговую строку",
                         "tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.Dialogs'+ruin_str_type+'.PortalUpgrade'),'TextCorr4',TextCorr4,'TextCorr',TextCorr,'DefSplt',DefSplt,'upgrade_cost_portalGen',upgrade_cost_portalGen);",
-                        "if(CurrentMods('Tweaks\\\\ExtraArtSlots')) tstr1 = tstr1 + CT(\"Script.Mod_ExpHullsBases.1074\");",
+                        "if(CurrentMods('Tweaks\\\\ExtraArtSlots')) tstr1 = tstr1 + CT(\"Script.Mod_ExpHullsBases.1075\");",
                         "DChange(30);",
                         "exit;"
                     ]
@@ -6322,8 +6321,8 @@
                         "cur_ruin_cost = ItemCost(ruin_hull);",
                         "if(ruin_str_type == 'WB') max_ruin_size = ((cur_ruin_techlevel * 400 + 800) * 3) / 2;",
                         "else max_ruin_size = cur_ruin_techlevel * 400 + 800;",
-                        "//Расширяем лимит размера станций для мода EvoArmada",
-                        "if(IsScriptActive('Mod_EvoArmada')) max_ruin_size = round(1.0 * max_ruin_size * (1.0 + (1.0 * (GalaxyDiffLevels() / 50))));",
+                        "//Расширяем лимит размера станций для EvoDreadnought",
+                        "if(IsScriptActive('Mod_EvoDreadnought')) max_ruin_size = round(1.0 * max_ruin_size * (1.0 + (1.0 * (GalaxyDiffLevels() / 50))));",
                         "",
                         "if(max_ruin_size < ItemSize(ruin_hull)) max_ruin_size = ItemSize(ruin_hull);",
                         "",
@@ -6848,8 +6847,8 @@
                         "cur_ruin_cost = ItemCost(ruin_hull);",
                         "if(ruin_str_type == 'WB') max_ruin_size = ((cur_ruin_techlevel * 400 + 800) * 3) / 2;",
                         "else max_ruin_size = cur_ruin_techlevel * 400 + 800;",
-                        "//Расширяем лимит размера станций для мода EvoArmada",
-                        "if(IsScriptActive('Mod_EvoArmada')) max_ruin_size = round(1.0 * max_ruin_size * (1.0 + (1.0 * (GalaxyDiffLevels() / 50))));",
+                        "//Расширяем лимит размера станций для EvoDreadnought",
+                        "if(IsScriptActive('Mod_EvoDreadnought')) max_ruin_size = round(1.0 * max_ruin_size * (1.0 + (1.0 * (GalaxyDiffLevels() / 50))));",
                         "",
                         "if(max_ruin_size < ItemSize(ruin_hull)) max_ruin_size = ItemSize(ruin_hull);",
                         "",
