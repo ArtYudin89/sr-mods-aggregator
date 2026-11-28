@@ -129,6 +129,8 @@ jobs:
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          TG_EXTRA_BOT_TOKEN: ${{ secrets.TG_EXTRA_BOT_TOKEN }}
+          TG_EXTRA_CHAT_IDS: ${{ secrets.TG_EXTRA_CHAT_IDS }}
           NOTIFY_TEST: ${{ github.event.inputs.notify_test }}
         run: python pipeline/notify.py manual
 
@@ -200,6 +202,8 @@ jobs:
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          TG_EXTRA_BOT_TOKEN: ${{ secrets.TG_EXTRA_BOT_TOKEN }}
+          TG_EXTRA_CHAT_IDS: ${{ secrets.TG_EXTRA_CHAT_IDS }}
           NOTIFY_TEST: ${{ github.event.inputs.notify_test }}
           JOB_STATUS: ${{ job.status }}
           STEP_OUTCOMES: "assets=${{ steps.assets.outcome }};code=${{ steps.code.outcome }};descriptors=${{ steps.descriptors.outcome }}"

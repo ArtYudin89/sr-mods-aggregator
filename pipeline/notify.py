@@ -8,7 +8,8 @@
   summary — итог прогона: какие паки обновились, какие юниты и шаги упали, что нашла
             проверка содержимого модов. Нечего сказать — не шлём.
 
-Env: TG_BOT_TOKEN, TG_CHAT_ID, NOTIFY_TEST; для summary ещё JOB_STATUS (job.status) и
+Env: TG_BOT_TOKEN, TG_CHAT_ID, NOTIFY_TEST; дополнительно TG_EXTRA_CHAT_IDS (через
+запятую) и TG_EXTRA_BOT_TOKEN (по умолчанию TG_BOT_TOKEN). Для summary ещё JOB_STATUS (job.status) и
 STEP_OUTCOMES («id=outcome;…» шагов с continue-on-error — их провал иначе не виден).
 Источники: state/cloud_summary.json, state/failures.log.
 Код выхода 0 — отправлено/нечего слать; 1 — ошибка доставки."""
@@ -79,6 +80,29 @@ def summary_text(summary, failures, steps, job_status):
     return text if len(text) <= TG_LIMIT else text[:TG_LIMIT - 1] + '…'
 
 
+def send_message(token, chat, message):
+    """None при успехе, иначе причина без URL и содержимого ответа."""
+    data = urllib.parse.urlencode({'chat_id': chat, 'text': message}).encode('utf-8')
+    url = f'https://api.telegram.org/bot{token}/sendMessage'
+    try:
+        with urllib.request.urlopen(url, data=data, timeout=30) as response:
+            payload = json.load(response)
+    except urllib.error.HTTPError as error:
+        error.close()
+        return f'HTTP {error.code}'
+    except urllib.error.URLError as error:
+        return f'сетевая ошибка ({type(error.reason).__name__})'
+    except Exception as error:
+        return f'ошибка запроса или ответа ({type(error).__name__})'
+
+    if not isinstance(payload, dict):
+        return 'неожиданный ответ Telegram'
+    if payload.get('ok') is True:
+        return None
+    code = payload.get('error_code')
+    return f'ошибка Telegram {code}' if type(code) is int else 'ошибка Telegram'
+
+
 def main():
     # stdout раннера = cp1252 -> кириллица в print() роняет процесс (UnicodeEncodeError).
     for _s in (sys.stdout, sys.stderr):
@@ -96,7 +120,8 @@ def main():
         return 0
 
     try:
-        s = json.load(open('state/cloud_summary.json', encoding='utf-8'))
+        with open('state/cloud_summary.json', encoding='utf-8') as fh:
+            s = json.load(fh)
     except Exception:
         s = {'changed': [], 'manual': []}
 
@@ -119,22 +144,21 @@ def main():
             return 0
         units = s.get('changed', [])
 
-    data = urllib.parse.urlencode({'chat_id': chat, 'text': msg}).encode('utf-8')
-    url = f'https://api.telegram.org/bot{tok}/sendMessage'
-    try:
-        with urllib.request.urlopen(url, data=data, timeout=30) as r:
-            resp = json.load(r)
-    except urllib.error.HTTPError as e:
-        resp = json.load(e)
-    except Exception as e:
-        print('Telegram: сетевая ошибка:', e)
-        return 1
-
-    if resp.get('ok'):
+    primary_error = send_message(tok, chat, msg)
+    if primary_error:
+        print(f'Telegram НЕ доставлено [{kind}]: {primary_error}')
+    else:
         print(f'Telegram доставлено [{kind}]:', ', '.join(units) or msg.splitlines()[0])
-        return 0
-    print(f'Telegram НЕ доставлено [{kind}]:', json.dumps(resp, ensure_ascii=False))
-    return 1
+
+    extra_token = os.environ.get('TG_EXTRA_BOT_TOKEN', '').strip() or tok
+    extra_ids = os.environ.get('TG_EXTRA_CHAT_IDS', '').split(',')
+    extra_chats = dict.fromkeys(value.strip() for value in extra_ids)
+    for number, extra_chat in enumerate(filter(None, extra_chats), 1):
+        error = send_message(extra_token, extra_chat, msg)
+        if error:
+            print(f'Telegram НЕ доставлено [{kind}, дополнительный получатель {number}]: {error}')
+
+    return 1 if primary_error else 0
 
 
 if __name__ == '__main__':
